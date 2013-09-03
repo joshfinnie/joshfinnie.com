@@ -1,0 +1,139 @@
+/*!
+ * Version 0.1
+ *
+ * Copyright 2013 Josh Finnie
+ * Licensed under the Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
+ * http://creativecommons.org/licenses/by-nc-sa/3.0/
+ *
+ */
+ .container {
+    width: auto;
+    max-width: 920px;
+}
+
+.header {
+    width: auto;
+}
+
+.footer {
+    width: auto;
+}
+
+.indent {
+    padding-left: 25px;
+}
+
+.homepage {
+    padding-top: 150px;
+}
+
+.homepage a {
+    color: #6E6E6E;
+}
+
+.homepage a:hover {
+    color: #0088cc;
+    text-decoration: none;
+}
+
+.masthead {
+    font-size: 100px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.social-buttons{
+    padding-top: 45px;
+    text-decoration: none;
+}
+
+.twitter_button {
+    display: inline-block;
+    background-image: url('/assets/images/twitter_circle_black.png');
+    width: 128px;
+    height: 128px;
+}
+
+.twitter_button:hover {
+    display: inline-block;
+    background-image: url('/assets/images/twitter_circle_color.png');
+    width: 128px;
+    height: 128px;
+}
+
+.github_button {
+    display: inline-block;
+    background-image: url('/assets/images/github_circle_black.png');
+    width: 128px;
+    height: 128px;
+}
+
+.github_button:hover {
+    display: inline-block;
+    background-image: url('/assets/images/github_circle_color.png');
+    width: 128px;
+    height: 128px;
+}
+
+.linkedin_button {
+    display: inline-block;
+    background-image: url('/assets/images/linkedin_circle_black.png');
+    width: 128px;
+    height: 128px;
+}
+
+.linkedin_button:hover {
+    display: inline-block;
+    background-image: url('/assets/images/linkedin_circle_color.png');
+    width: 128px;
+    height: 128px;
+}
+
+.instagram_button {
+    display: inline-block;
+    background-image: url('/assets/images/instagram_circle_black.png');
+    width: 128px;
+    height: 128px;
+}
+
+.instagram_button:hover {
+    display: inline-block;
+    background-image: url('/assets/images/instagram_circle_color.png');
+    width: 128px;
+    height: 128px;
+}
+
+.email_signup {
+    padding: 20px;
+    font-size: 1.2em;
+    text-align: center;
+    color: #EEE;
+    background-color: #404040;
+    margin: 40px 0 40px 0;
+}
+
+.last_tweet {
+    margin-top: 50px;
+}
+
+.email_signup legend {
+    color: white;
+}
+
+.email_signup label {
+    display: none;
+}
+
+@media (max-width: 767px){
+    .homepage {
+        padding-top: 0px;
+        text-align: center;
+    }
+};
+
+@media (max-width: 767px){
+    .navbar {
+        text-align: center;
+    }
+};

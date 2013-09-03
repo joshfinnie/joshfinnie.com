@@ -1,0 +1,18 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% if site.author %}<meta name="author" content="{{ site.author }}">{% endif %}
+{% if site.description %}<meta name="description" content="{{ site.description }}">{% endif %}
+<meta name="generator" content="mynt v{{ site.version }}">
+<meta name="google-site-verification" content="TJ1RB8nr97TGCLSn7gH9BUktQiXSZ9iORXdErQiHLy0" />
+
+<link rel="shortcut icon" href="{{ get_asset('images/favicon.ico') }}" type="image/x-icon">
+
+{% if site.feed %}<link rel="alternate" href="{{ get_url('feed.xml') }}" type="application/atom+xml">{% endif %}
+
+<link href="{{ get_asset('css/twitter-bootstrap/2-3-1/bootstrap-combined.min.css') }}" rel="stylesheet">
+<link href="{{ get_asset('css/twitter-bootstrap/2-3-1/bootstrap-responsive.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ get_asset('css/style.min.css') }}" type="text/css">
+{% if site.pygmentize %}<link rel="stylesheet" href="{{ get_asset('css/pygments.css') }}" type="text/css">{% endif %}
+
+<script src="{{ get_asset('js/html5.js') }}"></script>

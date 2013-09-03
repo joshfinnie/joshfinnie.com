@@ -33,3 +33,9 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# Codekit
+codekit*
+
+# Other Stuff
+_site/

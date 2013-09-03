@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+
+{% set title = 'Tag: ' ~ tag.name %}
+
+{% block content %}
+  {% include 'page.navbar.html' %}
+  <hr>
+    <div class="row-fluid blogpage">
+        <h1>Tag: {{ tag.name }}</h1>
+        {% for year, archive in tag.archives %}
+            {% for month, posts in archive.months %}
+                {% for post in posts %}
+                    <h2>&#8226; <a href="{{ get_url(post.url) }}">{{ post.title }}</a><br /><small class="indent">{% if post.tags %} Tagged: {% for tag in post.tags %}<a href="{{ get_url(tags[tag].url) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</small></h2>
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

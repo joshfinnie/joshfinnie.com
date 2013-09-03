@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'page.header.html' %}
+
+    {% if site.title %}<title>{% if title %}{{ title }} &ndash; {% endif %}{{ site.title }}{% if not title and site.subtitle %} &ndash; {{ site.subtitle }}{% endif %}</title>{% endif %}
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <hr>
+
+    <div class="container footer">
+      <footer>
+          <p>&copy; 2010 - 2013 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a>
+          <span class="pull-right">Uses <a href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a>, <a href="http://mynt.mirroredwhite.com/">Mynt</a> and <a href="http://www.neilorangepeel.com/free-social-icons/">Icons by Neil Orange Peel</a></span></p>
+          <p class="last_tweet text-center"><img src="http://lasttweetpng.com/joshfinnie/tweet/last.png" alt="The last tweet from @joshfinnie"></p>
+      </footer>
+    </div>
+    {% include 'page.footer.html' %}
+</body>
+</html>

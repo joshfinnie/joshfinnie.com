@@ -1,23 +1,57 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <div class="row-fluid homepage">
-        <div class="span8">
-            <h1 class="masthead">Josh Finnie</h1>
-            <h2><a href="{{ get_url('about') }}">About</a> | <a href="{{ get_url('blog') }}">Blog</a></h2>
-        </div>
-        <div class="span4">
-            <p>
-                <img src="{{ get_asset('images/avatar.jpeg') }}" class="img-circle">
-            </p>
-        </div>
+<div class="row homepage">
+    <div class="col-md-8">
+         <h1 class="masthead">Josh Finnie</h1>
+         <h2><a href="{{ get_url('about') }}">About</a> | <a href="{{ get_url('blog') }}">Blog</a></h2>
     </div>
-    <div class="row-fluid social-buttons">
-        <p class='text-center'>
-            <a href="https://twitter.com/joshfinnie"><span class="twitter_button"></span></a>
-            <a href="https://github.com/joshfinnie"><span class="github_button"></span></a>
-            <a href="https://linkedin.com/in/joshfinnie"><span class="linkedin_button"></span></a>
-            <a href="https://instagram.com/joshfinnie"><span class="instagram_button"></span></a>
+    <div class="col-md-4">
+        <p>
+            <img src="{{ get_asset('images/avatar.jpeg') }}" class="img-circle img-responsive"/>
         </p>
     </div>
+</div>
+<div class="row social-buttons">
+    <div class="col-md-3 col-xs-6">
+        <span class="twitter-button">
+            <a href="https://twitter.com/joshfinnie">
+                <span class="fa-stack fa-5x">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+        </span>
+    </div>
+    <div class="col-md-3 col-xs-6">
+        <span class="github-button">
+            <a href="https://github.com/joshfinnie">
+            <span class="fa-stack fa-5x">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+        </span>
+    </div>
+    <div class="col-md-3 col-xs-6">
+        <span class="linkedin-button">
+            <a href="https://linkedin.com/in/joshfinnie">
+            <span class="fa-stack fa-5x">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+        </span>
+    </div>
+    <div class="col-md-3 col-xs-6">
+        <span class="instagram-button">
+            <a href="https://instagram.com/joshfinnie">
+            <span class="fa-stack fa-5x">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+        </span>
+    </div>
+</div>
 {% endblock %}

@@ -24,7 +24,7 @@
 }
 
 .homepage {
-    padding-top: 150px;
+    padding-top: 50px;
 }
 
 .homepage a {
@@ -123,6 +123,63 @@
 
 .email_signup label {
     display: none;
+}
+
+.twitter-button > a:link {
+    color: #000;
+    text-decoration: none;
+}
+.twitter-button > a:visited {
+    color: #000;
+    text-decoration: none;
+}
+.twitter-button > a:hover {
+    color: #47bff5;
+    text-decoration: none;
+}
+
+.github-button > a:link {
+    color: #000;
+    text-decoration: none;
+}
+.github-button > a:visited {
+    color: #000;
+    text-decoration: none;
+}
+.github-button > a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.linkedin-button > a:link {
+    color: #000;
+    text-decoration: none;
+}
+.linkedin-button > a:visited {
+    color: #000;
+    text-decoration: none;
+}
+.linkedin-button > a:hover {
+    color: #3893c4;
+    text-decoration: none;
+}
+
+.instagram-button > a:link {
+    color: #000;
+    text-decoration: none;
+}
+.instagram-button > a:visited {
+    color: #000;
+    text-decoration: none;
+}
+.instagram-button > a:hover {
+    color: #3e6c93;
+    text-decoration: none;
+}
+
+a:active {
+    color: #000;
+    text-decoration: none;
 }
 
 @media (max-width: 767px){

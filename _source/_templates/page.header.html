@@ -10,8 +10,8 @@
 
 {% if site.feed %}<link rel="alternate" href="{{ get_url('feed.xml') }}" type="application/atom+xml">{% endif %}
 
-<link href="{{ get_asset('css/twitter-bootstrap/2-3-1/bootstrap-combined.min.css') }}" rel="stylesheet">
-<link href="{{ get_asset('css/twitter-bootstrap/2-3-1/bootstrap-responsive.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ get_asset('css/bootstrap.min.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ get_asset('css/font-awesome.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ get_asset('css/style.min.css') }}" type="text/css">
 {% if site.pygmentize %}<link rel="stylesheet" href="{{ get_asset('css/pygments.css') }}" type="text/css">{% endif %}
 

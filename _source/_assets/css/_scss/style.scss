@@ -6,9 +6,16 @@
  * http://creativecommons.org/licenses/by-nc-sa/3.0/
  *
  */
+
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
  .container {
     width: auto;
     max-width: 920px;
+    font-size: 1.25em;
 }
 
 .header {
@@ -180,6 +187,22 @@
 a:active {
     color: #000;
     text-decoration: none;
+}
+
+pre[class*="language-"] {
+    border-radius: 10px 10px 0 0;
+    margin: 0 0 1.336em 0;
+    padding: .3em 1em 1em 1em;
+    word-wrap: inherit;
+}
+
+pre[class*="language-"] :hover {
+    width: 150%;
+}
+
+code {
+    color: #404040;
+    background-color: #C0C0C0;
 }
 
 @media (max-width: 767px){

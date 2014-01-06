@@ -10,10 +10,12 @@
         <div class="item">
             <div class="header">
                 <h1>{{ post.title }}</h1>
-                <h2><small>{% if post.tags %} Tags: {% for tag in post.tags %}<a href="{{ get_url(tags[tag].url) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</small></h2>
             </div>
             <div class="body">
                 {{ post.content }}
+            </div>
+            <div class="tags">
+                <p>{% if post.tags %} Tags: {% for tag in post.tags %}<a href="{{ get_url(tags[tag].url) }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</p>
             </div>
             <div class="email_signup">
                 <form action="http://joshfinnie.us7.list-manage.com/subscribe/post?u=30827d613556a7d74b904fa65&amp;id=c83263ff38" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>

@@ -1,15 +1,10 @@
-/*!
- * Version 0.1
- *
- * Copyright 2013 Josh Finnie
- * Licensed under the Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)
- * http://creativecommons.org/licenses/by-nc-sa/3.0/
- *
- */
-
 body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
  .container {
@@ -45,9 +40,6 @@ body {
 
 .masthead {
     font-size: 100px;
-    font-weight: bold;
-    line-height: 1;
-    letter-spacing: -2px;
 }
 
 .social-buttons{
@@ -118,10 +110,13 @@ body {
     color: #EEE;
     background-color: #404040;
     margin: 40px 0 40px 0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .last_tweet {
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 .email_signup legend {
@@ -205,15 +200,19 @@ code {
     background-color: #C0C0C0;
 }
 
+.img-responsive {
+    display: inline;
+}
+
 @media (max-width: 767px){
     .homepage {
         padding-top: 0px;
         text-align: center;
     }
-};
+}
 
 @media (max-width: 767px){
     .navbar {
         text-align: center;
     }
-};
+}

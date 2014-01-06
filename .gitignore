@@ -39,3 +39,4 @@ codekit*
 
 # Other Stuff
 _site/
+node_modules/

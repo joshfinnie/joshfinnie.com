@@ -40,3 +40,4 @@ codekit*
 # Other Stuff
 _site/
 node_modules/
+_source/_assets/css/main.*

@@ -62,6 +62,11 @@ module.exports = (grunt) ->
         options:
           stdout: true
           stderr: true
+      watch:
+        command: "mynt watch -f _source/ _site/"
+        options:
+          stdout: true
+          stderr: true
       serve:
         options:
           stdout: true
@@ -75,5 +80,6 @@ module.exports = (grunt) ->
 
   grunt.registerTask "default", ["sass", "cssmin", "jshint", "coffeelint", "uglify"]
   grunt.registerTask "gen", ["default", "shell:generate"]
-  grunt.registerTask "serve", ["gen", "shell:serve"]
+  grunt.registerTask "serve", ["shell:serve"]
+  grunt.registerTask "watch", ["shell:watch"]
   grunt.registerTask "deploy", ["shell:deploy"]

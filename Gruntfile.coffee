@@ -38,7 +38,7 @@ module.exports = (grunt) ->
         src: ["*.css", "!*.min.css"]
         dest: "_source/_assets/css"
         ext: ".min.css"
-    
+
     jshint:
       options:
         jshintrc: true

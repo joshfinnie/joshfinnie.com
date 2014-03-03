@@ -82,4 +82,4 @@ module.exports = (grunt) ->
   grunt.registerTask "gen", ["default", "shell:generate"]
   grunt.registerTask "serve", ["shell:serve"]
   grunt.registerTask "watch", ["shell:watch"]
-  grunt.registerTask "deploy", ["shell:deploy"]
+  grunt.registerTask "deploy", ["gen", "shell:deploy"]

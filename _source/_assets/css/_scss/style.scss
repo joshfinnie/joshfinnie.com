@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .header {
     width: auto;
+    padding-bottom: 10px;
 }
 
 .footer {
@@ -101,6 +102,10 @@ h1, h2, h3, h4, h5, h6, p {
     background-image: url('/assets/images/instagram_circle_color.png');
     width: 128px;
     height: 128px;
+}
+
+.tags {
+    padding-top: 10px;
 }
 
 .email_signup {

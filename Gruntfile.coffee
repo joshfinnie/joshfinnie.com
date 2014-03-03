@@ -61,16 +61,16 @@ module.exports = (grunt) ->
         command: "mynt gen -c _source/ _site/"
         options:
           stdout: true
-          etderr: true
+          stderr: true
       serve:
         options:
           stdout: true
-          etderr: true
+          stderr: true
         command: "mynt serve _site/"
       deploy:
         options:
           stdout: true
-          etderr: true
+          stderr: true
         command: "s3cmd sync --add-header=\"Cache-Control: max-age=31536000\" _site/ s3://www.joshfinnie.com"
 
   grunt.registerTask "default", ["sass", "cssmin", "jshint", "coffeelint", "uglify"]

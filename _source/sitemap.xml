@@ -1,137 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-<url>
-  <loc>http://www.joshfinnie.com/</loc>
-  <lastmod>2013-05-01T21:51:56+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/about/</loc>
-  <lastmod>2013-05-01T21:51:51+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/</loc>
-  <lastmod>2013-05-01T21:51:54+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/updating-to-twitter-bootstrap-2-0/</loc>
-  <lastmod>2013-05-01T21:51:55+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/Bootstrap/</loc>
-  <lastmod>2013-05-01T21:51:56+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/Twitter/</loc>
-  <lastmod>2013-05-01T21:51:57+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/quick-ux-no-no/</loc>
-  <lastmod>2013-05-01T21:51:54+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/lesson/</loc>
-  <lastmod>2013-05-01T21:51:59+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/ux/</loc>
-  <lastmod>2013-05-01T21:52:03+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/a-coders-lifestyle/</loc>
-  <lastmod>2013-05-01T21:51:52+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/coding/</loc>
-  <lastmod>2013-05-01T21:51:58+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/lifestyle/</loc>
-  <lastmod>2013-05-01T21:52:00+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/life-changes-and-another-start-with-jekyll/</loc>
-  <lastmod>2013-05-01T21:51:54+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/news/</loc>
-  <lastmod>2013-05-01T21:52:00+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/projects/</loc>
-  <lastmod>2013-05-01T21:52:01+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/update/</loc>
-  <lastmod>2013-05-01T21:52:02+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/banning-ie6/</loc>
-  <lastmod>2013-05-01T21:51:53+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/browsers/</loc>
-  <lastmod>2013-05-01T21:51:58+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/IE/</loc>
-  <lastmod>2013-05-01T21:51:56+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/support/</loc>
-  <lastmod>2013-05-01T21:52:02+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/public-transportation-in-connecticut/</loc>
-  <lastmod>2013-05-01T21:51:54+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/public-transportation/</loc>
-  <lastmod>2013-05-01T21:52:01+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/rant/</loc>
-  <lastmod>2013-05-01T21:52:02+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/transfering-domains/</loc>
-  <lastmod>2013-05-01T21:51:55+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/domains/</loc>
-  <lastmod>2013-05-01T21:51:59+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/hosting/</loc>
-  <lastmod>2013-05-01T21:51:59+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/converting-geohackr-from-wordpress-to-jekyll/</loc>
-  <lastmod>2013-05-01T21:51:53+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/blogging/</loc>
-  <lastmod>2013-05-01T21:51:58+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/Jekyll/</loc>
-  <lastmod>2013-05-01T21:51:57+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/Wordpress/</loc>
-  <lastmod>2013-05-01T21:51:57+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/blog/first-post/</loc>
-  <lastmod>2013-05-01T21:51:53+00:00</lastmod>
-</url>
-<url>
-  <loc>http://www.joshfinnie.com/tags/announcement/</loc>
-  <lastmod>2013-05-01T21:51:57+00:00</lastmod>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://www.joshfinnie.com/{{ get_url() }}</loc>
+        <lastmod>{{ none|date('%Y-%m-%dT%H:%M:%S%Z+00:00') }}</lastmod>
+    </url>
+    <url>
+        <loc>http://www.joshfinnie.com/{{ get_url('about') }}</loc>
+        <lastmod>{{ none|date('%Y-%m-%dT%H:%M:%S%Z+00:00') }}</lastmod>
+    </url>
+    <url>
+        <loc>http://www.joshfinnie.com/{{ get_url('blog') }}</loc>
+        <lastmod>{{ none|date('%Y-%m-%dT%H:%M:%S%Z+00:00') }}</lastmod>
+    </url>{% for post in posts %}
+    <url>
+        <loc>http://www.joshfinnie.com/{{ get_url(post.url) }}</loc>
+        <lastmod>{{ post.timestamp|date('%Y-%m-%dT%H:%M:%S%Z+00:00') }}</lastmod>
+    </url>{% endfor %}{% for name, tag in tags %}
+    <url>
+        <loc>http://www.joshfinnie.com/{{ get_url(tag.url) }}</loc>
+        <lastmod>{{ none|date('%Y-%m-%dT%H:%M:%S%Z+00:00') }}</lastmod>
+    </url>{% endfor %}
 </urlset>

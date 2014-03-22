@@ -80,6 +80,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask "default", ["sass", "cssmin", "jshint", "coffeelint", "uglify"]
   grunt.registerTask "gen", ["default", "shell:generate"]
+  grunt.registerTask "css", ["sass", "cssmin"]
   grunt.registerTask "serve", ["shell:serve"]
   grunt.registerTask "watch", ["shell:watch"]
   grunt.registerTask "deploy", ["gen", "shell:deploy"]

@@ -1,3 +1,5 @@
+$primary-color: #D87575;
+
 body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
@@ -16,6 +18,16 @@ h1, h2, h3, h4, h5, h6, p {
 .header {
     width: auto;
     padding-bottom: 10px;
+}
+
+.headerbar {
+    background: $primary-color;
+    height: 10px;
+}
+
+.topper {
+    background: $primary-color;
+    width: 100%;
 }
 
 .footer {
@@ -41,67 +53,16 @@ h1, h2, h3, h4, h5, h6, p {
 
 .masthead {
     font-size: 100px;
+    color: white;
+}
+
+.homehead {
+    font-size: 100px;
 }
 
 .social-buttons{
     padding-top: 45px;
     text-decoration: none;
-}
-
-.twitter_button {
-    display: inline-block;
-    background-image: url('/assets/images/twitter_circle_black.png');
-    width: 128px;
-    height: 128px;
-}
-
-.twitter_button:hover {
-    display: inline-block;
-    background-image: url('/assets/images/twitter_circle_color.png');
-    width: 128px;
-    height: 128px;
-}
-
-.github_button {
-    display: inline-block;
-    background-image: url('/assets/images/github_circle_black.png');
-    width: 128px;
-    height: 128px;
-}
-
-.github_button:hover {
-    display: inline-block;
-    background-image: url('/assets/images/github_circle_color.png');
-    width: 128px;
-    height: 128px;
-}
-
-.linkedin_button {
-    display: inline-block;
-    background-image: url('/assets/images/linkedin_circle_black.png');
-    width: 128px;
-    height: 128px;
-}
-
-.linkedin_button:hover {
-    display: inline-block;
-    background-image: url('/assets/images/linkedin_circle_color.png');
-    width: 128px;
-    height: 128px;
-}
-
-.instagram_button {
-    display: inline-block;
-    background-image: url('/assets/images/instagram_circle_black.png');
-    width: 128px;
-    height: 128px;
-}
-
-.instagram_button:hover {
-    display: inline-block;
-    background-image: url('/assets/images/instagram_circle_color.png');
-    width: 128px;
-    height: 128px;
 }
 
 .tags {
@@ -132,12 +93,22 @@ h1, h2, h3, h4, h5, h6, p {
     display: none;
 }
 
+a {
+    color: $primary-color;
+}
+
+.orange > a {
+    color: $primary-color;
+}
+
+.black {
+    color: black;
+}
+
 .twitter-button > a:link {
-    color: #000;
     text-decoration: none;
 }
 .twitter-button > a:visited {
-    color: #000;
     text-decoration: none;
 }
 .twitter-button > a:hover {
@@ -146,11 +117,9 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .github-button > a:link {
-    color: #000;
     text-decoration: none;
 }
 .github-button > a:visited {
-    color: #000;
     text-decoration: none;
 }
 .github-button > a:hover {
@@ -159,11 +128,9 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .linkedin-button > a:link {
-    color: #000;
     text-decoration: none;
 }
 .linkedin-button > a:visited {
-    color: #000;
     text-decoration: none;
 }
 .linkedin-button > a:hover {
@@ -172,11 +139,9 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .instagram-button > a:link {
-    color: #000;
     text-decoration: none;
 }
 .instagram-button > a:visited {
-    color: #000;
     text-decoration: none;
 }
 .instagram-button > a:hover {

@@ -21,7 +21,7 @@ module.exports = (grunt) ->
               " * Copyright <%= grunt.template.today(\"yyyy\") %> Josh Finnie\n" +
               " * Licensed under the Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)\n" +
               " * http://creativecommons.org/licenses/by-nc-sa/3.0/\n" +
-              " ****************************************************************************************/"
+              " ****************************************************************************************/\n"
     }
 
     sass:
@@ -33,11 +33,11 @@ module.exports = (grunt) ->
       options:
         banner: "<%= meta.banner %>"
       minify:
-        expand: true
-        cwd: "_source/_assets/css"
-        src: ["*.css", "!*.min.css"]
-        dest: "_source/_assets/css"
-        ext: ".min.css"
+        files:
+          "_source/_assets/css/main.min.css": [
+            "_source/_assets/css/prism.css",
+            "_source/_assets/css/main.css"
+          ]
 
     jshint:
       options:
@@ -52,9 +52,12 @@ module.exports = (grunt) ->
     uglify:
       options:
         banner: "<%= meta.banner %>"
-      myTarget:
+      javascript:
         files:
-          "_source/_assets/js/main.min.js": ["_source/_assets/js/main.js"]
+          "_source/_assets/js/main.min.js": [
+            "_source/_assets/js/prism.min.js",
+            "_source/_assets/js/main.js"
+          ]
 
     shell:
       generate:

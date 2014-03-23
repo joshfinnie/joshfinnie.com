@@ -41,3 +41,4 @@ codekit*
 _site/
 node_modules/
 _source/_assets/css/main.*
+_source/_assets/js/main.*

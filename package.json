@@ -1,17 +1,17 @@
 {
   "name": "joshfinnie.com",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The personal homepage of Josh Finnie.",
   "repository": {
     "type": "git",
     "url": "https://joshfinnie@github.com/joshfinnie/joshfinnie.com.git"
   },
-  "author": "Josh Finnie",
+  "author": "Josh Finnie <josh@jfin.us>",
   "license": "CC BY-NC-SA 3.0",
   "bugs": {
     "url": "https://github.com/joshfinnie/joshfinnie.com/issues"
   },
-  "homepage": "https://github.com/joshfinnie/joshfinnie.com",
+  "homepage": "http://www.joshfinnie.com",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-cssmin": "~0.7.0",

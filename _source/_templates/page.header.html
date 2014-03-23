@@ -10,11 +10,8 @@
 
 {% if site.feed %}<link rel="alternate" href="{{ get_url('feed.xml') }}" type="application/atom+xml">{% endif %}
 
-<link rel="stylesheet" href="{{ get_asset('css/bootstrap.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ get_asset('css/font-awesome.min.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ get_asset('css/prism.min.css') }}" type="text/css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="{{ get_asset('css/main.min.css') }}" type="text/css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" />
 
-{% if site.pygmentize %}<link rel="stylesheet" href="{{ get_asset('css/pygments.min.css') }}" type="text/css">{% endif %}
-
-<script src="{{ get_asset('js/html5.min.js') }}"></script>
+<script src="{{ get_asset('js/html5.js') }}"></script>

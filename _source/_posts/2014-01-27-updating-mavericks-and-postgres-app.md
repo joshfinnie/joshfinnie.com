@@ -11,11 +11,15 @@ What to do? I took some time to research what was needed to be done, if anyone e
 
 First, copy the updated `libssl.dylib` file from the Postgres.app location:
 
-    $ sudo cp /Applications/Postgres.app/Contents/MacOS/lib/libssl.1.0.0.dylib /usr/lib
-    
+<pre class="language-bash"><code class="language-bash">
+$ sudo cp /Applications/Postgres.app/Contents/MacOS/lib/libssl.1.0.0.dylib /usr/lib
+</code></pre>
+
 Then I created a new symbolic link from the copied `libssl.1.0.0.dylib` file to the standard `libssl.dylib` file located in `/usr/lib`.
 
-    $ sudo ln -fs /usr/lib/libssl.1.0.0.dylib /usr/lib/libssl.dylib
+<pre class="language-bash"><code class="language-bash">
+$ sudo ln -fs /usr/lib/libssl.1.0.0.dylib /usr/lib/libssl.dylib
+</code></pre>
 
 The `-f` flag will remove the existing link before creating the new one.
 

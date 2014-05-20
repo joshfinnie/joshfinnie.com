@@ -21,48 +21,48 @@ The four awesome social network icons were provided by [Neil Orange Peel](http:/
 
 Font Awesome is a font that you add through CSS and I simplely added it through the provided CDN as follows:
 
-<pre class="language-markup"><code>
-&lt;link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css"&gt;
-</code></pre>
+~~~ { html }
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+~~~
 
 This gives me all the power granted with using Font Awesome. Reading through the [examples](http://fontawesome.io/examples/), I created a faximily of the icons I used on the homepage with the following code:
 
-<pre class="language-markup"><code>
-&lt;div class=&quot;social-buttons&quot;&gt;
-  &lt;span class=&quot;twitter-button&quot;&gt;
-    &lt;a href=&quot;https://twitter.com/joshfinnie&quot;&gt;
-      &lt;span class=&quot;fa-stack fa-4x&quot;&gt;
-        &lt;i class=&quot;fa fa-circle fa-stack-2x&quot;&gt;&lt;/i&gt;
-        &lt;i class=&quot;fa fa-twitter fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;
-      &lt;/span&gt;
-    &lt;/a&gt;
-  &lt;/span&gt;
-  &lt;span class=&quot;github-button&quot;&gt;
-    &lt;a href=&quot;https://github.com/joshfinnie&quot;&gt;
-      &lt;span class=&quot;fa-stack fa-4x&quot;&gt;
-        &lt;i class=&quot;fa fa-circle fa-stack-2x&quot;&gt;&lt;/i&gt;
-        &lt;i class=&quot;fa fa-github-alt fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;
-      &lt;/span&gt;
-    &lt;/a&gt;
-  &lt;/span&gt;
-  &lt;span class=&quot;linkedin-button&quot;&gt;
-    &lt;a href=&quot;https://linkedin.com/in/joshfinnie&quot;&gt;
-      &lt;span class=&quot;fa-stack fa-4x&quot;&gt;
-        &lt;i class=&quot;fa fa-circle fa-stack-2x&quot;&gt;&lt;/i&gt;
-        &lt;i class=&quot;fa fa-linkedin fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;
-      &lt;/span&gt;
-    &lt;/a&gt;
-  &lt;/span&gt;
-  &lt;span class=&quot;instagram-button&quot;&gt;
-    &lt;a href=&quot;https://instagram.com/joshfinnie&quot;&gt;
-      &lt;span class=&quot;fa-stack fa-4x&quot;&gt;
-        &lt;i class=&quot;fa fa-circle fa-stack-2x&quot;&gt;&lt;/i&gt;
-        &lt;i class=&quot;fa fa-instagram fa-stack-1x fa-inverse&quot;&gt;&lt;/i&gt;
-      &lt;/span&gt;
-    &lt;/a&gt;
-  &lt;/span&gt;
-  &lt;/div&gt;
-</code></pre>
+~~~ { html }
+<div class="social-buttons">
+  <span class="twitter-button">
+    <a href="https://twitter.com/joshfinnie">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </span>
+  <span class="github-button">
+    <a href="https://github.com/joshfinnie">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </span>
+  <span class="linkedin-button">
+    <a href="https://linkedin.com/in/joshfinnie">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </span>
+  <span class="instagram-button">
+    <a href="https://instagram.com/joshfinnie">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </span>
+  </div>
+~~~
 
 This code gives me a very nice copy of the icons I was using before:
 
@@ -72,7 +72,7 @@ They are very similar to what I had, except of course the different icons for [G
 
 The next thing I wanted to accomplish is to get the hover-over effects that I had with the images. After some Googling around, I added the following CSS to my website:
 
-<pre class="language-css"><code>
+~~~ { css }
 a:link {
  color: #000;
  text-decoration: none;
@@ -109,7 +109,7 @@ a:active {
   color: #000;
   text-decoration: none;
 }
-</code></pre>
+~~~
 
 The results look great, and I am very happy with how easy it was to remove 8 images from my network load with some simple CSS.
 

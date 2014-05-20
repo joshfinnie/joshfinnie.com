@@ -12,9 +12,9 @@ Another thing that changed this iteration is that the website is now hosted on [
 
 The only real catch that I came across when setting up this website was adding the cacheing headers. s3cmd allows you to do this, it is just not intuitive. Below is the command that I run to update this website:
 
-<pre class="language-bash"><code>
+~~~ { bash }
 $ s3cmd sync --add-header='Cache-Control: max-age=31536000' _site/ s3://BUCKET-NAME-HERE
-</code></pre>
+~~~
 
 I highly recommend going with a static site generator, your site will never be faster.
 

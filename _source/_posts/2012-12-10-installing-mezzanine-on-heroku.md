@@ -15,10 +15,10 @@ Below you will find the steps that I took to get Mezzanine up and running on Her
 
 Heroku is shortly depricating Django's standard `DATABASES` dictionary in favor for a package which takes OS Environment Variables and builds the required dictionary for you. This is a good thing because it makes setting up a database on Heroku very easy. The package is called `dj_database_url` and it makes short work of getting a PostgreSQL database up and running with Mezzanine. Below is the code that you want to put in Mezzanine's `DATABASES` section:
 
-<pre class="language-python"><code>
+~~~ { python }
 import dj_database_url
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
-</code></pre>
+~~~
 
 ## Serving Static Media
 
@@ -26,7 +26,7 @@ Getting Heroku to find the static media of a Django app was something more diffi
 
 First, I added a URLPattern to my `urls.py` file. This should have been easy enough, but Mezzanine has a catch-all pattern: `("^", include("mezzanine.urls")),` which made me manipulate the file a little more than I would have liked. Below is what my URLPatterns now look like for Mezzanine.
 
-<pre class="language-python"><code>
+~~~ { python }
 urlpatterns = patterns('',
     (r'^static/(?P<path>.*)$',
      'django.views.static.serve',
@@ -36,17 +36,17 @@ urlpatterns += patterns("",
     ("^admin/", include(admin.site.urls)),
 
 ...
-</code></pre>
+~~~
 
  Second, I started to use the Gunicorn server to aid in getting my static media served properly. Heroku does not require a Profile to run Django apps, but in that case it uses ********. Since I am a huge fan of the Gunicorn web server, I wanted to eventually serve Mezzanine through it anyways. Adding the below Procfile got Mezzanine running on Gunicorn and successfully got Heroku to serve my static files.
 
-<pre class="language-bash"><code>
+~~~ { bash }
 $ web: python manage.py collectstatic --noinput; python manage.py run_gunicorn -b 0.0.0.0:$PORT
-</code></pre>
+~~~
 
  The above Procfile does two things, first if runs `collectstatic` to insure that all the static media is in the appropriate place within your app, and second it runs the Gunicorn server. In addition to adding this Procfile, you also need to add the Gunicorn application to your `INSTALLED_APPS` list on your `settings.py` file. Below is what my list looks like once Gunicorn was added (Note that I did not uncomment Mezzanine Accounts nor Mezzanine Mobile, if you are using them for your app, make sure to uncomment them.):
 
-<pre class="language-python"><code>
+~~~ { python }
 INSTALLED_APPS = (
     "django.contrib.admin",
     "django.contrib.auth",
@@ -69,13 +69,13 @@ INSTALLED_APPS = (
     #"mezzanine.mobile",
     "gunicorn",
 )
-</code></pre>
+~~~
 
 ## The requirements.txt
 
 Heroku installs your Python apps by creating a virtualenv and installing packages via your `requirements.txt` file. For Mezzanine, this is the `requirements.txt` file I used to run my instance of Mezzanine:
 
-<pre class="language-markup"><code>
+~~~ { ini }
 Django==1.4
 Mezzanine==1.1.4
 Pillow==1.7.7
@@ -89,7 +89,7 @@ html5lib==0.95
 psycopg2==2.4.5
 pytz==2012c
 wsgiref==0.1.2
-</code></pre>
+~~~
 
 I have included `dj-database-url` due to Heroku's `DATABASES` support (See the section called settings.py for more information.). I also include `psycopg2` since I am using Heroku's free instance of PostgreSQL for my database.
 

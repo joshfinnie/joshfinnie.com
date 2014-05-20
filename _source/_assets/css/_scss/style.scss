@@ -155,24 +155,14 @@ a:active {
     text-decoration: none;
 }
 
-pre[class*="language-"] {
-    border-radius: 10px 10px 0 0;
-    margin: 0 0 1.336em 0;
-    padding: .3em 1em 1em 1em;
-    word-wrap: inherit;
+.highlighttable {
+    width: 100%;
 }
-
-pre[class*="language-"] :hover {
-    width: 150%;
-}
-
-code {
-    color: #404040;
-    background-color: #C0C0C0;
-}
-
 .img-responsive {
     display: inline;
+}
+.linenos {
+    display: none;
 }
 
 @media (max-width: 767px){

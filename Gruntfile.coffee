@@ -4,6 +4,7 @@ module.exports = (grunt) ->
   "use strict"
 
   grunt.loadNpmTasks 'grunt-sass'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
@@ -80,9 +81,17 @@ module.exports = (grunt) ->
           stdout: true
           stderr: true
         command: "s3cmd sync --add-header=\"Cache-Control: max-age=31536000\" _site/ s3://www.joshfinnie.com"
+    
+    copy:
+      robots:
+        src: '_source/robots.txt'
+        dest: '_site/robots.txt'
+      humans:
+        src: '_source/humans.txt'
+        dest: '_site/humans.txt'
 
   grunt.registerTask 'default', ['sass', 'cssmin', 'jshint', 'coffeelint', 'uglify']
-  grunt.registerTask 'gen', ['default', 'shell:generate']
+  grunt.registerTask 'gen', ['default', 'shell:generate', 'copy']
   grunt.registerTask 'css', ['sass', "cssmin"]
   grunt.registerTask 'serve', ['shell:serve']
   grunt.registerTask 'watch', ['shell:watch']

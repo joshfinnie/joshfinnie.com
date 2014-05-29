@@ -1,0 +1,11 @@
+/* TEAM */
+    Principal: Josh Finnie
+    Contact: josh [at] jfin.us
+    Twitter: @joshfinnie
+    From: Washington, DC
+
+/* SITE */
+    Last update: 2014/05/29
+    Language: English
+    Components: Mynt, Twitter Bootstrap, Font Awesome, jQuery
+    Doctype: HTML5

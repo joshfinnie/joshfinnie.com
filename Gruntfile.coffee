@@ -3,16 +3,16 @@
 module.exports = (grunt) ->
   "use strict"
 
-  grunt.loadNpmTasks "grunt-sass"
-  grunt.loadNpmTasks "grunt-contrib-cssmin"
-  grunt.loadNpmTasks "grunt-contrib-jshint"
-  grunt.loadNpmTasks "grunt-contrib-uglify"
-  grunt.loadNpmTasks "grunt-shell"
-  grunt.loadNpmTasks "grunt-coffeelint"
+  grunt.loadNpmTasks 'grunt-sass'
+  grunt.loadNpmTasks 'grunt-contrib-cssmin'
+  grunt.loadNpmTasks 'grunt-contrib-jshint'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
+  grunt.loadNpmTasks 'grunt-shell'
+  grunt.loadNpmTasks 'grunt-coffeelint'
 
   # Project configuration.
   grunt.initConfig
-    pkg: grunt.file.readJSON("package.json")
+    pkg: grunt.file.readJSON('package.json')
 
     meta: {
       banner: "/****************************************************************************************\n" +
@@ -27,36 +27,36 @@ module.exports = (grunt) ->
     sass:
       dist:
         files:
-          "_source/_assets/css/main.css": "_source/_assets/css/_scss/style.scss"
+          '_source/_assets/css/main.css': '_source/_assets/css/_scss/style.scss'
 
     cssmin:
       options:
         banner: "<%= meta.banner %>"
       minify:
         files:
-          "_source/_assets/css/main.min.css": [
-            "_source/_assets/css/prism.css",
-            "_source/_assets/css/main.css"
+          '_source/_assets/css/main.min.css': [
+            '_source/_assets/css/prism.css',
+            '_source/_assets/css/main.css'
           ]
 
     jshint:
       options:
         jshintrc: true
-      all: ["_source/_assets/js/main.js"]
+      all: ['_source/_assets/js/main.js']
 
     coffeelint:
       options:
-        configFile: "coffeelint.json"
-      files: ["Gruntfile.coffee"]
+        configFile: 'coffeelint.json'
+      files: ['Gruntfile.coffee']
 
     uglify:
       options:
         banner: "<%= meta.banner %>"
       javascript:
         files:
-          "_source/_assets/js/main.min.js": [
-            "_source/_assets/js/prism.min.js",
-            "_source/_assets/js/main.js"
+          '_source/_assets/js/main.min.js': [
+            '_source/_assets/js/prism.min.js',
+            '_source/_assets/js/main.js'
           ]
 
     shell:
@@ -81,9 +81,9 @@ module.exports = (grunt) ->
           stderr: true
         command: "s3cmd sync --add-header=\"Cache-Control: max-age=31536000\" _site/ s3://www.joshfinnie.com"
 
-  grunt.registerTask "default", ["sass", "cssmin", "jshint", "coffeelint", "uglify"]
-  grunt.registerTask "gen", ["default", "shell:generate"]
-  grunt.registerTask "css", ["sass", "cssmin"]
-  grunt.registerTask "serve", ["shell:serve"]
-  grunt.registerTask "watch", ["shell:watch"]
-  grunt.registerTask "deploy", ["gen", "shell:deploy"]
+  grunt.registerTask 'default', ['sass', 'cssmin', 'jshint', 'coffeelint', 'uglify']
+  grunt.registerTask 'gen', ['default', 'shell:generate']
+  grunt.registerTask 'css', ['sass', "cssmin"]
+  grunt.registerTask 'serve', ['shell:serve']
+  grunt.registerTask 'watch', ['shell:watch']
+  grunt.registerTask 'deploy', ['gen', 'shell:deploy']

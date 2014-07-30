@@ -34,11 +34,8 @@ nosetests.xml
 .project
 .pydevproject
 
-# Codekit
-codekit*
-
 # Other Stuff
-_site/
+output/
 node_modules/
-_source/_assets/css/main.*
-_source/_assets/js/main.*
+theme/static/css/main.*
+theme/static/js/main.min.js

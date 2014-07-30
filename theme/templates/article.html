@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'page.navbar.html'%}
+<div class="container">
+    <div class="row-fluid blogpage">
+        <div class="item">
+            <div class="header">
+                <h1>{{ article.title }}</h1>
+            </div>
+            <div class="body">
+                {{ article.content }}
+            </div>
+            <div class="tags text-center">
+                <p><em>{ meta: { {% if article.tags %}tags: [ {% for tag in article.tags %}<a href="/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %} ], {% endif %}post_date: {{ article.date }} } }</em></p>
+            </div>
+            <!--<div class="email_signup">
+                <form action="http://joshfinnie.us7.list-manage.com/subscribe/post?u=30827d613556a7d74b904fa65&amp;id=c83263ff38" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <fieldset>
+                        <legend>Sign up to be notified of new blog posts!</legend>
+                        <div class="input-append">
+                            <label for="mce-EMAIL">Email</label>
+                            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                            <button class="btn" type="button">Subscribe!</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div> -->
+            <!-- <div class="comments">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                    var disqus_shortname = 'joshfinniedotcom'; // required: replace example with your forum shortname
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div> -->
+        </div>
+    </div>
+</div>
+{% endblock %}

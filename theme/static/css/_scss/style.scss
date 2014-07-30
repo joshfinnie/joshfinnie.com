@@ -1,0 +1,179 @@
+$primary-color: #009575;
+
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+ .container {
+    width: auto;
+    max-width: 920px;
+    font-size: 1.25em;
+}
+
+.header {
+    width: auto;
+    padding-bottom: 10px;
+}
+
+.headerbar {
+    background: $primary-color;
+    height: 10px;
+}
+
+.topper {
+    background: $primary-color;
+    width: 100%;
+}
+
+.footer {
+    width: auto;
+    font-size: 1em;
+}
+
+.indent {
+    padding-left: 25px;
+}
+
+.homepage {
+    padding-top: 50px;
+}
+
+.homepage a {
+    color: #6E6E6E;
+}
+
+.homepage a:hover {
+    color: #0088cc;
+    text-decoration: none;
+}
+
+.masthead {
+    font-size: 100px;
+    color: white;
+}
+
+.homehead {
+    font-size: 100px;
+}
+
+.social-buttons{
+    padding-top: 45px;
+    text-decoration: none;
+}
+
+.tags {
+    padding-top: 10px;
+}
+
+.email_signup {
+    padding: 20px;
+    font-size: 1.2em;
+    text-align: center;
+    color: #EEE;
+    background-color: #404040;
+    margin: 40px 0 40px 0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.last_tweet {
+    margin-top: 25px;
+}
+
+.email_signup legend {
+    color: white;
+}
+
+.email_signup label {
+    display: none;
+}
+
+a {
+    color: $primary-color;
+}
+
+.orange > a {
+    color: $primary-color;
+}
+
+.black {
+    color: black;
+}
+
+.twitter-button > a:link {
+    text-decoration: none;
+}
+.twitter-button > a:visited {
+    text-decoration: none;
+}
+.twitter-button > a:hover {
+    color: #00ACED;
+    text-decoration: none;
+}
+
+.github-button > a:link {
+    text-decoration: none;
+}
+.github-button > a:visited {
+    text-decoration: none;
+}
+.github-button > a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.linkedin-button > a:link {
+    text-decoration: none;
+}
+.linkedin-button > a:visited {
+    text-decoration: none;
+}
+.linkedin-button > a:hover {
+    color: #007FB1;
+    text-decoration: none;
+}
+
+.instagram-button > a:link {
+    text-decoration: none;
+}
+.instagram-button > a:visited {
+    text-decoration: none;
+}
+.instagram-button > a:hover {
+    color: #3F729B;
+    text-decoration: none;
+}
+
+a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+.highlighttable {
+    width: 100%;
+}
+.img-responsive {
+    display: inline;
+}
+.linenos {
+    display: none;
+}
+
+@media (max-width: 767px){
+    .homepage {
+        padding-top: 0px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 767px){
+    .navbar {
+        text-align: center;
+    }
+}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+Blog posts about {{tag}}
+{% endblock %}
+
+{% block content %}
+{% include 'page.navbar.html'%}
+<div class="container">
+  <h2>Articles with tag: {{tag}} </h2>
+  {% for article in articles %}
+      <h2><a href="/{{article.url}}">{{article.title}}</a>
+        <small>Written on {{article.date.strftime('%B %d, %Y')}}</small><h2>
+      <hr \>
+  {% endfor %}
+</div>
+{% endblock %}

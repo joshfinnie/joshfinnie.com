@@ -50,6 +50,22 @@ ARTICLE_SAVE_AS = 'blog/{slug}/index.html'
 PAGE_URL = '{slug}/index.html'
 PAGE_SAVE_AS = '{slug}/index.html'
 
+PLUGIN_PATHS = ["plugins", "plugins"]
+PLUGINS=['sitemap',]
+
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'indexes': 0.5,
+        'pages': 0.5
+    },
+    'changefreqs': {
+        'articles': 'monthly',
+        'indexes': 'daily',
+        'pages': 'monthly'
+    }
+}
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

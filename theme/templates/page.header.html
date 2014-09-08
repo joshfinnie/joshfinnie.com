@@ -1,13 +1,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
 <meta name="author" content="{{ AUTHOR }}">
 <meta name="description" content="{{ DESCRIPTION }}">
 <meta name="keywords" content="josh, finnie, joshfinnie, python, django, javascript, angular.js, node.js">
 <meta name="google-site-verification" content="TJ1RB8nr97TGCLSn7gH9BUktQiXSZ9iORXdErQiHLy0" />
 <link rel="icon" type="image/x-icon" href="{{ SITEURL }}/theme/img/favicon.ico">
 
-<link href="{{ SITEURL }}/{{ FEED }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed" />
 {% if FEED_RSS %}
 <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
 {% endif %}

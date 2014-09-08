@@ -5,7 +5,7 @@
 {% include 'page.navbar.html'%}
 <div class="container">
 {% for article in articles %}
-<h2><a href="{{ SITE_URL }}/{{ article.url }}">{{ article.title }}</a><br /><small class="indent">Written on {{article.date.strftime('%B %d, %Y')}}</small>{% if article.tags %} | <small>Tagged: {% for tag in article.tags %}<a href="{{ SITE_URL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</small></h2>
+<h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a><br /><small class="indent">Written on {{article.date.strftime('%B %d, %Y')}}</small>{% if article.tags %} | <small>Tagged: {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</small></h2>
 {% endfor %}
 </div>
 {% endblock content %}

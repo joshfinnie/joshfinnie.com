@@ -12,7 +12,7 @@
                 {{ article.content }}
             </div>
             <div class="tags text-center">
-              <p><em>{ meta: { {% if article.tags %}tags: [ {% for tag in article.tags %}<a href="{{ SITE_URL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %} ], {% endif %}post_date: {{ article.date }} } }</em></p>
+              <p><em>{ meta: { {% if article.tags %}tags: [ {% for tag in article.tags %}<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %} ], {% endif %}post_date: {{ article.date }} } }</em></p>
             </div>
             <!--<div class="email_signup">
                 <form action="http://joshfinnie.us7.list-manage.com/subscribe/post?u=30827d613556a7d74b904fa65&amp;id=c83263ff38" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>

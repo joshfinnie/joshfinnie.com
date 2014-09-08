@@ -58,7 +58,7 @@ def prodbuild():
 def publish():
     clean()
     prodbuild()
-    local('s3cmd sync --add-header="Cache-Control: max-age=31536000" _site/ s3://www.joshfinnie.com')
+    local('s3cmd sync output/ s3://www.joshfinnie.com')
 
 
 def new(article_name):

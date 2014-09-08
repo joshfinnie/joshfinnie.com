@@ -59,6 +59,11 @@ module.exports = (grunt) ->
           stdout: true
           stderr: true
         command: 'pelican content -s pelicanconf.py -t theme'
+      pubgen:
+        options:
+          stdout: true
+          stderr: true
+        command: 'pelican content -s publishconf.py -t theme'
       serve:
         options:
           stdout: true
@@ -68,10 +73,10 @@ module.exports = (grunt) ->
         options:
           stdout: true
           stderr: true
-        command: "s3cmd sync --add-header=\"Cache-Control: max-age=31536000\" output/ s3://www.joshfinnie.com"
+        command: "s3cmd sync output/ s3://www.joshfinnie.com"
     
   grunt.registerTask 'default', ['sass', 'cssmin', 'jshint', 'coffeelint', 'uglify']
   grunt.registerTask 'gen', ['default', 'shell:generate']
   grunt.registerTask 'css', ['sass', "cssmin"]
   grunt.registerTask 'serve', ['gen', 'shell:serve']
-  grunt.registerTask 'deploy', ['gen', 'shell:deploy']
+  grunt.registerTask 'deploy', ['default', 'shell:pubgen', 'shell:deploy']

@@ -20,19 +20,18 @@ TRANSLATION_FEED_ATOM = None
 
 DEFAULT_PAGINATION = 5
 
-STATIC_PATHS = ['assets']
-
 TEMPLATE_PAGES = {
     'extra/robots.txt': 'robots.txt',
     'extra/humans.txt': 'humans.txt',
     'articles.html': 'blog/index.html',
+    'error.html': 'error.html',
 }
 
 READERS = {'html': None}
 
 ARTICLE_EXCLUDES = (('pages', 'extra', 'drafts', 'talks'))
 STATIC_PATHS = [
-    'talks',
+    'talks', 'assets'
 ]
 
 ARTICLE_URL = 'blog/{slug}/'
@@ -49,7 +48,7 @@ AUTHOR_SAVE_AS = 'author/{slug}/index.html'
 THEME = "theme"
 
 PLUGIN_PATHS = ["plugins", "plugins"]
-PLUGINS=['sitemap', ]
+PLUGINS = ['sitemap']
 
 SITEMAP = {
     'format': 'xml',

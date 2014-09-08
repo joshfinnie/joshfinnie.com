@@ -37,9 +37,16 @@ STATIC_PATHS = [
 
 ARTICLE_URL = 'blog/{slug}/'
 ARTICLE_SAVE_AS = 'blog/{slug}/index.html'
-PAGE_URL = '{slug}/index.html'
+PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
+CATEGORY_URL = 'category/{slug}/'
+CATEGORY_SAVE_AS = 'category/{slug}/index.html'
+TAG_URL = 'tag/{slug}/'
+TAG_SAVE_AS = 'tag/{slug}/index.html'
+AUTHOR_URL = 'author/{slug}/'
+AUTHOR_SAVE_AS = 'author/{slug}/index.html'
 
+THEME = "theme"
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

@@ -17,6 +17,7 @@ FEED_ALL_ATOM = 'feeds/atom.xml'
 CATEGORY_FEED_ATOM = None
 
 DELETE_OUTPUT_DIRECTORY = True
+DEBUG = False
 
 # Following items are often useful when publishing
 

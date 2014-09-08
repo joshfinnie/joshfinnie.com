@@ -1,5 +1,4 @@
-from fabric.api import local, env, hosts
-import fabric.contrib.project as project
+from fabric.api import local, env
 import os
 import sys
 import SimpleHTTPServer
@@ -10,15 +9,6 @@ import shutil
 # Local path configuration (can be absolute or relative to fabfile)
 env.deploy_path = 'output'
 DEPLOY_PATH = env.deploy_path
-
-# Remote server configuration
-production = 'root@localhost:22'
-dest_path = '/var/www'
-
-# Rackspace Cloud Files configuration settings
-env.cloudfiles_username = 'my_rackspace_username'
-env.cloudfiles_api_key = 'my_rackspace_api_key'
-env.cloudfiles_container = 'my_cloudfiles_container'
 
 
 def clean():
@@ -56,6 +46,7 @@ def serve():
 
 
 def reserve():
+    clean()
     build()
     serve()
 
@@ -99,15 +90,3 @@ def redraft(post_number):
     posts = sorted(posts, reverse=True)
     post = posts[int(post_number)]
     shutil.move('content/{}'.format(post), 'content/drafts/{}'.format(post))
-
-
-@hosts(production)
-def publish():
-    local('pelican -s publishconf.py')
-    project.rsync_project(
-        remote_dir=dest_path,
-        exclude=".DS_Store",
-        local_dir=DEPLOY_PATH.rstrip('/') + '/',
-        delete=True,
-        extra_opts='-c',
-    )

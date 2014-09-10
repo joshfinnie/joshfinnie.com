@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block header_title %}{{ article.title }}{% endblock %}
+
 {% block content %}
 {% include 'page.navbar.html'%}
 <div class="container">

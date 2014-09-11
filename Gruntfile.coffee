@@ -73,7 +73,7 @@ module.exports = (grunt) ->
         options:
           stdout: true
           stderr: true
-        command: "s3cmd sync --cf-invalidate-default-index --delete-removed output/ s3://www.joshfinnie.com"
+        command: "s3cmd sync --cf-invalidate --delete-removed output/ s3://www.joshfinnie.com"
     
   grunt.registerTask 'default', ['sass', 'cssmin', 'jshint', 'coffeelint', 'uglify']
   grunt.registerTask 'gen', ['default', 'shell:generate']

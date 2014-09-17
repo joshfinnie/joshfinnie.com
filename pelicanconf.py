@@ -18,8 +18,6 @@ FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 
-DEFAULT_PAGINATION = 5
-
 TEMPLATE_PAGES = {
     'extra/robots.txt': 'robots.txt',
     'extra/humans.txt': 'humans.txt',

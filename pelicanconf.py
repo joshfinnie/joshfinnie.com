@@ -21,6 +21,7 @@ TRANSLATION_FEED_ATOM = None
 TEMPLATE_PAGES = {
     'extra/robots.txt': 'robots.txt',
     'extra/humans.txt': 'humans.txt',
+    'extra/license.txt': 'license.txt',
     'articles.html': 'blog/index.html',
     'error.html': 'error.html',
 }

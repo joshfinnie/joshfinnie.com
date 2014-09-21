@@ -1,6 +1,6 @@
 layout: post.html
 title: Setting Up HTTPS Security
-date: 2014-09-13
+date: 2014-09-20
 tags: security, how-to
 
 **_ This post was originally posted on [TrackMaven's Engine Room](http://engineroom.trackmaven.com). You can find it [here](http://engineroom.trackmaven.com/blog/setting-up-https-security/). _**

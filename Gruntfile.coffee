@@ -34,7 +34,7 @@ module.exports = (grunt) ->
         banner: "<%= meta.banner %>"
       minify:
         files:
-          'theme/static/css/main.min.css': 'theme/static/css/main.css'
+          'theme/static/css/main.css': 'theme/static/css/main.css'
 
     jshint:
       options:

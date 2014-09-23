@@ -165,17 +165,18 @@ a:active {
     display: none;
 }
 
-.About, .blogpage {
-    max-width: 570px;
-}
-
 code {
     color: #373636;
     background-color: #ccc;
+    white-space: pre;
 }
 
 pre {
     font-size: 1em;
+    overflow: auto;
+    width: 920px;
+    display: block;
+    white-space: pre;
 }
 
 @media (max-width: 767px){

@@ -39,5 +39,4 @@ output/
 cache/
 node_modules/
 theme/static/css/main.*
-theme/static/js/main.min.js
 .ropeproject/

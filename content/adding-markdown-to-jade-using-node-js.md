@@ -4,6 +4,19 @@ Date: 2014-09-22
 Tags: how-to, jade, markdown, hack
 Slug: adding-markdown-to-jade-using-node-js
 
+---
+
+### **Update**
+
+A user on Reddit, [itsananderson](https://www.reddit.com/user/itsananderson), pointed out [here](https://www.reddit.com/r/node/comments/2hdb2l/adding_markdown_to_jade_using_nodejs/), that my steps above are not needed since Jade has it's own filters! This is GREAT! I will be switching over [TweetPNG](http://www.tweetpng.com) as soon as I can. To write markdown using the builtin filter's you only need to do the following:
+
+```
+:markdown
+  Add `http://www.tweetpng.com/:username/tweet/last.png` to your `img` tag in your HTML, where `:username` is your Twitter handle.
+```
+
+---
+
 For one of my Node.js applications, [TweetPNG](http://www.tweetpng.com) I use the HTML templating language called [Jade](http://jade-lang.com/). I adore Jade for allowing me to easily write HTML in a whitespace significant fashion, however it is not always the easiest language to use.
 
 One of the major issues I have with Jade is formatting it correctly when using a lot of inline HTML. This is where I feel Jade breaks down and gets downright ugly! Let's take this example:
@@ -54,12 +67,3 @@ module.exports = function(app) {
 ```
 
 That's it. We now have the ability to convert Markdown to HTML inside our Jade template! Let me know what you think! Am I doing this completely wrong? Did I miss a simple conversion in Jade itself? Find me on [Twitter](https://twitter.com/joshfinnie) and let me know!
-
-### **Update**
-
-A user on Reddit, [itsananderson](https://www.reddit.com/user/itsananderson), pointed out [here](https://www.reddit.com/r/node/comments/2hdb2l/adding_markdown_to_jade_using_nodejs/), that my steps above are not needed since Jade has it's own filters! This is GREAT! I will be switching over [TweetPNG](http://www.tweetpng.com) as soon as I can. To write markdown using the builtin filter's you only need to do the following:
-
-```
-:markdown
-  Add `http://www.tweetpng.com/:username/tweet/last.png` to your `img` tag in your HTML, where `:username` is your Twitter handle.
-```

@@ -1,160 +1,116 @@
-$primary-color: #009575;
+//colors
+$primary-color: #FF6600;
+$color_dove_gray_approx: #6e6e6e;
+$color_lochmara_approx: #0088cc;
+$white: white;
+$color_gallery_approx: #eee;
+$color_cape_cod_approx: #404040;
+$black: black;
+$color_cerulean_approx: #00aced;
+$color_mine_shaft_approx: #333;
+$color_deep_cerulean_approx: #007fb1;
+$color_astral_approx: #3f729b;
+$color_tuatara_approx: #373636;
+$color_celeste_approx: #ccc;
 
-body {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
+h1 {
+    font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
 }
-
-h1, h2, h3, h4, h5, h6, p {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+h2 {
+    font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
 }
-
- .container {
+h3 {
+    font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+}
+h4 {
+    font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+}
+h5 {
+    font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+}
+h6 {
+    font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+}
+p {
+    font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+}
+.container {
     width: auto;
     max-width: 920px;
     font-size: 1.25em;
 }
-
 .header {
     width: auto;
     padding-bottom: 10px;
 }
-
 .headerbar {
     background: $primary-color;
     height: 10px;
 }
-
 .topper {
     background: $primary-color;
     width: 100%;
 }
-
 .footer {
     width: auto;
     font-size: 1em;
 }
-
 .indent {
     padding-left: 25px;
 }
-
 .homepage {
     padding-top: 50px;
+    a {
+        color: #6E6E6E;
+        &:hover {
+            color: $color_lochmara_approx;
+            text-decoration: none;
+        }
+    }
 }
-
-.homepage a {
-    color: #6E6E6E;
-}
-
-.homepage a:hover {
-    color: #0088cc;
-    text-decoration: none;
-}
-
 .masthead {
     font-size: 100px;
-    color: white;
+    color: $white;
 }
-
 .homehead {
     font-size: 100px;
 }
-
-.social-buttons{
+.social-buttons {
     padding-top: 45px;
     text-decoration: none;
 }
-
 .tags {
     padding-top: 10px;
 }
-
 .email_signup {
     padding: 20px;
     font-size: 1.2em;
     text-align: center;
     color: #EEE;
-    background-color: #404040;
-    margin: 40px 0 40px 0;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
+    background-color: $color_cape_cod_approx;
+    margin: 40px 0;
+    //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
     border-radius: 10px;
+    legend {
+        color: $white;
+    }
+    label {
+        display: none;
+    }
 }
-
 .last_tweet {
     margin-top: 25px;
 }
-
-.email_signup legend {
-    color: white;
-}
-
-.email_signup label {
-    display: none;
-}
-
 a {
     color: $primary-color;
+    &:active {
+        color: $black;
+        text-decoration: none;
+    }
 }
-
-.orange > a {
-    color: $primary-color;
-}
-
 .black {
-    color: black;
+    color: $black;
 }
-
-.twitter-button > a:link {
-    text-decoration: none;
-}
-.twitter-button > a:visited {
-    text-decoration: none;
-}
-.twitter-button > a:hover {
-    color: #00ACED;
-    text-decoration: none;
-}
-
-.github-button > a:link {
-    text-decoration: none;
-}
-.github-button > a:visited {
-    text-decoration: none;
-}
-.github-button > a:hover {
-    color: #333;
-    text-decoration: none;
-}
-
-.linkedin-button > a:link {
-    text-decoration: none;
-}
-.linkedin-button > a:visited {
-    text-decoration: none;
-}
-.linkedin-button > a:hover {
-    color: #007FB1;
-    text-decoration: none;
-}
-
-.instagram-button > a:link {
-    text-decoration: none;
-}
-.instagram-button > a:visited {
-    text-decoration: none;
-}
-.instagram-button > a:hover {
-    color: #3F729B;
-    text-decoration: none;
-}
-
-a:active {
-    color: #000;
-    text-decoration: none;
-}
-
 .highlighttable {
     width: 100%;
 }
@@ -164,22 +120,80 @@ a:active {
 .linenos {
     display: none;
 }
-
 code {
-    color: #373636;
-    background-color: #ccc;
+    color: $color_tuatara_approx;
+    background-color: $color_celeste_approx;
     white-space: pre;
 }
-
-@media (max-width: 767px){
+body {
+    font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+    font-weight: 300;
+}
+.orange > a {
+    color: $primary-color;
+}
+.twitter-button > a {
+    &:link {
+        text-decoration: none;
+    }
+    &:visited {
+        text-decoration: none;
+    }
+    &:hover {
+        color: #00ACED;
+        text-decoration: none;
+    }
+}
+.github-button > a {
+    &:link {
+        text-decoration: none;
+    }
+    &:visited {
+        text-decoration: none;
+    }
+    &:hover {
+        color: $color_mine_shaft_approx;
+        text-decoration: none;
+    }
+}
+.linkedin-button > a {
+    &:link {
+        text-decoration: none;
+    }
+    &:visited {
+        text-decoration: none;
+    }
+    &:hover {
+        color: #007FB1;
+        text-decoration: none;
+    }
+}
+.instagram-button > a {
+    &:link {
+        text-decoration: none;
+    }
+    &:visited {
+        text-decoration: none;
+    }
+    &:hover {
+        color: #3F729B;
+        text-decoration: none;
+    }
+}
+@media(max-width: 992px) {
     .homepage {
-        padding-top: 0px;
+        padding-top: 0;
         text-align: center;
     }
 }
-
-@media (max-width: 767px){
-    .navbar {
+@media(max-width: 768px) {
+    .header-avatar {
+        display: none !important;
+    }
+    .footer {
         text-align: center;
+    }
+    .indent {
+        padding-left: 0px;
     }
 }

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+  <meta charset="utf-8">
+  <title>revealmd.js</title>
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Josh Finnie &lt;josh@jfin.us&gt;">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="assets/reveal.js/css/reveal.min.css">
+  <link id="theme" rel="stylesheet" href="assets/reveal.js/css/theme/moon.css">
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="assets/reveal.js/lib/css/zenburn.css">
+  <!--if lt IE 9script(src='assets/reveal.js/lib/js/html5shiv.js')
+  -->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+<h1 id="beer-search-recommendations">Beer Search &amp; Recommendations</h1>
+<h2 id="using-elasticsearch-kind-of-">Using ElasticSearch (Kind Of...)</h2>
+<p>Josh Finnie</p>
+<p>Software Maven @ <a href="http://trackmaven.com">TrackMaven</a></p>
+</section>
+<section>
+<h1 id="data-collection">Data Collection</h1>
+<p>Let&#39;s steal <a href="http://www.brewerydb.com/">BreweryDB&#39;s</a> database (using python)...</p>
+<pre><code class="lang-python">#!/usr/local/bin/python
+import json
+import os
+
+import requests
+
+URL = &quot;http://api.brewerydb.com/v2/beers/?withBreweries=Y&amp;key={}&amp;p={}&quot;
+
+for i in range(0, 683):
+    r = requests.get(URL.format(os.environ[&#39;BREWERYDB_API_KEY&#39;], i+1))
+    file_name = &quot;beer_dump/{}_beer_dump.json&quot;.format(i+1)
+    data = r.json()
+    if data[&#39;status&#39;] == u&#39;success&#39;:
+        with open(file_name, &#39;w&#39;) as outfile:
+            json.dump(data, outfile)
+            print &quot;Page {}&quot;.format(i+1)
+    else:
+        print &quot;{} page failed.&quot;.format(i+1)
+</code></pre>
+</section>
+<section>
+<h1 id="data-collection-con-t-">Data Collection (Con&#39;t)</h1>
+<p>Yep, that worked...</p>
+<p><img src="/assets/imgs/beer-dumps.png" alt="Beer Dumps"></p>
+</section>
+<section>
+<h1 id="importing-to-es">Importing to ES</h1>
+<p>Adding <code>json</code> to ES (using cofffeescript)...</p>
+<pre><code class="lang-coffeescript">fs = require &quot;fs&quot;
+ElasticSearch = require &quot;elasticsearch&quot;
+
+client = new ElasticSearch.Client(
+  host: &quot;localdocker:9200&quot;
+  log: &quot;trace&quot;
+)
+
+esIndex = 0
+directory = __dirname + &quot;/beer_dump&quot;
+
+fs.readdir directory, (err, files) -&gt;
+  throw err  if err
+  files.forEach (file) -&gt;
+    fs.readFile directory + &quot;/&quot; + file, &quot;utf-8&quot;, (err, beers) -&gt;
+      throw err  if err
+      beers = JSON.parse(beers)
+      data = beers[&quot;data&quot;]
+      data.forEach (elem, index, array) -&gt;
+        output = {}
+        output[&quot;brewery&quot;] = elem[&quot;breweries&quot;][0][&quot;name&quot;] if elem[&quot;breweries&quot;]
+        output[&quot;beer&quot;] = elem[&quot;name&quot;]
+        output[&quot;glassware&quot;] = elem[&quot;glass&quot;][&quot;name&quot;] if elem[&quot;glass&quot;]
+        output[&quot;category&quot;] = elem[&quot;style&quot;][&quot;category&quot;][&quot;name&quot;] if elem[&quot;style&quot;]
+        output[&quot;glasswareId&quot;] = elem[&quot;glasswareId&quot;] if elem[&quot;glasswareId&quot;]
+        output[&quot;styleId&quot;] = elem[&quot;styleId&quot;] if elem[&quot;styleId&quot;]
+        if output[&quot;glasswareId&quot;] and output[&quot;styleId&quot;] and output[&quot;brewery&quot;]
+          esIndex++
+          client.create
+            index: &quot;beers_test&quot;
+            type: &quot;beer_test&quot;
+            id: esIndex
+            body: output
+          , (err, res) -&gt;
+            if err
+              console.log err
+            else
+              console.log res
+</code></pre>
+</section>
+<section>
+<h1 id="building-the-website-api">Building the Website API</h1>
+<ul>
+<li>Node.js application</li>
+<li><a href="http://hapijs.com/">HAPI</a> framework</li>
+<li>Search Endpoint</li>
+<li>Recommendation Endpoint</li>
+</ul>
+</section>
+<section>
+<h1 id="search-endpoint">Search Endpoint</h1>
+<pre><code class="lang-coffeescript">server.route
+  method: &quot;GET&quot;
+  path: &quot;/search&quot;
+  handler: (req, res) -&gt;
+    client.search(
+      index: &#39;beers_test&#39;
+      type: &#39;beer_test&#39;
+      body:
+        query:
+          match:
+            beer: req.query.beer
+    ).then ((resp) -&gt;
+        results = []
+        hits = resp.hits.hits
+        for hit in hits
+            results.push(hit[&#39;_source&#39;])
+        res results
+    ), (err) -&gt;
+        console.trace err.message
+</code></pre>
+</section>
+<section>
+<h1 id="recommendation-endpoint">Recommendation Endpoint</h1>
+<pre><code class="lang-coffeescript">server.route
+  method: &quot;GET&quot;
+  path: &quot;/recommend&quot;
+  handler: (req, res) -&gt;
+    client.search(
+      index: &#39;beers_test&#39;
+      type: &#39;beer_test&#39;
+      body:
+        query:
+          match:
+            beer: req.query.beer
+    ).then ((resp) -&gt;
+        hit = resp.hits.hits[0]
+        glasswareId = hit[&#39;_source&#39;][&#39;glasswareId&#39;]
+        styleId = hit[&#39;_source&#39;][&#39;styleId&#39;]
+        client.search(
+          index: &#39;beers_test&#39;
+          type: &#39;beer_test&#39;
+          body:
+            query:
+              bool:
+                must: [
+                  term:
+                    &#39;glasswareId&#39;: glasswareId
+                  term:
+                    &#39;styleId&#39;: styleId
+                ]
+        ).then ((resp) -&gt;
+            results = []
+            hits = resp.hits.hits
+            for hit in hits
+                results.push(hit[&#39;_source&#39;])
+            res results
+        ), (err) -&gt;
+            console.trace err.message
+    ), (err) -&gt;
+        console.trace err.message
+</code></pre>
+</section>
+<section>
+<h1 id="future">Future</h1>
+<ul>
+<li>Would love to make Recommendations more robust<ul>
+<li>Currently just matching style and glassware type...</li>
+</ul>
+</li>
+<li>Would love to create some speedups in search</li>
+<li>Not sure the benefits over Postgres text search<ul>
+<li>This is what I have implemented now and it&#39;s <code>good enough</code>...</li>
+</ul>
+</li>
+</ul>
+</section>
+<section>
+<h1 id="thanks">Thanks</h1>
+<ul>
+<li>I am <a href="http://www.joshfinnie.com">Josh Finnie</a></li>
+<li>Find me @joshfinnie on <a href="http://twitter.com/joshfinnie">Twitter</a> &amp; <a href="http://github.com/joshfinnie">Github</a></li>
+<li>Find the slides <a href="http://www.joshfinnie.com/talks/">here</a></li>
+<li><a href="http://trackmaven.theresumator.com/apply/EzkTn4/Software-Maven.html">Come work for TrackMaven</a></li>
+</ul>
+
+      </section>
+    </div>
+  </div>
+  <script src="assets/reveal.js/lib/js/head.min.js"></script>
+  <script src="assets/reveal.js/js/reveal.min.js"></script>
+  <script src="js/reveal-initialize.js"></script>
+</body>

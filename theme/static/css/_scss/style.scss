@@ -1,5 +1,6 @@
 //colors
-$primary-color: #FF6600;
+$primary-color: #75A3FF;
+$link-color: darken($primary-color, 10%);
 $color_dove_gray_approx: #6e6e6e;
 $color_lochmara_approx: #0088cc;
 $white: white;
@@ -102,7 +103,7 @@ p {
     margin-top: 25px;
 }
 a {
-    color: $primary-color;
+    color: $link-color;
     &:active {
         color: $black;
         text-decoration: none;
@@ -130,7 +131,7 @@ body {
     font-weight: 300;
 }
 .orange > a {
-    color: $primary-color;
+    color: $link-color;
 }
 .twitter-button > a {
     &:link {

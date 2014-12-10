@@ -181,6 +181,15 @@ body {
         text-decoration: none;
     }
 }
+// AddThis Share Button Stuff
+span.at300bs.at15nc {
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+}
+.addthis_sharing_toolbox {
+    padding-bottom: 10px;
+}
 @media(max-width: 992px) {
     .homepage {
         padding-top: 0;

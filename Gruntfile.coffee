@@ -27,7 +27,7 @@ module.exports = (grunt) ->
     sass:
       dist:
         files:
-          'theme/static/css/main.css': 'theme/static/css/_scss/style.scss'
+          'theme/static/css/main.css': 'theme/static/style/style.scss'
 
     cssmin:
       options:

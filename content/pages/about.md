@@ -1,6 +1,6 @@
 title: About
 
-I am an Software Maven at [TrackMaven](http://trackmaven.com/). in Washington, DC. My programming interests lie in Python and Javascript.
+I am an Software Maven at [TrackMaven](http://trackmaven.com/). in Washington, DC. My programming interests lie in Javascript and Python,
 
 ## Projects
 
@@ -15,9 +15,9 @@ I am an Software Maven at [TrackMaven](http://trackmaven.com/). in Washington, D
 
 **Education:** Classes towards a MS in Geography &#8211; Central Connecticut State University, BA in Economics &amp; Minor in Mathematics &#8211; University of Connecticut
 
-**Experience:** Software Maven &#8211; TrackMaven, Application Developer &#8211; Koansys, LLC., Trainer &#8211; Aetna, Plan Coordination Consultant &#8211; Aetna
+**Experience:** Software Maven &#8211; TrackMaven, Application Developer &#8211; Koansys, LLC., Trainer/Plan Coordination Consultant &#8211; Aetna
 
-**Languages:** Python (Django, Pyramid, Flask), Javascript (Node, Angular, jQuery), PHP (Wordpress, Drupal)
+**Languages:** Javascript (Node, Angular, jQuery), Python (Django, Pyramid, Flask), PHP (Wordpress, Drupal)
 
 **Databases:** PostgreSQL, MongoDB, MySQL, ArcSDE
 

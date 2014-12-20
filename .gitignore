@@ -42,3 +42,4 @@ theme/static/css/main.*
 theme/lib
 .sass-cache/
 .ropeproject/
+.DS_Store

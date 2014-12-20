@@ -23,7 +23,7 @@ So what is Bower? Bower is the "package manager for the web." It allows you to i
 
 Bower allows for us to not only keep track of what third-party JavaScript libraries we are using, but it also allows us to pin these libraries to certain versions. The ability to pin the versions have become invaluable to us as we grow our engineering team; it allows us to keep our development environment consistent across all our engineers. Another great feature of Bower is that it allows us to install these libraries from many different sources:
 
-<center>![Bower Install Examples from http://bower.io/](/images/bower-examples.png)</center>
+<center>![Bower Install Examples from http://bower.io/](/assets/images/blog/bower-examples.png)</center>
 
 ## Initial Setup
 

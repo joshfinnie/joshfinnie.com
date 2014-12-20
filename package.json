@@ -13,12 +13,17 @@
   },
   "homepage": "http://www.joshfinnie.com",
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-shell": "~0.6.1",
-    "grunt-sass": "~0.9.0",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-coffeelint": "0.0.8"
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-plumber": "^0.6.6",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-shell": "^0.2.11",
+    "gulp-util": "^3.0.1"
+  },
+  "dependencies": {
+    "bower": "^1.3.12",
+    "coffee-script": "^1.8.0"
   }
 }

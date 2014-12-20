@@ -39,4 +39,6 @@ output/
 cache/
 node_modules/
 theme/static/css/main.*
+theme/lib
+.sass-cache/
 .ropeproject/

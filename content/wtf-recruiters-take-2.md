@@ -1,4 +1,4 @@
-Title: WTF Recruiters - Take 2?
+Title: WTF Recruiters - Take 2
 Author: Josh Finnie
 Date: 2014-12-19
 Tags: wtf, emails, recruiters

@@ -44,4 +44,4 @@ gulp.task "watch", ->
     gulp.watch("theme/templates/**/*.html", ["html"])
     gulp.watch("content/*.md", ["html"])
 
-gulp.task("default", ["scss", "watch", "connect"])
+gulp.task("default", ["scss", "html", "watch", "connect"])

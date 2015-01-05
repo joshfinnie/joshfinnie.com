@@ -12,6 +12,7 @@ Last year was the first time that I published my New Year Resolutions online for
 * Become a pilar in the DC teck scene.
 * Be better at regularly blogging. (I want to post a blog entry at least once a month, weekly was just too hard!).
 * Improve my programming skill levels in both Javascript and Python. (I have purposely changed the order of these two; I really like Javascript.)
+* Have a talk accepted at a programming conference.
 * Continue to give a talk at my local [meetup group](http://www.meetup.com/members/26710252/). I gave [5 talks](http://www.joshfinnie.com/talks/) in 2014, would like to double that.
 * Continue the success of Node Night and set up more [NodeSchool](http://nodeschool.io/) events after the [very successful NationJS NodeSchool](http://www.joshfinnie.com/blog/nodeschool-at-nationjs-postmortem/).
 * Lose weight. I really want to hit my target goal this year; I seriously went backwards in 2014 and now realize that this is going to be harder than I ever thought... I am not 20 anymore!

@@ -217,6 +217,18 @@ body {
         text-decoration: none;
     }
 }
+.stackoverflow-button > a {
+    &:link {
+        text-decoration: none;
+    }
+    &:visited {
+        text-decoration: none;
+    }
+    &:hover {
+        color: #3F729B;
+        text-decoration: none;
+    }
+}
 // AddThis Share Button Stuff
 span.at300bs.at15nc {
     border-radius: 50px;

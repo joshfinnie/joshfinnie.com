@@ -3,7 +3,7 @@ Author: Josh Finnie
 Date: 2015-01-10
 Tags: tutorial, react.js, javascript, node.js
 
-Welcome to my tutorial on how to get a website up and running using [React.js](http://facebook.github.io/react/) and [Node.js](http://nodejs.org/). I am expecting this to be a multipart tutorial as we go through building a job board for my local [Node.js Meetup Group](), though I am not sure how long these tutorials will last. I hope you enjoy them and if so feel free to share them!
+Welcome to my tutorial on how to get a website up and running using [React.js](http://facebook.github.io/react/) and [Node.js](http://nodejs.org/). I am expecting this to be a multipart tutorial as we go through building a job board for my local [Node.js Meetup Group](), though I am not sure how long these tutorials will last. I hope you enjoy them and if so feel free to share them! You can follow along with my progression on my jobs.nodedc.com [github repo](https://github.com/joshfinnie/jobs.nodedc.com)
 
 ## Getting Started with Express
 
@@ -15,10 +15,10 @@ The first thing we are going to do is set up a standard [express](http://express
 $ npm install express-generator -g
 ```
 
-Once installed, we are going to create a basic express app with one caveat, I will be using SASS as my styling language. To generate this express app, we run the following command:
+Once installed, we are going to create a basic express app. To generate this express app, we run the following command:
 
 ```
-$ express -c compass jobs.nodedc.com
+$ express jobs.nodedc.com
 
    create : jobs.nodedc.com
    create : jobs.nodedc.com/package.json
@@ -26,7 +26,7 @@ $ express -c compass jobs.nodedc.com
    create : jobs.nodedc.com/public
    create : jobs.nodedc.com/public/javascripts
    create : jobs.nodedc.com/public/stylesheets
-   create : jobs.nodedc.com/public/stylesheets/style.scss
+   create : jobs.nodedc.com/public/stylesheets/style.css
    create : jobs.nodedc.com/routes
    create : jobs.nodedc.com/routes/index.js
    create : jobs.nodedc.com/routes/users.js
@@ -89,7 +89,7 @@ Rerunning `DEBUG=jobs.nodedc.com ./bin/www` we should see our starting screen ag
 
 ## Adding a React.js Component
 
-Now that we have our express app running react.js, we can now start the process of writting our react application. In this part of the tutorial, we are only going to do a basic "Hello World" component, but next time we will start developing the components we need for our job board. So first, let's create our component.
+Now that we have our express app running react.js, we can now start the process of writing our react application. In this part of the tutorial, we are only going to do a basic "Hello World" component, but next time we will start developing the components we need for our job board. So first, let's create our component.
 
 The first thing we want to do is create the `div` needed for react. In the `views/index.jade` file, add a div with an `id` of "example". With jade, your `index.jade` file should look like this:
 

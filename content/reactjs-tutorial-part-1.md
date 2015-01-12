@@ -1,7 +1,7 @@
 Title: React.js Tutorial Part 1
 Author: Josh Finnie
 Date: 2015-01-10
-Tags: tutorial, react.js, javascript, node.js
+Tags: tutorial, react.js, javascript, node.js, express.js
 
 Welcome to my tutorial on how to get a website up and running using [React.js](http://facebook.github.io/react/) and [Node.js](http://nodejs.org/). I am expecting this to be a multipart tutorial as we go through building a job board for my local [Node.js Meetup Group](), though I am not sure how long these tutorials will last. I hope you enjoy them and if so feel free to share them! You can follow along with my progression on my jobs.nodedc.com [github repo](https://github.com/joshfinnie/jobs.nodedc.com)
 

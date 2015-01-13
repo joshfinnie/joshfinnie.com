@@ -9,17 +9,17 @@
   <meta name="description" content="{{ DESCRIPTION }}">
   <meta name="keywords" content="josh, finnie, joshfinnie, python, django, javascript, angular.js, node.js">
   <meta name="google-site-verification" content="TJ1RB8nr97TGCLSn7gH9BUktQiXSZ9iORXdErQiHLy0" />
-  <link rel="icon" type="image/x-icon" href="{{ SITEURL }}/theme/img/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/theme/img/favicon.ico">
 
   {% if FEED_RSS %}
-  <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
+  <link href="/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
   {% endif %}
 
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/github.css" type="text/css" />
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/{{ CSS_FILE }}" type="text/css" />
+  <link rel="stylesheet" href="/theme/css/github.css" type="text/css" />
+  <link rel="stylesheet" href="/theme/css/{{ CSS_FILE }}" type="text/css" />
 
-  <script src="{{ SITEURL }}/theme/js/html5.js"></script>
+  <script src="/theme/js/html5.js"></script>
 </head>
 <body>
   <div class="headerbar"></div>
@@ -47,7 +47,7 @@
   </script>
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="{{ SITEURL }}/theme/js/main.min.js"></script>
+  <script src="/theme/js/main.min.js"></script>
   {% block extra_js %}{% endblock %}
 </body>
 </html>

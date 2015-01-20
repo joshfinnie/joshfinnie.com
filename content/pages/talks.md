@@ -1,5 +1,7 @@
 title: Talks
 
+## [iSat: Lightning Talk](/talks/iSat-lightning-talk/)<small class="indent">[TM Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) (01/19/2015)</small>
+
 ## [Lightning Talk: Beer Search & Recs in ES](/talks/beer-search-and-recs-in-es/)<small class="indent">[TM Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) (11/12/2014)</small>
 
 ## [Lightning Talk: Making BeerLedge Social](/talks/making-beerledge-social/)<small class="indent">[Django District](http://www.meetup.com/django-district/) (07/15/2014)</small>

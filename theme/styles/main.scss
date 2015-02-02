@@ -30,8 +30,8 @@
 @import "../lib/bootstrap-sass/lib/responsive-utilities";
 
 //colors
-$primary-color: #75A3FF;
-$link-color: darken($primary-color, 10%);
+$primary-color: #C2E0FF;
+$link-color: darken($primary-color, 20%);
 $color_dove_gray_approx: #6e6e6e;
 $color_lochmara_approx: #0088cc;
 $white: white;
@@ -158,13 +158,15 @@ a {
     display: none;
 }
 code {
-    color: $color_tuatara_approx;
-    background-color: $color_celeste_approx;
+    color: $color_cape_cod_approx;
+    font-size: 80%;
+    background-color: #F5F5F5;
     white-space: pre;
 }
 body {
     font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
     font-weight: 300;
+    background-color: #FBFBFB;
 }
 .orange > a {
     color: $link-color;

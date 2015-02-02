@@ -11,39 +11,37 @@ In this tutorial I am going to assume you have Node.js installed since it is bec
 
 The first thing we are going to do is set up a standard [express](http://expressjs.com/) app. This is easy do to through `express-generator`. Install `express-generator` using the following command:
 
-```
-$ npm install express-generator -g
-```
+    :::bash
+    $ npm install express-generator -g
 
 Once installed, we are going to create a basic express app. To generate this express app, we run the following command:
 
-```
-$ express jobs.nodedc.com
+    :::bash
+    $ express jobs.nodedc.com
 
-   create : jobs.nodedc.com
-   create : jobs.nodedc.com/package.json
-   create : jobs.nodedc.com/app.js
-   create : jobs.nodedc.com/public
-   create : jobs.nodedc.com/public/javascripts
-   create : jobs.nodedc.com/public/stylesheets
-   create : jobs.nodedc.com/public/stylesheets/style.css
-   create : jobs.nodedc.com/routes
-   create : jobs.nodedc.com/routes/index.js
-   create : jobs.nodedc.com/routes/users.js
-   create : jobs.nodedc.com/public/images
-   create : jobs.nodedc.com/views
-   create : jobs.nodedc.com/views/index.jade
-   create : jobs.nodedc.com/views/layout.jade
-   create : jobs.nodedc.com/views/error.jade
-   create : jobs.nodedc.com/bin
-   create : jobs.nodedc.com/bin/www
+    create : jobs.nodedc.com
+    create : jobs.nodedc.com/package.json
+    create : jobs.nodedc.com/app.js
+    create : jobs.nodedc.com/public
+    create : jobs.nodedc.com/public/javascripts
+    create : jobs.nodedc.com/public/stylesheets
+    create : jobs.nodedc.com/public/stylesheets/style.css
+    create : jobs.nodedc.com/routes
+    create : jobs.nodedc.com/routes/index.js
+    create : jobs.nodedc.com/routes/users.js
+    create : jobs.nodedc.com/public/images
+    create : jobs.nodedc.com/views
+    create : jobs.nodedc.com/views/index.jade
+    create : jobs.nodedc.com/views/layout.jade
+    create : jobs.nodedc.com/views/error.jade
+    create : jobs.nodedc.com/bin
+    create : jobs.nodedc.com/bin/www
 
-   install dependencies:
-     $ cd jobs.nodedc.com && npm install
+    install dependencies:
+        $ cd jobs.nodedc.com && npm install
 
-   run the app:
-     $ DEBUG=jobs.nodedc.com ./bin/www
-```
+    run the app:
+        $ DEBUG=jobs.nodedc.com ./bin/www
 
 With the output of `express-generator` we can see that we are well on our way to what we need from Express. This is a bit overkill, but with a few small changes, we should have a working express app which will then run (eventually) our API and serve our React site.
 
@@ -58,15 +56,13 @@ I then recommend going through the generated code and cleaning it up a little bi
 
 Now that we have a pretty basic express application as our backend, we are now going to jump into adding react. Adding react is not that difficult, but there are a few ways of doing things. Since we are already within a node.js app, I am going to go down the route of building our jsx scripts into javascript. To get ready for this, we need to install the `react-tools` node package. You can do that by the following command:
 
-```
-$ npm install react-tools --save-dev
-```
+    :::bash
+    $ npm install react-tools --save-dev
 
 We add the `--save-dev` flag to make sure the `react-tools` package is saved as a development requirement in our `package.json`. Now, to convert the jsx scripts to javascript, we just have to run the following command:
 
-```
-$ ./node_modules/react-tools/bin/jsx public/javascripts/src/ public/javascripts/build/
-```
+    :::bash
+    $ ./node_modules/react-tools/bin/jsx public/javascripts/src/ public/javascripts/build/
 
 ** Note: ** You could also install `react-tools` globlally if you'd like.
 
@@ -74,16 +70,15 @@ Next we want to [download React 0.12.2](http://facebook.github.io/react/download
 
 To add `react.min.js` to our templates, we just append it to the bottom of our `views/layout.jade` file as below:
 
-```
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
-    script(src='/javascripts/build/react.min.js')
-```
+    :::jade
+    doctype html
+    html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        block content
+        script(src='/javascripts/build/react.min.js')
 
 Rerunning `DEBUG=jobs.nodedc.com ./bin/www` we should see our starting screen again, but now it's React.js ready. Now our templates should be ready for our React Components!
 
@@ -93,41 +88,37 @@ Now that we have our express app running react.js, we can now start the process 
 
 The first thing we want to do is create the `div` needed for react. In the `views/index.jade` file, add a div with an `id` of "example". With jade, your `index.jade` file should look like this:
 
-```
-extends layout
+    :::jade
+    extends layout
 
 block content
   #example
-```
 
 Next we want to create a simple react.js component in our `public/javascripts/src/` folder called `helloworld.jsx`. This component should look like:
 
-```
-React.render(
-  <h1>Hello, world from React.js!</h1>,
-  document.getElementById('example')
-);
-```
+    :::javascript
+    React.render(
+    <h1>Hello, world from React.js!</h1>,
+    document.getElementById('example')
+    );
 
 Because we are using the `react-tools` node package, we want to add the compiled javascript code to our templates. Change you `views/layout.jade` file to the following:
 
-```
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
-    script(src='/javascripts/build/react.min.js')
-    script(src='/javascripts/build/helloworld.js')
-```
+    :::jade
+    doctype html
+    html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        block content
+        script(src='/javascripts/build/react.min.js')
+        script(src='/javascripts/build/helloworld.js')
 
 And run the `react-tools` package to compile our component with the following command:
 
-```
-$ ./node_modules/react-tools/bin/jsx -x jsx public/javascripts/src/ public/javascripts/build/
-```
+    :::bash
+    $ ./node_modules/react-tools/bin/jsx -x jsx public/javascripts/src/ public/javascripts/build/
 
 Remember to use the `-x` flag as we used the extension `.jsx` for our jsx code. Now running the express server again we should see:
 

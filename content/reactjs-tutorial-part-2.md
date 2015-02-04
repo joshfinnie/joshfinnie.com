@@ -1,6 +1,6 @@
 Title: React.js Tutorial Part 2
 Author: Josh Finnie
-Date: 2015-02-01
+Date: 2015-02-04
 Tags: tutorial, react.js, javascript, node.js, express.js
 
 Welcome to part 2 of my tutorial on how to get a website up and running using [React.js](http://facebook.github.io/react/) and [Node.js](http://nodejs.org/). You can read Part 1 [here](/blog/reactjs-tutorial-part-1/) if you haven't already.
@@ -110,7 +110,7 @@ There you have it, a React application being built with Gulp using browersify!
 
 <center>![Hello React.js Component](/assets/images/blog/hello-react-component.png)</center>
 
-### Additional Tips
+### Gulp Watch
 
 To make Gulp even better, let's implement the built-in `watch` functionality to have gulp watch for changes in our `.jsx` files and automatically build our javascript. To do this, we want to add the following task to our `gulpfile.js`:
 

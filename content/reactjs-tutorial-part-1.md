@@ -91,8 +91,8 @@ The first thing we want to do is create the `div` needed for react. In the `view
     :::jade
     extends layout
 
-block content
-  #example
+    block content
+        #example
 
 Next we want to create a simple react.js component in our `public/javascripts/src/` folder called `helloworld.jsx`. This component should look like:
 

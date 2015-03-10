@@ -7,7 +7,7 @@ Welcome to part (Interlude) of my React.js/Express.js app tutorial. This is goin
 
 ## Bower
 
-For much of the UI, we are going to use a package manager called [Bower](http://bower.io/). Bower calles itself a package manager for the web, and it actually does a great job at doing just that. We are going to use Bower to install and keep track of many of the third-party libraries we are going to use for our job board.
+For much of the UI, we are going to use a package manager called [Bower](http://bower.io/). Bower calls itself a package manager for the web, and it actually does a great job at doing just that. We are going to use Bower to install and keep track of many of the third-party libraries we are going to use for our job board.
 
 To install Bower, we simply have to install it from NPM using the following command:
 
@@ -15,9 +15,9 @@ To install Bower, we simply have to install it from NPM using the following comm
 $ npm install --save bower
 ```
 
-This automatically adds it to our `package.json` file which we all should be familiar with now. If you are comfortable wih Bower, it is recommended to install the package globally, which I have done. Your mileage may vary.
+This automatically adds it to our `package.json` file which we all should be familiar with now. If you are comfortable with Bower, it is recommended to install the package globally, which I have done. Your mileage may vary.
 
-The one thing I do not enjoy about the default Bower installation is where the libraries are defaultly stored: `.bower-components/`. Luckily, it is not that hard to change, so let's change where we install our third-party libraries. To do this, create a `.bowerrc` file which looks like the following:
+The one thing I do not enjoy about the default Bower installation is where the libraries are stored by default: `.bower-components/`. Luckily, it is not that hard to change, so let's change where we install our third-party libraries. To do this, create a `.bowerrc` file which looks like the following:
 
 ```javascript
 {
@@ -31,7 +31,7 @@ This will change the default bower install folder to be `public/libraries/` whic
 $ bower init
 ```
 
-After completing the promps your `bower.json` file should look something like this:
+After completing the prompts your `bower.json` file should look something like this:
 
 ```javascript
 {
@@ -58,7 +58,7 @@ After completing the promps your `bower.json` file should look something like th
 
 ## Twitter Bootstrap and SASS Setup
 
-The next bit of setup we are going to do for our web app is to install [Twitter Bootstrap](http://getbootstrap.com/) using its official [SASS](http://sass-lang.com/) bower package. You can see what packages are available through bower using its search function: `bower search` Searching for `bootstrap` brings up many, many packages, but also shows us the package we want. Here is an exerpt from the search:
+The next bit of setup we are going to do for our web app is to install [Twitter Bootstrap](http://getbootstrap.com/) using its official [SASS](http://sass-lang.com/) bower package. You can see what packages are available through bower using its search function: `bower search` Searching for `bootstrap` brings up many, many packages, but also shows us the package we want. Here is an excerpt from the search:
 
 ```bash
 $ bower search bootstrap
@@ -126,9 +126,9 @@ With the gulp task above, we now have our SASS automatically compiled whenever w
 link(rel='stylesheet', href='/stylesheets/css/style.css')
 ```
 
-## Concating the Javascripts
+## Concatenating the Javascripts
 
-With the introduction of Twitter Bootstrap, we have also introduced two new javascript libraries to our codebase: the Twitter Bootstrap javascript, and jQuery. Since we are already transforming our JSX code into javascript, let's take this time to concatinate all our javascripts together into a singular `app.js`. To do this, we just need to have a way to tell our JSX code that there are more libraries to import. Luckily since we are already using browserify, this is as simple as adding the following lines to our `app.jsx` file:
+With the introduction of Twitter Bootstrap, we have also introduced two new javascript libraries to our code base: the Twitter Bootstrap javascript, and jQuery. Since we are already transforming our JSX code into javascript, let's take this time to concatenate all our javascripts together into a singular `app.js`. To do this, we just need to have a way to tell our JSX code that there are more libraries to import. Luckily since we are already using browserify, this is as simple as adding the following lines to our `app.jsx` file:
 
 ```javascript
 var $ = jQuery = require('../../libraries/jquery/dist/jquery');
@@ -139,7 +139,7 @@ Doing this points both `jQuery ($)` and `bootstrap` to the appropriate file whic
 
 ## Bootstrapping our App
 
-Now that we have all the plumbing working, let's add some nicities to our application. We can add the [starter Bootstrap template](http://getbootstrap.com/examples/starter-template/) to give it a bit of style. All we need to do is update our `layout.jade` file to look like this:
+Now that we have all the plumbing working, let's add some niceties to our application. We can add the [starter Bootstrap template](http://getbootstrap.com/examples/starter-template/) to give it a bit of style. All we need to do is update our `layout.jade` file to look like this:
 
 ```jade
 doctype html(lang='en')

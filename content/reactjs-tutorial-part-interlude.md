@@ -21,7 +21,7 @@ The one thing I do not enjoy about the default Bower installation is where the l
 
 ```javascript
 {
-  "directory": "public/libraries/",
+  "directory": "public/libraries/"
 }
 ```
 

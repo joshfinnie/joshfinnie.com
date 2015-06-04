@@ -1,5 +1,7 @@
 title: Talks
 
+## [Sneaking React into Angular](http://slides.com/joshfinnie/sneaking-react-into-angular/#/)<small class="indent">[TM Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) (05/27/2015)</small>
+
 ## [iSat: Lightning Talk](/talks/iSat-lightning-talk/)<small class="indent">[TM Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) (01/19/2015)</small>
 
 ## [Lightning Talk: Beer Search & Recs in ES](/talks/beer-search-and-recs-in-es/)<small class="indent">[TM Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) (11/12/2014)</small>

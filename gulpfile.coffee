@@ -2,6 +2,7 @@ gulp = require "gulp"
 gutil = require "gulp-util"
 
 sass = require "gulp-ruby-sass"
+sourcemaps = require "gulp-sourcemaps"
 plumber = require "gulp-plumber"
 autoprefixer = require "gulp-autoprefixer"
 minifyCSS = require "gulp-minify-css"
@@ -19,13 +20,20 @@ gulp.task "connect", ->
 
 # Styles for the site. Turns .scss files into a single main.css
 gulp.task "scss", ->
-    gulp.src("theme/styles/main.scss")
+    sass("theme/styles/")
+        .on("error", (err) ->
+            console.error "Error!", err.message
+        )
         .pipe(plumber())
-        .pipe(sass())
         .pipe(minifyCSS())
         .pipe(gulp.dest("theme/static/css"))
 
 # Build the development html.
+gulp.task "build", ->
+    gulp.src("output/index.html")
+        .pipe(run("pelican content -s pelicanconf.py"))
+
+# Refresh the development html.
 gulp.task "html", ->
     gulp.src("output/index.html")
         .pipe(run("pelican content -s pelicanconf.py"))
@@ -44,4 +52,4 @@ gulp.task "watch", ->
     gulp.watch("theme/templates/**/*.html", ["html"])
     gulp.watch("content/**/*.md", ["html"])
 
-gulp.task("default", ["scss", "html", "watch", "connect"])
+gulp.task("default", ["build", "scss", "watch", "connect"])

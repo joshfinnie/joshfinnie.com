@@ -1,6 +1,6 @@
 Title: React.js Tutorial Part (Interlude 2)
 Author: Josh Finnie
-Date: 2015-03-08
+Date: 2015-08-10
 Tags: tutorial, react.js, javascript, node.js, express.js
 
 Welcome to part (Interlude 2) of my React.js/Express.js app tutorial. This is going to be an article about upgrading a [React.js](http://facebook.github.io/react/) application after coming back to a project after a while. Hopefully this will spur me to continue these tutorials as it has been too long since I have posted one.

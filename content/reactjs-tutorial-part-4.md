@@ -106,7 +106,7 @@ That's it! We have a very basic API that we can now have our React.js code talk 
 
 When first interacting with APIs using React.js, I recommend just using the `request` packages. We will need to add this to our application, but that's as easy as running `npm install request --save`.
 
-Once we have the `request` library installed, we need to do some modification to our `public/javascripts/scr/Jobs.jsx` file to get the data from our API. To do this, we need to remove the `getInitialState` function in favor of the `componentDidMount` function. We no longer have an initial state, but we want to get the data once the component mounts to our application. Because we don't have a `state` in the beginning of the rendering, we need to modify `render` a little as well. Our entire `public/javascripts/scr/Jobs.jsx` now looks like this:
+Once we have the `request` library installed, we need to do some modification to our `public/javascripts/scr/Jobs.jsx` file to get the data from our API. To do this, we need to slightly modify the `getInitialState` function and add the `componentDidMount` function. We no longer have an full initial state (just a skeleton of what we want our API to look like) since we want to get the data from the API once the component mounts to our application. Our entire `public/javascripts/scr/Jobs.jsx` now looks like this:
 
 ```jsx
 var React = require('react');
@@ -115,24 +115,23 @@ var request = require('request');
 var Job = require('./Job.jsx');
 
 module.exports = React.createClass({
+    getInitialState: function() {
+        return {jobs: []}
+    },
+
     componentDidMount: function() {
         request('http://localhost:3000/api/jobs/', function(error, response, body) {
             var result = JSON.parse(body);
             if (this.isMounted()) {
-                this.setState(result);
+                this.setState(result.data);
             }
         }.bind(this));
     },
 
     render: function(){
-        if (this.state == null) {
-            jobs = [];
-        } else {
-            jobs = this.state.data.jobs
-        }
         return (
             <div className="list-group">
-                {jobs.map(function(job){
+                {this.state.jobs.map(function(job){
                     return (
                         <Job
                             key={job.job_id}

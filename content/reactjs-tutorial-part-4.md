@@ -1,6 +1,6 @@
 Title: React.js Tutorial Part 4
 Author: Josh Finnie
-Date: 2015-09-13
+Date: 2015-09-16
 Tags: tutorial, react.js, javascript, node.js, express.js
 
 Welcome to part 4 of my React.js/Express.js app tutorial. In this blog post, we are going to create the necessary Express routes to serve `json` code to our React.js frontend application. We are also going to very rudimentarily hook up these calls to our server it our React.js component so that the `json` can be rendered.

@@ -25,7 +25,7 @@ I am an Senior Software Maven at [TrackMaven](http://trackmaven.com/). in Washin
 
 **SCM:** GIT
 
-**Other Interests:** ~~Coffee~~ :-( Tea, Cycling, Photography, Amateur Radio ([W1OFZ](http://www.qrz.com/db/W1OFZ))
+**Other Interests:** <del>Coffee</del> Tea, Cycling, Photography, Amateur Radio ([W1OFZ](http://www.qrz.com/db/W1OFZ))
 
 [Download full resume (PDF)](/assets/docs/finnie-resume.pdf).
 

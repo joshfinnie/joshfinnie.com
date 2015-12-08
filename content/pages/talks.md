@@ -1,5 +1,9 @@
 title: Talks
 
+## [Command Line Applications in Node.js](http://slides.com/joshfinnie/nationjs-2015#/)<small class="indent">[NationJS 2015](http://nationjs.com/) (11/13/2015)</small>
+
+## [A DSL in Python (Lightning Talk)](http://slides.com/joshfinnie/a-dsl-in-python#/)<small class="indent">[Django District, etc.](http://www.meetup.com/django-district) (10/27/2015)</small>
+
 ## [A Pythonista's Day-O-Haskell](http://slides.com/joshfinnie/haskell/#/)<small class="indent">[TM Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) (07/30/2015)</small>
 
 ## [Sneaking React into Angular](http://slides.com/joshfinnie/sneaking-react-into-angular/#/)<small class="indent">[TM Monthly Challenge](http://www.meetup.com/TrackMaven-Monthly-Challenge/) (05/27/2015)</small>

@@ -3,17 +3,10 @@ gutil = require "gulp-util"
 
 connect = require "gulp-connect"
 
-# Serve the generate html on localhost/localdocker:8080
-gulp.task "serve", require('./server')(connect)
-
-# Styles for the site. Turns .scss files into a single main.css
-gulp.task "scss", require('./scss')(gulp, connect)
-
-# Build the development html.
-gulp.task "html", require('./html')(gulp, connect)
-
-# Build the production html.
-gulp.task "publish", require('./publish')
+server = require("./server")(gulp, connect)
+scss = require('./scss')(gulp, connect)
+html = require('./html')(gulp, connect)
+publish = require('./publish')(gulp)
 
 # Runs the build commands without booting up the server
 gulp.task("build", ["scss", "html"])

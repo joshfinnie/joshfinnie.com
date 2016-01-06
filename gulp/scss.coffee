@@ -4,7 +4,7 @@ plumber = require "gulp-plumber"
 sass = require "gulp-ruby-sass"
 
 module.exports = (gulp, connect) ->
-    return ->
+    gulp.task 'scss', ->
         gulp.src("theme/styles/main.scss")
             .pipe(plumber())
             .pipe(sass())

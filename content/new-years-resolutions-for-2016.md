@@ -9,6 +9,7 @@ Last year was the first time that I published my New Year Resolutions online for
 * Continue my forward progress on blogging. Would really like to get 12+ posts out this year (1 a month).
 * Improve my photography and start publishing photos to somewhere else besides Instagram.
 * Become a contributor to a major open source project.
+* Start to learn [C](http://c.learncodethehardway.org/book/).
 * Speak at a national tech conference.
 * Continue to give talks at my local meetups (I have a goal of 6 talks).
 * Continue & Complete my [React.js tutorial](http://www.joshfinnie.com/blog/reactjs-tutorial-part-1/)
@@ -38,5 +39,4 @@ Last year was the first time that I published my New Year Resolutions online for
 
 ## Conclusion
 
-Here we have it. I really enjoy the process of getting my resolutions out and doing a retrospect on last year. I think I will be more diligent in checking in on my progress throughout the year. That is also an excuse to not have all the goals right now, and have the ability to add more later on in the year. I did some great things for my personal growth in 2015 and hope to make even more strides in 2016. Here's to a very Happy New Years to you and yours!
-
+Here we have it. I completed 7 and missed 6; not too bad... I really enjoy the process of getting my resolutions out and doing a retrospect on last year. I think I will be more diligent in checking in on my progress throughout the year. That is also an excuse to not have all the goals right now, and have the ability to add more later on in the year. I did some great things for my personal growth in 2015 and hope to make even more strides in 2016. Here's to a very Happy New Years to you and yours!

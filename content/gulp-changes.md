@@ -69,7 +69,7 @@ gulp.task("default", ["build", "scss", "watch", "connect"])
 
 ## After
 
-What I thought to do with my `gulpfile.coffee` was to break it out into smaller managable parts. If we take a look at the code above, we can see 6 distinct functions. Yes those six functions do not have a lot of complexity, but suspend your belief for a moment and imagine they did, or believe me when I say that as time goes by these six functions are going to grow in complexity and it is best to nip this issue in the bud early. So what can we do? What I propose is that we split out each of these functions and make them their own module. This way we can then have each logical part separated from each other and imported into our final working `gulpfile.js`. This step will allow us to worry about one Gulp.js process at a time, and also create some modularity that you can take to other projects in the future. One of the big inititives we have going forward at TrackMaven is making sure we are following a microservice paradeigm, and having our Gulp.js tasks broken out into modular bite-sized functions is really going to help build these microservices quicker. So let's do just that... Below you can see the tree of my `gulp/` folder; you can see how each of the above Gulp.js tasks now have their own individual file:
+What I thought to do with my `gulpfile.coffee` was to break it out into smaller manageable parts. If we take a look at the code above, we can see 6 distinct functions. Yes those six functions do not have a lot of complexity, but suspend your belief for a moment and imagine they did, or believe me when I say that as time goes by these six functions are going to grow in complexity and it is best to nip this issue in the bud early. So what can we do? What I propose is that we split out each of these functions and make them their own module. This way we can then have each logical part separated from each other and imported into our final working `gulpfile.js`. This step will allow us to worry about one Gulp.js process at a time, and also create some modularity that you can take to other projects in the future. One of the big initiatives we have going forward at TrackMaven is making sure we are following a microservice paradigm, and having our Gulp.js tasks broken out into modular bite-sized functions is really going to help build these microservices quicker. So let's do just that... Below you can see the tree of my `gulp/` folder; you can see how each of the above Gulp.js tasks now have their own individual file:
 
 ```
 ├── gulp/
@@ -80,7 +80,7 @@ What I thought to do with my `gulpfile.coffee` was to break it out into smaller 
 │   └── server.coffee
 ```
 
-We can then take a look at one of these files to see how the magic works. For example, `html.coffee` holds the "Build the developement html" task from above:
+We can then take a look at one of these files to see how the magic works. For example, `html.coffee` holds the "Build the development html" task from above:
 
 ```
 run = require "gulp-shell"
@@ -92,7 +92,7 @@ module.exports = (gulp, connect) ->
             .pipe(connect.reload())
 ```
 
-It looks very similar from the code in the first `gulpfile.coffee` file, and that is because it is! There is very little we have to to do the code to make sure a Gulp.js taks will work in this modular format. The only main thing that is different is that we are exporting a function that takes two variables, `gulp` and `connect` in this case. This will allow us to properly import this modularized Gulp.js taks within our main `gulpfile.coffee` file. So lets take a look at what `gulpfile.coffee` now looks like:
+It looks very similar from the code in the first `gulpfile.coffee` file, and that is because it is! There is very little we have to to do the code to make sure a Gulp.js task will work in this modular format. The only main thing that is different is that we are exporting a function that takes two variables, `gulp` and `connect` in this case. This will allow us to properly import this modularized Gulp.js task within our main `gulpfile.coffee` file. So lets take a look at what `gulpfile.coffee` now looks like:
 
 ```
 gulp = require "gulp"
@@ -115,11 +115,11 @@ gulp.task("default", ["build", "serve"], ->
 )
 ```
 
-One can see that we are now importing the four modularized Gulp.js tasks. The great thing about setting up your `gulpfile` like this is now `server`, `scss`, `html` and `publish` are modularized and transferible. I could take the `html` task above (the one that will build our html using the `pelicanconf.py` file) and use that in any future [Pelican](http://docs.getpelican.com/en/3.6.3/) project I have. This will lead to a faster development time and should make my life easier if (or when) the `html` task for my projects gets more complex!
+One can see that we are now importing the four modularized Gulp.js tasks. The great thing about setting up your `gulpfile` like this is now `server`, `scss`, `html` and `publish` are modularized and transferable. I could take the `html` task above (the one that will build our html using the `pelicanconf.py` file) and use that in any future [Pelican](http://docs.getpelican.com/en/3.6.3/) project I have. This will lead to a faster development time and should make my life easier if (or when) the `html` task for my projects gets more complex!
 
 ## Next steps
 
-There are a few things that you can do to make this process even easier for you. Stealing form the great authors at [Yeoman](http://yeoman.io/), we can add a little bit of syntatic sugar to our `gulpfile` to automatically import each module we have created instead of explicity typing each one out. To do this, we need to add a bit of code to our `gulpfile` in place of the four imports we have above. This code will look like this:
+There are a few things that you can do to make this process even easier for you. Stealing form the great authors at [Yeoman](http://yeoman.io/), we can add a little bit of syntastic sugar to our `gulpfile` to automatically import each module we have created instead of explicitly typing each one out. To do this, we need to add a bit of code to our `gulpfile` in place of the four imports we have above. This code will look like this:
 
 ```
 var normalizedPath = require("path").join(__dirname, "gulp");
@@ -131,3 +131,22 @@ require("fs").readdirSync(normalizedPath).forEach(function(file) {
   fileName = require('./'+fileName)(gulp);
 });
 ```
+
+I am not sure I am a huge fan of this, however. As you can see above, I have included some packages to my Gulp.js modules, that would not work with the above code. Of course, there is an argument to be made that if you are in fact going with a modular design, you should not require additional components to be passed in. Sure `html.coffee` could be coded as:
+
+```
+connect = require "gulp-connect"
+run = require "gulp-shell"
+
+module.exports = (gulp) ->
+    gulp.task 'html', ->
+        gulp.src("output/index.html")
+            .pipe(run("pelican content -s pelicanconf.py"))
+            .pipe(connect.reload())
+```
+
+Now `htlm.coffee` in it's own dependent module requiring only Gulp.js to work. Better? Not sure...
+
+## Conclusion
+
+I really like this above paradigm. What makes JavaScript awesome is the ability to break your code into small, bite-sized parts and what we are doing with our Gulp.js files is just that. Of course this example is trivial and you might be thinking that the above work is too much for your personal site. But I will argue it's not; you never know the final complexity you will need. Sure it's a bit more work, but not enough to brush it off. Try it and let me know your thoughts!

@@ -242,6 +242,9 @@ span.at300bs.at15nc {
     }
 }
 @media(max-width: 768px) {
+    h1.masthead {
+        font-size: 55px;
+    }
     .header-avatar {
         display: none !important;
     }

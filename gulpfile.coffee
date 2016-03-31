@@ -29,20 +29,23 @@ gulp.task "scss", ->
         .pipe(gulp.dest("theme/static/css"))
 
 # Build the development html.
-gulp.task "build", ->
+gulp.task "builddev", ["scss"], ->
     gulp.src("output/index.html")
         .pipe(run("pelican content -s pelicanconf.py"))
 
-# Refresh the development html.
-gulp.task "html", ->
+# Build the production html.
+gulp.task "buildprod", ["scss"], ->
     gulp.src("output/index.html")
-        .pipe(run("pelican content -s pelicanconf.py"))
+        .pipe(run("pelican content -s publishconf.py"))
+
+# Refresh the development html.
+gulp.task "html", ["builddev"], ->
+    gulp.src("output/index.html")
         .pipe(connect.reload())
 
 # Build the production html.
-gulp.task "publish", ->
+gulp.task "publish", ["buildprod"], ->
     gulp.src("output/index.html")
-        .pipe(run("pelican content -s publishconf.py"))
         .pipe(run("s3cmd sync --cf-invalidate --cf-invalidate-default-index --delete-removed output/ s3://www.joshfinnie.com"))
 
 # Watch for any changes and run the required tasks.
@@ -52,4 +55,4 @@ gulp.task "watch", ->
     gulp.watch("theme/templates/**/*.html", ["html"])
     gulp.watch("content/**/*.md", ["html"])
 
-gulp.task("default", ["build", "scss", "watch", "connect"])
+gulp.task("default", ["builddev", "watch", "connect"])

@@ -1,6 +1,6 @@
 title: Talks
 
-## [Dockerizing your Node App in 5 Minutes](http://slides.com/joshfinnie/5-minutes-to-dockerizing-your-node-js-application)[NodeDC](http://www.meetup.com/node-dc/) (03/17/2016)</small>
+## [Dockerizing your Node App in 5 Minutes](http://slides.com/joshfinnie/5-minutes-to-dockerizing-your-node-js-application)<small class="indent">[NodeDC](http://www.meetup.com/node-dc/) (03/17/2016)</small>
 
 ## [Command Line Applications in Node.js](http://slides.com/joshfinnie/nationjs-2015#/)<small class="indent">[NationJS 2015](http://nationjs.com/) (11/13/2015)</small>
 

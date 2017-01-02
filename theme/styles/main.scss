@@ -1,33 +1,33 @@
 // Core variables and mixins
-@import "../lib/bootstrap-sass/lib/variables";
-@import "../lib/bootstrap-sass/lib/mixins";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_variables";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_mixins";
 
 // Reset
-@import "../lib/bootstrap-sass/lib/normalize";
-@import "../lib/bootstrap-sass/lib/print";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_normalize";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_print";
 
 // Core CSS
-@import "../lib/bootstrap-sass/lib/scaffolding";
-@import "../lib/bootstrap-sass/lib/type";
-@import "../lib/bootstrap-sass/lib/code";
-@import "../lib/bootstrap-sass/lib/grid";
-@import "../lib/bootstrap-sass/lib/tables";
-@import "../lib/bootstrap-sass/lib/forms";
-@import "../lib/bootstrap-sass/lib/buttons";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_scaffolding";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_type";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_code";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_grid";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_tables";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_forms";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_buttons";
 
 // Components
-@import "../lib/bootstrap-sass/lib/component-animations";
-@import "../lib/bootstrap-sass/lib/button-groups";
-@import "../lib/bootstrap-sass/lib/input-groups";
-@import "../lib/bootstrap-sass/lib/navs";
-@import "../lib/bootstrap-sass/lib/navbar";
-@import "../lib/bootstrap-sass/lib/labels";
-@import "../lib/bootstrap-sass/lib/thumbnails";
-@import "../lib/bootstrap-sass/lib/media";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_component-animations";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_button-groups";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_input-groups";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_navs";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_navbar";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_labels";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_thumbnails";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_media";
 
 // Utility classes
-@import "../lib/bootstrap-sass/lib/utilities";
-@import "../lib/bootstrap-sass/lib/responsive-utilities";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_utilities";
+@import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_responsive-utilities";
 
 //colors
 $primary-color: #886A08;

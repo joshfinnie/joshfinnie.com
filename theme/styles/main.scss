@@ -30,7 +30,7 @@
 @import "../lib/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_responsive-utilities";
 
 //colors
-$primary-color: #886A08;
+$primary-color: #46CFCD;
 $link-color: darken($primary-color, 20%);
 $color_dove_gray_approx: #6e6e6e;
 $color_lochmara_approx: #0088cc;
@@ -44,6 +44,7 @@ $color_deep_cerulean_approx: #007fb1;
 $color_astral_approx: #3f729b;
 $color_tuatara_approx: #373636;
 $color_celeste_approx: #ccc;
+$lightning_bolt_yellow: #F0DA6B;
 
 h1 {
     font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
@@ -105,6 +106,15 @@ img {
         }
     }
 }
+// .home_container {
+//     background: url("/assets/images/background.jpg") no-repeat center fixed;
+//     -webkit-background-size: cover;
+//     -moz-background-size: cover;
+//     -o-background-size: cover;
+//     background-size: cover;
+//     min-height: 600px;
+//     min-width: 100%;
+// }
 .masthead {
     font-size: 100px;
     color: $white;
@@ -156,6 +166,9 @@ a {
 }
 .linenos {
     display: none;
+}
+.bolt {
+    color: $lightning_bolt_yellow;
 }
 code {
     color: $color_cape_cod_approx;

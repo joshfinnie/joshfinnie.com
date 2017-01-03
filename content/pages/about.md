@@ -7,15 +7,13 @@ I am an Senior Software Maven at [TrackMaven](http://trackmaven.com/). in Washin
 * [BeerLedge](https://www.beerledge.com/ledges/)
 * [Pushfile](https://www.npmjs.org/package/pushfile)
 * [How Old is this Metro Car?](http://www.howoldisthismetrocar.com)
-* [Tweet PNG](http://www.tweetpng.com)
+* Tweet PNG (Currently not working...)
 
 [Other open-source projects found on Github](https://github.com/joshfinnie/).
 
 ## Resume
 
-**Education:** Classes towards a MS in Geography &#8211; Central Connecticut State University, BA in Economics &amp; Minor in Mathematics &#8211; University of Connecticut
-
-**Experience:** Senior Software Maven &#8211; TrackMaven, Application Developer &#8211; Koansys, LLC., Trainer/Plan Coordination Consultant &#8211; Aetna
+**Experience:** Senior Software Maven (Promoted from Software Maven) &#8211; TrackMaven, Application Developer &#8211; Koansys, LLC., Trainer/Plan Coordination Consultant &#8211; Aetna
 
 **Languages:** Javascript (Node, Angular, React, jQuery), Python (Django, Flask, Pyramid), PHP (Wordpress, Drupal)
 
@@ -25,7 +23,9 @@ I am an Senior Software Maven at [TrackMaven](http://trackmaven.com/). in Washin
 
 **SCM:** GIT
 
-**Other Interests:** <del>Coffee</del> Tea, Cycling, Photography, Amateur Radio ([W1OFZ](http://www.qrz.com/db/W1OFZ))
+**Education:** Classes towards a MS in Geography &#8211; Central Connecticut State University, BA in Economics &amp; Minor in Mathematics &#8211; University of Connecticut
+
+**Other Interests:** Coffee, Cycling, Photography, Amateur Radio ([W1OFZ](http://www.qrz.com/db/W1OFZ))
 
 [Download full resume (PDF)](/assets/docs/finnie-resume.pdf).
 

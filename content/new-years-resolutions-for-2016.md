@@ -1,5 +1,5 @@
 title: New Years Resolutions for 2016 and 2015 Review
-date: 2016-01-05
+date: 2016-01-01
 tags: resolutions, betterment, open-source, programming
 
 Last year was the first time that I published my New Year Resolutions online for the world to see. This year I am doing it again in hopes to continue getting better at them. Below you will find my 2016 resolutions and how I did in 2015.

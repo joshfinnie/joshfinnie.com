@@ -13,11 +13,11 @@ TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+CATEGORY_FEED_ATOM = None
+FEED_ALL_ATOM = 'feeds/atom.xml'
+TRANSLATION_FEED_ATOM = None
 
 # Customized Settings
 ARTICLE_EXCLUDES = (('pages', 'extra', 'drafts', 'talks'))
@@ -32,6 +32,12 @@ PAGE_URL = '{slug}/'
 STATIC_PATHS = ['talks', 'assets']
 TAG_SAVE_AS = 'tag/{slug}/index.html'
 TAG_URL = 'tag/{slug}/'
+TEMPLATE_PAGES = {
+    'extra/robots.txt': 'robots.txt',
+    'extra/humans.txt': 'humans.txt',
+    'extra/license.txt': 'license.txt',
+    'error.html': 'error.html',
+}
 
 THEME = "theme"
 

@@ -13,13 +13,12 @@ from pelicanconf import *
 SITEURL = 'http://www.joshfinnie.com'
 RELATIVE_URLS = False
 
-FEED_ALL_ATOM = 'feeds/atom.xml'
-CATEGORY_FEED_ATOM = None
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
-DEBUG = False
 
 # Following items are often useful when publishing
 
-# DISQUS_SITENAME = ""
-# GOOGLE_ANALYTICS = ""
+#DISQUS_SITENAME = ""
+#GOOGLE_ANALYTICS = ""

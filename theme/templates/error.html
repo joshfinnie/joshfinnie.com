@@ -2,14 +2,7 @@
 {% block header_title %}Error{% endblock %}
 
 {% block content %}
-{% include 'page.navbar.html'%}
-<div class="container">
-    <div class="row homepage">
-        <div class="col-md-12">
-          <h1>Error!</h1>
-          <p>Something seems to have gone wrong...</p>
-          <p><a href="{{ SITEURL }}/">Go home</a></p>
-        </div>
-    </div>
-</div>
+<h1 class="page-header text-center">Error!</h1>
+<p>Something seems to have gone wrong...</p>
+<p><a href="{{ SITEURL  }}/">Go home</a></p>
 {% endblock %}

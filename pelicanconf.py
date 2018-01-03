@@ -41,9 +41,6 @@ TEMPLATE_PAGES = {
 
 THEME = "theme"
 
-# Flex Theme Settings
-MAIN_MENU = True
-
 PLUGIN_PATHS = ['/Users/joshfinnie/src/repos/pelican-plugins/sitemap']
 PLUGINS = ['sitemap']
 

@@ -44,6 +44,23 @@ THEME = "theme"
 # Flex Theme Settings
 MAIN_MENU = True
 
+PLUGIN_PATHS = ['/Users/joshfinnie/src/repos/pelican-plugins/sitemap']
+PLUGINS = ['sitemap']
+
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'indexes': 0.5,
+        'pages': 0.5
+    },
+    'changefreqs': {
+        'articles': 'monthly',
+        'indexes': 'daily',
+        'pages': 'monthly'
+    }
+}
+
 DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

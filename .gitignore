@@ -43,3 +43,5 @@ theme/lib
 .sass-cache/
 .ropeproject/
 .DS_Store
+
+*.pid

@@ -1,40 +1,10 @@
 {% extends 'base.html' %}
-
 {% block header_title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-{% include 'page.navbar.html'%}
-<div class="container">
-    <div class="row-fluid blogpage">
-        <div class="item">
-            <div class="header">
-                <h1>{{ article.title }}</h1>
-            </div>
-            <div class="body">
-                {{ article.content }}
-            </div>
-            <div class="tags text-center">
-              <p>
-                <em>{
-                  meta: {
-                    {% if article.tags %}
-                      tags: [
-                    {% for tag in article.tags %}
-                      <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-                      {% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                      ],
-                    {% endif %}
-                    post_date: {{ article.date.strftime('%Y-%m-%d') }} } }
-                </em>
-              </p>
-            </div>
-        </div>
-        <div class="addthis_sharing_toolbox text-center"></div>
-    </div>
-</div>
-{% endblock %}
-
-{% block extra_js %}
-<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52ed1a2d20441b4e"></script>
+<h2 class="page-header text-center">{{ article.title }}</h2>
+<article>
+  {{ article.content }}
+	{% include "partials/article_meta.html" %}
+</article>
 {% endblock %}

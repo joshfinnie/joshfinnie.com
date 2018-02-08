@@ -1,0 +1,16 @@
+<div class="tags text-center">
+  <p>
+    <em>{
+      meta: {
+      {% if article.tags %}
+        tags: [
+        {% for tag in article.tags %}
+          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+          {% if not loop.last %}, {% endif %}
+        {% endfor %}
+        ],
+      {% endif %}
+      post_date: {{ article.date.strftime('%Y-%m-%d') }} } }
+    </em>
+  </p>
+</div>

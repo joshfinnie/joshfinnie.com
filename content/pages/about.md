@@ -1,6 +1,6 @@
 title: About
 
-I am an Senior Software Maven at [TrackMaven](http://trackmaven.com/). in Washington, DC. My programming interests lie in Javascript and Python,
+I am an Senior Software Maven at [TrackMaven](http://trackmaven.com/) based in Washington, DC where I use Javascript and Python.
 
 ## Projects
 
@@ -15,7 +15,7 @@ I am an Senior Software Maven at [TrackMaven](http://trackmaven.com/). in Washin
 
 **Experience:** Senior Software Maven (Promoted from Software Maven) &#8211; TrackMaven, Application Developer &#8211; Koansys, LLC., Trainer/Plan Coordination Consultant &#8211; Aetna
 
-**Languages:** Javascript (Node, Angular, React, jQuery), Python (Django, Flask, Pyramid), PHP (Wordpress, Drupal)
+**Languages:** Javascript (Node, Angular, React, jQuery), Python (Django, Flask, Pyramid), PHP (Wordpress, Drupal), Go
 
 **Databases:** PostgreSQL, MongoDB, MySQL, ArcSDE
 

@@ -1,16 +1,19 @@
-<div class="tags text-center">
+<div class="tags">
   <p>
-    <em>{
-      meta: {
-      {% if article.tags %}
-        tags: [
-        {% for tag in article.tags %}
-          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-          {% if not loop.last %}, {% endif %}
-        {% endfor %}
-        ],
-      {% endif %}
-      post_date: {{ article.date.strftime('%Y-%m-%d') }} } }
-    </em>
+    <code>
+{<br />
+&nbsp;&nbsp;meta: {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;author: {{ article.author }}<br />
+{% if article.tags %}
+&nbsp;&nbsp;&nbsp;&nbsp;tags: [<br />
+{% for tag in article.tags %}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %},<br />{% endif %}
+{% endfor %}<br />
+&nbsp;&nbsp;&nbsp;&nbsp;],<br />
+{% endif %}
+&nbsp;&nbsp;&nbsp;&nbsp;post_date: {{ article.date.strftime('%Y-%m-%d') }}<br />
+&nbsp;&nbsp;}<br />
+}
+    </code>
   </p>
 </div>

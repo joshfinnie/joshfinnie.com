@@ -1,0 +1,10 @@
+<div class="tags">
+  <p>
+  <i class="fas fa-calendar-alt"></i> {{ article.date.strftime('%Y-%m-%d') }}
+  <i class="fas fa-tags"></i> [
+      {% for tag in article.tags %}
+        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    ]
+  </p>
+</div>

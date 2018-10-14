@@ -9,7 +9,7 @@ const KEYWORDS = [
 ];
 
 export default {
-  title: 'beta.joshfinnie.com',
+  title: 'www.joshfinnie.com',
   author: 'Josh Finnie',
   twitter: 'joshfinnie',
   github: 'joshfinnie',

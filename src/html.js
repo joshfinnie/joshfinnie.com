@@ -1,19 +1,10 @@
-/*  eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class HTML extends React.Component {
   render() {
-    const {
-      body,
-      bodyAttributes,
-      headComponents,
-      htmlAttributes,
-      postBodyComponents,
-      preBodyComponents,
-    } = this.props;
     return (
-      <html {...htmlAttributes}>
+      <html {...this.props.htmlAttributes}>
         <head>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -30,16 +21,16 @@ export default class HTML extends React.Component {
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           />
-          {headComponents}
+          {this.props.headComponents}
         </head>
-        <body {...bodyAttributes}>
-          {preBodyComponents}
+        <body {...this.props.bodyAttributes}>
+          {this.props.preBodyComponents}
           <div
-            key="body"
-            id="___gatsby"
-            dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
+            key={`body`}
+            id='___gatsby'
+            dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
-          {postBodyComponents}
+          {this.props.postBodyComponents}
         </body>
       </html>
     );
@@ -47,10 +38,10 @@ export default class HTML extends React.Component {
 }
 
 HTML.propTypes = {
-  body: PropTypes.string.isRequired,
-  bodyAttributes: PropTypes.object.isRequired,
-  headComponents: PropTypes.array.isRequired,
-  htmlAttributes: PropTypes.object.isRequired,
-  postBodyComponents: PropTypes.array.isRequired,
-  preBodyComponents: PropTypes.array.isRequired,
+  htmlAttributes: PropTypes.object,
+  headComponents: PropTypes.array,
+  bodyAttributes: PropTypes.object,
+  preBodyComponents: PropTypes.array,
+  body: PropTypes.string,
+  postBodyComponents: PropTypes.array,
 };

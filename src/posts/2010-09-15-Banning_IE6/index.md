@@ -1,0 +1,20 @@
+---
+
+title: "Banning IE6"
+date: "2010-09-15"
+tags:
+  - "IE"
+  - "browsers"
+  - "support"
+path: "/blog/banning-ie6"
+expires: true
+
+---
+
+![IE6 is blocked.](./IE6-blocked.png)
+
+I really don’t understand why people have decided that I am not allowed to see their website. Sure, I understand that IE6 is overly out-of-date, but there has to be a reason that I am running it. For example, my office has not upgraded yet; so because of that I am not allowed to see your site?
+
+Given the fact that IE in general has a lot of little hacks required to make a website look good, I come to your websites with an understanding that my view of your website might not be ideal. I even understand that I might not have all the functionality that I should given how IE reacts to javascript and your beautiful ajax-y stuff. But I like content. I don’t run javascript; I don’t run flash. But you don’t have a problem with that. Just that I run IE6.
+
+Stop with this trend of blocking IE6 and allow people, who most likely understand that they are running an out-of-date browser but can’t do anything about it, to read the content that you worked so hard to write! Please?

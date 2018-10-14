@@ -23,8 +23,8 @@ Last year I was able to complete 5 pull-requests to open-source projects, unfort
 
 # Open Source Pull Requests
 
-* Pull Request 1 (To be updated when PR is submitted.)
-* Pull Request 2 (To be updated when PR is submitted.)
-* Pull Request 3 (To be updated when PR is submitted.)
+* [Pushfile (Own Project)](https://github.com/joshfinnie/pushfile/pull/14)
+* [screenshot.jfin.us (Own Project)](https://github.com/joshfinnie/screenshot.jfin.us/pull/2)
+* [This Website](https://github.com/joshfinnie/joshfinnie.com/pull/16)
 * Pull Request 4 (To be updated when PR is submitted.)
 * Pull Request 5 (To be updated when PR is submitted.)

@@ -1,11 +1,5 @@
 module.exports = {
-  siteMetadata: {
-    title: 'beta.joshfinnie.com',
-    description: 'The personal/professional page of Josh Finnie.',
-    siteUrl: 'https://beta.joshfinnie.com',
-  },
   plugins: [
-    'gatsby-plugin-feed',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',

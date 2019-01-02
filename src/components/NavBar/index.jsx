@@ -10,9 +10,6 @@ const NavBar = () => (
         <a className="p-2 text-muted" href="/about">About</a>
         <a className="p-2 text-muted" href="/talks">Talks</a>
       </nav>
-      <div>
-        <p>Hey</p>
-      </div>
     </div>
   </div>
 );

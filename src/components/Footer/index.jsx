@@ -7,6 +7,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <footer>
+      <hr />
       <div className="container">
         <div className="row">
           <div className="col-12 mx-auto">

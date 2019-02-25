@@ -11,6 +11,7 @@ const Post = ({ data }) => {
   const today = new Date();
   const postDate = new Date(post.frontmatter.date);
   const YEAR = 31536000000;
+  const imgURL = _.get(post.frontmatter, 'image.publicURL');
   let header;
   if (today - postDate > YEAR * 5 && post.frontmatter.expires) {
     header = (
@@ -45,6 +46,7 @@ const Post = ({ data }) => {
     <Layout>
       <div>
         { header }
+        <img src={imgURL} className="rounded-lg" />
         <div className="pt-3" dangerouslySetInnerHTML={{ __html: post.html }} />
         <Byline post={post} />
       </div>
@@ -57,6 +59,9 @@ Post.propTypes = {
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        image: PropTypes.shape({
+          publicURL: PropTypes.string
+        })
       }),
       html: PropTypes.string,
     }),
@@ -74,6 +79,9 @@ export const query = graphql`
         date
         tags
         expires
+        image {
+          publicURL
+        }
       }
     }
   }

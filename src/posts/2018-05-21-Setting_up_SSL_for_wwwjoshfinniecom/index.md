@@ -14,9 +14,6 @@ expires: true
 
 ---
 
-<img src="./padlock.jpg" class="img-fluid" alt="padlock">
-<p class="unsplash mb-4">Photo by Micah Williams on <a href="https://unsplash.com/">Unsplash</a></p>
-
 As you might have heard, Google Chrome is taking some very bold steps forward in making sure that the internet is a safe and secure place. In their attempt to do this, they are making much more of an effort to point out when websites are not secured through SSL. In this blog post, I am just going to document my process to use [Let's Encrypt](https://letsencrypt.org/) to generate a free SSL certificate and how I load it on Cloudfront.
 
 But first, let me describe this blog in a bit more detail. I currently use [Pelican](http://docs.getpelican.com/en/stable/) as a static site generator which then I push to S3 with Cloudfront as my CDN. The workflow that comes with Pelican is perfectly set up for this, but adding the SSL certificate process was a bit more work.
@@ -75,3 +72,5 @@ The paths to the `certificate-body`, `private-key` and `certificate-chain` are a
 ### Conclusion
 
 So, overall, this process is not to bad. The only huge drawback with this current setup is that Let's Encrypt only issues SSL certificates that are valid for 90 days; this means you are repeating this process every 3 months. It's awesome since the SSL certificates are free, but it is a bit more work than just getting a SSL certificate from a company this issues year certificates. Luckily, with the steps outlined in this blog post the whole process takes 15 minutes. I hope this helps anyone that has a static site hosting on S3 through Cloundfront. And as always, feel free to contact me on [Twitter](https://twitter.com/joshfinnie) with any comments.
+
+<p class="unsplash mb-4 text-center">Photo by Micah Williams on <a href="https://unsplash.com/">Unsplash</a></p>

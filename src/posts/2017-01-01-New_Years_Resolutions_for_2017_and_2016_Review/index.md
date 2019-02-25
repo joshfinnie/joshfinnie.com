@@ -13,9 +13,6 @@ expires: false
 
 ---
 
-<img src="./2017.jpg" class="img-fluid" alt="2017">
-<p class="unsplash mb-4">Photo by freestock.org on <a href="https://unsplash.com/">Unsplash</a></p>
-
 It's that time of year again, time to set forth upon the new year and cast my hopes and dreams for 2017. It is also time to reflect on how I did in 2016. And, after reviewing 2016's resolutions, I can say this year is going to be more focused; I am not going to be as ambitious with my resolutions as I was last year. So, with that, let's see my 2017 resolutions...
 
 ## My 2017 Resolutions
@@ -45,3 +42,5 @@ It's that time of year again, time to set forth upon the new year and cast my ho
 ## Conclusion
 
 Well, 4 out of 15 goals completed. That's terrible. To be honest with everyone, I completely forgot about this list and my goals for 2016. This is a huge problem, so for 2017, we are cutting it back, way back! Sure, I am not thrilled with my performance for 2016, but you have to roll with the punches. To 2017!
+
+<p class="unsplash mb-4 text-center">Photo by freestock.org on <a href="https://unsplash.com/">Unsplash</a></p>

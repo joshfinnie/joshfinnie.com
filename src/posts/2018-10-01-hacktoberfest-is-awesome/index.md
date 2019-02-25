@@ -6,12 +6,10 @@ tags:
   - "open-source"
   - "hacktoberfest"
 path: "/blog/hacktoberfest-is-awesome"
+image: "./hacktoberfest-2018.jpg"
 expires: false
 
 ---
-
-<img src="./hacktoberfest-2018.jpg" class="img-fluid" alt="Hacktoberfest 2018" />
-<p class="unsplash mb-4">Photo by DigitalOcean.</p>
 
 It's that time of year again. [Hacktoberfest](https://hacktoberfest.digitalocean.com/) has been announced, and I am THRILLED to do it again this year. For anyone who is not familiar with Hacktoberfest, it is a month long challenge to open 5 pull requests to any public repo on Github. The idea is to get more people active in the open-source community. And after trying it last year, I can say it's pretty cool.
 

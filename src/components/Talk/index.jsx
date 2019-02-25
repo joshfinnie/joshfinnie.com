@@ -3,25 +3,32 @@ import PropTypes from 'prop-types';
 
 const Talk = ({ talk }) => (
   <>
-    <h2 className="mb-3">
-      <a
-        href={talk.link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {talk.name}
-      </a>
-      {talk.lightning ? <i className="fa fa-bolt bolt pl-2" aria-hidden="true" /> : ''}
-      <a
-        href={talk.locationLink}
-        className="pl-5"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {talk.location}
-      </a>
-      <small className="pl-3">{talk.date}</small>
-    </h2>
+    <div class="card text-center">
+      <div class="card-body">
+        <a
+          href={talk.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h3 class="card-title">
+            {talk.name}
+            {talk.lightning ? <i className="fa fa-bolt bolt pl-2" aria-hidden="true" /> : ''}
+          </h3>
+        </a>
+        <p>
+          <i className="fa fa-city" aria-hidden="true" />
+          <a
+            href={talk.locationLink}
+            className="pl-2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {talk.location}
+          </a>
+          <i className="fa fa-calendar-alt pl-5" aria-hidden="true" /><span className="pl-2">{talk.date}</span>
+        </p>
+      </div>
+    </div>
   </>
 );
 

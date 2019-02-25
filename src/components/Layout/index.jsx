@@ -11,7 +11,7 @@ import './prism.css';
 import './layout.css';
 
 const Layout = ({ children }) => (
-  <React.Fragment>
+  <>
     <Helmet
       title={config.title}
       meta={[
@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
       {children}
     </main>
     <Footer />
-  </React.Fragment>
+  </>
 );
 
 Layout.propTypes = {

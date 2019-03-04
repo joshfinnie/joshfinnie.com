@@ -1,6 +1,7 @@
-import _ from 'lodash';
 import React from 'react';
+
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { Link } from 'gatsby';
 
 import kebabCase from 'lodash/kebabCase';

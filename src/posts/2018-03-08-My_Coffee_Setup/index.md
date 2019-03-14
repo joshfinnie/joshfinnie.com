@@ -12,9 +12,6 @@ expires: false
 
 ---
 
-<img src="./coffee.jpg" class="img-fluid" alt="coffee" />
-<p class="unsplash mb-4">Photo by Mike Kenneally on <a href="https://unsplash.com/">Unsplash</a></p>
-
 <a id="top" class="article-anchor"></a>
 In this blog post I am going to do something a bit different. I am not going to talk about technology at all, but something far more important; how I recommend everyone makes coffee! Below are going to be some of the tools I have used for making coffee. If this blog post is not your thing, I am sorry and more tech posts will be coming in the future. Until then, sit back and enjoy some coffee making suggestions.
 
@@ -62,3 +59,5 @@ If you want my dream espresso setup go with this:
 
 
 If you have other suggestions or really hated this type of blog post, feel free to reach out to me on Twitter [@joshfinnie](https://twitter.com/joshfinnie). Thanks for reading!
+
+<p class="unsplash mb-4 text-center">Photo by Mike Kenneally on <a href="https://unsplash.com/">Unsplash</a></p>

@@ -16,9 +16,12 @@ export default function About() {
           denotes Lightning Talks)
         </h4>
         {data.talks
-          .sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()))
-          .map(talk => (<Talk talk={talk} key={talk.name} />))
-        }
+          .sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+          )
+          .map((talk) => (
+            <Talk talk={talk} key={talk.name} />
+          ))}
       </div>
     </Layout>
   );

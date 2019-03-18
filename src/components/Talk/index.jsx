@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Talk = ({ talk }) => (
+const Talk = ({talk}) => (
   <>
     <h2 className="mb-3">
-      <a
-        href={talk.link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href={talk.link} target="_blank" rel="noopener noreferrer">
         {talk.name}
       </a>
-      {talk.lightning ? <i className="fa fa-bolt bolt pl-2" aria-hidden="true" /> : ''}
+      {talk.lightning ? (
+        <i className="fa fa-bolt bolt pl-2" aria-hidden="true" />
+      ) : (
+        ''
+      )}
       <a
         href={talk.locationLink}
         className="pl-5"
@@ -25,7 +25,7 @@ const Talk = ({ talk }) => (
   </>
 );
 
-Talk.propType = {
+Talk.propTypes = {
   talk: PropTypes.shape({
     name: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
@@ -33,7 +33,7 @@ Talk.propType = {
     locationLink: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default Talk;

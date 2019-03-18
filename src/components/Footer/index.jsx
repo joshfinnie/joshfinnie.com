@@ -13,7 +13,10 @@ const Footer = () => {
           <div className="col-12 mx-auto">
             <p className="copyright text-muted">
               &copy; 2010 - {year}.
-              <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+              <a
+                rel="license"
+                href="http://creativecommons.org/licenses/by-nc-sa/3.0/"
+              >
                 <img
                   alt="Creative Commons License"
                   src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"

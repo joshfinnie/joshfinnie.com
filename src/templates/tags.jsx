@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import { Link, graphql } from 'gatsby';
+import {Link, graphql} from 'gatsby';
 
 import Layout from '../components/Layout';
 
-const Tags = ({ pageContext, data }) => {
-  const { tag } = pageContext;
-  const { edges, totalCount } = data.allMarkdownRemark;
+const Tags = ({pageContext, data}) => {
+  const {tag} = pageContext;
+  const {edges, totalCount} = data.allMarkdownRemark;
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? '' : 's'
   } tagged with '${tag}'`;
@@ -23,8 +23,8 @@ const Tags = ({ pageContext, data }) => {
               <Link to="/tags">Back to all tags</Link>
             </div>
             <div className="list-group">
-              {edges.map(({ node }) => {
-                const { path, title } = node.frontmatter;
+              {edges.map(({node}) => {
+                const {path, title} = node.frontmatter;
                 return (
                   <Link
                     to={path}
@@ -70,8 +70,8 @@ export const pageQuery = graphql`
   query($tag: String) {
     allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      sort: {fields: [frontmatter___date], order: DESC}
+      filter: {frontmatter: {tags: {in: [$tag]}}}
     ) {
       totalCount
       edges {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -12,7 +13,10 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
           <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -27,8 +31,8 @@ export default class HTML extends React.Component {
           {this.props.preBodyComponents}
           <div
             key={`body`}
-            id='___gatsby'
-            dangerouslySetInnerHTML={{ __html: this.props.body }}
+            id="___gatsby"
+            dangerouslySetInnerHTML={{__html: this.props.body}}
           />
           {this.props.postBodyComponents}
         </body>

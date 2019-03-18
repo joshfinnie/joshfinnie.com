@@ -10,13 +10,13 @@ import config from '../../utils/config';
 import './prism.css';
 import './layout.css';
 
-const Layout = ({ children }) => (
+const Layout = ({children}) => (
   <React.Fragment>
     <Helmet
       title={config.title}
       meta={[
-        { name: 'description', content: config.description },
-        { name: 'keywords', content: config.keywords },
+        {name: 'description', content: config.description},
+        {name: 'keywords', content: config.keywords},
       ]}
     >
       <html lang="en" />

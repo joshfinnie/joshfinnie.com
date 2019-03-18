@@ -3,12 +3,12 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { graphql } from 'gatsby';
+import {graphql} from 'gatsby';
 
 import Byline from '../components/Byline';
 import Layout from '../components/Layout';
 
-const Post = ({ data }) => {
+const Post = ({data}) => {
   const post = data.markdownRemark;
   const today = new Date();
   const postDate = new Date(post.frontmatter.date);
@@ -42,14 +42,14 @@ const Post = ({ data }) => {
       </>
     );
   } else {
-    header = (<h1 className="text-center pt-3">{post.frontmatter.title}</h1>);
+    header = <h1 className="text-center pt-3">{post.frontmatter.title}</h1>;
   }
   return (
     <Layout>
       <div>
-        { header }
-        <img src={imgURL} className="rounded-lg" />
-        <div className="pt-3" dangerouslySetInnerHTML={{ __html: post.html }} />
+        {header}
+        <img src={imgURL} className="rounded-lg" alt="" />
+        <div className="pt-3" dangerouslySetInnerHTML={{__html: post.html}} />
         <Byline post={post} />
       </div>
     </Layout>
@@ -62,8 +62,8 @@ Post.propTypes = {
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
         image: PropTypes.shape({
-          publicURL: PropTypes.string
-        })
+          publicURL: PropTypes.string,
+        }),
       }),
       html: PropTypes.string,
     }),
@@ -74,7 +74,7 @@ export default Post;
 
 export const query = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path  }  }) {
+    markdownRemark(frontmatter: {path: {eq: $path}}) {
       html
       frontmatter {
         title

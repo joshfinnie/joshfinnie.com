@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
+import {graphql} from 'gatsby';
 
 import Layout from '../components/Layout';
 import PostLink from '../components/PostLink';
 
-const IndexPage = ({ data }) => (
+const IndexPage = ({data}) => (
   <Layout>
     <main role="main" className="container">
       <div className="row">
         <div className="col-md-12 blog-main">
-          {data.allMarkdownRemark.edges.map(({ node }) => (
+          {data.allMarkdownRemark.edges.map(({node}) => (
             <PostLink post={node} key={node.id} />
           ))}
         </div>
@@ -33,7 +33,7 @@ IndexPage.propTypes = {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
       totalCount
       edges {
         node {

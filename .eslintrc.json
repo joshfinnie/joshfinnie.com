@@ -1,6 +1,7 @@
 {
   "root": true,
-  "extends": ["airbnb"],
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "env": {
     "browser": true
   },
@@ -11,10 +12,9 @@
     "import/core-modules": ["prop-types", "react"]
   },
   "rules": {
-    "max-len": [
-      "error",
-      120
-    ],
+    "max-len": ["error", 120],
+    "object-curly-spacing": ["error", "never"],
+    "arrow-parens": ["error", "always"],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

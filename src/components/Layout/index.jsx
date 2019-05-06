@@ -7,11 +7,8 @@ import Header from '../Header';
 import NavBar from '../NavBar';
 import config from '../../utils/config';
 
-import './prism.css';
-import './layout.css';
-
 const Layout = ({children}) => (
-  <React.Fragment>
+  <>
     <Helmet
       title={config.title}
       meta={[
@@ -21,15 +18,13 @@ const Layout = ({children}) => (
     >
       <html lang="en" />
     </Helmet>
-    <div className="sticky-top header">
+    <div className="container">
       <Header />
       <NavBar />
+      <main role="main">{children}</main>
+      <Footer />
     </div>
-    <main role="main" className="container">
-      {children}
-    </main>
-    <Footer />
-  </React.Fragment>
+  </>
 );
 
 Layout.propTypes = {

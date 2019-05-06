@@ -18,7 +18,7 @@ const TagsPage = ({
       <div className="list-group pt-3">
         {group
           .sort((a, b) => b.totalCount - a.totalCount)
-          .map((tag) => {
+          .map(tag => {
             const tagBadge = `${tag.totalCount} post${
               tag.totalCount === 1 ? '' : 's'
             }`;
@@ -26,8 +26,7 @@ const TagsPage = ({
               <Link
                 key={tag}
                 to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                className="list-group-item list-group-item-action"
-              >
+                className="list-group-item list-group-item-action">
                 {tag.fieldValue}
                 <span className="badge badge-primary badge-pill ml-2">
                   {tagBadge}

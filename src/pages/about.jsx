@@ -6,9 +6,9 @@ import resume from '../assets/docs/finnie-resume.pdf';
 
 const AboutPage = () => (
   <Layout>
-    <div>
-      <h1 className="text-center pt-3">About</h1>
-      <p className="pt-3">
+    <div className="about-data">
+      <h1 className="text-center">About</h1>
+      <p>
         I am an Senior Software Maven at{' '}
         <a href="http://trackmaven.com/">TrackMaven</a> based in Washington, DC
         where I use Javascript and Python.
@@ -59,7 +59,7 @@ const AboutPage = () => (
         <strong>Other Interests:</strong> Coffee, Cycling, Photography, Amateur
         Radio (<a href="http://www.qrz.com/db/W1OFZ">W1OFZ</a>)
       </p>
-      <p>
+      <p className="text-center">
         <a href={resume}>Download full resume (PDF)</a>.
       </p>
       <h2>PGP Public Key</h2>

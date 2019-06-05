@@ -17,41 +17,42 @@ const Post = ({data}) => {
   let header;
   if (today - postDate > YEAR * 5 && post.frontmatter.expires) {
     header = (
-      <>
-        <h1 className="text-center text-danger pt-3">
-          {post.frontmatter.title}
-        </h1>
+      <span className="post-header">
+        <h1 className="text-center text-danger">{post.frontmatter.title}</h1>
         <p className="text-center text-danger">
-          <i className="fas fa-exclamation-triangle mr-2" />
+          <i className="fas fa-exclamation-triangle inline-icon" />
           This blog post is more than 5 years old and most likely out of date!
-          <i className="fas fa-exclamation-triangle ml-2" />
+          <i className="fas fa-exclamation-triangle inline-icon" />
         </p>
-      </>
+      </span>
     );
   } else if (today - postDate > YEAR && post.frontmatter.expires) {
     header = (
-      <>
-        <h1 className="text-center text-warning pt-3">
-          {post.frontmatter.title}
-        </h1>
+      <span className="post-header">
+        <h1 className="text-center text-warning">{post.frontmatter.title}</h1>
         <p className="text-center text-warning">
-          <i className="fas fa-exclamation-triangle mr-2" />
+          <i className="fas fa-exclamation-triangle inline-icon" />
           This blog post is more than 1 year old and could be out of date!
-          <i className="fas fa-exclamation-triangle ml-2" />
+          <i className="fas fa-exclamation-triangle inline-icon" />
         </p>
-      </>
+      </span>
     );
   } else {
-    header = <h1 className="text-center pt-3">{post.frontmatter.title}</h1>;
+    header = (
+      <span className="post-header">
+        <h1 className="text-center">{post.frontmatter.title}</h1>
+      </span>
+    );
   }
   return (
     <Layout>
-      <div>
-        {header}
-        <img src={imgURL} className="rounded-lg" alt="" />
-        <div className="pt-3" dangerouslySetInnerHTML={{__html: post.html}} />
-        <Byline post={post} />
-      </div>
+      <img src={imgURL} className="round-img" alt="" />
+      {header}
+      <Byline post={post} />
+      <div
+        className="post-data"
+        dangerouslySetInnerHTML={{__html: post.html}}
+      />
     </Layout>
   );
 };

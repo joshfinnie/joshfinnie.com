@@ -8,9 +8,9 @@ import * as data from '../data/talks.json';
 export default function About() {
   return (
     <Layout>
-      <div>
-        <h1 className="text-center pt-3">Talks</h1>
-        <h4 className="pt-3 pb-2">
+      <div className="talks-data">
+        <h1 className="text-center">Talks</h1>
+        <h4>
           (
           <i className="fa fa-bolt bolt pr-2" aria-hidden="true" />
           denotes Lightning Talks)

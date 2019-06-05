@@ -15,30 +15,25 @@ const Tags = ({pageContext, data}) => {
 
   return (
     <Layout>
-      <main role="main" className="container">
-        <div className="row">
-          <div className="col-md-12 pb-5">
-            <h1 className="pt-3">{tagHeader}</h1>
-            <div className="mb-3">
-              <Link to="/tags">Back to all tags</Link>
-            </div>
-            <div className="list-group">
-              {edges.map(({node}) => {
-                const {path, title} = node.frontmatter;
-                return (
-                  <Link
-                    to={path}
-                    className="list-group-item list-group-item-action"
-                    key={node.id}
-                  >
-                    {title}
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </main>
+      <div className="tags-data">
+        <h1 className="pt-3">{tagHeader}</h1>
+        <ul>
+          {edges.map(({node}) => {
+            const {path, title} = node.frontmatter;
+            return (
+              <li>
+                <Link
+                  to={path}
+                  className="list-group-item list-group-item-action"
+                  key={node.id}
+                >
+                  {title}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </Layout>
   );
 };

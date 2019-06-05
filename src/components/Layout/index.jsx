@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import Footer from '../Footer';
 import Header from '../Header';
 import NavBar from '../NavBar';
+
 import config from '../../utils/config';
 
 const Layout = ({children}) => (
@@ -21,7 +22,7 @@ const Layout = ({children}) => (
     <div className="container">
       <Header />
       <NavBar />
-      <main role="main">{children}</main>
+      {children}
       <Footer />
     </div>
   </>

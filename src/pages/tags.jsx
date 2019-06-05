@@ -18,17 +18,17 @@ const TagsPage = ({
       <ul className="column3">
         {group
           .sort((a, b) => b.totalCount - a.totalCount)
-          .map(tag => {
+          .map((tag) => {
             const tagBadge = `${tag.totalCount} post${
               tag.totalCount === 1 ? '' : 's'
             }`;
             return (
               <li>
                 <Link
-                    key={tag}
-                    to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                    className="list-group-item list-group-item-action">
-                    {tag.fieldValue} ({tagBadge})
+                  key={tag}
+                  to={`/tags/${kebabCase(tag.fieldValue)}/`}
+                  className="list-group-item list-group-item-action">
+                  {tag.fieldValue} ({tagBadge})
                 </Link>
               </li>
             );

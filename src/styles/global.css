@@ -283,6 +283,16 @@ footer {
   padding-bottom: 25px;
 }
 
+.about-data a, .byline a, .post-data a, .talks-data a, .tags-data a {
+  color: #0f99a3; 
+  text-decoration: none;
+}
+
+.about-data a:hover, .byline a:hover, .post-data a:hover, .talks-data a:hover, .tags-data a:hover {
+  color: #28838a;
+  text-decoration: underline;
+}
+
 .column3 {
   column-count: 3;
 }

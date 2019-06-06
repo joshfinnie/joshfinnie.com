@@ -73,4 +73,4 @@ The paths to the `certificate-body`, `private-key` and `certificate-chain` are a
 
 So, overall, this process is not to bad. The only huge drawback with this current setup is that Let's Encrypt only issues SSL certificates that are valid for 90 days; this means you are repeating this process every 3 months. It's awesome since the SSL certificates are free, but it is a bit more work than just getting a SSL certificate from a company this issues year certificates. Luckily, with the steps outlined in this blog post the whole process takes 15 minutes. I hope this helps anyone that has a static site hosting on S3 through Cloundfront. And as always, feel free to contact me on [Twitter](https://twitter.com/joshfinnie) with any comments.
 
-<p class="unsplash mb-4 text-center">Photo by Micah Williams on <a href="https://unsplash.com/">Unsplash</a></p>
+<p class="unsplash text-center">Photo by Micah Williams on <a href="https://unsplash.com/">Unsplash</a></p>

@@ -1,0 +1,400 @@
+/*
+ *    http://meyerweb.com/eric/tools/css/reset/ 
+ *    v2.0 | 20110126
+ *    License: none (public domain)
+ */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+ *     customized styles start here...
+ */
+
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Nunito:400,600,700');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+@import url('./prism.css');
+
+html {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  line-height: 1.5em;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  line-height: 1.5em;
+}
+
+img {
+  max-width: 100%;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+p code.language-text{
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+  background: white !important;
+  color: black !important;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 700;
+}
+h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.17em;
+  font-weight: 700;
+}
+h4 {
+  font-size: 1.12em;
+  font-weight: 600;
+}
+h5 {
+  font-size: .83em;
+  font-weight: 600;
+}
+h6 {
+  font-size: .75em;
+  font-weight: 600;
+}
+
+blockquote {
+  margin: 20px;
+  padding: 20px;
+  font-size: 20px;
+  color: #428bca;
+  background: #ccc;
+  border-left:5px solid #428bca;
+}
+
+blockquote p {
+  margin-bottom: 0;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 40px;
+}
+
+li {
+  line-height: 2em;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-warning {
+  color: #ffc107;
+}
+
+.twitter {
+  color: #1da1f2;
+}
+
+.github {
+  color: #4078c0;
+}
+
+.linkedin {
+  color: #0077b5;
+}
+
+.instagram {
+  color: #405de6;
+}
+
+.inline-icon {
+  margin: 0px 5px 0px 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+header {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .title {
+  padding-top: 10px;
+}
+
+header .title img {
+  max-width: 250px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-top: 3px solid #6c757d;
+  border-bottom: 3px solid #6c757d;
+}
+
+nav a {
+  text-decoration: none;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: #6c757d;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  padding: 10px;
+  border-top: 3px solid #6c757d;
+}
+
+.main {
+  padding: 10px;
+}
+
+.post {
+  display: grid;
+  grid-template-columns: 35% auto;
+  grid-template-rows: auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  padding: 10px;
+}
+
+.post p {
+  padding-top: 10px;
+}
+
+.post .info {
+  padding-top: 10px;
+}
+
+.post .icon {
+  padding-right: 5px;
+}
+
+.post .tag {
+  padding-right: 5px;
+}
+
+.post .tag a {
+  color: #0f99a3; 
+  text-decoration: none;
+}
+
+.post .tag a:hover {
+  color: #28838a;
+  text-decoration: underline;
+}
+
+.post .button {
+  border: none;
+  font: inherit;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px 30px 10px 30px;
+  margin-top: 25px;
+  background-color: #0f99a3; 
+  border: solid 1px transparent;
+  border-radius: 6px;
+}
+
+.post .button:hover {
+  background-color: #28838a;
+}
+
+.round-img {
+  border-radius: 15px !important;
+  margin: 10px 0px 10px 0px;
+}
+
+.about-data, .post-data, .talks-data, .tags-data {
+  max-width: 75ch;
+  margin: auto;
+  padding-bottom: 25px;
+}
+
+.about-data a, .byline a, .post-data a, .talks-data a, .tags-data a {
+  color: #0f99a3; 
+  text-decoration: none;
+}
+
+.about-data a:hover, .byline a:hover, .post-data a:hover, .talks-data a:hover, .tags-data a:hover {
+  color: #28838a;
+  text-decoration: underline;
+}
+
+.column3 {
+  column-count: 3;
+}
+
+.post-data h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-data h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-data h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-data h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-data h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-data h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-data p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about-data h1, .talks-data h1, .tags-data h1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.about-data h2, .talks-data h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about-data h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about-data h4, .talks-data h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about-data h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about-data h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about-data p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-header {
+  padding: 1em;
+}
+
+.post-header p {
+  margin-bottom: 0;
+}
+
+.byline {
+  max-width: 75ch;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.byline .icon {
+  padding: 5px;
+}
+
+.post-header p {
+  padding-top: 10px;
+}
+
+.talks-data i {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.talk-data {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

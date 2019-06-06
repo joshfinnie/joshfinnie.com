@@ -2,27 +2,37 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Talk = ({talk}) => (
-  <>
-    <h2 className="mb-3">
-      <a href={talk.link} target="_blank" rel="noopener noreferrer">
-        {talk.name}
-      </a>
+  <div className="talk-data">
+    <h2>
+      {talk.link
+        ? (
+          <a href={talk.link} target="_blank" rel="noopener noreferrer">
+            {talk.name}
+          </a>
+        ) : (
+          <>{talk.name}</>
+        )
+      }
       {talk.lightning ? (
         <i className="fa fa-bolt bolt pl-2" aria-hidden="true" />
       ) : (
         ''
       )}
+    </h2>
+    <p>
+      <i class="far fa-building"></i>
       <a
         href={talk.locationLink}
-        className="pl-5"
         target="_blank"
         rel="noopener noreferrer"
       >
         {talk.location}
       </a>
-      <small className="pl-3">{talk.date}</small>
-    </h2>
-  </>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i className="fas fa-calendar-alt icon" />
+      {talk.date}
+    </p>
+  </div>
 );
 
 Talk.propTypes = {

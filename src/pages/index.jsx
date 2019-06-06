@@ -7,14 +7,10 @@ import PostLink from '../components/PostLink';
 
 const IndexPage = ({data}) => (
   <Layout>
-    <main role="main" className="container">
-      <div className="row">
-        <div className="col-md-12 blog-main">
-          {data.allMarkdownRemark.edges.map(({node}) => (
-            <PostLink post={node} key={node.id} />
-          ))}
-        </div>
-      </div>
+    <main role="main" className="main">
+      {data.allMarkdownRemark.edges.map(({node}) => (
+        <PostLink post={node} key={node.id} />
+      ))}
     </main>
   </Layout>
 );

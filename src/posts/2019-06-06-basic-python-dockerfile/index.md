@@ -16,14 +16,14 @@ A little while back I read an article sharing this person's basic `Dockerfile` w
 
 So without much more ado, here is my basic `Dockerfile` I use for Python Projects.
 
-```
+```dockerfile
 FROM python:3.6-slim-stretch
 
 # Update to latest packages and add build-essential and python-dev
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
             build-essential=12.3 \
-            python-dev=2.7.13-2 && \
+            python3-dev=3.5.3-1 && \
     rm -fr /var/lib/apt/lists/*
 
 # Install Dumb Init

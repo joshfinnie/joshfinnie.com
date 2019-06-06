@@ -13,9 +13,9 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
-    <div>
-      <h1 className="text-center pt-3">Tags</h1>
-      <div className="list-group pt-3">
+    <div className="tags-data">
+      <h1 className="text-center">Tags</h1>
+      <ul className="column3">
         {group
           .sort((a, b) => b.totalCount - a.totalCount)
           .map((tag) => {
@@ -23,19 +23,17 @@ const TagsPage = ({
               tag.totalCount === 1 ? '' : 's'
             }`;
             return (
-              <Link
-                key={tag}
-                to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                className="list-group-item list-group-item-action"
-              >
-                {tag.fieldValue}
-                <span className="badge badge-primary badge-pill ml-2">
-                  {tagBadge}
-                </span>
-              </Link>
+              <li>
+                <Link
+                  key={tag}
+                  to={`/tags/${kebabCase(tag.fieldValue)}/`}
+                  className="list-group-item list-group-item-action">
+                  {tag.fieldValue} ({tagBadge})
+                </Link>
+              </li>
             );
           })}
-      </div>
+      </ul>
     </div>
   </Layout>
 );

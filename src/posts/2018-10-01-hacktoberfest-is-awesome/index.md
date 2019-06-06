@@ -19,7 +19,7 @@ You can get the gist of what Hacktoberfest is about on their website, but I just
 
 Last year I was able to complete 5 pull-requests to open-source projects, unfortunately 2 of them were to my own open-source projects and this year I really want to make an effort to contribute to 5 unique open-source projects I do not control. Check back here for my progress!
 
-# Open Source Pull Requests
+## Open Source Pull Requests
 
 * [Pushfile (Own Project)](https://github.com/joshfinnie/pushfile/pull/14)
 * [screenshot.jfin.us (Own Project)](https://github.com/joshfinnie/screenshot.jfin.us/pull/2)

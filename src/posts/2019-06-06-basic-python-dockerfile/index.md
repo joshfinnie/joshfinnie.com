@@ -47,7 +47,7 @@ ENTRYPOINT ["dumb-init", "--"]
 
 ## Special Considerations
 
-There are two small things that I do want to point out to everyone. First, I still use Python 3.6 as my go-to Python. I am sure I will make the switch soon, but for now this version still seems right to me. Second, I use an application called `dumb-init`. [Dumb Init](https://github.com/Yelp/dumb-init) has been something that I have been adding to my Docker containers since day one. Maybe we are past the need for it, but I still like teh comfort it brings me. 
+There are two small things that I do want to point out to everyone. First, I still use Python 3.6 as my go-to Python. I am sure I will make the switch soon, but for now this version still seems right to me. Second, I use an application called `dumb-init`. [Dumb Init](https://github.com/Yelp/dumb-init) has been something that I have been adding to my Docker containers since day one. Maybe we are past the need for it, but I still like the comfort it brings me. 
 
 > dumb-init is a simple process supervisor and init system designed to run as PID 1 inside minimal container environments (such as Docker). It is deployed as a small, statically-linked binary written in C.
 

@@ -16,7 +16,7 @@ A little while back I read an article sharing this person's basic `Dockerfile` w
 
 So without much more ado, here is my basic `Dockerfile` I use for Python Projects.
 
-```
+```docker
 FROM python:3.6-slim-stretch
 
 # Update to latest packages and add build-essential and python-dev

@@ -7,6 +7,7 @@ import {graphql} from 'gatsby';
 
 import Byline from '../components/Byline';
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
 const Post = ({data}) => {
   const post = data.markdownRemark;
@@ -46,6 +47,11 @@ const Post = ({data}) => {
   }
   return (
     <Layout>
+      <SEO
+        title={post.frontmatter.title}
+        image={imgURL}
+        ogType="article"
+      />
       <img src={imgURL} className="round-img" alt="" />
       {header}
       <Byline post={post} />

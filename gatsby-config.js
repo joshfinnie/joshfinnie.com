@@ -1,4 +1,9 @@
 module.exports = {
+  siteMetadata: {
+    title: 'www.joshfinnie.com',
+    author: 'Josh Finnie',
+    description: 'The personal/professional page of Josh Finnie.',
+  },
   plugins: [
     'gatsby-plugin-react-helmet',
     {

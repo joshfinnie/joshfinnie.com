@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {Link, graphql} from 'gatsby';
 
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
 const Tags = ({pageContext, data}) => {
   const {tag} = pageContext;
@@ -15,6 +16,7 @@ const Tags = ({pageContext, data}) => {
 
   return (
     <Layout>
+      <SEO title={tagHeader} />
       <div className="tags-data">
         <h1 className="pt-3">{tagHeader}</h1>
         <ul>

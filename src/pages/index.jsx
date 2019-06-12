@@ -4,9 +4,11 @@ import {graphql} from 'gatsby';
 
 import Layout from '../components/Layout';
 import PostLink from '../components/PostLink';
+import SEO from '../components/SEO';
 
 const IndexPage = ({data}) => (
   <Layout>
+    <SEO />
     <main role="main" className="main">
       {data.allMarkdownRemark.edges.map(({node}) => (
         <PostLink post={node} key={node.id} />

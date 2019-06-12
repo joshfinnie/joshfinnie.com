@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 import Talk from '../components/Talk';
 
 import * as data from '../data/talks.json';
@@ -8,6 +9,7 @@ import * as data from '../data/talks.json';
 export default function About() {
   return (
     <Layout>
+      <SEO title="Talks" />
       <div className="talks-data">
         <h1 className="text-center">Talks</h1>
         <h4>

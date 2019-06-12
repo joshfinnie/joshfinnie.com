@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import {useStaticQuery, graphql} from 'gatsby';
 
+import config from '../../utils/config';
+
 const SEO = ({
   description,
   lang,
@@ -35,13 +37,13 @@ const SEO = ({
   const ogImage = image
     ? {
         property: `og:image`,
-        content: image,
+        content: config.siteUrl + image,
       }
     : null;
   const ogImageUrl = image
     ? {
         property: `og:image:url`,
-        content: image,
+        content: config.siteUrl + image,
       }
     : null;
 

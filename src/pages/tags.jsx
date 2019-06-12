@@ -6,6 +6,7 @@ import {Link, graphql} from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
 const TagsPage = ({
   data: {
@@ -13,6 +14,7 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
+    <SEO title="Tags" />
     <div className="tags-data">
       <h1 className="text-center">Tags</h1>
       <ul className="column3">

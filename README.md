@@ -3,6 +3,8 @@
 
 Personal Homepage of Josh Finnie.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0b679cee-412d-4608-b2ad-f132f2e5d7ad/deploy-status)](https://app.netlify.com/sites/awesome-tereshkova-b52194/deploys)
+
 
 ### Setup & Develop
 

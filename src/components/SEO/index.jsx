@@ -79,7 +79,7 @@ const SEO = ({
         },
         {
           name: `twitter:creator`,
-          content: `@irreverentmike`,
+          content: `@joshfinnie`,
         },
         {
           name: `twitter:description`,
@@ -117,13 +117,14 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [
-    'gatsby',
-    'minimal',
-    'starter',
     'blog',
-    'theme',
-    'dark',
-    'light',
+    'programming',
+    'javascript',
+    'python',
+    'node',
+    'react',
+    'django',
+    'gatsby',
     'personal site',
   ],
 };

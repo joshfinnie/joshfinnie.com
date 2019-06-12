@@ -47,11 +47,7 @@ const Post = ({data}) => {
   }
   return (
     <Layout>
-      <SEO
-        title={post.frontmatter.title}
-        image={imgURL}
-        ogType="article"
-      />
+      <SEO title={post.frontmatter.title} image={imgURL} ogType="article" />
       <img src={imgURL} className="round-img" alt="" />
       {header}
       <Byline post={post} />

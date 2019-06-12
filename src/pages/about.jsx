@@ -3,9 +3,11 @@ import React from 'react';
 
 import Layout from '../components/Layout';
 import resume from '../assets/docs/finnie-resume.pdf';
+import SEO from '../components/SEO';
 
 const AboutPage = () => (
   <Layout>
+    <SEO title="About Page" />
     <div className="about-data">
       <h1 className="text-center">About</h1>
       <p>

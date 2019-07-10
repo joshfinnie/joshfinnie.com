@@ -8,7 +8,7 @@ tags:
   - "open-source"
   - "programming"
 path: "/blog/new-years-resolutions-for-2016-and-2015-review"
-expires: true
+expires: false
 
 ---
 

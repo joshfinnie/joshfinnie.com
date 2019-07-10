@@ -31,10 +31,9 @@ const AboutPage = () => (
         <li>Tweet PNG (Currently not working...)</li>
       </ul>
       <p>
-        <a href="https://github.com/joshfinnie/">
-          Other open-source projects found on Github
+        <a href="https://github.com/joshfinnie?tab=repositories">
+          Other open-source projects found on Github.
         </a>
-        .
       </p>
       <h2>Resume</h2>
       <p>

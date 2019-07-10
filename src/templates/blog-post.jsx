@@ -7,6 +7,7 @@ import {graphql} from 'gatsby';
 
 import Byline from '../components/Byline';
 import Layout from '../components/Layout';
+import Readtime from '../components/Readtime';
 import SEO from '../components/SEO';
 
 const Post = ({data}) => {
@@ -51,6 +52,7 @@ const Post = ({data}) => {
       <img src={imgURL} className="round-img" alt="" />
       {header}
       <Byline post={post} />
+      <Readtime words={post.wordCount.words} />
       <div
         className="post-data"
         dangerouslySetInnerHTML={{__html: post.html}}
@@ -87,6 +89,9 @@ export const query = graphql`
         image {
           publicURL
         }
+      }
+      wordCount {
+        words
       }
     }
   }

@@ -1,7 +1,7 @@
 ---
 
 title: "My Basic isort Configuration"
-date: "2019-08-13"
+date: "2019-08-20"
 tags:
   - "python"
   - "tooling"

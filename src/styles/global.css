@@ -288,6 +288,10 @@ footer {
   text-decoration: none;
 }
 
+.about-data h2 {
+  padding-top: 10px;
+}
+
 .about-data a:hover, .byline a:hover, .post-data a:hover, .talks-data a:hover, .tags-data a:hover {
   color: #28838a;
   text-decoration: underline;

@@ -7,43 +7,40 @@ import SEO from '../components/SEO';
 
 const AboutPage = () => (
   <Layout>
-    <SEO title="About Page" />
+    <SEO title="About" />
     <div className="about-data">
       <h1 className="text-center">About</h1>
       <p>
-        I am an Senior Software Maven at{' '}
-        <a href="http://trackmaven.com/">TrackMaven</a> based in Washington, DC
-        where I use Javascript and Python.
+        I am an Senior Software Engineer at <a href="https://pbs.org/">PBS</a> where I can be found coding in Python and Javascript.
       </p>
       <h2>Projects</h2>
       <ul>
         <li>
-          <a href="https://www.beerledge.com/ledges/">BeerLedge</a>
+          <a href="https://www.beerledge.com/ledges/" target="_blank">BeerLedge</a>
         </li>
         <li>
-          <a href="https://www.npmjs.org/package/pushfile">Pushfile</a>
+          <a href="https://www.npmjs.org/package/pushfile" target="_blank">Pushfile</a>
         </li>
         <li>
-          <a href="http://www.howoldisthismetrocar.com">
+          <a href="http://www.howoldisthismetrocar.com" target="_blank">
             How Old is this Metro Car?
           </a>
         </li>
         <li>Tweet PNG (Currently not working...)</li>
       </ul>
       <p>
-        <a href="https://github.com/joshfinnie?tab=repositories">
+        <a href="https://github.com/joshfinnie?tab=repositories" target="_blank">
           Other open-source projects found on Github.
         </a>
       </p>
       <h2>Resume</h2>
       <p>
-        <strong>Experience:</strong> Senior Software Maven (Promoted from
-        Software Maven) &#8211; TrackMaven, Application Developer &#8211;
-        Koansys, LLC., Trainer/Plan Coordination Consultant &#8211; Aetna
+        <strong>Experience:</strong> Senior Software Engineer &#8211; PBS | Senior Software Maven (Promoted from
+        Software Maven) &#8211; TrackMaven by Skyword | Application Developer &#8211;
+        Koansys, LLC.
       </p>
       <p>
-        <strong>Languages:</strong> Javascript (Node, Angular, React, jQuery),
-        Python (Django, Flask, Pyramid)
+        <strong>Languages:</strong> Javascript (Node, Angular, React, jQuery), Python (Django, Flask, Pyramid)
       </p>
       <p>
         <strong>Databases:</strong> PostgreSQL, MongoDB, MySQL
@@ -53,15 +50,22 @@ const AboutPage = () => (
       </p>
       <p>
         <strong>Education:</strong> Classes towards a MS in Geography &#8211;
-        Central Connecticut State University, BA in Economics &amp; Minor in
+        Central Connecticut State University | BA in Economics &amp; Minor in
         Mathematics &#8211; University of Connecticut
       </p>
       <p>
         <strong>Other Interests:</strong> Coffee, Cycling, Photography, Amateur
-        Radio (<a href="http://www.qrz.com/db/W1OFZ">W1OFZ</a>)
+        Radio (<a href="http://www.qrz.com/db/W1OFZ" target="_blank">W1OFZ</a>)
       </p>
       <p className="text-center">
         <a href={resume}>Download full resume (PDF)</a>.
+      </p>
+      <h2>Colophon</h2>
+      <p>
+        This website is made using <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby.js</a> and I get most of my article images from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
+        All articles on this site are written under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Attribution-NonCommercial-ShareAlike 4.0 International Licences</a>.
+        Please review the license before attempting to reuse my work found here.
+        This site is currently ad free. If you'd like to support me, you can <a href="ko-fi.com/joshfinnie" target="_blank">buy me a coffee</a>!
       </p>
       <h2>PGP Public Key</h2>
       <div className="gatsby-highlight" data-language="bash">
@@ -176,7 +180,7 @@ const AboutPage = () => (
         </pre>
       </div>
       <p>
-        <a href="//keybase.io/joshfinnie/key.asc">Raw version</a>
+        <a href="//keybase.io/joshfinnie/key.asc" target="_blank">Raw version</a>
       </p>
     </div>
   </Layout>

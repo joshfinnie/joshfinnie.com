@@ -11,7 +11,7 @@
     "gatsby-plugin-react-helmet": "3.1.7",
     "gatsby-plugin-sharp": "2.2.11",
     "gatsby-remark-images": "3.1.19",
-    "gatsby-remark-prismjs": "3.3.9",
+    "gatsby-remark-prismjs": "3.3.13",
     "gatsby-source-filesystem": "2.1.18",
     "gatsby-transformer-remark": "2.6.19",
     "lodash": "4.17.15",

@@ -330,6 +330,7 @@ footer {
 .post-data p {
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: justify;
 }
 
 .about-data h1, .four-o-four-data h1, .talks-data h1, .tags-data h1 {
@@ -397,4 +398,8 @@ footer {
 .talk-data {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.post .info h1 {
+  padding-top: 25px;
 }

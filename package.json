@@ -9,7 +9,7 @@
     "gatsby-plugin-manifest": "2.2.5",
     "gatsby-plugin-offline": "3.0.6",
     "gatsby-plugin-react-helmet": "3.1.7",
-    "gatsby-plugin-sharp": "2.2.11",
+    "gatsby-plugin-sharp": "2.2.23",
     "gatsby-remark-images": "3.1.21",
     "gatsby-remark-prismjs": "3.3.13",
     "gatsby-source-filesystem": "2.1.22",

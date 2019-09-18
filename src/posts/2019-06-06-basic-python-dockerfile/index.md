@@ -6,6 +6,7 @@ tags:
   - "docker"
   - "python"
   - "open-source"
+  - "tutorial"
 path: "/blog/my-basic-python-dockerfile"
 image: "./python.jpg"
 expires: true

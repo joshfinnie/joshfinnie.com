@@ -5,6 +5,7 @@ date: "2019-08-20"
 tags:
   - "python"
   - "tooling"
+  - "coding"
   - "code-review"
 path: "/blog/my-basic-isort-configuration"
 image: "./sorting.jpg"

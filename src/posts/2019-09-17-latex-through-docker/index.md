@@ -71,4 +71,6 @@ all easier for us! I enjoy the isolation that Docker provides me for my developm
 Latex. I hope you find this an easy way to get latex installed on any computer that has Docker. Let me know if you have any
 question or comments, reach out to me on Twitter [@joshfinnie](https://twitter.com/joshfinnie).
 
+*NOTE*: You can also find all the required files on [Github](https://github.com/joshfinnie/latex-docker)
+
 <p class="unsplash text-center">Photo by <a href="https://unsplash.com/@roman_lazygeek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roman Mager</a> on <a href="https://unsplash.com/">Unsplash</a></p>

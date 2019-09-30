@@ -60,13 +60,6 @@ const AboutPage = () => (
       <p className="text-center">
         <a href={resume}>Download full resume (PDF)</a>.
       </p>
-      <h2>Colophon</h2>
-      <p>
-        This website is made using <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby.js</a> and I get most of my article images from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-        All articles on this site are written under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Attribution-NonCommercial-ShareAlike 4.0 International Licences</a>.
-        Please review the license before attempting to reuse my work found here.
-        This site is currently ad free. If you'd like to support me, you can <a href="ko-fi.com/joshfinnie" target="_blank">buy me a coffee</a>!
-      </p>
       <h2>PGP Public Key</h2>
       <div className="gatsby-highlight" data-language="bash">
         <pre className="language-bash">

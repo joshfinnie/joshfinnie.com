@@ -279,6 +279,7 @@ footer {
 
 .about-data, .four-o-four-data, .post-data, .talks-data, .tags-data {
   max-width: 75ch;
+  min-width: 90%;
   margin: auto;
   padding-bottom: 25px;
 }
@@ -286,6 +287,10 @@ footer {
 .about-data a, .byline a, .post-data a, .talks-data a, .tags-data a {
   color: #0f99a3; 
   text-decoration: none;
+}
+
+.about-data h2 {
+  padding-top: 10px;
 }
 
 .about-data a:hover, .byline a:hover, .post-data a:hover, .talks-data a:hover, .tags-data a:hover {

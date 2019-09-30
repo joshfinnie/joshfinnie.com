@@ -279,6 +279,7 @@ footer {
 
 .about-data, .four-o-four-data, .post-data, .talks-data, .tags-data {
   max-width: 75ch;
+  min-width: 90%;
   margin: auto;
   padding-bottom: 25px;
 }

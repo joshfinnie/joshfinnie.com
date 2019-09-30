@@ -16,17 +16,17 @@ import img6 from './img6.jpg';
 const PostLink = ({post}) => {
   const imgURL = get(post.frontmatter, 'image.publicURL');
   const imgArray = [
-    <img src={img1} alt={post.frontmatter.title} />,
-    <img src={img2} alt={post.frontmatter.title} />,
-    <img src={img3} alt={post.frontmatter.title} />,
-    <img src={img4} alt={post.frontmatter.title} />,
-    <img src={img5} alt={post.frontmatter.title} />,
-    <img src={img6} alt={post.frontmatter.title} />,
+    <img src={img1} className="round-img" alt={post.frontmatter.title} />,
+    <img src={img2} className="round-img" alt={post.frontmatter.title} />,
+    <img src={img3} className="round-img" alt={post.frontmatter.title} />,
+    <img src={img4} className="round-img" alt={post.frontmatter.title} />,
+    <img src={img5} className="round-img" alt={post.frontmatter.title} />,
+    <img src={img6} className="round-img" alt={post.frontmatter.title} />,
   ];
   return (
     <div className="post">
       {imgURL ? (
-        <img src={imgURL} alt={post.frontmatter.title} />
+        <img src={imgURL} className="round-img" alt={post.frontmatter.title} />
       ) : (
         imgArray[Math.floor(Math.random() * 6)]
       )}

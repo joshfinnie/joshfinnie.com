@@ -5,6 +5,7 @@ date: "2018-10-01"
 tags:
   - "open-source"
   - "hacktoberfest"
+  - "coding"
 path: "/blog/hacktoberfest-is-awesome"
 image: "./hacktoberfest-2018.jpg"
 expires: false

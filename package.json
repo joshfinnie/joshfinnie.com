@@ -16,7 +16,7 @@
     "gatsby-transformer-remark": "2.6.27",
     "lodash": "4.17.15",
     "prismjs": "1.17.1",
-    "react": "16.10.1",
+    "react": "16.10.2",
     "react-dom": "16.10.2",
     "react-helmet": "5.2.1"
   },

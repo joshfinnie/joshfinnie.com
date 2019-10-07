@@ -1,6 +1,14 @@
 {
   "talks": [
     {
+      "name": "Docker Strangelove",
+      "link": "https://slides.com/joshfinnie/django-district-docker",
+      "location": "Django District, etc.",
+      "locationLink": "https://www.meetup.com/django-district/",
+      "lightning": false,
+      "date": "10/02/2019"
+    },
+    {
       "name": "Flask, Zappa, and AWS Lambda",
       "link": "https://slides.com/joshfinnie/flask-aws-lambda-zappa#/",
       "location": "Django District, etc.",

@@ -30,7 +30,27 @@ Last year I was able to complete 5 pull-requests to open-source projects, unfort
 
 ## Open Source Pull Requests
 
-* &lt;LINK TO PR 1&gt;
-* &lt;LINK TO PR 2&gt;
-* &lt;LINK TO PR 3&gt;
-* &lt;LINK TO PR 4&gt;
+* Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/298">Update about page</a> to joshfinnie/joshfinnie.com
+* Submitted <a href="https://github.com/dekkerglen/CubeCobra/pull/548">Fix #541</a> to dekkerglen/CubeCobra
+* Submitted <a href="https://github.com/dekkerglen/CubeCobra/pull/561">moving ensureAuth to middleware file</a> to dekkerglen/CubeCobra
+* Submitted <a href="https://github.com/joshfinnie/docker-nvm/pull/1">updating to most recent packages</a> to joshfinnie/docker-nvm
+
+### Other PRs that have been submitted this month
+
+* Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/304">adding hacktoberfest post</a> to joshfinnie/joshfinnie.com
+* Submitted <a href="https://github.com/dekkerglen/CubeCobra/pull/576">Fixing p1p1 seeding</a> to dekkerglen/CubeCobra
+* Submitted <a href="https://github.com/dekkerglen/CubeCobra/pull/577">*WIP* updating the cube route to show a different way of doing it</a> to dekkerglen/CubeCobra
+* Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/315">adding docker talk</a> to joshfinnie/joshfinnie.com
+* Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/316">Manualy bump gatsby-plugin-sharp from 2.2.11 to 2.2.28</a> to joshfinnie/joshfinnie.com
+
+<!--
+## Conclusion
+
+This has to be the fastest I have ever completed Hacktoberfest. I actually had four PRs submitted to my profile by October 1st. I have to say it's pretty great
+to have a new side project to work on. [CubeCobra](https://github.com/dekkerglen/CubeCobra) has been a lot of fun to participate in, and you can see that 4 of my
+above PRs have been helping out on that repository. The other PRs are again, for my personal open-source projects. I am happy that I have successfully completed
+Hacktoberfest even without PRs to my own repositories, but it's also nice to see how many PRs I am actually opening again. It's been a long time for me to feel
+motivated to contribute to opne-source projects, so that's GREAT.
+
+What was your favorite contribution for Hacktoberfest, share them with me on Twitter [@joshfinnie](https://twitter.com/joshfinnie)!
+-->

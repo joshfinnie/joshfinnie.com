@@ -8,7 +8,7 @@ import SEO from '../components/SEO';
 const AboutPage = () => (
   <Layout>
     <SEO title="About" />
-    <div className="about-data">
+    <div className="main-div">
       <h1 className="text-center">About</h1>
       <p>
         I am an Senior Software Engineer at <a href="https://pbs.org/">PBS</a> where I can be found coding in Python and Javascript.
@@ -34,26 +34,26 @@ const AboutPage = () => (
         </a>
       </p>
       <h2>Resume</h2>
-      <p>
+      <p className="no-js">
         <strong>Experience:</strong> Senior Software Engineer &#8211; PBS | Senior Software Maven (Promoted from
         Software Maven) &#8211; TrackMaven by Skyword | Application Developer &#8211;
         Koansys, LLC.
       </p>
-      <p>
+      <p className="no-js">
         <strong>Languages:</strong> Javascript (Node, Angular, React, jQuery), Python (Django, Flask, Pyramid)
       </p>
-      <p>
+      <p className="no-js">
         <strong>Databases:</strong> PostgreSQL, MongoDB, MySQL
       </p>
-      <p>
+      <p className="no-js">
         <strong>SCM:</strong> GIT
       </p>
-      <p>
+      <p className="no-js">
         <strong>Education:</strong> Classes towards a MS in Geography &#8211;
         Central Connecticut State University | BA in Economics &amp; Minor in
         Mathematics &#8211; University of Connecticut
       </p>
-      <p>
+      <p className="no-js">
         <strong>Other Interests:</strong> Coffee, Cycling, Photography, Amateur
         Radio (<a href="http://www.qrz.com/db/W1OFZ" target="_blank">W1OFZ</a>)
       </p>

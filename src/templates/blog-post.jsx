@@ -52,7 +52,7 @@ const Post = ({data}) => {
       {header}
       <Byline post={post} />
       <div
-        className="post-data"
+        className="main-div"
         dangerouslySetInnerHTML={{__html: post.html}}
       />
     </Layout>

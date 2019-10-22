@@ -14,13 +14,13 @@ const Talk = ({talk}) => (
         )
       }
       {talk.lightning ? (
-        <i className="fa fa-bolt bolt pl-2" aria-hidden="true" />
+        <i className="fa fa-bolt bolt inline-icon" aria-hidden="true" />
       ) : (
         ''
       )}
     </h2>
     <p>
-      <i class="far fa-building"></i>
+      <i class="far fa-building inline-icon"></i>
       <a
         href={talk.locationLink}
         target="_blank"
@@ -29,7 +29,7 @@ const Talk = ({talk}) => (
         {talk.location}
       </a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <i className="fas fa-calendar-alt icon" />
+      <i className="fas fa-calendar-alt inline-icon" />
       {talk.date}
     </p>
   </div>

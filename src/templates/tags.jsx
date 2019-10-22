@@ -17,8 +17,8 @@ const Tags = ({pageContext, data}) => {
   return (
     <Layout>
       <SEO title={tagHeader} />
-      <div className="tags-data">
-        <h1 className="pt-3">{tagHeader}</h1>
+      <div className="main-div">
+        <h1 className="text-center">{tagHeader}</h1>
         <ul>
           {edges.map(({node}) => {
             const {path, title} = node.frontmatter;

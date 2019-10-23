@@ -15,7 +15,7 @@ const TagsPage = ({
 }) => (
   <Layout>
     <SEO title="Tags" />
-    <div className="tags-data">
+    <div className="main-div">
       <h1 className="text-center">Tags</h1>
       <ul className="column3">
         {group

@@ -52,7 +52,34 @@ table {
  *     customized styles start here...
  */
 
-@import url('https://fonts.googleapis.com/css?family=Inconsolata|Nunito:400,600,700');
+body {
+  --bg: white;
+  --textNormal: #222;
+  --blockQuoteText: #428bca;
+  --blockQuoteBG: #cccccc;
+  --link: #0f99a3;
+  --linkHover: #28838a;
+  --navLink: #6c757d;
+  --codeBG: #2d2d2d;
+  --hr: hsla(0, 0%, 0%, 0.2);
+
+}
+
+body.dark {
+  -webkit-font-smoothing: antialiased;
+
+  --bg: #2d2d2d;
+  --textNormal: rgba(255, 255, 255, 0.88);
+  --blockQuoteText: #428bca;
+  --blockQuoteBG: #cccccc;
+  --link: #0f99a3;
+  --linkHover: #28838a;
+  --navLink: #cccccc;
+  --codeBG: black;
+  --hr: hsla(0, 0%, 100%, 0.2);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Nunito:400,600,700,800');
 @import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 @import url('./prism.css');
 
@@ -66,60 +93,145 @@ html {
 
 body {
   line-height: 1.5em;
+  background-color: var(--bg);
+  color: var(--textNormal);
 }
 
 img {
   max-width: 100%;
 }
 
-code[class*="language-"], pre[class*="language-"] {
+code, pre, code[class*="language-"], pre[class*="language-"] {
+  font-family: 'Inconsolata', monospace;
   font-size: 16px;
   line-height: 1.5em;
+  background: var(--textNormal) !important;
+  color: var(--bg) !important;
 }
 
-p code.language-text{
+p code, p code.language-text{
+  padding: 0 !important;
   padding-right: 5px !important;
   padding-left: 5px !important;
-  background: white !important;
-  color: black !important;
+  background: var(--textNormal) !important;
+  color: var(--bg) !important;
+  white-space: nowrap !important;
+  font-size: 16px;
 }
 
 h1 {
   font-size: 2em;
   font-weight: 700;
+  margin: .67em 0
 }
+
 h2 {
   font-size: 1.5em;
   font-weight: 700;
+  margin: .75em 0
 }
+
 h3 {
   font-size: 1.17em;
   font-weight: 700;
+  margin: .83em 0
 }
-h4 {
-  font-size: 1.12em;
+
+p, h4 {
+  font-size: 1em;
   font-weight: 600;
+  margin: 1.12em 0
 }
+
 h5 {
   font-size: .83em;
   font-weight: 600;
+  margin: 1.5em 0
 }
+
 h6 {
   font-size: .75em;
   font-weight: 600;
+  margin: 1.67em 0
+}
+
+p {
+  text-align: justify;
+}
+
+cite {
+  font-style: italic;
 }
 
 blockquote {
-  margin: 20px;
-  padding: 20px;
+  margin: 1.12em;
+  padding: 1.12em;
   font-size: 20px;
-  color: #428bca;
-  background: #ccc;
-  border-left:5px solid #428bca;
+  color: var(--blockQuoteText);
+  background: var(--blockQuoteBG);
+  border-left:5px solid var(--blockQuoteText);
 }
 
 blockquote p {
   margin-bottom: 0;
+  margin-top: 0;
+}
+
+table {
+    margin: 1em 0;
+    width: 100%;
+}
+caption {
+  display: table-caption;
+  text-align: -webkit-center;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+th, td {
+  border: solid 1px #ccc;
+  padding: 5px 11px;
+  vertical-align: top;
+}
+
+th {
+  font-weight: bold;
+}
+
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tfoot {
+  display: table-footer-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  display: block;
+  margin-inline-start: 40px;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-left: 40px;
 }
 
 ul {
@@ -131,8 +243,41 @@ li {
   line-height: 2em;
 }
 
-strong {
-  font-weight: bold;
+b, strong {
+  font-weight: 800;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+small {
+  font-size: 80%;
+}
+
+u {
+  text-decoration: underline;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--linkHover);
+  text-decoration: underline;
 }
 
 .text-center {
@@ -151,22 +296,6 @@ strong {
   color: #ffc107;
 }
 
-.twitter {
-  color: #1da1f2;
-}
-
-.github {
-  color: #4078c0;
-}
-
-.linkedin {
-  color: #0077b5;
-}
-
-.instagram {
-  color: #405de6;
-}
-
 .inline-icon {
   margin: 0px 5px 0px 5px;
 }
@@ -182,14 +311,11 @@ header {
   padding: 15px;
   display: flex;
   justify-content: space-between;
+  line-height: 1.5;
 }
 
-header .title {
-  padding-top: 10px;
-}
-
-header .title img {
-  max-width: 250px;
+header a:hover {
+  text-decoration: none;
 }
 
 nav {
@@ -204,10 +330,11 @@ nav a {
   text-decoration: none;
   margin-left: 25px;
   margin-right: 25px;
-  color: #6c757d;
+  color: var(--navLink);
 }
 
 nav a:hover {
+  color: var(--navLink);
   text-decoration: underline;
 }
 
@@ -216,60 +343,11 @@ footer {
   border-top: 3px solid #6c757d;
 }
 
-.main {
-  padding: 10px;
-}
-
-.post {
-  display: grid;
-  grid-template-columns: 35% auto;
-  grid-template-rows: auto;
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  padding: 10px;
-}
-
-.post p {
-  padding-top: 10px;
-}
-
-.post .info {
-  padding-top: 10px;
-}
-
-.post .icon {
-  padding-right: 5px;
-}
-
-.post .tag {
-  padding-right: 5px;
-}
-
-.post .tag a {
-  color: #0f99a3; 
-  text-decoration: none;
-}
-
-.post .tag a:hover {
-  color: #28838a;
-  text-decoration: underline;
-}
-
-.post .button {
-  border: none;
-  font: inherit;
-  color: white;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 10px 30px 10px 30px;
-  margin-top: 25px;
-  background-color: #0f99a3; 
-  border: solid 1px transparent;
-  border-radius: 6px;
-}
-
-.post .button:hover {
-  background-color: #28838a;
+.main-div {
+  max-width: 75ch;
+  min-width: 90%;
+  margin: auto;
+  padding-bottom: 25px;
 }
 
 .round-img {
@@ -277,134 +355,10 @@ footer {
   margin: 10px 0px 10px 0px;
 }
 
-.about-data, .four-o-four-data, .post-data, .talks-data, .tags-data {
-  max-width: 75ch;
-  min-width: 90%;
-  margin: auto;
-  padding-bottom: 25px;
-}
-
-.about-data a, .byline a, .post-data a, .talks-data a, .tags-data a {
-  color: #0f99a3; 
-  text-decoration: none;
-}
-
-.about-data h2 {
-  padding-top: 10px;
-}
-
-.about-data a:hover, .byline a:hover, .post-data a:hover, .talks-data a:hover, .tags-data a:hover {
-  color: #28838a;
-  text-decoration: underline;
-}
-
 .column3 {
   column-count: 3;
 }
 
-.post-data h1 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.post-data h2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.post-data h3 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.post-data h4 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.post-data h5 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.post-data h6 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.post-data p {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: justify;
-}
-
-.about-data h1, .four-o-four-data h1, .talks-data h1, .tags-data h1 {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.about-data h2, .talks-data h2 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.about-data h3 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.about-data h4, .talks-data h4 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.about-data h5 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.about-data h6 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.about-data p {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.post-header {
-  padding: 1em;
-}
-
-.post-header p {
-  margin-bottom: 0;
-}
-
-.byline {
-  max-width: 75ch;
-  margin: auto;
-  margin-bottom: 15px;
-}
-
-.byline .icon {
-  padding: 5px;
-}
-
-.post-header p {
-  padding-top: 10px;
-}
-
-.talks-data i {
-  padding-right: 5px;
-  padding-left: 5px;
-}
-
-.talk-data {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.post .info h1 {
-  padding-top: 25px;
+.no-js {
+  text-align: initial;
 }

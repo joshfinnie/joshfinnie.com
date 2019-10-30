@@ -24,11 +24,11 @@
   background-color: transparent;
   cursor: pointer;
   padding: 10px 30px 10px 30px;
-  background-color: #0f99a3; 
+  background-color: var(--link); 
   border: solid 1px transparent;
   border-radius: 6px;
 }
 
 .button:hover {
-  background-color: #28838a;
+  background-color: var(--linkHover);
 }

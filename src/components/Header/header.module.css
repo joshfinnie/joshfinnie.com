@@ -8,18 +8,21 @@
 }
 
 .twitter {
-  color: #1da1f2 !important;
+  color: #1DA1F2 !important;
 }
 
 .github {
-  color: #4078c0 !important;
+  color: #181717 !important;
 }
 
 .linkedin {
-  color: #0077b5 !important;
+  color: #0077B5 !important;
 }
 
 .instagram {
-  color: #405de6 !important;
+  color: #E4405F !important;
 }
 
+.rss {
+  color: #FFA500 !important;
+}

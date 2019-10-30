@@ -33,6 +33,12 @@ const Header = () => (
           <i className="fab fa-instagram fa-stack-1x fa-inverse" />
         </span>
       </a>
+      <a href="/rss.xml" className={styles.rss}>
+        <span className="fa-stack fa-lg">
+          <i className="fas fa-circle fa-stack-2x" />
+          <i className="fas fa-rss fa-stack-1x fa-inverse" />
+        </span>
+      </a>
     </span>
   </header>
 );

@@ -57,8 +57,8 @@ body {
   --textNormal: #222;
   --blockQuoteText: #428bca;
   --blockQuoteBG: #cccccc;
-  --link: #0f99a3;
-  --linkHover: #28838a;
+  --link: #0074D9;
+  --linkHover: #7FDBFF;
   --navLink: #6c757d;
   --codeBG: #2d2d2d;
   --hr: hsla(0, 0%, 0%, 0.2);
@@ -72,15 +72,15 @@ body.dark {
   --textNormal: rgba(255, 255, 255, 0.88);
   --blockQuoteText: #428bca;
   --blockQuoteBG: #cccccc;
-  --link: #0f99a3;
-  --linkHover: #28838a;
+  --link: #7FDBFF;
+  --linkHover: #0074D9;
   --navLink: #cccccc;
   --codeBG: black;
   --hr: hsla(0, 0%, 100%, 0.2);
 }
 
 @import url('https://fonts.googleapis.com/css?family=Inconsolata|Nunito:400,600,700,800');
-@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+@import url('https://use.fontawesome.com/releases/v5.11.2/css/all.css');
 @import url('./prism.css');
 
 html {

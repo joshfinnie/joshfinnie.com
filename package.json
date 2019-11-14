@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Josh Finnie <josh@jfin.us>",
   "dependencies": {
-    "gatsby": "2.17.1",
+    "gatsby": "2.17.13",
     "gatsby-plugin-google-analytics": "2.1.23",
     "gatsby-plugin-manifest": "2.2.5",
     "gatsby-plugin-offline": "3.0.16",

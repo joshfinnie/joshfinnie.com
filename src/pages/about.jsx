@@ -11,36 +11,54 @@ const AboutPage = () => (
     <div className="main-div">
       <h1 className="text-center">About</h1>
       <p>
-        I am an Senior Software Engineer at <a href="https://pbs.org/">PBS</a> where I can be found coding in Python and Javascript.
+        I am an Senior Software Engineer at <a href="https://pbs.org/">PBS</a>{' '}
+        where I can be found coding in Python and Javascript.
       </p>
       <h2>Projects</h2>
       <ul>
         <li>
-          <a href="https://www.beerledge.com/ledges/" target="_blank">BeerLedge</a>
+          <a
+            href="https://www.beerledge.com/ledges/"
+            target="_blank"
+            rel="noopener noreferrer">
+            BeerLedge
+          </a>
         </li>
         <li>
-          <a href="https://www.npmjs.org/package/pushfile" target="_blank">Pushfile</a>
+          <a
+            href="https://www.npmjs.org/package/pushfile"
+            target="_blank"
+            rel="noopener noreferrer">
+            Pushfile
+          </a>
         </li>
         <li>
-          <a href="http://www.howoldisthismetrocar.com" target="_blank">
+          <a
+            href="http://www.howoldisthismetrocar.com"
+            target="_blank"
+            rel="noopener noreferrer">
             How Old is this Metro Car?
           </a>
         </li>
         <li>Tweet PNG (Currently not working...)</li>
       </ul>
       <p>
-        <a href="https://github.com/joshfinnie?tab=repositories" target="_blank">
+        <a
+          href="https://github.com/joshfinnie?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer">
           Other open-source projects found on Github.
         </a>
       </p>
       <h2>Resume</h2>
       <p className="no-js">
-        <strong>Experience:</strong> Senior Software Engineer &#8211; PBS | Senior Software Maven (Promoted from
-        Software Maven) &#8211; TrackMaven by Skyword | Application Developer &#8211;
-        Koansys, LLC.
+        <strong>Experience:</strong> Senior Software Engineer &#8211; PBS |
+        Senior Software Maven (Promoted from Software Maven) &#8211; TrackMaven
+        by Skyword | Application Developer &#8211; Koansys, LLC.
       </p>
       <p className="no-js">
-        <strong>Languages:</strong> Javascript (Node, Angular, React, jQuery), Python (Django, Flask, Pyramid)
+        <strong>Languages:</strong> Javascript (Node, Angular, React, jQuery),
+        Python (Django, Flask, Pyramid)
       </p>
       <p className="no-js">
         <strong>Databases:</strong> PostgreSQL, MongoDB, MySQL
@@ -55,7 +73,14 @@ const AboutPage = () => (
       </p>
       <p className="no-js">
         <strong>Other Interests:</strong> Coffee, Cycling, Photography, Amateur
-        Radio (<a href="http://www.qrz.com/db/W1OFZ" target="_blank">W1OFZ</a>)
+        Radio (
+        <a
+          href="http://www.qrz.com/db/W1OFZ"
+          target="_blank"
+          rel="noopener noreferrer">
+          W1OFZ
+        </a>
+        )
       </p>
       <p className="text-center">
         <a href={resume}>Download full resume (PDF)</a>.
@@ -173,7 +198,12 @@ const AboutPage = () => (
         </pre>
       </div>
       <p>
-        <a href="//keybase.io/joshfinnie/key.asc" target="_blank">Raw version</a>
+        <a
+          href="//keybase.io/joshfinnie/key.asc"
+          target="_blank"
+          rel="noopener noreferrer">
+          Raw version
+        </a>
       </p>
     </div>
   </Layout>

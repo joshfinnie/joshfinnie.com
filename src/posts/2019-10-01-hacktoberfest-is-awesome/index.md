@@ -42,15 +42,22 @@ Last year I was able to complete 5 pull-requests to open-source projects, unfort
 * Submitted <a href="https://github.com/dekkerglen/CubeCobra/pull/577">*WIP* updating the cube route to show a different way of doing it</a> to dekkerglen/CubeCobra
 * Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/315">adding docker talk</a> to joshfinnie/joshfinnie.com
 * Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/316">Manualy bump gatsby-plugin-sharp from 2.2.11 to 2.2.28</a> to joshfinnie/joshfinnie.com
+* Submitted <a href="https://github.com/joshfinnie/pushfile/pull/198">bumping to v1.1.2</a> to joshfinnie/pushfile
+* Submitted <a href="https://github.com/dekkerglen/CubeCobra/pull/623">Adding the ability to follow cubes</a> to dekkerglen/CubeCobra
+* Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/347">updating the css to be a bit more dry</a> to joshfinnie/joshfinnie.com
+* Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/349">updating nvm to use node v12</a> to joshfinnie/joshfinnie.com
+* Submitted <a href="https://github.com/joshfinnie/findb/pull/21">trying 3.7 & 3.8...</a> to joshfinnie/findb
+* Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/367">updating CSS with some new colors</a> to joshfinnie/joshfinnie.com
+* Submitted <a href="https://github.com/joshfinnie/joshfinnie.com/pull/368">adding rss</a> to joshfinnie/joshfinnie.com
+* Submitted <a href="https://github.com/dekkerglen/CubeCobra/pull/644">*WIP* inital setup of prettier and eslint using airbnb standards</a> to dekkerglen/CubeCobra
 
-<!--
 ## Conclusion
 
 This has to be the fastest I have ever completed Hacktoberfest. I actually had four PRs submitted to my profile by October 1st. I have to say it's pretty great
-to have a new side project to work on. [CubeCobra](https://github.com/dekkerglen/CubeCobra) has been a lot of fun to participate in, and you can see that 4 of my
-above PRs have been helping out on that repository. The other PRs are again, for my personal open-source projects. I am happy that I have successfully completed
-Hacktoberfest even without PRs to my own repositories, but it's also nice to see how many PRs I am actually opening again. It's been a long time for me to feel
-motivated to contribute to opne-source projects, so that's GREAT.
+to have a new side project to work on. [CubeCobra](https://github.com/dekkerglen/CubeCobra) has been a lot of fun to participate in, and you can see that 6 of my
+above PRs have been helping out on that repository. The other PRs are, again, for my personal open-source projects. At least this year I was able to touch 4 different
+personal projects. I am happy that I have successfully completed Hacktoberfest even without PRs to my own repositories, but it's also nice to see how many PRs I am
+actually opening again. It's been a long time for me to feel motivated to contribute to open-source projects, so that's GREAT. Next year I will definitely have a more
+restrictive goal (i.e. no personal deployments or 4 different open-source projects that I do not own.)
 
 What was your favorite contribution for Hacktoberfest, share them with me on Twitter [@joshfinnie](https://twitter.com/joshfinnie)!
--->

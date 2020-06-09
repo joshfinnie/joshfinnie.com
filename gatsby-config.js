@@ -99,6 +99,7 @@ module.exports = {
             query: `
             {
               allMarkdownRemark(
+                filter: {fields: {collection: {eq: "posts"}}},
                 sort: { order: DESC, fields: [frontmatter___date] },
               ) {
                 edges {

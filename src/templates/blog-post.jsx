@@ -51,10 +51,7 @@ const Post = ({data}) => {
       <img src={imgURL} className="round-img" alt="" />
       {header}
       <Byline post={post} />
-      <div
-        className="main-div"
-        dangerouslySetInnerHTML={{__html: post.html}}
-      />
+      <div className="main-div" dangerouslySetInnerHTML={{__html: post.html}} />
     </Layout>
   );
 };
@@ -63,6 +60,8 @@ Post.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.shape({
+        expires: PropTypes.bool.isRequired,
+        date: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         image: PropTypes.shape({
           publicURL: PropTypes.string,

@@ -6,6 +6,20 @@ module.exports = {
     siteUrl: 'https://www.joshfinnie.com',
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/posts`,
+        name: `posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/mdpages`,
+        name: `pages`,
+      },
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -30,13 +44,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'src',
-        path: `${__dirname}/src/`,
-      },
-    },
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-transformer-remark',
@@ -90,22 +97,22 @@ module.exports = {
               });
             },
             query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  edges {
-                    node {
-                      html
-                      frontmatter {
-                        title
-                        date
-                        path
-                      }
+            {
+              allMarkdownRemark(
+                sort: { order: DESC, fields: [frontmatter___date] },
+              ) {
+                edges {
+                  node {
+                    html
+                    frontmatter {
+                      title
+                      date
+                      path
                     }
                   }
                 }
               }
+            }
             `,
             output: '/rss.xml',
             title: "Josh Finnie's RSS Feed",

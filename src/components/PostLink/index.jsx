@@ -64,6 +64,7 @@ PostLink.propTypes = {
     frontmatter: PropTypes.shape({
       path: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
+      tags: PropTypes.array.isRequired,
       date: PropTypes.string.isRequired,
       image: PropTypes.shape({
         publicURL: PropTypes.string,

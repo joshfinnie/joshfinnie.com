@@ -10,7 +10,7 @@ import SEO from '../components/SEO';
 
 const TagsPage = ({
   data: {
-    allMarkdownRemark: {group},
+    allMdx: {group},
   },
 }) => (
   <Layout>
@@ -29,7 +29,8 @@ const TagsPage = ({
                 <Link
                   key={tag}
                   to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                  className="list-group-item list-group-item-action">
+                  className="list-group-item list-group-item-action"
+                >
                   {tag.fieldValue} ({tagBadge})
                 </Link>
               </li>
@@ -42,7 +43,7 @@ const TagsPage = ({
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       group: PropTypes.arrayOf(
         PropTypes.shape({
           fieldValue: PropTypes.string.isRequired,
@@ -62,7 +63,7 @@ export default TagsPage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(limit: 2000) {
+    allMdx(limit: 2000) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

@@ -20,6 +20,13 @@ module.exports = {
         name: `pages`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/notes`,
+        name: `notes`,
+      },
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -46,9 +53,12 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -69,7 +79,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-feed',
+      resolve: 'gatsby-plugin-feed-mdx',
       options: {
         query: `
         {
@@ -85,8 +95,8 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({query: {site, allMarkdownRemark}}) => {
-              return allMarkdownRemark.edges.map((edge) => {
+            serialize: ({query: {site, allMdx}}) => {
+              return allMdx.edges.map((edge) => {
                 return {
                   date: edge.node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
@@ -98,7 +108,7 @@ module.exports = {
             },
             query: `
             {
-              allMarkdownRemark(
+              allMdx(
                 filter: {fields: {collection: {eq: "posts"}}},
                 sort: { order: DESC, fields: [frontmatter___date] },
               ) {

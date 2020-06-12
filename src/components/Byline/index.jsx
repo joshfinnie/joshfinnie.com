@@ -17,7 +17,7 @@ const Byline = ({post}) => {
       ))}
     </div>
   );
-}
+};
 
 Byline.propTypes = {
   post: PropTypes.shape({

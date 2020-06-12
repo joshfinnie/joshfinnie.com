@@ -9,15 +9,15 @@ const Footer = () => {
     <footer>
       <p className="copyright text-muted">
         &copy; 2010 - {year}.
-        <a 
-            rel="license"
-            href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+        <a
+          rel="license"
+          href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
         >
-            <img
-                alt="Creative Commons License"
-                className="cc-img"
-                src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"
-            />
+          <img
+            alt="Creative Commons License"
+            className="cc-img"
+            src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"
+          />
         </a>
       </p>
     </footer>

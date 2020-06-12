@@ -3,12 +3,13 @@ const _ = require('lodash');
 
 const postTemplate = path.resolve('./src/templates/blog-post.jsx');
 const pageTemplate = path.resolve('./src/templates/page.jsx');
+const noteTemplate = path.resolve('./src/templates/note.jsx');
 const tagTemplate = path.resolve('src/templates/tags.jsx');
 
 exports.onCreateNode = ({node, actions, getNode}) => {
   const {createNodeField} = actions;
 
-  if (_.get(node, 'internal.type') === `MarkdownRemark`) {
+  if (_.get(node, 'internal.type') === `Mdx`) {
     // Get the parent node
     const parent = getNode(_.get(node, 'parent'));
 
@@ -26,7 +27,7 @@ exports.createPages = ({graphql, actions}) => {
   return new Promise((resolve) => {
     graphql(`
       {
-        allMarkdownRemark {
+        allMdx {
           edges {
             node {
               id
@@ -47,7 +48,7 @@ exports.createPages = ({graphql, actions}) => {
         return Promise.reject(result.errors);
       }
 
-      const allEdges = result.data.allMarkdownRemark.edges;
+      const allEdges = result.data.allMdx.edges;
 
       // Create Pages
       const pages = allEdges.filter(
@@ -57,6 +58,17 @@ exports.createPages = ({graphql, actions}) => {
         createPage({
           path: node.frontmatter.path,
           component: pageTemplate,
+        });
+      });
+
+      // Create Notes
+      const notes = allEdges.filter(
+        (edge) => edge.node.fields.collection === `notes`,
+      );
+      notes.forEach(({node}) => {
+        createPage({
+          path: node.frontmatter.path,
+          component: noteTemplate,
         });
       });
 

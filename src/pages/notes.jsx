@@ -1,58 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {graphql} from 'gatsby';
+import {Link, graphql} from 'gatsby';
 
 import Layout from '../components/Layout';
-import PostLink from '../components/PostLink';
 import SEO from '../components/SEO';
 
-const IndexPage = ({data}) => (
+const NotesPage = ({
+  data: {
+    allMdx: {edges},
+  },
+}) => (
   <Layout>
     <SEO />
-    <main role="main" className="main">
-      {data.allMdx.edges.map(({node}) => (
-        <PostLink post={node} key={node.id} />
+    <div className="main-div">
+      <h1 className="text-center">Notes</h1>
+      {edges.map(({node}) => (
+        <Link to={node.frontmatter.path}>{node.frontmatter.title}</Link>
       ))}
-    </main>
+    </div>
   </Layout>
 );
 
-IndexPage.propTypes = {
+NotesPage.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(
         PropTypes.shape({
-          id: PropTypes.string,
+          title: PropTypes.string,
         }),
       ),
     }),
   }).isRequired,
 };
 
+export default NotesPage;
+
 export const query = graphql`
   query {
     allMdx(
-      filter: {fields: {collection: {eq: "posts"}}}
+      filter: {fields: {collection: {eq: "notes"}}}
       sort: {fields: [frontmatter___date], order: DESC}
     ) {
-      totalCount
       edges {
         node {
-          id
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
             path
-            tags
-            image {
-              publicURL
-            }
           }
-          excerpt
         }
       }
     }
   }
 `;
-
-export default IndexPage;

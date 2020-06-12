@@ -8,33 +8,34 @@ import {MDXRenderer} from 'gatsby-plugin-mdx';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const Page = ({data}) => {
-  const page = data.mdx;
+const Note = ({data}) => {
+  const note = data.mdx;
   return (
     <Layout>
-      <SEO title={page.frontmatter.title} />
+      <SEO title={note.frontmatter.title} />
       <span className="post-header">
-        <h1 className="text-center">{page.frontmatter.title}</h1>
+        <h1 className="text-center">{note.frontmatter.title}</h1>
       </span>
       <div className="main-div">
-        <MDXRenderer>{page.body}</MDXRenderer>
+        <MDXRenderer>{note.body}</MDXRenderer>
       </div>
     </Layout>
   );
 };
 
-Page.propTypes = {
+Note.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
       }),
       body: PropTypes.string,
     }),
   }).isRequired,
 };
 
-export default Page;
+export default Note;
 
 export const query = graphql`
   query($path: String!) {
@@ -42,6 +43,7 @@ export const query = graphql`
       body
       frontmatter {
         title
+        date
       }
     }
   }

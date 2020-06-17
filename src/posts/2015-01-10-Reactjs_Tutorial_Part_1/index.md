@@ -84,7 +84,7 @@ Next we want to [download React 0.12.2](http://facebook.github.io/react/download
 
 To add `react.min.js` to our templates, we just append it to the bottom of our `views/layout.jade` file as below:
 
-```jade
+```pug
 doctype html
 html
 head
@@ -103,7 +103,7 @@ Now that we have our express app running react.js, we can now start the process 
 
 The first thing we want to do is create the `div` needed for react. In the `views/index.jade` file, add a div with an `id` of "example". With jade, your `index.jade` file should look like this:
 
-```jade
+```pug
 extends layout
 
 block content
@@ -121,7 +121,7 @@ document.getElementById('example')
 
 Because we are using the `react-tools` node package, we want to add the compiled javascript code to our templates. Change you `views/layout.jade` file to the following:
 
-```jade
+```pug
 doctype html
 html
 head

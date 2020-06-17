@@ -10,11 +10,11 @@ export default function About() {
   return (
     <Layout>
       <SEO title="Talks" />
-      <div className="talks-data">
+      <div className="main-div">
         <h1 className="text-center">Talks</h1>
         <h4>
           (
-          <i className="fa fa-bolt bolt pr-2" aria-hidden="true" />
+          <i className="fa fa-bolt bolt inline-icon" aria-hidden="true" />
           denotes Lightning Talks)
         </h4>
         {data.talks

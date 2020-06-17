@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import {graphql} from 'gatsby';
+import {MDXRenderer} from 'gatsby-plugin-mdx';
 
 import Byline from '../components/Byline';
 import Layout from '../components/Layout';
@@ -11,7 +12,7 @@ import Readtime from '../components/Readtime';
 import SEO from '../components/SEO';
 
 const Post = ({data}) => {
-  const post = data.markdownRemark;
+  const post = data.mdx;
   const today = new Date();
   const postDate = new Date(post.frontmatter.date);
   const YEAR = 31536000000;
@@ -53,24 +54,25 @@ const Post = ({data}) => {
       {header}
       <Byline post={post} />
       <Readtime words={post.wordCount.words} />
-      <div
-        className="post-data"
-        dangerouslySetInnerHTML={{__html: post.html}}
-      />
+      <div className="main-div">
+        <MDXRenderer>{post.body}</MDXRenderer>
+      </div>
     </Layout>
   );
 };
 
 Post.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
+    mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({
+        expires: PropTypes.bool.isRequired,
+        date: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         image: PropTypes.shape({
           publicURL: PropTypes.string,
         }),
       }),
-      html: PropTypes.string,
+      body: PropTypes.string,
     }),
   }).isRequired,
 };
@@ -79,8 +81,8 @@ export default Post;
 
 export const query = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: {path: {eq: $path}}) {
-      html
+    mdx(frontmatter: {path: {eq: $path}}) {
+      body
       frontmatter {
         title
         date

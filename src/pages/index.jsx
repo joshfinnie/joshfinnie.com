@@ -10,7 +10,7 @@ const IndexPage = ({data}) => (
   <Layout>
     <SEO />
     <main role="main" className="main">
-      {data.allMarkdownRemark.edges.map(({node}) => (
+      {data.allMdx.edges.map(({node}) => (
         <PostLink post={node} key={node.id} />
       ))}
     </main>
@@ -19,7 +19,7 @@ const IndexPage = ({data}) => (
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.string,
@@ -31,7 +31,10 @@ IndexPage.propTypes = {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMdx(
+      filter: {fields: {collection: {eq: "posts"}}}
+      sort: {fields: [frontmatter___date], order: DESC}
+    ) {
       totalCount
       edges {
         node {

@@ -33,18 +33,17 @@ Last year was the first time that I published my New Year Resolutions online for
 
 ## My 2014 Resolutions
 
-<span class="text-danger"><i class="fa fa-times fa-fw"></i> Participate and complete the 2014 [NaNoWriMo](http://nanowrimo.org/).</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Actively participate in a collaborative open-source project.</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Continue to further my current open-source projects on [Github](https://github.com/joshfinnie?tab=repositories).</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i> Be better at regularly blogging. I want to post a blog entry at least once a week.</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Improve my programming skill levels in both Python and Javascript.</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Give a talk at a local [meetup group](http://www.meetup.com/members/26710252/).</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i> Lose weight. I really want to hit my target goal this year; I made some progress in 2013, but not nearly enough.</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Read more fiction. I have far too many books on my '[to-read](https://www.goodreads.com/review/list/2997659?shelf=to-read)' list and adding more all the time.</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i> Expand the feature-set and user-base of [BeerLedge](https://www.beerledge.com/).</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Get more friends visiting the DC area at a regular clip.</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i> Make more of an effort to see friends when back in Connecticut.</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Most importantly, get married to my beautiful fianceé.</span><br>
+<span class="text-danger"><i class="fa fa-times fa-fw"></i> Participate and complete the 2014 [NaNoWriMo](http://nanowrimo.org/).</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Actively participate in a collaborative open-source project.</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Continue to further my current open-source projects on [Github](https://github.com/joshfinnie?tab=repositories).</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i> Be better at regularly blogging. I want to post a blog entry at least once a week.</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Improve my programming skill levels in both Python and Javascript.</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Give a talk at a local [meetup group](http://www.meetup.com/members/26710252/).</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i> Lose weight. I really want to hit my target goal this year; I made some progress in 2013, but not nearly enough.</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Read more fiction. I have far too many books on my '[to-read](https://www.goodreads.com/review/list/2997659?shelf=to-read)' list and adding more all the time.</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i> Expand the feature-set and user-base of [BeerLedge](https://www.beerledge.com/).</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Get more friends visiting the DC area at a regular clip.</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i> Make more of an effort to see friends when back in Connecticut.</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Most importantly, get married to my beautiful fianceé.</span><br />
 
 I am sure there are some things I am forgetting, but it definitely feels good to take some time to write these goals out. Expect a more indepth retrospective on 2014 coming up very soon! Here's to a very Happy New Years to you and yours!
-

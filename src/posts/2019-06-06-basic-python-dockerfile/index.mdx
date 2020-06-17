@@ -6,11 +6,14 @@ tags:
   - "docker"
   - "python"
   - "open-source"
+  - "tutorial"
 path: "/blog/my-basic-python-dockerfile"
 image: "./python.jpg"
 expires: true
 
 ---
+
+import Unsplash from '../../components/Unsplash';
 
 A little while back I read an article sharing this person's basic `Dockerfile` which they use for all their projects. I thought this was a good idea to do and went about creating and [releasing](https://github.com/joshfinnie/docker-python) my own. This blog post will share my basic `Dockerfile` I use for Python projects as well as explain some of the less usual parts.
 
@@ -47,7 +50,7 @@ ENTRYPOINT ["dumb-init", "--"]
 
 ## Special Considerations
 
-There are two small things that I do want to point out to everyone. First, I still use Python 3.6 as my go-to Python. I am sure I will make the switch soon, but for now this version still seems right to me. Second, I use an application called `dumb-init`. [Dumb Init](https://github.com/Yelp/dumb-init) has been something that I have been adding to my Docker containers since day one. Maybe we are past the need for it, but I still like the comfort it brings me. 
+There are two small things that I do want to point out to everyone. First, I still use Python 3.6 as my go-to Python. I am sure I will make the switch soon, but for now this version still seems right to me. Second, I use an application called `dumb-init`. [Dumb Init](https://github.com/Yelp/dumb-init) has been something that I have been adding to my Docker containers since day one. Maybe we are past the need for it, but I still like the comfort it brings me.
 
 > dumb-init is a simple process supervisor and init system designed to run as PID 1 inside minimal container environments (such as Docker). It is deployed as a small, statically-linked binary written in C.
 
@@ -55,4 +58,4 @@ There are two small things that I do want to point out to everyone. First, I sti
 
 The above `Dockerfile` is nothing too  special or out-of-the-box. Yet, it sets you up for success  for python applications; be it a simple script (like I highlight in this files repo) or a full-fledged web application.  Please let me know what you think about this!
 
-<p class="unsplash text-center">Photo by <a href="https://unsplash.com/@marius?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Marius Masalar</a> on <a href="https://unsplash.com/">Unsplash</a></p>
+<Unsplash name="Marius Masalar" url="marius" />

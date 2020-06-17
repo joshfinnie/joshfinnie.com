@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import {useStaticQuery, graphql} from 'gatsby';
 
 import config from '../../utils/config';
@@ -132,14 +132,14 @@ SEO.defaultProps = {
 };
 
 SEO.propTypes = {
-  description: PropTypes.string,
+  description: PropTypes.string.isRequired,
   lang: PropTypes.string,
-  location: PropTypes.shape({}),
-  image: PropTypes.string,
-  meta: PropTypes.array,
-  ogType: PropTypes.string,
+  location: PropTypes.shape({href: PropTypes.string.isRequired}).isRequired,
+  image: PropTypes.string.isRequired,
+  meta: PropTypes.arrayOf,
+  ogType: PropTypes.string.isRequired,
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 export default SEO;

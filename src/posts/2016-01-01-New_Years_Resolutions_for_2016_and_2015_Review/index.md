@@ -33,19 +33,19 @@ Last year was the first time that I published my New Year Resolutions online for
 
 ## My 2015 Resolutions Results
 
-<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Participate in a collaborative open-source project as a major contributor. I did a good job in 2014, but really want to step up my game in 2015.</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Release the Android and iOS app of [BeerLedge](https://www.beerledge.com/).</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Continue to further my current open-source projects on [Github](https://github.com/joshfinnie?tab=repositories). [Archey-OSX](https://github.com/joshfinnie/archey-osx) has seen some activity lately and would love to continue that.</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Become a pillar in the DC teck scene.</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Be better at regularly blogging. (I want to post a blog entry at least once a month, weekly was just too hard!).</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Improve my programming skill levels in both Javascript and Python. (I have purposely changed the order of these two; I really like Javascript.)</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Have a talk accepted at a programming conference.</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Continue to give a talk at my local [meetup group](http://www.meetup.com/members/26710252/). I gave [5 talks](http://www.joshfinnie.com/talks/) in 2014, would like to double that.</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Continue the success of Node Night and set up more [NodeSchool](http://nodeschool.io/) events after the [very successful NationJS NodeSchool](http://www.joshfinnie.com/blog/nodeschool-at-nationjs-postmortem/).</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Lose weight. I really want to hit my target goal this year; I seriously went backwards in 2014 and now realize that this is going to be harder than I ever thought... I am not 20 anymore!</span><br>
-<span class="text-success"><i class="fa fa-check fa-fw"></i> Read even more fiction books. Now that I have found audiobooks, I feel like this goal is actually attainable this year.</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Participate and complete the 2015 [NaNoWriMo](http://nanowrimo.org/). This is a goal I have failed at numerous times and really want to complete it!</span><br>
-<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Make more of an effort to see friends when back in Connecticut.</span><br>
+<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Participate in a collaborative open-source project as a major contributor. I did a good job in 2014, but really want to step up my game in 2015.</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Release the Android and iOS app of [BeerLedge](https://www.beerledge.com/).</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Continue to further my current open-source projects on [Github](https://github.com/joshfinnie?tab=repositories). [Archey-OSX](https://github.com/joshfinnie/archey-osx) has seen some activity lately and would love to continue that.</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Become a pillar in the DC teck scene.</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Be better at regularly blogging. (I want to post a blog entry at least once a month, weekly was just too hard!).</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Improve my programming skill levels in both Javascript and Python. (I have purposely changed the order of these two; I really like Javascript.)</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Have a talk accepted at a programming conference.</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Continue to give a talk at my local [meetup group](http://www.meetup.com/members/26710252/). I gave [5 talks](http://www.joshfinnie.com/talks/) in 2014, would like to double that.</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Continue the success of Node Night and set up more [NodeSchool](http://nodeschool.io/) events after the [very successful NationJS NodeSchool](http://www.joshfinnie.com/blog/nodeschool-at-nationjs-postmortem/).</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Lose weight. I really want to hit my target goal this year; I seriously went backwards in 2014 and now realize that this is going to be harder than I ever thought... I am not 20 anymore!</span><br />
+<span class="text-success"><i class="fa fa-check fa-fw"></i> Read even more fiction books. Now that I have found audiobooks, I feel like this goal is actually attainable this year.</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Participate and complete the 2015 [NaNoWriMo](http://nanowrimo.org/). This is a goal I have failed at numerous times and really want to complete it!</span><br />
+<span class="text-danger"><i class="fa fa-times fa-fw"></i>  Make more of an effort to see friends when back in Connecticut.</span><br />
 
 ## Conclusion
 

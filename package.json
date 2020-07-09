@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Josh Finnie <josh@jfin.us>",
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.5",
+    "@mdx-js/mdx": "^1.6.6",
     "@mdx-js/react": "^1.6.5",
     "gatsby": "2.23.4",
     "gatsby-cli": "^2.12.59",

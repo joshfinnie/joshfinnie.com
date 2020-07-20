@@ -107,6 +107,7 @@ code, pre, code[class*="language-"], pre[class*="language-"] {
   line-height: 1.5em;
   background: var(--textNormal) !important;
   color: var(--bg) !important;
+  letter-spacing: 0.03rem;
 }
 
 p code, p code.language-text{
@@ -114,6 +115,7 @@ p code, p code.language-text{
   background: var(--textNormal) !important;
   color: var(--bg) !important;
   white-space: nowrap !important;
+  letter-spacing: 0.03rem;
   opacity: 0.75;
 }
 

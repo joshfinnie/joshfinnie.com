@@ -15,7 +15,7 @@ const Pagination = ({
   <ul className="pagination">
     {!isFirst && (
       <li className="pag-item">
-        <Link to={prevPage} rel="prev">
+        <Link className="link" to={prevPage} rel="prev">
           ←
         </Link>
       </li>
@@ -26,17 +26,19 @@ const Pagination = ({
         key={`pagination-number${i + 1}`}
       >
         {i === 0 ? (
-          <Link to="/" disabled={currentPage === i + 1}>
+          <Link className="link" to="/" disabled={currentPage === i + 1}>
             1
           </Link>
         ) : (
-          <Link to={`/blog/${i + 1}`}>{i + 1}</Link>
+          <Link className="link" to={`/blog/${i + 1}`}>
+            {i + 1}
+          </Link>
         )}
       </li>
     ))}
     {!isLast && (
       <li className="pag-item">
-        <Link to={nextPage} rel="next">
+        <Link className="link" to={nextPage} rel="next">
           →
         </Link>
       </li>

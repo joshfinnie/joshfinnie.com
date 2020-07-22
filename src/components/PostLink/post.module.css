@@ -20,7 +20,7 @@
 .button {
   border: none;
   font: inherit;
-  color: white;
+  color: var(--linkColor);
   background-color: transparent;
   cursor: pointer;
   padding: 10px 30px 10px 30px;
@@ -31,5 +31,5 @@
 
 .button:hover {
   background-color: var(--linkHover);
-  color: var(--link);
+  color: var(--linkHoverColor);
 }

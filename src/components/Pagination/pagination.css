@@ -11,10 +11,8 @@
 
 .pag-item {
   position: relative;
-  display: block;
-  padding: .5rem .75rem;
   margin-left: -1px;
-  line-height: 1.25;
+  line-height: 1;
   color: var(--link);
   background-color: #fff;
   border: 1px solid #dee2e6;
@@ -22,23 +20,28 @@
 
 .pag-item.active {
   z-index: 1;
-  color: #fff !important;
+  color: var(--linkColor) !important;
   background-color: var(--link);
   border-color: var(--link);
 }
 
+.pag-item a {
+  display: block;
+  padding: 1rem;
+}
+
 .pag-item.active a {
-  color: #fff;
+  color: var(--linkColor);
 }
 
 .pag-item:hover {
   z-index: 1;
-  color: #fff !important;
+  color: var(--linkHoverColor) !important;
   background-color: var(--linkHover);
   border-color: var(--linkHover);
 }
 
 .pag-item a:hover {
-  color: var(--link);
+  color: var(--linkHoverColor);
   text-decoration: none;
 }

@@ -132,7 +132,7 @@ gulp.task('default', ['js', 'sass', 'watch']);
 
 With the gulp task above, we now have our SASS automatically compiled whenever we change it. Lastly we need to add the compiled CSS to our Jade template. We can do this by simply adding the following line to the head of `layout.jade`:
 
-```jade
+```pug
 link(rel='stylesheet', href='/stylesheets/css/style.css')
 ```
 
@@ -151,7 +151,7 @@ Doing this points both `jQuery ($)` and `bootstrap` to the appropriate file whic
 
 Now that we have all the plumbing working, let's add some niceties to our application. We can add the [starter Bootstrap template](http://getbootstrap.com/examples/starter-template/) to give it a bit of style. All we need to do is update our `layout.jade` file to look like this:
 
-```jade
+```pug
 doctype html(lang='en')
 head
   meta(charset='utf-8')

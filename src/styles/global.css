@@ -107,16 +107,16 @@ code, pre, code[class*="language-"], pre[class*="language-"] {
   line-height: 1.5em;
   background: var(--textNormal) !important;
   color: var(--bg) !important;
+  letter-spacing: 0.03rem;
 }
 
 p code, p code.language-text{
-  padding: 0 !important;
-  padding-right: 5px !important;
-  padding-left: 5px !important;
+  padding: 0.1em 0.25em !important;
   background: var(--textNormal) !important;
   color: var(--bg) !important;
   white-space: nowrap !important;
-  font-size: 16px;
+  letter-spacing: 0.03rem;
+  opacity: 0.75;
 }
 
 h1 {

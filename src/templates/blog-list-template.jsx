@@ -7,14 +7,13 @@ import Pagination from '../components/Pagination';
 import PostLink from '../components/PostLink';
 import SEO from '../components/SEO';
 
-const IndexPage = ({data}) => {
-  const isFirst = true;
-  const isLast = false;
-  const prevPage = '/';
-  const nextPage = '/blog/2/';
-  const numPages = Math.ceil(data.allMdx.totalCount / 5);
-  const currentPage = 1;
-
+const BlogList = ({data, pageContext}) => {
+  const {currentPage, numPages} = pageContext;
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
+  const prevPage =
+    currentPage - 1 === 1 ? '/' : `/blog/${(currentPage - 1).toString()}`;
+  const nextPage = `/blog/${(currentPage + 1).toString()}`;
   return (
     <Layout>
       <SEO />
@@ -35,10 +34,13 @@ const IndexPage = ({data}) => {
   );
 };
 
-IndexPage.propTypes = {
+BlogList.propTypes = {
+  pageContext: PropTypes.shape({
+    numPages: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
+  }).isRequired,
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
       edges: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.string,
@@ -49,12 +51,12 @@ IndexPage.propTypes = {
 };
 
 export const query = graphql`
-  query {
+  query blogListQuery($limit: Int!, $skip: Int!) {
     allMdx(
       filter: {fields: {collection: {eq: "posts"}}}
       sort: {fields: [frontmatter___date], order: DESC}
-      limit: 5
-      skip: 0
+      limit: $limit
+      skip: $skip
     ) {
       totalCount
       edges {
@@ -76,4 +78,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default BlogList;

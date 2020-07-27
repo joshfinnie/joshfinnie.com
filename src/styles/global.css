@@ -57,8 +57,10 @@ body {
   --textNormal: #222;
   --blockQuoteText: #428bca;
   --blockQuoteBG: #cccccc;
-  --link: #0074D9;
-  --linkHover: #7FDBFF;
+  --link: #E27D60;
+  --linkHover: #E8A87C;
+  --linkColor: white;
+  --linkHoverColor: white;
   --navLink: #6c757d;
   --codeBG: #2d2d2d;
   --hr: hsla(0, 0%, 0%, 0.2);

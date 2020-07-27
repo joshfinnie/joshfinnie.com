@@ -41,7 +41,7 @@ Flat Flog is first and foremost a blogging engine. Because of that, I wanted to 
 
 The format of a post entry is as followed:
 
-```markdown
+```md
 title: ** YOUR TITLE HERE **
 date: ** TODAY'S DATE **
 tags: ['** TAG 1 **', '** TAG 2 **', etc…]
@@ -55,7 +55,7 @@ Even though Flat Flog is a bloggin engine, I wanted to make sure that you could 
 
 The format of a page is as followed:
 
-```markdown
+```md
 title: ** YOUR TITLE HERE **
 
 ** THE BODY OF THE PAGE HERE **

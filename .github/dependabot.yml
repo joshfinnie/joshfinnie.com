@@ -7,4 +7,4 @@ updates:
     time: "10:00"
   open-pull-requests-limit: 10
   commit-message:
-    prefix: "[skip netlify]\n\n"
+    prefix: "[skip netlify]"

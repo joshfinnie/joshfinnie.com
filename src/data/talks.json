@@ -1,6 +1,13 @@
 {
   "talks": [
     {
+      "name": "Docker Multi-stage Builds and other Best Practices.",
+      "link": "https://slides.com/joshfinnie/docker-multi-stage-builds-and-other-best-practices",
+      "location": "PBS Internal Tech Talk Tuesday",
+      "lightning": false,
+      "date": "07/21/2020"
+    },
+    {
       "name": "Docker Strangelove",
       "link": "https://slides.com/joshfinnie/django-district-docker",
       "location": "Django District, etc.",

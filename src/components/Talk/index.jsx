@@ -36,9 +36,9 @@ const Talk = ({talk}) => (
 Talk.propTypes = {
   talk: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
+    link: PropTypes.string,
     lightning: PropTypes.string.isRequired,
-    locationLink: PropTypes.string.isRequired,
+    locationLink: PropTypes.string,
     location: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }).isRequired,

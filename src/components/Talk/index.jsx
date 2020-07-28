@@ -19,9 +19,13 @@ const Talk = ({talk}) => (
     </h2>
     <p>
       <i className="far fa-building inline-icon" />
-      <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
-        {talk.location}
-      </a>
+      {talk.locationLink ? (
+        <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
+          {talk.location}
+        </a>
+      ) : (
+        <>{talk.location}</>
+      )}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <i className="fas fa-calendar-alt inline-icon" />
       {talk.date}

@@ -19,9 +19,13 @@ const Talk = ({talk}) => (
     </h2>
     <p>
       <i className="far fa-building inline-icon" />
-      <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
-        {talk.location}
-      </a>
+      {talk.locationLink ? (
+        <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
+          {talk.location}
+        </a>
+      ) : (
+        <>{talk.location}</>
+      )}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <i className="fas fa-calendar-alt inline-icon" />
       {talk.date}
@@ -32,9 +36,9 @@ const Talk = ({talk}) => (
 Talk.propTypes = {
   talk: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
+    link: PropTypes.string,
     lightning: PropTypes.string.isRequired,
-    locationLink: PropTypes.string.isRequired,
+    locationLink: PropTypes.string,
     location: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }).isRequired,

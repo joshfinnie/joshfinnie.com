@@ -1,6 +1,14 @@
 {
   "talks": [
     {
+      "name": "Introduction to Rust & WASM for Javascript Developers",
+      "link": "https://slides.com/joshfinnie/rust-wasm-and",
+      "location": "DCJS",
+      "locationLink": "https://www.meetup.com/DC-JavaScript/",
+      "lightning": false,
+      "date": "12/10/2020"
+    },
+    {
       "name": "Docker Multi-stage Builds and other Best Practices.",
       "link": "https://slides.com/joshfinnie/docker-multi-stage-builds-and-other-best-practices",
       "location": "PBS Internal Tech Talk Tuesday",

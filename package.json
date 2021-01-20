@@ -20,7 +20,7 @@
     "gatsby-remark-images": "3.8.1",
     "gatsby-remark-prismjs": "3.10.0",
     "gatsby-remark-smartypants": "2.7.0",
-    "gatsby-source-filesystem": "2.8.1",
+    "gatsby-source-filesystem": "2.10.0",
     "lodash": "4.17.20",
     "prismjs": "1.22.0",
     "react": "17.0.1",

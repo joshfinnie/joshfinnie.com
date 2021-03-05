@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 import React from 'react';
 
-import styles from './header.module.css';
+import * as styles from './header.module.css';
 
 const Header = () => (
   <header>

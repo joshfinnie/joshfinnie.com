@@ -136,7 +136,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   location: PropTypes.shape({href: PropTypes.string.isRequired}).isRequired,
   image: PropTypes.string.isRequired,
-  meta: PropTypes.arrayOf,
+  meta: PropTypes.arrayOf(PropTypes.string),
   ogType: PropTypes.string.isRequired,
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,

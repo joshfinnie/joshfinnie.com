@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import Talk from '../components/Talk';
 
-import * as data from '../data/talks.json';
+import data from '../data/talks.json';
 
 export default function About() {
   return (

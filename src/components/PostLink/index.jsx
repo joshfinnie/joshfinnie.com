@@ -6,7 +6,7 @@ import {Link} from 'gatsby';
 import get from 'lodash/get';
 import kebabCase from 'lodash/kebabCase';
 
-import styles from './post.module.css';
+import * as styles from './post.module.css';
 import img1 from './img1.jpg';
 import img2 from './img2.jpg';
 import img3 from './img3.jpg';

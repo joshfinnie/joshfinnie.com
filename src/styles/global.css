@@ -364,3 +364,8 @@ footer {
 .no-js {
   text-align: initial;
 }
+
+.small-hr {
+  width: 50%;
+  opacity: 0.5;
+}

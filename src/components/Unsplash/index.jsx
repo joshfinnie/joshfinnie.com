@@ -7,21 +7,28 @@ const Unsplash = ({name, url = null}) => {
     const finalUrl = `https://unsplash.com/@${url}`;
     return (
       <p className="unsplash mb-4 text-center">
-        Photo by <a href={finalUrl}>{name}</a> on{' '}
-        <a href="https://unsplash.com">Unsplash</a>
+        <hr className="small-hr" />
+        Article&apos;s main photo by <a href={finalUrl}>{name}</a> found on{' '}
+        <a href="https://unsplash.com">Unsplash</a>.
       </p>
     );
   }
   return (
     <p className="unsplash mb-4 text-center">
-      Photo by {name} on <a href="https://unsplash.com">Unsplash</a>
+      <hr className="small-hr" />
+      Article&apos;s main photo by {name} found on{' '}
+      <a href="https://unsplash.com">Unsplash</a>.
     </p>
   );
 };
 
+Unsplash.defaultProps = {
+  url: null,
+};
+
 Unsplash.propTypes = {
   name: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
 };
 
 export default Unsplash;

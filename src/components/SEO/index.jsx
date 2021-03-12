@@ -118,6 +118,10 @@ const SEO = ({
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
+  description: '',
+  location: {
+    href: '',
+  },
   keywords: [
     'blog',
     'programming',
@@ -132,9 +136,9 @@ SEO.defaultProps = {
 };
 
 SEO.propTypes = {
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   lang: PropTypes.string,
-  location: PropTypes.shape({href: PropTypes.string.isRequired}).isRequired,
+  location: PropTypes.shape({href: PropTypes.string}),
   image: PropTypes.string.isRequired,
   meta: PropTypes.arrayOf(PropTypes.string),
   ogType: PropTypes.string.isRequired,

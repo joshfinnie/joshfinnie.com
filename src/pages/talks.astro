@@ -1,0 +1,16 @@
+---
+import Layout from '../components/Layout.astro';
+import Talk from '../components/Talk.astro';
+
+import data from '../data/talks.json';
+---
+<Layout title="Talks | www.joshfinnie.com">
+  <section>
+    <h1 class="font-bold text-3xl mb-10 mt-5">Talks</h1>
+      <p class="mb-5 text-base">
+        (<i class="fa fa-bolt mx-2" aria-hidden="true" />
+        denotes Lightning Talks)
+      </p>
+      {data.talks.map(t => <Talk talk={t} />)}
+  </section>
+</Layout>

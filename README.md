@@ -10,26 +10,27 @@ Personal Homepage of Josh Finnie.
 
 To setup this repo, run `npm install` after cloning.
 
-To run this repo locally, run `gatsby develop`.
+To run this repo locally, run `npm run start`.
+
+To test and build locally, run `npm run build`. (This sometimes will throw errors `npm run start` does not.)
 
 
 ### Template for Blog Post
 
-```
+```markdown
 ---
 
-title: "<TITLE>"
+title: "<TITL>"
 date: "<DATE>"
 tags:
   - "<TAG 1>"
   - "<TAG 2>"
   - "<TAG 3>"
-path: "/blog/<PATH>"
-image: "./<IMAGE>.jpg"
-expires: true
+layout: '../../layouts/BlogPost.astro'
+heroImage: "/assets/blog/<IMAGE>.jpg"
+unsplash: "<ARTIST>"
+unsplashURL: "<ARTIST URL>"
 
 ---
 <TEXT GOES HERE>
-
-<p class="unsplash mb-4 text-center">Photo by <ARTIST> on <a href="https://unsplash.com/">Unsplash</a></p>
 ```

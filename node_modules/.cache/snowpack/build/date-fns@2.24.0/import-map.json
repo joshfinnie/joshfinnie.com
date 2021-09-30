@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "date-fns": "./date-fns.js"
+  }
+}

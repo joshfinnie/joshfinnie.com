@@ -1,0 +1,2 @@
+setRenderers(rendererInstances);
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsiLi4vLi4vc3JjL2Zyb250ZW5kL19fYXN0cm9fY29uZmlnLnRzIl0sCiAgIm1hcHBpbmdzIjogIkFBS0EsYUFBYTsiLAogICJuYW1lcyI6IFtdCn0K

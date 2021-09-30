@@ -1,0 +1,54 @@
+{
+  "name": "@silvenon/remark-smartypants",
+  "description": "remark plugin to implement SmartyPants",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/silvenon/remark-smartypants.git"
+  },
+  "author": {
+    "name": "Matija Marohnić",
+    "email": "matija.marohnic@gmail.com",
+    "url": "https://silvenon.com"
+  },
+  "homepage": "https://github.com/silvenon/remark-smartypants#readme",
+  "bugs": {
+    "url": "https://github.com/silvenon/remark-smartypants/issues",
+    "email": "matija.marohnic@gmail.com"
+  },
+  "keywords": [
+    "unified",
+    "remark",
+    "remark-plugin",
+    "smartypants",
+    "punctuation",
+    "typography",
+    "smart"
+  ],
+  "scripts": {
+    "test": "jest",
+    "prepublishOnly": "yarn test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn test"
+    }
+  },
+  "dependencies": {
+    "retext": "^7.0.1",
+    "retext-smartypants": "^4.0.0",
+    "unist-util-visit": "^2.0.1"
+  },
+  "devDependencies": {
+    "husky": "^4.0.7",
+    "jest": "^25.3.0",
+    "prettier": "^2.0.4",
+    "remark": "^12.0.0"
+  }
+}

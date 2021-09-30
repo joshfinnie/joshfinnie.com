@@ -1,0 +1,24 @@
+{
+  "name": "@snowpack/plugin-svelte",
+  "version": "3.7.0",
+  "main": "plugin.js",
+  "license": "MIT",
+  "homepage": "https://github.com/snowpackjs/snowpack/tree/main/plugins/plugin-svelte#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/snowpackjs/snowpack.git",
+    "directory": "plugins/plugin-svelte"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "svelte": "^3.21.0"
+  },
+  "gitHead": "a01616bb0787d56cd782f94cecf2daa12c7594e4",
+  "dependencies": {
+    "rollup-plugin-svelte": "^7.0.0",
+    "svelte-hmr": "^0.13.2",
+    "svelte-preprocess": "^4.7.2"
+  }
+}

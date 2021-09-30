@@ -1,0 +1,13 @@
+---
+import { Markdown } from 'astro/components';
+import BlogPost from '../components/BlogPost.astro';
+import Layout from '../components/Layout.astro'
+
+const {content} = Astro.props;
+const {title, description, date, tags, heroImage, alt, permalink, unsplash, unsplashURL} = content;
+---
+<Layout title={`${title} | www.joshfinnie.com`} description={description} permalink={permalink} image={heroImage}>
+  <BlogPost title={title} heroImage={heroImage} date={date} alt={alt} tags={tags} unsplash={unsplash} unsplashURL={unsplashURL}>
+    <slot />
+  </BlogPost>
+</Layout>

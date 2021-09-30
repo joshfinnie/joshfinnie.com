@@ -1,0 +1,87 @@
+{
+	"name": "has-package-exports",
+	"version": "1.2.3",
+	"description": "Does the current node version have support for the \"exports\" field in package.json?",
+	"main": "no",
+	"browser": {
+		"no": "./browser.js",
+		"yes": "./browser.js"
+	},
+	"exports": {
+		".": [
+			{
+				"browser": "./browser.js",
+				"default": "./yes.js"
+			},
+			"./yes.js"
+		],
+		"./conditional": [
+			{
+				"browser": "./browser.js",
+				"import": "./yes.js",
+				"require": "./yes.js",
+				"node": "./yes.js",
+				"default": "./no.js"
+			},
+			"./no.js"
+		],
+		"./pattern": "./pattern.js"
+	},
+	"scripts": {
+		"prepublish": "not-in-publish || npm run prepublishOnly",
+		"prepublishOnly": "safe-publish-latest",
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "npm run tests-only",
+		"tests-only": "nyc tape 'test/**/*.js'",
+		"posttest": "aud --production || true",
+		"version": "auto-changelog && git add CHANGELOG.md",
+		"postversion": "auto-changelog && git add CHANGELOG.md && git commit --no-edit --amend && git tag -f \"v$(node -e \"console.log(require('./package.json').version)\")\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/inspect-js/has-package-exports.git"
+	},
+	"keywords": [
+		"package.json",
+		"package",
+		"exports",
+		"field"
+	],
+	"author": "Jordan Harband <ljharb@gmail.com>",
+	"funding": {
+		"url": "https://github.com/sponsors/ljharb"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/inspect-js/has-package-exports/issues"
+	},
+	"homepage": "https://github.com/inspect-js/has-package-exports#readme",
+	"dependencies": {
+		"@ljharb/has-package-exports-patterns": "0.0.1"
+	},
+	"devDependencies": {
+		"@ljharb/eslint-config": "^17.6.0",
+		"aud": "^1.1.5",
+		"auto-changelog": "^2.2.1",
+		"eslint": "^7.25.0",
+		"has-package-exports": "file:.",
+		"nyc": "^10.3.2",
+		"safe-publish-latest": "^1.1.4",
+		"semver": "^6.3.0",
+		"tape": "^5.2.2"
+	},
+	"greenkeeper": {
+		"ignore": [
+			"semver"
+		]
+	},
+	"auto-changelog": {
+		"output": "CHANGELOG.md",
+		"template": "keepachangelog",
+		"unreleased": false,
+		"commitLimit": false,
+		"backfillLimit": false,
+		"hideCredit": true
+	}
+}

@@ -1,0 +1,37 @@
+{
+  "name": "retext",
+  "version": "7.0.1",
+  "description": "Natural language processor powered by plugins",
+  "license": "MIT",
+  "keywords": [
+    "natural",
+    "language",
+    "concrete",
+    "syntax",
+    "tree",
+    "cst",
+    "parse",
+    "stringify",
+    "process"
+  ],
+  "dependencies": {
+    "retext-latin": "^2.0.0",
+    "retext-stringify": "^2.0.0",
+    "unified": "^8.0.0"
+  },
+  "homepage": "https://github.com/retextjs/retext",
+  "repository": "https://github.com/retextjs/retext/tree/master/packages/retext",
+  "bugs": "https://github.com/retextjs/retext/issues",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/unified"
+  },
+  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "scripts": {}
+}

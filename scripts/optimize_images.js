@@ -1,7 +1,7 @@
-const sharp = require(`sharp`);
-const glob = require(`glob`);
-const fs = require(`fs-extra`);
-const matches = glob.sync(`src/**/*.{png,jpg,jpeg}`);
+const sharp = require('sharp');
+const glob = require('glob');
+const fs = require('fs-extra');
+const matches = glob.sync(`public/**/*.{png,jpg,jpeg}`);
 const MAX_WIDTH = 1080;
 const QUALITY = 90;
 Promise.all(

@@ -9,7 +9,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^0.20.3",
+    "astro": "^0.20.9",
     "date-fns": "^2.24.0",
     "sharp": "^0.29.1",
     "tailwindcss": "^2.2.16"

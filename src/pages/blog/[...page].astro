@@ -1,0 +1,33 @@
+---
+import BlogPostPreview from '../../components/BlogPostPreview.astro';
+import Layout from '../../components/Layout.astro';
+import Pagination from '../../components/Pagination.astro';
+
+export async function getStaticPaths({ paginate, rss }) {
+  const allPosts = Astro.fetchContent('./*.md');
+  const sortedPosts = allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  rss({
+    title: `Blog | www.joshfinnie.com`,
+    description: "The personal/professional website of Josh Finnie.",
+    customData: `<language>en-us</language>`,
+    items: sortedPosts.map(item => ({
+      title: item.title,
+      link: item.url,
+      pubDate: item.date,
+    })),
+  })
+
+    return paginate(sortedPosts, {
+      pageSize: 5
+    })
+}
+
+const { page } = Astro.props;
+---
+<Layout title="Blog | www.joshfinnie.com">
+  <section>
+    {page.data.map(p => <BlogPostPreview post={p} />)}
+  </section>
+  <Pagination page={page}/>
+</Layout>

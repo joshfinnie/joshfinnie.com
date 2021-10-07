@@ -1,6 +1,21 @@
 {
   "talks": [
     {
+      "name": "GRPC Walkthrough and Programming Showcase",
+      "link": "https://slides.com/joshfinnie/grpc-walkthrough",
+      "location": "PBS Internal Tech Talk",
+      "lightning": false,
+      "date": "2021-06-23"
+    },
+    {
+      "name": "Building WASM-Frontmatter",
+      "link": "https://slides.com/joshfinnie/building-wasm-frontend",
+      "location": "Rust DC",
+      "locationLink": "https://www.meetup.com/RustDC/",
+      "lightning": true,
+      "date": "2021-03-16"
+    },
+    {
       "name": "Introduction to Rust & WASM for Javascript Developers",
       "link": "https://slides.com/joshfinnie/rust-wasm-and",
       "location": "DCJS",
@@ -11,7 +26,7 @@
     {
       "name": "Docker Multi-stage Builds and other Best Practices.",
       "link": "https://slides.com/joshfinnie/docker-multi-stage-builds-and-other-best-practices",
-      "location": "PBS Internal Tech Talk Tuesday",
+      "location": "PBS Internal Tech Talk",
       "lightning": false,
       "date": "2020-07-21"
     },

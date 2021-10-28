@@ -148,6 +148,10 @@ As I stated above, there is first-class support for `.astro` for VSCode. I have 
 
 ```
 
+## Code
+
+My blog is open-source. You can find the Astro.build code here: <a href="https://github.com/joshfinnie/joshfinnie.com" target="_blank">github/joshfinnie.com</a> This shows all the interesting bits that I learned while migrating this blog. Pagination, SEO, my spiral into TailwindCSS, it's all there to view. If you are looking to migrate from Gatsby to Astro and have read all the documentation, feel free to browse for some ideas!
+
 ## Conclusion
 
 Even though it was more effort to switch from a framework like Gatsby to Astro, I don't see myself turning back. I have been happy with the power that Astro provides, and am hopeful for its future. The [Astro 0.21 Preview](https://astro.build/blog/astro-021-preview/) has me excited for the next release. It makes developing in Astro easier and even faster! Does it make sense for you to jump onto an early project and give it the power to host your own websites? It does! I hope this blog post helped with your decision making as well. As always, if you want to continue this conversion, you can find me on [Twitter](https://twitter.com); I'd love to talk more Astro!

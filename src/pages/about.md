@@ -7,9 +7,10 @@ layout: '../layouts/BasePage.astro'
 
 ---
 
-I currently help develop PBS.org leading backend development and helping everywhere within the stack. I am an experienced polyglot software engineer who’s specialties lie in building large-scale, complex APIs,
+I help develop <a href="https://pbs.org" target="_blank">PBS.org</a> leading backend development and helping everywhere up-and-down the stack.
+I am an experienced polyglot software engineer who’s specialties lie in building large-scale, complex APIs,
 interactive websites and internal tooling. I have over 10 years of software development experience ranging from
-the fast-paced world of startups to working on many different contracts with a small, independent team of
+the fast-paced world of startups to working on different contracts with a small, independent team of
 developers. I have the expertise and ability to make your team better through my knowledge and experience
 and am excited to share.
 

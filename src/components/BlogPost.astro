@@ -6,6 +6,8 @@ import Unsplash from './Unsplash.astro';
 
 const { title, date, tags, heroImage, alt, unsplash, unsplashURL } = Astro.props;
 const formattedDate = format(parseISO(date), "LLLL d, yyyy");
+
+console.log(Object.keys(Astro.request.params));
 ---
 <article>
   <header>

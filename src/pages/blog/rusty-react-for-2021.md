@@ -1,12 +1,13 @@
 ---
 
-title: "Rusty React for 2021"
+title: "Adding WebAssembly (using Rust) for Fast React Components"
 date: "2021-11-22"
 tags:
   - "rust"
   - "react"
   - "wasm"
   - "tutorial"
+  - "javascript"
 layout: '../../layouts/BlogPost.astro'
 heroImage: "/assets/blog/cabin.jpg"
 unsplash: "Lili Kovac"
@@ -14,19 +15,19 @@ unsplashURL: "@lilschk"
 
 ---
 
-With the [recent update](https://blog.rust-lang.org/2021/10/21/Rust-1.56.0.html) to [Rust](https://www.rust-lang.org/), it is time to relook at using Rust and [React](https://reactjs.org/) together. I have a new found love for Rust and everything it can do as a language. One of its more impressive features is to seamlessly write [WebAssembly(Wasm)](https://webassembly.org/). I have explored how to use Rust to write Wasm [before (Blog post coming soon!)](https://www.npmjs.com/package/wasm-frontmatter), But I wanted to see how easy it would be to integrate it into a standard React workflow.
+With the [recent update](https://blog.rust-lang.org/2021/10/21/Rust-1.56.0.html) to [Rust](https://www.rust-lang.org/), it is time to relook at using Rust and [React](https://reactjs.org/) together. I have a new found love for Rust and everything it can do as a language. One of its more impressive features is its ability to write [WebAssembly(Wasm)](https://webassembly.org/) without much overhead. I have explored how to use Rust to write Wasm [before](https://www.npmjs.com/package/wasm-frontmatter) (Blog post coming soon!). But I wanted to see how easy it would be to integrate it into a standard React workflow.
 
 ## Introduction to Wasm
 
 > WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual machine. Wasm is designed as a portable compilation target for programming languages, enabling deployment on the web for client and server applications.
 
-WebAssembly is a low-level assembly-like programming language that can run in most modern browsers. It has a compact binary format that gives you near-native performance on the web. As it becomes more and more popular, quite a few languages have written bindings to compile safely into web assembly. It's a tool that I have fallen for and am excited to share how we can use it in our React workflow.
+WebAssembly is a low-level assembly-like programming language that can run in most modern browsers. It has a compact binary format that gives us near-native performance on the web. As it becomes more popular, many languages have written bindings to compile into web assembly. It's a tool that I have fallen for and am excited to share how we can use it in our React workflow.
 
-![webassembly browser support](/assets/blog/web-assembly-support.png)
+![webAssembly browser support](/assets/blog/web-assembly-support.png)
 
-Devolping a program from scratch in Wasm is not ideal, almost impossible. If you ever had the pleasure in coding in Assembly during university, you'd understand why. We have lucked out though. There are many languages that can compile down to Wasm without much effort. This is possible in a large range of languages (C, Go, C#, Kotlin), but for this example we'll be using Rust.
+Developing a program from scratch in Wasm is not ideal, almost impossible. If you ever had the pleasure of coding in Assembly during university, you'd understand why. Luckily, there are some languages that can compile down to Wasm without much effort. This is possible in a large range of languages (C, Go, C#, Kotlin), but for this example we'll be using Rust.
 
-As you can see below, creating a simple "Hello World" Webassembly application in Rust is straight forward:
+<!-- As we can see below, creating a simple "Hello World" WebAssembly application in Rust is straight forward: -->
 
 ```rust
 use wasm_bindgen::prelude::*;
@@ -46,24 +47,23 @@ pub fn greet(name: &str) {
 
 _**NOTE**: This tutorial assumes you have both [Node](https://nodejs.org/en/download/) and [Rust](https://www.rust-lang.org/tools/install) already installed on your machine. Follow those links to help you out if you don't already._
 
-The first step is to set up a React application. There are tools out there that help you with this; like [Vite](https://vitejs.dev/) or [create-react-app](https://create-react-app.dev/), but we will be customizing this quite a bit so let's do everything from scratch using [Webpack](https://webpack.js.org/). Let's initialize our `package.json` by running the following command:
+The first step is to set up a React application. There are tools out there that help us with this; like [Vite](https://vitejs.dev/) or [create-react-app](https://create-react-app.dev/). But in this tutorial, we will be customizing our React buildout. It's easier do everything from scratch using [Webpack](https://webpack.js.org/). Let's initialize our `package.json` by running the following command:
 
 ```bash
 $ npm init -y
 ```
 
-The above command will give us a default `package.json` ready to install the packages we'll need. I am going to use the most current packages that are available to me at the time of writing this post, but do watch out. These packages update frequently, and there might be some changes within the APIs I use below. To follow this tutorial completly, try to install the same versions of the packages I use. 
+The above command will give us a default `package.json` ready to install the packages we'll need. I am going to use the most current packages that are available to me at the time of writing this post, but do watch out. These packages update often, and there might be some changes within the APIs I use below. To follow this tutorial, try to install the same versions of the packages I use. 
 
-Next we want to install React, Babel, Webpack, and some nice-to-have packages. This will allow us to start coding!
+We want to install React, Babel, Webpack, and some nice-to-have packages. This will allow us to start coding!
 
 ```bash
 $ npm i react react-dom
-$ npm i -D webpack webpack-cli webpack-dev-server
+$ npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin 
 $ npm i -D babel-core babel-loader @babel/preset-env @babel/preset-react
-$ npm i -D autoprefixer postcss-cli html-webpack-plugin tailwindcss
 ```
 
-Next, let's build out our folder structure for our React app. I did write about this in much more depth [here](/blog/my-2020-react-startup-process). Let's create the folders `src`, `public`, `build`, and `dist`. After those folders are created, let's introduce our first piece of React code. Open a file called `index.jsx` in the `src` folder and add the following code:
+Let's build out our folder structure for our React app. I did write about this in much more depth [here](/blog/my-2020-react-startup-process). Let's create the folders `src`, `public`, `build`, and `dist`. After we create those folders, let's introduce our first piece of React code. Open a file called `index.jsx` in the `src` folder and add the following code:
 
 ```jsx
 import React from "react";
@@ -72,7 +72,7 @@ import ReactDOM from "react-dom";
 ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById("root"));
 ```
 
-Now, to get this running as a web application, we need to set up our babel and webpack configs. To do this, create two files: `.babelrc` and `webpack.config.js` and add code to them respectfully:
+Now, to get this running as a web application, we need to set up our babel and webpack configs. To do this, create two files: `.babelrc` and `webpack.config.js` and add code to each, respectfully:
 
 ```js
 {
@@ -139,7 +139,7 @@ We also need to add our default HTML, create `public/index.html` and add the fol
 </html>
 ```
 
-Lastly, we need to modify our `package.json` to take advantage of these updates to our code. To do that, update the file to read as the following:
+We now need to update our `package.json` to take advantage of these updates to our code. To do that, update the file to read as the following:
 
 ```js
 {
@@ -160,12 +160,9 @@ Lastly, we need to modify our `package.json` to take advantage of these updates 
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
-    "autoprefixer": "^10.4.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.3",
     "html-webpack-plugin": "^5.5.0",
-    "postcss-cli": "^9.0.2",
-    "tailwindcss": "^2.2.19",
     "webpack": "^5.64.2",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0"
@@ -177,9 +174,9 @@ Above is my whole `package.json`, let's use this as a time capsule of package ve
 
 ![basic hello world React app](/assets/blog/hello-world-react.png)
 
-## Getting Rusty
+### Getting Rusty
 
-Now that we have a wonderful React app up-and-running let's jump into the Rust component of this exercise. First step is we'll need to create the Rust application. You can do that by running `cargo init --lib .` (Don't forget the period at the end of that command, it's important!) This will create a `Cargo.toml` and a `src/lib.rc` file. To get the Rust application ready to convert they code to Wasm, we'll need an important package called `wasm-bindgen` and tell our compiler that this package is special. To do this, we'll need to modify our `Cargo.toml` file:
+Now that we have a wonderful React app up-and-running let's jump into the Rust component of this exercise. First step is we'll need to create the Rust application. We can do that by running `cargo init --lib .` (_Don't forget the period at the end of that command, it's important!_) This will create a `Cargo.toml` and a `src/lib.rc` file. To get the Rust application ready to convert they code to Wasm, we'll need an important package called `wasm-bindgen`. We'll also need to tell our compiler that this package is a `cdylib`. To do this, we'll need to modify our `Cargo.toml` file:
 
 ```toml
 [package]
@@ -217,13 +214,13 @@ $ cargo build
 
 ```
 
-This build in-itself did not do much for us, we'll need to add a useful taraget for our builds. To add a new target for Rust, you can run the following command:
+This build in-itself did not do much for us, we'll need to add a useful taraget for our builds. To add a new target for Rust, we can run the following command:
 
 ```bash
 $ rustup target add wasm32-unknown-unknown
 ```
 
-This will give us the appropriat target for our compiled Rust code, allowing us to add it to our React application. Let's update our `src/lib.rs` file to be more helpful as well. Update the existing code to the following:
+This will give us the appropriate target for our compiled Rust code, allowing us to add it to our React application. Let's update our `src/lib.rs` file to be more helpful as well. Update the existing code to the following:
 
 ```rust
 use wasm_bindgen::prelude::*;
@@ -252,13 +249,13 @@ Again, let's make sure our Rust application works, but this time let's use the a
 $ cargo build --target wasm32-unknown-unknown
 ```
 
-Lastly, let's install the `wasm-bindgen-cli` command-line application so we can leverage our newly created Webassembly code:
+Let's install the `wasm-bindgen-cli` command-line application so we can leverage the WebAssembly code we created:
 
 ```bash
 $ cargo install -f wasm-bindgen-cli
 ```
 
-Once installed, we can take our Webassembly code generated by Rust and create a wrapping around it for our React code:
+Once installed, we can take our WebAssembly code generated by Rust and create a wrapping around it for our React code:
 
 ```bash
 $ wasm-bindgen target/wasm32-unknown-unknown/debug/rusty_react.wasm --out-dir build
@@ -266,9 +263,9 @@ $ wasm-bindgen target/wasm32-unknown-unknown/debug/rusty_react.wasm --out-dir bu
 
 This will dump the Javascript wrapping and optimized Wasm code into our `build` directory ready to be used by React. And that's what we'll do next!
 
-## React and Wasm
+### React and Wasm
 
-First step is to add some of the above scripts to our `package.json`. I find it so much easier to just run an NPM command versus remembering how to build the Rust application from memory. Add the following three lines to the `scripts` section of the `package.json` file:
+The next step in our tutorial is to use the above Wasm code in our React app. To do this, we'll need to add some of the above scripts to our `package.json`. I find it easier to run an NPM command versus remembering how to build the Rust application from memory. Add the following three lines to the `scripts` section of the `package.json` file:
 
 ```json
   "build:wasm": "cargo build --target wasm32-unknown-unknown",
@@ -276,7 +273,7 @@ First step is to add some of the above scripts to our `package.json`. I find it 
   "build": "npm run build:wasm && npm run build:bindgen && npx webpack",
 ```
 
-This will allow us to just run `npm run build` and get everything packaged up neatly! Very cool!
+This will allow us to run `npm run build` and get everything packaged up neatly! Very cool!
 
 There is another NPM package we should install as well to help us develop using Wasm. Let's add this to our dev dependencies:
 
@@ -284,7 +281,7 @@ There is another NPM package we should install as well to help us develop using 
 $ npm i -D @wasm-tool/wasm-pack-plugin
 ```
 
-Once installed, we'll update our `webpack.config.js` file to leverage the new package. Add the following bit of code to your webpack config:
+Once installed, we'll update our `webpack.config.js` file to leverage the new package. Add the following bit of code to our webpack config:
 
 ```js
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
@@ -353,7 +350,7 @@ modules by path ./node_modules/ 974 KiB
 webpack 5.64.2 compiled successfully in 3359 ms
 ```
 
-We are building out Wasm, and having Webpack load it. Next step is to add the Webassembly code to our React component. Let's update `src/index.jsx` to import our Wasm code and execute it!
+We are building out Wasm, and having Webpack load it. Next step is to add the WebAssembly code to our React component. Let's update `src/index.jsx` to import our Wasm code and execute it!
 
 ```jsx
 import React, { useState } from "react";
@@ -389,7 +386,7 @@ wasm.then(m => {
 });
 ```
 
-If you run `npm run dev` you should see a webpage with a button and a form. Try them out! You're now interacting with the Wasm code that was written in Rust.
+When we run `npm run dev` we should see a webpage with a button and a form. Try them out! We're interacting with the Wasm code that's written in Rust.
 
 ![Rusty React running "big computation"](/assets/blog/rusty-react-hello-name.png)
 
@@ -397,4 +394,6 @@ If you run `npm run dev` you should see a webpage with a button and a form. Try 
 
 ## Conclusion
 
-That's it! You should be having some wonderful Webassembly experience using Rust to create that Webassembly. There is much more you can do besides this short tutorial, but I hope this gets you started. As always, feel free to reach out to me [on twitter](https://twitter.com/joshfinnie) if you have any comments and concerns. Good luck with building something with Wasm.
+That's it! We should have WebAssembly (written in Rust) running in our React application. There is much more we can do besides this short tutorial, but I hope this gets we started. As always, feel free to reach out to me [on twitter](https://twitter.com/joshfinnie) if we have any comments and concerns. Good luck with building something with Wasm.
+
+For the complete code we went through this tutorial, check out [my github repo](https://github.com/joshfinnie/rusty-react). Give it a ⭐️!

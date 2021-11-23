@@ -1,6 +1,6 @@
 ---
 
-title: "Adding WebAssembly (using Rust) for Fast React Components"
+title: "Using WebAssembly (created in Rust) for Fast React Components"
 date: "2021-11-22"
 tags:
   - "rust"

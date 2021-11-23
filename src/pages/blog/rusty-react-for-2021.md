@@ -12,6 +12,7 @@ layout: '../../layouts/BlogPost.astro'
 heroImage: "/assets/blog/cabin.jpg"
 unsplash: "Lili Kovac"
 unsplashURL: "@lilschk"
+description: "this is a dummy description!"
 
 ---
 

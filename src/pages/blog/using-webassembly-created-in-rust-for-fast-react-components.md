@@ -1,7 +1,7 @@
 ---
 
 title: "Using WebAssembly (created in Rust) for Fast React Components"
-date: "2021-11-22"
+date: "2021-11-23"
 tags:
   - "rust"
   - "react"
@@ -12,7 +12,7 @@ layout: '../../layouts/BlogPost.astro'
 heroImage: "/assets/blog/cabin.jpg"
 unsplash: "Lili Kovac"
 unsplashURL: "@lilschk"
-description: "this is a dummy description!"
+description: "In this blog post we will learn how to leverage the Rust programming language to compile WebAssembly which we will then use in our React application. This gives us access to low-level components to speed up our code!"
 
 ---
 

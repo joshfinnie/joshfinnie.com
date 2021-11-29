@@ -10,7 +10,7 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
-              color: 'rgb(4, 120, 87)',
+              color: 'rgb(217, 119, 6)',
               'text-decoration': 'none',
               ' ont-weight': 'inherit',
             },

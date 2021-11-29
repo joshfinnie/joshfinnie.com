@@ -1,5 +1,6 @@
 ---
 import NavBar from './NavBar.astro';
+import Social from './Social.astro';
 ---
 <header class="border-b-2 border-gray-400 mb-3">
   <NavBar />
@@ -9,81 +10,6 @@ import NavBar from './NavBar.astro';
         <a href="/">joshfinnie.com</a>
       </h1>
     </div>
-    <div>
-      <span class="flex justify-center py-2">
-        <a
-          href="https://twitter.com/joshfinnie"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="twitter"
-        >
-          <span class="fa-stack fa-lg">
-            <i class="fas fa-circle fa-stack-2x" />
-            <i class="fab fa-twitter fa-stack-1x fa-inverse" />
-          </span>
-        </a>
-        <a
-          href="https://github.com/joshfinnie"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="github"
-        >
-          <span class="fa-stack fa-lg">
-            <i class="fas fa-circle fa-stack-2x" />
-            <i class="fab fa-github fa-stack-1x fa-inverse" />
-          </span>
-        </a>
-        <a
-          href="https://linkedin.com/in/joshfinnie"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="linkedin"
-        >
-          <span class="fa-stack fa-lg">
-            <i class="fas fa-circle fa-stack-2x" />
-            <i class="fab fa-linkedin fa-stack-1x fa-inverse" />
-          </span>
-        </a>
-        <a
-          href="https://instagram.com/joshfinnie"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="instagram"
-        >
-          <span class="fa-stack fa-lg">
-            <i class="fas fa-circle fa-stack-2x" />
-            <i class="fab fa-instagram fa-stack-1x fa-inverse" />
-          </span>
-        </a>
-        <a href="/rss.xml" class="rss">
-          <span class="fa-stack fa-lg">
-            <i class="fas fa-circle fa-stack-2x" />
-            <i class="fas fa-rss fa-stack-1x fa-inverse" />
-          </span>
-        </a>
-      </span>
-    </div>
+    <Social />
   </div>
 </header>
-
-<style>
-  .twitter {
-    color: #1DA1F2;
-  }
-
-  .github {
-    color: #181717;
-  }
-
-  .linkedin {
-    color: #0077B5;
-  }
-
-  .instagram {
-    color: #E4405F;
-  }
-
-  .rss {
-    color: #FFA500;
-  }
-</style>

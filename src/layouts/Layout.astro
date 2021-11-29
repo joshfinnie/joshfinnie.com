@@ -18,6 +18,8 @@ const defaultImage = "card.png"
       permalink={permalink || defaultPermalink}
       image={`https://www.joshfinnie.com${image || defaultImage}`}
     />
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../styles/global.css')} />
+    <link rel="stylesheet" type="text/css" href={Astro.resolve('../styles/prism.css')} />
   </head>
   <body>
     <div class="w-full mx-auto sm:max-w-screen-md px-4">

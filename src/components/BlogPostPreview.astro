@@ -8,12 +8,14 @@ const formattedDate = format(date, "LLLL d, yyyy");
 <article class="my-5">
   <header>
     <p>
-      <i class="fas fa-calendar-alt mr-2" />{formattedDate}
+      <i class="fas fa-calendar-alt mr-2"></i>{formattedDate}
     </p>
-    <a href={post.url} title={post.title}><h1 class="font-bold text-3xl mb-5">{post.title}</h1></a>
+    <a href={post.url} title={post.title} alt={post.title}>
+      <h1 class="font-bold text-3xl mb-5">{post.title}</h1>
+    </a>
   </header>
   <main>
-    <a href={post.url} title={post.title}>
+    <a href={post.url} title={post.title} alt={post.title}>
       <img src={post.heroImage} class="rounded-md"/>
     </a>
   </main>

@@ -7,7 +7,7 @@ tags:
   - "blog"
   - "s3"
   - "cloudfront"
-  - "let's encrypt"
+  - "lets encrypt"
 path: "/blog/setting-up-ssl-for-wwwjoshfinniecom"
 heroImage: "/assets/blog/padlock.jpg"
 expires: true

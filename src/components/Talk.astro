@@ -2,13 +2,13 @@
 import { parseISO, format } from 'date-fns';
 
 const { talk } = Astro.props;
-const date = parseISO(talk.date)
+const date = parseISO(talk.date);
 const formattedDate = format(date, "LLLL d, yyyy");
 ---
 <article class="py-2">
-  <p class="flex flex-col sm:flex-row items-center text-base">
+  <p class="flex flex-col sm:flex-row text-base">
     <span>
-    <i class="far fa-building mr-2" />
+    <i class="far fa-building mr-2"></i>
     {talk.locationLink ? (
       <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
         {talk.location}
@@ -17,9 +17,8 @@ const formattedDate = format(date, "LLLL d, yyyy");
       <span>{talk.location}</span>
     )}
     </span>
-    <span>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <i class="fas fa-calendar-alt mr-2" />
+    <span class="sm:pl-10">
+    <i class="fas fa-calendar-alt mr-2"></i>
     {formattedDate}
     </span>
   </p>
@@ -29,6 +28,6 @@ const formattedDate = format(date, "LLLL d, yyyy");
         {talk.name}
       </a>) : <span>{talk.name}</span>
     }
-    {talk.lightning ? <i class="fas fa-bolt ml-2" aria-hidden="true" /> : ''}
+    {talk.lightning ? <i class="fas fa-bolt ml-2" aria-hidden="true"></i> : ''}
   </h2>
 </article>

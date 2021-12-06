@@ -12,7 +12,7 @@ module.exports = {
             a: {
               color: 'rgb(217, 119, 6)',
               'text-decoration': 'none',
-              'font-weight': 'inherit',
+              ' ont-weight': 'inherit',
             },
             li: {
               margin: 0,

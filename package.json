@@ -15,7 +15,7 @@
     "lodash.kebabcase": "^4.1.1",
     "sharp": "^0.29.3",
     "tailwindcss": "^2.2.19",
-    "@tailwindcss/typography": "^0.4.1",
+    "@tailwindcss/typography": "^0.5.0",
     "vite-react-jsx": "^1.1.2"
   }
 }

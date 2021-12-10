@@ -10,7 +10,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^0.21.10",
+    "astro": "^0.21.12",
     "date-fns": "^2.27.0",
     "lodash.kebabcase": "^4.1.1",
     "sharp": "^0.29.3",

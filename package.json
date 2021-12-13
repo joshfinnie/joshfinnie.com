@@ -10,12 +10,12 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^0.21.10",
+    "astro": "^0.21.12",
     "date-fns": "^2.27.0",
     "lodash.kebabcase": "^4.1.1",
     "sharp": "^0.29.3",
-    "tailwindcss": "^2.2.19",
-    "@tailwindcss/typography": "^0.4.1",
+    "tailwindcss": "^3.0.1",
+    "@tailwindcss/typography": "^0.5.0",
     "vite-react-jsx": "^1.1.2"
   }
 }

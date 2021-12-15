@@ -20,7 +20,7 @@ To test and build locally, run `npm run build`. (This sometimes will throw error
 ```markdown
 ---
 
-title: "<TITL>"
+title: "<TITLE>"
 date: "<DATE>"
 tags:
   - "<TAG 1>"
@@ -30,6 +30,7 @@ layout: '../../layouts/BlogPost.astro'
 heroImage: "/assets/blog/<IMAGE>.jpg"
 unsplash: "<ARTIST>"
 unsplashURL: "<ARTIST URL>"
+description: "<DESCRIPTION"
 
 ---
 <TEXT GOES HERE>

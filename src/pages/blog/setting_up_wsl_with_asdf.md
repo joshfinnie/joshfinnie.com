@@ -30,7 +30,7 @@ The first thing we need to do is make sure our Ubuntu VM is up-to-date and has a
 
 ```bash
 $ sudo apt-get update
-$ sude apt-get install git curl unzip 
+$ sudo apt-get install git curl unzip 
 ```
 
 Once our Ubuntu VM is updated, we'll need to get ASDF itself. I prefer to do this via Git so let's run the following commands:

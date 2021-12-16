@@ -84,7 +84,7 @@ $ node --version
 v16.3.0
 ```
 
-Amazing. We are now using ASDF to control our version of Node on our Ubutu VM! Python is a little more complicated. We will have to make sure we have the requirements the plugin requires. Each plugin is a little different; I give the README a good scan to make sure I understand what we have to do. Python is also a little different because I often switch between two versions of python. This shows us a good example on how to manage different versions of a runtime.
+Amazing. We are now using ASDF to control our version of Node on our Ubuntu VM! Python is a little more complicated. We will have to make sure we have the requirements the plugin requires. Each plugin is a little different; I give the README a good scan to make sure I understand what we have to do. Python is also a little different because I often switch between two versions of python. This shows us a good example on how to manage different versions of a runtime.
 
 ```bash
 $ sudo apt-get update

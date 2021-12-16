@@ -20,7 +20,7 @@ I recently updated to Ubuntu 20.04 as the default [Windows Subsystem for Linux (
 
 ## What is ASDF?
 
-[ASDF](https://asdf-vm.com/) is a command-line tool that allows you to manage many different runtime versions with a single tool. I am currently using ASDF to manage all my language runtimes. It allows me to switch versions of Node without [NVM](https://github.com/nvm-sh/nvm). It allows me to switch versions of Python without [Pyenv](https://github.com/pyenv/pyenv). It allows me to switch versions of Rust, Go, and a myriad of other languages and tools without having to learn the specific tool for that language.
+[ASDF](https://asdf-vm.com/) is a command-line tool that allows you to manage many different runtime versions with a single tool. What do I mean by runtime versions? If you’ve ever installed a specific version of ruby (or PHP or Python or Node) to be able to test out some software, you’ve already dealt with this. I am currently using ASDF to manage all my language runtimes. It allows me to switch versions of Node without [NVM](https://github.com/nvm-sh/nvm). It allows me to switch versions of Python without [Pyenv](https://github.com/pyenv/pyenv). It allows me to switch versions of Rust, Go, and a myriad of other languages and tools without having to learn the specific tool for that language.
 
 ## How to use ASDF?
 
@@ -75,7 +75,7 @@ $ asdf install nodejs 16.3.0
 $ asdf global nodejs 16.3.0
 ```
 
-Above, I install the `nodejs` plugin for ASDF. I then use the `list all nodejs 16` command to search for all versions of node v16 that ASDF knows about. The `install nodejs 16.3.0` installs the latest v16 version of node. The `global nodejs 16.3.0` command sets my system's global node to the v16.3.0 version. This updates a file `~/.tool-versions` to show this:
+Above, I install the `nodejs` plugin for ASDF. You can tell ASDF where to install the plugin from; in this case, we are using ASDF's version found [here](https://github.com/asdf-vm/asdf-nodejs). I then use the `list all nodejs 16` command to search for all versions of node v16 that ASDF knows about. The `install nodejs 16.3.0` installs the latest v16 version of node. The `global nodejs 16.3.0` command sets my system's global node to the v16.3.0 version. This updates a file `~/.tool-versions` to show this:
 
 ```bash
 $ cat ~/.tool-versions

@@ -20,7 +20,7 @@ I recently updated to Ubuntu 20.04 as the default [Windows Subsystem for Linux (
 
 ## What is ASDF?
 
-[ASDF](https://asdf-vm.com/) is a command-line tool that allows you to manage multiple runtime versions with a single tool. I am currently using ASDF to manage all my laguage runtimes. It allows me to easily switch versions of Node without [NVM](https://github.com/nvm-sh/nvm). It allows me to easily switch versions of Python without [Pyenv](https://github.com/pyenv/pyenv). It allows me to easily switch versions of Rust, Go, and a myriade of other languages and tools without having to learn the specifil tool for that specific language.
+[ASDF](https://asdf-vm.com/) is a command-line tool that allows you to manage multiple runtime versions with a single tool. I am currently using ASDF to manage all my laguage runtimes. It allows me to easily switch versions of Node without [NVM](https://github.com/nvm-sh/nvm). It allows me to easily switch versions of Python without [Pyenv](https://github.com/pyenv/pyenv). It allows me to easily switch versions of Rust, Go, and a myriad of other languages and tools without having to learn the specific tool for that specific language.
 
 ## How to use ASDF?
 

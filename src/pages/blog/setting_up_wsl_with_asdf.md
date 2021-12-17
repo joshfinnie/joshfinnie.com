@@ -1,7 +1,7 @@
 ---
 
 title: "ASDF: How To Set Up Runtimes on Windows Subsystem for Linux"
-date: "2021-12-13"
+date: "2021-12-17"
 tags:
   - "asdf"
   - "widows"

@@ -12,7 +12,7 @@ layout: '../../layouts/BlogPost.astro'
 heroImage: "/assets/blog/construction.jpg"
 unsplash: "Nicolas J Leclercq"
 unsplashURL: "nicolasjleclercq"
-description: ""
+description: "In this blog post we discuss how to use ASDF to install and manage different language runtimes in a newly created Ubuntu VM on Windows Subsystem for Linux."
 
 ---
 

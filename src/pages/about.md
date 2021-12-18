@@ -40,7 +40,7 @@ Mathematics &#8211; University of Connecticut<br />
 **Other Interests:** Coffee, Cycling, Photography, Amateur
 Radio (<a href="http://www.qrz.com/db/W1OFZ" target="_blank" rel="noopener noreferrer">W1OFZ</a>)
 
-<a href="/assets/docs/resume.pdf" class="center" target="_blank" rel="noopener noreferrer">Download full resume (PDF)</a>.
+<br /><a href="/assets/docs/resume.pdf" class="center" target="_blank" rel="noopener noreferrer">Download full resume (PDF)</a>.
 
 ## PGP Public Key
 

@@ -1,12 +1,12 @@
 ---
 import BlogPostPreview from '../components/BlogPostPreview.astro';
 import Hero from '../components/Hero.astro';
-import Layout from '../components/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const allPosts = Astro.fetchContent('./blog/*.md');
 const posts = allPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
 ---
-<Layout title="Home | www.joshfinnie.com">
+<BaseLayout title="Home | www.joshfinnie.com">
   <Hero />
   <section>
     <h1 class="font-bold text-3xl text-center pb-3">Recent Blog Posts</h1>
@@ -15,4 +15,4 @@ const posts = allPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice
         <a href="/blog" title="All Posts">All Posts &rarr;</a>
     </div>
   </section>
-</Layout>
+</BaseLayout>

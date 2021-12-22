@@ -1,6 +1,6 @@
 ---
 import BlogPostPreview from '../../components/BlogPostPreview.astro';
-import Layout from '../../components/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import Pagination from '../../components/Pagination.astro';
 
 export async function getStaticPaths({ paginate, rss }) {
@@ -25,9 +25,9 @@ export async function getStaticPaths({ paginate, rss }) {
 
 const { page } = Astro.props;
 ---
-<Layout title="Blog | www.joshfinnie.com">
+<BaseLayout title="Blog | www.joshfinnie.com">
   <section>
     {page.data.map(p => <BlogPostPreview post={p} />)}
   </section>
   <Pagination page={page}/>
-</Layout>
+</BaseLayout>

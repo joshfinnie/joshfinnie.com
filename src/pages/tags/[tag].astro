@@ -1,5 +1,5 @@
 ---
-import Layout from '../../components/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // collection
 export function getStaticPaths() {
@@ -16,7 +16,7 @@ posts = allPosts
   .filter((post) => post.tags.includes(params.tag))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
 ---
-<Layout>
+<BaseLayout>
   <article>
     <h1 class="font-bold text-3xl mb-10 mt-5">Tag: {params.tag}</h1>
     <main class="prose max-w-none">
@@ -29,4 +29,4 @@ posts = allPosts
     </div>
     </main>
   </article>
-</Layout>
+</BaseLayout>

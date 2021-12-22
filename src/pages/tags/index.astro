@@ -1,5 +1,5 @@
 ---
-import Layout from '../../components/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const allPosts = await Astro.fetchContent('../blog/*.md');
 
@@ -11,7 +11,7 @@ const tags = Object.keys(tagCounts)
     .map(k => [k, tagCounts[k]])
     .sort((a, b) => b[1] - a[1]);
 ---
-<Layout title="Tags | www.joshfinnie.com">
+<BaseLayout title="Tags | www.joshfinnie.com">
   <article>
     <h1 class="font-bold text-3xl mb-10 mt-5">Tags</h1>
     <main class="prose max-w-none" style="column-count: 3">
@@ -20,4 +20,4 @@ const tags = Object.keys(tagCounts)
     </ul>
     </main>
   </article>
-</Layout>
+</BaseLayout>

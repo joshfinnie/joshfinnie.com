@@ -1,0 +1,28 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import BlogHeader from '../components/BlogHeader.astro';
+import Footer from '../components/Footer.astro';
+
+const {
+  title = "www.joshfinnie.com",
+  description = "The personal/professional website of Josh Finnie.",
+  permalink = "https://www.joshfinnie.com",
+  image = "/assets/josh.jpeg",
+} = Astro.props;
+
+---
+<head>
+  <BaseHead
+    title={title}
+    description={description}
+    permalink={permalink}
+    image={`https://www.joshfinnie.com${image}`}
+  />
+</head>
+<body>
+  <div class="w-full mx-auto sm:max-w-screen-md px-4">
+    <BlogHeader />
+    <slot />
+    <Footer />
+  </div>
+</body>

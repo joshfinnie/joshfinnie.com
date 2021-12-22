@@ -1,6 +1,7 @@
-const sharp = require('sharp');
-const glob = require('glob');
-const fs = require('fs-extra');
+import sharp from 'sharp';
+import glob from 'glob';
+import fs from 'fs-extra';
+
 const matches = glob.sync(`public/**/*.{png,jpg,jpeg}`);
 const MAX_WIDTH = 1080;
 const QUALITY = 90;
@@ -13,7 +14,7 @@ Promise.all(
     }
     const optimizedName = match.replace(
       /(\..+)$/,
-      (match, ext) => `-optimized${ext}`,
+      (_, ext) => `-optimized${ext}`,
     );
     await stream
       .resize(MAX_WIDTH)

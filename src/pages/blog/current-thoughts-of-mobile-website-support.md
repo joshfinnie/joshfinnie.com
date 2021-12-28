@@ -16,27 +16,28 @@ description: "I recentlj had a semi-viral post and I wanted to share a surprisin
 ---
 
 On November 23rd, I released a blog post about using [Rust to speed up React components](/blog/setting_up_wsl_with_asdf/).
-That blog post saw a lot of success trending on [/r/javascript](https://www.reddit.com/r/javascript) for almost a full 24 hours and shared on a few newsletters.
-A month later, I thought I'd give a retrospective on the things I learned with over 10,000 visitors coming to my site.
+That blog post saw a lot of success; trending on [/r/javascript](https://www.reddit.com/r/javascript) for a little over 24 hours and shared on more than a few newsletters.
+A month later, I thought I'd give a retrospective on the biggest thing I learned with over 10,000 visitors coming to my site.
 
 ## Mobile First?
 
-One of the bigger learnings with this success is that more than half of my visitors were on mobile browsers.
-This was surprising to me. 
+One of the bigger learnings with the success of this post is that just about half of my visitors read the post on mobile devices.
+That was surprising to me. 
 I recently updated my [blog to Astro](/blog/my-switch-from-gatsby-to-astro/) and part of the upgrade was to develop a true mobile experience.
-This hasn't been a priority of mine with a lot of websites I have built, but I keep hearing it being important.
+This has not been a priority of mine with a lot of websites I have built, but I keep hearing it being important.
+I wanted to have a mobile experience, but it always seemed half-hearted.
 I find CSS difficult to wrap my head around, and the idea of doing two sets of CSS was too much.
-That is until I found [TailwindCSS](https://tailwindcss.com/).
+That was until I found [TailwindCSS](https://tailwindcss.com/).
 
 > A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.
 
 With TailwindCSS I was able to build both a desktop and mobile experience all at once.
 And I am glad I did.
-Below is a chart of the devices that visited my blog post over the course of 1 month.
+Below is a chart of the devices that visited my blog post over the course of 30 days.
 
 ![Device count analytics for Using WebAssembly (created in Rust) for Fast React Components](/assets/blog/rust-react-device-analytics.png)
 
-As you can see in the chart above, almost _half_ of the visitors to this blog post were from mobile devices or tablets.
+As you can see in the chart above, about _half_ of the visitors to this blog post were from mobile devices or tablets.
 I don't know if this should come as a surprise to anyone, but to see it shocking.
 
 After reflecting on it a bit I started to inspect my own usage of the internet.
@@ -63,7 +64,7 @@ Not sure how many times in one blog post I can say I was surprised, but here we 
 I was surprised that almost 50% of my blog post's readership was from a mobile device.
 This version of the blog was the first time that I tried to take mobile users into consideration and I am glad I did!
 
-The use of mobile devices as the primary mode of consumption is only going to increase.
+The use of mobile devices as the primary mode of content consumption is only going to increase.
 I am already noticing that my life revolves around my mobile phone for sites like Reddit.
 If you are heading into a redesign of your blog, please try a CSS framework like TailwindCSS.
 It will give you the leverage to design a site both for mobile and desktop users at the same time.

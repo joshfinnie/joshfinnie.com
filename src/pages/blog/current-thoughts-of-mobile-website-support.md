@@ -1,6 +1,6 @@
 ---
 
-title: "My Current State of Mobile Website Support"
+title: "Current Thoughts of Mobile Website Support"
 date: "2021-12-28"
 tags:
   - "mobile"
@@ -11,7 +11,7 @@ layout: '../../layouts/BlogPost.astro'
 heroImage: "/assets/blog/chart.jpg"
 unsplash: "Jess Bailey"
 unsplashURL: "jessbaileydesigns"
-description: "I recently had a semi-viral post and I wanted to share a surprising discovery of the current state of mobile website support! Over the course of the month, more than 50% of the visitors were using a mobile browswer. What does this mean for me going forward?"
+description: "I recentlj had a semi-viral post and I wanted to share a surprising discovery of the current state of mobile website support! Over the course of the month, more than 50% of the visitors were using a mobile browswer. What does this mean for me going forward?"
 
 ---
 

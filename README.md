@@ -30,7 +30,7 @@ layout: '../../layouts/BlogPost.astro'
 heroImage: "/assets/blog/<IMAGE>.jpg"
 unsplash: "<ARTIST>"
 unsplashURL: "<ARTIST URL>"
-description: "<DESCRIPTION"
+description: "<DESCRIPTION>"
 
 ---
 <TEXT GOES HERE>

@@ -2,9 +2,19 @@ import sharp from 'sharp';
 import glob from 'glob';
 import fs from 'fs-extra';
 
-const matches = glob.sync(`public/**/*.{png,jpg,jpeg}`);
+let matches = glob.sync(`public/**/*.{png,jpg,jpeg}`);
 const MAX_WIDTH = 1080;
 const QUALITY = 90;
+
+if (process.argv.length > 2) {
+  matches = []
+  process.argv.slice(2).map((f) => {
+    matches = [].concat(matches, glob.sync(`public/**/${f}`));
+  })
+}
+
+console.log(matches);
+
 Promise.all(
   matches.map(async (match) => {
     const stream = sharp(match);

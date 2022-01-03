@@ -26,7 +26,7 @@ export async function getStaticPaths({ paginate, rss }) {
 const { page } = Astro.props;
 ---
 <BaseLayout title="Blog | www.joshfinnie.com">
-  <section>
+  <section id="main-content">
     {page.data.map(p => <BlogPostPreview post={p} />)}
   </section>
   <Pagination page={page}/>

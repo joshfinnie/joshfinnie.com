@@ -80,3 +80,8 @@ But if you don't take that leap you'll never get the knowledge you want to share
 If you are wanting to create content, but are scared... just do it.
 You will only be helping the world be a better place with the content you put your heart and soul into.
 And the world needs more people who care and want to share.
+
+## Also might enjoy:
+
+* [Using WebAssembly (created in Rust) for Fast React Components](/blog/using-webassembly-created-in-rust-for-fast-react-components/)
+* [Quick UX No-No](/blog/quick_ux_no-no/)

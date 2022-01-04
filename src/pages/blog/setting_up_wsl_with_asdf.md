@@ -109,3 +109,8 @@ There we have it! Both the python and node runtimes installed and managed by ASD
 ## Conclusion
 
 There you have it. This is how I go about setting up ASDF on a fresh instance of Ubuntu for the Windows Subsystem for Linux. I realize that this is useful for people using Linux too, but I am a huge fan of where WSL2 is going and am excited to keep trying to use it as a developer. As always, if you want to connect and discuss this post, find me on [Twitter](https://twitter.com/joshfinnie)! Hope this blog post helps you get up-and-running with ASDF.
+
+## Also might enjoy:
+
+* [Using Latex Through Docker](/blog/latex-through-docker/)
+* [My Basic Python Dockerfile](/blog/basic-python-dockerfile/)

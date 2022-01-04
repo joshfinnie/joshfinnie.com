@@ -41,7 +41,7 @@ Below is the list of books that I read this year and what I thought about them:
 Kill It with Fire has become the book that I will recommend to software engineers first until the end of time.
 Not only did this book open my eyes to how best to deal with legacy application. It also gave me insight on how not to get to a place where your applications turn into burdens.
 
-<a href="https://amzn.to/3HuqR0g" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3HuqR0g" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **The 12 Week Year by _Brian P. Moran &amp; Michael Lennington_**
 
@@ -51,7 +51,7 @@ Though it was in a different way than Kill It with Fire.
 The 12 Week Year gave me a framework to think of goals that clicked for me. [I even wrote an extended blog post on this book!](/blog/book-review-the-12-week-year)
 This is a fascinating way to think of the upcoming year.
 
-<a href="https://amzn.to/3FXpIhp" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3FXpIhp" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **A Philosophy of Software Design by _John Ousterhout_**
 
@@ -61,7 +61,7 @@ It opened a lot of vocabulary for me as someone who did not go through formal tr
 This is the book that allows me to speak engineering without formal training.
 My lack of formal training is something that always makes me feel like an imposter, but A Philosophy of Software Design helps here.
 
-<a href="https://amzn.to/330M1Es" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/330M1Es" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **The More of Less by _Joshua Becker_**
 
@@ -70,7 +70,7 @@ The More of Less is my third or fourth book on my journey of minimalism.
 This book lends itself to being one of the first books you should read if you are thinking of learning minimalism.
 For me, it was a great refreshed; there were a few new ideas I took away, but not many.
 
-<a href="https://amzn.to/3qKCBVH" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3qKCBVH" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **The Art of Leadership by _Michael Lopp_**
 
@@ -79,7 +79,7 @@ The Art of Leadership was a facinating book to read as someone who has very litt
 It gave me a frame of reference to have conversations with management; which is invaluable.
 I do think this is a book to read even if you are a tried-and-true individual contributor.
 
-<a href="https://amzn.to/3pP6QeJ" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3pP6QeJ" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **Explore It!: Reduce Risk and Increase Confidence with Exploratory Testing by _Elisabeth Hendrickson_**
 
@@ -88,7 +88,7 @@ This book gave me an intimate look into the world of exploratory testing.
 It gave me a different point-of-view from my current understanding of testing as a developer.
 It showed me resources outside the boundaries of normal unit and integration testing.
 
-<a href="https://amzn.to/3mSS8BT" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3mSS8BT" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **How To Decide by _Annie Duke_**
 
@@ -97,7 +97,7 @@ How To Decide opened my mind to identifying some issues I have with decision mak
 There were many parts of this book that made me sit up straight and take note on how I can change my ways.
 If you are a procrastinator or someone that finds it hard to make choices, give this one a read!
 
-<a href="https://amzn.to/3mWhIWr" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3mWhIWr" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **Zen and the Art of Motorcycle Maintenance by _Robert Pirsig_**
 
@@ -108,7 +108,7 @@ The story was very meandering and did not give many take-aways.
 Honestly, I cannot say I remember enjoying any part of this book.
 Sorry.
 
-<a href="https://amzn.to/3qIvjSp" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3qIvjSp" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **The Joy of Less, A Minimalist Living Guide: How to Declutter, Organize, and Simplify Your Life by _Francine Jay_**
 
@@ -116,7 +116,7 @@ Sorry.
 I read this book before the above The More of Less and I regret it. This book was weird and pushy. It forces the reader to accept that minimalism is the only way of life and that everyone else is wrong.
 I do not think this is the correct way to handle minimalism and this book was a rough!
 
-<a href="https://amzn.to/34kUNOb" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/34kUNOb" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **The Future of Tech is Female: How to Achieve Gender Diversity by _Douglas M Branson_**
 
@@ -127,7 +127,7 @@ It did not back its assumptions nor give me much room to reflect.
 I do believe the software development space needs to do _a lot_ for female developers, managers, CEO, etc.
 In the end, this book did not get us any closer.
 
-<a href="https://amzn.to/3FS3cq5" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3FS3cq5" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 <span id="fiction"></span>
 ### Fiction
@@ -141,7 +141,7 @@ If you have not yet, give this one a read and you will not be disappointed.
 The characters are magical, the environment is beautiful.
 This Is How You Lose the Time War will be a book that I will re-read again and again.
 
-<a href="https://amzn.to/3EPgP87" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3EPgP87" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **Death's End by _Cixin Liu with Joel Martinsen as translator_**
 
@@ -152,7 +152,7 @@ But I am glad I did.
 This was a great wrap-up of what turns out to be one of the more interesting science fiction I have read in a while.
 You should give the "Remembrance of Earth's Past" trilogy a try!
 
-<a href="https://amzn.to/32Pfykx" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/32Pfykx" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 **Ready Player Two: A Novel by _Ernest Cline_**
 
@@ -162,7 +162,7 @@ I am sure you saw the movie and were surprised it was also a book.
 After reading the first book some time ago, I guess enough time went by that I forgot how much I did not enjoy the universe of Ready Player.
 This book disappointed me as much as the first one... oh well.
 
-<a href="https://amzn.to/3EQZJH9" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
+<br /><a href="https://amzn.to/3EQZJH9" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 ## Conclusion
 

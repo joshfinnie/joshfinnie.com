@@ -1,5 +1,4 @@
 ---
-
 title: "Using WebAssembly (created in Rust) for Fast React Components"
 date: "2021-11-23"
 tags:
@@ -8,12 +7,11 @@ tags:
   - "wasm"
   - "tutorial"
   - "javascript"
-layout: '../../layouts/BlogPost.astro'
+layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/cabin.jpg"
 unsplash: "Lili Kovac"
 unsplashURL: "@lilschk"
 description: "In this blog post we will learn how to leverage the Rust programming language to compile WebAssembly which we will then use in our React application. This gives us access to low-level components to speed up our code!"
-
 ---
 
 With the [recent update](https://blog.rust-lang.org/2021/10/21/Rust-1.56.0.html) to [Rust](https://www.rust-lang.org/), it is time to relook at using Rust and [React](https://reactjs.org/) together. I have a new found love for Rust and everything it can do as a language. One of its more impressive features is its ability to write [WebAssembly(Wasm)](https://webassembly.org/) without much overhead. I have explored how to use Rust to write Wasm [before](https://www.npmjs.com/package/wasm-frontmatter) (Blog post coming soon!). But I wanted to see how easy it would be to integrate it into a standard React workflow.
@@ -54,13 +52,13 @@ The first step is to set up a React application. There are tools out there that 
 $ npm init -y
 ```
 
-The above command will give us a default `package.json` ready to install the packages we'll need. I am going to use the most current packages that are available to me at the time of writing this post, but do watch out. These packages update often, and there might be some changes within the APIs I use below. To follow this tutorial, try to install the same versions of the packages I use. 
+The above command will give us a default `package.json` ready to install the packages we'll need. I am going to use the most current packages that are available to me at the time of writing this post, but do watch out. These packages update often, and there might be some changes within the APIs I use below. To follow this tutorial, try to install the same versions of the packages I use.
 
 We want to install React, Babel, Webpack, and some nice-to-have packages. This will allow us to start coding!
 
 ```bash
 $ npm i react react-dom
-$ npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin 
+$ npm i -D webpack webpack-cli webpack-dev-server html-webpack-plugin
 $ npm i -D babel-core babel-loader @babel/preset-env @babel/preset-react
 ```
 
@@ -82,22 +80,22 @@ Now, to get this running as a web application, we need to set up our babel and w
 ```
 
 ```js
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
   entry: "./src/index.jsx",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.[hash].js"
+    filename: "bundle.[hash].js",
   },
   devServer: {
     compress: true,
     port: 8080,
     hot: true,
-    static: './dist',
+    static: "./dist",
     historyApiFallback: true,
-    open: true
+    open: true,
   },
   module: {
     rules: [
@@ -105,19 +103,19 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
-      }
-    ]
+          loader: "babel-loader",
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: __dirname + "/public/index.html",
-      filename: "index.html"
+      filename: "index.html",
     }),
   ],
   mode: "development",
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
 };
 ```
 
@@ -126,17 +124,15 @@ We also need to add our default HTML, create `public/index.html` and add the fol
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rusty React</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rusty React</title>
-</head>
-
-<body>
-  <div id="root"></div>
-</body>
-
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
 ```
 
@@ -359,15 +355,15 @@ import ReactDOM from "react-dom";
 
 const wasm = import("../build/rusty_react");
 
-wasm.then(m => {
+wasm.then((m) => {
   const App = () => {
     const [name, setName] = useState("");
     const handleChange = (e) => {
       setName(e.target.value);
-    }
+    };
     const handleClick = () => {
       m.welcome(name);
-    }
+    };
 
     return (
       <>

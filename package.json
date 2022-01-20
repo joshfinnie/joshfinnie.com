@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "optimize": "node scripts/optimize_images.js"
+    "optimize": "node scripts/optimize_images.js",
+    "format": "prettier --write --plugin-search-dir=. .",
+    "prettier:check": "prettier --check --plugin-search-dir=. ."
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.0",
@@ -16,6 +18,8 @@
     "date-fns": "^2.28.0",
     "fs-extra": "^10.0.0",
     "lodash.kebabcase": "^4.1.1",
+    "prettier": "^2.5.1",
+    "prettier-plugin-astro": "^0.0.11",
     "sharp": "^0.29.3",
     "tailwindcss": "^3.0.15",
     "vite-react-jsx": "^1.1.2"

@@ -57,7 +57,7 @@
     {
       "name": "Quick and Dirty AWS Lambda in Node.js",
       "link": "https://slides.com/joshfinnie/quick-and-dirty-lambda-node-js",
-      "location":  "NodeDC",
+      "location": "NodeDC",
       "locationLink": "https://www.meetup.com/node-dc",
       "lightning": true,
       "date": "2016-07-21"
@@ -73,7 +73,7 @@
     {
       "name": "Sneaking React into Angular (Again)",
       "link": "https://slides.com/joshfinnie/sneaking-react-into-angular-again/",
-      "location":   "React DC",
+      "location": "React DC",
       "locationLink": "https://www.meetup.com/React-DC/",
       "lightning": true,
       "date": "2016-04-27"
@@ -97,7 +97,7 @@
     {
       "name": "A DSL in Python",
       "link": "http://slides.com/joshfinnie/a-dsl-in-python#/",
-      "location":   "Django District, etc.",
+      "location": "Django District, etc.",
       "locationLink": "https://www.meetup.com/django-district/",
       "lightning": true,
       "date": "2015-10-27"
@@ -120,28 +120,28 @@
     },
     {
       "name": "iSat: interactive Satelite Tracker",
-      "location":   "TM Monthly Challenge",
+      "location": "TM Monthly Challenge",
       "locationLink": "https://www.meetup.com/TrackMaven-Monthly-Challenge/",
       "lightning": true,
       "date": "2015-01-19"
     },
     {
       "name": "Beer Search & Recs in ES",
-      "location":   "TM Monthly Challenge",
+      "location": "TM Monthly Challenge",
       "locationLink": "https://www.meetup.com/TrackMaven-Monthly-Challenge/",
       "lightning": true,
       "date": "2014-11-12"
     },
     {
       "name": "Making BeerLedge Social",
-      "location":   "Django District",
+      "location": "Django District",
       "locationLink": "https://www.meetup.com/django-district/",
       "lightning": true,
       "date": "2014-07-15"
     },
     {
       "name": "What is NodeSchool?",
-      "location":   "DC JQuery User Group (now DCJS)",
+      "location": "DC JQuery User Group (now DCJS)",
       "locationLink": "https://www.meetup.com/DC-JavaScript/",
       "lightning": true,
       "date": "2014-06-02"

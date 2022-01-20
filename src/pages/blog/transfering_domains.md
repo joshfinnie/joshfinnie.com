@@ -1,5 +1,4 @@
 ---
-
 title: "Transfering Domains"
 date: "2010-02-11"
 tags:
@@ -7,8 +6,7 @@ tags:
   - "hosting"
 path: "/blog/transfering-domains"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 So it is official. I have finally moved all my domains away from my old webhosting provider to GoDaddy. I am not sure why I kept all my domains with my webhosting company, but it made a terror when I started this process of switching to [WebFaction](http://webfaction.com/).

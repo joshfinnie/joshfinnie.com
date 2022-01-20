@@ -1,14 +1,15 @@
 ---
-import { Markdown } from 'astro/components';
+import { Markdown } from "astro/components";
 
-import BaseLayout from './BaseLayout.astro';
+import BaseLayout from "./BaseLayout.astro";
 
 const { content } = Astro.props;
 const { title, description, permalink } = content;
 ---
-<BaseLayout title={`${title} | www.joshfinnie.com`} description={description} permalink={permalink}>
+
+<BaseLayout title={`${title} | www.joshfinnie.com`} {description} {permalink}>
   <article id="main-content">
-    <h1 class="font-bold text-3xl mb-10 mt-5">{ title }</h1>
+    <h1 class="font-bold text-3xl mb-10 mt-5">{title}</h1>
     <main class="prose max-w-none">
       <slot />
     </main>

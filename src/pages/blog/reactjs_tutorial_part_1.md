@@ -1,17 +1,15 @@
 ---
-
 title: "React.js Tutorial Part 1"
 date: "2015-01-10"
 tags:
- - "tutorial"
- - "react.js"
- - "javascript"
- - "node.js"
- - "express.js"
+  - "tutorial"
+  - "react.js"
+  - "javascript"
+  - "node.js"
+  - "express.js"
 path: "/blog/reactjs-tutorial-part-1"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 Welcome to my tutorial on how to get a website up and running using [React.js](http://facebook.github.io/react/) and [Node.js](http://nodejs.org/). I am expecting this to be a multipart tutorial as we go through building a job board for my local [Node.js Meetup Group](), though I am not sure how long these tutorials will last. I hope you enjoy them and if so feel free to share them! You can follow along with my progression on my jobs.nodedc.com [github repo](https://github.com/joshfinnie/jobs.nodedc.com)
@@ -64,7 +62,6 @@ Let's start up this generated site and see what we get. Below is the image that 
 
 I then recommend going through the generated code and cleaning it up a little bit. We will not need the `user` routes so I just deleted them. I also expanded on the `package.json` some to add a description and keywords as well as changed the version to something more reasonable.
 
-
 ## Adding React.js
 
 Now that we have a pretty basic express application as our backend, we are now going to jump into adding react. Adding react is not that difficult, but there are a few ways of doing things. Since we are already within a node.js app, I am going to go down the route of building our jsx scripts into javascript. To get ready for this, we need to install the `react-tools` node package. You can do that by the following command:
@@ -114,10 +111,7 @@ block content
 Next we want to create a simple react.js component in our `public/javascripts/src/` folder called `helloworld.jsx`. This component should look like:
 
 ```javascript
-React.render(
-<h1>Hello, world from React.js!</h1>,
-document.getElementById('example')
-);
+React.render(<h1>Hello, world from React.js!</h1>, document.getElementById("example"));
 ```
 
 Because we are using the `react-tools` node package, we want to add the compiled javascript code to our templates. Change you `views/layout.jade` file to the following:

@@ -1,16 +1,14 @@
 ---
-
 title: "Using Pygments with Static Blogs"
 date: "2014-05-20"
 tags:
- - "how-to"
- - "python"
- - "pygments"
- - "blogging"
+  - "how-to"
+  - "python"
+  - "pygments"
+  - "blogging"
 path: "/blog/using-pygments-with-static-blogs"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 There are many ways you can get stylized code snippets on your static website, from javascript libraries to embedded iframes. Some of these techniques are super easy, some are more complex, but if you write your blog using markdown, there is no better than [Pygments](http://pygments.org/).

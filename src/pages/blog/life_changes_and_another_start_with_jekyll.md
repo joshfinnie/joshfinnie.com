@@ -1,5 +1,4 @@
 ---
-
 title: "Life Changes and Another Start with Jekyll"
 date: "2011-09-29"
 tags:
@@ -9,8 +8,7 @@ tags:
   - "projects"
 path: "/blog/life-changes-and-another-start-with-jekyll"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 ## Hello, again.
@@ -67,12 +65,12 @@ BiblioQuick was something that I thought of while working on my master’s thesi
 
 Thanks for reading my ramblings above. Come back here as I continue my promise of writing more. I also plan on making some videos that I will be posting here. I love [Minecraft][9] and would love to start a “Let’s Play.” There is also the idea of creating a video tutorial of Flask as I work my way through building the websites mentioned above. Who knows… Thanks again, and come back for more regularly-scheduled posts!
 
- [1]: http://twitter.github.com/bootstrap/
- [2]: http://geohackr.com
- [3]: https://github.com/mojombo/jekyll
- [4]: http://beerledge.com
- [5]: http://anontweet.me
- [6]: http://osqa.net
- [7]: http://news.ycombinator.com
- [8]: https://github.com/jean-philippe/Flask-Dashed
- [9]: http://minecraft.net
+[1]: http://twitter.github.com/bootstrap/
+[2]: http://geohackr.com
+[3]: https://github.com/mojombo/jekyll
+[4]: http://beerledge.com
+[5]: http://anontweet.me
+[6]: http://osqa.net
+[7]: http://news.ycombinator.com
+[8]: https://github.com/jean-philippe/Flask-Dashed
+[9]: http://minecraft.net

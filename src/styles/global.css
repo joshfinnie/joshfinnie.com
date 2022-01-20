@@ -4,6 +4,6 @@
 
 @layer base {
   a {
-    @apply text-yellow-600
+    @apply text-yellow-600;
   }
 }

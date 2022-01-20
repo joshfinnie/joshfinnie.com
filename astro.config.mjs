@@ -1,7 +1,7 @@
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
   buildOptions: {
-    site: 'https://www.joshfinnie.com',
+    site: "https://www.joshfinnie.com",
     sitemap: true,
   },
   // Enables Tailwind support for development
@@ -11,9 +11,8 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     tailwindConfig: "./tailwind.config.js",
   },
   // Enable the Preact renderer to support Preact JSX components.
-  renderers: ['@astrojs/renderer-preact'],
+  renderers: ["@astrojs/renderer-preact"],
   vite: {
-    plugins: [
-    ],
+    plugins: [],
   },
 });

@@ -1,12 +1,13 @@
 ---
 import { parseISO, format } from "date-fns";
 
-import Tag from './Tags.astro';
-import Unsplash from './Unsplash.astro';
+import Tag from "./Tags.astro";
+import Unsplash from "./Unsplash.astro";
 
 const { title, date, tags, heroImage, alt, unsplash, unsplashURL } = Astro.props;
 const formattedDate = format(parseISO(date), "LLLL d, yyyy");
 ---
+
 <article>
   <header>
     {heroImage && <img class="rounded-md" loading="lazy" src={heroImage} alt={alt} />}
@@ -16,7 +17,7 @@ const formattedDate = format(parseISO(date), "LLLL d, yyyy");
         <i class="fas fa-calendar-alt mr-2"></i>
         {formattedDate}
       </span>
-      <Tag tags={tags} />
+      <Tag {tags} />
     </div>
   </header>
   <main class="prose max-w-none">

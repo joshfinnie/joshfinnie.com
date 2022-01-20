@@ -1,5 +1,4 @@
 ---
-
 title: "My Switch from Gatsby to Astro"
 date: "2021-10-28"
 tags:
@@ -11,7 +10,6 @@ layout: "../../layouts/BlogPost.astro"
 unsplashURL: denisdegioanni
 unsplash: Denis Degioanni
 heroImage: "/assets/blog/stars.jpg"
-
 ---
 
 A while ago I switched from using [Pelican](https://blog.getpelican.com/) (a static site generator written in Python) to [Gatsby](https://www.gatsbyjs.com/). I was drawn to the up-and-coming technology Gatsby promised. I also thought it was a good time to refresh my site with updated CSS and user experience. The conversion to Gatsby was a success. The documentation built by the Gatsby team was top-notch and I loved my experience with it. Yet, there was always an underlying feeling that the infrastructure was complex and overweight. Earlier this year, we had a team lunch-and-learn on [Astro](https://astro.build/), and the pitch spoke to me.
@@ -30,17 +28,17 @@ What Astro brings to web development is hard to personify, but the power of this
 
 ### Pros of Astro
 
-* Astro lets you create pages using your favorite UI component libraries (React, Preact, Vue, Svelte, and others) or a built-in component syntax which is like HTML + JSX.
-* Astro websites will load faster than other sites generated from different javascript based static site generators.
-* Astro has robust templates that can help you get up-and-running with a blog in no time.
-* Astro is itself a small NPM package with no dependencies. This makes upgrading Astro less painful than other generators.
+- Astro lets you create pages using your favorite UI component libraries (React, Preact, Vue, Svelte, and others) or a built-in component syntax which is like HTML + JSX.
+- Astro websites will load faster than other sites generated from different javascript based static site generators.
+- Astro has robust templates that can help you get up-and-running with a blog in no time.
+- Astro is itself a small NPM package with no dependencies. This makes upgrading Astro less painful than other generators.
 
 ### Cons of Astro
 
-* Astro only supports Static Site Generation.
-* The built-in component syntax can is usually unsupported if you are not using VSCode.
-* Astro's strengths rely heavily on highly static sites and can be more difficult to program if you want more complex interactions. (I'd recommend Next.js for sites where Astro falls short.)
-* Understanding the data fetching process in relation to pagination felt complex.
+- Astro only supports Static Site Generation.
+- The built-in component syntax can is usually unsupported if you are not using VSCode.
+- Astro's strengths rely heavily on highly static sites and can be more difficult to program if you want more complex interactions. (I'd recommend Next.js for sites where Astro falls short.)
+- Understanding the data fetching process in relation to pagination felt complex.
 
 ## An Aside
 
@@ -119,7 +117,7 @@ const tags = Object.keys(tagCounts)
     <ul>
       {tags.map(tag => (
         <li>
-          <a 
+          <a
             class="tag"
             href={`/tags/${tag[0]}`}
             title={`View posts tagged under "${tag}"`}
@@ -135,7 +133,6 @@ const tags = Object.keys(tagCounts)
 ```
 
 In this example, you can see the benefit of the frontmatter javascript, keeping all data manipulation in one place. But you can also see where the limitations might lie. _Also, as a double aside, this javascript in the Astro example could definitely be more efficient._ Before Astro, all the tag information and data calaculation happened in `gatsby-node.js`. We can now keep the logic that generates my tag page in one place. It even supports async/await; excellent!
-
 
 ## Emacs
 

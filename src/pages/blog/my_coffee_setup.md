@@ -1,5 +1,4 @@
 ---
-
 title: "My Coffee Setup (2018)"
 date: "2018-03-08"
 tags:
@@ -9,9 +8,8 @@ tags:
 path: "/blog/my-coffee-setup"
 heroImage: "/assets/blog/coffee.jpg"
 expires: false
-layout: '../../layouts/BlogPost.astro'
-unsplash: 'Mike Kenneally'
-
+layout: "../../layouts/BlogPost.astro"
+unsplash: "Mike Kenneally"
 ---
 
 <a id="top" class="article-anchor"></a>
@@ -45,19 +43,17 @@ For the last section, we are getting into some uncharted territories as I have n
 
 Now, in the near future (or not) I am really hoping to up my home espresso game. And as a tinkerer there's no better option than the <a target="_blank" href="http://amzn.to/2Fgiry9">Rancilio Silvia Espresso Machine</a>. These have been the cornerstone of home espresso makers and with the <a target="_blank" href="http://www.pidsilvia.com/">PID Installation for the Rancilio Rocky</a> you can really take this from a common espresso machine to a very precise espresso slinging monster. Of course, with any purchase of a high-end espresso machine comes the extra cost of purchasing a coffee grinder that gets to the consistency of finely ground espresso. To do this, I would recommend the partner to the Rancilio Silvia, the <a target="_blank" href="http://amzn.to/2FTaCv3">Rancilio HSD-ROC-SD Rocky Espresso Coffee Grinder</a>. I am pretty sure that you can even get these as a combo unit if you shop around.
 
-
 ## Conclusion
 
 If you want my <strike>perfect</strike> current setup go with this:
 
-* <a target="_blank" href="http://amzn.to/2GQezjt">Bonavita 1.0L Digital Variable Temperature Gooseneck Kettle</a>
-* <a target="_blank" href="https://www.amazon.com/gp/product/B000NTMHRW/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B000NTMHRW&linkCode=as2&tag=joshfinnie-20&linkId=136c5552d3ba0f25e4f2cd033065a40a">Chemex Classic Pour-Over Glass Coffeemaker</a>
-* <a target="_blank" href="https://www.amazon.com/gp/product/B01M290B9N/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B01M290B9N&linkCode=as2&tag=joshfinnie-20&linkId=911c4c1864ce5ce0959b0136d27569fb">Nespresso Pixi</a>
+- <a target="_blank" href="http://amzn.to/2GQezjt">Bonavita 1.0L Digital Variable Temperature Gooseneck Kettle</a>
+- <a target="_blank" href="https://www.amazon.com/gp/product/B000NTMHRW/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B000NTMHRW&linkCode=as2&tag=joshfinnie-20&linkId=136c5552d3ba0f25e4f2cd033065a40a">Chemex Classic Pour-Over Glass Coffeemaker</a>
+- <a target="_blank" href="https://www.amazon.com/gp/product/B01M290B9N/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B01M290B9N&linkCode=as2&tag=joshfinnie-20&linkId=911c4c1864ce5ce0959b0136d27569fb">Nespresso Pixi</a>
 
 If you want my dream espresso setup go with this:
 
-* <a target="_blank" href="http://amzn.to/2Fgiry9">Rancilio Silvia Espresso Machine</a>
-* <a target="_blank" href="http://amzn.to/2FTaCv3">Rancilio HSD-ROC-SD Rocky Espresso Coffee Grinder</a>
-
+- <a target="_blank" href="http://amzn.to/2Fgiry9">Rancilio Silvia Espresso Machine</a>
+- <a target="_blank" href="http://amzn.to/2FTaCv3">Rancilio HSD-ROC-SD Rocky Espresso Coffee Grinder</a>
 
 If you have other suggestions or really hated this type of blog post, feel free to reach out to me on Twitter [@joshfinnie](https://twitter.com/joshfinnie). Thanks for reading!

@@ -1,5 +1,4 @@
 ---
-
 title: "Installing Mezzanine on Heroku"
 date: "2012-12-10"
 tags:
@@ -10,8 +9,7 @@ tags:
   - "how-to"
 path: "/blog/installing-mezzanine-on-heroku"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 **Oringally posted here: <https://gist.github.com/joshfinnie/4046138>. Also in need of an update.**
@@ -47,13 +45,13 @@ urlpatterns += patterns("",
 ...
 ```
 
-Second, I started to use the Gunicorn server to aid in getting my static media served properly. Heroku does not require a Profile to run Django apps, but in that case it uses ********. Since I am a huge fan of the Gunicorn web server, I wanted to eventually serve Mezzanine through it anyways. Adding the below Procfile got Mezzanine running on Gunicorn and successfully got Heroku to serve my static files.
+Second, I started to use the Gunicorn server to aid in getting my static media served properly. Heroku does not require a Profile to run Django apps, but in that case it uses **\*\*\*\***. Since I am a huge fan of the Gunicorn web server, I wanted to eventually serve Mezzanine through it anyways. Adding the below Procfile got Mezzanine running on Gunicorn and successfully got Heroku to serve my static files.
 
 ```bash
 $ web: python manage.py collectstatic --noinput; python manage.py run_gunicorn -b 0.0.0.0:$PORT
 ```
 
- The above Procfile does two things, first if runs `collectstatic` to insure that all the static media is in the appropriate place within your app, and second it runs the Gunicorn server. In addition to adding this Procfile, you also need to add the Gunicorn application to your `INSTALLED_APPS` list on your `settings.py` file. Below is what my list looks like once Gunicorn was added (Note that I did not uncomment Mezzanine Accounts nor Mezzanine Mobile, if you are using them for your app, make sure to uncomment them.):
+The above Procfile does two things, first if runs `collectstatic` to insure that all the static media is in the appropriate place within your app, and second it runs the Gunicorn server. In addition to adding this Procfile, you also need to add the Gunicorn application to your `INSTALLED_APPS` list on your `settings.py` file. Below is what my list looks like once Gunicorn was added (Note that I did not uncomment Mezzanine Accounts nor Mezzanine Mobile, if you are using them for your app, make sure to uncomment them.):
 
 ```python
 INSTALLED_APPS = (

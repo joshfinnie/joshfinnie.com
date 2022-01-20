@@ -1,5 +1,4 @@
 ---
-
 title: "Changing the Default Screenshot Location"
 date: "2014-02-04"
 tags:
@@ -8,11 +7,10 @@ tags:
   - "defaults"
 path: "/blog/changing-the-default-screenshot-location"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
-With using [Pushfile](https://github.com/joshfinnie/pushfile) more and more, I consistently find my Desktop littered with the  screenshots I have taken. I found it interesting that OS X defaults its screenshot save location to your desktop, and there had to be a way to change it!
+With using [Pushfile](https://github.com/joshfinnie/pushfile) more and more, I consistently find my Desktop littered with the screenshots I have taken. I found it interesting that OS X defaults its screenshot save location to your desktop, and there had to be a way to change it!
 
 Luckily there is. And it is as easy as creating a place to hold your screenshots and changing a `defaults` line.
 

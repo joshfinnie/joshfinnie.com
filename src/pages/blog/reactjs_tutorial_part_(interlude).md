@@ -1,5 +1,4 @@
 ---
-
 title: "React.js Tutorial Part (Interlude)"
 date: "2015-03-08"
 tags:
@@ -10,8 +9,7 @@ tags:
   - "express.js"
 path: "/blog/reactjs-tutorial-part-interlude"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 Welcome to part (Interlude) of my React.js/Express.js app tutorial. This is going to be an extension of [part 2](/blog/reactjs-tutorial-part-2/), where we go into a bit more detail of how to use Gulp along with Bower.io to make our application a better, well-rounded system. We will not be going into too much React.js this tutorial, so I didn't want to call this "part 3". If you haven't already, please start the tutorial at [Part 1](/blog/reactjs-tutorial-part-1/)
@@ -100,7 +98,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 ```
 
@@ -142,8 +140,8 @@ link(rel='stylesheet', href='/stylesheets/css/style.css')
 With the introduction of Twitter Bootstrap, we have also introduced two new javascript libraries to our code base: the Twitter Bootstrap javascript, and jQuery. Since we are already transforming our JSX code into javascript, let's take this time to concatenate all our javascripts together into a singular `app.js`. To do this, we just need to have a way to tell our JSX code that there are more libraries to import. Luckily since we are already using browserify, this is as simple as adding the following lines to our `app.jsx` file:
 
 ```javascript
-var $ = jQuery = require('../../libraries/jquery/dist/jquery');
-var bootstrap = require('../../libraries/bootstrap-sass-official/assets/javascripts/bootstrap');
+var $ = (jQuery = require("../../libraries/jquery/dist/jquery"));
+var bootstrap = require("../../libraries/bootstrap-sass-official/assets/javascripts/bootstrap");
 ```
 
 Doing this points both `jQuery ($)` and `bootstrap` to the appropriate file which were installed via Bower. When we re-run our browserify gulp task, these two libraries get pulled in! Simple as that.
@@ -191,6 +189,6 @@ body
   script(src='/javascripts/build/app.js')
 ```
 
-  This then makes our web application this:
+This then makes our web application this:
 
 <img width="100%" loading="lazy" src="/assets/blog/bootstrapped-hello-react.png" alt="bootstrapped hello react" />

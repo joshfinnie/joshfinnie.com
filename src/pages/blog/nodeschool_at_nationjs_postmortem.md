@@ -1,15 +1,13 @@
 ---
-
 title: "NodeSchool @ NationJS Postmortem"
 date: "2014-11-21"
 tags:
- - "nodeschool"
- - "javascript"
- - "node.js"
+  - "nodeschool"
+  - "javascript"
+  - "node.js"
 path: "/blog/nodeschool-at-nationjs-postmortem"
 expires: false
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 November 7th, 2014 [@NodeDC](https://twitter.com/nodedc) in conjunction with [@NationJS](https://twitter.com/nationjs) put on our first official [NodeSchool](http://nodeschool.io/). @NodeDC has been running the NodeSchool workshops as part of our monthly Node Night meetups for quite some time, but this was the first time we explictly set out to advertise and run NodeSchool. Very quickly we realized this was going to be a very big thing. First, we were promoting this NodeSchool with NationJS a ~200 person conference. This gave us a lot more visibility than we usually get through our meetup group. Second, this was the first time we were advertising it as NodeSchool. Like I said above, we usually have a NodeSchool session at our Node Nights, but it's not the main focus of our events. NodeSchool has done a great job of getting their name out there and associating this portion of the conference with them was great.

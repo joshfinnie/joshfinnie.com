@@ -1,5 +1,4 @@
 ---
-
 title: "Public Transportation in Connecticut"
 date: "2010-02-24"
 tags:
@@ -7,8 +6,7 @@ tags:
   - "rant"
 path: "/blog/public-transportation-in-connecticut"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 I have lived in Hartford almost seven months now and every once and a while I get an itching to go out and try public transportation. I see them everywhere, Connecticut’s DOT buses and all their blueness. But their usefulness escapes me. Granted I live in the major city and work in a suburb, but one would think that I would be able to get a bus from relatively close to my apartment complex and be able to have it drop me off at work. (And of course the reason why I think this is because I have a bus stop at the front door of my place of employement.) However, this is not the case. For some reason when Connecticut was determining the bus routes, they felt it was common knowledge that only people north of the city center would want to work in the northern part of the state; being closer to West Hartford than Bloomfield, I need not apply.

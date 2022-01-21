@@ -1,17 +1,15 @@
 ---
-
 title: "My 2021 Books in Review"
 date: "2022-01-03"
 tags:
   - "review"
   - "books"
   - "book-review"
-layout: '../../layouts/BlogPost.astro'
+layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/old-books.jpg"
 unsplash: "Chris Lawton"
 unsplashURL: "chrislawton"
 description: "This is a review of the books I read in 2021 and which ones I'd recommend giving a try."
-
 ---
 
 2021 was a year that I read more books than usual.
@@ -104,7 +102,7 @@ If you are a procrastinator or someone that finds it hard to make choices, give 
 <i class="fas fa-thumbs-down"></i>
 I hate to admit this, since there's a cult following around this book.
 But I did not like Zen and the Art of Motorcycle Maintenance.
-The story was very meandering and did not give many take-aways. 
+The story was very meandering and did not give many take-aways.
 Honestly, I cannot say I remember enjoying any part of this book.
 Sorry.
 
@@ -130,6 +128,7 @@ In the end, this book did not get us any closer.
 <br /><a href="https://amzn.to/3FS3cq5" target="_blank"><i class="fa fa-amazon mr-10" aria-hidden="true"></i>Buy on Amazon</a>
 
 <span id="fiction"></span>
+
 ### Fiction
 
 **This Is How You Lose the Time War by _Amal El-Mohtar &amp; Max Gladstone_**
@@ -168,7 +167,7 @@ This book disappointed me as much as the first one... oh well.
 
 I hope you enjoyed a quick summary of the books I read in 2021. Giving my brief overviews this way may spark an urge to read one or two of the above books. Thanks for taking the time to read, and please share your top 2021 book with me on [Twitter](https://twitter.com/joshfinnie)!
 
-
 ## Also might enjoy:
-* [Book Review: The 12 Week Year](/blog/book-review-the-12-week-year)
-* [One Year Later](/blog/one-year)
+
+- [Book Review: The 12 Week Year](/blog/book-review-the-12-week-year)
+- [One Year Later](/blog/one-year)

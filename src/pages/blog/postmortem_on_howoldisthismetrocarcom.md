@@ -1,5 +1,4 @@
 ---
-
 title: "Postmortem on How Old Is This Metro Car"
 date: "2013-08-23"
 tags:
@@ -8,8 +7,7 @@ tags:
   - "follow-up"
 path: "/blog/postmortem-on-howoldisthismetrocarcom"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 ## Background

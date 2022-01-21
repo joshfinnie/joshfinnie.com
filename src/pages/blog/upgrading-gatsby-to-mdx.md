@@ -1,5 +1,4 @@
 ---
-
 title: "Upgrading Gatsby to Use Mdx"
 date: "2020-06-12"
 tags:
@@ -9,10 +8,9 @@ tags:
 path: "/blog/upgrading-gatsby-to-use-mdx"
 heroImage: "/assets/blog/arrow.jpg"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-unsplash: 'Smart'
-unsplashURL: 'smartphotocoures'
-
+layout: "../../layouts/BlogPost.astro"
+unsplash: "Smart"
+unsplashURL: "smartphotocoures"
 ---
 
 Over the past few days I have upgraded this personal site to accept blogs and pages written in [Mdx](https://mdxjs.com/). Straight out of the box Gatsby works with Markdown, but I do enjoy what Mdx is bringing the table. It felt as if it would be worth the effort to upgrade.
@@ -74,7 +72,7 @@ With the change from `gatsby-transformer-remark` to `gatsby-plugin-mdx`, we will
     });
 ```
 
-How we render the data changes a little bit as well. (I have to admit, I really like this change!) Where we rendered the HTML `gatsby-transformer-remark` generated  we now use the `MDXRenderer` component. Where ever you render the html from `gatsby-transform-remark` we need to make the following change:
+How we render the data changes a little bit as well. (I have to admit, I really like this change!) Where we rendered the HTML `gatsby-transformer-remark` generated we now use the `MDXRenderer` component. Where ever you render the html from `gatsby-transform-remark` we need to make the following change:
 
 ```diff
 + import {MDXRenderer} from 'gatsby-plugin-mdx';
@@ -118,16 +116,15 @@ import resume from '../docs/resume.pdf'
 The other place I am leveraging Mdx is in each post that has an Unsplash image. I wanted to make sure I was able to credit the artists of all the images. To do this I developed a small component that I can add to each of my blog posts like this one! Below is the code snippet of the component and how I use it in the blog posts:
 
 ```jsx
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const Unsplash = ({name, url = null}) => {
+const Unsplash = ({ name, url = null }) => {
   if (url) {
     const finalUrl = `https://unsplash.com/@${url}`;
     return (
       <p className="unsplash mb-4 text-center">
-        Photo by <a href={finalUrl}>{name}</a> on{' '}
-        <a href="https://unsplash.com">Unsplash</a>
+        Photo by <a href={finalUrl}>{name}</a> on <a href="https://unsplash.com">Unsplash</a>
       </p>
     );
   }

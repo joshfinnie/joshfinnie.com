@@ -1,5 +1,4 @@
 ---
-
 title: "Using Bower"
 date: "2014-11-03"
 tags:
@@ -8,8 +7,7 @@ tags:
   - "how-to"
 path: "/blog/using-bower"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 **_This post was originally posted on [TrackMaven's Engine Room](http://engineroom.trackmaven.com). You can find it [here](http://engineroom.trackmaven.com/blog/using-bower/)._**
@@ -51,7 +49,7 @@ Next we are going to talk about how to best set up Bower. Installing Bower is si
 $ npm install -g bower
 ```
 
-That's it! The above command installs Bower globally on your machine; this allows you to use Bower for all your projects. 
+That's it! The above command installs Bower globally on your machine; this allows you to use Bower for all your projects.
 
 If you want to use Bower to install a JavaScript library, all you need to do is run the following command:
 
@@ -59,7 +57,7 @@ If you want to use Bower to install a JavaScript library, all you need to do is 
 $ bower install angular
 ```
 
-This will install angular.js into your `bower_components` folder. 
+This will install angular.js into your `bower_components` folder.
 
 ### Saving packages
 
@@ -91,17 +89,17 @@ The defaults that come with Bower are pretty sane, but I always feel like the de
 
 ```json
 {
-    "directory": ".bower-cache",
-    "json": "bower.json",
-    "interactive": false
+  "directory": ".bower-cache",
+  "json": "bower.json",
+  "interactive": false
 }
 ```
 
 Those three line do the following:
 
-* **directory** - Changes the default directory in which Bower installs the libraries.
-* **json** - Tells Bowser where your init file is. This allows you to rename it something other than `bower.json`.
-* **interactive** - Makes Bower interactive, prompting whenever necessary. We turn this off since we use [Docker](http://www.docker.com/), and interactions break our install. This defaults to `null` which means `auto`, and is likely what you'd want to keep unless you run into issues.
+- **directory** - Changes the default directory in which Bower installs the libraries.
+- **json** - Tells Bowser where your init file is. This allows you to rename it something other than `bower.json`.
+- **interactive** - Makes Bower interactive, prompting whenever necessary. We turn this off since we use [Docker](http://www.docker.com/), and interactions break our install. This defaults to `null` which means `auto`, and is likely what you'd want to keep unless you run into issues.
 
 The entire `.bowerrc` configuration options can be found [here](http://bower.io/docs/config/). There is a lot of configuration that can be done to Bower, so be sure to take a look.
 

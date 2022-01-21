@@ -1,5 +1,4 @@
 ---
-
 title: "React.js Tutorial Part 2"
 date: "2015-02-04"
 tags:
@@ -10,8 +9,7 @@ tags:
   - "express.js"
 path: "/blog/reactjs-tutorial-part-2"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 Welcome to part 2 of my tutorial on how to get a website up and running using [React.js](http://facebook.github.io/react/) and [Node.js](http://nodejs.org/). You can read Part 1 [here](/blog/reactjs-tutorial-part-1/) if you haven't already.
@@ -29,13 +27,12 @@ $ npm install --save-dev gulp
 Now with Gulp installed, we can create our basic `gulpfile.js` file:
 
 ```javascript
-var gulp = require('gulp');
+var gulp = require("gulp");
 
-gulp.task('default', function() {
-// place code for your default task here
+gulp.task("default", function () {
+  // place code for your default task here
 });
 ```
-
 
 Now we need to install the Gulp packages that we will need to build our application. To start, let's install [browserify](https://www.npmjs.com/package/browserify), [reactify](https://www.npmjs.com/package/reactify) and [vinyl-source-stream](https://www.npmjs.com/package/vinyl-source-stream). To install these packages, run the following command:
 
@@ -60,21 +57,21 @@ At this point, we can remove `react-tools` from our `devDependencies` since we n
 The next step is to set up Gulp to automatically build our `.jsx` files into usable javascript. To do this, we are going to create a Gulp task. A Gulp task is a function that will stream a bunch of steps transforming our `.jsx` to javascript. We will need to modify our `gulpfile.js` to look like this:
 
 ```javascript
-var gulp = require('gulp');
+var gulp = require("gulp");
 
-var browserify = require('browserify');
-var reactify = require('reactify');
-var source = require('vinyl-source-stream');
+var browserify = require("browserify");
+var reactify = require("reactify");
+var source = require("vinyl-source-stream");
 
-gulp.task('js', function(){
-    browserify('./public/javascripts/src/app.jsx')
-        .transform(reactify)
-        .bundle()
-        .pipe(source('app.js'))
-        .pipe(gulp.dest('public/javascripts/build/'));
+gulp.task("js", function () {
+  browserify("./public/javascripts/src/app.jsx")
+    .transform(reactify)
+    .bundle()
+    .pipe(source("app.js"))
+    .pipe(gulp.dest("public/javascripts/build/"));
 });
 
-gulp.task('default', ['js']);
+gulp.task("default", ["js"]);
 ```
 
 Now running `gulp` from the command line will trigger the build of our React app; however, there are some things we need to do to our react app first!
@@ -86,13 +83,10 @@ There are some things we need to do to our application before browserify will wo
 First, we need to create an "entry point" for browersify, we can do this by simply creating an `app.jsx` file:
 
 ```javascript
-var React = require('react');
-var HelloWorld = require('./HelloWorld.jsx');
+var React = require("react");
+var HelloWorld = require("./HelloWorld.jsx");
 
-React.render(
-    <HelloWorld />,
-    document.getElementById('example')
-);
+React.render(<HelloWorld />, document.getElementById("example"));
 ```
 
 This file is taking our `HelloWorld` component and rendering it in the div with id "example". This code is taken from our original `helloworld.jsx` file from last tutorial. Instead of doing everything in that file, we are now requiring a module `HelloWorld` and rendering it in `app.jsx`. The reason for this is that as our application gets more complex, we have more control of how our files are broken out.
@@ -100,14 +94,12 @@ This file is taking our `HelloWorld` component and rendering it in the div with 
 The next thing is that we have is modify our existing `helloworld.jsx` file to be a React component named `HelloWorld.jsx`. This is easily done and our `HelloWorld.jsx` file now looks like this:
 
 ```javascript
-var React = require('react');
+var React = require("react");
 
 module.exports = React.createClass({
-render: function() {
-    return (
-    <h1>Hello, world from a React.js Component!</h1>
-    )    
-}
+  render: function () {
+    return <h1>Hello, world from a React.js Component!</h1>;
+  },
 });
 ```
 
@@ -116,14 +108,8 @@ Notice that the `HelloWorld.jsx` and `app.jsx` files are combined to be very sim
 Now, running `gulp` will create a javascript file in `public/javascripts/build/` called `app.js` and it will have everything we need to run our React app. Let's add this to our `layout.jade` file instead of the `react.min.js` and `helloworld.js` files:
 
 ```html
-doctype html
-html
-head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-body
-    block content
-    script(src='/javascripts/build/app.js')
+doctype html html head title= title link(rel='stylesheet', href='/stylesheets/style.css') body block content
+script(src='/javascripts/build/app.js')
 ```
 
 There you have it, a React application being built with Gulp using browersify!
@@ -135,15 +121,15 @@ There you have it, a React application being built with Gulp using browersify!
 To make Gulp even better, let's implement the built-in `watch` functionality to have gulp watch for changes in our `.jsx` files and automatically build our javascript. To do this, we want to add the following task to our `gulpfile.js`:
 
 ```javascript
-gulp.task('watch', function() {
-    gulp.watch("public/javascripts/src/**/*.jsx", ["js"])
-})
+gulp.task("watch", function () {
+  gulp.watch("public/javascripts/src/**/*.jsx", ["js"]);
+});
 ```
 
 Also add that task to your default Gulp task:
 
 ```javascript
-gulp.task('default', ['js', 'watch']);
+gulp.task("default", ["js", "watch"]);
 ```
 
 Now when we run `gulp` it will watch for changes in our `.jsx` and rebuild our javascript with that change! Awesome!

@@ -1,5 +1,4 @@
 ---
-
 title: "Flat Flog, an Introduction"
 date: "2013-09-24"
 tags:
@@ -8,19 +7,16 @@ tags:
   - "flat flog"
 path: "/blog/flat-flog-an-introduction"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 ## Introduction
 
 Static blog generators are all the rage today. Flat-flog is my attempt at one; it is nothing special, but it is mine. Flat-flog is written in Python using the Flask Microframework and some of its extensions. It comes with [Twitter Boostrap](https://getbootstrap.com) and some default template to get you started. This idea stemmed from a blog post by [James Harding](http://www.jamesharding.ca/posts/simple-static-markdown-blog-in-flask/). This project is going to be a work in progress for some time, so buyer beware.
 
-
 ## Installation
 
 To start using flat-flog for your own personal static blog, you want to download it from the [repository](https://github.com/joshfinnie/flat-flog).
-
 
 ```bash
 $ git clone https://github.com/joshfinnie/flat-flog.git /path/to/NAME_BLOG_HERE
@@ -97,8 +93,8 @@ This should serve your site at <http://0.0.0.0:8000>.
 
 Flatflog is no where near done. As I said in the intro, this is a work in progress. Below is a list of things I want to get done:
 
-* Make tags work better.
-* Implement time-sorted archive (maybe...)
-* Expand `Config` file for more personalization.
+- Make tags work better.
+- Implement time-sorted archive (maybe...)
+- Expand `Config` file for more personalization.
 
 Also, if you want to contribute, feel free to fork the [repository](https://github.com/joshfinnie/flat-flog) and send me some pull requests.

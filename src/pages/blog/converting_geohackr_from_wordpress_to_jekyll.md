@@ -1,5 +1,4 @@
 ---
-
 title: "Converting GeoHackr from WordPress to Jekyll"
 date: "2010-02-02"
 tags:
@@ -8,8 +7,7 @@ tags:
   - "blogging"
 path: "/blog/converting-geohackr-from-wordpress-to-jekyll"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 For the past couple of months I have been working on a Geography based blog called [GeoHackr](http://geohackr.com/). This blog is currently run off a WordPress blog hosted at [Bluehost](http://bluehost.com/), and, now that I have found this wonderful blogging program Jekyll, I am wondering if a full-blown Wordpress implementation is actually worth it.

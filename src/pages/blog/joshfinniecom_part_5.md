@@ -1,5 +1,4 @@
 ---
-
 title: "JoshFinnie.com Part 5?"
 date: "2013-05-07"
 tags:
@@ -7,8 +6,7 @@ tags:
   - "news"
 path: "/blog/joshfinniecom-part-5"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 I have recently updated my [personal website][1]. I do this every once and a while, but this time I am actually proud of it. I have been working at [Koansys, LLC][2] for a little over a year and have really grown in my ability to design websites. It has been a great experience working with a designer and picking up some tips and tricks here and there.

@@ -1,5 +1,4 @@
 ---
-
 title: "React.js Tutorial Part 4"
 date: "2015-09-16"
 tags:
@@ -10,15 +9,14 @@ tags:
   - "express.js"
 path: "/blog/reactjs-tutorial-part-4"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 Welcome to part 4 of my React.js/Express.js app tutorial. In this blog post, we are going to create the necessary Express routes to serve `json` code to our React.js frontend application. We are also going to very rudimentarily hook up these calls to our server it our React.js component so that the `json` can be rendered.
 
 ## Express Routes
 
-The first thing we want to do is to create an Express.js route that will serve a `json` response when a certain URL is hit. This is actually very easy to accomplish within the Express.js framework. The setup of the Express.js website, which was auto-generated for us in [Part 1 of this tutorial](/blog/reactjs-tutorial-part-1/) does a good job of getting us started, but to continue, we want to add some more files to help keep things organized for us. 
+The first thing we want to do is to create an Express.js route that will serve a `json` response when a certain URL is hit. This is actually very easy to accomplish within the Express.js framework. The setup of the Express.js website, which was auto-generated for us in [Part 1 of this tutorial](/blog/reactjs-tutorial-part-1/) does a good job of getting us started, but to continue, we want to add some more files to help keep things organized for us.
 
 So before anything else we want to create another file to keep our API routes. This file will be called `routes/api.js` simply enough. Then we have to edit `app.js` a bit to make sure we can use this new file. In `app.js` we want to modify `var routes = require('./routes/index');` to be something a little more useful to us: `var index = require('./routes/index');`. Then directly below that we want to add our new API routes: `var api = require('./routes/api');`. Lastly, we want to add these to our `app` by adding: `app.use('/api/', api);`. Our `app.js` file should, partially, look like this:
 
@@ -45,36 +43,36 @@ There are a lot of resources out there about "Restful" API structure, but [Tuts+
 But let's write our first `GET` endpoint which will list out all the jobs we have available. First, we want to steal the `jobs` object from our React.js code and move it into `routes/api.js` then we want an endpoint that will return that object is `json` form. This is done by the following code:
 
 ```javascript
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 var jobs = {
-    jobs: [
-        {
-            job_id: 1,
-            company: 'TrackMaven',
-            position: 'Software Maven',
-            local: 'Washington, DC, USA',
-            lookingFor: 'Angular.js, Django, ElasticSearch',
-            postedDate: '4 April 2015',
-            description: '',
-            category: 'Engineering'
-        },
-        {
-            job_id: 2,
-            company: 'TrackMaven',
-            position: 'Junior Software Maven',
-            local: 'Washington, DC, USA',
-            lookingFor: 'Javascript, Python',
-            postedDate: '4 April 2015',
-            description: '',
-            category: 'Engineering'
-        }
-    ]
-}
+  jobs: [
+    {
+      job_id: 1,
+      company: "TrackMaven",
+      position: "Software Maven",
+      local: "Washington, DC, USA",
+      lookingFor: "Angular.js, Django, ElasticSearch",
+      postedDate: "4 April 2015",
+      description: "",
+      category: "Engineering",
+    },
+    {
+      job_id: 2,
+      company: "TrackMaven",
+      position: "Junior Software Maven",
+      local: "Washington, DC, USA",
+      lookingFor: "Javascript, Python",
+      postedDate: "4 April 2015",
+      description: "",
+      category: "Engineering",
+    },
+  ],
+};
 
-router.get('/jobs', function(req, res) {
-    res.json({data: jobs});
+router.get("/jobs", function (req, res) {
+  res.json({ data: jobs });
 });
 
 module.exports = router;
@@ -85,14 +83,14 @@ The object is almost a direct copy that we had hardcoded within our React.js app
 To do that, it's actually pretty simple. Using Express.js's ability to know what URL parameters hit each endpoint, we can add an endpoint that looks like `/api/jobs/1` and our router will know that we want the job with `job_id == 1`. To do this, add the following to `routes/api.js`:
 
 ```javascript
-router.get('/jobs/:job_id', function(req, res) {
-    var job_id = req.params.job_id;
-    for (i = 0, len = data.jobs.length; i < len; i++) {
-        if (data.jobs[i].job_id === parseInt(job_id)) {
-            res.json({data: job});
-        }
+router.get("/jobs/:job_id", function (req, res) {
+  var job_id = req.params.job_id;
+  for (i = 0, len = data.jobs.length; i < len; i++) {
+    if (data.jobs[i].job_id === parseInt(job_id)) {
+      res.json({ data: job });
     }
-    res.json({data: "No job found..."});
+  }
+  res.json({ data: "No job found..." });
 });
 ```
 
@@ -120,45 +118,48 @@ When first interacting with APIs using React.js, I recommend just using the `req
 Once we have the `request` library installed, we need to do some modification to our `public/javascripts/scr/Jobs.jsx` file to get the data from our API. To do this, we need to slightly modify the `getInitialState` function and add the `componentDidMount` function. We no longer have an full initial state (just a skeleton of what we want our API to look like) since we want to get the data from the API once the component mounts to our application. Our entire `public/javascripts/scr/Jobs.jsx` now looks like this:
 
 ```javascript
-var React = require('react');
-var request = require('request');
+var React = require("react");
+var request = require("request");
 
-var Job = require('./Job.jsx');
+var Job = require("./Job.jsx");
 
 module.exports = React.createClass({
-    getInitialState: function() {
-        return {jobs: []}
-    },
+  getInitialState: function () {
+    return { jobs: [] };
+  },
 
-    componentDidMount: function() {
-        request('http://localhost:3000/api/jobs/', function(error, response, body) {
-            var result = JSON.parse(body);
-            if (this.isMounted()) {
-                this.setState(result.data);
-            }
-        }.bind(this));
-    },
+  componentDidMount: function () {
+    request(
+      "http://localhost:3000/api/jobs/",
+      function (error, response, body) {
+        var result = JSON.parse(body);
+        if (this.isMounted()) {
+          this.setState(result.data);
+        }
+      }.bind(this)
+    );
+  },
 
-    render: function(){
-        return (
-            <div className="list-group">
-                {this.state.jobs.map(function(job){
-                    return (
-                        <Job
-                            key={job.job_id}
-                            company={job.company}
-                            position={job.position}
-                            local={job.local}
-                            lookingFor={job.lookingFor}
-                            postedDate={job.postedDate}
-                            description={job.description}
-                            category={job.category}
-                        />
-                    )
-                })}
-            </div>
-        );
-    }
+  render: function () {
+    return (
+      <div className="list-group">
+        {this.state.jobs.map(function (job) {
+          return (
+            <Job
+              key={job.job_id}
+              company={job.company}
+              position={job.position}
+              local={job.local}
+              lookingFor={job.lookingFor}
+              postedDate={job.postedDate}
+              description={job.description}
+              category={job.category}
+            />
+          );
+        })}
+      </div>
+    );
+  },
 });
 ```
 

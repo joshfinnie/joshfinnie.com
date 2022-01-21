@@ -1,5 +1,4 @@
 ---
-
 title: "My Basic Python Dockerfile"
 date: "2019-06-06"
 tags:
@@ -10,10 +9,9 @@ tags:
 path: "/blog/my-basic-python-dockerfile"
 heroImage: "/assets/blog/python.jpg"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-unsplash: 'Marius Masalar'
-unsplashURL: 'marius'
-
+layout: "../../layouts/BlogPost.astro"
+unsplash: "Marius Masalar"
+unsplashURL: "marius"
 ---
 
 A little while back I read an article sharing this person's basic `Dockerfile` which they use for all their projects. I thought this was a good idea to do and went about creating and [releasing](https://github.com/joshfinnie/docker-python) my own. This blog post will share my basic `Dockerfile` I use for Python projects as well as explain some of the less usual parts.
@@ -57,4 +55,4 @@ There are two small things that I do want to point out to everyone. First, I sti
 
 ## Conclusion
 
-The above `Dockerfile` is nothing too  special or out-of-the-box. Yet, it sets you up for success  for python applications; be it a simple script (like I highlight in this files repo) or a full-fledged web application.  Please let me know what you think about this!
+The above `Dockerfile` is nothing too special or out-of-the-box. Yet, it sets you up for success for python applications; be it a simple script (like I highlight in this files repo) or a full-fledged web application. Please let me know what you think about this!

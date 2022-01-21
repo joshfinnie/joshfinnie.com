@@ -1,5 +1,4 @@
 ---
-
 title: "Quick UX No-No"
 date: "2011-10-13"
 tags:
@@ -7,8 +6,7 @@ tags:
   - "lesson"
 path: "/blog/quick-ux-no-no"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 ## Why?
@@ -31,5 +29,5 @@ I use [Twitter’s Bootstrap][2] to help style this site, and I love it. The nic
 
 What does everyone think? Does using standard highlighting for notifications really matter? Does Twitter have them right in Bootstrap? I would love to hear your comments below.
 
- [1]: http://www.geico.com
- [2]: http://twitter.github.com/bootstrap/
+[1]: http://www.geico.com
+[2]: http://twitter.github.com/bootstrap/

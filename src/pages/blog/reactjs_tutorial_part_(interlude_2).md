@@ -1,5 +1,4 @@
 ---
-
 title: "React.js Tutorial Part (Interlude 2)"
 date: "2015-08-10"
 tags:
@@ -10,8 +9,7 @@ tags:
   - "express.js"
 path: "/blog/reactjs-tutorial-part-interlude-2"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 Welcome to part (Interlude 2) of my React.js/Express.js app tutorial. This is going to be an article about upgrading a [React.js](http://facebook.github.io/react/) application after coming back to a project after a while. Hopefully this will spur me to continue these tutorials as it has been too long since I have posted one.
@@ -101,9 +99,9 @@ When we take a look at the `changelog` we see it broken down into a few categori
 
 _I'll wait..._
 
-Now that we have read React's `changelog` we can comfortably move forward with upgrading. At this point in time, if there was any breaking changes that would affect our app, we'd want to take note to make sure we revisit that section of code after the upgrade. 
+Now that we have read React's `changelog` we can comfortably move forward with upgrading. At this point in time, if there was any breaking changes that would affect our app, we'd want to take note to make sure we revisit that section of code after the upgrade.
 
-__Note__: This is where having good tests would really come in handy. You should have a level of test coverage that makes you comfortable with doing upgrades like this. Any breaking change to your app should be caught by a test and not by your walk-through of the site in a browser. Unfortunately, we do not have any tests yet for this application.
+**Note**: This is where having good tests would really come in handy. You should have a level of test coverage that makes you comfortable with doing upgrades like this. Any breaking change to your app should be caught by a test and not by your walk-through of the site in a browser. Unfortunately, we do not have any tests yet for this application.
 
 Upgrading a NPM package is really simple. First you want to update your `package.json` file to represent the version of the package you want to upgrade:
 

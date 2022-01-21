@@ -1,5 +1,4 @@
 ---
-
 title: "Adding Markdown to Jade Using Node.js"
 date: "2014-09-22"
 tags:
@@ -9,8 +8,7 @@ tags:
   - "hack"
 path: "/blog/adding-markdown-to-jade-using-node-js"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 ### **Update**

@@ -1,5 +1,4 @@
 ---
-
 title: "Setting Up HTTPS Security"
 date: "2014-09-20"
 tags:
@@ -7,8 +6,7 @@ tags:
   - "how-to"
 path: "/blog/setting-up-https-security"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 **_This post was originally posted on [TrackMaven's Engine Room](http://engineroom.trackmaven.com). You can find it [here](http://engineroom.trackmaven.com/blog/setting-up-https-security/)._**
@@ -17,7 +15,7 @@ Here at [TrackMaven](http://trackmaven.com), we have made it our goal to provide
 
 ## What is HTTPS?
 
-Hypertext Transfer Protocol Secure (HTTPS) is a way in which computers can securely communicate over the internet. The secure communication is done either the through the newer  Transport Layer Security (TLS) encryption protocol or its predecessor the SSL Secure Sockets Layer (SLS) encryption protocol. Each uses asymmetric cryptography involving private and public certificates to make sure the communication is secure; the creation of these certificates is commonly believed to be the difficult part of implementing HTTPS on your own servers.
+Hypertext Transfer Protocol Secure (HTTPS) is a way in which computers can securely communicate over the internet. The secure communication is done either the through the newer Transport Layer Security (TLS) encryption protocol or its predecessor the SSL Secure Sockets Layer (SLS) encryption protocol. Each uses asymmetric cryptography involving private and public certificates to make sure the communication is secure; the creation of these certificates is commonly believed to be the difficult part of implementing HTTPS on your own servers.
 
 ## Setting up HTTPS on your server
 
@@ -27,11 +25,11 @@ You could, of course, create a certificate yourself (self-sign) without the help
 
 There are a few different versions of certificates. It is best to read up on them and find which one best fits your needs. Here at TrackMaven, we went with a Wildcard SSL which allows us to use it on multiple subdomains (i.e. [app.trackmaven.com](https://app.trackmaven.com) and [blog.trackmaven.com](http://blog.trackmaven.com)). For example, [DigiCert](https://www.digicert.com/) offers 5 different types of certificates:
 
-* [WildCard SSL](https://www.digicert.com/wildcard-ssl-certificates.htm)
-* [Single Certificate](https://www.digicert.com/ssl-certificate.htm)
-* [Unified Communications Certificate](https://www.digicert.com/unified-communications-ssl-tls.htm)
-* [Extended Validation Certificate](https://www.digicert.com/ev-ssl-certification.htm)
-* [DigiCert Extended Validation Multi-Domain Certificate](http://www.digicert.com/ev-multi-domain-ssl.htm)
+- [WildCard SSL](https://www.digicert.com/wildcard-ssl-certificates.htm)
+- [Single Certificate](https://www.digicert.com/ssl-certificate.htm)
+- [Unified Communications Certificate](https://www.digicert.com/unified-communications-ssl-tls.htm)
+- [Extended Validation Certificate](https://www.digicert.com/ev-ssl-certification.htm)
+- [DigiCert Extended Validation Multi-Domain Certificate](http://www.digicert.com/ev-multi-domain-ssl.htm)
 
 To continue with the process of securing your web application, you will need to purchase a SSL certificate from a reputable vendor. Shop around; prices do vary. Once you have purchased an SSL certificate you will need to create a Certificate Signing Request (CSR). The below command will generate both a server key and CSR:
 
@@ -45,26 +43,26 @@ Setting up your server is the easier of these processes; you only need to save t
 
 ### Setting up Apache
 
-* You first want to enable the SSL module in Apache: `a2enmod ssl`
-* Secondly, you'll need to turn on port 443 listening by editing the `/etc/apache2/ports.conf` file
-* Update your `VirtualHost` file to listen on port 443 and have the following configurations:
+- You first want to enable the SSL module in Apache: `a2enmod ssl`
+- Secondly, you'll need to turn on port 443 listening by editing the `/etc/apache2/ports.conf` file
+- Update your `VirtualHost` file to listen on port 443 and have the following configurations:
 
-    SSLEngine on
-    SSLCertificateFile /etc/apache2/ssl/your_server_name.crt
-    SSLCertificateKeyFile /etc/apache2/ssl/your_server_name.key
-    SSLCertificateChainFile /etc/apache2/ssl/DigiCertCA.crt
+  SSLEngine on
+  SSLCertificateFile /etc/apache2/ssl/your_server_name.crt
+  SSLCertificateKeyFile /etc/apache2/ssl/your_server_name.key
+  SSLCertificateChainFile /etc/apache2/ssl/DigiCertCA.crt
 
 This should give you a working secure connection through TSL using Apache.
 
 ### Setting up Nginx
 
-* You first want to bundle your CRT with the CA's cert: `cat your_server_name.crt DigiCertCA.crt >> bundle.crt` and move that to your `/etc/nginx/ssl/` folder
-* Second edit your `server` virtual host to include the following configurations:
+- You first want to bundle your CRT with the CA's cert: `cat your_server_name.crt DigiCertCA.crt >> bundle.crt` and move that to your `/etc/nginx/ssl/` folder
+- Second edit your `server` virtual host to include the following configurations:
 
-    listen 443;
-    ssl on;
-    ssl_certificate /etc/nginx/ssl/bundle.crt
-    ssl_certificate_key /etc/ngin/ssl/your_server_name.key
+  listen 443;
+  ssl on;
+  ssl_certificate /etc/nginx/ssl/bundle.crt
+  ssl_certificate_key /etc/ngin/ssl/your_server_name.key
 
 This should give you a working secure connection through TSL using Nginx. At this point, I would suggest finding the best way for you to forward all traffic hitting HTTP to HTTPS. There is no real reason that, with HTTPS now set up, you should be serving insecure content.
 

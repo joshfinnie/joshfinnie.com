@@ -1,5 +1,4 @@
 ---
-
 title: "Setting up SSL for www.joshfinnie.com"
 date: "2018-05-21"
 tags:
@@ -11,9 +10,8 @@ tags:
 path: "/blog/setting-up-ssl-for-wwwjoshfinniecom"
 heroImage: "/assets/blog/padlock.jpg"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-unsplash: 'Micah Williams'
-
+layout: "../../layouts/BlogPost.astro"
+unsplash: "Micah Williams"
 ---
 
 As you might have heard, Google Chrome is taking some very bold steps forward in making sure that the internet is a safe and secure place. In their attempt to do this, they are making much more of an effort to point out when websites are not secured through SSL. In this blog post, I am just going to document my process to use [Let's Encrypt](https://letsencrypt.org/) to generate a free SSL certificate and how I load it on Cloudfront.

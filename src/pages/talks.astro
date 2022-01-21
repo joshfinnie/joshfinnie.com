@@ -1,16 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Talk from '../components/Talk.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Talk from "../components/Talk.astro";
 
-import data from '../data/talks.json';
+import data from "../data/talks.json";
 ---
+
 <BaseLayout title="Talks | www.joshfinnie.com">
   <article id="main-content">
     <h1 class="font-bold text-3xl mb-10 mt-5">Talks</h1>
-      <p class="mb-5 text-base">
-        (<i class="fa fa-bolt mx-2" aria-hidden="true"></i>
-        denotes Lightning Talks)
-      </p>
-      {data.talks.map(t => <Talk talk={t} />)}
+    <p class="mb-5 text-base">
+      (<i class="fa fa-bolt mx-2" aria-hidden="true"></i>
+      denotes Lightning Talks)
+    </p>
+    {data.talks.map((t) => <Talk talk={t} />)}
   </article>
 </BaseLayout>

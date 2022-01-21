@@ -1,14 +1,12 @@
 ---
-
 title: "A Coder's Lifestyle"
 date: "2011-10-04"
 tags:
- - "lifestyle"
- - "coding"
+  - "lifestyle"
+  - "coding"
 path: "/blog/a-coders-lifestyle"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 ## Background
@@ -27,10 +25,10 @@ I am not sure I know the answer to the question, “how to succeed?” And more 
 
 Here are my tips that I have learned so far:
 
-*   **Don’t over extend yourself** This is especially true if you have a full-time job that is not programming related. I find that I get some grandious idea while at work, get home and bang it out. All this does is lead to frustration when it doesn’t work and it’s already 1AM. Start slow.
-*   **Stick to one technology at a time.** Everywhere you read there is going to be some up-and-coming technology that everyone wants to use. When you are not a full-time programmer, there is no time for you to really experiment with new technologies. You need to make sure your footing is solid before moving forward.
-*   **Finish something.** It is an amazing feeling when you have finished a program to the point that it works. It is a great boost that you can use to get more excited about programming your next project. No matter how small it is, finish something.
+- **Don’t over extend yourself** This is especially true if you have a full-time job that is not programming related. I find that I get some grandious idea while at work, get home and bang it out. All this does is lead to frustration when it doesn’t work and it’s already 1AM. Start slow.
+- **Stick to one technology at a time.** Everywhere you read there is going to be some up-and-coming technology that everyone wants to use. When you are not a full-time programmer, there is no time for you to really experiment with new technologies. You need to make sure your footing is solid before moving forward.
+- **Finish something.** It is an amazing feeling when you have finished a program to the point that it works. It is a great boost that you can use to get more excited about programming your next project. No matter how small it is, finish something.
 
 I am sure I will have more thoughts as I get back into bloggin, but I thought this would be a good step in the right direction. Let me know what you think.
 
- [1]: http://stackoverflow.com
+[1]: http://stackoverflow.com

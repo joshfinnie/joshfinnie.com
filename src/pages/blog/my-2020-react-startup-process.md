@@ -1,5 +1,4 @@
 ---
-
 title: "My 2020 React.js Start-up Process"
 date: "2020-07-08"
 tags:
@@ -9,16 +8,14 @@ tags:
 path: "/blog/my-2020-react-startup-process"
 heroImage: "/assets/blog/typewriter.jpg"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-unsplash: 'RetroSuppy'
-unsplashURL: 'retrosupply'
-
+layout: "../../layouts/BlogPost.astro"
+unsplash: "RetroSuppy"
+unsplashURL: "retrosupply"
 ---
 
 Over the past couple of years I have narrowed my frontend workflow to React with Typescript. There are a lot of frameworks that are fighting for the top spot of one's frontend workflow. In the end, I am most comfortable with React for rapid development so it is the one I will focus on here. In this blog post I will walk through my 2020 React workflow. This post will help you get up and running with the same setup that I am currently using.
 
 ## Installing React with Typescript
-
 
 First, we want to create a project using the `create-react-app` command-line application. A semi-recent addition to the Node ecosystem is an alternative to NPM called NPX. NPX is a command-line application that comes with NPM. It will allow you to run NPM packages without going through the process of installing it. This allows you to run `create-react-app` without the hassle of building a `package.json` file. It is also a good way of keeping these one-off tools up-to-date. The following NPX command is all we need to do to set up our boilerplate React app with Typescript. Let’s run the following commands:
 
@@ -61,28 +58,21 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
+  extends: ["plugin:react/recommended", "airbnb"],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
   },
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: "module",
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
-  rules: {
-  },
+  plugins: ["react", "@typescript-eslint"],
+  rules: {},
 };
 ```
 

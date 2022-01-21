@@ -1,10 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: [
-    './public/**/*.html',
-    './src/**/*.{astro,js,jsx,ts,tsx,vue,svelte}'
-  ],
+  content: ["./public/**/*.html", "./src/**/*.{astro,js,jsx,ts,tsx,vue,svelte}"],
   theme: {
     extend: {
       fontFamily: {
@@ -16,22 +13,20 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
-              color: 'rgb(217, 119, 6)',
-              'text-decoration': 'none',
-              ' ont-weight': 'inherit',
+              color: "rgb(217, 119, 6)",
+              "text-decoration": "none",
+              " ont-weight": "inherit",
             },
             li: {
               margin: 0,
             },
             p: {
-              'text-align': 'justify',
+              "text-align": "justify",
             },
           },
         },
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };

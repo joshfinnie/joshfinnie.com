@@ -1,5 +1,4 @@
 ---
-
 title: "One Year Later"
 date: "2021-03-11"
 tags:
@@ -8,10 +7,9 @@ tags:
 path: "/blog/one-year-later"
 heroImage: "/assets/blog/mask.jpg"
 expires: false
-layout: '../../layouts/BlogPost.astro'
-unsplash: 'Brian McGowan'
-unsplashURL: 'sushioutlaw'
-
+layout: "../../layouts/BlogPost.astro"
+unsplash: "Brian McGowan"
+unsplashURL: "sushioutlaw"
 ---
 
 It's been one year. One year of isolation. One year of loneliness. One year of being fearful for the health of

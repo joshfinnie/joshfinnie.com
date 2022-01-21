@@ -1,5 +1,4 @@
 ---
-
 title: "Banning IE6"
 date: "2010-09-15"
 tags:
@@ -8,8 +7,7 @@ tags:
   - "support"
 path: "/blog/banning-ie6"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 <img width="100%" loading="lazy" src="/assets/blog/IE6-blocked.png" alt="IE6 is blocked" />

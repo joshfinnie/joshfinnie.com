@@ -1,5 +1,4 @@
 ---
-
 title: "ASDF: How To Set Up Runtimes on Windows Subsystem for Linux"
 date: "2021-12-17"
 tags:
@@ -8,12 +7,11 @@ tags:
   - "wsl"
   - "linux"
   - "tutorial"
-layout: '../../layouts/BlogPost.astro'
+layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/construction.jpg"
 unsplash: "Nicolas J Leclercq"
 unsplashURL: "nicolasjleclercq"
 description: "In this blog post we discuss how to use ASDF to install and manage different language runtimes in a newly created Ubuntu VM on Windows Subsystem for Linux."
-
 ---
 
 I recently updated to Ubuntu 20.04 as the default [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about). I am excited to jump to the new WSL2 and thought having a fresh start would be a good thing! Even better, I thought I'd write the steps I take to setup a brand new Linux installation for software development. This tutorial does not really depend on WSL too much. It will assume you know what WSL is and will just be discussing what ASDF is and how I use it.
@@ -30,7 +28,7 @@ The first thing we need to do is make sure our Ubuntu VM is up-to-date and has t
 
 ```bash
 $ sudo apt-get update
-$ sudo apt-get install git curl unzip 
+$ sudo apt-get install git curl unzip
 ```
 
 Once we updated our Ubuntu VM, we'll need to install ASDF itself. I prefer to do this via Git so let's run the following commands:
@@ -112,5 +110,5 @@ There you have it. This is how I go about setting up ASDF on a fresh instance of
 
 ## Also might enjoy:
 
-* [Using Latex Through Docker](/blog/latex-through-docker/)
-* [My Basic Python Dockerfile](/blog/basic-python-dockerfile/)
+- [Using Latex Through Docker](/blog/latex-through-docker/)
+- [My Basic Python Dockerfile](/blog/basic-python-dockerfile/)

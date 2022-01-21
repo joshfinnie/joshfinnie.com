@@ -1,10 +1,8 @@
 ---
-
 title: "About"
 description: "JoshFinnie.com | About"
 permalink: "https://joshfinnie.com/about"
-layout: '../layouts/BasePage.astro'
-
+layout: "../layouts/BasePage.astro"
 ---
 
 I help develop <a href="https://pbs.org" target="_blank">PBS.org</a> leading backend development and helping everywhere up-and-down the stack.
@@ -16,18 +14,19 @@ and am excited to share.
 
 ## Projects
 
-* [CubeCobra](https://cubecobra.com)
-* [Beerledge](https://www.beerledge.com/ledges/)
-* [Pushfile](https://www.npmjs.org/package/pushfile)
-* [How Old is this Metro Car?](http://www.howoldisthismetrocar.com)
-* [TweetPNG](https://tweetpng.com)
+- [CubeCobra](https://cubecobra.com)
+- [Beerledge](https://www.beerledge.com/ledges/)
+- [Pushfile](https://www.npmjs.org/package/pushfile)
+- [How Old is this Metro Car?](http://www.howoldisthismetrocar.com)
+- [TweetPNG](https://tweetpng.com)
 
 <a href="https://github.com/joshfinnie?tab=repositories" class="center" target="_blank" rel="noopener noreferrer">
     Other open-source projects found on Github.
 </a>
 
 ## Resume
-**Experience:**  Senior Software Engineer &#8211; PBS |
+
+**Experience:** Senior Software Engineer &#8211; PBS |
 Senior Software Maven (Promoted from Software Maven) &#8211; TrackMaven
 by Skyword | Application Developer &#8211; Koansys, LLC.<br />
 **Languages:** Javascript (Node, Angular, React, jQuery),

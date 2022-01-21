@@ -1,5 +1,4 @@
 ---
-
 title: "My Basic isort Configuration"
 date: "2019-08-20"
 tags:
@@ -10,10 +9,9 @@ tags:
 path: "/blog/my-basic-isort-configuration"
 heroImage: "/assets/blog/sorting.jpg"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-unsplash: 'Sophie Elvis'
-unsplashURL: 'thetechomaid'
-
+layout: "../../layouts/BlogPost.astro"
+unsplash: "Sophie Elvis"
+unsplashURL: "thetechomaid"
 ---
 
 In an attempt to remove areas of [bikeshedding](https://en.wikipedia.org/wiki/Law_of_triviality) in our code reviews, I have slowly been implementing format automation to our codebase at [TrackMaven](https://trackmaven.com). The first large leap we took was to implement [Black](https://black.readthedocs.io/en/stable/) for our backend Python code and [Prettier](https://prettier.io/) for our frontend Javascript code.
@@ -38,8 +36,9 @@ no_lines_before=FIRSTPARTY
 ```
 
 However, in its simplicity lies a lot of power and customizability. Below, I will discuss the few settings we have here:
-* First, we current use a line length of 120 here at TrackMaven. The standard for Python is 80, but I have always thought that was an antiquated practice at best. 120 characters gives our code some room to breath without allowing for code to run wild.
-* Second, the `multi_line_output` variable is set to 3, which equates to "Vertical Hanging Indent." This is really a personal preference and the options can be found [here](https://github.com/timothycrosley/isort#multi-line-output-modes). Below is a simple example of "Vertical Hanging Indent"
+
+- First, we current use a line length of 120 here at TrackMaven. The standard for Python is 80, but I have always thought that was an antiquated practice at best. 120 characters gives our code some room to breath without allowing for code to run wild.
+- Second, the `multi_line_output` variable is set to 3, which equates to "Vertical Hanging Indent." This is really a personal preference and the options can be found [here](https://github.com/timothycrosley/isort#multi-line-output-modes). Below is a simple example of "Vertical Hanging Indent"
 
 ```python
 from third_party import (
@@ -50,7 +49,7 @@ from third_party import (
 )
 ```
 
-* Third, fourth, and fifth all deal with how our packages are laid out. The third line is telling `isort` we are using Django. The forth line is indicating the ordering for each package. **NOTE**: `DJANGO` can be used because we set the `known_django` variable. (There are a bunch of these "known" variable, `known_standard_library`, `known_first_party`, `known_third_party`, `known_{source_of_your_choice}`, etc.) And lastly, the fifth line indicates that there should be no line spacing between the LOCALFOLDER and FIRSTPART applications. Again, this is just a personal preference.
+- Third, fourth, and fifth all deal with how our packages are laid out. The third line is telling `isort` we are using Django. The forth line is indicating the ordering for each package. **NOTE**: `DJANGO` can be used because we set the `known_django` variable. (There are a bunch of these "known" variable, `known_standard_library`, `known_first_party`, `known_third_party`, `known_{source_of_your_choice}`, etc.) And lastly, the fifth line indicates that there should be no line spacing between the LOCALFOLDER and FIRSTPART applications. Again, this is just a personal preference.
 
 ## Conclusion
 

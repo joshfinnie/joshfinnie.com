@@ -1,5 +1,4 @@
 ---
-
 title: "Updating Mavericks and Postgres.app"
 date: "2014-01-27"
 tags:
@@ -9,13 +8,12 @@ tags:
   - "how-to"
 path: "/blog/updating-mavericks-and-postgresapp"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 I have recently upgrade my computer to [Mavericks](http://www.apple.com/osx/) and at the same time upgraded the [Postgres.app](http://www.postgresapp.com/) to 9.3. In doing so, I broke something; after the upgrade I was getting a nasty error message using virtualenvs I created pre-upgrade. And of course the warning was not helpful! So I had to figure out what happened myself.
 
-What to do? I took some time to research what was needed to be done, if anyone else was getting similar issues, and had a hard time locking anything down.  Luckily, I came across this [Stack Overflow Page](http://stackoverflow.com/questions/11538249/python-pip-install-psycopg2-install-error). In reading the answers, I started to understand what might have happened. Below is what I did to fix the problem, and hopefully it will help someone else.
+What to do? I took some time to research what was needed to be done, if anyone else was getting similar issues, and had a hard time locking anything down. Luckily, I came across this [Stack Overflow Page](http://stackoverflow.com/questions/11538249/python-pip-install-psycopg2-install-error). In reading the answers, I started to understand what might have happened. Below is what I did to fix the problem, and hopefully it will help someone else.
 
 First, copy the updated `libssl.dylib` file from the Postgres.app location:
 

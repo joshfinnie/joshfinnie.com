@@ -1,5 +1,4 @@
 ---
-
 title: "Current Thoughts on Mobile Website Support"
 date: "2021-12-28"
 tags:
@@ -7,12 +6,11 @@ tags:
   - "analysis"
   - "web design"
   - "lesson"
-layout: '../../layouts/BlogPost.astro'
+layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/chart.jpg"
 unsplash: "Jess Bailey"
 unsplashURL: "jessbaileydesigns"
 description: "I recently had a viral blog post and I wanted to share a surprising discovery of the current state of mobile website support! Over the course of the month, nearly 50% of my visitors were using a mobile browswer of some sort. What does this mean for me going forward?"
-
 ---
 
 On November 23rd, I released a blog post about using [Rust to speed up React components](/blog/setting_up_wsl_with_asdf/).
@@ -22,7 +20,7 @@ A month later, I thought I'd give a retrospective on the biggest thing I learned
 ## Mobile First?
 
 One of the bigger learnings with the success of this post is that just about half of my visitors read the post on mobile devices.
-That was surprising to me. 
+That was surprising to me.
 I recently updated my [blog to Astro](/blog/my-switch-from-gatsby-to-astro/) and part of the upgrade was to develop a true mobile experience.
 This has not been a priority of mine with a lot of websites I have built, but I keep hearing it being important.
 I wanted to have a mobile experience, but it always seemed half-hearted.
@@ -83,5 +81,5 @@ And the world needs more people who care and want to share.
 
 ## Also might enjoy:
 
-* [Using WebAssembly (created in Rust) for Fast React Components](/blog/using-webassembly-created-in-rust-for-fast-react-components/)
-* [Quick UX No-No](/blog/quick_ux_no-no/)
+- [Using WebAssembly (created in Rust) for Fast React Components](/blog/using-webassembly-created-in-rust-for-fast-react-components/)
+- [Quick UX No-No](/blog/quick_ux_no-no/)

@@ -1,5 +1,4 @@
 ---
-
 title: "Font Awesome is Awesome"
 date: "2013-10-24"
 tags:
@@ -9,8 +8,7 @@ tags:
   - "design"
 path: "/blog/font-awesome-is-awesome"
 expires: true
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
 ## Help a Programmer Out
@@ -30,45 +28,45 @@ The four awesome social network icons were provided by [Neil Orange Peel](http:/
 Font Awesome is a font that you add through CSS and I simplely added it through the provided CDN as follows:
 
 ```html
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" />
 ```
 
 This gives me all the power granted with using Font Awesome. Reading through the [examples](http://fontawesome.io/examples/), I created a faximily of the icons I used on the homepage with the following code:
 
 ```html
 <div class="social-buttons">
-<span class="twitter-button">
+  <span class="twitter-button">
     <a href="https://twitter.com/joshfinnie">
-    <span class="fa-stack fa-4x">
+      <span class="fa-stack fa-4x">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-    </span>
+      </span>
     </a>
-</span>
-<span class="github-button">
+  </span>
+  <span class="github-button">
     <a href="https://github.com/joshfinnie">
-    <span class="fa-stack fa-4x">
+      <span class="fa-stack fa-4x">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
-    </span>
+      </span>
     </a>
-</span>
-<span class="linkedin-button">
+  </span>
+  <span class="linkedin-button">
     <a href="https://linkedin.com/in/joshfinnie">
-    <span class="fa-stack fa-4x">
+      <span class="fa-stack fa-4x">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-    </span>
+      </span>
     </a>
-</span>
-<span class="instagram-button">
+  </span>
+  <span class="instagram-button">
     <a href="https://instagram.com/joshfinnie">
-    <span class="fa-stack fa-4x">
+      <span class="fa-stack fa-4x">
         <i class="fa fa-circle fa-stack-2x"></i>
         <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
-    </span>
+      </span>
     </a>
-</span>
+  </span>
 </div>
 ```
 

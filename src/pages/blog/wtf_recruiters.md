@@ -1,5 +1,4 @@
 ---
-
 title: "WTF Recruiters?"
 date: "2014-09-30"
 tags:
@@ -8,30 +7,29 @@ tags:
   - "recruiters"
 path: "/blog/wtf-recruiters"
 expires: false
-layout: '../../layouts/BlogPost.astro'
-
+layout: "../../layouts/BlogPost.astro"
 ---
 
-Well, I thought I have seen it all. As an engineer based in Washington, DC  I
+Well, I thought I have seen it all. As an engineer based in Washington, DC I
 get an endless stream of recruiting phone calls and emails. Usually I read them
 and file them away, but every once and a while I get some one trying to be
 cleaver... today I got a recruiting email that takes the cake!
 
->Good afternoon Josh,
+> Good afternoon Josh,
 
->I’ve left a few VMs, shot over a couple emails, even made some blood sacrifices in the hopes of getting a response. Perhaps the issue is that I was using fake blood and stuffed animals; my &lt; SIGNIFICANT OTHER &gt; wouldn’t let me do the real thing.
+> I’ve left a few VMs, shot over a couple emails, even made some blood sacrifices in the hopes of getting a response. Perhaps the issue is that I was using fake blood and stuffed animals; my &lt; SIGNIFICANT OTHER &gt; wouldn’t let me do the real thing.
 
->I don’t actually kill small animals, but I would like to connect with you. Your work stands out for its modernity and I dig your side projects. I can tell you enjoy what you do, and those are the folks I like.
+> I don’t actually kill small animals, but I would like to connect with you. Your work stands out for its modernity and I dig your side projects. I can tell you enjoy what you do, and those are the folks I like.
 
->I am a professional technology recruiter, I work exclusively in Washington DC, and I fill permanent/full-time roles. I don’t know how things are at TrackMaven, but I thought I would shoot you something a few months in and re-introduce myself.
+> I am a professional technology recruiter, I work exclusively in Washington DC, and I fill permanent/full-time roles. I don’t know how things are at TrackMaven, but I thought I would shoot you something a few months in and re-introduce myself.
 
->Are you open to seeing what’s out there?
+> Are you open to seeing what’s out there?
 
->Even if you’re not looking to move, I’m happy to send some position descriptions to look at or share with your network.
+> Even if you’re not looking to move, I’m happy to send some position descriptions to look at or share with your network.
 
->Have a good evening,
+> Have a good evening,
 
->&lt; REDACTED &gt;
+> &lt; REDACTED &gt;
 
 I am not sure if this particular recruiter thought this email was cute or that
 it would pique my interest, but it went too far! Please recruiters, don't

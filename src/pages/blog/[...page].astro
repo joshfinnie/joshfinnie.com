@@ -1,33 +1,34 @@
 ---
-import BlogPostPreview from '../../components/BlogPostPreview.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Pagination from '../../components/Pagination.astro';
+import BlogPostPreview from "../../components/BlogPostPreview.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Pagination from "../../components/Pagination.astro";
 
 export async function getStaticPaths({ paginate, rss }) {
-  const allPosts = Astro.fetchContent('./*.md');
+  const allPosts = Astro.fetchContent("./*.md");
   const sortedPosts = allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   rss({
     title: `Blog | www.joshfinnie.com`,
     description: "The personal/professional website of Josh Finnie.",
     customData: `<language>en-us</language>`,
-    items: sortedPosts.map(item => ({
+    items: sortedPosts.map((item) => ({
       title: item.title,
       link: item.url,
       pubDate: item.date,
     })),
-  })
+  });
 
-    return paginate(sortedPosts, {
-      pageSize: 5
-    })
+  return paginate(sortedPosts, {
+    pageSize: 5,
+  });
 }
 
 const { page } = Astro.props;
 ---
+
 <BaseLayout title="Blog | www.joshfinnie.com">
   <section id="main-content">
-    {page.data.map(p => <BlogPostPreview post={p} />)}
+    {page.data.map((p) => <BlogPostPreview post={p} />)}
   </section>
-  <Pagination page={page}/>
+  <Pagination {page} />
 </BaseLayout>

@@ -4,7 +4,10 @@ import Hero from "../components/Hero.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const allPosts = Astro.fetchContent("./blog/*.md");
-const posts = allPosts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+const posts = allPosts
+  .filter((a) => a.draft != true)
+  .sort((a, b) => new Date(b.date) - new Date(a.date))
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Home | www.joshfinnie.com">

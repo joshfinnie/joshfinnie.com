@@ -29,7 +29,7 @@ const formattedDate = format(date, "LLLL d, yyyy");
         {talk.name}
       </a>
     ) : (
-      <span>{talk.name}</span>
+      <span set:html>{talk.name}</span>
     )}
     {talk.lightning ? <i class="fas fa-bolt ml-2" aria-hidden="true"></i> : ""}
   </h2>

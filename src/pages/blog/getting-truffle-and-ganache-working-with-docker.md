@@ -9,7 +9,7 @@ layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/truffles.jpg"
 unsplash: "Jessica Loaiza"
 unsplashURL: "jessicaloaizar"
-description: "I recently had an issue installing Truffle.js locally on my computer. There was an issue with my version of Node.js or NPM... Instead of poluting my global NPM installs further, I took to Docker to get Truffle and Ganache working for me. This post details that journey."
+description: "I recently had an issue installing Truffle.js locally on my computer. There was an issue with my version of Node.js or NPM... Instead of polluting my global NPM installs further, I took to Docker to get Truffle and Ganache working for me. This post details that journey."
 ---
 
 We have been experimenting with how to introduce web3 at work.

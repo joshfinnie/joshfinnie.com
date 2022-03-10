@@ -113,7 +113,7 @@ $ touch docker-compose.yml
 This will give you the default files we will need to get Truffle and Ganache installed in a Docker container.
 It's a bit odd, but I had to figure out how to get the default Truffle folder structure without installing it globally.
 This [repo](https://github.com/joshfinnie/truffle-init-example) was generated for this post and gives you the default folders and files a `truffle init` will do.
-Give it a star if you find it helpful!
+Give it a ⭐️ if you find it helpful!
 
 ### Dockerfile
 

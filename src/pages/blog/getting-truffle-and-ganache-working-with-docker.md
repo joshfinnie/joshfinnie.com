@@ -1,6 +1,6 @@
 ---
 title: "Getting Truffle and Ganache Working with Docker"
-date: "2022-03-07"
+date: "2022-03-09"
 tags:
   - "web3"
   - "docker"
@@ -9,20 +9,65 @@ layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/truffles.jpg"
 unsplash: "Jessica Loaiza"
 unsplashURL: "jessicaloaizar"
-description: "I recently had an issue installing Truffle.js locally on my computer. There was an issue with my version of Node.js or NPM... Instead of polluting my global NPM installs further, I took to Docker to get Truffle and Ganache working for me. This post details that journey."
+description: "I recently had an issue installing Truffle locally on my computer. There was an issue with my version of Node.js or NPM... Instead of messing up or polluting my global NPM installs further, I took to Docker to get Truffle and Ganache working for me. This post details that journey."
 ---
 
-We have been experimenting with how to introduce web3 at work.
-And after using [hardhat](https://hardhat.org/) for many of the [Buildspace](https://buildspace.so/) classes, we though using [Truffle](https://trufflesuite.com/docs/truffle/) and [Ganache](https://trufflesuite.com/docs/ganache/) would be interesting to compare.
+We have been experimenting on how to introduce [web3](https://en.wikipedia.org/wiki/Web3) at work.
+After using [hardhat](https://hardhat.org/) for all of the [Buildspace](https://buildspace.so/) classes, I thought exploring [Truffle](https://trufflesuite.com/docs/truffle/) and [Ganache](https://trufflesuite.com/docs/ganache/) would be interesting for comparison.
 Unfortunately, not everything worked out-of-the-box for me.
-And it lead me to try and setup a working Truffle/Ganache setup using Docker.
+And it lead me to try to get a working Truffle/Ganache setup using Docker.
+
+## Understanding the Technology
+
+That introduction used a lot of terms that you might not be familiar with.
+You also might not know what in the world _web3_ is.
+If so, this section is for you.
+If the introduction did not sound like Greek to you, feel free to skip this section and go directly to the [problem statement](#the-problem).
+
+### web3 &amp; Ethereum
+
+Web3 is an iteration of web development based on blockchain technology.
+The hopes of this iteration is to decentralize data throughout the web and establish a more universal, accessible economy. <sup>[1](https://en.wikipedia.org/wiki/Web3)</sup>
+The two largest blockchain technologies today is Bitcoin and Ethereum.
+Ethereum is the blockchain which the libraries mentioned above use.
+
+Ethereum is a decentralized, open-source blockchain technology that has built-in smart contract capability. <sup>[2](https://en.wikipedia.org/wiki/Ethereum)</sup>
+The ability for smart contracts is what makes Ethereum so attractive to developers.
+This attractiveness is why there is so much tooling around these contracts.
+
+### Solidity
+
+Solidity is a programming language that one uses to write smart contracts. This is the language that is used when you initialize a project with either Hardhat or Truffle.
+Even though Solidity was first developed to work with the Ethereum blockchain, it has since expanded to work with different blockchains.
+This fact makes it useful to learn if you want to dive into smart contract development.
+
+### Hardhat
+
+Hardhat is an NPM package that creates a development environment to compile, deploy, test, and debug your Ethereum software. <sup>[3](https://hardhat.org/getting-started/)</sup>
+This is the most popular tool to develop Ethereum smart contracts.
+
+### Truffle
+
+Truffle is another NPM package.
+It is a development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine.
+<sup>[4](https://trufflesuite.com/docs/truffle/)</sup>
+Very much like Hardhat, Truffle makes contract development smoother.
+
+### Ganache
+
+Ganache is the third NPM package listed here.
+It is a personal blockchain for Ethereum distributed application development. <sup>[5](https://trufflesuite.com/docs/ganache/)</sup>
+This allows you to deploy your smart contracts locally and saves you from testing on the real blockchains.
+It's the first time that I have explored running my own blockchain.
+I usually just use the testnets, but this was a nice alternative.
+And I can see using this going forward.
 
 ## The Problem
 
-I had some issues installing Truffle globally on my computer.
-There seems to be an issue with Truffle and the latest version of NPM.
-So I could not ever get Truffle to install locally without messing with my global Node.js install.
-Below is the error I was getting:
+I had issues installing Truffle globally on my computer. (Which is the preferred method per their documentation.)
+There seems to be an issue with Truffle and the latest version of NPM; which seems to have been around for [a while](https://github.com/trufflesuite/truffle/issues/1616).
+I could not get Truffle to install locally without messing with my global Node.js install.
+Below is the error I am getting when I tried the global installation:
 
 ```bash
 npm ERR! fatal error: too many errors emitted, stopping now [-ferror-limit=]
@@ -42,13 +87,13 @@ npm ERR! gyp ERR! not ok
 
 ```
 
-I am not a huge fan of installing things globally, especially when it does not work with the latest version of Node.js.
-Luckily, we have tools for this situation.
+I am not a huge fan of installing things globally, especially when it does not work with the latest version of Node.js or NPM.
+Luckily, we have tools to help us in these situations.
 
 ## Docker
 
 Docker has been around for a while.
-But in case you are unfamiliar, Docker is a set of tools that facilitates OS-level virtualization.<sup>[1](https://en.wikipedia.org/wiki/Docker_(software))</sup>
+But in case you are unfamiliar, Docker is a set of tools that facilitates OS-level virtualization.<sup>[6](https://en.wikipedia.org/wiki/Docker_(software))</sup>
 These tools will allow us to containerize the Truffle and Ganache setup removing the need of global installation.
 It's a win-win.
 The Docker container we build can be used anywhere, and we no longer need to worry about the version of Node.js we have installed on our computer.
@@ -76,17 +121,16 @@ Below is the code for the Dockerfile.
 We'll go into some depth asto what's going on here.
 
 ```dockerfile
-FROM debian:bullseye-slim as base
+FROM node:16-bullseye-slim as base
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         build-essential \
-        nodejs \
-        npm && \
+        python3 && \
     rm -fr /var/lib/apt/lists/* && \
     rm -rf /etc/apt/sources.list.d/*
 
-RUN npm install --global npm truffle ganache-cli
+RUN npm install --global --quiet npm truffle ganache
 
 FROM base as truffle
 
@@ -96,7 +140,7 @@ WORKDIR /home/app
 COPY package.json /home/app
 COPY package-lock.json /home/app
 
-RUN npm install --quite
+RUN npm install --quiet
 
 COPY truffle-config.js /home/app
 COPY contracts /home/app/contracts
@@ -111,28 +155,30 @@ RUN mkdir -p /home
 WORKDIR /home
 EXPOSE 8545
 
-ENTRYPOINT ["ganache-cli", "--host 0.0.0.0"]
+ENTRYPOINT ["ganache", "--host 0.0.0.0"]
 ```
 
 The first block of code I will breakdown is the code that builds our "base" container.
 I have long ago adopted [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) as a way to optimize my Dockerfiles, and feel like this is the ideal reason why.
-Having a "base" container allows us to make sure the default `debian:bullseye` Docker image is up-to-date and has all our required packages installed.
+Having a "base" container allows us to make sure the default `node:16-bullseye-slim` Docker image is up-to-date and has all our required packages installed.
 
 ```dockerfile
-FROM debian:bullseye-slim as base
+FROM node:16-bullseye-slim as base
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         build-essential \
-        nodejs \
-        npm && \
+        python3 && \
     rm -fr /var/lib/apt/lists/* && \
     rm -rf /etc/apt/sources.list.d/*
 
-RUN npm install --global npm truffle ganache-cli
+RUN npm install --global --quiet npm truffle ganache
+
 ```
 
-We install `build-essenials`, `nodejs` and `npm` from the Debian package manager and get `truffle` and `ganache-cli` from NPM.
+We install `build-essenials` and `python3` from the Debian package manager.
+These are dependencies for Truffle.
+And we install `truffle` and `ganache` using NPM.
 
 Taking from our created "base" image, we then buildout our truffle container.
 
@@ -145,7 +191,7 @@ WORKDIR /home/app
 COPY package.json /home/app
 COPY package-lock.json /home/app
 
-RUN npm install --quite
+RUN npm install --quiet
 
 COPY truffle-config.js /home/app
 COPY contracts /home/app/contracts
@@ -193,6 +239,9 @@ services:
       - ganache
     networks:
       - backend
+    volumes:
+      - .:/home/app
+      - /home/app/node_modules
   ganache:
     build:
       context: .

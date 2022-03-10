@@ -12,7 +12,7 @@ const formattedDate = format(parseISO(date), "LLLL d, yyyy");
   <header>
     {heroImage && <img class="rounded-md" loading="lazy" src={heroImage} alt={alt} />}
     <div id="main-content" class="flex flex-col items-center mb-10">
-      <h1 class="font-bold text-4xl mb-5 mt-5">{title}</h1>
+      <h1 class="font-bold text-4xl mb-5 mt-5" set:html={title}></h1>
       <span>
         <i class="fas fa-calendar-alt mr-2"></i>
         {formattedDate}

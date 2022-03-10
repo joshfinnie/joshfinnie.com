@@ -15,4 +15,15 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
   vite: {
     plugins: [],
   },
+  markdownOptions: {
+    render: [
+      '@astrojs/markdown-remark',
+      {
+        rehypePlugins: [
+          'rehype-slug',
+          ['rehype-autolink-headings', { behavior: 'prepend'}],
+        ],
+      },
+    ],
+  },
 });

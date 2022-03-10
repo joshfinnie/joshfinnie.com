@@ -7,8 +7,7 @@ const tagLen = tags.length;
   <i class="fas fa-tags mr-2"> </i>
   {tags.map((tag, idx) => (
     <span>
-      <a href={`/tags/${tag}`}>{tag}</a>
-      {tagLen !== idx + 1 ? ",&nbsp;&nbsp;" : ""}
+      <a href={`/tags/${tag}`}>{tag}</a>{tagLen !== idx + 1 ? ", " : ""}
     </span>
   ))}
 </div>

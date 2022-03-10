@@ -25,11 +25,9 @@ const formattedDate = format(date, "LLLL d, yyyy");
   </p>
   <h2 class="font-bold text-2xl mb-5">
     {talk.link ? (
-      <a href={talk.link} target="_blank" rel="noopener noreferrer">
-        {talk.name}
-      </a>
+      <a href={talk.link} target="_blank" rel="noopener noreferrer" set:html={talk.name}></a>
     ) : (
-      <span>{talk.name}</span>
+      <span set:html={talk.name}></span>
     )}
     {talk.lightning ? <i class="fas fa-bolt ml-2" aria-hidden="true"></i> : ""}
   </h2>

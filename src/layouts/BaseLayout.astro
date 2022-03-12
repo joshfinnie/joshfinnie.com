@@ -14,9 +14,9 @@ const {
 <head>
   <BaseHead {title} {description} {permalink} image={`https://www.joshfinnie.com${image}`} />
 </head>
-<body>
+<body class="bg-white dark:bg-slate-900">
   <a class="skip-nav-link" href="#main-content">skip navigation</a>
-  <div class="w-full mx-auto sm:max-w-screen-md px-4">
+  <div class="dark:text-white w-full mx-auto sm:max-w-screen-md px-4">
     <BlogHeader />
     <slot />
     <Footer />

@@ -10,6 +10,19 @@ module.exports = {
         mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
       },
       typography: {
+        dark: {
+          css: {
+            p: {
+              color: "white",
+            },
+            h1: {
+              color: "white",
+            },
+            h2: {
+              color: "white",
+            }
+          },
+        },
         DEFAULT: {
           css: {
             a: {

@@ -16,8 +16,13 @@ const formattedDate = format(date, "LLLL d, yyyy");
     </a>
   </header>
   <main>
-    <a href={post.url} title={post.title} alt={post.title}>
-      <img src={post.heroImage} alt={post.title} class="rounded-md" />
-    </a>
+    {post.heroImage ?
+     <>
+       <a href={post.url} title={post.title} alt={post.title}>
+         <img src={post.heroImage} alt={post.title} class="rounded-md" />
+       </a>
+     </> :
+     <>
+     </>}
   </main>
 </article>

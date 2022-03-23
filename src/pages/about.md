@@ -26,20 +26,25 @@ and am excited to share.
 
 ## Resume
 
-**Experience:** Senior Software Engineer &#8211; PBS |
-Senior Software Maven (Promoted from Software Maven) &#8211; TrackMaven
-by Skyword | Application Developer &#8211; Koansys, LLC.<br />
-**Languages:** Javascript (Node, Angular, React, jQuery),
-Python (Django, Flask, Pyramid)<br />
-**Databases:** PostgreSQL, MongoDB, MySQ<br />
-**SCM:** GIT<br />
-**Education:** Classes towards a MS in Geography &#8211;
-Central Connecticut State University | BA in Economics &amp; Minor in
-Mathematics &#8211; University of Connecticut<br />
-**Other Interests:** Coffee, Cycling, Photography, Amateur
-Radio (<a href="http://www.qrz.com/db/W1OFZ" target="_blank" rel="noopener noreferrer">W1OFZ</a>)
+**Experience:**<br />
+- Senior Software Engineer &#8211; PBS
+- Software Developer -> Senior Software Developer &#8211; TrackMaven by Skyword
+- Application Developer &#8211; Koansys, LLC.
 
-<br /><a href="/assets/docs/resume.pdf" class="center" target="_blank" rel="noopener noreferrer">Download full resume (PDF)</a>.
+**Languages:**<br />
+- Python (Django, Flask, Graphene)
+- Javascript (Express.js, React, Apollo)
+- Go, Rust
+
+**Education:**<br />
+- Classes towards a MS in Geography &#8211; Central Connecticut State University
+- BA in Economics &amp; Minor in Mathematics &#8211; University of Connecticut<br />
+
+**Other Interests:**<br />
+- Coffee, Cycling, Photography,
+Amateur Radio (<a href="http://www.qrz.com/db/W1OFZ" target="_blank" rel="noopener noreferrer">W1OFZ</a>)
+
+<a href="/assets/docs/resume.pdf" class="center" target="_blank" rel="noopener noreferrer">Download full resume (PDF)</a>.
 
 ## PGP Public Key
 

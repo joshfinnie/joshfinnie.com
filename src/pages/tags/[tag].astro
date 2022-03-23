@@ -12,7 +12,7 @@ export function getStaticPaths() {
 const { params } = Astro.request;
 const { allPosts } = Astro.props;
 
-posts = allPosts.filter((post) => post.tags.includes(params.tag)).sort((a, b) => new Date(b.date) - new Date(a.date));
+const posts = allPosts.filter((post) => post.tags.includes(params.tag)).sort((a, b) => new Date(b.date) - new Date(a.date));
 ---
 
 <BaseLayout>

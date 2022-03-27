@@ -120,7 +120,7 @@ Give it a ⭐️ if you find it helpful!
 Below is the code for the Dockerfile.
 We'll go into some depth asto what's going on here.
 
-```dockerfile
+```docker
 FROM node:16-bullseye-slim as base
 
 RUN apt-get update && \
@@ -162,7 +162,7 @@ The first block of code I will breakdown is the code that builds our "base" cont
 I have long ago adopted [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) as a way to optimize my Dockerfiles, and feel like this is the ideal reason why.
 Having a "base" container allows us to make sure the default `node:16-bullseye-slim` Docker image is up-to-date and has all our required packages installed.
 
-```dockerfile
+```docker
 FROM node:16-bullseye-slim as base
 
 RUN apt-get update && \
@@ -182,7 +182,7 @@ And we install `truffle` and `ganache` using NPM.
 
 Taking from our created "base" image, we then buildout our truffle container.
 
-```dockerfile
+```docker
 FROM base as truffle
 
 RUN mkdir -p /home/app
@@ -209,7 +209,7 @@ Lastly calling `truffle version` to spit out our version of Truffle installed.
 Lastly, we build out our Ganache container.
 This one is a tad less complex due to Ganache being a tool that runs in the background.
 
-```dockerfile
+```docker
 FROM base as ganache
 
 RUN mkdir -p /home

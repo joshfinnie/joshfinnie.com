@@ -138,11 +138,10 @@ In this example, you can see the benefit of the frontmatter javascript, keeping 
 
 As I stated above, there is first-class support for `.astro` for VSCode. I have been experimenting a lot lately with emacs (probably worthy of another blog post!), and adding support for the `.astro` filetype was easy. I just told emacs to assume `.astro` files were JSX files and haven't looked back. To do this, you add the following command to your emacs configs:
 
-```elisp
+```lisp
 (setq auto-mode-alist
     (append '((".*\\.astro\\'" . js-jsx-mode))
         auto-mode-alist))
-
 ```
 
 ## Code

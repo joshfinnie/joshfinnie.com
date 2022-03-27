@@ -1,17 +1,17 @@
+import preact from '@astrojs/preact';
+
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
   buildOptions: {
     site: "https://www.joshfinnie.com",
     sitemap: true,
   },
-  // Enables Tailwind support for development
   devOptions: {
     port: 3333,
     hostname: "0.0.0.0",
     tailwindConfig: "./tailwind.config.js",
   },
-  // Enable the Preact renderer to support Preact JSX components.
-  renderers: ["@astrojs/renderer-preact"],
+  integrations: [preact(),],
   vite: {
     plugins: [],
   },
@@ -19,6 +19,17 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     render: [
       '@astrojs/markdown-remark',
       {
+        //syntaxHighlight: 'prism',
+        shikiConfig: {
+          // Choose from Shiki's built-in themes
+          // https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-themes
+          theme: 'dracula',
+          // Manually specify langs
+          // Note: Shiki has countless langs built-in, including .astro!
+          langs: ['astro'],
+          // Enable word wrap to prevent horizontal scrolling
+          wrap: false,
+        },
         rehypePlugins: [
           'rehype-slug',
           ['rehype-autolink-headings', { behavior: 'prepend'}],

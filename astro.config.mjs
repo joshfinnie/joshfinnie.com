@@ -1,4 +1,4 @@
-import preact from '@astrojs/preact';
+import preact from "@astrojs/preact";
 
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
@@ -11,29 +11,26 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     hostname: "0.0.0.0",
     tailwindConfig: "./tailwind.config.js",
   },
-  integrations: [preact(),],
+  integrations: [preact()],
   vite: {
     plugins: [],
   },
   markdownOptions: {
     render: [
-      '@astrojs/markdown-remark',
+      "@astrojs/markdown-remark",
       {
         //syntaxHighlight: 'prism',
         shikiConfig: {
           // Choose from Shiki's built-in themes
           // https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-themes
-          theme: 'dracula',
+          theme: "dracula",
           // Manually specify langs
           // Note: Shiki has countless langs built-in, including .astro!
-          langs: ['astro'],
+          langs: ["astro"],
           // Enable word wrap to prevent horizontal scrolling
           wrap: false,
         },
-        rehypePlugins: [
-          'rehype-slug',
-          ['rehype-autolink-headings', { behavior: 'prepend'}],
-        ],
+        rehypePlugins: ["rehype-slug", ["rehype-autolink-headings", { behavior: "prepend" }]],
       },
     ],
   },

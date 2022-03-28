@@ -93,7 +93,7 @@ Luckily, we have tools to help us in these situations.
 ## Docker
 
 Docker has been around for a while.
-But in case you are unfamiliar, Docker is a set of tools that facilitates OS-level virtualization.<sup>[6](https://en.wikipedia.org/wiki/Docker_(software))</sup>
+But in case you are unfamiliar, Docker is a set of tools that facilitates OS-level virtualization.<sup>[6](<https://en.wikipedia.org/wiki/Docker_(software)>)</sup>
 These tools will allow us to containerize the Truffle and Ganache setup removing the need of global installation.
 It's a win-win.
 The Docker container we build can be used anywhere, and we no longer need to worry about the version of Node.js we have installed on our computer.
@@ -229,7 +229,7 @@ Even though you don't need a Compose file, I find them easier to deal with and l
 There's something satisfying about running `docker compose up` and having your entire system running within Docker.
 
 ```yaml
-version: '3.4'
+version: "3.4"
 services:
   truffle:
     build:
@@ -266,5 +266,5 @@ If anyone knows of another way to fix this, feel free to chat with me on [Twitte
 
 ## Also might enjoy
 
-* [Using Latex Through Docker](/blog/latex-through-docker)
-* [My Basic Python Dockerfile](/blog/basic-python-dockerfile)
+- [Using Latex Through Docker](/blog/latex-through-docker)
+- [My Basic Python Dockerfile](/blog/basic-python-dockerfile)

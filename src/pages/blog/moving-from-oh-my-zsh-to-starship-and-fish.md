@@ -13,9 +13,9 @@ unsplashURL: "prelevicm"
 description: "<DESCRIPTION>"
 ---
 
-I have been using [Zsh](https://www.zsh.org/) for nearly a decade.
+I have been using [Zsh](https://www.zsh.org/) for almost a decade.
 I remember the day that I switched from the default shell Bash to ZSH.
-Powered by [Oh-My-Zsh](https://ohmyz.sh/), all of a sudden my terminal was powerful and helpful.
+Powered by [Oh-My-Zsh](https://ohmyz.sh/), my terminal was powerful and helpful.
 Add on top of that Oh-My-Zsh amazing templates; it was also pretty!
 
 It was an amazing experience, and I recently had that experience again with [Starship.rs](https://starship.rs/).
@@ -27,13 +27,13 @@ If you want to see why you should make this switch without reading all my specif
 ## Installing Starship.rs
 
 Since I am on a Macbook Pro and already set up [homebrew](https://brew.sh/) as my package manager, installing Starship.rs was easy.
-You just need to install Starship.rs through Homebrew. Run the below command and get Fish installed as well!
+You need to install Starship.rs through Homebrew. Run the below command and get Fish installed as well!
 
 ```bash
 $ brew install starship fish
 ```
 
-With Starship installed, let's modify the terminal a bit.
+With Starship installed, let's update the terminal a bit.
 Create a configuration file for Starship:
 
 ```bash
@@ -42,7 +42,7 @@ $ touch $HOME/.config/starship.toml
 ```
 
 Feel free to read [this documentation](https://starship.rs/config/#prompt) to customize your prompt how you like it.
-Here is a snipet of mine.
+Here is a snippet of mine.
 It seems to work for me for now, but terminal prompts are so personal:
 
 ```toml
@@ -63,7 +63,7 @@ style = "bold italic #87A752"
 
 ## Installing Fish
 
-After completing the install through homebrew, you should be able to jump into the fish terminal.
+After completing the install through homebrew, jump into the fish terminal.
 Type `fish` and see that you can start using Fish right away.
 **Note**: You can always type `exit` to get back to your default shell.
 But we want a more permanent solution, below is how we add Fish to our available shells and set it as default:
@@ -85,7 +85,8 @@ But I am a tinkerer and need to configuration Fish a bit.
 These are the steps I took to customize.
 
 To facilitate the configuration of Fish, we need to create a config file.
-If you have done any customization of Zsh or Bash you are already familiar with this concept, but where we list it is a bit different.
+If you have done any customization of Zsh or Bash you are already familiar with this concept.
+Where we make these changes is a bit different.
 Let's create the file we need:
 
 ```bash
@@ -97,10 +98,10 @@ The above commands make sure we have a folder to hold our Fish configuration and
 The next major change we want to do to our Fish configuration file is tie in Starship.rs.
 
 ```bash
-$ echo "echo "starship init fish | source" >> ~/.config/fish/config.fish" >> $HOME/.config/fish/config.fish
+$ echo "starship init fish | source" >> $HOME/.config/fish/config.fish
 ```
 
-And with that, we should be using our Starstip prompt with Fish!
+And with that, we should be using our Starship prompt with Fish!
 
 
 ## Fish Oddities
@@ -131,16 +132,16 @@ alias exa="$HOME/.asdf/installs/rust/nightly/bin/exa"
 ```
 
 The most important alias I want to cary over Fish is my `ls` alias which uses [exa](https://the.exa.website/).
-I have fallen for `exa`, and just seeing the normal `ls` is disappointing.
-Other aliases are just better defaults, but will be helpful to have these in Fish too!
+I have fallen for `exa`, and seeing the normal `ls` is disappointing.
+Other aliases are better defaults, but will be helpful to have these in Fish too!
 
-Fish has two notions of abbriviations.
+Fish has two different kinds of abbreviations.
 `abbr` is manages abbreviations - user-defined words that are replaced with longer phrases after they are entered. <sup>[1](https://fishshell.com/docs/current/cmds/abbr.html)</sup>
 `alias`  is a simple wrapper for the `function` builtin, which creates a function wrapping a command.<sup>[2](https://fishshell.com/docs/current/cmds/alias.html)</sup>
 Since we are trying to mirror Zsh's aliases, we'll use Fish's `abbr`.
 
-First, let's create a file to hold our abbriviations.
-Fish has a standard location for additional config files, so let's create that file and edit our abbriviations:
+First, let's create a file to hold our abbreviations.
+Fish has a standard location for additional config files, so let's create that file and edit our abbreviations:
 
 ```bash
 $ mkdir -p $HOME/.config/fish/conf.d/
@@ -160,7 +161,8 @@ abbr ls "exa -lag --header"
 ```
 
 Once the abbreviations file is complete, we can add it to our Fish config file.
-Add `source $HOME/.config/fish/conf.d/abbr.fish` to the Fish config file and we should be all good to go after a reload of the config.
+Add `source $HOME/.config/fish/conf.d/abbr.fish` to the Fish config file.
+After reloading the config, we should be able to use our abbreviations.
 
 To test it out, I ran `ls` in the `$HOME/.config/fish/` folder and got this:
 
@@ -175,11 +177,11 @@ drwxr-xr-x     - joshfinnie staff  3 Apr 15:28  functions
 
 Super!
 
-Another thing that is slightly different in Fish than Zsh is how we set Environment Variables.
-Previously, we'd just export a variable to set it globally.
-But with Fish, we have to do something a little more special.
+Another thing that is different in Fish than Zsh or Bash is how we set Environment Variables.
+With Zsh or Bash, we'd export a variable to set it globally.
+But in Fish, there is a different syntax that we will have to use.
 
-Below is an example of setting up the `FZF_DEFAULT_COMMAND` in both Zsh and Fish. It's a small difference, but a noticble one.
+Below is an example of setting up the `FZF_DEFAULT_COMMAND` in both Zsh and Fish. It's a small difference, but a noticeable one.
 
 ```bash
 # Bash
@@ -200,7 +202,7 @@ I will be honest, I tried Fish five or so years ago and hated it.
 Let's see if my experience is better than last time.
 If you have used Starship.rs and Fish, let me know!
 Contact me [on Twitter](https://twitter.com/joshfinnie) and I'd love to chat.
-So far it really has been a nice change-of-pace.
+So far it has been a nice change-of-pace.
 
 ## Also Might Enjoy
 

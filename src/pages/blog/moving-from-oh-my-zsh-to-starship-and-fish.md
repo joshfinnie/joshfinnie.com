@@ -22,6 +22,8 @@ It was an amazing experience, and I recently had that experience again with [Sta
 Switching to Starship.rs meant I broke up with Oh-My-Zsh, and thus Zsh.
 With everything back up in the air, I thought this would be a great time to try the [Fish shell](https://fishshell.com/)!
 
+If you want to see why you should make this switch without reading all my specific setup, [click here](#benefits)
+
 ## Installing Starship.rs
 
 Since I am on a Macbook Pro and already set up [homebrew](https://brew.sh/) as my package manager, installing Starship.rs was easy.
@@ -188,6 +190,8 @@ set -x FZF_DEFAULT_COMMAND 'ag -g "" --hidden --ignore .git'
 ```
 
 I do not set many environment variables this way, but if you do this should be an easy update.
+
+## Benefits
 
 ## Conclusion
 

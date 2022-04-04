@@ -1,0 +1,204 @@
+---
+title: "Moving from Oh-My-Zsh to Starship & Fish"
+date: "2022-04-04"
+tags:
+  - "tutorial"
+  - "terminal"
+  - "fish"
+  - "starship"
+layout: "../../layouts/BlogPost.astro"
+heroImage: "/assets/blog/fish.jpg"
+unsplash: "Milos Prelevic"
+unsplashURL: "prelevicm"
+description: "<DESCRIPTION>"
+---
+
+I have been using [Zsh](https://www.zsh.org/) for nearly a decade.
+I remember the day that I switched from the default shell Bash to ZSH.
+Powered by [Oh-My-Zsh](https://ohmyz.sh/), all of a sudden my terminal was powerful and helpful.
+Add on top of that Oh-My-Zsh amazing templates; it was also pretty!
+
+It was an amazing experience, and I recently had that experience again with [Starship.rs](https://starship.rs/).
+Switching to Starship.rs meant I broke up with Oh-My-Zsh, and thus Zsh.
+With everything back up in the air, I thought this would be a great time to try the [Fish shell](https://fishshell.com/)!
+
+## Installing Starship.rs
+
+Since I am on a Macbook Pro and already set up [homebrew](https://brew.sh/) as my package manager, installing Starship.rs was easy.
+You just need to install Starship.rs through Homebrew. Run the below command and get Fish installed as well!
+
+```bash
+$ brew install starship fish
+```
+
+With Starship installed, let's modify the terminal a bit.
+Create a configuration file for Starship:
+
+```bash
+$ mkdir -p $HOME/.config
+$ touch $HOME/.config/starship.toml
+```
+
+Feel free to read [this documentation](https://starship.rs/config/#prompt) to customize your prompt how you like it.
+Here is a snipet of mine.
+It seems to work for me for now, but terminal prompts are so personal:
+
+```toml
+command_timeout = 10000
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+...
+
+[cmd_duration]
+min_time = 4
+show_milliseconds = false
+disabled = false
+format = " 🕙 $duration($style) "
+style = "bold italic #87A752"
+```
+
+## Installing Fish
+
+After completing the install through homebrew, you should be able to jump into the fish terminal.
+Type `fish` and see that you can start using Fish right away.
+**Note**: You can always type `exit` to get back to your default shell.
+But we want a more permanent solution, below is how we add Fish to our available shells and set it as default:
+
+```bash
+$ echo /usr/local/bin/fish | sudo tee -a /etc/shells
+$ chsh -s /usr/local/bin/fish
+```
+
+These commands mean you are officially using Fish as your shell.
+
+## Configuring Fish
+
+> No configuration needed: fish is designed to be ready to use immediately, without requiring extensive configuration.
+
+On the homepage for Fish is the above quote.
+The shell prides itself on clear defaults and powerful built-in features.
+But I am a tinkerer and need to configuration Fish a bit.
+These are the steps I took to customize.
+
+To facilitate the configuration of Fish, we need to create a config file.
+If you have done any customization of Zsh or Bash you are already familiar with this concept, but where we list it is a bit different.
+Let's create the file we need:
+
+```bash
+$ mkdir -p $HOME/.config/fish
+$ echo "set -gx EDITOR emacs" >> $HOME/.config/fish/config.fish
+```
+
+The above commands make sure we have a folder to hold our Fish configuration and sets my `EDITOR` variable to emacs.
+The next major change we want to do to our Fish configuration file is tie in Starship.rs.
+
+```bash
+$ echo "echo "starship init fish | source" >> ~/.config/fish/config.fish" >> $HOME/.config/fish/config.fish
+```
+
+And with that, we should be using our Starstip prompt with Fish!
+
+
+## Fish Oddities
+
+Using Fish comes with a few oddities that we'll have to deal with. 
+The biggest difficulty when moving to Fish is the change in how aliases work.
+
+With Zsh I set up some aliases to make my life easier:
+
+```bash
+# My Aliases
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias h='history'
+alias which='type -a'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ls='exa -lag --header'
+alias edit='vim'
+alias ccd='clear && cd'
+alias killpyc='find . -name \*.pyc -delete'
+alias tmux="tmux -2"
+alias latex="docker run -v `pwd`:/tmp latex pdflatex"
+alias exa="$HOME/.asdf/installs/rust/nightly/bin/exa"
+```
+
+The most important alias I want to cary over Fish is my `ls` alias which uses [exa](https://the.exa.website/).
+I have fallen for `exa`, and just seeing the normal `ls` is disappointing.
+Other aliases are just better defaults, but will be helpful to have these in Fish too!
+
+Fish has two notions of abbriviations.
+`abbr` is manages abbreviations - user-defined words that are replaced with longer phrases after they are entered. <sup>[1](https://fishshell.com/docs/current/cmds/abbr.html)</sup>
+`alias`  is a simple wrapper for the `function` builtin, which creates a function wrapping a command.<sup>[2](https://fishshell.com/docs/current/cmds/alias.html)</sup>
+Since we are trying to mirror Zsh's aliases, we'll use Fish's `abbr`.
+
+First, let's create a file to hold our abbriviations.
+Fish has a standard location for additional config files, so let's create that file and edit our abbriviations:
+
+```bash
+$ mkdir -p $HOME/.config/fish/conf.d/
+$ touch $HOME/.cofig/fish/conf.d/abbr.fish
+```
+
+And fill it out:
+
+```bash
+abbr rm "rm -i"
+abbr cp "cp -i"
+abbr mv "mv -i"
+abbr mkdir "mkdir -p"
+abbr h "history"
+abbr which "type -a"
+abbr ls "exa -lag --header"
+```
+
+Once the abbreviations file is complete, we can add it to our Fish config file.
+Add `source $HOME/.config/fish/conf.d/abbr.fish` to the Fish config file and we should be all good to go after a reload of the config.
+
+To test it out, I ran `ls` in the `$HOME/.config/fish/` folder and got this:
+
+```bash
+Permissions Size User       Group Date Modified Name
+drwxr-xr-x     - joshfinnie staff  3 Apr 15:28  completions
+drwxr-xr-x     - joshfinnie staff  3 Apr 16:19  conf.d
+.rw-r--r--   181 joshfinnie staff  3 Apr 16:21  config.fish
+.rw-r--r--  1.6k joshfinnie staff  3 Apr 16:19  fish_variables
+drwxr-xr-x     - joshfinnie staff  3 Apr 15:28  functions
+```
+
+Super!
+
+Another thing that is slightly different in Fish than Zsh is how we set Environment Variables.
+Previously, we'd just export a variable to set it globally.
+But with Fish, we have to do something a little more special.
+
+Below is an example of setting up the `FZF_DEFAULT_COMMAND` in both Zsh and Fish. It's a small difference, but a noticble one.
+
+```bash
+# Bash
+export FZF_DEFAULT_COMMAND='ag -g "" --hidden --ignore .git'
+
+# Fish
+set -x FZF_DEFAULT_COMMAND 'ag -g "" --hidden --ignore .git'
+```
+
+I do not set many environment variables this way, but if you do this should be an easy update.
+
+## Conclusion
+
+This is a quick explanation of how I adopted Fish and Starship.rs for my terminal.
+I will be honest, I tried Fish five or so years ago and hated it.
+Let's see if my experience is better than last time.
+If you have used Starship.rs and Fish, let me know!
+Contact me [on Twitter](https://twitter.com/joshfinnie) and I'd love to chat.
+So far it really has been a nice change-of-pace.
+
+## Also Might Enjoy
+
+* [ASDF: How To Set Up Runtimes on Windows Subsystem for Linux](/blog/setting_up_wsl_with_asdf/)
+* [Using Latex through Docker](https://www.joshfinnie.com/blog/latex-through-docker/)

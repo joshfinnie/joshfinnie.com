@@ -93,7 +93,7 @@ Luckily, we have tools to help us in these situations.
 ## Docker
 
 Docker has been around for a while.
-But in case you are unfamiliar, Docker is a set of tools that facilitates OS-level virtualization.<sup>[6](https://en.wikipedia.org/wiki/Docker_(software))</sup>
+But in case you are unfamiliar, Docker is a set of tools that facilitates OS-level virtualization.<sup>[6](<https://en.wikipedia.org/wiki/Docker_(software)>)</sup>
 These tools will allow us to containerize the Truffle and Ganache setup removing the need of global installation.
 It's a win-win.
 The Docker container we build can be used anywhere, and we no longer need to worry about the version of Node.js we have installed on our computer.
@@ -120,7 +120,7 @@ Give it a ⭐️ if you find it helpful!
 Below is the code for the Dockerfile.
 We'll go into some depth asto what's going on here.
 
-```dockerfile
+```docker
 FROM node:16-bullseye-slim as base
 
 RUN apt-get update && \
@@ -162,7 +162,7 @@ The first block of code I will breakdown is the code that builds our "base" cont
 I have long ago adopted [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) as a way to optimize my Dockerfiles, and feel like this is the ideal reason why.
 Having a "base" container allows us to make sure the default `node:16-bullseye-slim` Docker image is up-to-date and has all our required packages installed.
 
-```dockerfile
+```docker
 FROM node:16-bullseye-slim as base
 
 RUN apt-get update && \
@@ -182,7 +182,7 @@ And we install `truffle` and `ganache` using NPM.
 
 Taking from our created "base" image, we then buildout our truffle container.
 
-```dockerfile
+```docker
 FROM base as truffle
 
 RUN mkdir -p /home/app
@@ -209,7 +209,7 @@ Lastly calling `truffle version` to spit out our version of Truffle installed.
 Lastly, we build out our Ganache container.
 This one is a tad less complex due to Ganache being a tool that runs in the background.
 
-```dockerfile
+```docker
 FROM base as ganache
 
 RUN mkdir -p /home
@@ -229,7 +229,7 @@ Even though you don't need a Compose file, I find them easier to deal with and l
 There's something satisfying about running `docker compose up` and having your entire system running within Docker.
 
 ```yaml
-version: '3.4'
+version: "3.4"
 services:
   truffle:
     build:
@@ -266,5 +266,5 @@ If anyone knows of another way to fix this, feel free to chat with me on [Twitte
 
 ## Also might enjoy
 
-* [Using Latex Through Docker](/blog/latex-through-docker)
-* [My Basic Python Dockerfile](/blog/basic-python-dockerfile)
+- [Using Latex Through Docker](/blog/latex-through-docker)
+- [My Basic Python Dockerfile](/blog/basic-python-dockerfile)

@@ -1,10 +1,10 @@
 ---
-title: "Moving from Oh-My-Zsh to Starship & Fish"
-date: "2022-04-04"
+title: "Moving from Oh-My-Zsh to Starship & Fish Shell"
+date: "2022-04-05"
 tags:
   - "tutorial"
   - "terminal"
-  - "fish"
+  - "fish shell"
   - "starship"
 layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/fish.jpg"
@@ -103,10 +103,9 @@ $ echo "starship init fish | source" >> $HOME/.config/fish/config.fish
 
 And with that, we should be using our Starship prompt with Fish!
 
-
 ## Fish Oddities
 
-Using Fish comes with a few oddities that we'll have to deal with. 
+Using Fish comes with a few oddities that we'll have to deal with.
 The biggest difficulty when moving to Fish is the change in how aliases work.
 
 With Zsh I set up some aliases to make my life easier:
@@ -137,7 +136,7 @@ Other aliases are better defaults, but will be helpful to have these in Fish too
 
 Fish has two different kinds of abbreviations.
 `abbr` is manages abbreviations - user-defined words that are replaced with longer phrases after they are entered. <sup>[1](https://fishshell.com/docs/current/cmds/abbr.html)</sup>
-`alias`  is a simple wrapper for the `function` builtin, which creates a function wrapping a command.<sup>[2](https://fishshell.com/docs/current/cmds/alias.html)</sup>
+`alias` is a simple wrapper for the `function` builtin, which creates a function wrapping a command.<sup>[2](https://fishshell.com/docs/current/cmds/alias.html)</sup>
 Since we are trying to mirror Zsh's aliases, we'll use Fish's `abbr`.
 
 First, let's create a file to hold our abbreviations.
@@ -195,6 +194,70 @@ I do not set many environment variables this way, but if you do this should be a
 
 ## Benefits
 
+Although changing shells can be overwhelming, there are some great benefits to using Fish.
+
+1. It is fast.
+I find interacting with Fish to be snappier than Zsh even when customized at the same level.
+2. It is much easier to customize.
+There are plenty of services like Oh-My-Zsh that work for Fish.
+Just to list a few, check out [Fisher](https://github.com/jorgebucaran/fisher) and [Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish).
+3. There is an amazing ecosystem of functions. _I will speak a bit more about functions below._
+4. Autocomplete and history search are next level.
+These are available for Zsh too, but Fish's autocomplete feels infinitely better.
+
+### Functions
+
+I listed functions as one of the benefits of Fish.
+And I have to admit I have not used them to their full potential yet.
+But they are worthy of note.
+
+Within Fish, you can define functions that can do powerful things.
+The function can iterate over files, or modify files based on boolean checks.
+Your creativity is the only limit Fish functions have.
+Below, I write and use a "Hello, World!" function for you to see:
+
+```bash
+$ function hello
+      echo Hello $argv!
+  end
+  
+$ hello
+Hello
+
+$ hello Josh
+Hello Josh!
+```
+
+It is that easy.
+You can always see what functions are currently available by typing `functions` in the Fish shell.
+
+Another option for you is to write and save function in files.
+Any file in your `$fish_function_path` will work as long as it ends with `.fish`.
+By default this path includes `$HOME/.config/fish/functions` which is where I'd recommend storing these files.
+
+Per [the documentation](https://fishshell.com/docs/current/language.html#syntax-function) functions are best use as a stronger alias or abbreviation.
+So, as we aliased `exa` above, I'll also create a function for this command:
+
+```bash
+function lsa
+    exa -lag --header $argv
+end
+```
+
+This function saved at `$HOME/.config/fish/functions/lsa.fish` will now allow me to use `lsa`.
+Doing so will trigger the above function and give me the same output as my abbreviated `ls`.
+This is nice as it does not expand the abbreviation like `ls` does.
+But miles might vary on the importance of that feature.
+
+**Note**: you can also use the `funcsave` command that comes with Fish shell to save any functions you created.
+So we could save our `hello` function above by typing `funcsave hello`.
+This will write the function to your function folder automatically!
+
+```bash
+$ funcsave hello
+funcsave: wrote $HOME/.config/fish/functions/hello.fish
+```
+
 ## Conclusion
 
 This is a quick explanation of how I adopted Fish and Starship.rs for my terminal.
@@ -206,5 +269,5 @@ So far it has been a nice change-of-pace.
 
 ## Also Might Enjoy
 
-* [ASDF: How To Set Up Runtimes on Windows Subsystem for Linux](/blog/setting_up_wsl_with_asdf/)
-* [Using Latex through Docker](https://www.joshfinnie.com/blog/latex-through-docker/)
+- [ASDF: How To Set Up Runtimes on Windows Subsystem for Linux](/blog/setting_up_wsl_with_asdf/)
+- [Using Latex through Docker](https://www.joshfinnie.com/blog/latex-through-docker/)

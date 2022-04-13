@@ -4,17 +4,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Pagination from "../../components/Pagination.astro";
 
 export async function getStaticPaths({ paginate, rss }) {
-  const allPosts = Astro.fetchContent("./*.md");
-  const sortedPosts = allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const allPosts = await Astro.glob("./*.md");
+  const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 
   rss({
     title: `Blog | www.joshfinnie.com`,
     description: "The personal/professional website of Josh Finnie.",
     customData: `<language>en-us</language>`,
     items: sortedPosts.map((item) => ({
-      title: item.title,
+      title: item.frontmatter.title,
       link: item.url,
-      pubDate: item.date,
+      pubDate: item.frontmatter.date,
     })),
   });
 

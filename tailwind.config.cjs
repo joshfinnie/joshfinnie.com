@@ -13,9 +13,7 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
-              color: "rgb(217, 119, 6)",
-              "text-decoration": "none",
-              " ont-weight": "inherit",
+              "font-weight": "bold",
             },
             li: {
               margin: 0,

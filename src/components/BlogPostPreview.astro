@@ -19,7 +19,7 @@ const formattedDate = format(date, "LLLL d, yyyy");
     {post.frontmatter.heroImage ?
      <>
        <a href={post.url} title={post.frontmatter.title} alt={post.frontmatter.title}>
-         <img src={post.frontmatter.heroImage} alt={post.frontmatter.title} class="rounded-md" />
+         <img src={post.frontmatter.heroImage.replace("jpg", "webp")} alt={post.frontmatter.title} class="rounded-md" />
        </a>
      </> :
      <>

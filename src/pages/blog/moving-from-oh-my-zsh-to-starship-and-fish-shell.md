@@ -197,13 +197,13 @@ I do not set many environment variables this way, but if you do this should be a
 Although changing shells can be overwhelming, there are some great benefits to using Fish.
 
 1. It is fast.
-I find interacting with Fish to be snappier than Zsh even when customized at the same level.
+   I find interacting with Fish to be snappier than Zsh even when customized at the same level.
 2. It is much easier to customize.
-There are plenty of services like Oh-My-Zsh that work for Fish.
-Just to list a few, check out [Fisher](https://github.com/jorgebucaran/fisher) and [Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish).
+   There are plenty of services like Oh-My-Zsh that work for Fish.
+   Just to list a few, check out [Fisher](https://github.com/jorgebucaran/fisher) and [Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish).
 3. There is an amazing ecosystem of functions. _I will speak a bit more about functions below._
 4. Autocomplete and history search are next level.
-These are available for Zsh too, but Fish's autocomplete feels infinitely better.
+   These are available for Zsh too, but Fish's autocomplete feels infinitely better.
 
 ### Functions
 
@@ -220,7 +220,7 @@ Below, I write and use a "Hello, World!" function for you to see:
 $ function hello
       echo Hello $argv!
   end
-  
+
 $ hello
 Hello
 

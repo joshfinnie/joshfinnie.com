@@ -9,13 +9,16 @@
     "build": "astro build",
     "preview": "astro preview",
     "optimize": "node scripts/optimize_images.js",
-    "format": "prettier --write --plugin-search-dir=. .",
-    "prettier:check": "prettier --check --plugin-search-dir=. ."
+    "format": "prettier --write .",
+    "prettier:check": "prettier --check ."
   },
   "devDependencies": {
-    "@astrojs/preact": "^0.0.2",
+    "@astrojs/preact": "^0.1.1",
+    "@astrojs/sitemap": "^0.1.0",
+    "@astrojs/tailwind": "^0.1.2",
     "@tailwindcss/typography": "^0.5.2",
-    "astro": "^0.25.4",
+    "astro": "^0.26.1",
+    "astro-imagetools": "^0.5.1",
     "date-fns": "^2.28.0",
     "fs-extra": "^10.0.1",
     "lodash.kebabcase": "^4.1.1",

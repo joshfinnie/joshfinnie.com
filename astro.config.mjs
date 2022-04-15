@@ -1,7 +1,6 @@
 import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import astroImagePlugin from "astro-imagetools/plugin";
 
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
@@ -18,7 +17,7 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     }),
   ],
   vite: {
-    plugins: [astroImagePlugin],
+    plugins: [],
   },
   markdown: {
     render: [

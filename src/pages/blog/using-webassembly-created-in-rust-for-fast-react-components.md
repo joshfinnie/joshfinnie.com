@@ -22,7 +22,7 @@ With the [recent update](https://blog.rust-lang.org/2021/10/21/Rust-1.56.0.html)
 
 WebAssembly is a low-level assembly-like programming language that can run in most modern browsers. It has a compact binary format that gives us near-native performance on the web. As it becomes more popular, many languages have written bindings to compile into web assembly. It's a tool that I have fallen for and am excited to share how we can use it in our React workflow.
 
-![webAssembly browser support](/assets/blog/web-assembly-support.png)
+![webAssembly browser support](/assets/blog/web-assembly-support.webp)
 
 Developing a program from scratch in Wasm is not ideal, almost impossible. If you ever had the pleasure of coding in Assembly during university, you'd understand why. Luckily, there are some languages that can compile down to Wasm without much effort. This is possible in a large range of languages (C, Go, C#, Kotlin), but for this example we'll be using Rust.
 
@@ -169,7 +169,7 @@ We now need to update our `package.json` to take advantage of these updates to o
 
 Above is my whole `package.json`, let's use this as a time capsule of package versions. With everything above coded locally, we should be able to run `npm run dev` and see our wonderful basic React app running!
 
-![basic hello world React app](/assets/blog/hello-world-react.png)
+![basic hello world React app](/assets/blog/hello-world-react.webp)
 
 ### Getting Rusty
 
@@ -385,9 +385,9 @@ wasm.then((m) => {
 
 When we run `npm run dev` we should see a webpage with a button and a form. Try them out! We're interacting with the Wasm code that's written in Rust.
 
-![Rusty React running "big computation"](/assets/blog/rusty-react-hello-name.png)
+![Rusty React running "big computation"](/assets/blog/rusty-react-hello-name.webp)
 
-![Rusty React running "hello name"](/assets/blog/rusty-react-big-comp.png)
+![Rusty React running "hello name"](/assets/blog/rusty-react-big-comp.webp)
 
 ## Conclusion
 

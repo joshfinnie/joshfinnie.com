@@ -13,17 +13,19 @@ const {
 } = Astro.props;
 ---
 
-<head>
-  <BaseHead {title} {description} {permalink} image={`https://www.joshfinnie.com${image}`} />
-</head>
-<body>
-  <a class="skip-nav-link" href="#main-content">skip navigation</a>
-  <div class="w-full mx-auto sm:max-w-screen-md px-4">
-    <BlogHeader />
-    <slot />
-    <Footer />
-  </div>
-</body>
+<html lang="en">
+  <head>
+    <BaseHead {title} {description} {permalink} image={`https://www.joshfinnie.com${image}`} />
+  </head>
+  <body>
+    <a class="skip-nav-link" href="#main-content">skip navigation</a>
+    <div class="w-full mx-auto sm:max-w-screen-md px-4">
+      <BlogHeader />
+      <slot />
+      <Footer />
+    </div>
+  </body>
+</html>
 
 <style>
   .skip-nav-link {

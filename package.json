@@ -15,7 +15,7 @@
   "devDependencies": {
     "@astrojs/preact": "^0.1.1",
     "@astrojs/sitemap": "^0.1.0",
-    "@astrojs/tailwind": "^0.2.0",
+    "@astrojs/tailwind": "^0.2.1",
     "@tailwindcss/typography": "^0.5.2",
     "astro": "^0.26.1",
     "astro-imagetools": "^0.5.1",

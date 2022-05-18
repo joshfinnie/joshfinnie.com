@@ -5,12 +5,10 @@ permalink: "https://joshfinnie.com/about"
 layout: "../layouts/BasePage.astro"
 ---
 
-I help develop <a href="https://pbs.org" target="_blank">PBS.org</a> leading backend development and helping everywhere up-and-down the stack.
-I am an experienced polyglot software engineer who’s specialties lie in building large-scale, complex APIs,
-interactive websites and internal tooling. I have over 10 years of software development experience ranging from
-the fast-paced world of startups to working on different contracts with a small, independent team of
-developers. I have the expertise and ability to make your team better through my knowledge and experience
-and am excited to share.
+I recently joined <a href="https://www.indigoag.com/" target="_blank">IndigoAg</a> where I will be working on the Carbon Data Collection team.
+I am an experienced polyglot software engineer who’s specialties lie in building large-scale, complex APIs, interactive websites and internal tooling.
+I have over 10 years of software development experience ranging from the fast-paced world of startups to working on different contracts with a small, independent team of developers.
+I have the expertise and ability to make your team better through my knowledge and experience and am excited to share.
 
 ## Projects
 
@@ -18,7 +16,6 @@ and am excited to share.
 - [Beerledge](https://www.beerledge.com/ledges/)
 - [Pushfile](https://www.npmjs.org/package/pushfile)
 - [How Old is this Metro Car?](http://www.howoldisthismetrocar.com)
-- [TweetPNG](https://tweetpng.com)
 
 <a href="https://github.com/joshfinnie?tab=repositories" class="center" target="_blank" rel="noopener noreferrer">
     Other open-source projects found on Github.
@@ -28,6 +25,7 @@ and am excited to share.
 
 **Experience:**<br />
 
+- Staff Software Engineer &#8211; IndigoAg
 - Senior Software Engineer &#8211; PBS
 - Software Developer -> Senior Software Developer &#8211; TrackMaven by Skyword
 - Application Developer &#8211; Koansys, LLC.

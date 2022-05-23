@@ -1,0 +1,3 @@
+[build]
+  publish = "dist/"
+  command = "pnpm build || ( npm install pnpm && pnpm build )"

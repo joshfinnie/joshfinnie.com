@@ -6,11 +6,11 @@ Personal Homepage of Josh Finnie.
 
 ### Setup & Develop
 
-To setup this repo, run `npm install` after cloning.
+To setup this repo, make sure you have `pnpm` installed then run `pnpm install` after cloning.
 
-To run this repo locally, run `npm run start`.
+To run this repo locally, run `pnpm run dev`.
 
-To test and build locally, run `npm run build`. (This sometimes will throw errors `npm run start` does not.)
+To test and build locally, run `pnpm run build`. (This sometimes will throw errors `pnpm run dev` does not.)
 
 ### Template for Blog Post
 

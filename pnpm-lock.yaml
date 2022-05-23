@@ -7,7 +7,7 @@ specifiers:
   '@babel/core': '>=7.0.0-0 <8.0.0'
   '@tailwindcss/typography': ^0.5.2
   astro: ^0.26.1
-  astro-imagetools: ^0.6.5
+  astro-imagetools: ^0.6.9
   date-fns: ^2.28.0
   fs-extra: ^10.1.0
   lodash.kebabcase: ^4.1.1
@@ -32,7 +32,7 @@ devDependencies:
   '@babel/core': 7.18.0
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.0.24
   astro: 0.26.1
-  astro-imagetools: 0.6.5_astro@0.26.1
+  astro-imagetools: 0.6.9_astro@0.26.1
   date-fns: 2.28.0
   fs-extra: 10.1.0
   lodash.kebabcase: 4.1.1
@@ -1170,8 +1170,8 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /astro-imagetools/0.6.5_astro@0.26.1:
-    resolution: {integrity: sha512-rqTTeCiGoD+L5Z2AIQgHMPHj76XjaiqCLC+BT5k2zlnPylGb2v17QNNAsRiHvN48MK2+m78aPSVlhQe79GrCFg==}
+  /astro-imagetools/0.6.9_astro@0.26.1:
+    resolution: {integrity: sha512-VLBvvLdiyuZq0y3DUIYLshJ/HJfszJgcB8PKRqS95UnI6DX8/u9+RMsZ6he310A5YiJYyE1+4vtXTvGO6xi/YQ==}
     engines: {node: ^14.15.0 || >=16.0.0}
     peerDependencies:
       astro: '>=0.26 || >=1.0.0-beta'

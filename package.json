@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "type": "module",
+  "description": "My hompage/blog.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -12,22 +13,31 @@
     "format": "prettier --write .",
     "prettier:check": "prettier --check ."
   },
+  "author": "Josh Finnie <josh@jfin.us>",
+  "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License",
   "devDependencies": {
-    "@astrojs/preact": "^0.1.1",
+    "@astrojs/preact": "^0.1.2",
     "@astrojs/sitemap": "^0.1.0",
     "@astrojs/tailwind": "^0.2.1",
+    "@babel/core": ">=7.0.0-0 <8.0.0",
     "@tailwindcss/typography": "^0.5.2",
     "astro": "^0.26.1",
     "astro-imagetools": "^0.6.9",
     "date-fns": "^2.28.0",
-    "fs-extra": "^10.0.1",
+    "fs-extra": "^10.1.0",
     "lodash.kebabcase": "^4.1.1",
+    "preact": ">=10.6.5 <11.0.0",
+    "preact-render-to-string": "^5.2.0",
     "prettier": "^2.6.2",
     "prettier-plugin-astro": "^0.0.12",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
-    "sharp": "^0.30.2",
+    "serialize-javascript": "^6.0.0",
+    "sharp": "^0.30.4",
+    "shiki": "^0.10.1",
+    "shorthash": "^0.0.2",
     "tailwindcss": "^3.0.24",
+    "vite": "^2.9.9",
     "vite-react-jsx": "^1.1.2"
   }
 }

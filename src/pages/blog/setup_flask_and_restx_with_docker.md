@@ -279,7 +279,6 @@ class TodoList(Resource):
 @ns.response(404, "Todo not found")
 @ns.param("id", "The task identifier")
 class Todo(Resource):
-
     @ns.doc("get_todo")
     @ns.marshal_with(todo)
     def get(self, id):

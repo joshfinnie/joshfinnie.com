@@ -1,9 +1,11 @@
+import { defineConfig } from "astro/config";
+
 import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 // @ts-check
-export default /** @type {import('astro').AstroUserConfig} */ ({
+export default defineConfig({
   site: "https://www.joshfinnie.com",
   server: {
     port: 3333,

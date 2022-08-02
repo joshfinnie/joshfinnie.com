@@ -27,7 +27,7 @@ I have the expertise and ability to make your team better through my knowledge a
 
 - Staff Software Engineer &#8211; IndigoAg
 - Senior Software Engineer &#8211; PBS
-- Software Developer -> Senior Software Developer &#8211; TrackMaven by Skyword
+- Software Developer &#8594; Senior Software Developer &#8211; TrackMaven by Skyword
 - Application Developer &#8211; Koansys, LLC.
 
 **Languages:**<br />

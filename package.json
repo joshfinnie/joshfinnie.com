@@ -42,7 +42,7 @@
     "vite-react-jsx": "^1.1.2"
   },
   "dependencies": {
-    "@astrojs/rss": "^0.2.2",
+    "@astrojs/rss": "^1.0.0",
     "github-slugger": "^1.4.0"
   }
 }

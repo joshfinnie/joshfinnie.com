@@ -1,11 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@astrojs/image': ^0.3.4
   '@astrojs/preact': ^1.0.2
   '@astrojs/rss': ^1.0.0
   '@astrojs/sitemap': ^1.0.0
   '@astrojs/tailwind': ^1.0.0
   '@babel/core': ^7.18.10
+  '@originjs/vite-plugin-commonjs': ^1.0.3
   '@tailwindcss/typography': ^0.5.4
   astro: 1.0.5
   astro-imagetools: ^0.6.10
@@ -13,6 +15,7 @@ specifiers:
   fs-extra: ^10.1.0
   github-slugger: ^1.4.0
   glob: ^8.0.3
+  image-size: ^1.0.2
   lodash.kebabcase: ^4.1.1
   preact: ^10.10.2
   preact-render-to-string: ^5.2.1
@@ -25,24 +28,26 @@ specifiers:
   shiki: ^0.11.1
   shorthash: ^0.0.2
   tailwindcss: ^3.1.8
+  tiny-glob: link:github.com/terkelg/tiny-glob
   vite: ^3.0.7
   vite-react-jsx: ^1.1.2
 
-dependencies:
-  '@astrojs/rss': 1.0.0
-  github-slugger: 1.4.0
-
 devDependencies:
+  '@astrojs/image': 0.3.4
   '@astrojs/preact': 1.0.2_preact@10.10.2
+  '@astrojs/rss': 1.0.0
   '@astrojs/sitemap': 1.0.0
   '@astrojs/tailwind': 1.0.0
   '@babel/core': 7.18.10
+  '@originjs/vite-plugin-commonjs': 1.0.3
   '@tailwindcss/typography': 0.5.4_tailwindcss@3.1.8
   astro: 1.0.5
   astro-imagetools: 0.6.10_astro@1.0.5
   date-fns: 2.29.1
   fs-extra: 10.1.0
+  github-slugger: 1.4.0
   glob: 8.0.3
+  image-size: 1.0.2
   lodash.kebabcase: 4.1.1
   preact: 10.10.2
   preact-render-to-string: 5.2.1_preact@10.10.2
@@ -55,6 +60,7 @@ devDependencies:
   shiki: 0.11.1
   shorthash: 0.0.2
   tailwindcss: 3.1.8
+  tiny-glob: link:github.com/terkelg/tiny-glob
   vite: 3.0.7
   vite-react-jsx: 1.1.2_vite@3.0.7
 
@@ -74,6 +80,17 @@ packages:
 
   /@astrojs/compiler/0.23.3:
     resolution: {integrity: sha512-eBWo0d3DoRDeg2Di1/5YJtOXh5eGFSjJMp1wVoVfoITHR4egdUGgsrDHZTzj0a25M/S9W5S6SpXCyNWcqi8jOA==}
+    dev: true
+
+  /@astrojs/image/0.3.4:
+    resolution: {integrity: sha512-eggNQTRqWE2cxhJeVFYkRKKN5SMyMuHxcq/JaT6KfMEJY2ULGKiYa3ulKr3/kAIXGcU3hrOpv0U7GirMVKlhZg==}
+    dependencies:
+      etag: 1.8.1
+      image-size: 1.0.2
+      mrmime: 1.0.1
+      sharp: 0.30.7
+      slash: 4.0.0
+      tiny-glob: 0.2.9
     dev: true
 
   /@astrojs/language-server/0.20.3:
@@ -160,7 +177,7 @@ packages:
     resolution: {integrity: sha512-vOPocf/SC0TfHsCwQXupvLGm0y3oIwpRCnnF2igDP3gFSxQEOk4nmsuVTEU2N87hYyX1/5uxbjJhixuSV/L8Cw==}
     dependencies:
       fast-xml-parser: 4.0.9
-    dev: false
+    dev: true
 
   /@astrojs/sitemap/1.0.0:
     resolution: {integrity: sha512-42GxuF5FP7RaKXZrwGLBLOX3hPv+Wl7ExJC43O0J5e34ojJkLeKf7QfwN1UwrJlqH0Ywi0Fm4/xGe482G09+wg==}
@@ -1011,6 +1028,12 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+    dev: true
+
+  /@originjs/vite-plugin-commonjs/1.0.3:
+    resolution: {integrity: sha512-KuEXeGPptM2lyxdIEJ4R11+5ztipHoE7hy8ClZt3PYaOVQ/pyngd2alaSrPnwyFeOW1UagRBaQ752aA1dTMdOQ==}
+    dependencies:
+      esbuild: 0.14.54
     dev: true
 
   /@pkgr/utils/2.3.0:
@@ -2298,6 +2321,11 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
+  /etag/1.8.1:
+    resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
+    engines: {node: '>= 0.6'}
+    dev: true
+
   /execa/6.1.0:
     resolution: {integrity: sha512-QVWlX2e50heYJcCPG0iWtf8r0xjEYfz/OYLGDYH+IyjWezzPNxz63qNFOu0l4YftGWuizFVZHHs8PrLU5p2IDA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -2349,7 +2377,7 @@ packages:
     hasBin: true
     dependencies:
       strnum: 1.0.5
-    dev: false
+    dev: true
 
   /fastq/1.13.0:
     resolution: {integrity: sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==}
@@ -2518,6 +2546,7 @@ packages:
 
   /github-slugger/1.4.0:
     resolution: {integrity: sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==}
+    dev: true
 
   /glob-parent/5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -2752,6 +2781,14 @@ packages:
     resolution: {integrity: sha512-PfJGVgIfKQJuq3s0tTDOKtztksibuUEbJQIYT3by6wctQo+Rdlh7ef4evJ5NCdxY4CfMbvFkocEwbl4BF8RlJw==}
     dependencies:
       '@types/node': 16.9.1
+    dev: true
+
+  /image-size/1.0.2:
+    resolution: {integrity: sha512-xfOoWjceHntRb3qFCrh5ZFORYH8XCdYpASltMhZ/Q0KZiOwjdE/Yl2QCiWdwD+lygV5bMCvauzgu5PxBX/Yerg==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      queue: 6.0.2
     dev: true
 
   /imagetools-core/3.0.2:
@@ -4208,6 +4245,12 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
+  /queue/6.0.2:
+    resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
+    dependencies:
+      inherits: 2.0.4
+    dev: true
+
   /quick-lru/5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
@@ -4773,7 +4816,7 @@ packages:
 
   /strnum/1.0.5:
     resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
-    dev: false
+    dev: true
 
   /strtok3/7.0.0-alpha.8:
     resolution: {integrity: sha512-u+k19v+rTxBjGYxncRQjGvZYwYvEd0uP3D+uHKe/s4WB1eXS5ZwpZsTlBu5xSS4zEd89mTXECXg6WW3FSeV8cA==}

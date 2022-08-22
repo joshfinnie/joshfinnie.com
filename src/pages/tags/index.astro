@@ -18,13 +18,15 @@ const tags = Object.keys(tagCounts)
     <h1 class="font-bold text-3xl mb-10 mt-5">Tags</h1>
     <main class="prose max-w-none" style="column-count: 3">
       <ul>
-        {tags.map((tag) => (
-          <li>
-            <a class="tag" href={`/tags/${tag[0]}`} title={`View posts tagged under "${tag}"`}>
-              {tag[0]} ({tag[1]})
-            </a>
-          </li>
-        ))}
+        {
+          tags.map((tag) => (
+            <li>
+              <a class="tag" href={`/tags/${tag[0]}`} title={`View posts tagged under "${tag}"`}>
+                {tag[0]} ({tag[1]})
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </main>
   </article>

@@ -10,13 +10,15 @@ const formattedDate = format(date, "LLLL d, yyyy");
   <p class="flex flex-col sm:flex-row text-base">
     <span>
       <i class="far fa-building mr-2"></i>
-      {talk.locationLink ? (
-        <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
-          {talk.location}
-        </a>
-      ) : (
-        <span>{talk.location}</span>
-      )}
+      {
+        talk.locationLink ? (
+          <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
+            {talk.location}
+          </a>
+        ) : (
+          <span>{talk.location}</span>
+        )
+      }
     </span>
     <span class="sm:pl-10">
       <i class="fas fa-calendar-alt mr-2"></i>
@@ -24,11 +26,13 @@ const formattedDate = format(date, "LLLL d, yyyy");
     </span>
   </p>
   <h2 class="font-bold text-2xl mb-5">
-    {talk.link ? (
-      <a href={talk.link} target="_blank" rel="noopener noreferrer" set:html={talk.name}></a>
-    ) : (
-      <span set:html={talk.name}></span>
-    )}
-    {talk.lightning ? <i class="fas fa-bolt ml-2" aria-hidden="true"></i> : ""}
+    {
+      talk.link ? (
+        <a href={talk.link} target="_blank" rel="noopener noreferrer" set:html={talk.name} />
+      ) : (
+        <span set:html={talk.name} />
+      )
+    }
+    {talk.lightning ? <i class="fas fa-bolt ml-2" aria-hidden="true" /> : ""}
   </h2>
 </article>

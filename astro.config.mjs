@@ -1,8 +1,10 @@
 import { defineConfig } from "astro/config";
 
+import image from "@astrojs/image";
 import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import { esbuildCommonjs } from '@originjs/vite-plugin-commonjs'
 
 // @ts-check
 export default defineConfig({
@@ -12,6 +14,7 @@ export default defineConfig({
     hostname: "0.0.0.0",
   },
   integrations: [
+    image(),
     preact(),
     sitemap(),
     tailwind({
@@ -20,6 +23,9 @@ export default defineConfig({
   ],
   vite: {
     plugins: [],
+    optimizeDeps:{
+      exclude: ['tiny-glob'],
+    }
   },
   markdown: {
     render: [

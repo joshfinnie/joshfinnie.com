@@ -1,8 +1,15 @@
 {
-  "moduleResolution": "node",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolateModules": true,
+    "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
+      "~/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"]
     }

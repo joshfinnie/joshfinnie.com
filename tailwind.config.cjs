@@ -1,30 +1,13 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./public/**/*.html", "./src/**/*.{astro,js,jsx,ts,tsx,vue,svelte}"],
   theme: {
     extend: {
       fontFamily: {
-        logo: ["Eczar", ...defaultTheme.fontFamily.sans],
-        sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
-        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            a: {
-              "font-weight": "bold",
-            },
-            li: {
-              margin: 0,
-            },
-            p: {
-              "text-align": "justify",
-            },
-          },
-        },
+        "ibm-plex-sans": ['"IBM Plex Sans"', "sans-serif"],
       },
     },
   },
   plugins: [require("@tailwindcss/typography")],
+  darkMode: "class",
 };

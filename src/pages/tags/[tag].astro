@@ -12,7 +12,9 @@ export async function getStaticPaths() {
 const { params } = Astro;
 const { allPosts } = Astro.props;
 
-const posts = allPosts.filter((post) => post.frontmatter.tags?.includes(params.tag)).sort((a, b) => new Date(b.date) - new Date(a.date));
+const posts = allPosts
+  .filter((post) => post.frontmatter.tags?.includes(params.tag))
+  .sort((a, b) => new Date(b.date) - new Date(a.date));
 ---
 
 <BaseLayout>
@@ -20,11 +22,13 @@ const posts = allPosts.filter((post) => post.frontmatter.tags?.includes(params.t
     <h1 class="font-bold text-3xl mb-10 mt-5">Tag: {params.tag}</h1>
     <main class="prose max-w-none">
       <ul>
-        {posts.map((p) => (
-          <li>
-            <a href={p.url}>{p.frontmatter.title}</a>
-          </li>
-        ))}
+        {
+          posts.map((p) => (
+            <li>
+              <a href={p.url}>{p.frontmatter.title}</a>
+            </li>
+          ))
+        }
       </ul>
       <div class="flex justify-end">
         <a href="/tags" title="All Tags">All Tags &rarr;</a>

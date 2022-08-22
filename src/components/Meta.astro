@@ -1,11 +1,19 @@
 ---
+import { getImage } from "@astrojs/image";
+
+const { src: defaultImage } = await getImage({
+  src: import("~/assets/images/default.png"),
+  width: 1200,
+  height: 628,
+})
+
 export interface Props {
   title: string;
   description: string;
   permalink: string;
   image: string;
 }
-const { title, description, permalink, image } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!-- Global Metadata -->

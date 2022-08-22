@@ -1,41 +1,37 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import BlogHeader from "../components/BlogHeader.astro";
-import Footer from "../components/Footer.astro";
+import Meta from "~/components/Meta.astro";
+import BlogHeader from "~/components/BlogHeader.astro";
+import Footer from "~/components/Footer.astro";
 
-import "../styles/global.css";
+import "~/assets/styles/global.css";
 
-const {
-  title = "www.joshfinnie.com",
-  description = "The personal/professional website of Josh Finnie.",
-  permalink = "https://www.joshfinnie.com",
-  image = "/assets/josh.jpeg",
-} = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead {title} {description} {permalink} image={`https://www.joshfinnie.com${image}`} />
+    <Meta {title} {description} {image} />
   </head>
-  <body>
+
+  <body class="antialiased text-gray-900 dark:text-slate-300 bg-white dark:bg-slate-900 font-ibm-plex-sans">
     <a class="skip-nav-link" href="#main-content">skip navigation</a>
     <div class="w-full mx-auto sm:max-w-screen-md px-4">
       <BlogHeader />
       <slot />
       <Footer />
     </div>
+    <style>
+      .skip-nav-link {
+        background: grey;
+        color: black;
+        position: absolute;
+        padding: 0.25rem 0.5rem;
+        transform: translateY(-120%);
+      }
+      .skip-nav-link:focus {
+        transform: translateY(0);
+      }
+    </style>
   </body>
 </html>
-
-<style>
-  .skip-nav-link {
-    background: grey;
-    color: black;
-    position: absolute;
-    padding: 0.25rem 0.5rem;
-    transform: translateY(-120%);
-  }
-  .skip-nav-link:focus {
-    transform: translateY(0);
-  }
-</style>

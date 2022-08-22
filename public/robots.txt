@@ -1,4 +1,3 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://www.joshfinnie.com/sitemap.xml
+Disallow:
+Sitemap: https://www.joshfinnie.com/sitemap-index.xml

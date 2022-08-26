@@ -8,14 +8,13 @@ import "../styles/global.css";
 const {
   title = "www.joshfinnie.com",
   description = "The personal/professional website of Josh Finnie.",
-  permalink = "https://www.joshfinnie.com",
   image = "/assets/josh5.jpeg",
 } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead {title} {description} {permalink} image={`https://www.joshfinnie.com${image}`} />
+    <BaseHead {title} {description} image={`https://www.joshfinnie.com${image}`} />
   </head>
   <body>
     <a class="skip-nav-link" href="#main-content">skip navigation</a>

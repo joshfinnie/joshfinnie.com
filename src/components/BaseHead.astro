@@ -2,16 +2,14 @@
 export interface Props {
   title: string;
   description: string;
-  permalink: string;
   image: string;
 }
-const { title, description, permalink, image } = Astro.props;
-const { href: canonicalPermalink } = new URL(Astro.url.pathname, Astro.site);
+const { title, description, image } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
-
 <title>{title}</title>
 <link rel="icon" type="image/x-icon" href="/favicon.png" />
-<link rel="canonical" href={canonicalPermalink} />
+<link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
 <meta charset="utf-8" />
@@ -21,14 +19,14 @@ const { href: canonicalPermalink } = new URL(Astro.url.pathname, Astro.site);
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={canonicalPermalink} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={canonicalPermalink} />
+<meta name="twitter:url" content={canonicalURL} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />

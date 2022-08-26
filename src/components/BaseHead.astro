@@ -7,14 +7,13 @@ export interface Props {
 }
 const { title, description, permalink, image } = Astro.props;
 ---
-
-<!-- Global Metadata -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
+<title>{title}</title>
 <link rel="icon" type="image/x-icon" href="/favicon.png" />
+<link rel="canonical" href={permalink} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
@@ -26,12 +25,12 @@ const { title, description, permalink, image } = Astro.props;
 <meta property="og:image" content={image} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={permalink} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:site" content="@joshfinnie" />
-<meta property="twitter:image" content={image} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={permalink} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:creator" content="Josh Finnie @joshfinnie">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />

@@ -8,7 +8,7 @@ import compress from "astro-compress";
 // @ts-check
 export default defineConfig({
   site: "https://www.joshfinnie.com",
-  trailingSlash: 'always',
+  trailingSlash: "always",
   server: {
     port: 3333,
     hostname: "0.0.0.0",

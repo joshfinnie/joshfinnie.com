@@ -9,6 +9,7 @@ layout: "../layouts/BasePage.astro"
 
 - [Keyboard.io Atreus](https://shop.keyboard.io/products/keyboardio-atreus) with [Kailh Box Jade Key Switches](https://amzn.to/3NOInj2)
 - [Massdrop X Sennheiser HD 6XX headphones](https://drop.com/buy/massdrop-sennheiser-hd6xx?utm_source=linkshare&referer=BH8DEX)
+- [TinHIFI T2 Plus IEM](https://amzn.to/3EYgRyt)
 - [Audioengine D1 Amp/DAC](https://amzn.to/38Mt8bB)
 - [MacBook Pro (16-inch, 2021)](https://amzn.to/3ByILPE)
 - [Opal C1 webcam](https://opalcamera.com/)
@@ -17,7 +18,7 @@ layout: "../layouts/BasePage.astro"
 - [Acer V246HQL](https://amzn.to/3Sk1zs1)
 - Gaming Computer:
   - [AMD Ryzen 5](https://amzn.to/3MiihUv)
-  - [Corsair Vengeance LPX 32GB DDR4 3600 RAM](https://amzn.to/3zg8hbf)
+  - [Crucial 16GB (2 x 8GB) DDR4-2400 PC4-19200](https://amzn.to/3TmWkYN)
   - [ASUS GeForce GTX 1060 6GB](https://amzn.to/3StWTQu)
 
 ## Software

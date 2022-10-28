@@ -27,7 +27,7 @@
     "astro-imagetools": "^0.6.11",
     "date-fns": "^2.29.3",
     "fs-extra": "^10.1.0",
-    "github-slugger": "^1.4.0",
+    "github-slugger": "^2.0.0",
     "glob": "^8.0.3",
     "lodash.kebabcase": "^4.1.1",
     "preact": "^10.11.2",

@@ -1,0 +1,11 @@
+---
+const { project } = Astro.props;
+---
+
+<article class="py-2">
+    <h2 class="font-bold text-2xl">
+        <a href={`/projects/${ project.slug }/`}>{project.title}</a>
+    </h2>
+    <p>{ project.summary }</p>
+    { project.heroImage && <img src={project.heroImage} /> }
+</article>

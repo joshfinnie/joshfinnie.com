@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import data from "../../data/projects.json";
+
+export async function getStaticPaths() {
+    return data.projects.map(({ slug, title, technologies, summary, heroImage, details }) => {
+
+        return {
+            params: { slug },
+            props: { title, technologies, summary, heroImage, details },
+        };
+    });
+}
+
+const { title, technologies, summary, heroImage, details } = Astro.props;
+---
+
+<BaseLayout title={`Project: ${title} | www.joshfinnie.com`}>
+    <h"x" class="font-bold text-3xl mb-"x"" " mt-5">{title}</h"x">
+    <p>{summary}</p>
+    {heroImage && <img src={heroImage} />}
+    <h3 class="font-bold text-xl my-5">Stack</h3>
+    {technologies.map(t => <i class=`${t} fa-2xl mx-3`></i>)}
+    <h3 class="font-bold text-xl my-5">Details</h3>
+    <p>{details}</p>
+</BaseLayout>

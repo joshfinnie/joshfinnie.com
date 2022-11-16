@@ -10,7 +10,7 @@ layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/twitter.jpg"
 unsplash: "Gauravdeep Singh Bansal"
 unsplashURL: "gauravdsb"
-description: "<DESCRIPTION>"
+description: "Twitter has had a rough couple of weeks since Elon Musk took over. I feel like it is time this tweeter flew the coup and found a new place to build a community. This post talks briefly about what Mastodon is and how I set myself up for success."
 ---
 
 Some of you might have heard through the news, but Twitter is in a bad place.

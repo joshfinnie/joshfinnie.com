@@ -1,17 +1,60 @@
 {
     "projects": [
         {
+            "title": "PBS.org",
+            "slug": "pbs",
+            "summary": "Landing page and video playback of PBS.org programs.",
+            "technologies": [
+                "fa-brands fa-python",
+                "fa-brands fa-sass",
+                "fa-brands fa-golang",
+                "fa-brands fa-node-js",
+                "fa-brands fa-aws",
+                "fa-brands fa-github",
+                "fa-brands fa-react",
+                "fa-brands fa-js"
+            ],
+            "heroImage": "/assets/projects/pbsorg.png",
+            "detail": ""
+        },
+        {
+            "title": "CubeCobra",
+            "slug": "cubecobra",
+            "summary": "A home to manage your Magic the Gathering Cubes, with the ability to draft and explore upgrades and addition.",
+            "technologies": [
+                "fa-brands fa-node-js",
+                "fa-brands fa-js",
+                "fa-brands fa-sass",
+                "fa-brands fa-bootstrap"
+            ],
+            "heroImage": "/assets/projects/cubecobra.png",
+            "detail": ""
+        },
+        {
             "title": "BeerLedge",
             "slug": "beerledge",
             "summary": "BeerLedge is a website that allows you to checkin beers that you've drank in a post-privacy world.",
-            "technologies": ["fa-brands fa-python", "django", "postgres", "bootstrap", "AWS", "FourSquare"],
-            "heroImage": "/assets/projects/beerledge.png"
+            "technologies": [
+                "fa-brands fa-python",
+                "fa-brands fa-bootstrap",
+                "fa-brands fa-digital-ocean",
+                "fa-brands fa-aws",
+                "fa-brands fa-foursquare",
+                "fa-brands fa-google",
+                "fa-brands fa-js"
+            ],
+            "heroImage": "/assets/projects/beerledge.png",
+            "detail": ""
         },
         {
             "title": "pushfile",
             "slug": "pushfile",
             "summary": "pushfile is a command-line tool that allows you to push files to your own S3 bucket, seamlessly!",
-            "technologies": ["node.js", "AWS"],
+            "technologies": [
+                "fa-brands fa-node-js",
+                "fa-brands fa-aws",
+                "fa-brands fa-github"
+            ],
             "heroImage": "/assets/projects/pushfile.png",
             "details": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet consectetur adipisci[ng] velit, sed quia non numquam [do] eius modi tempora inci[di]dunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum[d] exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? [D]Quis autem vel eum i[r]ure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? [33] At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
         },
@@ -19,9 +62,13 @@
             "title": "How Old Is This Metro Car?",
             "slug": "hoitmc",
             "summary": "A simple website that shows how old your Washington DC metro car is based on the car's id number.",
-            "technologies": ["angular.js"],
-            "heroImage": "/assets/projects/hoitmc.png"
-
+            "technologies": [
+                "fa-brands fa-angular",
+                "fa-brands fa-bootstrap",
+                "fa-brands fa-js"
+            ],
+            "heroImage": "/assets/projects/hoitmc.png",
+            "detail": ""
         }
     ]
 }

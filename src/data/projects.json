@@ -15,7 +15,7 @@
                 "fa-brands fa-js"
             ],
             "heroImage": "/assets/projects/pbsorg.png",
-            "detail": ""
+            "details": ""
         },
         {
             "title": "CubeCobra",
@@ -28,7 +28,7 @@
                 "fa-brands fa-bootstrap"
             ],
             "heroImage": "/assets/projects/cubecobra.png",
-            "detail": ""
+            "details": ""
         },
         {
             "title": "BeerLedge",
@@ -44,7 +44,7 @@
                 "fa-brands fa-js"
             ],
             "heroImage": "/assets/projects/beerledge.png",
-            "detail": ""
+            "details": "detail"
         },
         {
             "title": "pushfile",

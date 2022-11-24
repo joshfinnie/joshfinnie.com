@@ -20,7 +20,7 @@ const tags = Object.keys(tagCounts)
       <ul>
         {tags.map((tag) => (
           <li>
-            <a class="tag" href={`/tags/${tag[0]}`} title={`View posts tagged under "${tag}"`}>
+            <a class="tag" href={`/tags/${tag[0]}/`} title={`View posts tagged under "${tag}"`}>
               {tag[0]} ({tag[1]})
             </a>
           </li>

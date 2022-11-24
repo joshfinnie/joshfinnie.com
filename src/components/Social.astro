@@ -1,77 +1,35 @@
-<div>
-  <span class="flex justify-center py-2">
-    <a href="https://fosstodon.org/@joshfinnie" target="_blank" rel="me noopener noreferrer" class="mastodon">
-      <span class="fa-stack fa-lg">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-mastodon fa-stack-1x fa-inverse"></i>
-        <span class="visuallyhidden">Mastodon Link</span>
-      </span>
-    </a>
-    {/*
-    <a href="https://twitter.com/joshfinnie" target="_blank" rel="noopener noreferrer" class="twitter">
-      <span class="fa-stack fa-lg">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-        <span class="visuallyhidden">Twitter Link</span>
-      </span>
-    </a>
-    */}
-    <a href="https://github.com/joshfinnie" target="_blank" rel="noopener noreferrer" class="github">
-      <span class="fa-stack fa-lg">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-        <span class="visuallyhidden">Github Link</span>
-      </span>
-    </a>
-    <a href="https://linkedin.com/in/joshfinnie" target="_blank" rel="noopener noreferrer" class="linkedin">
-      <span class="fa-stack fa-lg">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-        <span class="visuallyhidden">Linkedin Link</span>
-      </span>
-    </a>
-    <a href="https://instagram.com/joshfinnie" target="_blank" rel="noopener noreferrer" class="instagram">
-      <span class="fa-stack fa-lg">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
-        <span class="visuallyhidden">Instagram Link</span>
-      </span>
-    </a>
-    <a href="/rss.xml" class="rss">
-      <span class="fa-stack fa-lg">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-        <span class="visuallyhidden">RSS Link</span>
-      </span>
-    </a>
-  </span>
+---
+import MastodonIcon from "./icons/Mastodon.astro";
+import GithubIcon from "./icons/Github.astro";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import InstagramIcon from "./icons/Instagram.astro";
+import TwitchIcon from "./icons/Twitch.astro";
+---
+
+<div class="flex items-center gap-3">
+  <a href="https://fosstodon.org/@joshfinnie" target="_blank" rel="me noopener noreferrer">
+    <MastodonIcon size="40px"/>
+    <span class="visuallyhidden">Mastodon Link</span>
+  </a>
+  <a href="https://github.com/joshfinnie" target="_blank" rel="noopener noreferrer">
+    <GithubIcon size="40px"/>
+    <span class="visuallyhidden">Github Link</span>
+  </a>
+  <a href="https://linkedin.com/in/joshfinnie" target="_blank" rel="noopener noreferrer">
+    <LinkedInIcon size="40px"/>
+    <span class="visuallyhidden">Linkedin Link</span>
+  </a>
+  <a href="https://instagram.com/joshfinnie" target="_blank" rel="noopener noreferrer">
+    <InstagramIcon size="40px"/>
+    <span class="visuallyhidden">Instagram Link</span>
+  </a>
+  <a href="https://twitch.tv/joshfinnie" target="_blank" rel="noopener noreferrer">
+    <TwitchIcon size="40px"/>
+    <span class="visuallyhidden">Twitch Link</span>
+  </a>
 </div>
 
 <style>
-  .mastodon {
-    color: #6364ff;
-  }
-
-  .twitter {
-    color: #1da1f2;
-  }
-
-  .github {
-    color: #181717;
-  }
-
-  .linkedin {
-    color: #0077b5;
-  }
-
-  .instagram {
-    color: #e4405f;
-  }
-
-  .rss {
-    color: #ffa500;
-  }
-
   .visuallyhidden {
     position: absolute;
     width: 1px;

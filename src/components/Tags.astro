@@ -1,10 +1,12 @@
 ---
+import TagIcon from "./icons/Tags.astro";
+
 const { tags } = Astro.props;
 const tagLen = tags.length;
 ---
 
-<div class="prose">
-  <i class="fas fa-tags mr-2"> </i>
+<div class="prose flex gap-1 items-center">
+  <TagIcon size="25" />
   {tags.map((tag, idx) => (
     <span>
       <a href={`/tags/${tag}/`}>{tag}</a>{tagLen !== idx + 1 ? ", " : ""}

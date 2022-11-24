@@ -30,10 +30,10 @@ I have the expertise and ability to make your team better through my knowledge a
 - Software Developer &#8594; Senior Software Developer &#8211; TrackMaven by Skyword
 - Application Developer &#8211; Koansys, LLC.
 
-**Languages:**<br />
+**Languages (Frameworks):**<br />
 
 - Python (Django, Flask, Graphene)
-- Javascript (Express.js, React, Apollo)
+- Typescript/Javascript (Express.js, React, Apollo)
 - Go, Rust
 
 **Education:**<br />

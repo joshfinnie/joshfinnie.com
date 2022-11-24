@@ -126,8 +126,8 @@ Please do not take this post as a written-in-stone inditement of Mastodon.
 I am really just learning it myself.
 However, if this post was not helpful enough, there were some resources that got me through:
 
-* [Getting Started with Mastodon](https://kevquirk.com/getting-started-with-mastodon/)
-* [Fedi.tips](https://fedi.tips/)
+- [Getting Started with Mastodon](https://kevquirk.com/getting-started-with-mastodon/)
+- [Fedi.tips](https://fedi.tips/)
 
 And of course, if you want to chat find me on Mastodon [here](https://fosstodon.org/@joshfinnie)!
 

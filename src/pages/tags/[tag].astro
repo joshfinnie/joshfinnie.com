@@ -22,12 +22,12 @@ const posts = allPosts.filter((post) => post.frontmatter.tags?.includes(params.t
       <ul>
         {posts.map((p) => (
           <li>
-            <a href={p.url}>{p.frontmatter.title}</a>
+            <a href=`${p.url}`>{p.frontmatter.title}</a>
           </li>
         ))}
       </ul>
       <div class="flex justify-end">
-        <a href="/tags" title="All Tags">All Tags &rarr;</a>
+        <a href="/tags/" title="All Tags">All Tags &rarr;</a>
       </div>
     </main>
   </article>

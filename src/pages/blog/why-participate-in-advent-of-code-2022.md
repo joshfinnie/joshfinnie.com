@@ -7,7 +7,7 @@ tags:
   - "learning"
   - "challenges"
 layout: "../../layouts/BlogPost.astro"
-heroImage: "/assets/blog/advent.webp"
+heroImage: "/assets/blog/advent.jpg"
 unsplash: "Nick Fewings"
 unsplashURL: "jannerboy62"
 description: "Advent of Code is an annual challenge to push your coding skills. This blog post talks about some of the reasons to join! Let's do it!"

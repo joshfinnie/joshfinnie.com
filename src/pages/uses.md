@@ -14,6 +14,7 @@ layout: "../layouts/BasePage.astro"
 - [MacBook Pro (16-inch, 2021)](https://amzn.to/3ByILPE)
 - [Opal C1 webcam](https://opalcamera.com/)
 - [Shure MV7](https://amzn.to/3Mh2Iwl)
+- [UA Volt 1](https://amzn.to/3FM3MIz)
 - [Samsung S27C750](https://amzn.to/3PVxGMW)
 - [Acer V246HQL](https://amzn.to/3Sk1zs1)
 - Gaming Computer:

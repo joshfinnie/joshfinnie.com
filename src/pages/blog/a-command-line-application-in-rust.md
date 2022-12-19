@@ -1,6 +1,6 @@
 ---
 title: "A Command-Line Application in Rust"
-date: "2022-12-13"
+date: "2022-12-19"
 tags:
   - "rust"
   - "command-line"

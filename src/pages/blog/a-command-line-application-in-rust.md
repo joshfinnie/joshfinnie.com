@@ -1,5 +1,5 @@
 ---
-title: "A Command-Line Application in Rust"
+title: "Building a Command-Line Application in Rust"
 date: "2022-12-19"
 tags:
   - "rust"
@@ -119,14 +119,16 @@ This will not be needed once we build our application binary.
 Other than that little "gotcha", we have an amazing working application.
 Let's start expandind it to fit our needs!
 
-Next we will want to add the [reqwest](https://crates.io/crates/reqwest) crate with the `json` and `blocking` features, [serde](https://crates.io/crates/serde) with the `derive` feature, and [serde_json](https://crates.io/crates/serde_json).
+Next we will want to add the [reqwest](https://crates.io/crates/reqwest) crate with the `json` and `blocking` features, [serde](https://crates.io/crates/serde) with the `derive` feature, [serde_json](https://crates.io/crates/serde_json), and [anyhow](https://crates.io/crates/anyhow).
 We will want to deserialize the json response from our API call.
 Also we will not want to have to worry about asynchronous calls due to the complication it adds; `blocking` allows synchronous calls.
+Anyhow will allow us to handle errors and unexpected outcomes better.
 
 ```bash
 $ cargo add reqwest --features json,blocking
 $ cargo add serde --features derive
 $ cargo add serde_json
+$ cargo add anyhow
 ```
 
 Our `Cargo.toml` should look like this:
@@ -138,6 +140,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.66"
 clap = { version = "4.0.29", features = ["derive"] }
 reqwest = { version = "0.11.13", features = ["json", "blocking"] }
 serde = { version = "1.0.150", features = ["derive"] }
@@ -155,7 +158,7 @@ To not bury the lede, this is what I expect our application to do at the end of 
 $ ./lfmc --help
 An application to view your latest artists from Last.fm
 
-Usage: lfmc [OPTIONS]
+Usage: lfmc [OPTIONS] --api-key <API_KEY> --username <USERNAME> --limit <LIMIT>
 
 Options:
   -k, --api-key <API_KEY>    Your Last.fm API Key
@@ -185,19 +188,19 @@ use clap::Parser;
 struct Args {
     /// Your Last.fm API Key
     #[arg(short='k', long)]
-    api_key: Option<String>,
+    api_key: String,
 
     /// Your Last.fm Username
     #[arg(short, long)]
-    username: Option<String>,
+    username: String,
 
     /// The limit of Artists
     #[arg(short, long)]
-    limit: Option<u8>,
+    limit: u16,
 
     /// The lookback period
     #[arg(short, long, default_value="7day")]
-    period: Option<String>
+    period: String
 }
 
 fn main() {
@@ -266,19 +269,17 @@ This will allow us to manipulate the data just like JSON.
 I have updated our `main` function to do this:
 
 ```rust
-fn main() {
+fn main() -> Result<()>{
     let args = Args::parse();
 
     let c = Config::new(
-        args.api_key.unwrap(),
-        args.username.unwrap(),
-        args.limit.unwrap(),
-        args.period.unwrap(),
+        args.api_key,
+        args.username,
+        args.limit,
+        args.period,
     );
 
-    let r: Result<_, reqwest::Error> = reqwest::blocking::get(c.get_uri())
-        .expect("Error reaching Last.fm")
-        .json::<Value>();
+    let r: Result<_, reqwest::Error> = reqwest::blocking::get(c.get_uri())?.json::<Value>();
 
     if let Ok(j) = r {
         let artists = j["topartists"]["artist"].as_array().unwrap();
@@ -290,8 +291,10 @@ fn main() {
             );
         }
     } else {
-        panic!("Could not convert response to json");
+        return Err(anyhow!("Could not convert response to JSON."))
     }
+    
+    Ok(())
 }
 ```
 
@@ -316,7 +319,7 @@ This will make it a bit more clean.
 Below is the external function that creates the output we want:
 
 ```rust
-fn construct_output(config: Config, json: Value) -> String {
+fn construct_output(config: Config, json: Value) -> Result<String> {
     let period: &str = match config.period.as_str() {
         "overall" => "",
         "7day" => " week",
@@ -324,7 +327,7 @@ fn construct_output(config: Config, json: Value) -> String {
         "3month" => " 3 months",
         "6month" => " 6 months",
         "12month" => " year",
-        _ => todo!(),
+        _ => return Err(anyhow!("Period {} not allowed. Only allow \"overall\", \"7day\", \"1month\", \"3month\", \"6month\", or \"12month\".", config.period))
     };
 
     let mut f = format!(
@@ -350,7 +353,7 @@ fn construct_output(config: Config, json: Value) -> String {
         );
     }
     f = format!("{}. Via #LastFM ♫", f);
-    f.to_string()
+    Ok(f.to_string())
 }
 ```
 
@@ -388,3 +391,13 @@ We showed how to install some helper crates, reach out to an API, and parse the 
 Again, I will throw the code up on Github [here](https://github.com/joshfinnie/lfmc).
 And if you have any questions or comments, find me on [Mastodon](https://fosstodon.org/@joshfinnie).
 Thanks for reading!
+
+## Epilogue
+
+After posting this to [Reddit](https://www.reddit.com/r/rust/comments/zqawmr/building_a_commandline_application_in_rust/), I took some time to update the code based off of some people's feedback.
+I always love having the opportunity to learn more.
+And the suggestions offered in the thread have been valuable.
+I removed the optionality of the config (This was a mistake on my part for not properly descoping the tutorial).
+And I have adding Anyhow for better error handling.
+I hope that this tutorial is now stronger than ever.
+Thanks!

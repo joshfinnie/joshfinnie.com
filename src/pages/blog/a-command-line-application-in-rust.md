@@ -228,12 +228,12 @@ Let's implement a `Config` struct and some functions.
 struct Config {
     api_key: String,
     username: String,
-    limit: u8,
+    limit: u16,
     period: String,
 }
 
 impl Config {
-    fn new(api_key: String, username: String, limit: u8, period: String) -> Self {
+    fn new(api_key: String, username: String, limit: u16, period: String) -> Self {
         Config {
             api_key,
             username,

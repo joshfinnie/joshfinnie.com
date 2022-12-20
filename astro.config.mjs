@@ -3,7 +3,6 @@ import { defineConfig } from "astro/config";
 import preact from "@astrojs/preact";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import compress from "astro-compress";
 
 // @ts-check
 export default defineConfig({
@@ -14,7 +13,6 @@ export default defineConfig({
     hostname: "0.0.0.0",
   },
   integrations: [
-    compress(),
     preact(),
     sitemap(),
     tailwind({

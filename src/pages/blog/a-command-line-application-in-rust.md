@@ -106,7 +106,7 @@ Options:
   -n, --name <NAME>  Name of the person to greet
   -h, --help         Print help information
   -V, --version      Print version information
-  
+
 $ cargo run -- --name Josh
     Finished dev [unoptimized + debuginfo] target(s) in 0.04s
      Running `target/debug/lfmc --name Josh`
@@ -171,7 +171,6 @@ Options:
 $ ./lfmc --api-key xxxxx --username joshfinnie --limit 5
      ♫ My Top 5 played artists in the past week: Royal Canoe (4), River Boy (2), Swet Shop Boys (2), 88-Keys (1), & Allie X (1). Via #LastFM ♫
 ```
-
 
 If you do not want to read this tutorial, the code is up on Github [here](https://github.com/joshfinnie/lfmc).
 
@@ -263,7 +262,7 @@ Then I implemented two different functions within the `Config` struct.
 The first one just creates a populated `Config` struct.
 And the second one renders the formatted URI string we will need for the API.
 
-The next step is using that URI we built and reach out to Last.fm. 
+The next step is using that URI we built and reach out to Last.fm.
 We will use the `reqwest` crate and pipe the response into a `serde_json::Value`.
 This will allow us to manipulate the data just like JSON.
 I have updated our `main` function to do this:
@@ -285,7 +284,7 @@ fn main() -> Result<()>{
         let artists = j["topartists"]["artist"].as_array().unwrap();
         for a in artists.iter() {
             println!(
-                "{} ({})", 
+                "{} ({})",
                 a["name"].as_str().unwrap(),
                 a["playcount"].as_str().unwrap()
             );
@@ -293,7 +292,7 @@ fn main() -> Result<()>{
     } else {
         return Err(anyhow!("Could not convert response to JSON."))
     }
-    
+
     Ok(())
 }
 ```

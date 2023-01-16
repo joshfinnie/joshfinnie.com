@@ -10,7 +10,7 @@ layout: "../../layouts/BlogPost.astro"
 heroImage: "/assets/blog/twitter.jpg"
 unsplash: "Gauravdeep Singh Bansal"
 unsplashURL: "gauravdsb"
-description: "Twitter has had a rough couple of weeks since Elon Musk took over. I feel like it is time this tweeter flew the coup and found a new place to build a community. This post talks briefly about what Mastodon is and how I set myself up for success."
+description: "Twitter has had a rough couple of weeks since Elon Musk took over. I feel like it is time this tweeter flew the coop and found a new place to build a community. This post talks briefly about what Mastodon is and how I set myself up for success."
 ---
 
 Some of you might have heard through the news, but Twitter is in a bad place.
@@ -126,8 +126,8 @@ Please do not take this post as a written-in-stone inditement of Mastodon.
 I am really just learning it myself.
 However, if this post was not helpful enough, there were some resources that got me through:
 
-* [Getting Started with Mastodon](https://kevquirk.com/getting-started-with-mastodon/)
-* [Fedi.tips](https://fedi.tips/)
+- [Getting Started with Mastodon](https://kevquirk.com/getting-started-with-mastodon/)
+- [Fedi.tips](https://fedi.tips/)
 
 And of course, if you want to chat find me on Mastodon [here](https://fosstodon.org/@joshfinnie)!
 

@@ -1,15 +1,15 @@
 ---
-import { parseISO, format } from "date-fns";
+import BoltIcon from "./icons/Bolt.astro";
+import BuildingIcon from "./icons/Building.astro";
+import Date from "./Date.astro";
 
 const { talk } = Astro.props;
-const date = parseISO(talk.date);
-const formattedDate = format(date, "LLLL d, yyyy");
 ---
 
 <article class="py-2">
   <p class="flex flex-col sm:flex-row text-base">
     <span>
-      <i class="far fa-building mr-2"></i>
+      <BuildingIcon size="16px" />
       {talk.locationLink ? (
         <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
           {talk.location}
@@ -19,8 +19,7 @@ const formattedDate = format(date, "LLLL d, yyyy");
       )}
     </span>
     <span class="sm:pl-10">
-      <i class="fas fa-calendar-alt mr-2"></i>
-      {formattedDate}
+      <Date date={talk.date} />
     </span>
   </p>
   <h2 class="font-bold text-2xl mb-5">
@@ -29,6 +28,6 @@ const formattedDate = format(date, "LLLL d, yyyy");
     ) : (
       <span set:html={talk.name}></span>
     )}
-    {talk.lightning ? <i class="fas fa-bolt ml-2" aria-hidden="true"></i> : ""}
+    {talk.lightning ? <BoltIcon size="25px" /> : ""}
   </h2>
 </article>

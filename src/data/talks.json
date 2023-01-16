@@ -1,6 +1,13 @@
 {
   "talks": [
     {
+      "name": "An Introduction to Asynchronous Python",
+      "link": "https://slides.com/joshfinnie/asynchronous-python",
+      "location": "IndigoAg Internal Tech Talk",
+      "lightning": false,
+      "date": "2022-12-08"
+    },
+    {
       "name": "GRPC Walkthrough and Programming Showcase",
       "link": "https://slides.com/joshfinnie/grpc-walkthrough",
       "location": "PBS Internal Tech Talk",

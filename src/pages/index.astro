@@ -1,7 +1,7 @@
 ---
-import BlogPostPreview from "../components/BlogPostPreview.astro";
-import Hero from "../components/Hero.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPostPreview from "@components/BlogPostPreview.astro";
+import Hero from "@components/Hero.astro";
+import BaseLayout from "@src/layouts/BaseLayout.astro";
 
 const allPosts = await Astro.glob("./blog/*.md");
 const posts = allPosts

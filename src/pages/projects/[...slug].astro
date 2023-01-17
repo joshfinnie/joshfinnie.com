@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import data from "../../data/projects.json";
+import BaseLayout from "@src/layouts/BaseLayout.astro";
+import data from "@data/projects.json";
 
 export async function getStaticPaths() {
     return data.projects.map(({ slug, title, technologies, summary, heroImage, details }) => {

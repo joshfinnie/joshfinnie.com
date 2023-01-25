@@ -6,6 +6,7 @@
   "description": "My hompage/blog.",
   "scripts": {
     "dev": "astro dev",
+    "check": "astro check",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

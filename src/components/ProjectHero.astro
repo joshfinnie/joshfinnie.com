@@ -1,5 +1,5 @@
 ---
-const {title, heroImage, summary, slug, technologies} = Astro.props;
+const {title, heroImage, summary, technologies} = Astro.props;
 ---
 <h1 class="font-bold text-3xl mb-10 mt-5">{title}</h1>
 <hr class="my-2">
@@ -7,5 +7,5 @@ const {title, heroImage, summary, slug, technologies} = Astro.props;
 <p>{ summary }</p>
 <div class="mt-5 flex gap-5 justify-center items-center">
     <span class="font-bold">Technologies Used:</span>
-    {technologies.map((tech) => <img src=`/assets/icons/${tech}` height="48px" width="48px" class="hover:scale-110 transition duration-300 ease-in-out" alt={tech}/>)}
+    {technologies.map((tech: string) => <img src={`/assets/icons/${tech}`} height="48px" width="48px" class="hover:scale-110 transition duration-300 ease-in-out" alt={tech}/>)}
 </div>

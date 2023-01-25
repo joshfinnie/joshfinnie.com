@@ -1,24 +1,20 @@
 import rss from "@astrojs/rss";
+import { getCollection } from "astro:content";
 
-const postImportResult = import.meta.glob("./blog/**/*.md", { eager: true });
-const posts = Object.values(postImportResult);
-
-export const get = () => {
-  try {
-    return rss({
-      title: `Blog | www.joshfinnie.com`,
-      site: import.meta.env.SITE,
-      description: "The personal/professional website of Josh Finnie.",
-      customData: `<language>en-us</language>`,
-      items: posts.map((post) => {
-        return {
-          link: post.url,
-          title: post.frontmatter.title,
-          pubDate: post.frontmatter.date,
-        };
-      }),
-    });
-  } catch (e) {
-    console.log(e);
-  }
-};
+export async function get(context) {
+  const blog = await getCollection("blog");
+  return rss({
+    title: `Blog | www.joshfinnie.com`,
+    site: import.meta.env.SITE,
+    description: "The personal/professional website of Josh Finnie.",
+    customData: `<language>en-us</language>`,
+    items: blog.map((post) => {
+      return {
+        link: `/blog/${post.slug}/`,
+        title: post.data.title,
+        pubDate: post.data.date,
+        description: post.data.description,
+      };
+    }),
+  });
+}

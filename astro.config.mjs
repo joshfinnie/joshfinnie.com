@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 
 // @ts-check
 export default defineConfig({
-  site: "https://www.joshfinnie.com",
+  site: "https://www.joshfinnie.com/",
   trailingSlash: "always",
   server: {
     port: 3333,

@@ -14,7 +14,7 @@ const { post } = Astro.props;
     <main>
         {post.data.heroImage ?
          <>
-             <a href={post.slug} title={post.data.title} alt={post.data.title}>
+             <a href=`/blog/${post.slug}/` title={post.data.title} alt={post.data.title}>
                  <img src={post.data.heroImage.replace("jpg", "webp")} alt={post.data.title} class="rounded-md" />
              </a>
          </> :

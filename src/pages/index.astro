@@ -1,12 +1,14 @@
 ---
+import { getCollection} from 'astro:content';
+
 import BlogPostPreview from "@components/BlogPostPreview.astro";
 import Hero from "@components/Hero.astro";
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 
-const allPosts = await Astro.glob("./blog/*.md");
+const allPosts = await getCollection('blog');
 const posts = allPosts
-  .filter((a) => a.frontmatter.draft != true)
-  .sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date))
+  .filter((a) => a.data.draft != true)
+  .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
   .slice(0, 5);
 ---
 

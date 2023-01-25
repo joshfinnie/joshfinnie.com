@@ -1,0 +1,10 @@
+---
+import ProjectHero from './ProjectHero.astro';
+
+const { project } = Astro.props;
+---
+
+<article class="prose max-w-none pb-10">
+    <ProjectHero title={project.title} heroImage={project.heroImage} summary={project.summary} slug={project.slug} technologies={project.technologies} />
+    <a href=`/projects/${project.slug}/` class="float-right bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">More Details</a>
+</article>

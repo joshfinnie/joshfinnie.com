@@ -16,7 +16,7 @@
   "author": "Josh Finnie <josh@jfin.us>",
   "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License",
   "devDependencies": {
-    "@astrojs/preact": "^1.2.0",
+    "@astrojs/preact": "^2.0.0",
     "@astrojs/rss": "^2.0.0",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.3",

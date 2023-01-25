@@ -5,6 +5,5 @@ import Project from "@components/Project.astro";
 import data from "@data/projects.json";
 ---
 <BaseLayout title="Projects | www.joshfinnie.com">
-    <h2 class="font-bold text-3xl mb-2 mt-5">Projects</h2>
     {data.projects.map(p => <Project project={p} />)}
 </BaseLayout>

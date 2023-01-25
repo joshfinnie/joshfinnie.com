@@ -1,18 +1,20 @@
 ---
+import { CollectionEntry, getCollection } from 'astro:content';
+
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 
 // collection
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob("../blog/*.md");
-  let allTagUnique = [...new Set(allPosts.map((p) => p.frontmatter.tags))];
-  allTagUnique = [...new Set(allTagUnique.flat())];
-  return allTagUnique.map((tag) => ({ params: { tag }, props: { allPosts } }));
+  const allPosts = await getCollection('blog');
+  let allTagUnique = [...new Set(allPosts.map((p) => p.data.tags))];
+  let allFlatTagUnique = [...new Set(allTagUnique.flat())];
+  return allFlatTagUnique.map((tag) => ({ params: { tag }, props: { allPosts } }));
 }
 
 const { params } = Astro;
 const { allPosts } = Astro.props;
 
-const posts = allPosts.filter((post) => post.frontmatter.tags?.includes(params.tag)).sort((a, b) => new Date(b.date) - new Date(a.date));
+const posts = allPosts.filter((post: CollectionEntry<'blog'>) => post.data.tags?.includes(params.tag)).sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => Date.parse(b.data.date) - Date.parse(a.data.date));
 ---
 
 <BaseLayout>
@@ -20,9 +22,9 @@ const posts = allPosts.filter((post) => post.frontmatter.tags?.includes(params.t
     <h1 class="font-bold text-3xl mb-10 mt-5">Tag: {params.tag}</h1>
     <main class="prose max-w-none">
       <ul>
-        {posts.map((p) => (
+        {posts.map((p: CollectionEntry<'blog'>) => (
           <li>
-            <a href=`${p.url}`>{p.frontmatter.title}</a>
+            <a href={`/blog/${p.slug}/`}>{p.data.title}</a>
           </li>
         ))}
       </ul>

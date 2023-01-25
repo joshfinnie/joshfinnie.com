@@ -18,15 +18,15 @@ const { title, technologies, summary, heroImage, details } = Astro.props;
 <BaseLayout title={`Project: ${title} | www.joshfinnie.com`}>
     <h2 class="font-bold text-3xl mb-2 mt-5">{title}</h2>
     <div class="text-center">
-    <hr>
-    <div class="mt-5 flex gap-5 justify-center items-center">
-        <h3 class="font-bold">Technologies:</h3>
-        {technologies.map((tech) => <img src=`/assets/icons/${tech}`  class="hover:scale-110 transition duration-300 ease-in-out" alt={tech}/>)}
-    </div>
-    </div>
-    {heroImage && <img src={heroImage} />}
-    <h3 class="font-bold text-xl my-5">Summary</h3>
-    <p class="pt-5">{summary}</p>
-    <h3 class="font-bold text-xl my-5">Details</h3>
-    <p>{details}</p>
-</BaseLayout>
+        <hr>
+            <div class="mt-5 flex gap-5 justify-center items-center">
+                <h3 class="font-bold">Technologies:</h3>
+                {technologies.map((tech) => <img src={`/assets/icons/${tech}`} class="hover:scale-110 transition duration-300 ease-in-out" alt={tech}/>)}
+            </div>
+        </div>
+        {heroImage && <img src={heroImage} />}
+        <h3 class="font-bold text-xl my-5">Summary</h3>
+        <p class="pt-5">{summary}</p>
+        <h3 class="font-bold text-xl my-5">Details</h3>
+        <p>{details}</p>
+    </BaseLayout>

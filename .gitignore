@@ -123,3 +123,7 @@ yarn-error.log*
 # macOS-specific files
 .DS_Store
 Pipfile
+
+# Astro 2
+.astro
+.vscode

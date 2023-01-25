@@ -7,7 +7,7 @@ const tagLen = tags.length;
 
 <div class="prose flex gap-1 items-center">
   <TagIcon size="25" />
-  {tags.map((tag, idx) => (
+  {tags.map((tag: string, idx: number) => (
     <span>
       <a href={`/tags/${tag}/`}>{tag}</a>{tagLen !== idx + 1 ? ", " : ""}
     </span>

@@ -6,7 +6,7 @@ const { post } = Astro.props;
 
 <article class="my-5">
     <header>
-        <a href=`/blog/${post.slug}/` title={post.data.title} alt={post.data.title}>
+        <a href={`/blog/${post.slug}/`} title={post.data.title}>
             <Date date={post.data.date} />
             <h1 class="font-bold text-3xl mb-5" set:html={post.data.title}></h1>
         </a>
@@ -14,7 +14,7 @@ const { post } = Astro.props;
     <main>
         {post.data.heroImage ?
          <>
-             <a href=`/blog/${post.slug}/` title={post.data.title} alt={post.data.title}>
+             <a href={`/blog/${post.slug}/`} title={post.data.title}>
                  <img src={post.data.heroImage.replace("jpg", "webp")} alt={post.data.title} class="rounded-md" />
              </a>
          </> :

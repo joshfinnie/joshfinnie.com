@@ -22,7 +22,7 @@ tags:
   - "<TAG 1>"
   - "<TAG 2>"
   - "<TAG 3>"
-layout: "../../layouts/BlogPost.astro"
+slug: "<CUSTOM POST SLUG>"
 heroImage: "/assets/blog/<IMAGE>.jpg"
 unsplash: "<ARTIST>"
 unsplashURL: "<ARTIST URL>"

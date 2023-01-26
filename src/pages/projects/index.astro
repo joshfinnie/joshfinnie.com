@@ -1,9 +1,13 @@
 ---
+import { CollectionEntry, getCollection } from 'astro:content';
+
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import Project from "@components/Project.astro";
 
-import data from "@data/projects.json";
+const allProjects = await getCollection('project');
+const projects = allProjects
+  .sort((a, b) => Date.parse(b.data.lastUpdated) - Date.parse(a.data.lastUpdated));
 ---
 <BaseLayout title="Projects | www.joshfinnie.com">
-    {data.projects.map(p => <Project project={p} />)}
+    {projects.map((p: CollectionEntry<'project'>) => <Project project={p} />)}
 </BaseLayout>

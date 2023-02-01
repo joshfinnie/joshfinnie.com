@@ -8,7 +8,7 @@ tags:
   - "coding"
   - "tutorial"
   - "projects"
-slug: "using-latex-through-docker"
+slug: "latex-through-docker"
 heroImage: "/assets/blog/math.jpg"
 expires: true
 unsplash: "Roman Mager"

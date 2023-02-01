@@ -1,12 +1,12 @@
 ---
-title: "Why particate in Advent of Code (2022)?"
+title: "Why participate in Advent of Code (2022)?"
 date: "2022-11-30"
 tags:
   - "advent-of-code"
   - "programming"
   - "learning"
   - "challenges"
-slug: "why-particate-in-advent-of-code-2022"
+slug: "why-participate-in-advent-of-code-2022"
 heroImage: "/assets/blog/advent.jpg"
 unsplash: "Nick Fewings"
 unsplashURL: "jannerboy62"

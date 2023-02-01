@@ -5,7 +5,7 @@ tags:
   - "javascript"
   - "markdown"
   - "tutorial"
-slug: "upgrading-gatsby-to-use-mdx"
+slug: "upgrading-gatsby-to-mdx"
 heroImage: "/assets/blog/arrow.jpg"
 expires: true
 unsplash: "Smart"

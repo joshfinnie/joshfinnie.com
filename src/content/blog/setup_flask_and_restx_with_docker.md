@@ -6,7 +6,7 @@ tags:
   - "flask"
   - "docker"
   - "rest"
-slug: setting-up-flask-and-restx-with-docker
+slug: setup_flask_and_restx_with_docker
 heroImage: "/assets/blog/snake.jpg"
 unsplash: "Timothy Dykes"
 unsplashURL: "timothycdykes"

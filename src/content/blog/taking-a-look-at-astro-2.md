@@ -1,10 +1,11 @@
 ---
 title: "Taking a Look at Astro 2.0"
-date: "2023-01-25"
+date: "2023-01-31"
 tags:
   - "astro.js"
   - "blog"
   - "update"
+  - "vite"
 slug: "taking-a-look-at-astro-2"
 heroImage: "/assets/blog/astro.jpg"
 unsplash: "Lucas Marconnet"
@@ -38,15 +39,55 @@ This lead me to just add them to the `posts` folder which had my Astro code to d
 I always felt like this was never a best-practice.
 It lead to a lot of mixed media files that did not have a coherient reason to be together.
 
+Now with Content Collections, I have moved all my blog posts to a new location.
+Astro 2 also adds the ability to type these collections, which really helps code completion.
+
+Below is the collection typing for my blog posts:
+
+```ts
+import { z, defineCollection } from "astro:content";
+
+const blog = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    date: z.string(),
+    tags: z.array(z.string()),
+    draft: z.boolean().optional(),
+    expires: z.boolean().optional(),
+    heroImage: z.string().optional(),
+    unsplash: z.string().optional(),
+    unsplashURL: z.string().optional(),
+    description: z.string().optional(),
+  }),
+});
+
+export const collections = { blog };
+```
+
+Adding the above configuration allows for type completion throughout the codebase.
+This speeds up the development of components that relate to blog posts.
+And it helps to keep me honest with what I add to my post's frontmatter!
+
 ## Improved Dev Server
 
+Astro has been working a lot to improve the development server.
+"Astro 2.0 highlights several months of investment to improve the performance and reliability of the Astro dev server, especially around Hot Module Reloading (HMR)."
+This can be felt when deveploping.
+It's nice and fast.
+
 ## Vite 4.0
+
+Having the latest and greatest is always the best.
+Seeing that the Astro is working hard to keep up with Vite is great.
+Vite has really won the tooling war for me.
+The fact that Astro uses it and updates frequently is amazing.
 
 ## Conclusion
 
 Above I shared 3 changes in Astro 2.0 that I am very excited for.
 Like I said above, there is much more to Astro 2.0 than what I went over here.
 Definitely check it out yourself.
+The amazingness of Content Collections are worth it alone!
 There is a great [website to try out Astro for yourself](https://astro.new/).
 
 If you too love Astro, come find me on [Mastodon](https://fosstodon.org/@joshfinnie) and let's chat!

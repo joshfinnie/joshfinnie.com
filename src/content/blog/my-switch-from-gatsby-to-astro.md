@@ -6,6 +6,7 @@ tags:
   - "news"
   - "blog"
   - "announcement"
+  - "astro.js"
 slug: "my-switch-from-gatsby-to-astro"
 unsplashURL: denisdegioanni
 unsplash: Denis Degioanni

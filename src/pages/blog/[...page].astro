@@ -10,7 +10,7 @@ export async function getStaticPaths({ paginate }) {
   const sortedPosts = allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 
   return paginate(sortedPosts, {
-    pageSize: 5,
+    pageSize: 10,
   });
 }
 

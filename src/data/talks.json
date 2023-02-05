@@ -1,9 +1,18 @@
 {
   "talks": [
     {
+      "name": "An Introduction to Python Poetry",
+      "link": "https://slides.com/joshfinnie/poetry",
+      "location": "IndigoAg Internal Tech Talk",
+      "locationLink": "https://www.indigoag.com/",
+      "lightning": false,
+      "date": "2023-02-01"
+    },
+    {
       "name": "An Introduction to Asynchronous Python",
       "link": "https://slides.com/joshfinnie/asynchronous-python",
       "location": "IndigoAg Internal Tech Talk",
+      "locationLink": "https://www.indigoag.com/",
       "lightning": false,
       "date": "2022-12-08"
     },
@@ -11,6 +20,7 @@
       "name": "GRPC Walkthrough and Programming Showcase",
       "link": "https://slides.com/joshfinnie/grpc-walkthrough",
       "location": "PBS Internal Tech Talk",
+      "locationLink": "https://www.pbs.org/",
       "lightning": false,
       "date": "2021-06-23"
     },
@@ -34,6 +44,7 @@
       "name": "Docker Multi-stage Builds and other Best Practices.",
       "link": "https://slides.com/joshfinnie/docker-multi-stage-builds-and-other-best-practices",
       "location": "PBS Internal Tech Talk",
+      "locationLink": "https://www.pbs.org/",
       "lightning": false,
       "date": "2020-07-21"
     },

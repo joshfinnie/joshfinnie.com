@@ -6,7 +6,7 @@ tags:
   - "analysis"
   - "web design"
   - "lesson"
-slug: "current-thoughts-on-mobile-website-design"
+slug: "current-thoughts-on-mobile-website-support"
 heroImage: "/assets/blog/chart.jpg"
 unsplash: "Jess Bailey"
 unsplashURL: "jessbaileydesigns"

@@ -23,7 +23,7 @@
     "@astrojs/tailwind": "^3.0.1",
     "@babel/core": "^7.20.12",
     "@tailwindcss/typography": "^0.5.9",
-    "astro": "2.0.6",
+    "astro": "2.0.8",
     "astro-compress": "^1.1.29",
     "astro-imagetools": "^0.8.0",
     "date-fns": "^2.29.3",

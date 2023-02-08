@@ -4,7 +4,7 @@ date: "2013-05-07"
 tags:
   - "announcement"
   - "news"
-slug: "joshfinniecom-part-5"
+slug: "joshfinniecom_part_5"
 expires: true
 ---
 

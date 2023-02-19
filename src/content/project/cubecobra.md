@@ -15,4 +15,5 @@ I have been working with the developers of CubeCobra since the founding of the p
 I have been helpful in early design and best practices.
 
 ### Cube List
+
 ![CubeCobra Cube List](/assets/projects/cubecobra-cube-list.webp)

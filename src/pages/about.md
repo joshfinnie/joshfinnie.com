@@ -33,8 +33,9 @@ I have the expertise and ability to make your team better through my knowledge a
 **Languages (Frameworks):**<br />
 
 - Python (Django, Flask, Graphene)
-- Typescript/Javascript (Express.js, React, Apollo)
-- Go, Rust
+- Typescript/Javascript (Astro.js React, Express, Apollo)
+- Rust (Axum, Yew)
+- Go
 
 **Education:**<br />
 

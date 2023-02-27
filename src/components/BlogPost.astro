@@ -1,9 +1,10 @@
 ---
+import AlsoLike from "./AlsoLike.astro";
 import Date from "./Date.astro";
 import Tag from "./Tags.astro";
 import Unsplash from "./Unsplash.astro";
 
-const { title, date, tags, heroImage, unsplash, unsplashURL } = Astro.props;
+const { title, date, tags, slug, heroImage, unsplash, unsplashURL } = Astro.props;
 ---
 
 <article>
@@ -18,5 +19,6 @@ const { title, date, tags, heroImage, unsplash, unsplashURL } = Astro.props;
   <main class="prose max-w-none">
     <slot />
   </main>
+  <AlsoLike {tags} {slug} />
   {unsplash && <Unsplash name={unsplash} url={unsplashURL} />}
 </article>

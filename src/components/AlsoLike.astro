@@ -13,11 +13,11 @@ const posts = allPosts
       .filter((post: CollectionEntry<'blog'>) => (post.slug != slug && post.data.tags?.filter(tag => finalTags.includes(tag)).length > 0))
       .map((post: CollectionEntry<'blog'>) => ({
           ...post,
-          similarTagCount: post.data.tags.filter(tag => finalTags.includes(tag)).length
+          sameTagCount: post.data.tags.filter(tag => finalTags.includes(tag)).length
       }))
       .sort((a, b) => {
-          if (a.similarTagCount > b.similarTagCount) return -1
-          if (b.similarTagCount > a.similarTagCount) return 1
+          if (a.sameTagCount > b.sameTagCount) return -1
+          if (b.sameTagCount > a.sameTagCount) return 1
 
           if (a.data.date > b.data.date) return -1
           if (a.data.date < b.data.date) return 1

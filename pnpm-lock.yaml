@@ -7,13 +7,13 @@ specifiers:
   '@astrojs/tailwind': ^3.0.1
   '@babel/core': ^7.21.0
   '@tailwindcss/typography': ^0.5.9
-  astro: 2.0.15
+  astro: 2.0.16
   astro-compress: ^1.1.35
   astro-imagetools: ^0.8.1
   date-fns: ^2.29.3
   fs-extra: ^11.1.0
   github-slugger: ^2.0.0
-  glob: ^8.1.0
+  glob: ^9.0.1
   lodash.kebabcase: ^4.1.1
   preact: ^10.13.0
   preact-render-to-string: ^5.2.6
@@ -33,16 +33,16 @@ devDependencies:
   '@astrojs/preact': 2.0.3_preact@10.13.0
   '@astrojs/rss': 2.1.1
   '@astrojs/sitemap': 1.1.0
-  '@astrojs/tailwind': 3.0.1_enl5tymeuxlslzmmdrwlr7zkvy
+  '@astrojs/tailwind': 3.0.1_dcffs6vszochbmkyu5n7efg4ri
   '@babel/core': 7.21.0
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
-  astro: 2.0.15
+  astro: 2.0.16
   astro-compress: 1.1.35
-  astro-imagetools: 0.8.1_astro@2.0.15
+  astro-imagetools: 0.8.1_astro@2.0.16
   date-fns: 2.29.3
   fs-extra: 11.1.0
   github-slugger: 2.0.0
-  glob: 8.1.0
+  glob: 9.0.1
   lodash.kebabcase: 4.1.1
   preact: 10.13.0
   preact-render-to-string: 5.2.6_preact@10.13.0
@@ -94,13 +94,13 @@ packages:
       vscode-uri: 3.0.7
     dev: true
 
-  /@astrojs/markdown-remark/2.0.1_astro@2.0.15:
+  /@astrojs/markdown-remark/2.0.1_astro@2.0.16:
     resolution: {integrity: sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==}
     peerDependencies:
       astro: ^2.0.2
     dependencies:
       '@astrojs/prism': 2.0.0
-      astro: 2.0.15
+      astro: 2.0.16
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.1
       rehype-raw: 6.1.1
@@ -154,14 +154,14 @@ packages:
       zod: 3.20.6
     dev: true
 
-  /@astrojs/tailwind/3.0.1_enl5tymeuxlslzmmdrwlr7zkvy:
+  /@astrojs/tailwind/3.0.1_dcffs6vszochbmkyu5n7efg4ri:
     resolution: {integrity: sha512-QSYh/xmz454j1yZU9rjw2J24PpH7j3h2ClesqMaAniOtcuL8RfP7KYCnCrk01xvjwqqO+QBpZNDD/SUhHNtFFg==}
     peerDependencies:
       astro: ^2.0.4
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
-      astro: 2.0.15
+      astro: 2.0.16
       autoprefixer: 10.4.13_postcss@8.4.21
       postcss: 8.4.21
       postcss-load-config: 4.0.1_postcss@8.4.21
@@ -170,8 +170,8 @@ packages:
       - ts-node
     dev: true
 
-  /@astrojs/telemetry/2.0.0:
-    resolution: {integrity: sha512-RnWojVMIsql3GGWDP5pNWmhmBQVkCpxGNZ8yPr2cbmUqsUYGSvErhqfkLfro9j2/STi5UDmSpNgjPkQmXpgnKw==}
+  /@astrojs/telemetry/2.0.1:
+    resolution: {integrity: sha512-68BLBb9CcvQMkWHE6h6VTgm5g6agm3+xm8eb3cdkmX9nP1LSQ/fiD49Jb1qAgCtWcY8yQJiWQQXwcdyStD+VoA==}
     engines: {node: '>=16.12.0'}
     dependencies:
       ci-info: 3.8.0
@@ -186,10 +186,10 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/webapi/2.0.1:
-    resolution: {integrity: sha512-aOOHa86W5Ux77A3dS91YrVlSxtBSJsVK4UhvcXHY0gAl0ZrOStSKSBO45gZ6tFi2AiHu3bzpMtZjwrPHtl+cyg==}
+  /@astrojs/webapi/2.0.2:
+    resolution: {integrity: sha512-uSNtxLuvCWOcwy/DdIy30ocIcIUedEZpyhn1MHW3XuZ3PZHg4PMej3EP38Ns6uKgDKqMyEdscca9bMLuf4cO/w==}
     dependencies:
-      undici: 5.18.0
+      undici: 5.20.0
     dev: true
 
   /@astropub/codecs/0.4.4:
@@ -1393,14 +1393,14 @@ packages:
       terser: 5.16.5
     dev: true
 
-  /astro-imagetools/0.8.1_astro@2.0.15:
+  /astro-imagetools/0.8.1_astro@2.0.16:
     resolution: {integrity: sha512-2E737IBqzuwkuK4FMYB9UmE1xmQWghn1HOHNMERrzZmGsKpGSAdQGo7nSnYwpy8amF+Do8sUx9wtCe2+6T4k+A==}
     engines: {node: ^14.15.0 || >=16.0.0}
     peerDependencies:
       astro: '>=0.26 || >=1.0.0-beta'
     dependencies:
       '@astropub/codecs': 0.4.4
-      astro: 2.0.15
+      astro: 2.0.16
       file-type: 17.1.1
       find-cache-dir: 3.3.2
       find-up: 6.3.0
@@ -1410,16 +1410,16 @@ packages:
       imagetools-core: 3.0.2
     dev: true
 
-  /astro/2.0.15:
-    resolution: {integrity: sha512-CUJNrcdgcSjASValRNEesTgXSefgQ8Z9GHrZXckmTivatoBlVkYb8G8tmk7dgRt6JF+bwfOsA6cGdv7+G7hCbA==}
+  /astro/2.0.16:
+    resolution: {integrity: sha512-noQL+bbBZaCLbh7wmpVON+e4kDxymDsIQkEUzzuMKLQodYynxr/Sp7RBA/JnEqXz4CRyd7IrgeQBN0cKOuBtzQ==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 1.1.2
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.0.1_astro@2.0.15
-      '@astrojs/telemetry': 2.0.0
-      '@astrojs/webapi': 2.0.1
+      '@astrojs/markdown-remark': 2.0.1_astro@2.0.16
+      '@astrojs/telemetry': 2.0.1
+      '@astrojs/webapi': 2.0.2
       '@babel/core': 7.21.0
       '@babel/generator': 7.21.1
       '@babel/parser': 7.21.2
@@ -1578,7 +1578,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001458
-      electron-to-chromium: 1.4.311
+      electron-to-chromium: 1.4.312
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -2000,8 +2000,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium/1.4.311:
-    resolution: {integrity: sha512-RoDlZufvrtr2Nx3Yx5MB8jX3aHIxm8nRWPJm3yVvyHmyKaRvn90RjzB6hNnt0AkhS3IInJdyRfQb4mWhPvUjVw==}
+  /electron-to-chromium/1.4.312:
+    resolution: {integrity: sha512-e7g+PzxzkbiCD1aNhdj+Tx3TLlfrQF/Lf+LAaUdoLvB1kCxf9wJimqXdWEqnoiYjFtxIR1hGBmoHsBIcCBNOMA==}
     dev: true
 
   /emmet/2.3.6:
@@ -2323,6 +2323,16 @@ packages:
       inherits: 2.0.4
       minimatch: 5.1.6
       once: 1.4.0
+    dev: true
+
+  /glob/9.0.1:
+    resolution: {integrity: sha512-psRdn8MI0gRcH0xow0VOhYxXD/6ZaRGmgtfN0oWN/hCgjxpRQBMCl7wE4JRJSAUTdJsW+FmD0EtE0CgJhKqSVw==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      fs.realpath: 1.0.0
+      minimatch: 7.3.0
+      minipass: 4.2.4
+      path-scurry: 1.5.0
     dev: true
 
   /global/4.4.0:
@@ -2814,6 +2824,11 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /lru-cache/7.17.0:
+    resolution: {integrity: sha512-zSxlVVwOabhVyTi6E8gYv2cr6bXK+8ifYz5/uyJb9feXX6NACVDwY4p5Ut3WC3Ivo/QhpARHU3iujx2xGAYHbQ==}
+    engines: {node: '>=12'}
+    dev: true
+
   /magic-string/0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
@@ -2845,7 +2860,7 @@ packages:
     dependencies:
       '@types/mdast': 3.0.10
       escape-string-regexp: 5.0.0
-      unist-util-is: 5.2.0
+      unist-util-is: 5.2.1
       unist-util-visit-parents: 5.1.3
     dev: true
 
@@ -2928,7 +2943,7 @@ packages:
     resolution: {integrity: sha512-WmI1gTXUBJo4/ZmSk79Wcb2HcjPJBzM1nlI/OUWA8yk2X9ik3ffNbBGsU+09BFmXaL1IBb9fiuvq6/KMiNycSg==}
     dependencies:
       '@types/mdast': 3.0.10
-      unist-util-is: 5.2.0
+      unist-util-is: 5.2.1
     dev: true
 
   /mdast-util-to-hast/12.3.0:
@@ -3277,8 +3292,20 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
+  /minimatch/7.3.0:
+    resolution: {integrity: sha512-WaMDuhKa7a6zKiwplR1AOz+zGvJba24k5VU1Cy6NhEguavT2YRlHxuINUgTas4wiS6fwBpYq4TcA1XIECSntyw==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimist/1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
+    dev: true
+
+  /minipass/4.2.4:
+    resolution: {integrity: sha512-lwycX3cBMTvcejsHITUgYj6Gy6A7Nh4Q6h9NP4sTHY1ccJlC7yKzDmiShEHsJ16Jf1nKGDEaiHxiltsJEvk0nQ==}
+    engines: {node: '>=8'}
     dev: true
 
   /mkdirp-classic/0.5.3:
@@ -3550,6 +3577,14 @@ packages:
 
   /path-parse/1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
+    dev: true
+
+  /path-scurry/1.5.0:
+    resolution: {integrity: sha512-hJ8rODLI9B2qwsYAd32rrI76gwVUPeu5kq/do6URDj2bJCVH3ilyT978Mv/NLuFMaqzHrn3XtiDLMZHaTTh4vA==}
+    engines: {node: '>=14'}
+    dependencies:
+      lru-cache: 7.17.0
+      minipass: 4.2.4
     dev: true
 
   /path-to-regexp/6.2.1:
@@ -4521,13 +4556,6 @@ packages:
     hasBin: true
     dev: true
 
-  /undici/5.18.0:
-    resolution: {integrity: sha512-1iVwbhonhFytNdg0P4PqyIAXbdlVZVebtPDvuM36m66mRw4OGrCm2MYynJv/UENFLdP13J1nPVQzVE2zTs1OeA==}
-    engines: {node: '>=12.18'}
-    dependencies:
-      busboy: 1.6.0
-    dev: true
-
   /undici/5.20.0:
     resolution: {integrity: sha512-J3j60dYzuo6Eevbawwp1sdg16k5Tf768bxYK4TUJRH7cBM4kFCbf3mOnM/0E3vQYXvpxITbbWmBafaDbxLDz3g==}
     engines: {node: '>=12.18'}
@@ -4555,8 +4583,10 @@ packages:
     resolution: {integrity: sha512-qF72kLmPxAw0oN2fwpWIqbXAVyEqUzDHMsbtPvOudIlUzXYFIeQIuxXQCRCFh22B7cixvU0MG7m3MW8FTq/S+A==}
     dev: true
 
-  /unist-util-is/5.2.0:
-    resolution: {integrity: sha512-Glt17jWwZeyqrFqOK0pF1Ded5U3yzJnFr8CG1GMjCWTp9zDo2p+cmD6pWbZU8AgM5WU3IzRv6+rBwhzsGh6hBQ==}
+  /unist-util-is/5.2.1:
+    resolution: {integrity: sha512-u9njyyfEh43npf1M+yGKDGVPbY/JWEemg5nH05ncKPfi+kBbKBJoTdsogMu33uhytuLlv9y0O7GH7fEdwLdLQw==}
+    dependencies:
+      '@types/unist': 2.0.6
     dev: true
 
   /unist-util-modify-children/3.1.1:
@@ -4588,14 +4618,14 @@ packages:
     resolution: {integrity: sha512-x6+y8g7wWMyQhL1iZfhIPhDAs7Xwbn9nRosDXl7qoPTSCy0yNxnKc+hWokFifWQIDGi154rdUqKvbCa4+1kLhg==}
     dependencies:
       '@types/unist': 2.0.6
-      unist-util-is: 5.2.0
+      unist-util-is: 5.2.1
     dev: true
 
   /unist-util-visit/4.1.2:
     resolution: {integrity: sha512-MSd8OUGISqHdVvfY9TPhyK2VdUrPgxkUtWSuMHF6XAAFuL4LokseigBnZtPnJMu+FbynTkFNnFlyjxpVKujMRg==}
     dependencies:
       '@types/unist': 2.0.6
-      unist-util-is: 5.2.0
+      unist-util-is: 5.2.1
       unist-util-visit-parents: 5.1.3
     dev: true
 

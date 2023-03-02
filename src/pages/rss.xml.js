@@ -8,7 +8,7 @@ export async function get(context) {
     site: import.meta.env.SITE,
     description: "The personal/professional website of Josh Finnie.",
     customData: `<language>en-us</language>`,
-    items: blog.map((post) => {
+    items: blog.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date)).map((post) => {
       return {
         link: `/blog/${post.slug}/`,
         title: post.data.title,

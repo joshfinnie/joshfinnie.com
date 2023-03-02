@@ -6,7 +6,7 @@ import Unsplash from "./Unsplash.astro";
 const { title, date, tags, heroImage, unsplash, unsplashURL } = Astro.props;
 ---
 
-<article>
+<article class="prose dark:prose-invert max-w-none">
   <header>
     {heroImage && <img class="rounded-md" src={heroImage.replace("jpg", "webp")} alt={title} />}
     <div id="main-content" class="flex flex-col items-center mb-10">
@@ -15,7 +15,7 @@ const { title, date, tags, heroImage, unsplash, unsplashURL } = Astro.props;
       <Tag {tags} />
     </div>
   </header>
-  <main class="prose max-w-none">
+  <main>
     <slot />
   </main>
   {unsplash && <Unsplash name={unsplash} url={unsplashURL} />}

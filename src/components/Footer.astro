@@ -1,10 +1,12 @@
 ---
+import RSS from './icons/Rss.astro';
 const year = new Date().getFullYear();
 ---
 
-<footer class="flex items-center my-2 sm:my-10 sm:pt-10 border-t-2 border-gray-400">
+<footer class="flex items-center my-2 sm:my-10 sm:pt-10 border-t-2 relative">
   <span class="prose">&copy; 2010 - {year}.</span>
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
     <img alt="creative commons license" class="ml-5" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
   </a>
+  <a rel="rss" href="/rss.xml" class="absolute right-0"><RSS size={"2em"} /></a>
 </footer>

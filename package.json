@@ -29,7 +29,7 @@
     "date-fns": "^2.29.3",
     "fs-extra": "^11.1.1",
     "github-slugger": "^2.0.0",
-    "glob": "^9.3.4",
+    "glob": "^10.1.0",
     "lodash.kebabcase": "^4.1.1",
     "preact": "^10.13.2",
     "preact-render-to-string": "^6.0.2",

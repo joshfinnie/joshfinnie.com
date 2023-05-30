@@ -5,8 +5,7 @@ permalink: "https://joshfinnie.com/about"
 layout: "../layouts/BasePage.astro"
 ---
 
-I joined <a href="https://www.indigoag.com/" target="_blank">IndigoAg</a> where I am working on the Carbon Data Collection team.
-Unfortunately, I was part of a layoff and am now looking for my next opportunity.
+I currently work on the API &amp; Delivery team at [People Data Labs](https://www.peopledatalabs.com/).
 I am an experienced polyglot software engineer who’s specialties lie in building large-scale, complex APIs, interactive websites and internal tooling.
 I have over 10 years of software development experience ranging from the fast-paced world of startups to working on different contracts with a small, independent team of developers.
 I have the expertise and ability to make your team better through my knowledge and experience and am excited to share.

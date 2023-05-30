@@ -25,6 +25,7 @@ I have the expertise and ability to make your team better through my knowledge a
 
 **Experience:**<br />
 
+- Senior Software Engineer &#8211; People Data Labs
 - Staff Software Engineer &#8211; IndigoAg
 - Senior Software Engineer &#8211; PBS
 - Software Developer &#8594; Senior Software Developer &#8211; TrackMaven by Skyword

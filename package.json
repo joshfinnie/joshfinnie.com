@@ -34,7 +34,7 @@
     "preact": "^10.15.1",
     "preact-render-to-string": "^6.0.3",
     "prettier": "^2.8.8",
-    "prettier-plugin-astro": "^0.9.1",
+    "prettier-plugin-astro": "^0.10.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
     "serialize-javascript": "^6.0.1",

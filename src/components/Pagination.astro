@@ -2,7 +2,7 @@
 const { page } = Astro.props;
 ---
 
-<div class="flex justify-end">
+<div class="flex justify-end dark:text-white">
   {page.url.prev && (
     <a class="px-2" href={page.url.prev} title="Go to Previous">
       &larr; Prev

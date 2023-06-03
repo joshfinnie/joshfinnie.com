@@ -5,7 +5,7 @@ const { post } = Astro.props;
 ---
 
 <article class="my-5">
-    <header>
+    <header class="dark:text-white">
         <a href={`/blog/${post.slug}/`} title={post.data.title}>
             <Date date={post.data.date} />
             <h1 class="font-bold text-3xl mb-5" set:html={post.data.title}></h1>

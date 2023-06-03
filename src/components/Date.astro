@@ -6,6 +6,6 @@ import CalendarIcon from "./icons/Calendar.astro";
 const { date } = Astro.props;
 const formattedDate = format(parseISO(date), "LLLL d, yyyy");
 ---
-<span class="flex items-center gap-1">
+<span class="flex items-center gap-1 dark:text-white">
     <CalendarIcon size="16px" />{formattedDate}
 </span>

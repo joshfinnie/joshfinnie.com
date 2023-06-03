@@ -10,13 +10,13 @@ const { title, date, tags, slug, heroImage, unsplash, unsplashURL } = Astro.prop
 <article>
   <header>
     {heroImage && <img class="rounded-md" src={heroImage.replace("jpg", "webp")} alt={title} />}
-    <div id="main-content" class="flex flex-col items-center mb-10">
+    <div id="main-content" class="flex flex-col items-center mb-10 max-w-none prose dark:prose-invert">
       <h1 class="font-bold text-4xl mb-5 mt-5" set:html={title}></h1>
       <Date {date} />
       <Tag {tags} />
     </div>
   </header>
-  <main class="prose max-w-none">
+  <main class="prose dark:prose-invert max-w-none">
     <slot />
   </main>
   <AlsoLike {tags} {slug} />

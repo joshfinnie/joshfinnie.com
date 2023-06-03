@@ -5,7 +5,7 @@ const { tags } = Astro.props;
 const tagLen = tags.length;
 ---
 
-<div class="prose flex gap-1 items-center">
+<div class="prose dark:prose-invert flex gap-1 items-center">
   <TagIcon size="25" />
   {tags.map((tag: string, idx: number) => (
     <span>

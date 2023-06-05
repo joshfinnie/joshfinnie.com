@@ -24,7 +24,7 @@
     "@babel/core": "^7.22.1",
     "@tailwindcss/typography": "^0.5.9",
     "astro": "2.5.7",
-    "astro-compress": "^1.1.46",
+    "astro-compress": "^1.1.47",
     "astro-imagetools": "^0.8.1",
     "date-fns": "^2.30.0",
     "fs-extra": "^11.1.1",

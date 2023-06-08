@@ -6,7 +6,7 @@ import BlogPostPreviewLite from './BlogPostPreviewLite.astro'
 const { slug, tags } = Astro.props;
 const allPosts = await getCollection('blog');
 
-const excludedTags = ['update', 'blog', 'tutorial', 'news', 'announcement'];
+const excludedTags = ['blog', 'tutorial', 'news', 'announcement'];
 const finalTags = tags.filter(tag => !excludedTags.includes(tag))
 
 const posts = allPosts

@@ -12,6 +12,9 @@ import rehypeSlug from 'rehype-slug'
 export default defineConfig({
   site: "https://www.joshfinnie.com/",
   trailingSlash: "always",
+  experimental: {
+    assets: true,
+  },
   integrations: [mdx(), preact(), sitemap(), tailwind({
     config: {
       path: "./tailwind.config.cjs"

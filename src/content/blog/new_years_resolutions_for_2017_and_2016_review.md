@@ -7,7 +7,7 @@ tags:
   - "open-source"
   - "programming"
 slug: "new-years-resolutions-for-2017-and-2016-review"
-heroImage: "/assets/blog/2017.jpg"
+heroImage: "@assets/blog/2017.jpg"
 expires: false
 unsplash: "freestock.org"
 ---

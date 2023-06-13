@@ -6,7 +6,7 @@ tags:
   - "react.js"
   - "tutorial"
 slug: "my-2020-react-startup-process"
-heroImage: "/assets/blog/typewriter.jpg"
+heroImage: "@assets/blog/typewriter.jpg"
 expires: true
 unsplash: "RetroSuppy"
 unsplashURL: "retrosupply"

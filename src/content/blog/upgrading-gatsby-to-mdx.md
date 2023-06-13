@@ -6,7 +6,7 @@ tags:
   - "markdown"
   - "tutorial"
 slug: "upgrading-gatsby-to-mdx"
-heroImage: "/assets/blog/arrow.jpg"
+heroImage: "@assets/blog/arrow.jpg"
 expires: true
 unsplash: "Smart"
 unsplashURL: "smartphotocoures"

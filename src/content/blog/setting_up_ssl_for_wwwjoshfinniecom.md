@@ -8,7 +8,7 @@ tags:
   - "cloudfront"
   - "lets encrypt"
 slug: "setting-up-ssl-for-wwwjoshfinniecom"
-heroImage: "/assets/blog/padlock.jpg"
+heroImage: "@assets/blog/padlock.jpg"
 expires: true
 unsplash: "Micah Williams"
 ---

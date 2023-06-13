@@ -6,7 +6,7 @@ tags:
   - "hacktoberfest"
   - "coding"
 slug: "hacktoberfest-is-awesome-2"
-heroImage: "/assets/blog/hacktoberfest-2019.jpg"
+heroImage: "@assets/blog/hacktoberfest-2019.jpg"
 expires: false
 ---
 

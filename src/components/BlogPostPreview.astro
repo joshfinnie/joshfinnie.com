@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Date from "./Date.astro";
 
 const { post } = Astro.props;
@@ -15,7 +16,7 @@ const { post } = Astro.props;
         {post.data.heroImage ?
          <>
              <a href={`/blog/${post.slug}/`} title={post.data.title}>
-                 <img src={post.data.heroImage.replace("jpg", "webp")} alt={post.data.title} class="rounded-md" />
+                 <Image src={post.data.heroImage} alt={post.data.title} class="rounded-md" />
              </a>
          </> :
          <>

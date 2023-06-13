@@ -6,7 +6,7 @@ tags:
   - "docker"
   - "tutorial"
 slug: "getting-truffle-and-ganache-working-with-docker"
-heroImage: "/assets/blog/truffles.jpg"
+heroImage: "@assets/blog/truffles.jpg"
 unsplash: "Jessica Loaiza"
 unsplashURL: "jessicaloaizar"
 description: "I recently had an issue installing Truffle locally on my computer. There was an issue with my version of Node.js or NPM... Instead of messing up or polluting my global NPM installs further, I took to Docker to get Truffle and Ganache working for me. This post details that journey."

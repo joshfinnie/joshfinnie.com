@@ -6,7 +6,7 @@ tags:
   - "programming"
   - "learning"
 slug: "obit-for-heroku"
-heroImage: "/assets/blog/grave.jpg"
+heroImage: "@assets/blog/grave.jpg"
 unsplash: "Scott Rodgerson"
 unsplashURL: "scottrodgerson"
 description: "The death of Heroku's free option is a huge loss. In this post we discuss why..."

@@ -7,7 +7,7 @@ tags:
   - "book-review"
   - "self-help"
 slug: "book-review-the-12-week-year"
-heroImage: "/assets/blog/calendar.jpg"
+heroImage: "@assets/blog/calendar.jpg"
 unsplash: "Debby Hudson"
 unsplashURL: "hudsoncrafted"
 ---

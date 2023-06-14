@@ -1,5 +1,5 @@
 ---
-import { collectionEntry, getCollection } from 'astro:content';
+import { CollectionEntry, getCollection } from 'astro:content';
 
 import BlogPostPreviewLite from './BlogPostPreviewLite.astro'
 
@@ -28,7 +28,9 @@ const posts = allPosts
 
 ---
 
-<div class="prose dark:prose-invert mt-5 p-5 rounded-lg max-w-none bg-gray-200 dark:bg-gray-900">
-    <h2 class="text-center">You might also enjoy?</h2>
-    {posts.map((post) => <BlogPostPreviewLite {post} />)}
-</div>
+{posts.length ?
+    <div class="prose dark:prose-invert mt-5 p-5 rounded-lg max-w-none bg-gray-200 dark:bg-gray-900">
+        <h2 class="text-center">You might also enjoy?</h2>
+        {posts.map((post) => <BlogPostPreviewLite {post} />)}
+    </div> : <></>
+}

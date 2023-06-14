@@ -1,0 +1,7 @@
+---
+import { Image } from 'astro:assets';
+
+const { title, heroImage } = Astro.props;
+---
+
+{heroImage && <Image class="rounded-md" src={heroImage} alt={title} width="780" />}

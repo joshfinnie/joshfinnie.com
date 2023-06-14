@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 
 import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
@@ -14,6 +14,9 @@ export default defineConfig({
   trailingSlash: "always",
   experimental: {
     assets: true,
+  },
+  image: {
+    service: sharpImageService(),
   },
   integrations: [mdx(), preact(), sitemap(), tailwind({
     config: {

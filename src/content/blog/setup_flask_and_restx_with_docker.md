@@ -7,7 +7,7 @@ tags:
   - "docker"
   - "rest"
 slug: setup_flask_and_restx_with_docker
-heroImage: "/assets/blog/snake.jpg"
+heroImage: "@assets/blog/snake.jpg"
 unsplash: "Timothy Dykes"
 unsplashURL: "timothycdykes"
 description: "This blog post summarizes my experiments with Flask, Restx and Docker. I go over the steps I took to get a simple Todo application from start to finish."

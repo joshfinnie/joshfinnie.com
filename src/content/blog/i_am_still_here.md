@@ -6,7 +6,7 @@ tags:
   - "update"
 slug: "still-here"
 expires: true
-heroImage: "/assets/blog/fog.jpg"
+heroImage: "@assets/blog/fog.jpg"
 unsplash: "Nicholas Kampouris"
 ---
 

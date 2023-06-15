@@ -6,7 +6,7 @@ tags:
   - "extensions"
   - "setup"
 slug: "chrome-extensions-i-use-in-2022"
-heroImage: "/assets/blog/chrome.webp"
+heroImage: "@assets/blog/chrome.jpg"
 unsplash: "Lucian Alexe"
 unsplashURL: "lucian_alexe"
 description: "Showing off my top Chrome extensions for 2022."

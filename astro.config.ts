@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 
 import mdx from "@astrojs/mdx";
 import preact from "@astrojs/preact";
@@ -12,6 +12,12 @@ import rehypeSlug from 'rehype-slug'
 export default defineConfig({
   site: "https://www.joshfinnie.com/",
   trailingSlash: "always",
+  experimental: {
+    assets: true,
+  },
+  image: {
+    service: sharpImageService(),
+  },
   integrations: [mdx(), preact(), sitemap(), tailwind({
     config: {
       path: "./tailwind.config.cjs"

@@ -7,5 +7,5 @@ technologies:
   - "nodejs"
   - "aws"
   - "github"
-heroImage: "/assets/projects/pushfile.webp"
+heroImage: "@assets/projects/pushfile.png"
 ---

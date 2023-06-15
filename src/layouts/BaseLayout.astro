@@ -1,4 +1,7 @@
 ---
+import { getImage } from "astro:assets";
+
+import josh from '@assets/josh.jpg'
 import BaseHead from "@components/BaseHead.astro";
 import BlogHeader from "@components/BlogHeader.astro";
 import Footer from "@components/Footer.astro";
@@ -8,13 +11,15 @@ import "@styles/global.css";
 const {
   title = "www.joshfinnie.com",
   description = "The personal/professional website of Josh Finnie.",
-  image = "/assets/josh5.jpeg",
+  image = josh,
 } = Astro.props;
+
+const optimizedImage = await getImage({src: image})
 ---
 
 <html lang="en">
   <head>
-    <BaseHead {title} {description} image={`https://www.joshfinnie.com${image}`} />
+    <BaseHead {title} {description} image={`https://www.joshfinnie.com${optimizedImage.src}`} />
   </head>
   <body class="bg-white dark:bg-gray-800">
     <a class="skip-nav-link" href="#main-content">skip navigation</a>

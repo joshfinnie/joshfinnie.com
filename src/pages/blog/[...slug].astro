@@ -20,7 +20,9 @@ const { Content } = await post.render();
 
 <BaseLayout
   title={`${post.data.title} | www.joshfinnie.com`}
-  description={post.data.description} image={post.data.heroImage}>
+  description={post.data.description}
+  image={post.data.heroImage}
+>
   <BlogPost {...post.data} slug={post.slug}>
     <Content />
   </BlogPost>

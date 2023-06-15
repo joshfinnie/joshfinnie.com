@@ -7,7 +7,7 @@ tags:
   - "fish shell"
   - "starship"
 slug: "moving-from-oh-my-zsh-to-starship-and-fish-shell"
-heroImage: "/assets/blog/fish.jpg"
+heroImage: "@assets/blog/fish.jpg"
 unsplash: "Milos Prelevic"
 unsplashURL: "prelevicm"
 description: "I changed my prompt configurator from Oh-My-Zsh to Starship.rs and with that changed my shell to Fish. This blog post tells the story of my upgrade and the pitfalls and benefits of moving to Fish Shell."

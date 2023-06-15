@@ -7,7 +7,7 @@ tags:
   - "web design"
   - "lesson"
 slug: "current-thoughts-on-mobile-website-support"
-heroImage: "/assets/blog/chart.jpg"
+heroImage: "@assets/blog/chart.jpg"
 unsplash: "Jess Bailey"
 unsplashURL: "jessbaileydesigns"
 description: "I recently had a viral blog post and I wanted to share a surprising discovery of the current state of mobile website support! Over the course of the month, nearly 50% of my visitors were using a mobile browswer of some sort. What does this mean for me going forward?"

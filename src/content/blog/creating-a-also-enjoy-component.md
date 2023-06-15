@@ -7,7 +7,7 @@ tags:
   - "tutorial"
   - "web-development"
 slug: "creating-a-similar-posts-component-in-astrojs"
-heroImage: "/assets/blog/reflection.jpg"
+heroImage: "@assets/blog/reflection.jpg"
 unsplash: "Tim Stief"
 unsplashURL: "timstief"
 description: "This blog post shares my Astro.js component to share similar posts to readers. It's nice, simple and gives an extra layer of discoverability to my readers!"

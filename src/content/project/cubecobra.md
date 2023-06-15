@@ -8,7 +8,7 @@ technologies:
   - "reactjs"
   - "sass"
   - "bootstrap"
-heroImage: "/assets/projects/cubecobra.webp"
+heroImage: "@assets/projects/cubecobra.png"
 ---
 
 I have been working with the developers of CubeCobra since the founding of the project.

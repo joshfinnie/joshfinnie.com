@@ -7,7 +7,7 @@ technologies:
   - "angularjs"
   - "bootstrap"
   - "aws"
-heroImage: "/assets/projects/hoitmc.webp"
+heroImage: "@assets/projects/hoitmc.png"
 ---
 
 # This is a header

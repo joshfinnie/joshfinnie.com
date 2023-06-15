@@ -10,7 +10,7 @@ technologies:
   - "digital-ocean"
   - "google"
   - "foursquare"
-heroImage: "/assets/projects/beerledge.webp"
+heroImage: "@assets/projects/beerledge.png"
 ---
 
 ### BeerLedge Settings Page

@@ -12,6 +12,9 @@ import rehypeSlug from 'rehype-slug'
 export default defineConfig({
   site: "https://www.joshfinnie.com/",
   trailingSlash: "always",
+  server: {
+    port: 3333,
+  },
   experimental: {
     assets: true,
   },
@@ -20,13 +23,13 @@ export default defineConfig({
   },
   integrations: [mdx(), preact(), sitemap(), tailwind({
     config: {
-      path: "./tailwind.config.cjs"
-    }
+      path: "./tailwind.config.cjs",
+    },
   })],
   markdown: {
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
     shikiConfig: {
-      theme: 'dracula'
-    }
-  }
+      theme: 'dracula',
+    },
+  },
 });

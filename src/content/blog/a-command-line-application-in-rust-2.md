@@ -1,11 +1,12 @@
 ---
-title: "Building a Command-Line Application in Rust Follow Up"
+title: "Follow Up: Building a Command-Line Application in Rust"
 date: "2023-07-03"
 tags:
   - "rust"
   - "command-line"
   - "tutorial"
-slug: "a-command-line-application-in-rust-follow-up"
+  - "follow-up"
+slug: "follow-up-a-command-line-application-in-rust"
 heroImage: "@assets/blog/command-center-2.jpg"
 unsplash: "Jp Valery"
 unsplashURL: "jpvalery"

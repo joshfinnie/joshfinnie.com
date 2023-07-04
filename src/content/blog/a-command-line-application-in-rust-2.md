@@ -13,11 +13,15 @@ unsplashURL: "jpvalery"
 description: ""
 ---
 
+_Updated 2023-07-04_
+
 Late last year, I wrote about [creating a command-line application in rust](/blog/a-command-line-application-in-rust/).
 Since then, I have been using it every week to post my most played artists on [Mastodon](https://fosstodon.org/@joshfinnie).
 Over the past six months, I have made several updates to the application, and I thought it would be appropriate to inform everyone about the changes. 
 
 **Note**: If you prefer to skip the blog post and only read the PR Diff, you can find it [here](https://github.com/joshfinnie/lfmc/pull/1/files).
+
+## Environment Variables
 
 One of the major updates I wanted to implement was the inclusion of a configuration file for users.
 This file would contain default values to be used when flags are not provided.
@@ -38,7 +42,7 @@ if let Some(home_dir) = dirs::home_dir() {
 }
 ```
 
-Furthermore, I refactored all the unwraps to handle errors using the [Anyhow crate](https://crates.io/crates/anyhow), and I added default values to the Config struct.
+Furthermore, I added default values to the Config struct.
 The updated Config struct now appears as follows:
 
 ```rust
@@ -63,19 +67,37 @@ struct Args {
 }
 ```
  
- For error handling, I made the following changes:
+ ## Better Error handling
+ 
+Another big change I made is dealing with the unneeded `unwrap` functions throughout the code.
+I wanted the application to make use of comprehensive error handling.
+For error handling, I added the [Anyhow](https://crates.io/crates/anyhow) crate and made the following changes:
  
  ```rust
-let name = match artist["name"].as_str() {
-    Some(n) => n,
-    None => return Err(anyhow!("Artist not found.")),
-};
+fn construct_output(config: Config, json: Value) -> Result<String> {
+    ...
+    let artists = json["topartists"]["artist"].as_array().ok_or(
+        anyhow!("Error parsing JSON.")
+    )?;
 
-let playcount = match artist["playcount"].as_str() {
-    Some(p) => p,
-    None => return Err(anyhow!("Playcount not found.")),
-};
+    for (i, artist) in artists.iter().enumerate() {
+        ...
+        let name = artist["name"].as_str().ok_or(
+            anyhow!("Artist not found.")
+        )?;
+
+        let playcount = artist["playcount"].as_str().ok_or(
+            anyhow!("Playcount not found.")
+        )?;
+        ...
+    }
+    ...
+}
 ```
+
+Thanks to [Harald Hoyer](https://fosstodon.org/@backslash@floss.social) on Mastodon for the above code, it is much cleaner than my match statement I had before!
+
+## Conclusion
 
 I am extremely pleased with these improvements as they have significantly enhanced the robustness of this command-line application.
 Additionally, they have eliminated many of the previously existing bad practices in the application.

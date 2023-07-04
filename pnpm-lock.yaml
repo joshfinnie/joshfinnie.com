@@ -35,8 +35,8 @@ devDependencies:
     specifier: 2.7.3
     version: 2.7.3(sharp@0.32.1)
   astro-compress:
-    specifier: ^1.1.48
-    version: 1.1.48
+    specifier: ^1.1.49
+    version: 1.1.49
   astro-imagetools:
     specifier: ^0.8.1
     version: 0.8.1(astro@2.7.3)
@@ -1074,6 +1074,7 @@ packages:
 
   /@jridgewell/source-map@0.3.4:
     resolution: {integrity: sha512-KE/SxsDqNs3rrWwFHcRh15ZLVFrI0YoZtgAdIyIq9k5hUNmiWRXXThPomIxHuL20sLdgzbDFyvkUMna14bvtrw==}
+    deprecated: the version has a bug with typescript type resolution
     dev: true
 
   /@jridgewell/sourcemap-codec@1.4.14:
@@ -1390,8 +1391,8 @@ packages:
     hasBin: true
     dev: false
 
-  /astro-compress@1.1.48:
-    resolution: {integrity: sha512-oQVCAcJ0/A+8iX1l8ozrpkCZKihX+1tPAJ1cKTqAHpljMNqgVYJsR3b3rw05U9KFsYOF2sNugKoFM0OLu5fZdg==}
+  /astro-compress@1.1.49:
+    resolution: {integrity: sha512-AesUqim8kYslKmZqacAo3W422eVT7hWDrVaA4tXdWH8fpBI3qRbukl7+OO0dWmLIf6ubukMZiqg3THmSCEl5ow==}
     dependencies:
       '@types/csso': 5.0.0
       '@types/html-minifier-terser': 7.0.0

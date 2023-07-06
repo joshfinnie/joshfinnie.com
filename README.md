@@ -23,7 +23,7 @@ tags:
   - "<TAG 2>"
   - "<TAG 3>"
 slug: "<CUSTOM POST SLUG>"
-heroImage: "/assets/blog/<IMAGE>.jpg"
+heroImage: "@assets/blog/<IMAGE>.jpg"
 unsplash: "<ARTIST>"
 unsplashURL: "<ARTIST URL>"
 description: "<DESCRIPTION>"

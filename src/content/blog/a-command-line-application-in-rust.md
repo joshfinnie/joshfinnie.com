@@ -12,6 +12,9 @@ unsplashURL: "wizzyfx"
 description: "In this blog post we start from scratch and write a full command-line application written in Rust. We use Clap for argument parsing, and Reqwest for hitting the API."
 ---
 
+_Updated 2023-07-03_
+I posted [a follow-up post](/blog/follow-up-a-command-line-application-in-rust) with some updated code.
+
 Each Monday, I post a record of my last week's music listening.
 These now can be found on [Mastodon](https://fosstodon.org/@joshfinnie/109501039676079665) for [reasons](/blog/leaving-twitter-for-mastodon/).
 To create these posts, I have been running a small tool I wrote in Python.

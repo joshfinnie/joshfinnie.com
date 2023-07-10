@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^10.15.1
     version: 10.15.1
   preact-render-to-string:
-    specifier: ^6.1.0
-    version: 6.1.0(preact@10.15.1)
+    specifier: ^6.2.0
+    version: 6.2.0(preact@10.15.1)
   prettier:
     specifier: ^3.0.0
     version: 3.0.0
@@ -4194,8 +4194,8 @@ packages:
       pretty-format: 3.8.0
     dev: true
 
-  /preact-render-to-string@6.1.0(preact@10.15.1):
-    resolution: {integrity: sha512-/AsKU4Q4R8r4aKwwNQrkQQNUVEDmTeZr6IwesDffobFRPcTk4dSQrfo1VOcXjtlcUss6QYEe7JShUGbQIhaw+A==}
+  /preact-render-to-string@6.2.0(preact@10.15.1):
+    resolution: {integrity: sha512-51HDkgWGssQvWhAXE6xWGSFgqXx+qzQPKatLBVm5Uxl2Bq8RHz+CcNMTWz3kjGNM8PL+9GZZfTLGHyR1wu6ZuA==}
     peerDependencies:
       preact: '>=10'
     dependencies:

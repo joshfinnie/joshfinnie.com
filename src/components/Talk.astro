@@ -8,7 +8,7 @@ const { talk } = Astro.props;
 
 <article class="py-2 dark:text-white">
   <p class="flex flex-col sm:flex-row text-base">
-    <span>
+    <span class="flex items-center gap-1 dark:text-white">
       <BuildingIcon size="16px" />
       {talk.locationLink ? (
         <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
@@ -28,6 +28,6 @@ const { talk } = Astro.props;
     ) : (
       <span set:html={talk.name}></span>
     )}
-    {talk.lightning ? <BoltIcon size="25px" /> : ""}
+      {talk.lightning ? <span style="padding-left: 10px;"><BoltIcon size="25px" /></span> : ""}
   </h2>
 </article>

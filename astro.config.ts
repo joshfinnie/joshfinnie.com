@@ -15,9 +15,6 @@ export default defineConfig({
   server: {
     port: 3333,
   },
-  experimental: {
-    assets: true,
-  },
   image: {
     service: sharpImageService(),
   },

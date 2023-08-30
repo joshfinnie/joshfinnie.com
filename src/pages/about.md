@@ -10,17 +10,6 @@ I am an experienced polyglot software engineer who’s specialties lie in buildi
 I have over 10 years of software development experience ranging from the fast-paced world of startups to working on different contracts with a small, independent team of developers.
 I have the expertise and ability to make your team better through my knowledge and experience and am excited to share.
 
-## Projects
-
-- [CubeCobra](https://cubecobra.com)
-- [Beerledge](https://www.beerledge.com/ledges/)
-- [Pushfile](https://www.npmjs.org/package/pushfile)
-- [How Old is this Metro Car?](http://www.howoldisthismetrocar.com)
-
-<a href="https://github.com/joshfinnie?tab=repositories" class="center" target="_blank" rel="noopener noreferrer">
-    Other open-source projects found on Github.
-</a>
-
 ## Resume
 
 **Experience:**<br />
@@ -49,6 +38,17 @@ I have the expertise and ability to make your team better through my knowledge a
   Amateur Radio (<a href="http://www.qrz.com/db/W1OFZ" target="_blank" rel="noopener noreferrer">W1OFZ</a>)
 
 <a href="/assets/docs/resume.pdf" class="center" target="_blank" rel="noopener noreferrer">Download full resume (PDF)</a>.
+
+## Projects
+
+- [CubeCobra](https://cubecobra.com)
+- [Beerledge](https://www.beerledge.com/ledges/)
+- [Pushfile](https://www.npmjs.org/package/pushfile)
+- [How Old is this Metro Car?](http://www.howoldisthismetrocar.com)
+
+<a href="https://github.com/joshfinnie?tab=repositories" class="center" target="_blank" rel="noopener noreferrer">
+    Other open-source projects found on Github.
+</a>
 
 ## PGP Public Key
 

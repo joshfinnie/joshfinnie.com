@@ -41,6 +41,8 @@ I have the expertise and ability to make your team better through my knowledge a
 
 ## Projects
 
+- [People Data Lab's Rust SDK](https://github.com/peopledatalabs/peopledatalabs-rust)
+- [WASM-Frontmatter](https://github.com/joshfinnie/wasm-frontmatter)
 - [CubeCobra](https://cubecobra.com)
 - [Beerledge](https://www.beerledge.com/ledges/)
 - [Pushfile](https://www.npmjs.org/package/pushfile)

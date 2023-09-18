@@ -43,10 +43,8 @@ I have the expertise and ability to make your team better through my knowledge a
 
 - [People Data Lab's Rust SDK](https://github.com/peopledatalabs/peopledatalabs-rust)
 - [WASM-Frontmatter](https://github.com/joshfinnie/wasm-frontmatter)
-- [CubeCobra](https://cubecobra.com)
-- [Beerledge](https://www.beerledge.com/ledges/)
+- [Links.RS](https://github.com/joshfinnie/links.rs)
 - [Pushfile](https://www.npmjs.org/package/pushfile)
-- [How Old is this Metro Car?](http://www.howoldisthismetrocar.com)
 
 <a href="https://github.com/joshfinnie?tab=repositories" class="center" target="_blank" rel="noopener noreferrer">
     Other open-source projects found on Github.

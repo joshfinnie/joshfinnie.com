@@ -1,7 +1,16 @@
 ---
 import { Image } from 'astro:assets';
 
-const { title, heroImage } = Astro.props;
+import Unsplash from "./Unsplash.astro";
+
+const { title, heroImage, unsplashName, unsplashUrl } = Astro.props;
 ---
 
-{heroImage && <Image class="rounded-md" src={heroImage} alt={title} width="780" />}
+<div class="relative">
+    {heroImage && <Image class="rounded-md" src={heroImage} alt={title} width="780" />}
+    {unsplashName &&
+        <div class="absolute bottom-0 right-0 mb-2 mr-2 rounded-lg bg-slate-200 px-2 py-2 text-black dark:bg-slate-800 dark:text-white md:px-6">
+            <Unsplash name={unsplashName} url={unsplashUrl} />
+        </div>
+    }
+</div>

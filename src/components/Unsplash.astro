@@ -4,9 +4,19 @@ const { name, url } = Astro.props;
 const fullURL = `https://unsplash.com/@${url}`;
 ---
 
-<div class="text-center prose dark:prose-invert max-w-none mt-5">
-  Hero photo by
-  {url ? <a href={fullURL}>{name}</a> : <span>{name}</span>}
+<p class="text-sm">
+  Photo by
+  {url ? <a
+           href={fullURL}
+           rel="noopener nofollow noreferrer"
+           target="_blank"
+           class="underline"
+         >{name}</a> : <span>{name}</span>}
   on
-  <a href="https://unsplash.com">Unsplash</a>.
-</div>
+  <a
+    href="https://unsplash.com"
+    rel="noopener nofollow noreferrer"
+    target="_blank"
+    class="underline"
+  >Unsplash</a>
+</p>

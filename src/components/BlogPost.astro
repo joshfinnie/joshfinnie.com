@@ -4,7 +4,6 @@ import { Image } from "astro:assets";
 import AlsoLike from "./AlsoLike.astro";
 import Date from "./Date.astro";
 import Tag from "./Tags.astro";
-import Unsplash from "./Unsplash.astro";
 import HeroImage from './BlogPostHeroImage.astro';
 
 const { title, date, tags, slug, heroImage, unsplash, unsplashURL } = Astro.props;
@@ -12,7 +11,7 @@ const { title, date, tags, slug, heroImage, unsplash, unsplashURL } = Astro.prop
 
 <article>
   <header>
-    <HeroImage title={title} heroImage={heroImage} />
+    <HeroImage title={title} heroImage={heroImage} unsplashName={unsplash} unsplashUrl={unsplashURL} />
     <div id="main-content" class="flex flex-col items-center mb-10 max-w-none prose dark:prose-invert">
       <h1 class="font-bold text-4xl mb-5 mt-5" set:html={title}></h1>
       <Date {date} />
@@ -23,5 +22,4 @@ const { title, date, tags, slug, heroImage, unsplash, unsplashURL } = Astro.prop
     <slot />
   </main>
   <AlsoLike {tags} {slug} />
-  {unsplash && <Unsplash name={unsplash} url={unsplashURL} />}
 </article>

@@ -12,6 +12,7 @@ unsplash: "Mitya Ivanov"
 unsplashURL: "aka_opex"
 description: "<DESCRIPTION>"
 ---
+import { Image } from "astro:assets";
 
 I read an article recently about generating a [QR code](https://en.wikipedia.org/wiki/QR_code) in python.
 But once getting through the tutorial, it did not work for me.
@@ -76,6 +77,147 @@ END:VCARD"""
 You can see above, I put my birth day, home address, cell phone number, email, and work data.
 I find this is a great list of data I would wish new contacts to have.
 Again feel free to add as many or as few as you'd like.
+Also notice, I have went from a pure textfile to python using [f-strings](https://docs.python.org/3/tutorial/inputoutput.html#tut-f-strings).
+This is to help us with our next part, writing the python code!
+
+### Introducting Python
+
+Now that we have the data we want to turn into a QR code, there is some Python we need to get it running.
+Below is the basic code implementation of turning that Python f-string into a QR code:
+
+```python
+from datetime import datetime
+import qrcode
+
+VCARD = f"""BEGIN:VCARD
+...
+END:VCARD"""
 
 
-Now that we have the data we want to 
+def create_qr_code(output_path: str):
+    """Create QR code image from content to output path."""
+    qr_object = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.ERROR_CORRECT_H,
+        box_size=10,
+        border=4,
+    )
+    qr_object.add_data(VCARD)
+    qr_object.make(fit=True)
+
+    img = qr_object.make_image(fill_color="black", back_color="white").convert("RGBA")
+    img.save(output_path)
+
+
+if __name__ == "__main__":
+    create_qr_code("/tmp/qr-part1.png")
+```
+
+Note you'll need to `pip install qrcode` for this application to run, but running `python part1.py` will give you this QR code:
+
+import qr from "@assets/blog/qr-part1.png";
+
+<div class="flex justify-center items-center">
+  <Image src={qr} alt="" width="515" />
+</div>
+
+This is a wonderful QR code that you can scan and your phone will add it to your contacts.
+But we can do better.
+
+### Adding Some Flair
+
+QR codes allow for some of the image to be covered up for redundacy.
+We can use that to our advantage and add an image in the center of the QR code to add some uniqueness to it.
+
+Below is the Python code we need to do this.
+Also, we are going to use a new library [Pillow](https://pypi.org/project/Pillow/) to help us manipulate the images.
+So you will need to install this package as well using `pip install pillow`.
+
+```python
+from datetime import datetime
+from PIL import Image, ImageDraw, ImageOps
+from typing import Optional
+import qrcode
+
+VCARD = f"""BEGIN:VCARD
+...
+END:VCARD"""
+
+
+def generate_masked_inner_img(inner_img_path: str):
+    """Create an inner image with a circular mask for center of QR code."""
+    img = Image.open(inner_img_path).convert("RGBA")
+    img_width, img_height = img.size
+
+    # Create a circular mask for the inner image
+    mask = Image.new("L", (img_width, img_height), 0)
+    draw = ImageDraw.Draw(mask)
+    circle_center = (img_width // 2, img_height // 2)
+    circle_radius = min(img_width, img_height) // 2
+    draw.ellipse(
+        (
+            circle_center[0] - circle_radius,
+            circle_center[1] - circle_radius,
+            circle_center[0] + circle_radius,
+            circle_center[1] + circle_radius,
+        ),
+        fill=255,
+    )
+
+    # Apply the circular mask to the inner image
+    img = Image.composite(
+        img,
+        Image.new("RGBA", img.size, (255, 255, 255, 255)),
+        mask
+    )
+
+    padding = 20  # Adjust the padding as needed
+
+    # Use ImageOps.expand to create a canvas with a white background and padding
+    return ImageOps.expand(img, border=padding, fill="white")
+
+
+def create_qr_code(output_path: str, inner_img_path: str):
+    """Create QR code image from content to output path with a inner imgage"""
+    qr_object = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.ERROR_CORRECT_H,
+        box_size=10,
+        border=4,
+    )
+    qr_object.add_data(VCARD)
+    qr_object.make(fit=True)
+
+    img = qr_object.make_image(fill_color="black", back_color="white").convert("RGBA")
+
+    inner_img = generate_masked_inner_img(inner_img_path)
+
+    # Paste the canvas onto the QR code image
+    img.paste(
+        inner_img,
+        (
+            img.width // 2 - inner_img.width // 2,
+            img.height // 2 - inner_img.height // 2
+        ),
+        mask=inner_img.split()[3],
+    )
+
+    img.save(output_path)
+
+
+if __name__ == "__main__":
+    create_qr_code("/tmp/qr-part2.png", "assets/josh.png")
+```
+
+After running this code: `python part2.py`, we get the same vCard QR generation, but now my avatar is in the center of the QR code itself.
+I really enjoy this look:
+
+import qr2 from "@assets/blog/qr-part2.png";
+
+<div class="flex justify-center items-center">
+  <Image src={qr2} alt="" width="515" />
+</div>
+
+## Conclusion
+
+This was a very fun experiment into the inner workings of Python, the `qrcode` package and image manipulation with Pillow. I hope you enjoy and please share your QR codes with me on [Threads](https://threads.net/@joshfinnie).

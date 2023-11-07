@@ -1,6 +1,6 @@
 ---
 title: "Creating a vCard QR Code in Python"
-date: "2023-10-31"
+date: "2023-11-08"
 tags:
   - "python"
   - "tutorial"
@@ -21,11 +21,15 @@ Since I did all this work to create a [vCard](https://en.wikipedia.org/wiki/VCar
 
 ## Introduction
 
+In this blog post, we will explore a Python script that generates a QR (quick response) code from a vCard (virtual business card) and demonstrates how to add a customized image to it for added flair. 
+QR codes are widely used for various purposes, including sharing contact information, web links, and more.
+Adding a logo to a QR code can make it visually appealing and brand-specific.
+
 ### QR Codes
 
 Throughout the pandemic, at least in the United State, QR codes have become more and more ubiquious at resturants and bars. Though, if you have not heard of a QR code before let me define it for you.
 
-> A QR (short for "quick-response") code is a a machine-readable code consisting of an array of black and white squares, typically used for storing URLs or other information for reading by the camera on a smartphone.
+> A QR code is a a machine-readable code consisting of an array of black and white squares, typically used for storing URLs or other information for reading by the camera on a smartphone.
 
 These neat images can share a lot of information quickly.
 They are used to link to a URL that will download a resturant's menu or drinks list.
@@ -37,7 +41,7 @@ And in this example they can store vCard information to share your contact data.
 vCard is probably a little less known to many. But it is a data format that stores your contact data.
 iOS and Android can both use vCard to download your contact information into someone else's phone.
 
-> vCard (or virtual business card) an electronic representation of a business card, usually a file attached to an email in place of a signature.
+> vCard an electronic representation of a business card, usually a file attached to an email in place of a signature.
 
 Converting this data into a QR code is pretty easy using a few Python packages and makes for a cool image to share with your contacts.
 
@@ -220,4 +224,7 @@ import qr2 from "@assets/blog/qr-part2.png";
 
 ## Conclusion
 
-This was a very fun experiment into the inner workings of Python, the `qrcode` package and image manipulation with Pillow. I hope you enjoy and please share your QR codes with me on [Threads](https://threads.net/@joshfinnie).
+These two Python scripts demonstrates how to create a QR code from vCard content and how to customize it by adding a circular inner image. 
+QR codes are versatile tools that can be used for various purposes, and adding branding elements to them can make them more visually appealing and recognizable.
+
+I hope you had fun reading about our small experiment into the inner workings of Python, the `qrcode` package and image manipulation with Pillow. I hope you enjoy and please share your QR codes with me on [Threads](https://threads.net/@joshfinnie).

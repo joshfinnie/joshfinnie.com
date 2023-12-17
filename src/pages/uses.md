@@ -7,13 +7,12 @@ layout: "../layouts/BasePage.astro"
 
 ## Hardware
 
-- [Keyboard.io Atreus](https://shop.keyboard.io/products/keyboardio-atreus) with [Kailh Box Jade Key Switches](https://amzn.to/3NOInj2)
-- [Massdrop X Sennheiser HD 6XX headphones](https://drop.com/buy/massdrop-sennheiser-hd6xx?utm_source=linkshare&referer=BH8DEX)
-- [TinHIFI T2 Plus IEM](https://amzn.to/3EYgRyt)
-- [Shure MV7](https://amzn.to/3Mh2Iwl)
-- [UA Volt 1](https://amzn.to/3FM3MIz)
-- [Acer Nitro KG241Y](https://amzn.to/3PsCbBm)
-- [Samsung S27C750](https://amzn.to/3PVxGMW)
+- [Keyboard.io Atreus](https://shop.keyboard.io/products/keyboardio-atreus) keyboard with [Kailh Box Jade Key Switches](https://amzn.to/3NOInj2)
+- [Massdrop X Sennheiser HD 6XX headphones](https://drop.com/buy/massdrop-sennheiser-hd6xx?utm_source=linkshare&referer=BH8DEX) headphones
+- [TinHIFI T2 Plus IEM](https://amzn.to/3EYgRyt) IEM headphones
+- [Shure MV7](https://amzn.to/3Mh2Iwl) microphone
+- [UA Volt 1](https://amzn.to/3FM3MIz) audio interface
+- [Samsung 49” Odyssey G9](https://amzn.to/3GE1mvh) monitor
 - Work Computer:
   - MacBook Pro 16-inch 2021
   - Opal C1 webcam
@@ -25,14 +24,14 @@ layout: "../layouts/BasePage.astro"
 
 ## Software
 
-- [Doom emacs](https://github.com/doomemacs/doomemacs)
-- [Chrome](https://www.google.com/chrome/) & [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-- [iTerm with Fish and Starship.rs](/blog/moving-from-oh-my-zsh-to-starship-and-fish-shell)
-- [Insomnia](https://insomnia.rest/)
-- [Notion](https://www.notion.so/)
-- [Spotify](https://www.spotify.com)
-- [Plausible.io](https://plausible.io/)
-- [OBS](https://obsproject.com/)
+- [Doom emacs](https://github.com/doomemacs/doomemacs) for coding
+- [Chrome](https://www.google.com/chrome/) & [Firefox](https://www.mozilla.org/en-US/firefox/new/) for browsing
+- [iTerm with Fish and Starship.rs](/blog/moving-from-oh-my-zsh-to-starship-and-fish-shell) as my terminal
+- [Insomnia](https://insomnia.rest/) for testing RESTful endpoints
+- [Notion](https://www.notion.so/) for note-taking
+- [Spotify](https://www.spotify.com) for listening to music
+- [Plausible.io](https://plausible.io/) for site analytics
+- [OBS](https://obsproject.com/) for streaming
 
 ## Other
 

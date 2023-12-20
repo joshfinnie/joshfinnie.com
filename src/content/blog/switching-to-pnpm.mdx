@@ -35,13 +35,11 @@ are provided on the installation page: https://pnpm.io/installation
 ```
 
 Luckily this is easy to fix.
-First, we need to entirely remove NVM.
+First, we need to remove NVM.
+We might as well make sure we remove any installed Node.js versions too.
 Running the following commands did this for me:
 
 ```
-$ npm uninstall -g pnpm
-
-removed 1 package in 252ms
 $ rm -rf "$NVM_DIR"
 $ fisher remove jorgebucaran/nvm.fish
 fisher remove version 4.4.4
@@ -54,12 +52,13 @@ Removing jorgebucaran/nvm.fish
          /Users/josh/.config/fish/conf.d/nvm.fish
          /Users/josh/.config/fish/completions/nvm.fish
 Removed 1 plugin/s
+$ brew uninstall node
 ```
 
 **NOTE**: I use the Fish shell.
 [Read about that here!](/blosg/moving-from-oh-my-zsh-to-starship-and-fish-shell/)
-And these are the steps I needed.
-Bash or Zsh you need to remove the below lines from your rc file:
+And these are the steps I needed to remove NVM.
+If you use Bash or Zsh you will need to remove the below lines from your rc file:
 
 ```rc
 export NVM_DIR="$HOME/.nvm"

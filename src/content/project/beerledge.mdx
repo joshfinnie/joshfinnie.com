@@ -12,7 +12,12 @@ technologies:
   - "foursquare"
 heroImage: "@assets/projects/beerledge.png"
 ---
+import { Image } from "astro:assets";
 
 ### BeerLedge Settings Page
 
-![BeerLedge Settings](/assets/projects/beerledge-settings.webp)
+import settings from "@assets/projects/beerledge-settings.png";
+
+<div class="flex justify-center items-center">
+  <Image src={settings} alt="BeerLedge Settings Page" width="780" />
+</div>

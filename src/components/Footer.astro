@@ -1,12 +1,15 @@
 ---
+import { Image } from "astro:assets";
 import RSS from './icons/Rss.astro';
+
+import license from "@assets/icons/by-nc-sa.png"
 const year = new Date().getFullYear();
 ---
 
 <footer class="flex items-center my-2 sm:my-10 sm:pt-10 border-t-2 relative">
   <span class="prose dark:prose-invert">&copy; 2010 - {year}.</span>
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <img alt="creative commons license" class="ml-5" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" />
+    <Image alt="creative commons license" class="ml-5" src={license} width="88" height="31" />
   </a>
   <a rel="rss" href="/rss.xml" class="absolute right-0 dark:text-white"><RSS size={"2em"} /></a>
 </footer>

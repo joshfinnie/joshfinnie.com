@@ -10,10 +10,15 @@ technologies:
   - "bootstrap"
 heroImage: "@assets/projects/cubecobra.png"
 ---
+import { Image } from "astro:assets";
 
 I have been working with the developers of CubeCobra since the founding of the project.
 I have been helpful in early design and best practices.
 
 ### Cube List
 
-![CubeCobra Cube List](/assets/projects/cubecobra-cube-list.webp)
+import list from "@assets/projects/cubecobra-cube-list.png";
+
+<div class="flex justify-center items-center">
+  <Image src={list} alt="CubeCobra Cube List Page" width="780" />
+</div>

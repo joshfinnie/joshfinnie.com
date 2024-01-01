@@ -17,7 +17,7 @@ const { Content } = await project.render();
 ---
 
 <BaseLayout title={`Project: ${project.data.title} | www.joshfinnie.com`}>
-    <article class="prose max-w-none">
+    <article class="prose dark:prose-invert max-w-none">
         <ProjectHero {...project.data} />
         <Content />
     </article>

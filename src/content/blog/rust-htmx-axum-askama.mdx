@@ -122,10 +122,27 @@ The other route will be used to add a new task (`add_task`).
 **Note**: We will no longer need our generic handler that came with the "hello world" application and will delete it here.
 
 ```rust
+use axum::{
+    http::StatusCode,
+    response::Html,
+    routing::{get, post},
+    Router,
+    extract::Form,
+}
+
+#[tokio::main]
+async fn main() {
     // build our application with a route
     let app = Router::new()
         .route("/", get(show_tasks))
         .route("/add", post(add_task));
+
+    // run it with hyper on localhost:3000
+    axum::Server::bind(&"127.0.0.1:3000".parse().unwrap())
+        .serve(app.into_make_service())
+        .await
+        .unwrap();
+};
 ```
 
 For these new routes, lets create some functions that will interact with our global list of todos.

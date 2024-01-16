@@ -1,0 +1,261 @@
+---
+title: "Trying out HTMX with Rust"
+date: "2024-01-15"
+tags:
+  - "rust"
+  - "htmx"
+  - "tutorial"
+  - "deep-dive"
+slug: "trying-out-htmx-with-rust"
+heroImage: "@assets/blog/htmlx.jpg"
+unsplash: "Taylor Vick"
+unsplashURL: "tvick"
+description: "<DESCRIPTION>"
+---
+
+I recently have had a growing interest in [HTMX](https://htmx.org/).
+I have been wondering if it could be used for a full-fledged website.
+Most importantly, could HTMX replace my use of JavaScript (React.js or Next.js) completely?
+
+Also, as you might know, I am a huge fan of [Rust](https://www.rust-lang.org/).
+So for this tutorial, I really wanted to use [Axum](https://docs.rs/axum/latest/axum/) for the server component.
+This worked out pretty well, I really enjoy Axum's builtin workflows.
+
+Rust also has a great templating crate called [Askama](https://djc.github.io/askama/askama.html).
+It implements a template rendering engine based on [Jinja](https://jinja.palletsprojects.com/en/3.1.x/).
+Developing in Python for most of my career, Jinja is something I am familiar with; an added plus!
+In this blog post, we'll explore how to build a simple web-based todo application using Rust, leveraging the Axum framework for web services and Askama for templating.
+
+## Building an Todo Application
+
+First off, we will need to create a new project.
+We do that using `cargo` running the below commands:
+
+```bash
+$ cargo new rust_todo
+$ cd rust_todo
+```
+
+Next, we want to add the crates we need for this project.
+This can be done by running the `cargo add` command or modifying the `Cargo.toml` file directly.
+Whichever way you do this, make sure your `Cargo.toml` dependencies looks like this:
+
+```toml
+[dependencies]
+axum = "0.5"
+askama = "0.11"
+tokio = { version = "1", features = ["full"] }
+```
+
+Once this is complete, we can go ahead and build out a simple Axum application we will build off of:
+
+```rust
+use axum::{response::Html, routing::get, Router};
+
+#[tokio::main]
+async fn main() {
+    // build our application with a route
+    let app = Router::new().route("/", get(handler));
+
+    // run it
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
+        .await
+        .unwrap();
+    println!("listening on {}", listener.local_addr().unwrap());
+    axum::serve(listener, app).await.unwrap();
+}
+
+async fn handler() -> Html<&'static str> {
+    Html("<h1>Hello, World!</h1>")
+}
+```
+
+### Breaking Down the Todo Application
+
+First, we want to add some way to save our todos.
+We can use `lazy_static` to create a global, mutable `Vec<String>` wrapped in a `Mutex` to store our tasks.
+This approach is simplistic and serves well for demonstration purposes.
+More than likely you would want the to be saved to a database, but that is beyond the scope we are discussing here.
+To implement this, we will add the following code:
+
+```rust
+use std::sync::Mutex;
+use lazy_static::lazy_static;
+
+// Define a global shared state for storing tasks
+lazy_static! {
+    static ref TASKS: Mutex<Vec<String>> = Mutex::new(vec![]);
+}
+```
+
+Next we define an HTML template for our todo list using Askama.
+The template is a multi-line raw string literal.
+You could save this in a file, but again it makes the application more complicated.
+Keeying it inline to our main application just keeps it more readable and maintainable.
+
+```rust
+use askama::Template;
+
+// Define the HTML template using Askama
+#[derive(Template)]
+#[template(
+    inline = r#"
+        <h1>Todo List</h1>
+        <form action="/add" method="post">
+        <input type="text" name="task"/>
+        <input type="submit" value="Add Task"/>
+        </form>
+        <ul>
+        {% for task in tasks %}
+        <li>{{ task }}</li>
+        {% endfor %}
+        </ul>
+    "#
+)]
+struct TodoListTemplate<'a> {
+    tasks: &'a Vec<String>,
+}
+```
+
+To get the Axum application to work with the above template, we define two routes.
+One of these routes will be used to display tasks (`show_tasks`)
+The other route will be used to add a new task (`add_task`).
+**Note**: We will no longer need our generic handler that came with the "hello world" application and will delete it here.
+
+```rust
+use axum::{
+    http::StatusCode,
+    response::Html,
+    routing::{get, post},
+    Router,
+    extract::Form,
+}
+
+#[tokio::main]
+async fn main() {
+    // build our application with a route
+    let app = Router::new()
+        .route("/", get(show_tasks))
+        .route("/add", post(add_task));
+
+    // run it with hyper on localhost:3000
+    axum::Server::bind(&"127.0.0.1:3000".parse().unwrap())
+        .serve(app.into_make_service())
+        .await
+        .unwrap();
+};
+```
+
+For these new routes, lets create some functions that will interact with our global list of todos.
+The `show_tasks` function renders the current list of tasks using the template.
+The `add_task` function handles POST requests from the form, adding a new task to our global list of todos.
+`add_task` also needs a `struct` to help with deserialization from the `Form`.
+
+```rust
+// Handler to display tasks
+async fn show_tasks() -> Html<String> {
+    let tasks = TASKS.lock().unwrap();
+    let template = TodoListTemplate { tasks: &tasks };
+    Html(template.render().unwrap())
+}
+
+// Handler to add a new task
+async fn add_task(Form(input): Form<AddTask>) -> StatusCode {
+    let mut tasks = TASKS.lock().unwrap();
+    tasks.push(input.task);
+    StatusCode::SEE_OTHER
+}
+
+#[derive(serde::Deserialize)]
+struct AddTask {
+    task: String,
+}
+```
+
+In the end, adding everything we talked about in this post, we should have a file that looks like this:
+
+```rust
+use axum::{
+    http::StatusCode,
+    response::Html,
+    routing::{get, post},
+    Router,
+    extract::Form,
+};
+use askama::Template;
+use std::sync::Mutex;
+use lazy_static::lazy_static;
+
+// Define a global shared state for storing tasks
+lazy_static! {
+    static ref TASKS: Mutex<Vec<String>> = Mutex::new(vec![]);
+}
+
+// Define the HTML template using Askama
+#[derive(Template)]
+#[template(
+    inline = r#"
+        <h1>Todo List</h1>
+        <form action="/add" method="post">
+        <input type="text" name="task"/>
+        <input type="submit" value="Add Task"/>
+        </form>
+        <ul>
+        {% for task in tasks %}
+        <li>{{ task }}</li>
+        {% endfor %}
+        </ul>
+    "#
+)]
+struct TodoListTemplate<'a> {
+    tasks: &'a Vec<String>,
+}
+
+#[tokio::main]
+async fn main() {
+    // build our application with a route
+    let app = Router::new()
+        .route("/", get(show_tasks))
+        .route("/add", post(add_task));
+
+    // run it with hyper on localhost:3000
+    axum::Server::bind(&"127.0.0.1:3000".parse().unwrap())
+        .serve(app.into_make_service())
+        .await
+        .unwrap();
+}
+
+// Handler to display tasks
+async fn show_tasks() -> Html<String> {
+    let tasks = TASKS.lock().unwrap();
+    let template = TodoListTemplate { tasks: &tasks };
+    Html(template.render().unwrap())
+}
+
+// Handler to add a new task
+async fn add_task(Form(input): Form<AddTask>) -> StatusCode {
+    let mut tasks = TASKS.lock().unwrap();
+    tasks.push(input.task);
+    StatusCode::SEE_OTHER
+}
+
+// Structure to receive form data
+#[derive(serde::Deserialize)]
+struct AddTask {
+    task: String,
+}
+```
+
+
+## Conclusion
+
+By enhancing a basic Axum application with HTMX, we've created a simple yet functional todo list web application in Rust.
+We already knew Rust's capability in web api development, but hopefully this is providing a strong foundation for building more complex, performance-critical web services.
+
+Remember, this implementation is basic and lacks features like persistent storage, error handling, and user authentication.
+These are crucial for a production-grade application and can be added as next steps in learning Rust web development. 
+I am really hoping to come out with a part 2 of this post where we add a lot of these missing features.
+
+Rust, with its growing ecosystem, is proving to be a viable option for web development, offering safety, speed, and concurrency.
+Happy coding!
+And as always, find me on [Threads](https://treads.net/@joshfinnie) if you want to chat!

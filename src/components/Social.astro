@@ -1,30 +1,30 @@
 ---
-import MastodonIcon from "./icons/Mastodon.astro";
-import GithubIcon from "./icons/Github.astro";
-import LinkedInIcon from "./icons/LinkedIn.astro";
-import InstagramIcon from "./icons/Instagram.astro";
-import TwitchIcon from "./icons/Twitch.astro";
+import { Icon } from 'astro-icon/components'
 ---
 
 <div class="flex items-center gap-3">
+  <a href="https://threads.net/@joshfinnie" target="_blank" rel="me noopener noreferrer">
+    <Icon name="threads" size={40} />
+    <span class="visuallyhidden">Threads Link</span>
+  </a>
   <a href="https://fosstodon.org/@joshfinnie" target="_blank" rel="me noopener noreferrer">
-    <MastodonIcon size="40px"/>
+    <Icon name="mastodon" size={40} />
     <span class="visuallyhidden">Mastodon Link</span>
   </a>
   <a href="https://github.com/joshfinnie" target="_blank" rel="noopener noreferrer">
-    <GithubIcon size="40px"/>
+    <Icon name="github" size={40} />
     <span class="visuallyhidden">Github Link</span>
   </a>
   <a href="https://linkedin.com/in/joshfinnie" target="_blank" rel="noopener noreferrer">
-    <LinkedInIcon size="40px"/>
+    <Icon name="linkedin" size={40} />
     <span class="visuallyhidden">Linkedin Link</span>
   </a>
   <a href="https://instagram.com/joshfinnie" target="_blank" rel="noopener noreferrer">
-    <InstagramIcon size="40px"/>
+    <Icon name="instagram" size={40} />
     <span class="visuallyhidden">Instagram Link</span>
   </a>
   <a href="https://twitch.tv/joshfinnie" target="_blank" rel="noopener noreferrer">
-    <TwitchIcon size="40px"/>
+    <Icon name="twitch" size={40} />
     <span class="visuallyhidden">Twitch Link</span>
   </a>
 </div>

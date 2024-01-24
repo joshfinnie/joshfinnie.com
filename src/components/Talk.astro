@@ -1,6 +1,6 @@
 ---
-import BoltIcon from "./icons/Bolt.astro";
-import BuildingIcon from "./icons/Building.astro";
+import { Icon } from 'astro-icon/components'
+
 import Date from "./Date.astro";
 
 const { talk } = Astro.props;
@@ -9,7 +9,7 @@ const { talk } = Astro.props;
 <article class="py-2 dark:text-white">
   <p class="flex flex-col sm:flex-row text-base">
     <span class="flex items-center gap-1 dark:text-white">
-      <BuildingIcon size="16px" />
+      <Icon name="building" size={20} />
       {talk.locationLink ? (
         <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
           {talk.location}
@@ -28,6 +28,6 @@ const { talk } = Astro.props;
     ) : (
       <span set:html={talk.name}></span>
     )}
-      {talk.lightning ? <span style="padding-left: 10px;"><BoltIcon size="25px" /></span> : ""}
+      {talk.lightning ? <span style="padding-left: 5px;"><Icon name="bolt" size={25} style="display:inline-block" /></span> : ""}
   </h2>
 </article>

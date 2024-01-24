@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import RSS from './icons/Rss.astro';
+import { Icon } from 'astro-icon/components'
 
 import license from "@assets/icons/by-nc-sa.png"
 const year = new Date().getFullYear();
@@ -11,5 +11,5 @@ const year = new Date().getFullYear();
   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
     <Image alt="creative commons license" class="ml-5" src={license} width="88" height="31" />
   </a>
-  <a rel="rss" href="/rss.xml" class="absolute right-0 dark:text-white"><RSS size={"2em"} /></a>
+  <a rel="rss" href="/rss.xml" class="absolute right-0 dark:text-white"><Icon name="rss" size={"2em"} style="display:inline-block"/></a>
 </footer>

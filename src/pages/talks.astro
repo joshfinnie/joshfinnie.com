@@ -1,6 +1,7 @@
 ---
+import { Icon } from 'astro-icon/components'
+
 import BaseLayout from "@src/layouts/BaseLayout.astro";
-import BoltIcon from "@components/icons/Bolt.astro";
 import Talk from "@components/Talk.astro";
 
 import data from "@data/talks.json";
@@ -10,8 +11,8 @@ import data from "@data/talks.json";
   <article id="main-content">
     <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">Talks</h1>
     <p class="mb-5 text-base dark:text-white">
-      (<BoltIcon size="16px" />
-      denotes Lightning Talks)
+      (<Icon name="bolt" size={20} style="display:inline-block" />
+      denotes a lightning talk)
     </p>
     {data.talks.map((t) => <Talk talk={t} />)}
   </article>

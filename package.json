@@ -19,13 +19,13 @@
   "devDependencies": {
     "@astrojs/mdx": "^2.1.1",
     "@astrojs/preact": "^3.1.0",
-    "@astrojs/rss": "^4.0.4",
+    "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
     "@babel/core": "^7.23.9",
     "@tailwindcss/typography": "^0.5.10",
-    "astro": "4.3.2",
-    "astro-compress": "^2.2.9",
+    "astro": "4.3.5",
+    "astro-compress": "^2.2.10",
     "astro-icon": "^1.1.0",
     "astro-imagetools": "^0.9.0",
     "date-fns": "^3.3.1",
@@ -33,7 +33,7 @@
     "github-slugger": "^2.0.0",
     "glob": "^10.3.10",
     "lodash.kebabcase": "^4.1.1",
-    "preact": "^10.19.3",
+    "preact": "^10.19.4",
     "preact-render-to-string": "^6.3.1",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
@@ -42,10 +42,10 @@
     "rehype-toc": "^3.0.2",
     "serialize-javascript": "^6.0.2",
     "sharp": "^0.33.2",
-    "shiki": "1.0.0-beta.5",
+    "shiki": "1.1.1",
     "shorthash": "^0.0.2",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.0.12",
+    "vite": "^5.1.1",
     "vite-react-jsx": "^1.1.2"
   }
 }

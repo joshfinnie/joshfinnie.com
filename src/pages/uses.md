@@ -13,6 +13,7 @@ layout: "../layouts/BasePage.astro"
 - [Shure MV7](https://amzn.to/3Mh2Iwl) microphone
 - [UA Volt 1](https://amzn.to/3FM3MIz) audio interface
 - [Samsung 49” Odyssey G9](https://amzn.to/3GE1mvh) monitor
+- [HÅG Capisco](https://amzn.to/3IAmR0H) chair
 - Work Computer:
   - MacBook Pro 16-inch 2021
   - Opal C1 webcam

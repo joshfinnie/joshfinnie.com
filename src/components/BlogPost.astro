@@ -22,11 +22,12 @@ const { title, date, tags, slug, heroImage, unsplash, unsplashURL, description }
     <slot />
   </main>
   <AlsoLike {tags} {slug} />
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "WebPage",
-    "name": {title},
-    "description": {description},
-  }
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": {title},
+      "description": {description},
+    }
+  </script>
 </article>

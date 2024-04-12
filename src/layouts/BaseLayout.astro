@@ -22,6 +22,14 @@ const optimizedImage = await getImage({src: image})
     <BaseHead {title} {description} image={`https://www.joshfinnie.com${optimizedImage.src}`} />
   </head>
   <body class="bg-white dark:bg-gray-800">
+    <script type="application/ld+json">
+      {
+        "@context" : "https://schema.org",
+        "@type" : "WebSite",
+        "name" : "Josh Finnie",
+        "url" : "https://www.joshfinnie.com/"
+      }
+    </script>
     <a class="skip-nav-link" href="#main-content">skip navigation</a>
     <div class="w-full mx-auto sm:max-w-screen-md px-4">
       <BlogHeader />

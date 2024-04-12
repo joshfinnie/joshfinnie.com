@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 
 import AlsoLike from "./AlsoLike.astro";
 import Date from "./Date.astro";
@@ -7,6 +7,8 @@ import Tag from "./Tags.astro";
 import HeroImage from './BlogPostHeroImage.astro';
 
 const { title, date, tags, slug, heroImage, unsplash, unsplashURL, description } = Astro.props;
+
+const optimizedImage = await getImage({src: image})
 
 let schema = JSON.stringify({
   "@context": "https://schema.org/",
@@ -19,9 +21,9 @@ let schema = JSON.stringify({
   "datePublished": date,
   "dateCreated": date,
   "description": description,
-  "url": "https://www.joshfinnie.com" + slug,
+  "url": `https://www.joshfinnie.com/${slug}`,
   "inLanguage ": "en-US",
-  "image": heroImage,
+  "image": `https://www.joshfinnie.com${optimizedImage.src}`,
   "keywords": tags,
 });
 ---

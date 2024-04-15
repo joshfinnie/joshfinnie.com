@@ -3,6 +3,17 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 const { content } = Astro.props;
 const { title, description, permalink } = content;
+
+let schema = JSON.stringify({
+  "@context": "http://schema.org",
+  "@type": "WebPage",
+  "name": {title},
+  "description": {description},
+  "author": {
+    "@type": "Person",
+    "name": "Josh Finnie"
+  }
+});
 ---
 <BaseLayout title={`${title} | www.joshfinnie.com`} {description} {permalink}>
   <article id="main-content">
@@ -11,16 +22,5 @@ const { title, description, permalink } = content;
       <slot />
     </main>
   </article>
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "WebPage",
-      "name": {title},
-      "description": {description},
-      "author": {
-        "@type": "Person",
-        "name": "Josh Finnie"
-      },
-    }
-  </script>
+  <script type="application/ld+json" set:html={schema}></script>
 </BaseLayout>

@@ -4,7 +4,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 const { content } = Astro.props;
 const { title, description, permalink } = content;
 ---
-
 <BaseLayout title={`${title} | www.joshfinnie.com`} {description} {permalink}>
   <article id="main-content">
     <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">{title}</h1>
@@ -12,4 +11,16 @@ const { title, description, permalink } = content;
       <slot />
     </main>
   </article>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": {title},
+      "description": {description},
+      "author": {
+        "@type": "Person",
+        "name": "Josh Finnie"
+      },
+    }
+  </script>
 </BaseLayout>

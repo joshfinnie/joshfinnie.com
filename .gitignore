@@ -127,3 +127,4 @@ Pipfile
 # Astro 2
 .astro
 .vscode
+node_modules

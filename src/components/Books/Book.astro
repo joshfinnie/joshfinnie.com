@@ -1,0 +1,22 @@
+---
+import Author from "@components/Books/Author.astro";
+import Date from "@components/Date.astro";
+import Rating from "@components/Books/Rating.astro";
+
+const {book} = Astro.props;
+---
+
+<article class="py-2 dark:text-white">
+    <p class="flex flex-col sm:flex-row text-base">
+        <img src={book.book.cached_image.url} alt={book.book.title} />
+        <h2 class="font-bold text-2xl mb-5">
+            <span set:html={book.book.title}></span>
+        </h2>
+        <p>
+            By <Author contributors={book.book.contributions} />
+        </p>
+        <p class="flex items-center">
+            Finished <span class="px-2"><Date date={book.last_read_date} showIcon={false} /></span> giving it <Rating rating={book.rating} /> stars.
+        </p>
+    </p>
+</article>

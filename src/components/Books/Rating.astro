@@ -1,0 +1,13 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const { rating } = Astro.props;
+const fullStars = Math.floor(rating);
+const hasHalfStar = rating % 1 !== 0;
+const emptyStars = 5 - Math.ceil(rating);
+---
+<span class="px-2">
+    {Array.from({ length: fullStars }, () => <Icon name="full-star" size={20} style="display:inline-block" />)}
+    {hasHalfStar ? <Icon name="half-star" size={20} style="display:inline-block" /> : ""}
+    {Array.from({ length: emptyStars }, () => <Icon name="empty-star" size={20} style="display:inline-block" />)}
+</span>

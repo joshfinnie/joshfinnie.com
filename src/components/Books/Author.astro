@@ -1,0 +1,38 @@
+---
+const { contributors } = Astro.props;
+const authorIds = contributors
+  .filter(item => item.hasOwnProperty('author'))
+  .map(item => item.author.id);
+const token = import.meta.env.HARDCOVERAPP_API
+const response = await fetch(
+    "https://api.hardcover.app/v1/graphql",
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json',
+            'authorization': token,
+        },
+        body: JSON.stringify({
+            query: `
+query GetAuthors($ids: [Int!]) {
+  authors(where: {id: {_in: $ids}}) {
+    name
+  }
+}
+      `,
+    "variables": {
+    "ids": authorIds
+  }
+        }),
+    });
+
+const json = await response.json();
+const authors = json.data.authors;
+---
+
+{Object.values(authors).map((author, i) =>
+<span key={i}>
+    {i > 0 && ", "}
+    {author.name}
+</span>
+)}

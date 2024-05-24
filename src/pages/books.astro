@@ -1,0 +1,51 @@
+---
+import BaseLayout from "@src/layouts/BaseLayout.astro";
+import Book from "@components/Books/Book.astro";
+
+const token = import.meta.env.HARDCOVERAPP_API
+const response = await fetch(
+    "https://api.hardcover.app/v1/graphql",
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json',
+            'authorization': token,
+        },
+        body: JSON.stringify({
+            query: `
+query getMyBooks {
+  me {
+    user_books(
+      where: {last_read_date: {_is_null: false}}
+      order_by: {last_read_date: desc}
+      limit: 10
+    ) {
+      book {
+        title
+        rating
+        contributions {
+          author {
+            id
+          }
+        }
+        id
+        cached_image
+      }
+      last_read_date
+      rating
+    }
+  }
+}
+      `,
+        }),
+    });
+
+const json = await response.json();
+const { user_books } = json.data.me[0];
+---
+<BaseLayout title="Books I've Read | www.joshfinnie.com">
+    <article id="main-content">
+        <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">Last 10 Books I've Read</h1>
+        {Object.values(user_books).map(e => <Book book={e} />)}
+    </article>
+</BaseLayout>

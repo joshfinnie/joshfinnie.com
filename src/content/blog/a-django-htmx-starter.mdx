@@ -299,12 +299,18 @@ Here is my `base.html` file:
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         {% block extra_head %}{% endblock %}
     </head>
-    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' class="min-h-screen bg-white dark:bg-gray-900">
+    <body 
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+        class="min-h-screen bg-white dark:bg-gray-900"
+    >
         {% include "partials/header.html" %}
         {% if messages %}
             <div>
                 {% for message in messages %}
-                    <div class="flex items-center px-4 py-3 text-sm font-bold text-white bg-blue-500" role="alert">
+                    <div 
+                        class="flex items-center px-4 py-3 text-sm font-bold text-white bg-blue-500"
+                        role="alert"
+                    >
                         <p>{{ message }}</p>
                     </div>
                 {% endfor %}

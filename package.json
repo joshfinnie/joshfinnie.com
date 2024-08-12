@@ -23,8 +23,8 @@
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@babel/core": "^7.25.2",
-    "@tailwindcss/typography": "^0.5.13",
-    "astro": "4.13.1",
+    "@tailwindcss/typography": "^0.5.14",
+    "astro": "4.13.3",
     "astro-icon": "^1.1.0",
     "date-fns": "^3.6.0",
     "fs-extra": "^11.2.0",
@@ -32,7 +32,7 @@
     "glob": "^11.0.0",
     "lodash.kebabcase": "^4.1.1",
     "preact": "^10.23.1",
-    "preact-render-to-string": "^6.5.7",
+    "preact-render-to-string": "^6.5.8",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "rehype-autolink-headings": "^7.1.0",
@@ -42,8 +42,8 @@
     "sharp": "^0.33.4",
     "shiki": "1.12.1",
     "shorthash": "^0.0.2",
-    "tailwindcss": "^3.4.7",
-    "vite": "^5.3.5",
+    "tailwindcss": "^3.4.9",
+    "vite": "^5.4.0",
     "vite-react-jsx": "^1.1.2"
   }
 }

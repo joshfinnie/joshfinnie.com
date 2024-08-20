@@ -1,11 +1,12 @@
 ---
 import { parseISO, format } from "date-fns";
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 
 const { date } = Astro.props;
 const formattedDate = format(parseISO(date), "LLLL d, yyyy");
 ---
-<span class="flex items-center gap-1 dark:text-white">
-    <Icon name="calendar" size={20} style="display:inline-block" />
-    {formattedDate}
+
+<span class="flex items-center gap-1 prose prose-zinc dark:prose-invert">
+  <Icon name="calendar" size={20} style="display:inline-block" />
+  {formattedDate}
 </span>

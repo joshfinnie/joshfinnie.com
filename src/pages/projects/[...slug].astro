@@ -1,24 +1,25 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import { CollectionEntry, getCollection } from "astro:content";
 
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import ProjectHero from "@components/ProjectHero.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection('project');
+  const projects = await getCollection("project");
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: project,
   }));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 const project = Astro.props;
 const { Content } = await project.render();
 ---
 
 <BaseLayout title={`Project: ${project.data.title} | www.joshfinnie.com`}>
-    <article class="prose dark:prose-invert max-w-none">
-        <ProjectHero {...project.data} />
-        <Content />
-    </article>
+  <article class="prose prose-zinc dark:prose-invert max-w-none">
+    <ProjectHero {...project.data} />
+    <Content />
+  </article>
 </BaseLayout>
+

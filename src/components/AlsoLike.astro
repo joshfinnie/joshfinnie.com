@@ -29,7 +29,7 @@ const posts = allPosts
 ---
 
 {posts.length ?
-    <div class="prose dark:prose-invert mt-5 p-5 rounded-lg max-w-none bg-gray-200 dark:bg-gray-900">
+    <div class="prose prose-zinc dark:prose-invert mt-5 p-5 rounded-lg max-w-none">
         <h2 class="text-center">You might also enjoy?</h2>
         {posts.map((post) => <BlogPostPreviewLite {post} />)}
     </div> : <></>

@@ -1,9 +1,9 @@
 ---
 import { getImage } from "astro:assets";
 
-import josh from '@assets/josh.jpg'
+import josh from "@assets/josh.jpg";
 import BaseHead from "@components/BaseHead.astro";
-import BlogHeader from "@components/BlogHeader.astro";
+import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
 import "@styles/global.css";
@@ -14,44 +14,69 @@ const {
   image = josh,
 } = Astro.props;
 
-const optimizedImage = await getImage({src: image})
+const optimizedImage = await getImage({ src: image });
 ---
 
-<html lang="en">
+<html
+  lang="en"
+  style="color-scheme: dark; --header-position: sticky; --content-offset: 100px; --header-height: 180px; --header-mb: -116px; --avatar-image-transform: translate3d(0rem, 0, 0) scale(1); --avatar-border-transform: translate3d(-0.2222222222222222rem, 0, 0) scale(1.7777777777777777); --avatar-border-opacity: 0; --header-top: 0px; --avatar-top: 0px;"
+>
   <head>
     <BaseHead {title} {description} image={`https://www.joshfinnie.com${optimizedImage.src}`} />
-  </head>
-  <body class="bg-white dark:bg-gray-800">
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+      window.localStorage.setItem("theme", theme);
+    </script>
     <script type="application/ld+json">
       {
-        "@context" : "https://schema.org",
-        "@type" : "WebSite",
-        "name" : "Josh Finnie's Blog",
-        "url" : "https://www.joshfinnie.com/",
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Josh Finnie's Blog",
+        "url": "https://www.joshfinnie.com/",
         "author": {
           "@type": "Person",
           "name": "Josh Finnie"
         }
       }
     </script>
-    <a class="skip-nav-link" href="#main-content">skip navigation</a>
-    <div class="w-full mx-auto sm:max-w-screen-md px-4">
-      <BlogHeader />
-      <slot />
-      <Footer />
+  </head>
+  <body class="flex h-full bg-zinc-50 dark:bg-black">
+    <div class="flex w-full">
+      <div class="fixed inset-0 flex justify-center sm:px-8">
+        <div class="flex w-full max-w-7xl lg:px-8">
+          <div class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
+        </div>
+      </div>
+      <div class="relative flex w-full flex-col">
+        <Header />
+        <div class="flex-none" style="height:var(--content-offset)"></div>
+        <main class="flex-auto">
+          <div class="sm:px-8">
+            <div class="mx-auto w-full max-w-7xl lg:px-8">
+              <div class="relative px-4 sm:px-8 lg:px-12">
+                <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                  <slot />
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
     </div>
   </body>
 </html>
-
-<style>
-  .skip-nav-link {
-    background: grey;
-    color: black;
-    position: absolute;
-    padding: 0.25rem 0.5rem;
-    transform: translateY(-120%);
-  }
-  .skip-nav-link:focus {
-    transform: translateY(0);
-  }
-</style>

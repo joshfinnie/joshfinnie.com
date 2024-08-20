@@ -4,11 +4,9 @@ import Date from "./Date.astro";
 const { post } = Astro.props;
 ---
 
-<article>
-    <header class="dark:text-white">
-        <a href={`/blog/${post.slug}/`} title={post.data.title}>
-            <h3 class="font-bold text-2xl" set:html={post.data.title}></h3>
-            <Date date={post.data.date} />
-        </a>
-    </header>
-</article>
+<header class="prose dark:prose-invert prose-zinc">
+  <a href={`/blog/${post.slug}/`} title={post.data.title}>
+    <h3 class="font-bold text-2xl" set:html={post.data.title} />
+  </a>
+  <Date date={post.data.date} />
+</header>

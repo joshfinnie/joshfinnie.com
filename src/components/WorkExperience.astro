@@ -1,0 +1,43 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+   imagePath: string;
+   altText: string;
+   name: string;
+   age: number;
+}
+
+import { Card, CardTitle, CardContent, CardFooter } from "./ui/card";
+
+const { company, role, startDate, endDate, logo } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/companies/*.{jpeg,jpg,png,gif}');
+if (!images[`/src/assets/companies/${logo}`]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+---
+
+<Card
+  className="flex flex-col items-start p-4 bg-white dark:bg-zinc-800 shadow-lg border border-zinc-200 dark:border-zinc-700 rounded-lg"
+>
+  <div class="flex items-center gap-4 mb-4">
+    <div
+      class="relative flex h-10 w-10 items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
+    >
+      <Image alt={company} src={images[`/src/assets/companies/${logo}`]()} width={512} height={512} class="h-10 w-10" />
+    </div>
+    <div class="flex flex-col">
+      <CardTitle className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{company}</CardTitle>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400">{role}</p>
+    </div>
+  </div>
+  <CardFooter className="text-xs text-zinc-400 dark:text-zinc-500">
+    <time datetime={startDate}>
+      {new Date(startDate).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
+    </time>{" "}
+    -{" "}
+    <time datetime={endDate}>
+      {new Date(endDate).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
+    </time>{" "}
+  </CardFooter>
+</Card>

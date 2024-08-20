@@ -1,0 +1,44 @@
+---
+import { Moon, Sun } from "lucide-react";
+---
+
+<button type="button" id="theme-selector">
+  <span class="sr-only">
+    Enable <span class="dark:hidden">light</span><span class="hidden dark:inline">dark</span> mode
+  </span>
+  <span class="inline dark:hidden">
+    <Moon />
+  </span>
+  <span class="hidden dark:inline">
+    <Sun />
+  </span>
+</button>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    const themeSelector = document.getElementById("theme-selector");
+
+    const setTheme = (theme) => {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    };
+
+    // Check the current theme from localStorage on load
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "dark") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+
+    themeSelector?.addEventListener("click", () => {
+      const newTheme = document.documentElement.classList.contains("dark") ? "light" : "dark";
+      setTheme(newTheme);
+    });
+  });
+</script>

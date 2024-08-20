@@ -1,0 +1,27 @@
+---
+import { Card, CardTitle, CardContent, CardFooter } from "./ui/card";
+const { slug, data } = Astro.props;
+---
+<Card
+  className="relative flex flex-col items-start p-4 bg-white dark:bg-zinc-800 shadow-lg border border-zinc-200 dark:border-zinc-700 rounded-lg"
+>
+  <CardTitle className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 mb-5 p-6 pt-1">
+    <a href={`/blog/${slug}/`}>
+      {data.title}
+    </a>
+  </CardTitle>
+  <CardContent>
+    <time class="text-sm text-zinc-400 dark:text-zinc-500" datetime={data.date}>
+      {new Date(data.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+    </time>
+    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{data.description}</p>
+  </CardContent>
+  <CardFooter className="mt-4 flex items-center text-sm font-medium text-teal-500 dark:text-teal-400">
+    <a href={`/blog/${slug}/`} class="flex items-center gap-1">
+      Read article
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-current">
+        <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </CardFooter>
+</Card>

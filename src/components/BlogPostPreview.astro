@@ -1,26 +1,29 @@
 ---
 import { Image } from "astro:assets";
 import Date from "./Date.astro";
-import HeroImage from './BlogPostHeroImage.astro';
+import HeroImage from "./BlogPostHeroImage.astro";
 
 const { post } = Astro.props;
 ---
 
 <article class="my-5">
-    <header class="dark:text-white">
-        <a href={`/blog/${post.slug}/`} title={post.data.title}>
-            <Date date={post.data.date} />
-            <h1 class="font-bold text-3xl mb-5" set:html={post.data.title}></h1>
-        </a>
-    </header>
-    <main>
-        {post.data.heroImage ?
-         <>
-             <a href={`/blog/${post.slug}/`} title={post.data.title}>
-                 <HeroImage title={post.data.title} heroImage={post.data.heroImage} />
-             </a>
-         </> :
-         <>
-         </>}
-    </main>
+  <header class="prose prose-zinc dark:prose-invert">
+    <a href={`/blog/${post.slug}/`} title={post.data.title}>
+      <Date date={post.data.date} />
+      <h1 class="font-bold text-3xl mb-5" set:html={post.data.title} />
+    </a>
+  </header>
+  <main>
+    {
+      post.data.heroImage ? (
+        <>
+          <a href={`/blog/${post.slug}/`} title={post.data.title} class="prose prose-zinc dark:prose-invert">
+            <HeroImage title={post.data.title} heroImage={post.data.heroImage} />
+          </a>
+        </>
+      ) : (
+        <></>
+      )
+    }
+  </main>
 </article>

@@ -9,7 +9,7 @@ const allPosts = await getCollection('blog');
 const posts = allPosts
 .filter((a) => a.data.draft != true)
 .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
-.slice(0, 5);
+.slice(0, 3);
 
 const workExperiences = [
   { logo: "pdl.jpg", company: "People Data Labs", role: "Senior Software Engineer", start: "2023-05" },

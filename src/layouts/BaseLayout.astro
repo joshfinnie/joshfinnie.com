@@ -19,30 +19,16 @@ const optimizedImage = await getImage({ src: image });
 
 <html
   lang="en"
-  style="color-scheme: dark; --header-position: sticky; --content-offset: 100px; --header-height: 180px; --header-mb: -116px; --avatar-image-transform: translate3d(0rem, 0, 0) scale(1); --avatar-border-transform: translate3d(-0.2222222222222222rem, 0, 0) scale(1.7777777777777777); --avatar-border-opacity: 0; --header-top: 0px; --avatar-top: 0px;"
+  style="--header-position: sticky; --content-offset: 100px; --header-height: 180px; --header-mb: -116px; --avatar-image-transform: translate3d(0rem, 0, 0) scale(1); --avatar-border-transform: translate3d(-0.2222222222222222rem, 0, 0) scale(1.7777777777777777); --avatar-border-opacity: 0; --header-top: 0px; --avatar-top: 0px;"
+  class="dark"
+  x-data="{ darkMode: localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) }"
+  x-init="$watch('darkMode', value => {
+    document.documentElement.classList.toggle('dark', value);
+    localStorage.theme = value ? 'dark' : 'light';
+  })"
 >
   <head>
     <BaseHead {title} {description} image={`https://www.joshfinnie.com${optimizedImage.src}`} />
-    <script is:inline>
-      // Necessary for view transitions
-      document.addEventListener('astro:after-swap', () => {
-        if (
-          localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ) {
-          document.documentElement.classList.add('dark');
-        }
-      });
-
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -55,7 +41,6 @@ const optimizedImage = await getImage({ src: image });
         }
       }
     </script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   <body class="flex h-full bg-zinc-50 dark:bg-black">
     <div class="flex w-full">

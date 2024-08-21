@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 
-import { Button } from "./ui/button";
 import ThemeToggle from "./ThemeToggle.astro";
 import Nav from "./Nav.astro";
 
@@ -49,23 +48,6 @@ import headshot from "@assets/josh.jpg";
             <div class="relative flex gap-4">
               <div class="flex flex-1"></div>
               <div class="flex flex-1 justify-end md:justify-center">
-                <div class="pointer-events-auto md:hidden">
-                  <Button variant="ghost">
-                    Menu
-                    <svg
-                      viewBox="0 0 8 6"
-                      aria-hidden="true"
-                      class="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400"
-                    >
-                      <path
-                        d="M1.75 1.75 4 4.25l2.25-2.5"
-                        fill="none"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                    </svg>
-                  </Button>
-                </div>
                 <Nav />
               </div>
               <div class="flex justify-end md:flex-1">

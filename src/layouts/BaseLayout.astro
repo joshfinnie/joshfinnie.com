@@ -24,22 +24,24 @@ const optimizedImage = await getImage({ src: image });
   <head>
     <BaseHead {title} {description} image={`https://www.joshfinnie.com${optimizedImage.src}`} />
     <script is:inline>
-      const theme = (() => {
-        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-          return localStorage.getItem("theme");
+      // Necessary for view transitions
+      document.addEventListener('astro:after-swap', () => {
+        if (
+          localStorage.theme === 'dark' ||
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+          document.documentElement.classList.add('dark');
         }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      })();
+      });
 
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
       } else {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove('dark');
       }
-      window.localStorage.setItem("theme", theme);
     </script>
     <script type="application/ld+json">
       {
@@ -53,6 +55,7 @@ const optimizedImage = await getImage({ src: image });
         }
       }
     </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>
   <body class="flex h-full bg-zinc-50 dark:bg-black">
     <div class="flex w-full">

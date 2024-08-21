@@ -10,7 +10,7 @@ const { title, heroImage, unsplashName, unsplashUrl } = Astro.props;
   {heroImage && <Image class="rounded-md" src={heroImage} alt={title} width="1024" />}
   {
     unsplashName && (
-      <div class="absolute bottom-0 right-0 mb-2 mr-2 rounded-lg bg-slate-200 px-2 py-2 text-black dark:bg-slate-800 dark:text-white md:px-6">
+      <div class="absolute bottom-0 right-0 mb-2 mr-2 rounded-lg bg-zinc-200 px-2 py-2 dark:bg-zinc-800 md:px-6 prose prose-zinc dark:prose-invert">
         <Unsplash name={unsplashName} url={unsplashUrl} />
       </div>
     )

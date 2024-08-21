@@ -2,6 +2,14 @@
 import { Moon, Sun } from "lucide-react";
 ---
 
+<div
+  x-data="{ darkMode: localStorage.theme === 'dark' }"
+  x-init="$watch('darkMode', value => {
+    console.log(darkMode);
+    document.documentElement.classList.toggle('dark', value);
+    localStorage.theme = value ? 'dark' : 'light';
+  })"
+>
   <button class="pointer-events-auto" type="button" @click="darkMode = !darkMode" id="theme-selector">
     <span class="sr-only">
       Enable <span x-show="!darkMode">light</span><span x-show="darkMode">dark</span> mode
@@ -13,4 +21,4 @@ import { Moon, Sun } from "lucide-react";
       <Sun />
     </span>
   </button>
-
+</div>

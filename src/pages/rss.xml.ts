@@ -8,10 +8,12 @@ export async function GET(context) {
     site: import.meta.env.SITE,
     description: "The personal/professional website of Josh Finnie.",
     customData: `<language>en-us</language>`,
-    items: blog.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date)).map((post) => ({
+    items: blog
+      .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
+      .map((post) => ({
         link: `/blog/${post.slug}/`,
         pubDate: post.data.date,
         ...post.data,
-    })),
+      })),
   });
 }

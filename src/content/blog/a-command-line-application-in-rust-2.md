@@ -17,7 +17,7 @@ _Updated 2023-07-04_
 
 Late last year, I wrote about [creating a command-line application in rust](/blog/a-command-line-application-in-rust/).
 Since then, I have been using it every week to post my most played artists on [Mastodon](https://fosstodon.org/@joshfinnie).
-Over the past six months, I have made several updates to the application, and I thought it would be appropriate to inform everyone about the changes. 
+Over the past six months, I have made several updates to the application, and I thought it would be appropriate to inform everyone about the changes.
 
 **Note**: If you prefer to skip the blog post and only read the PR Diff, you can find it [here](https://github.com/joshfinnie/lfmc/pull/1/files).
 
@@ -66,32 +66,32 @@ struct Args {
     period: String,
 }
 ```
- 
- ## Better Error handling
- 
+
+## Better Error handling
+
 Another big change I made is dealing with the unneeded `unwrap` functions throughout the code.
 I wanted the application to make use of comprehensive error handling.
 For error handling, I added the [Anyhow](https://crates.io/crates/anyhow) crate and made the following changes:
- 
- ```rust
+
+```rust
 fn construct_output(config: Config, json: Value) -> Result<String> {
-    ...
-    let artists = json["topartists"]["artist"].as_array().ok_or(
-        anyhow!("Error parsing JSON.")
-    )?;
+   ...
+   let artists = json["topartists"]["artist"].as_array().ok_or(
+       anyhow!("Error parsing JSON.")
+   )?;
 
-    for (i, artist) in artists.iter().enumerate() {
-        ...
-        let name = artist["name"].as_str().ok_or(
-            anyhow!("Artist not found.")
-        )?;
+   for (i, artist) in artists.iter().enumerate() {
+       ...
+       let name = artist["name"].as_str().ok_or(
+           anyhow!("Artist not found.")
+       )?;
 
-        let playcount = artist["playcount"].as_str().ok_or(
-            anyhow!("Playcount not found.")
-        )?;
-        ...
-    }
-    ...
+       let playcount = artist["playcount"].as_str().ok_or(
+           anyhow!("Playcount not found.")
+       )?;
+       ...
+   }
+   ...
 }
 ```
 

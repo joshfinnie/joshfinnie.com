@@ -14,18 +14,25 @@ export default defineConfig({
   site: "https://www.joshfinnie.com/",
   trailingSlash: "always",
   server: {
-    port: 3333
+    port: 3333,
   },
   image: {
-    service: sharpImageService()
+    service: sharpImageService(),
   },
-  integrations: [mdx(), sitemap(), tailwind({
-    applyBaseStyles: false
-  }), icon(), react(), alpinejs()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    icon(),
+    react(),
+    alpinejs(),
+  ],
   markdown: {
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
     shikiConfig: {
-      theme: "dracula"
-    }
-  }
+      theme: "dracula",
+    },
+  },
 });

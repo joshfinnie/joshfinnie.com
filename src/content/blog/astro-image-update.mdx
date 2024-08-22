@@ -26,7 +26,7 @@ Luckily for us, the [Astro documentation on MDX](https://docs.astro.build/en/gui
 First we need to install the `@astrojs/mdx` package:
 
 ```bash
-$ npm install @astrojs/mdx
+npm install @astrojs/mdx
 ```
 
 Next we need to add the integration to our Astro config file.
@@ -69,10 +69,9 @@ You can see where I took advantage of this in my previously mentioned job search
 
 ```mdx
 ---
-...
 ---
 
-import sankey from '/assets/svg/job-sankey.svg';
+import sankey from "/assets/svg/job-sankey.svg";
 
 ...
 
@@ -140,7 +139,7 @@ const { post } = Astro.props;
 {post.data.heroImage ?
   <>
     <a href={`/blog/${post.slug}/`} title={post.data.title}>
--     <img 
+-     <img
 -        src={post.data.heroImage.replace("jpg", "webp")}
 -        alt={post.data.title}
 -        class="rounded-md"
@@ -149,7 +148,7 @@ const { post } = Astro.props;
 +        class="rounded-md"
 +        src={post.data.heroImage}
 +        alt={post.data.title}
-+        width="780"
++        width="1024"
 +      />
     </a>
   </> : <></>
@@ -166,8 +165,8 @@ For a minimalist image, you could use the following:
 ```tsx
 <Image
   src={post.data.heroImage}
-  alt={post.data.title}  
-  width="780"
+  alt={post.data.title}
+  width="1024"
   format="avif"
   quality="low"
 >
@@ -210,11 +209,14 @@ This allowed for my Open Graph Protocol headers to render correctly:
 
 ```html
 <!-- Open Graph Protocol -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.joshfinnie.com/blog/my-2023-job-search-journey/">
-<meta property="og:title" content="My 2023 Job Search Journey | www.joshfinnie.com">
-<meta property="og:description" content="A brief review of my job search journey in the 2023 market. I applied to over 150 jobs and it was exhausting!">
-<meta property="og:image" content="https://www.joshfinnie.com/_astro/jobbing.56166317_1ya6pO.webp">
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.joshfinnie.com/blog/my-2023-job-search-journey/" />
+<meta property="og:title" content="My 2023 Job Search Journey | www.joshfinnie.com" />
+<meta
+  property="og:description"
+  content="A brief review of my job search journey in the 2023 market. I applied to over 150 jobs and it was exhausting!"
+/>
+<meta property="og:image" content="https://www.joshfinnie.com/_astro/jobbing.56166317_1ya6pO.webp" />
 ```
 
 ## Conclusion
@@ -226,11 +228,12 @@ If you find this helpful or just want to discuss, find me on [Mastodon](https://
 
 ### Helpful Links
 
-* Here is the link to the [MDX support PR](https://github.com/joshfinnie/joshfinnie.com/pull/1585/files) on Github.
-Note for the MDX support, I also added a blog post so there is a little noise there.
+- Here is the link to the [MDX support PR](https://github.com/joshfinnie/joshfinnie.com/pull/1585/files) on Github.
+  Note for the MDX support, I also added a blog post so there is a little noise there.
 
-* And here is the link to my [Experimental Assets PR](https://github.com/joshfinnie/joshfinnie.com/pull/1588/files) on Github.
-For this one, there's a lot of files that needed to be moved around from the Astro `public` file to the `src/assets` folder.
+- And here is the link to my [Experimental Assets PR](https://github.com/joshfinnie/joshfinnie.com/pull/1588/files) on Github.
+  For this one, there's a lot of files that needed to be moved around from the Astro `public` file to the `src/assets` folder.
 
 Sometimes I find it easier to just read the changelog.
 Hope this helps some!
+

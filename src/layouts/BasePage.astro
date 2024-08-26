@@ -7,20 +7,19 @@ const { title, description, permalink } = content;
 let schema = JSON.stringify({
   "@context": "http://schema.org",
   "@type": "WebPage",
-  "name": {title},
-  "description": {description},
-  "author": {
+  name: { title },
+  description: { description },
+  author: {
     "@type": "Person",
-    "name": "Josh Finnie"
-  }
+    name: "Josh Finnie",
+  },
 });
 ---
+
 <BaseLayout title={`${title} | www.joshfinnie.com`} {description} {permalink}>
-  <article id="main-content">
-    <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">{title}</h1>
-    <main class="prose max-w-none dark:prose-invert">
-      <slot />
-    </main>
-  </article>
-  <script type="application/ld+json" set:html={schema}></script>
+  <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white prose prose-zinc">{title}</h1>
+  <main class="prose dark:prose-invert prose-zinc max-w-none">
+    <slot />
+  </main>
+  <script type="application/ld+json" set:html={schema} />
 </BaseLayout>

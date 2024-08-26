@@ -1,0 +1,56 @@
+---
+import { getCollection} from 'astro:content';
+import { BriefcaseBusiness, Download } from 'lucide-react';
+
+import Article from "./Article.astro";
+import WorkExperience from "./WorkExperience.astro";
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+.filter((a) => a.data.draft != true)
+.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
+.slice(0, 3);
+
+const workExperiences = [
+  { logo: "pdl.jpg", company: "People Data Labs", role: "Senior Software Engineer", start: "2023-05" },
+  { logo: "indigoag.jpg", company: "IndigoAg", role: "Staff Software Engineer", start: "2022-05", end: "2023-03" },
+  { logo: "pbs.jpg", company: "PBS", role: "Senior Software Engineer", start: "2019-09", end: "2022-05" },
+  { logo: "trackmaven.jpg", company: "TrackMaven", role: "Software Enginner -> Senior Software Engineer", start: "2014-03", end: "2019-08" },
+  { logo: "koansys.jpg", company: "Koansys", role: "Application Developer", start: "2012-02", end: "2014-03" },
+];
+---
+
+<div class="mx-auto grid max-w-xl grid-cols-1 gap-y-10 lg:max-w-none lg:grid-cols-2">
+  <div class="flex flex-col gap-5">
+    <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+      Recent Blog Posts
+    </h2>
+    {posts.map((article) => <Article {...article} />)}
+  </div>
+  <div class="space-y-10 lg:pl-16">
+    <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+      <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <BriefcaseBusiness />
+        <span class="ml-3 mb-5">Job History</span>
+      </h2>
+      <div class="grid gap-5">
+        {workExperiences.map((experience) => (
+        <WorkExperience
+          company={experience.company}
+          role={experience.role}
+          startDate={experience.start}
+          endDate={experience.end}
+          logo={experience.logo}
+        />
+        ))}
+      </div>
+      <a
+        class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group mt-6 w-full"
+        href="/assets/docs/resume.pdf"
+        target="_blank"
+      >
+        Download my Resume <Download />
+      </a>
+    </div>
+  </div>
+</div>

@@ -122,7 +122,7 @@ module.exports = {
 We also need to add our default HTML, create `public/index.html` and add the following code:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />

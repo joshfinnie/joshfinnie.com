@@ -18,5 +18,5 @@ Promise.all(
     const info = await stream.metadata();
     const optimizedName = match.replace(/(\..+)$/, (_, ext) => `.webp`);
     await stream.resize(MAX_WIDTH).webp().toFile(optimizedName);
-  })
+  }),
 );

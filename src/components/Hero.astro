@@ -1,17 +1,84 @@
 ---
-import { Image } from "astro:assets";
-
-import headshot from "@assets/josh.jpg";
+import { Icon } from "astro-icon/components";
 ---
-<div id="main-content" class="flex flex-col sm:flex-row my-10 items-center bg-gray-200 dark:bg-gray-900 dark:text-white p-5 shadow-lg rounded-lg">
-  <Image class="rounded-lg flex-none w-1/4 h-1/4" src={headshot} alt="Josh Finnie Headshot" width="175" />
-  <div class="flex-grow">
-    <h1 class="font-bold text-2xl my-5 ml-5">Hello, I am Josh!</h1>
-    <p class="prose max-w-none ml-5 dark:prose-invert">
-      I currently work on the API & Delivery team at
-      <a href="https://www.peopledatalabs.com/" title="People Data Labs">People Data Labs</a>.
-      I am an polyglot software engineer with over 10 years of programming experience.
-      My current interests are in learning all I can about Rust and Go while staying current in Python and Javascript.
-    </p>
+
+<div class="mt-5 mb-10 sm:px-8">
+  <div class="mx-auto max-w-7xl lg:px-8">
+    <div class="relative px-4 sm:px-8 lg:px-12">
+      <div class="mx-auto max-w-2xl lg:max-w-5xl">
+        <div class="max-w-2xl">
+          <h1 class="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl prose">
+            senior software engineer, amatuer photographer, data nerd.
+          </h1>
+          <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400 prose">
+            Hello, I am Josh! I currently work on the API & Delivery team at People Data Labs. I am an polyglot software
+            engineer with over 10 years of programming experience. My current interests are in learning all I can about
+            Rust and Go while staying current in Python and Javascript.
+          </p>
+          <div class="mt-6 flex gap-6">
+            <a
+              href="https://github.com/joshfinnie"
+              aria-label="Follow on GitHub"
+              class="group -m-1 p-1"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              <Icon
+                name="github"
+                class="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-600 dark:text-zinc-400 dark:group-hover:text-zinc-300"
+              />
+            </a>
+            <a
+              href="https://threads.net/@joshfinnie"
+              aria-label="Follow on Threads"
+              class="group -m-1 p-1"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              <Icon
+                name="threads"
+                class="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-600 dark:text-zinc-400 dark:group-hover:text-zinc-300"
+              />
+            </a>
+            <a
+              href="https://instagram.com/joshfinnie"
+              aria-label="Follow on Instagram"
+              class="group -m-1 p-1"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              <Icon
+                name="instagram"
+                class="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-600 dark:text-zinc-400 dark:group-hover:text-zinc-300"
+              />
+            </a>
+            <a
+              href="https://linkedin.com/in/joshfinnie/"
+              aria-label="Follow on LinkedIn"
+              class="group -m-1 p-1"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              <Icon
+                name="linkedin"
+                class="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-600 dark:text-zinc-400 dark:group-hover:text-zinc-300"
+              />
+            </a>
+            <a
+              href="https://twitch.tv/joshfinnie"
+              aria-label="Follow on Twitch"
+              class="group -m-1 p-1"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              <Icon
+                name="twitch"
+                class="h-6 w-6 text-zinc-500 transition group-hover:text-zinc-600 dark:text-zinc-400 dark:group-hover:text-zinc-300"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

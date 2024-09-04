@@ -9,7 +9,7 @@ const allPosts = await getCollection("blog");
 const posts = allPosts
   .filter((a) => a.data.draft != true)
   .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
-  .slice(0, 3);
+  .slice(0, 2);
 
 const workExperiences = [
   { logo: "pdl.jpg", company: "People Data Labs", role: "Senior Software Engineer", start: "2023-05" },
@@ -18,17 +18,18 @@ const workExperiences = [
   {
     logo: "trackmaven.jpg",
     company: "TrackMaven",
-    role: "Software Engineer -> Senior Software Engineer",
+    role: "Software Engineer to Senior Software Engineer",
     start: "2014-03",
     end: "2019-08",
   },
   { logo: "koansys.jpg", company: "Koansys", role: "Application Developer", start: "2012-02", end: "2014-03" },
+  { logo: "aetna.png", company: "Aetna", role: "Trainer", start: "2011-06", end: "2012-01" },
 ];
 ---
 
 <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-10 lg:max-w-none lg:grid-cols-2">
   <div class="flex flex-col gap-5">
-    <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">Recent Blog Posts</h2>
+    <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">Last 2 Blog Posts</h2>
     {posts.map((article) => <Article {...article} />)}
   </div>
   <div class="space-y-10 lg:pl-16">

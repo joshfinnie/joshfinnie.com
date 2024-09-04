@@ -1,22 +1,28 @@
 ---
+import { Image } from "astro:assets";
 import { Card, CardTitle, CardContent, CardFooter } from "./ui/card";
 const { slug, data } = Astro.props;
 ---
 <Card
   className="relative flex flex-col items-start p-4 bg-white dark:bg-zinc-800 shadow-lg border border-zinc-200 dark:border-zinc-700 rounded-lg"
 >
-  <CardTitle className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 mb-5 p-6 pt-1">
+  <CardTitle className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 px-2 pt-2 pb-4">
     <a href={`/blog/${slug}/`}>
-      {data.title}
+      <Image src={data.heroImage} width="512" alt={data.title} />
     </a>
   </CardTitle>
   <CardContent>
+    <div class="flex flex-col">
+    <a href={`/blog/${slug}/`}>
+      {data.title}
+    </a>
     <time class="text-sm text-zinc-400 dark:text-zinc-500" datetime={data.date}>
       {new Date(data.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
     </time>
+    </div>
     <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{data.description}</p>
   </CardContent>
-  <CardFooter className="mt-4 flex items-center text-sm font-medium text-teal-500 dark:text-teal-400">
+  <CardFooter className="flex items-center text-sm font-medium text-teal-500 dark:text-teal-400">
     <a href={`/blog/${slug}/`} class="flex items-center gap-1">
       Read article
       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-current">

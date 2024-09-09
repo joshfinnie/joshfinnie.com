@@ -6,7 +6,7 @@ import Date from "./Date.astro";
 const { post } = Astro.props;
 ---
 
-<article class="my-5 rela">
+<article class="my-5">
   {
     post.data.heroImage ? (
       <a href={`/blog/${post.slug}/`} title={post.data.title} class="prose prose-zinc dark:prose-invert">

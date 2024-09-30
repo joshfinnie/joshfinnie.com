@@ -1,7 +1,9 @@
-import { z, defineCollection } from "astro:content";
+import { z, defineCollection, SchemaContext } from "astro:content";
+import { ZodObject } from "astro:schema";
+import { Image } from "astro:assets";
 
 const blog = defineCollection({
-  schema: ({ image }) =>
+  schema: ({ image }: SchemaContext): ZodObject<any> =>
     z.object({
       title: z.string(),
       date: z.string(),
@@ -9,7 +11,7 @@ const blog = defineCollection({
       draft: z.boolean().optional(),
       expires: z.boolean().optional(),
       heroImage: image()
-        .refine((img) => img.width >= 1080, {
+        .refine((img: typeof Image): boolean => img.width >= 1080, {
           message: "Cover image must be at least 1080 pixels wide!",
         })
         .optional(),
@@ -20,13 +22,13 @@ const blog = defineCollection({
 });
 
 const project = defineCollection({
-  schema: ({ image }) =>
+  schema: ({ image }: SchemaContext): ZodObject<any> =>
     z.object({
       title: z.string(),
       summary: z.string(),
       technologies: z.array(z.string()),
       heroImage: image()
-        .refine((img) => img.width >= 780, {
+        .refine((img: typeof Image): boolean => img.width >= 780, {
           message: "Cover image must be at least 780 pixels wide!",
         })
         .optional(),
@@ -34,4 +36,23 @@ const project = defineCollection({
     }),
 });
 
-export const collections = { blog, project };
+const photo = defineCollection({
+  schema: ({ image }: SchemaContext): ZodObject<any> =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      date: z.string(),
+      camera: z.string().optional(),
+      ss: z.string().optional(),
+      f_stop: z.number().optional(),
+      mm: z.number().optional(),
+      iso: z.number().optional(),
+      image: image()
+        .refine((img: typeof Image): boolean => img.width >= 1080, {
+          message: "Photo must be greater than 1080 pixels to be displayed.",
+        })
+        .optional(),
+    }),
+});
+
+export const collections = { blog, project, photo };

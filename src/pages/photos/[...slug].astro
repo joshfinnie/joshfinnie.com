@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import { CollectionEntry, getCollection } from "astro:content";
+
+import { Aperture, Camera } from "lucide-react";
+
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Date from "@src/components/Date.astro";
+
+type Props = CollectionEntry<"photo">;
+
+export async function getStaticPaths() {
+  const posts = await getCollection("photo");
+  return posts.map((photo) => ({
+    params: { slug: photo.slug },
+    props: photo,
+  }));
+}
+
+const photo = Astro.props;
+---
+
+<BaseLayout
+  title={`${photo.data.title} | www.joshfinnie.com`}
+  description={photo.data.description}
+  image={photo.data.image}
+>
+  <span class="prose prose-zinc dark:prose-invert">
+    <Image src={photo.data.image} alt={photo.data.description} width="1024" class="rounded-lg" />
+    <h1 class="text-xl my-5">{photo.data.title}</h1>
+    <hr />
+    <ul class="list-none">
+      <li><Date date={photo.data.date} /></li>
+      <li class="flex items-center">
+        <strong><Camera className="inline-block mr-2" size={20} /></strong>
+        {photo.data.camera}
+      </li>
+      <li class="flex items-center">
+        <strong><Aperture className="inline-block mr-2" size={20} /></strong>
+        <Icon name="florin" size={20} style="display:inline-block" />{photo.data.f_stop}
+        {photo.data.ss}s {photo.data.mm}mm ISO{photo.data.iso}
+      </li>
+    </ul>
+  </span>
+</BaseLayout>

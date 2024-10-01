@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+
+import BaseLayout from "@src/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const allPhotos = await getCollection("photo");
+const photos = allPhotos.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
+---
+
+<BaseLayout title="Photos | www.joshfinnie.com">
+  <div class="grid grid-cols-2 gap-4">
+    {
+      photos.map((p) => (
+        <a href={`/photos/${p.slug}/`} title={p.data.title}>
+          <Image src={p.data.image} alt={p.data.description} width="512" class="rounded-lg" />
+        </a>
+      ))
+    }
+  </div>
+</BaseLayout>

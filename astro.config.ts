@@ -19,6 +19,9 @@ export default defineConfig({
   image: {
     service: sharpImageService(),
   },
+  experimental: {
+    contentLayer: true,
+  },
   integrations: [
     mdx(),
     sitemap(),

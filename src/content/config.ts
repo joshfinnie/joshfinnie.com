@@ -1,3 +1,4 @@
+import { authorFeedLoader } from "@ascorbic/bluesky-loader";
 import { z, defineCollection } from "astro:content";
 
 const blog = defineCollection({
@@ -34,4 +35,10 @@ const project = defineCollection({
     }),
 });
 
-export const collections = { blog, project };
+const skeets = defineCollection({
+  loader: authorFeedLoader({
+    identifier: "joshfinnie.dev",
+  }),
+});
+
+export const collections = { blog, project, skeets };

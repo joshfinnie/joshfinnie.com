@@ -58,7 +58,9 @@
     "vite-react-jsx": "^1.1.2"
   },
   "dependencies": {
+    "@ascorbic/bluesky-loader": "^0.0.3",
     "@astrojs/alpinejs": "^0.4.0",
+    "@atproto/api": "^0.13.16",
     "@fontsource/inter": "^5.1.0",
     "@types/alpinejs": "^3.13.10",
     "alpinejs": "^3.14.3"

@@ -1,0 +1,98 @@
+---
+import { getCollection, render } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { AppBskyEmbedImages, AppBskyEmbedRecordWithMedia, AppBskyEmbedVideo } from "@atproto/api";
+
+import BaseLayout from "@src/layouts/BaseLayout.astro";
+import Date from "@src/components/Date.astro";
+import { Card, CardContent, CardFooter } from "@src/components/ui/card";
+import { Button } from "@src/components/ui/button";
+const posts = await getCollection("skeets");
+---
+
+<BaseLayout title="Bluesky Posts | www.joshfinnie.com">
+  <article id="main-content" class="mx-auto max-w-[690px]">
+    <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">Bluesky Posts</h1>
+    {
+      posts.map(async (post) => {
+        const { Content } = await render(post);
+        const isRepost = post.data.author.handle !== "joshfinnie.dev";
+        const { embed } = post.data;
+        const extractedId = post.id.split("/").pop();
+        const url = `https://bsky.app/profile/joshfinnie.dev/post/${extractedId}`;
+
+        return (
+          <Card>
+            <CardContent className="pt-5 prose prose-slate dark:prose-invert">
+              <div class="flex gap-2">
+                <span class="min-w-[50px] relative">
+                  <img src={post.data.author.avatar} class="rounded-full h-[42px] w-[42px]" />
+                  {/* Repost Icon */}
+                  {isRepost && (
+                    <span class="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
+                      <Icon
+                        name="repost"
+                        size={20}
+                        class="bg-slate-900 text-slate-100 dark:bg-slate-100 dark:text-slate-900 rounded-full p-1"
+                      />
+                    </span>
+                  )}
+                </span>
+                <span>
+                  {AppBskyEmbedImages.isView(embed)
+                    ? embed.images.map(
+                        (image) =>
+                          image && (
+                            <img src={image.thumb} alt={image.alt} class="max-w-[100%] max-h-[100%] rounded-lg mb-2" />
+                          ),
+                      )
+                    : undefined}
+                  {AppBskyEmbedVideo.isView(embed) ? (
+                    <img src={embed.thumbnail} class="max-w-[100%] max-h-[100%] rounded-lg mb-2" />
+                  ) : undefined}
+                  {AppBskyEmbedRecordWithMedia.isView(embed) ? (
+                    <img
+                      src={embed.media.external.uri}
+                      alt={embed.media.external.description}
+                      class="max-w-[100%] max-h-[100%] rounded-lg mb-2"
+                    />
+                  ) : undefined}
+                  <Content />
+                </span>
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-between prose prose-slate dark:prose-invert">
+              <div class="flex gap-3">
+                <span>
+                  <Date date={post.data.record.createdAt} />
+                </span>
+                <span class="flex items-center gap-1">
+                  <Icon name="message" size={20} style="display:inline-block" />
+                  {post.data.replyCount}
+                </span>
+                <span class="flex items-center gap-1">
+                  <Icon name="heart" size={20} style="display:inline-block" />
+                  {post.data.likeCount}
+                </span>
+                <span class="flex items-center gap-1">
+                  <Icon name="repost" size={20} style="display:inline-block" />
+                  {post.data.repostCount}
+                </span>
+              </div>
+              <div>
+                <span class="flex items-center gap-1 grow">
+                  <a href={url} class="">
+                    <Button>
+                      <Icon name="link" size={15} style="display:inline-block" />
+                      <span class="pl-2">View on Bluesky</span>
+                    </Button>
+                  </a>
+                </span>
+              </div>
+            </CardFooter>
+          </Card>
+        );
+      })
+    }
+  </article>
+</BaseLayout>

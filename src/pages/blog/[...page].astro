@@ -1,12 +1,12 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import { CollectionEntry, getCollection } from "astro:content";
 
 import BlogPostPreview from "@components/BlogPostPreview.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Pagination from "@components/Pagination.astro";
 
 export async function getStaticPaths({ paginate }) {
-  const allPosts = await getCollection('blog');
+  const allPosts = await getCollection("blog");
   const sortedPosts = allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 
   return paginate(sortedPosts, {
@@ -14,12 +14,18 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-const { page } = Astro.props;
+interface PageProps {
+  data: CollectionEntry<"blog">[];
+  currentPage: number;
+  totalPages: number;
+}
+
+const { page }: { page: PageProps } = Astro.props;
 ---
 
 <BaseLayout title="Blog | www.joshfinnie.com">
   <section id="main-content">
-    {page.data.map((p: CollectionEntry<'blog'>) => <BlogPostPreview post={p} />)}
+    {page.data.map((p: CollectionEntry<"blog">) => <BlogPostPreview post={p} />)}
   </section>
-  <Pagination {page} />
+  <Pagination {...page} />
 </BaseLayout>

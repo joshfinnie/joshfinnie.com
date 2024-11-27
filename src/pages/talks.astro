@@ -1,9 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import Talk from "@components/Talk.astro";
-import { getCollection } from "astro:content";
 
 const allTalks = await getCollection("talks");
 const talks = allTalks[0].data.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));

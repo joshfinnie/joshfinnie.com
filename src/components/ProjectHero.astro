@@ -1,17 +1,27 @@
 ---
 import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
 
-const { title, heroImage, summary, technologies } = Astro.props;
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const project = await getEntry("project", slug);
 ---
 
-<h1 class="font-bold text-3xl mb-0 mt-5 prose prose-zinc dark:prose-invert">{title}</h1>
-{heroImage && <Image src={heroImage} alt={title} width="1024" class="-mb-1 mt-0" />}
-<p class="prose prose-zinc dark:prose-invert max-w-none">{summary}</p>
+<h1 class="font-bold text-3xl mb-0 mt-5 prose prose-zinc dark:prose-invert">{project.data.title}</h1>
+{
+  project.data.heroImage && (
+    <Image src={project.data.heroImage} alt={project.data.title} width="1024" class="-mb-1 mt-0" />
+  )
+}
+<p class="prose prose-zinc dark:prose-invert max-w-none">{project.data.summary}</p>
 <div class="mb-5 flex flex-col lg:flex-row justify-center items-center bg-zinc-200 text-zinc-800 rounded-lg">
   <div class="font-bold py-2">Technologies Used:</div>
   <div class="max-w-[300px] lg:max-w-none">
     {
-      technologies.map((tech: string) => (
+      project.data.technologies.map((tech: string) => (
         <Fragment key={tech}>
           <Image
             src={`/assets/icons/${tech}.png`}

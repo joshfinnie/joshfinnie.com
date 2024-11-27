@@ -30,15 +30,15 @@ Since I am on a Macbook Pro and already set up [homebrew](https://brew.sh/) as m
 You need to install Starship.rs through Homebrew. Run the below command and get Fish installed as well!
 
 ```bash
-$ brew install starship fish
+brew install starship fish
 ```
 
 With Starship installed, let's update the terminal a bit.
 Create a configuration file for Starship:
 
 ```bash
-$ mkdir -p $HOME/.config
-$ touch $HOME/.config/starship.toml
+mkdir -p $HOME/.config
+touch $HOME/.config/starship.toml
 ```
 
 Feel free to read [this documentation](https://starship.rs/config/#prompt) to customize your prompt how you like it.
@@ -69,8 +69,8 @@ Type `fish` and see that you can start using Fish right away.
 But we want a more permanent solution, below is how we add Fish to our available shells and set it as default:
 
 ```bash
-$ echo /usr/local/bin/fish | sudo tee -a /etc/shells
-$ chsh -s /usr/local/bin/fish
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
+chsh -s /usr/local/bin/fish
 ```
 
 These commands mean you are officially using Fish as your shell.
@@ -90,15 +90,15 @@ Where we make these changes is a bit different.
 Let's create the file we need:
 
 ```bash
-$ mkdir -p $HOME/.config/fish
-$ echo "set -gx EDITOR emacs" >> $HOME/.config/fish/config.fish
+mkdir -p $HOME/.config/fish
+echo "set -gx EDITOR emacs" >> $HOME/.config/fish/config.fish
 ```
 
 The above commands make sure we have a folder to hold our Fish configuration and sets my `EDITOR` variable to emacs.
 The next major change we want to do to our Fish configuration file is tie in Starship.rs.
 
 ```bash
-$ echo "starship init fish | source" >> $HOME/.config/fish/config.fish
+echo "starship init fish | source" >> $HOME/.config/fish/config.fish
 ```
 
 And with that, we should be using our Starship prompt with Fish!
@@ -143,8 +143,8 @@ First, let's create a file to hold our abbreviations.
 Fish has a standard location for additional config files, so let's create that file and edit our abbreviations:
 
 ```bash
-$ mkdir -p $HOME/.config/fish/conf.d/
-$ touch $HOME/.cofig/fish/conf.d/abbr.fish
+mkdir -p $HOME/.config/fish/conf.d/
+touch $HOME/.cofig/fish/conf.d/abbr.fish
 ```
 
 And fill it out:
@@ -269,5 +269,5 @@ So far it has been a nice change-of-pace.
 
 ## Also Might Enjoy
 
-- [ASDF: How To Set Up Runtimes on Windows Subsystem for Linux](/blog/setting_up_wsl_with_asdf/)
+- [ASDF: How To Set Up Runtimes on Windows Subsystem for Linux](/blog/setting-up-wsl-with-asdf/)
 - [Using Latex through Docker](https://www.joshfinnie.com/blog/latex-through-docker/)

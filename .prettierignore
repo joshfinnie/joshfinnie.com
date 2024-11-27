@@ -1,1 +1,4 @@
 dist/
+src/components/ui/
+src/content/**/*.md
+src/content/**/*.mdx

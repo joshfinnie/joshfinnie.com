@@ -12,13 +12,15 @@ const { title, heroImage, summary, technologies } = Astro.props;
   <div class="max-w-[300px] lg:max-w-none">
     {
       technologies.map((tech: string) => (
-        <Image
-          src={`/assets/icons/${tech}.png`}
-          height="48"
-          width="48"
-        class="hover:scale-110 transition duration-300 ease-in-out inline m-2 lg:m-5"
-          alt={tech}
-        />
+        <Fragment key={tech}>
+          <Image
+            src={`/assets/icons/${tech}.png`}
+            height="48"
+            width="48"
+            class="hover:scale-110 transition duration-300 ease-in-out inline m-2 lg:m-5"
+            alt={tech}
+          />
+        </Fragment>
       ))
     }
   </div>

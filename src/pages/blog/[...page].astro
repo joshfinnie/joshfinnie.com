@@ -1,5 +1,6 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 import BlogPostPreview from "@components/BlogPostPreview.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -25,7 +26,13 @@ const { page }: { page: PageProps } = Astro.props;
 
 <BaseLayout title="Blog | www.joshfinnie.com">
   <section id="main-content">
-    {page.data.map((p: CollectionEntry<"blog">) => <BlogPostPreview post={p} />)}
+    {
+      page.data.map((p) => (
+        <Fragment key={p.id}>
+          <BlogPostPreview slug={p.slug} />
+        </Fragment>
+      ))
+    }
   </section>
-  <Pagination {...page} />
+  <Pagination page={page} />
 </BaseLayout>

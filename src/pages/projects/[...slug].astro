@@ -1,5 +1,6 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import ProjectHero from "@components/ProjectHero.astro";
@@ -22,4 +23,3 @@ const { Content } = await project.render();
     <Content />
   </article>
 </BaseLayout>
-

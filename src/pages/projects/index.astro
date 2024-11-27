@@ -12,7 +12,7 @@ const projects = allProjects.sort((a, b) => Date.parse(b.data.lastUpdated) - Dat
   {
     projects.map((p) => (
       <Fragment key={p.id}>
-        <Project project={p} />
+        <Project slug={p.slug} />
       </Fragment>
     ))
   }

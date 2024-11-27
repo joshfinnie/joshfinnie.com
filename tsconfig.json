@@ -1,5 +1,6 @@
 {
   "moduleResolution": "node",
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
@@ -12,6 +13,12 @@
       "@assets/*": ["src/assets/*"],
       "@lib/*": ["src/lib/*"]
     },
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "verbatimModuleSyntax": true,
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ]
   }
 }

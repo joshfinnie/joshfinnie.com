@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon/components";
 
 const { tags } = Astro.props;
-const tagLen = tags.length;
 ---
 
 <div class="flex gap-1 items-center prose prose-zinc dark:prose-invert">
@@ -11,7 +10,7 @@ const tagLen = tags.length;
     tags.map((tag: string, idx: number) => (
       <Fragment key={tag}>
         <a href={`/tags/${tag}/`}>{tag}</a>
-        {tagLen !== idx + 1 ? ", " : ""}
+        {tag.length !== idx + 1 ? ", " : ""}
       </Fragment>
     ))
   }

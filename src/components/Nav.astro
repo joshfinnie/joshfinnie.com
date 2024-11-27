@@ -1,9 +1,11 @@
 ---
 import { ChevronDown } from "lucide-react";
 
-import { Button } from "./ui/button";
-
-const navLinks = [
+interface NavLink {
+  href: string;
+  label: string;
+}
+const navLinks: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/about/", label: "About" },
   { href: "/blog/", label: "Blog" },
@@ -17,11 +19,12 @@ const navLinks = [
 <div class="pointer-events-auto md:hidden">
   <div x-data="{ open: false }" class="relative">
     <button
+      type="button"
       @click="open = !open"
       class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-zinc-800 bg-white rounded-lg dark:bg-zinc-800 dark:text-zinc-200"
     >
       Menu
-      <ChevronDown class="ml-3 h-auto w-4 text-zinc-500" :class="{ 'rotate-180': open }" />
+      <ChevronDown className="ml-3 h-auto w-4 text-zinc-500" :class="{ 'rotate-180': open }" />
     </button>
     <div
       x-show="open"

@@ -1,49 +1,55 @@
 ---
-import { getImage, Image } from "astro:assets";
+import { getImage } from "astro:assets";
+import { getEntry } from "astro:content";
 
 import AlsoLike from "./AlsoLike.astro";
 import Date from "./Date.astro";
 import Tag from "./Tags.astro";
 import HeroImage from "./BlogPostHeroImage.astro";
 
-const { title, date, tags, slug, heroImage, unsplash, unsplashURL, description } = Astro.props;
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const post = await getEntry("blog", slug);
 
 var imageURL = "";
-if (heroImage) {
-  const optimizedImage = await getImage({ src: heroImage });
+if (post.data.heroImage) {
+  const optimizedImage = await getImage({ src: post.data.heroImage });
   imageURL = `https://www.joshfinnie.com${optimizedImage.src}`;
 }
 
 let schema = JSON.stringify({
   "@context": "https://schema.org/",
   "@type": "BlogPosting",
-  headline: title,
+  headline: post.data.title,
   author: {
     "@type": "Person",
     name: "Josh Finnie",
   },
-  datePublished: date,
-  dateCreated: date,
-  description: description,
-  url: `https://www.joshfinnie.com/${slug}`,
+  datePublished: post.data.date,
+  dateCreated: post.data.date,
+  description: post.data.description,
+  url: `https://www.joshfinnie.com/${post.slug}`,
   "inLanguage ": "en-US",
   image: imageURL,
-  keywords: tags,
+  keywords: post.data.tags,
 });
 ---
 
 <article>
   <header>
-    <HeroImage title={title} heroImage={heroImage} unsplashName={unsplash} unsplashUrl={unsplashURL} />
+    <HeroImage slug={slug} />
     <div id="main-content" class="flex flex-col items-center mb-10 max-w-none prose prose-zinc dark:prose-invert">
-      <h1 class="font-bold text-4xl mb-5 mt-5" set:html={title} />
-      <Date {date} />
-      <Tag {tags} />
+      <h1 class="font-bold text-4xl mb-5 mt-5" set:html={post.data.title} />
+      <Date date={post.data.date} />
+      <Tag tags={post.data.tags} />
     </div>
   </header>
   <main class="prose dark:prose-invert prose-zinc max-w-none">
     <slot />
   </main>
-  <AlsoLike {tags} {slug} />
-  <script type="application/ld+json" set:html={schema} />
+  <AlsoLike tags={post.data.tags} slug={slug} />
+  <script type="application/ld+json" set:html={schema} is:inline />
 </article>

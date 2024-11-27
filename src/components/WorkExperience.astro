@@ -1,20 +1,22 @@
 ---
-import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+import { Card, CardTitle, CardFooter } from "./ui/card";
 
 interface Props {
-   imagePath: string;
-   altText: string;
-   name: string;
-   age: number;
+  company: string;
+  role: string;
+  startDate: string;
+  endDate?: string;
+  logo: string;
 }
 
-import { Card, CardTitle, CardContent, CardFooter } from "./ui/card";
+const { company, role, startDate, endDate = null, logo } = Astro.props;
 
-const { company, role, startDate, endDate, logo } = Astro.props;
-
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/companies/*.{jpeg,jpg,png,gif}');
-if (!images[`/src/assets/companies/${logo}`]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/companies/*.{jpeg,jpg,png,gif}");
+if (!images[`/src/assets/companies/${logo}`])
+  throw new Error(`"${logo}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
 
 <Card

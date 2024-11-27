@@ -9,10 +9,10 @@ const tagLen = tags.length;
   <Icon name="tags" size={25} style="display:inline-block" />
   {
     tags.map((tag: string, idx: number) => (
-      <span>
+      <Fragment key={tag}>
         <a href={`/tags/${tag}/`}>{tag}</a>
         {tagLen !== idx + 1 ? ", " : ""}
-      </span>
+      </Fragment>
     ))
   }
 </div>

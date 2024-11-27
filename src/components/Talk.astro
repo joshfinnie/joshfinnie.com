@@ -18,12 +18,10 @@ const { talk } = Astro.props;
       )
     }
     {
-      talk.lightning ? (
+      talk.lightning && (
         <span style="padding-left: 5px;">
           <Icon name="bolt" size={25} style="display:inline-block" />
         </span>
-      ) : (
-        ""
       )
     }
   </h2>

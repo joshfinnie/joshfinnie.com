@@ -1,10 +1,12 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import Talk from "@components/Talk.astro";
+import { getCollection } from "astro:content";
 
-import data from "@data/talks.json";
+const allTalks = await getCollection("talks");
+const talks = allTalks[0].data.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 ---
 
 <BaseLayout title="Talks | www.joshfinnie.com">
@@ -14,6 +16,12 @@ import data from "@data/talks.json";
       (<Icon name="bolt" size={20} style="display:inline-block" />
       denotes a lightning talk)
     </p>
-    {data.talks.map((t) => <Talk talk={t} />)}
+    {
+      talks.map((t) => (
+        <Fragment key={t.name}>
+          <Talk talk={t} />
+        </Fragment>
+      ))
+    }
   </article>
 </BaseLayout>

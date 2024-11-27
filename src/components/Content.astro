@@ -11,25 +11,48 @@ const posts = allPosts
   .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
   .slice(0, 3);
 
-const workExperiences = [
-  { logo: "pdl.jpg", company: "People Data Labs", role: "Senior Software Engineer", start: "2023-05" },
-  { logo: "indigoag.jpg", company: "IndigoAg", role: "Staff Software Engineer", start: "2022-05", end: "2023-03" },
-  { logo: "pbs.jpg", company: "PBS", role: "Senior Software Engineer", start: "2019-09", end: "2022-05" },
+interface WorkExperienceType {
+  id: number;
+  logo: string;
+  company: string;
+  role: string;
+  start: string;
+  end?: string;
+}
+
+const workExperiences: WorkExperienceType[] = [
+  { id: 0, logo: "pdl.jpg", company: "People Data Labs", role: "Senior Software Engineer", start: "2023-05" },
   {
+    id: 1,
+    logo: "indigoag.jpg",
+    company: "IndigoAg",
+    role: "Staff Software Engineer",
+    start: "2022-05",
+    end: "2023-03",
+  },
+  { id: 2, logo: "pbs.jpg", company: "PBS", role: "Senior Software Engineer", start: "2019-09", end: "2022-05" },
+  {
+    id: 3,
     logo: "trackmaven.jpg",
     company: "TrackMaven",
     role: "Software Engineer -> Senior Software Engineer",
     start: "2014-03",
     end: "2019-08",
   },
-  { logo: "koansys.jpg", company: "Koansys", role: "Application Developer", start: "2012-02", end: "2014-03" },
+  { id: 4, logo: "koansys.jpg", company: "Koansys", role: "Application Developer", start: "2012-02", end: "2014-03" },
 ];
 ---
 
 <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-10 lg:max-w-none lg:grid-cols-2">
   <div class="flex flex-col gap-5">
     <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">Recent Blog Posts</h2>
-    {posts.map((article) => <Article {...article} />)}
+    {
+      posts.map((article) => (
+        <Fragment key={article.id}>
+          <Article {...article} />
+        </Fragment>
+      ))
+    }
   </div>
   <div class="space-y-10 lg:pl-16">
     <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -40,13 +63,15 @@ const workExperiences = [
       <div class="grid gap-5">
         {
           workExperiences.map((experience) => (
-            <WorkExperience
-              company={experience.company}
-              role={experience.role}
-              startDate={experience.start}
-              endDate={experience.end}
-              logo={experience.logo}
-            />
+            <Fragment key={experience.id}>
+              <WorkExperience
+                company={experience.company}
+                role={experience.role}
+                startDate={experience.start}
+                endDate={experience.end}
+                logo={experience.logo}
+              />
+            </Fragment>
           ))
         }
       </div>

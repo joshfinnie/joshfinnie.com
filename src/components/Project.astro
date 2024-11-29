@@ -13,7 +13,7 @@ const project = await getEntry("project", slug);
 ---
 
 <article class="prose prose-zinc max-w-none pb-10 dark:prose-invert">
-  <ProjectHero {...project.data} />
+  <ProjectHero slug={project.slug} />
 
   <a href={`/projects/${project.slug}/`}>
     <Button className="float-right">More Details</Button>

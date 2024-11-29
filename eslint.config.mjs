@@ -15,7 +15,7 @@ export default [
     },
   },
   { ignores: ["node_modules/*", "dist/*", ".astro/*"] },
-  { languageOptions: { globals: globals.browser } },
+  {languageOptions: { globals: {...globals.browser, ...globals.node} }},
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,

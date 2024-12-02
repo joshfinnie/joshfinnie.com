@@ -1,0 +1,227 @@
+---
+title: "Adding ESLint & Prettier to My Blog"
+date: "2024-12-02"
+tags:
+  - "refactor"
+  - "best-practices"
+  - "astro"
+slug: "adding-eslint-and-prettier-to-my-blog"
+heroImage: "@assets/blog/gardening.jpg"
+unsplash: "ecowarriorprincess"
+unsplashURL: "ecowarriorprincess"
+description: "I recently took some time to add ESLint and Prettier to my Astro blog. Here an easy todo to follow and some of my lessons learned."
+---
+
+## Introduction
+
+As a developer passionate about clean, efficient codebases, I'm always seeking tools to enhance my workflow.
+My Astro blog combines my love for development with creative blogging.
+As the project grew, maintaining consistent code quality across files and components became challenging.
+I needed tools to enforce coding standards, reduce errors, and improve collaboration.
+
+Enter **Prettier** and **ESLint** — two powerful tools that improve code consistency and catch potential issues early.
+Prettier formats every file uniformly, saving hours of manual formatting work.
+ESLint identifies and flags problematic patterns in my code.
+In this post, I'll show you how I integrated these tools into my Astro blog, share the benefits I've seen, and explain why you should consider them for your projects.
+
+## What is Prettier and What is it Used For?
+
+Prettier is an opinionated code formatter that ensures consistent code style.
+It automatically enforces formatting rules like indentation, line breaks, and quote usage, eliminating the need for manual formatting.
+This removes style debates from teams, letting developers focus on writing functionality.
+
+Prettier works seamlessly with most editors, formatting code on save.
+It supports JavaScript, TypeScript, HTML, CSS, and frameworks like Astro.
+By automating formatting, it creates a clean, professional codebase that's easier to read and maintain.
+
+## What is ESLint and What is it Used For?
+
+ESLint finds and fixes problems in JavaScript and TypeScript code.
+It analyzes code for syntax errors, unused variables, and patterns that might cause bugs.
+Beyond error detection, it enforces coding standards and best practices, making your codebase both functional and maintainable.
+
+ESLint's plugin architecture allows customization for any project.
+It works with frameworks like Astro and integrates with tools like Prettier.
+While Prettier handles formatting, ESLint focuses on code logic and structure.
+Adding it to your workflow helps catch issues early, reduces debugging time, and improves code quality.
+
+## Why Use Both Prettier and ESLint?
+
+For growing projects like an Astro blog, maintaining a clean codebase is crucial.
+Prettier and ESLint address this from complementary angles, forming a powerful combination.
+
+Prettier automates code formatting for consistent style.
+It handles indentation, spacing, and line breaks, eliminating manual adjustments and style debates.
+This lets you focus on writing code rather than arguing about formatting.
+
+ESLint examines code logic and structure.
+It catches bugs, enforces best practices, and flags issues early.
+With its ability to enforce standards and suggest fixes, it improves code reliability and maintainability.
+
+Together, they're unbeatable.
+Prettier keeps code looking sharp, while ESLint ensures it's clean and functional.
+This creates a codebase that's not only visually consistent but also robust and reliable, improving the developer experience.
+
+## Step-by-Step Guide to Adding Prettier and ESLint
+
+### 1. Set Up Prettier
+
+1.1. Install Prettier:
+
+```bash
+npm install --save-dev prettier prettier-plugin-astro
+```
+
+1.2. Create a `.prettierrc.mjs` file for your configuration:
+
+```javascript
+// .prettierrc.mjs
+/** @type {import("prettier").Config} */
+export default {
+  plugins: ["prettier-plugin-astro"],
+};
+```
+
+1.3. Add a `.prettierignore` file to exclude files/folders:
+
+```plaintext
+dist/
+src/components/ui/
+src/content/**/*.md
+src/content/**/*.mdx
+```
+
+1.4. Add Prettier to your scripts:
+
+```json
+"scripts": {
+  "format": "prettier --write ."
+}
+```
+
+### 2. Set Up ESLint
+
+2.1. Install ESLint for Astro:
+
+```bash
+npm install --save-dev eslint
+```
+
+2.2. Initialize ESLint:
+
+```bash
+npx eslint --init
+```
+
+- Choose configuration options (e.g., modules, language, and whether to enforce formatting rules).
+
+  2.3. Configure ESLint for Astro in `eslint.config.mjs`:
+
+```javascript
+// eslint.config.mjs
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+
+
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  {files: ["**/*.{js,mjs,cjs,ts,astro}"]},
+  {languageOptions: { globals: {...globals.browser, ...globals.node} }},
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+];⏎
+```
+
+### 3. Integrate Prettier with ESLint
+
+3.1. Install the Prettier plugin for ESLint and the Astro plugin for ESLint:
+
+```bash
+npm install --save-dev eslint-plugin-prettier/recommended eslint-plugin-astro
+```
+
+3.2. Update `eslint.config.mjs` to include Prettier rules:
+
+```javascript
+// eslint.config.mjs
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+
+import eslintPluginAstro from 'eslint-plugin-astro';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+
+
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  {files: ["**/*.{js,mjs,cjs,ts,astro}"]},
+  {languageOptions: { globals: {...globals.browser, ...globals.node} }},
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...eslintPluginPrettierRecommended,
+  ...eslintPluginAstro.configs.recommended,
+];⏎
+```
+
+## The Benefits I’ve Noticed
+
+Adding Prettier and ESLint to my Astro blog has transformed the way I write and manage code, delivering noticeable improvements across several key areas.
+
+### Improved Code Consistency
+
+The first thing I noticed was how effortlessly consistent my code became.
+Prettier handles all formatting decisions — from semicolons to bracket alignment to quote styles.
+This consistency eliminates manual adjustments and style debates.
+Whether it's just me working on different days or a team effort, everyone follows the same format.
+The result?
+A codebase that's clean, professional, and easier to maintain.
+
+### Fewer Bugs and Errors
+
+ESLint has been a game-changer for reducing bugs and catching issues early.
+It spots problems like unused variables, undefined imports, and potentially problematic function calls.
+Once, it caught a typo in an import statement that could have caused a production issue — saving hours of debugging.
+By catching errors during linting, ESLint ensures code that's both stylistically sound and functionally robust.
+
+### Enhanced Developer Experience
+
+These tools have significantly improved my development experience.
+With automated formatting and linting, I spend less time on manual formatting and error checking.
+Instead, I focus on building features and writing content. Even routine tasks like refactoring feel smoother because these tools handle the repetitive work.
+
+### Streamlined Collaboration
+
+Though my Astro blog is mainly a solo project, these tools would make team collaboration seamless.
+Prettier ensures consistent code style, while ESLint maintains shared coding standards.
+This reduces friction in code reviews and makes it easier to hand off code. Even as a solo developer, this foundation makes me confident about my blog's maintainability.
+
+By integrating Prettier and ESLint, I've created a development environment that prioritizes both code quality and developer happiness.
+These aren't just helpful tools — they're essential for any developer who values efficiency and quality.
+
+## Challenges and How I Solved Them
+
+Setting up Prettier and ESLint wasn't without challenges, but solving them was rewarding.
+The main issue was conflicting rules between the tools.
+ESLint would flag formatting issues that Prettier had already handled, creating redundant warnings.
+I solved this by adding the `eslint-plugin-prettier/recommended` package to my ESLint config.
+This package disables ESLint's formatting rules, letting Prettier handle formatting while ESLint focuses on code quality.
+
+Another hurdle was the `eslint.config.json` file. This newer configuration approach lacks extensive documentation, and the add-on packages made it more complex.
+Fortunately, once set up correctly, this file rarely needs changes.
+
+These challenges taught me about fine-tuning tools for Astro. While initial setup required effort, the resulting smooth workflow was worth it.
+
+## Conclusion
+
+Adding Prettier and ESLint to my Astro blog has been transformative.
+These tools have elevated my workflow, ensuring consistent, clean, and error-free code.
+Prettier handles formatting effortlessly, while ESLint catches potential bugs and enforces best practices.
+Together, they've streamlined development, reduced technical debt, and improved code collaboration.
+
+For any project — whether an Astro blog, JavaScript library, or anything else — I highly recommend these tools.
+Setup is straightforward, and the benefits are lasting.
+Clean, maintainable code is an investment that pays off with every feature and refactor.
+Try Prettier and ESLint in your next project — you won't regret it!
+For comments or suggestions, find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).
+Let's chat!

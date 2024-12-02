@@ -38,8 +38,14 @@ if (!images[`/src/assets/companies/${logo}`])
       {new Date(startDate).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
     </time>{" "}
     -{" "}
-    <time datetime={endDate}>
-      {new Date(endDate).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
-    </time>{" "}
+    {
+      endDate ? (
+        <time datetime={endDate}>
+          {new Date(endDate).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
+        </time>
+      ) : (
+        "Present"
+      )
+    }
   </CardFooter>
 </Card>

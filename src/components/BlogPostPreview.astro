@@ -1,9 +1,15 @@
 ---
 import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
 
 import Date from "./Date.astro";
 
-const { post } = Astro.props;
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const post = await getEntry("blog", slug);
 ---
 
 <article class="my-5">

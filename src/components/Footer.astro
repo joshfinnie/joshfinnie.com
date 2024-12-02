@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 
 import license from "@assets/icons/by-nc-sa.png";
 const year = new Date().getFullYear();
@@ -26,21 +25,18 @@ const navLinks = [
                 class="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200"
               >
                 {
-                navLinks.map((link) => (
-                <a class="transition hover:text-teal-500 dark:hover:text-teal-400" href={link.href}>{link.label}</a>
-                ))
+                  navLinks.map((link) => (
+                    <Fragment key={link.label}>
+                      <a class="transition hover:text-teal-500 dark:hover:text-teal-400" href={link.href}>
+                        {link.label}
+                      </a>
+                    </Fragment>
+                  ))
                 }
               </div>
               <p class="text-sm text-zinc-400 dark:text-zinc-500">
                 &copy; 2010 - <!-- -->{year}<!-- --> Josh Finnie.
-                <Image
-                  alt="creative commons license"
-                  class="ml-5"
-                  src={license}
-                  width="88"
-                  height="31"
-                  class="inline ml-5"
-                />
+                <Image alt="creative commons license" class="inline ml-5" src={license} width="88" height="31" />
               </p>
             </div>
           </div>

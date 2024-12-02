@@ -15,7 +15,11 @@ export default [
     },
   },
   { ignores: ["node_modules/*", "dist/*", ".astro/*"] },
+<<<<<<< HEAD
   { languageOptions: { globals: globals.browser } },
+=======
+  {languageOptions: { globals: {...globals.browser, ...globals.node} }},
+>>>>>>> origin/feature/rework-and-lint
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,

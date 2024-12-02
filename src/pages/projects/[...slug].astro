@@ -1,5 +1,6 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import ProjectHero from "@components/ProjectHero.astro";
@@ -18,8 +19,7 @@ const { Content } = await project.render();
 
 <BaseLayout title={`Project: ${project.data.title} | www.joshfinnie.com`}>
   <article class="prose prose-zinc dark:prose-invert max-w-none">
-    <ProjectHero {...project.data} />
+    <ProjectHero slug={project.slug} />
     <Content />
   </article>
 </BaseLayout>
-

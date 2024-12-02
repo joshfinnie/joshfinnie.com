@@ -1,12 +1,19 @@
 ---
+import { getEntry } from "astro:content";
+
 import { Button } from "./ui/button";
 import ProjectHero from "./ProjectHero.astro";
 
-const { project } = Astro.props;
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const project = await getEntry("project", slug);
 ---
 
 <article class="prose prose-zinc max-w-none pb-10 dark:prose-invert">
-  <ProjectHero {...project.data} />
+  <ProjectHero slug={project.slug} />
 
   <a href={`/projects/${project.slug}/`}>
     <Button className="float-right">More Details</Button>

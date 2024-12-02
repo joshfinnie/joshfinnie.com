@@ -1,17 +1,22 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
+import { getEntry } from "astro:content";
 
 import Unsplash from "./Unsplash.astro";
 
-const { title, heroImage, unsplashName, unsplashUrl } = Astro.props;
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+const post = await getEntry("blog", slug);
 ---
 
 <div class="relative">
-  {heroImage && <Image class="rounded-md" src={heroImage} alt={title} width="1024" />}
+  {post.data.heroImage ? <Picture src={post.data.heroImage} alt={post.data.title} width={1024} /> : undefined}
   {
-    unsplashName && (
+    post.data.unsplash && (
       <div class="absolute bottom-0 right-0 mb-2 mr-2 rounded-lg bg-zinc-200 px-2 py-2 dark:bg-zinc-800 md:px-6 prose prose-zinc dark:prose-invert">
-        <Unsplash name={unsplashName} url={unsplashUrl} />
+        <Unsplash name={post.data.unsplash} url={post.data.unsplashURL} />
       </div>
     )
   }

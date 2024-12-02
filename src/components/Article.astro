@@ -1,6 +1,13 @@
 ---
+import { getEntry } from "astro:content";
 import { Card, CardTitle, CardContent, CardFooter } from "./ui/card";
-const { slug, data } = Astro.props;
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const post = await getEntry("blog", slug);
 ---
 
 <Card
@@ -8,14 +15,14 @@ const { slug, data } = Astro.props;
 >
   <CardTitle className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 mb-5 p-6 pt-1">
     <a href={`/blog/${slug}/`}>
-      {data.title}
+      {post.data.title}
     </a>
   </CardTitle>
   <CardContent>
-    <time class="text-sm text-zinc-400 dark:text-zinc-500" datetime={data.date}>
-      {new Date(data.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+    <time class="text-sm text-zinc-400 dark:text-zinc-500" datetime={post.data.date}>
+      {new Date(post.data.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
     </time>
-    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{data.description}</p>
+    <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{post.data.description}</p>
   </CardContent>
   <CardFooter className="mt-4 flex items-center text-sm font-medium text-teal-500 dark:text-teal-400">
     <a href={`/blog/${slug}/`} class="flex items-center gap-1">

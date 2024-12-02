@@ -11,7 +11,7 @@ interface Props {
 const { slug, tags } = Astro.props;
 const allPosts = await getCollection("blog");
 
-const excludedTags: string[] = ["blog", "tutorial", "news", "announcement"];
+const excludedTags: string[] = ["blog", "news", "announcement"];
 const finalTags = tags.filter((tag: string) => !excludedTags.includes(tag));
 
 const posts = allPosts
@@ -33,7 +33,7 @@ const posts = allPosts
 ---
 
 {
-  posts.length && (
+  posts.length > 0 ? (
     <div class="prose prose-zinc dark:prose-invert mt-5 p-5 rounded-lg max-w-none">
       <h2 class="text-center">You might also enjoy?</h2>
       {posts.map((post) => (
@@ -42,5 +42,5 @@ const posts = allPosts
         </Fragment>
       ))}
     </div>
-  )
+  ) : undefined
 }

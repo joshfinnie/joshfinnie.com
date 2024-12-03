@@ -1,7 +1,8 @@
 import { z, defineCollection } from "astro:content";
+import { glob, file } from "astro/loaders";
 
 const blog = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.mdx?", base: "./src/content/blog" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -9,11 +10,7 @@ const blog = defineCollection({
       tags: z.array(z.string()),
       draft: z.boolean().optional(),
       expires: z.boolean().optional(),
-      heroImage: image()
-        .refine((img) => img.width >= 1080, {
-          message: "Cover image must be at least 1080 pixels wide!",
-        })
-        .optional(),
+      heroImage: image().optional(),
       unsplash: z.string().optional(),
       unsplashURL: z.string().optional(),
       description: z.string().optional(),
@@ -21,7 +18,7 @@ const blog = defineCollection({
 });
 
 const project = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.mdx?", base: "./src/content/project" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -29,7 +26,7 @@ const project = defineCollection({
       technologies: z.array(z.string()),
       heroImage: image()
         .refine((img) => img.width >= 780, {
-          message: "Cover image must be at least 780 pixels wide!",
+          message: "project hero image must be at least 780 pixels wide!",
         })
         .optional(),
       lastUpdated: z.string().optional(),
@@ -37,7 +34,7 @@ const project = defineCollection({
 });
 
 const talks = defineCollection({
-  type: "data",
+  loader: file("./src/content/talks/talks.json"),
   schema: z.array(
     z.object({
       name: z.string(),

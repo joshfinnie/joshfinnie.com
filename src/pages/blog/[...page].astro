@@ -24,7 +24,7 @@ interface PageProps {
 const { page }: { page: PageProps } = Astro.props;
 ---
 
-<BaseLayout title="Blog | www.joshfinnie.com">
+<BaseLayout title="Blog | www.joshfinnie.com" description="Blog Posts">
   <section id="main-content">
     {
       page.data.map((p) => (

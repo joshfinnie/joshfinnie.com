@@ -11,6 +11,10 @@ import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    responsiveImages: true,
+    svg: true,
+  },
   site: "https://www.joshfinnie.com/",
   trailingSlash: "always",
   server: {

@@ -22,8 +22,8 @@ const post = await getEntry("blog", id);
               class="rounded-md relative"
               src={post.data.heroImage}
               alt={post.data.title}
-              height={post.data.heroImage.height}
               width="1024"
+              layout="responsive"
             />
             <div class="absolute rounded-lg bottom-0 left-0 p-3 m-3 prose prose-zinc dark:prose-invert bg-zinc-200 dark:bg-zinc-800">
               <Date date={post.data.date} />

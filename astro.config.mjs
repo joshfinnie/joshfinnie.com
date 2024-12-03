@@ -1,5 +1,4 @@
 import { defineConfig, sharpImageService } from "astro/config";
-import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -29,7 +28,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    icon(),
     react(),
     alpinejs(),
   ],

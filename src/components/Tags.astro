@@ -9,8 +9,8 @@ const { tags } = Astro.props;
   {
     tags.map((tag: string, idx: number) => (
       <Fragment key={tag}>
-        <a href={`/tags/${tag}/`}>{tag}</a>
-        {tag.length !== idx + 1 ? ", " : ""}
+        <a href={`/tags/${tag}/`}>{tag.trim()}</a>
+        {idx !== tags.length - 1 ? "," : ""}
       </Fragment>
     ))
   }

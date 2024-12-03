@@ -18,17 +18,13 @@ const blog = defineCollection({
 });
 
 const project = defineCollection({
-  loader: glob({ pattern: "[^_]*.mdx?", base: "./src/collections/projects" }),
+  loader: glob({ pattern: "[^_]*.(md|mdx)", base: "./src/collections/projects" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
       summary: z.string(),
       technologies: z.array(z.string()),
-      heroImage: image()
-        .refine((img) => img.width >= 780, {
-          message: "project hero image must be at least 780 pixels wide!",
-        })
-        .optional(),
+      heroImage: image().optional(),
       lastUpdated: z.string().optional(),
     }),
 });

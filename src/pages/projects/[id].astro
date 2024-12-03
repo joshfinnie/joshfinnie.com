@@ -1,9 +1,11 @@
 ---
-import { getCollection } from "astro:content";
+import { render, getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 import BaseLayout from "@src/layouts/BaseLayout.astro";
 import ProjectHero from "@components/ProjectHero.astro";
+
+type Props = CollectionEntry<"project">;
 
 export async function getStaticPaths() {
   const projects = await getCollection("project");
@@ -12,9 +14,9 @@ export async function getStaticPaths() {
     props: project,
   }));
 }
-type Props = CollectionEntry<"blog">;
+
 const project = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project);
 ---
 
 <BaseLayout title={`Project: ${project.data.title} | www.joshfinnie.com`}>

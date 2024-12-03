@@ -9,8 +9,6 @@ interface Props {
 }
 const { id } = Astro.props;
 const post = await getEntry("blog", id);
-
-console.log(post);
 ---
 
 <div class="relative">

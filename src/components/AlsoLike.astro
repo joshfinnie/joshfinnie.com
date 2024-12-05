@@ -4,18 +4,18 @@ import { getCollection } from "astro:content";
 import BlogPostPreviewLite from "./BlogPostPreviewLite.astro";
 
 interface Props {
-  slug: string;
+  id: string;
   tags: string[];
 }
 
-const { slug, tags } = Astro.props;
+const { id, tags } = Astro.props;
 const allPosts = await getCollection("blog");
 
 const excludedTags: string[] = ["blog", "news", "announcement"];
 const finalTags = tags.filter((tag: string) => !excludedTags.includes(tag));
 
 const posts = allPosts
-  .filter((post) => post.slug != slug && post.data.tags?.filter((tag: string) => finalTags.includes(tag)).length > 0)
+  .filter((post) => post.id != id && post.data.tags?.filter((tag: string) => finalTags.includes(tag)).length > 0)
   .map((post) => ({
     ...post,
     sameTagCount: post.data.tags.filter((tag: string) => finalTags.includes(tag)).length,
@@ -38,7 +38,7 @@ const posts = allPosts
       <h2 class="text-center">You might also enjoy?</h2>
       {posts.map((post) => (
         <Fragment key={post.id}>
-          <BlogPostPreviewLite slug={post.slug} />
+          <BlogPostPreviewLite id={post.id} />
         </Fragment>
       ))}
     </div>

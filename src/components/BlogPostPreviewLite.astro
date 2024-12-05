@@ -3,16 +3,16 @@ import { getEntry } from "astro:content";
 import Date from "./Date.astro";
 
 interface Props {
-  slug: string;
+  id: string;
 }
 
-const { slug } = Astro.props;
+const { id } = Astro.props;
 
-const post = await getEntry("blog", slug);
+const post = await getEntry("blog", id);
 ---
 
 <header class="prose dark:prose-invert prose-zinc">
-  <a href={`/blog/${slug}/`} title={post.data.title}>
+  <a href={`/blog/${id}/`} title={post.data.title}>
     <h3 class="font-bold text-2xl" set:html={post.data.title} />
   </a>
   <Date date={post.data.date} />

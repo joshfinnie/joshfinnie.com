@@ -49,7 +49,7 @@ const workExperiences: WorkExperienceType[] = [
     {
       posts.map((article) => (
         <Fragment key={article.id}>
-          <Article {...article} />
+          <Article id={article.id} />
         </Fragment>
       ))
     }

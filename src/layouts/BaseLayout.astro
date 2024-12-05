@@ -7,14 +7,21 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
 import "@styles/global.css";
+import { getEntry } from "astro:content";
 
 const {
   title = "www.joshfinnie.com",
   description = "The personal/professional website of Josh Finnie.",
-  image = josh,
+  slug,
 } = Astro.props;
 
-const optimizedImage = await getImage({ src: image });
+var image;
+if (slug) {
+  const post = await getEntry("blog", slug);
+  image = post.data.heroImage;
+} else {
+  image = josh;
+}
 ---
 
 <html
@@ -23,7 +30,7 @@ const optimizedImage = await getImage({ src: image });
   class="dark"
 >
   <head>
-    <BaseHead {title} {description} image={`https://www.joshfinnie.com${optimizedImage.src}`} />
+    <BaseHead {title} {description} image={`https://www.joshfinnie.com${image}`} />
     <script is:inline>
       // Necessary for view transitions
       document.addEventListener("astro:after-swap", () => {

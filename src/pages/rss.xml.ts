@@ -1,7 +1,7 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
-export async function GET(context) {
+export async function GET() {
   const blog = await getCollection("blog");
   return rss({
     title: `Blog | www.joshfinnie.com`,
@@ -11,7 +11,7 @@ export async function GET(context) {
     items: blog
       .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
       .map((post) => ({
-        link: `/blog/${post.slug}/`,
+        link: `/blog/${post.id}/`,
         pubDate: post.data.date,
         ...post.data,
       })),

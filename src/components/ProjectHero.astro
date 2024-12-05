@@ -3,17 +3,17 @@ import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 
 interface Props {
-  slug: string;
+  id: string;
 }
 
-const { slug } = Astro.props;
-const project = await getEntry("project", slug);
+const { id } = Astro.props;
+const project = await getEntry("project", id);
 ---
 
 <h1 class="font-bold text-3xl mb-0 mt-5 prose prose-zinc dark:prose-invert">{project.data.title}</h1>
 {
   project.data.heroImage && (
-    <Image src={project.data.heroImage} alt={project.data.title} width="1024" class="-mb-1 mt-0" />
+    <Image src={project.data.heroImage} alt={project.data.title} layout="responsive" width="1024" class="-mb-1 mt-0" />
   )
 }
 <p class="prose prose-zinc dark:prose-invert max-w-none">{project.data.summary}</p>
@@ -29,6 +29,7 @@ const project = await getEntry("project", slug);
             width="48"
             class="hover:scale-110 transition duration-300 ease-in-out inline m-2 lg:m-5"
             alt={tech}
+            layout="responsive"
           />
         </Fragment>
       ))

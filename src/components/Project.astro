@@ -5,17 +5,18 @@ import { Button } from "./ui/button";
 import ProjectHero from "./ProjectHero.astro";
 
 interface Props {
-  slug: string;
+  id: string;
 }
 
-const { slug } = Astro.props;
-const project = await getEntry("project", slug);
+const { id } = Astro.props;
+
+const project = await getEntry("project", id);
 ---
 
 <article class="prose prose-zinc max-w-none pb-10 dark:prose-invert">
-  <ProjectHero slug={project.slug} />
+  <ProjectHero id={project.id} />
 
-  <a href={`/projects/${project.slug}/`}>
+  <a href={`/projects/${project.id}/`}>
     <Button className="float-right">More Details</Button>
   </a>
 </article>

@@ -1,16 +1,16 @@
 ---
-import { Icon } from "astro-icon/components";
+import TagsIcon from "@icons/tags.svg";
 
 const { tags } = Astro.props;
 ---
 
 <div class="flex gap-1 items-center prose prose-zinc dark:prose-invert">
-  <Icon name="tags" size={25} style="display:inline-block" />
+  <TagsIcon size={25} style="display:inline-block" />
   {
     tags.map((tag: string, idx: number) => (
       <Fragment key={tag}>
-        <a href={`/tags/${tag}/`}>{tag}</a>
-        {tag.length !== idx + 1 ? ", " : ""}
+        <a href={`/tags/${tag}/`}>{tag.trim()}</a>
+        {idx !== tags.length - 1 ? "," : ""}
       </Fragment>
     ))
   }

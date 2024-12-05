@@ -28,7 +28,7 @@ const posts = allPosts
       {
         posts.map((p) => (
           <Fragment key={p.id}>
-            <BlogPostPreview slug={p.slug} />
+            <BlogPostPreview id={p.id} />
           </Fragment>
         ))
       }

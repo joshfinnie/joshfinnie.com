@@ -4,10 +4,8 @@ import { globSync } from "glob";
 let matches = globSync(`public/**/*.{png,jpg,jpeg}`);
 const MAX_WIDTH = 1080;
 
-/* eslint-disable-next-line */
 if (process.argv.length > 2) {
   matches = [];
-  /* eslint-disable-next-line */
   process.argv.slice(2).map((f) => {
     matches = [].concat(matches, globSync(`public/**/${f}`));
   });

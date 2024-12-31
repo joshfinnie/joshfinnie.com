@@ -1,4 +1,4 @@
-import { defineConfig, sharpImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import alpinejs from "@astrojs/alpinejs";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
@@ -17,9 +17,6 @@ export default defineConfig({
   trailingSlash: "always",
   server: {
     port: 3333,
-  },
-  image: {
-    service: sharpImageService(),
   },
   integrations: [
     mdx(),

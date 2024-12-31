@@ -54,33 +54,42 @@ You can see what I use below:
 
 ```astro
 ---
-const { title, date, tags, slug, heroImage, unsplash, unsplashURL, description } = Astro.props;
-var imageURL = "";
+const {
+  title,
+  date,
+  tags,
+  slug,
+  heroImage,
+  unsplash,
+  unsplashURL,
+  description
+} = Astro.props;
+var imageURL = ""
 if (heroImage) {
-  const optimizedImage = await getImage({ src: heroImage });
+  const optimizedImage = await getImage({src: heroImage});
   imageURL = `https://www.joshfinnie.com${optimizedImage.src}`;
 }
 let schema = JSON.stringify({
   "@context": "https://schema.org/",
   "@type": "BlogPosting",
-  headline: title,
-  author: {
+  "headline": title,
+  "author": {
     "@type": "Person",
-    name: "Josh Finnie",
+    "name": "Josh Finnie"
   },
-  datePublished: date,
-  dateCreated: date,
-  description: description,
-  url: `https://www.joshfinnie.com/${slug}`,
+  "datePublished": date,
+  "dateCreated": date,
+  "description": description,
+  "url": `https://www.joshfinnie.com/${slug}`,
   "inLanguage ": "en-US",
-  image: imageURL,
-  keywords: tags,
+  "image": imageURL,
+  "keywords": tags,
 });
 ---
 
 ...
 
-<script type="application/ld+json" set:html={schema} />
+<script type="application/ld+json" set:html={schema}></script>
 ```
 
 This adds dynamically my title, description, publish date, url and more.

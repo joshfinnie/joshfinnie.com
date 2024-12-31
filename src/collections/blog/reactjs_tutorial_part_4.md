@@ -135,7 +135,7 @@ module.exports = React.createClass({
         if (this.isMounted()) {
           this.setState(result.data);
         }
-      }.bind(this)
+      }.bind(this),
     );
   },
 

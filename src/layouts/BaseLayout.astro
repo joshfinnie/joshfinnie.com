@@ -1,24 +1,22 @@
 ---
-import josh from "@assets/josh.jpg";
 import BaseHead from "@components/BaseHead.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
 import "@styles/global.css";
-import { getEntry } from "astro:content";
 
 const {
   title = "www.joshfinnie.com",
   description = "The personal/professional website of Josh Finnie.",
-  slug,
+  collection,
+  id,
 } = Astro.props;
 
-var image;
-if (slug) {
-  const post = await getEntry("blog", slug);
-  image = post.data.heroImage;
+var imageUrl;
+if (collection == "blog") {
+  imageUrl = `https://www.joshfinnie.com/blog/og/${id}.png`;
 } else {
-  image = josh;
+  imageUrl = "https://www.joshfinnie.com/blog/og/default.png";
 }
 ---
 
@@ -28,7 +26,7 @@ if (slug) {
   class="dark"
 >
   <head>
-    <BaseHead {title} {description} image={`https://www.joshfinnie.com${image}`} />
+    <BaseHead {title} {description} image={imageUrl} />
     <script is:inline>
       // Necessary for view transitions
       document.addEventListener("astro:after-swap", () => {

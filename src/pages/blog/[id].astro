@@ -22,7 +22,8 @@ const { Content } = await render(post);
 <BaseLayout
   title={`${post.data.title} | www.joshfinnie.com`}
   description={post.data.description}
-  image={post.data.heroImage}
+  collection="blog"
+  id={post.id}
 >
   <BlogPost {...post.data} id={post.id}>
     <Content />

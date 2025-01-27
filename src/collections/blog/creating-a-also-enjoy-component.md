@@ -28,38 +28,40 @@ It might be worth a revisit, but for now this is pretty nice!
 
 ```astro
 ---
-import { collectionEntry, getCollection } from 'astro:content';
+import { collectionEntry, getCollection } from "astro:content";
 
-import BlogPostPreviewLite from './BlogPostPreviewLite.astro'
+import BlogPostPreviewLite from "./BlogPostPreviewLite.astro";
 
 const { slug, tags } = Astro.props;
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 
-const excludedTags = ['update', 'blog', 'tutorial', 'news', 'announcement'];
-const finalTags = tags.filter(tag => !excludedTags.includes(tag))
+const excludedTags = ["update", "blog", "tutorial", "news", "announcement"];
+const finalTags = tags.filter((tag) => !excludedTags.includes(tag));
 
 const posts = allPosts
-      .filter((post: CollectionEntry<'blog'>) => (post.slug != slug && post.data.tags?.filter(tag => finalTags.includes(tag)).length > 0))
-      .map((post: CollectionEntry<'blog'>) => ({
-          ...post,
-          sameTagCount: post.data.tags.filter(tag => finalTags.includes(tag)).length
-      }))
-      .sort((a, b) => {
-          if (a.sameTagCount > b.sameTagCount) return -1
-          if (b.sameTagCount > a.sameTagCount) return 1
+  .filter(
+    (post: CollectionEntry<"blog">) =>
+      post.slug != slug && post.data.tags?.filter((tag) => finalTags.includes(tag)).length > 0
+  )
+  .map((post: CollectionEntry<"blog">) => ({
+    ...post,
+    sameTagCount: post.data.tags.filter((tag) => finalTags.includes(tag)).length,
+  }))
+  .sort((a, b) => {
+    if (a.sameTagCount > b.sameTagCount) return -1;
+    if (b.sameTagCount > a.sameTagCount) return 1;
 
-          if (a.data.date > b.data.date) return -1
-          if (a.data.date < b.data.date) return 1
+    if (a.data.date > b.data.date) return -1;
+    if (a.data.date < b.data.date) return 1;
 
-          return 0
-      })
-      .slice(0, 5);
-
+    return 0;
+  })
+  .slice(0, 5);
 ---
 
 <div class="prose mt-5 p-5 rounded-lg max-w-none bg-gray-200">
-    <h2 class="text-center">You might also like...</h2>
-    {posts.map((post) => <BlogPostPreviewLite {post} />)}
+  <h2 class="text-center">You might also like...</h2>
+  {posts.map((post) => <BlogPostPreviewLite {post} />)}
 </div>
 ```
 

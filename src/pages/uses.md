@@ -21,14 +21,13 @@ layout: "../layouts/BasePage.astro"
   - [AMD Ryzen 5](https://amzn.to/3MiihUv)
   - [Crucial 16GB (2 x 8GB) DDR4-2400 PC4-19200](https://amzn.to/3TmWkYN)
   - [ASUS GeForce GTX 1060 6GB](https://amzn.to/3StWTQu)
-  - [Sony a6000](https://amzn.to/3xi4ZmJ) camera with the [Sony SELP18105G](https://amzn.to/42vLUep) lens
 
 ## Software
 
-- [Doom emacs](https://github.com/doomemacs/doomemacs) for coding
-- [Chrome](https://www.google.com/chrome/) & [Firefox](https://www.mozilla.org/en-US/firefox/new/) for browsing
+- [LazyVIM](https://www.lazyvim.org/) for coding
+- [Arc](https://arc.net/) for browsing
 - [iTerm with Fish and Starship.rs](/blog/moving-from-oh-my-zsh-to-starship-and-fish-shell) as my terminal
-- [Insomnia](https://insomnia.rest/) for testing RESTful endpoints
+- [Bruno](https://www.usebruno.com/) for testing RESTful endpoints
 - [Notion](https://www.notion.so/) for note-taking
 - [Spotify](https://www.spotify.com) for listening to music
 - [Plausible.io](https://plausible.io/) for site analytics

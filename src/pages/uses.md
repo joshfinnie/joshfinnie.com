@@ -7,7 +7,8 @@ layout: "../layouts/BasePage.astro"
 
 ## Hardware
 
-- [Keyboard.io Atreus](https://shop.keyboard.io/products/keyboardio-atreus) keyboard with [Kailh Box Jade Key Switches](https://amzn.to/3NOInj2)
+- [Keyboard.io Atreus](https://shop.keyboard.io/products/keyboardio-atreus) keyboard with [Kailh Box Clicky Jade Key Switches](https://amzn.to/3NOInj2)
+- [Corne Keyboard](https://amzn.to/3EsZeJi) with [Kailh Box Silent Tactile Brown Key Switches](https://amzn.to/44vraGL)
 - [Massdrop X Sennheiser HD 6XX headphones](https://drop.com/buy/massdrop-sennheiser-hd6xx?utm_source=linkshare&referer=BH8DEX) headphones
 - [TinHIFI T2 Plus IEM](https://amzn.to/3EYgRyt) IEM headphones
 - [Shure MV7](https://amzn.to/3Mh2Iwl) microphone

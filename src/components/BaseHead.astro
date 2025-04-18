@@ -1,4 +1,5 @@
 ---
+import { Font } from "astro:assets";
 interface Props {
   title: string;
   description: string;
@@ -23,6 +24,7 @@ const canonicalURL = appendForwardSlash(href);
 
 <!-- Primary Meta Tags -->
 <meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <meta name="title" content={title} />
 <meta name="description" content={description} />
@@ -44,3 +46,9 @@ const canonicalURL = appendForwardSlash(href);
 
 <!-- Analytics -->
 <script defer data-domain="joshfinnie.com" src="https://plausible.io/js/plausible.js" is:inline></script>
+<Font cssVariable="--font-inter" preload />
+<style>
+  body {
+    font-family: var(--font-inter);
+  }
+</style>

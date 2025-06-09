@@ -13,9 +13,9 @@ const post = await getEntry("blog", id);
 
 <div class="relative">
   {
-    post.data.heroImage ? (
+    post.data.heroImage && (
       <Image src={post.data.heroImage} alt={post.data.title} width={1024} layout="responsive" loading="eager" />
-    ) : undefined
+    )
   }
   {
     post.data.unsplash && (

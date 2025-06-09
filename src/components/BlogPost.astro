@@ -13,12 +13,12 @@ interface Props {
 
 const { id } = Astro.props;
 const post = await getEntry("blog", id);
+const tags = post.data.tags ?? [];
+const date = post.data.date ?? undefined;
 
-var imageURL = "";
-if (post.data.heroImage) {
-  const optimizedImage = await getImage({ src: post.data.heroImage });
-  imageURL = `https://www.joshfinnie.com${optimizedImage.src}`;
-}
+const imageURL = post.data.heroImage
+  ? `https://www.joshfinnie.com${(await getImage({ src: post.data.heroImage })).src}`
+  : "";
 
 let schema = JSON.stringify({
   "@context": "https://schema.org/",
@@ -33,7 +33,7 @@ let schema = JSON.stringify({
   description: post.data.description,
   url: `https://www.joshfinnie.com/${post.id}`,
   image: imageURL,
-  "inLanguage ": "en-US",
+  inLanguage: "en-US",
   keywords: post.data.tags,
 });
 ---
@@ -43,11 +43,11 @@ let schema = JSON.stringify({
     <HeroImage id={id} />
     <div id="main-content" class="flex flex-col items-center mb-10 max-w-none prose prose-zinc dark:prose-invert">
       <h1 class="font-bold text-4xl mb-5 mt-5" set:html={post.data.title} />
-      <Date date={post.data.date} />
-      <Tag tags={post.data.tags} />
+      <Date date={date} />
+      <Tag tags={tags} />
     </div>
   </header>
-  <main class="prose dark:prose-invert prose-zinc max-w-none">
+  <main class="prose dark:prose-invert prose-zinc max-w-none" role="main">
     <slot />
   </main>
   <AlsoLike tags={post.data.tags} id={id} />

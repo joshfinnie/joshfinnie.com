@@ -12,13 +12,17 @@ const fullURL = `https://unsplash.com/@${url}`;
   Photo by
   {
     url ? (
-      <a href={fullURL} rel="noopener nofollow noreferrer" target="_blank" class="underline">
-        {name}
-      </a>
+      <>
+        <a href={fullURL} rel="noopener nofollow noreferrer" target="_blank" class="underline">
+          {name}
+        </a>
+        on
+        <a href="https://unsplash.com" rel="noopener nofollow noreferrer" target="_blank" class="underline">
+          Unsplash
+        </a>
+      </>
     ) : (
       <span>{name}</span>
     )
   }
-  on
-  <a href="https://unsplash.com" rel="noopener nofollow noreferrer" target="_blank" class="underline">Unsplash</a>
 </p>

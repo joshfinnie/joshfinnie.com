@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import { Card, CardTitle, CardContent, CardFooter } from "./ui/card";
 
 interface Props {
@@ -7,16 +8,18 @@ interface Props {
 }
 
 const { id } = Astro.props;
-const post = await getEntry("blog", id);
+const post: CollectionEntry<"blog"> = await getEntry("blog", id);
 ---
 
 <Card
   className="relative flex flex-col items-start p-4 bg-white dark:bg-zinc-800 shadow-lg border border-zinc-200 dark:border-zinc-700 rounded-lg"
 >
   <CardTitle className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 mb-5 p-6 pt-1">
-    <a href={`/blog/${id}/`}>
-      {post.data.title}
-    </a>
+    <h3>
+      <a href={`/blog/${id}/`} aria-label={`Read ${post.data.title}`}>
+        {post.data.title}
+      </a>
+    </h3>
   </CardTitle>
   <CardContent>
     <time class="text-sm text-zinc-400 dark:text-zinc-500" datetime={post.data.date}>

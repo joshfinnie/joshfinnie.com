@@ -3,8 +3,6 @@ import BaseHead from "@components/BaseHead.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
-import "@styles/global.css";
-
 const {
   title = "www.joshfinnie.com",
   description = "The personal/professional website of Josh Finnie.",
@@ -18,6 +16,8 @@ if (collection == "blog") {
 } else {
   imageUrl = "https://www.joshfinnie.com/blog/og/default.png";
 }
+
+import "@styles/global.css";
 ---
 
 <html

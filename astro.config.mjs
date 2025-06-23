@@ -3,9 +3,11 @@ import alpinejs from "@astrojs/alpinejs";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+  vite: { plugins: [tailwindcss()] },
   experimental: {
     fonts: [
       {
@@ -14,7 +16,10 @@ export default defineConfig({
         cssVariable: "--font-inter",
       },
     ],
-    responsiveImages: true,
+  },
+  image: {
+    responsiveStyles: true,
+    layout: "constrained",
   },
   site: "https://www.joshfinnie.com/",
   trailingSlash: "always",

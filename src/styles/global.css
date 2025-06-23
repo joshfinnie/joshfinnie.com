@@ -1,6 +1,8 @@
-@import "@fontsource/inter" layer(base);
-
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "sans-serif";
+}
 
 @plugin 'tailwindcss-animate';
 @plugin '@tailwindcss/typography';

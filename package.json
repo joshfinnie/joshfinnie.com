@@ -54,7 +54,6 @@
     "github-slugger": "^2.0.0",
     "globals": "^16.3.0",
     "lodash.kebabcase": "^4.1.1",
-    "lucide-react": "^0.536.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "react": "^19.1.1",

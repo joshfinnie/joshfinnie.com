@@ -1,11 +1,11 @@
 ---
-import TagsIcon from "@icons/tags.svg";
+import BCTags from "@icons/mc_tag_line.svg";
 
 const { tags } = Astro.props;
 ---
 
 <div class="flex gap-1 items-center prose prose-zinc dark:prose-invert">
-  <TagsIcon size={25} style="display:inline-block" />
+  <BCTags style="display:inline-block" />
   {
     tags.map((tag: string, idx: number) => (
       <Fragment key={tag}>

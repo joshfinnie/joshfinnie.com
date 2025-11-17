@@ -1,0 +1,62 @@
+---
+title: "Why I Switched From Tex Live to Tectonic"
+date: "2025-11-17"
+tags:
+  - "latex"
+  - "docker"
+slug: "why-i-switched-to-tectonic"
+heroImage: "@assets/blog/two-containers.jpg"
+unsplash: "Mediamodifier"
+unsplashURL: "mediamodifier"
+description: "Slash your LaTeX Docker build times by 85% and reduce image sizes by 95%! Learn how switching from TeX Live to Tectonic transformed my containerized LaTeX workflow with faster builds and leaner images."
+---
+
+If you've been working with LaTeX in Docker containers, you know the pain of waiting for builds and dealing with massive image sizes.
+I recently made the switch from TeX Live to Tectonic for my LaTeX Docker setup, and the results have been nothing short of amazing.
+Let me share why this change has been such a game-changer for my workflow.
+
+## The Problem with TeX Live
+
+Don't get me wrong—TeX Live is an incredible project that has served the LaTeX community well for years.
+But when it comes to Docker containers, it comes with some serious drawbacks:
+
+- **Build time:** My old TeX Live setup took over 5 minutes to build
+- **Image size:** The resulting container weighed in at a hefty 2.3GB
+
+For modern development workflows where you want quick iterations and lean containers, these numbers just don't cut it anymore.
+
+## Enter Tectonic
+
+Tectonic is a modernized, complete TeX/LaTeX engine that's been converted into a standalone library.
+It is derived from XeTeX and uses support files from the TeX Live project, so you're still getting that rock-solid LaTeX foundation you trust.
+
+The difference? The implementation is streamlined and optimized for exactly the kind of use case I needed.
+
+## The Numbers Don't Lie
+
+After switching to Tectonic, my Docker container stats improved dramatically:
+
+- **Build time:** Just 50 seconds (down from 5+ minutes!)
+- **Image size:** Only 124MB (down from 2.3GB!)
+
+That's an 85% reduction in build time and a 95% reduction in image size.
+These are not just numbers! They translate to real productivity gains.
+I always hated rebuilding my LaTex container, now it is not even a bother.
+
+## One Small Trade-off: Package Caching
+
+There is one thing I had to do differently with Tectonic that wasn't necessary with TeX Live: preloading package caches.
+By default, Tectonic downloads required packages at runtime, which can slow down the build process.
+To address this, I created a "preload" tex file that includes the most common packages I use.
+
+This ensures that those packages are already cached in the Docker container, eliminating download time during actual builds.
+It's a small bit of extra setup, but totally worth it for the performance gains.
+
+## The Bottom Line
+
+If you're running LaTeX in Docker containers and haven't tried Tectonic yet, I highly recommend giving it a shot.
+The combination of faster builds, smaller images, and a modern approach to LaTeX compilation makes it an easy win for containerized workflows.
+
+The future of LaTeX tooling is here.
+And it's Rust!
+Welcome to the Tectonic era!

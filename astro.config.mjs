@@ -7,6 +7,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // Load environment variables
 import { config } from 'dotenv';
+
 config();
 
 // https://astro.build/config

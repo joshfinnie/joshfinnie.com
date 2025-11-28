@@ -1,8 +1,8 @@
 import { v2 as cloudinary } from 'cloudinary';
+import dotenv from 'dotenv';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,11 +18,7 @@ cloudinary.config({
 });
 
 // Validate configuration
-if (
-  !process.env.CLOUDINARY_CLOUD_NAME ||
-  !process.env.CLOUDINARY_API_KEY ||
-  !process.env.CLOUDINARY_API_SECRET
-) {
+if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
   console.error('❌ Error: Missing Cloudinary configuration!');
   console.error('Please set the following environment variables in your .env file:');
   console.error('  - CLOUDINARY_CLOUD_NAME');
@@ -127,9 +123,7 @@ async function uploadAllImages() {
     processed++;
     const publicId = pathToPublicId(image.relativePath);
 
-    process.stdout.write(
-      `[${processed}/${images.length}] Uploading ${image.relativePath}... `,
-    );
+    process.stdout.write(`[${processed}/${images.length}] Uploading ${image.relativePath}... `);
 
     const result = await uploadImage(image.fullPath, publicId);
 
@@ -187,10 +181,12 @@ async function uploadAllImages() {
       images: [...results.success, ...results.skipped].map((item) => ({
         localPath: `src/assets/${item.path}`,
         publicId: item.publicId || pathToPublicId(item.path),
-        cloudinaryUrl: item.url || `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${item.publicId || pathToPublicId(item.path)}`,
+        cloudinaryUrl:
+          item.url ||
+          `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${item.publicId || pathToPublicId(item.path)}`,
       })),
     },
-    { spaces: 2 },
+    { spaces: 2 }
   );
 
   console.log(`📄 Image mapping saved to: ${mappingFile}\n`);

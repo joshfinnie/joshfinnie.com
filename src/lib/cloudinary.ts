@@ -24,7 +24,7 @@ export function getCloudinaryImageUrl(
   options: {
     width?: number;
     height?: number;
-  } = {},
+  } = {}
 ): string {
   const image = cld.image(publicId);
 

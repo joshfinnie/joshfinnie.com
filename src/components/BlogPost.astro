@@ -16,9 +16,7 @@ const post = await getEntry('blog', id);
 const tags = post.data.tags ?? [];
 const date = post.data.date ?? undefined;
 
-const imageURL = post.data.heroImage
-  ? getCloudinaryImageUrl(post.data.heroImage, { width: 1024 })
-  : '';
+const imageURL = post.data.heroImage ? getCloudinaryImageUrl(post.data.heroImage, { width: 1024 }) : '';
 
 let schema = JSON.stringify({
   '@context': 'https://schema.org/',

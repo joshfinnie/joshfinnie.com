@@ -1,6 +1,7 @@
 ---
 title: "Flat Flog, an Introduction"
 date: "2013-09-24"
+description: "Build static blogs with Flask using flat-flog, a Python-based static site generator with Markdown support."
 tags:
   - "open-source"
   - "static blogging"

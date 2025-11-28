@@ -1,6 +1,7 @@
 ---
 title: "Changing the Default Screenshot Location"
 date: "2014-02-04"
+description: "Stop cluttering your desktop by changing the OS X screenshot save location using the defaults command."
 tags:
   - "OS X"
   - "properties"

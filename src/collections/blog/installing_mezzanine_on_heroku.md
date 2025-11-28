@@ -1,6 +1,7 @@
 ---
 title: "Installing Mezzanine on Heroku"
 date: "2012-12-10"
+description: "Deploy the Mezzanine Python CMS on Heroku with PostgreSQL, static files, and Gunicorn configuration."
 tags:
   - "mezzanine"
   - "CMS"

@@ -1,6 +1,7 @@
 ---
 title: "Using Bower"
 date: "2014-11-03"
+description: "Manage JavaScript dependencies with Bower: track versions, customize install locations, and integrate with Gulp."
 tags:
   - "javascript"
   - "bower"

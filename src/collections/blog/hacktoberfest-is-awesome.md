@@ -1,6 +1,7 @@
 ---
 title: "Hacktoberfest is AWESOME!"
 date: "2019-10-01"
+description: "Participating in Hacktoberfest 2019: complete four pull requests in October and earn a free t-shirt."
 tags:
   - "open-source"
   - "hacktoberfest"

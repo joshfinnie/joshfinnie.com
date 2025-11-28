@@ -1,6 +1,7 @@
 ---
 title: "One Year Later"
 date: "2021-03-11"
+description: "Reflecting on one year of pandemic isolation, remote work, and hoping for a future with more opportunities."
 tags:
   - "update"
   - "non-tech"

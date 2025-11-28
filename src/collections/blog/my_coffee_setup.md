@@ -1,6 +1,7 @@
 ---
 title: "My Coffee Setup (2018)"
 date: "2018-03-08"
+description: "Equipment recommendations for making great coffee at home: grinders, brewing vessels, kettles, and espresso."
 tags:
   - "coffee"
   - "non-tech"

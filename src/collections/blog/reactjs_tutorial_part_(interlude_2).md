@@ -1,6 +1,7 @@
 ---
 title: "React.js Tutorial Part (Interlude 2)"
 date: "2015-08-10"
+description: "Use npm-check-updates to safely upgrade React and other packages by reviewing changelogs for breaking changes."
 tags:
   - "tutorial"
   - "react.js"

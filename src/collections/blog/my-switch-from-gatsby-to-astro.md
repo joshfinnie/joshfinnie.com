@@ -1,6 +1,7 @@
 ---
 title: "My Switch from Gatsby to Astro"
 date: "2021-10-28"
+description: "Why I migrated my blog from Gatsby to Astro for zero-JS static sites with faster load times."
 tags:
   - "update"
   - "news"

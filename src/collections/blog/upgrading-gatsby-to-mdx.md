@@ -1,6 +1,7 @@
 ---
 title: "Upgrading Gatsby to Use Mdx"
 date: "2020-06-12"
+description: "Migrate Gatsby from Markdown to MDX to use React components in blog posts with cleaner rendering."
 tags:
   - "javascript"
   - "markdown"

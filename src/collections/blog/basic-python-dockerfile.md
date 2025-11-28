@@ -1,6 +1,7 @@
 ---
 title: "My Basic Python Dockerfile"
 date: "2019-06-06"
+description: "A reusable Python Dockerfile template featuring dumb-init, non-root user setup, and best practices."
 tags:
   - "docker"
   - "python"

@@ -1,6 +1,7 @@
 ---
 title: "New Years Resolutions for 2018 and 2017 Review"
 date: "2018-01-01"
+description: "Switching from annual to quarterly goals for 2018 after completing only 1 of 5 resolutions in 2017."
 tags:
   - "resolutions"
   - "betterment"

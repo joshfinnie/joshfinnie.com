@@ -1,5 +1,7 @@
 ---
-export interface Props {
+import { Font } from 'astro:assets';
+
+interface Props {
   title: string;
   description: string;
   image: string;
@@ -13,16 +15,17 @@ function appendForwardSlash(path: string) {
 const { href } = new URL(Astro.url.pathname, Astro.site);
 const canonicalURL = appendForwardSlash(href);
 ---
+
 <title>{title}</title>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
@@ -39,7 +42,13 @@ const canonicalURL = appendForwardSlash(href);
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
-<meta name="twitter:creator" content="@joshfinnie">
+<meta name="twitter:creator" content="@joshfinnie" />
 
 <!-- Analytics -->
-<script defer data-domain="joshfinnie.com" src="https://plausible.io/js/plausible.js"></script>
+<script defer data-domain="joshfinnie.com" src="https://plausible.io/js/plausible.js" is:inline></script>
+<Font cssVariable="--font-inter" preload />
+<style>
+  body {
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+</style>

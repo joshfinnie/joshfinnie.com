@@ -1,0 +1,238 @@
+---
+title: "Astro Experimental Image and MDX Update"
+date: "2023-06-21"
+tags:
+  - "astro.js"
+  - "update"
+  - "experimental"
+  - "mdx"
+slug: "astro-experimental-image-and-mdx-update"
+heroImage: "blog/cameras"
+unsplash: "Pawel Czerwinski"
+unsplashURL: "pawel_czerwinski"
+description: "This blog post we discuss the process of adding both MDX support and Astro.js Experimental Asset support. We describe step-by-step the process I took to adding each to this exact blog."
+---
+
+One of the most exciting things about using Astro for my personal blog is how fast the platform updates and adds features.
+I was looking around the [Astro.js Docs](https://docs.astro.build/) the other day and came across an experimental feature to replace [@astrojs/image](https://docs.astro.build/en/guides/integrations-guide/image/).
+This is super exciting to me since I have never had the ability to use the later for some reason.
+This blog post will go over the steps I took to add both [MDX](https://mdxjs.com/) support and the new experimental image feature.
+
+## MDX Support
+
+Before implementing the experimental asset support, I needed to add MDX support to my blog.
+I actually did this for my [job search journey](/blog/my-2023-job-search-journey/) post, but you'd need it for the experimental asset support too.
+Luckily for us, the [Astro documentation on MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) is great.
+First we need to install the `@astrojs/mdx` package:
+
+```bash
+npm install @astrojs/mdx
+```
+
+Next we need to add the integration to our Astro config file.
+Below is an abridged version of my config file with the MDX support added.
+
+```typescript
+import { defineConfig } from "astro/config";
+
+import mdx from "@astrojs/mdx";
+import preact from "@astrojs/preact";
+import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
+
+export default defineConfig({
+  ...
+  integrations: [mdx(), preact(), sitemap(), tailwind({
+    ...
+    }
+  })],
+  markdown: {
+    ...
+    shikiConfig: {
+      theme: 'dracula'
+    }
+  }
+});
+```
+
+As you can see, along with the newly added MDX integration, I also use the Preact, Sitemap and Tailwind integrations for my blog.
+These all have been great for me.
+They have helped speed up my development of this blog a lot.
+You might also notice that I have added the Dracula theme to my Markdown configuration.
+This allows all code blocks to show up using the Dracula theme.
+The MDX integration is smart enough to inheriet from these Markdown settings.
+In the end, this was really a two line change!
+Awesome!
+
+We can now use MDX within our Astro blog.
+You can see where I took advantage of this in my previously mentioned job search post:
+
+```mdx
+---
+---
+
+import sankey from "/assets/svg/job-sankey.svg";
+
+...
+
+### My Journey Visually
+
+<img src={sankey} alt="Sankey diagram of job search journey" />
+```
+
+I was able to import the SVG as a React component and set it as the src of the image within my markdown.
+This really helps with adding midroll images.
+And after seeing how easy it was, I actually was able to modify all my posts with midroll images to use this feature.
+
+## Experimental Asset Support
+
+Once we got the MDX support up-and-running, I turned my attention to the experimental asset support.
+I am sure you can exclusively use this without MDX support, but I find it is very useful to have both!
+To add the experimental image support to your Astro.js blog, you will need to change some configuration.
+Also note here that I have been using Sharp to [create optimized images through a script](https://github.com/joshfinnie/joshfinnie.com/blob/main/scripts/optimize_images.js).
+Because of this, I have kept Sharp as my image processing tool for the experimental assets.
+
+To get this running locally, we have to modify our Astro.js configuration.
+Below you will find the Git diff for this file:
+
+```diff
+- import { defineConfig } from "astro/config";
++ import { defineConfig, sharpImageService } from "astro/config";
+
+export default defineConfig({
+  ...
++  experimental: {
++    assets: true,
++  },
++  image: {
++    service: sharpImageService(),
++  },
+   ...
+})
+```
+
+Once this is configured correctly, we now need to go make a lot of changes in our codebase to allow for this awesome power.
+The quickest way to do this is to modify the variable and keep the `<img />` tags.
+This can be done as seen below using my job search Sankey diagram as an example:
+
+```diff
+import sankey from '/assets/svg/job-sankey.svg';
+
+...
+### My Journey Visually
+
+-<img src={sankey} alt="Sankey diagram of job search journey" />
++<img src={sankey.src} alt="Sankey diagram of job search journey" />
+```
+
+But the real power with the experimental asset support is using Astro.js's own `<Image />` tag.
+This is where we get all the benefits of image preprocessing and conversion that I was doing manually by script.
+Let's take a look at my `BlogPostPreview` component and see how we adapted for the experimental asset support.
+
+```diff
+---
++import { Image } from "astro:assets";
+import Date from "./Date.astro";
+
+const { post } = Astro.props;
+---
+{post.data.heroImage ?
+  <>
+    <a href={`/blog/${post.slug}/`} title={post.data.title}>
+-     <img
+-        src={post.data.heroImage.replace("jpg", "webp")}
+-        alt={post.data.title}
+-        class="rounded-md"
+-     />
++     <Image
++        class="rounded-md"
++        src={post.data.heroImage}
++        alt={post.data.title}
++        width="1024"
++      />
+    </a>
+  </> : <></>
+}
+```
+
+Here we import the `Image` tag from `astro:assets` and update our `<img/>` tag to use it.
+One thing I learned quickly was to have a max width set.
+My blog is only around 780px wide, so having this set tells Astro to really minimize the image in preprocessing.
+Note you can also change the format of the image here, but I have been using `wepb` (which is the default) and have been loving it.
+You could use `format` and `quality` to modify how Astro will preprocess your image.
+For a minimalist image, you could use the following:
+
+```tsx
+<Image
+  src={post.data.heroImage}
+  alt={post.data.title}
+  width="1024"
+  format="avif"
+  quality="low"
+>
+```
+
+This is very powerful as you can see!
+
+One last trick that I had to learn was how to handle my [Open Graph Protocol](https://ogp.me/) variables in my header.
+Passing a variable through my `BaseLayout` component was not doing the trick.
+Then I learned about `getImage()`.
+
+This was a pretty easy change, but one that fought me a bit.
+I needed to get the image I wanted before rendering everything.
+This required me to use `getImage()`.
+In my `BaseLayout` component, I made the following changes:
+
+```diff
++import { getImage } from "astro:assets";
++import josh from '@assets/josh.jpg'
+import BaseHead from "@components/BaseHead.astro";
+import BlogHeader from "@components/BlogHeader.astro";
+import Footer from "@components/Footer.astro";
+const {
+  title = "www.joshfinnie.com",
+  description = "The personal/professional website of Josh Finnie.",
+- image = "/assets/josh5.jpeg",
++ image = josh,
+} = Astro.props;
+
++const optimizedImage = await getImage({src: image})
+---
+
+<html lang="en">
+  <head>
+-   <BaseHead {title} {description} image={`https://www.joshfinnie.com${image}`} />
++   <BaseHead {title} {description} image={`https://www.joshfinnie.com${optimizedImage.src}`} />
+```
+
+This allowed for my Open Graph Protocol headers to render correctly:
+
+```html
+<!-- Open Graph Protocol -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.joshfinnie.com/blog/my-2023-job-search-journey/" />
+<meta property="og:title" content="My 2023 Job Search Journey | www.joshfinnie.com" />
+<meta
+  property="og:description"
+  content="A brief review of my job search journey in the 2023 market. I applied to over 150 jobs and it was exhausting!"
+/>
+<meta property="og:image" content="https://www.joshfinnie.com/_astro/jobbing.56166317_1ya6pO.webp" />
+```
+
+## Conclusion
+
+I hope this post helps you set up both MDX support and the Experimental asset support for Astro.js.
+It has been a great upgrade to my workflow.
+And I am really looking forward to see what is next!
+If you find this helpful or just want to discuss, find me on [Mastodon](https://fosstodon.org/@joshfinnie) and strike up a conversation.
+
+### Helpful Links
+
+- Here is the link to the [MDX support PR](https://github.com/joshfinnie/joshfinnie.com/pull/1585/files) on Github.
+  Note for the MDX support, I also added a blog post so there is a little noise there.
+
+- And here is the link to my [Experimental Assets PR](https://github.com/joshfinnie/joshfinnie.com/pull/1588/files) on Github.
+  For this one, there's a lot of files that needed to be moved around from the Astro `public` file to the `src/assets` folder.
+
+Sometimes I find it easier to just read the changelog.
+Hope this helps some!

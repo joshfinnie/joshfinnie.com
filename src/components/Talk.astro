@@ -1,33 +1,46 @@
 ---
-import { Icon } from 'astro-icon/components'
+import MCBuilding from '@icons/mc_building_line.svg';
+import MCLightning from '@icons/mc_lightning_line.svg';
 
-import Date from "./Date.astro";
+import Date from './Date.astro';
 
 const { talk } = Astro.props;
 ---
 
-<article class="py-2 dark:text-white">
-  <p class="flex flex-col sm:flex-row text-base">
-    <span class="flex items-center gap-1 dark:text-white">
-      <Icon name="building" size={20} />
-      {talk.locationLink ? (
-        <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
-          {talk.location}
-        </a>
+<article
+  class="py-2 prose prose-zinc dark:prose-invert rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 my-5"
+>
+  <h2 class="font-bold text-2xl mb-2">
+    {
+      talk.link ? (
+        <a href={talk.link} target="_blank" rel="noopener noreferrer" set:html={talk.name} />
       ) : (
-        <span>{talk.location}</span>
-      )}
+        <span set:html={talk.name} />
+      )
+    }
+    {
+      talk.lightning && (
+        <span style="padding-left: 5px;">
+          <MCLightning style="display:inline-block" />
+        </span>
+      )
+    }
+  </h2>
+  <p class="flex flex-col sm:flex-row text-base">
+    <span class="flex items-center gap-1 prose prose-zinc dark:prose-invert">
+      <MCBuilding />
+      {
+        talk.locationLink ? (
+          <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">
+            {talk.location}
+          </a>
+        ) : (
+          <span>{talk.location}</span>
+        )
+      }
     </span>
     <span class="sm:pl-10">
       <Date date={talk.date} />
     </span>
   </p>
-  <h2 class="font-bold text-2xl mb-5">
-    {talk.link ? (
-      <a href={talk.link} target="_blank" rel="noopener noreferrer" set:html={talk.name}></a>
-    ) : (
-      <span set:html={talk.name}></span>
-    )}
-      {talk.lightning ? <span style="padding-left: 5px;"><Icon name="bolt" size={25} style="display:inline-block" /></span> : ""}
-  </h2>
 </article>

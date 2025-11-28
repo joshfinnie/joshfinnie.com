@@ -1,0 +1,68 @@
+---
+import ChevronDown from '@icons/mc_down_line.svg';
+
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+const navLinks: NavLink[] = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/talks/', label: 'Speaking' },
+  { href: '/uses/', label: 'Uses' },
+];
+---
+
+<!-- Small screen dropdown menu -->
+<div class="pointer-events-auto md:hidden">
+  <div x-data="{ open: false }" class="relative">
+    <button
+      type="button"
+      @click="open = !open"
+      class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-zinc-800 bg-white rounded-lg dark:bg-zinc-800 dark:text-zinc-200"
+    >
+      Menu
+      <ChevronDown class="ml-3 h-auto w-4 text-zinc-500" :class="{ 'rotate-180': open }" />
+    </button>
+    <div
+      x-show="open"
+      @click.away="open = false"
+      class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg bg-white dark:bg-zinc-800"
+    >
+      <ul class="py-1 text-zinc-700 dark:text-zinc-200">
+        {
+          navLinks.map((link) => (
+            <li key={link.href}>
+              <a href={link.href} class="block px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-700">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Large screen navigation menu -->
+<nav class="pointer-events-auto hidden md:block">
+  <ul
+    class="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-sm dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+  >
+    {
+      navLinks.map((link) => (
+        <li key={link.href}>
+          <a
+            class="relative block text-center px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
+            href={link.href}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

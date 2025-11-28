@@ -1,7 +1,7 @@
 ---
-import { getCollection} from 'astro:content';
+import { getCollection } from 'astro:content';
 
-import BaseLayout from "@src/layouts/BaseLayout.astro";
+import BaseLayout from '@src/layouts/BaseLayout.astro';
 
 const allPosts = await getCollection('blog');
 const tagCounts = {};
@@ -20,13 +20,15 @@ const tags = Object.keys(tagCounts)
     <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">Tags</h1>
     <main class="prose dark:prose-invert max-w-none" style="column-count: 3">
       <ul>
-        {tags.map((tag) => (
-          <li>
-            <a class="tag" href={`/tags/${tag[0]}/`} title={`View posts tagged under "${tag}"`}>
-              {tag[0]} ({tag[1]})
-            </a>
-          </li>
-        ))}
+        {
+          tags.map((tag) => (
+            <li key={tag}>
+              <a class="tag" href={`/tags/${tag[0]}/`} title={`View posts tagged under "${tag}"`}>
+                {tag[0]} ({tag[1]})
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </main>
   </article>

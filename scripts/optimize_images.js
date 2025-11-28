@@ -1,6 +1,5 @@
-import sharp from "sharp";
-import { globSync } from "glob";
-import fs from "fs-extra";
+import { globSync } from 'glob';
+import sharp from 'sharp';
 
 let matches = globSync(`public/**/*.{png,jpg,jpeg}`);
 const MAX_WIDTH = 1080;
@@ -15,8 +14,7 @@ if (process.argv.length > 2) {
 Promise.all(
   matches.map(async (match) => {
     const stream = sharp(match);
-    const info = await stream.metadata();
-    const optimizedName = match.replace(/(\..+)$/, (_, ext) => `.webp`);
+    const optimizedName = match.replace(/(\..+)$/, () => `.webp`);
     await stream.resize(MAX_WIDTH).webp().toFile(optimizedName);
   })
 );

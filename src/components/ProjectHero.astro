@@ -1,13 +1,37 @@
 ---
-import { Image } from "astro:assets";
+import CloudinaryImage from './CloudinaryImage.astro';
+import { getEntry } from 'astro:content';
 
-const {title, heroImage, summary, technologies} = Astro.props;
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const project = await getEntry('project', id);
 ---
-<h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">{title}</h1>
-<hr class="my-2">
-{ heroImage && <Image src={heroImage} alt={title} width="780"/> }
-<p class="dark:text-white">{ summary }</p>
-<div class="mt-5 flex gap-5 justify-center items-center dark:text-white">
-    <span class="font-bold">Technologies Used:</span>
-    {technologies.map((tech: string) => <Image src={`/assets/icons/${tech}.png`} height="48" width="48" class="hover:scale-110 transition duration-300 ease-in-out" alt={tech}/>)}
+
+<h1 class="font-bold text-3xl mb-0 mt-5 prose prose-zinc dark:prose-invert">{project.data.title}</h1>
+{
+  project.data.heroImage && (
+    <CloudinaryImage publicId={project.data.heroImage} alt={project.data.title} width={1024} class="-mb-1 mt-0" />
+  )
+}
+<p class="prose prose-zinc dark:prose-invert max-w-none">{project.data.summary}</p>
+<div class="mb-5 flex flex-col lg:flex-row justify-center items-center bg-zinc-200 text-zinc-800 rounded-lg">
+  <div class="font-bold py-2">Technologies Used:</div>
+  <div class="max-w-[300px] lg:max-w-none">
+    {
+      project.data.technologies.map((tech: string) => (
+        <Fragment key={tech}>
+          <CloudinaryImage
+            publicId={`icons/${tech}`}
+            alt={tech}
+            width={48}
+            height={48}
+            class="hover:scale-110 transition duration-300 ease-in-out inline m-2 lg:m-5"
+          />
+        </Fragment>
+      ))
+    }
+  </div>
 </div>

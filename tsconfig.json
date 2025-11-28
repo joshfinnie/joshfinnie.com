@@ -1,14 +1,29 @@
 {
   "moduleResolution": "node",
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react-jsx",
     "paths": {
       "@src/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"],
+      "@icons/*": ["src/icons/*"],
       "@styles/*": ["src/styles/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@assets/*": ["src/assets/*"]
-    }
+      "@assets/*": ["src/assets/*"],
+      "@lib/*": ["src/lib/*"]
+    },
+    "jsxImportSource": "react",
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ]
   }
 }

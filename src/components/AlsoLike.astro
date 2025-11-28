@@ -1,36 +1,42 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-import BlogPostPreviewLite from './BlogPostPreviewLite.astro'
+import BlogPostPreviewLite from './BlogPostPreviewLite.astro';
 
-const { slug, tags } = Astro.props;
+interface Props {
+  id: string;
+  tags: string[];
+}
+
+const { id, tags } = Astro.props;
 const allPosts = await getCollection('blog');
 
-const excludedTags = ['blog', 'tutorial', 'news', 'announcement'];
-const finalTags = tags.filter(tag => !excludedTags.includes(tag))
+const excludedTags: string[] = ['blog', 'news', 'announcement'];
+const finalTags = tags.filter((tag: string) => !excludedTags.includes(tag));
+const finalTagSet = new Set(finalTags);
+const overlappingTags = tags.filter((tag) => finalTagSet.has(tag));
 
 const posts = allPosts
-      .filter((post: CollectionEntry<'blog'>) => (post.slug != slug && post.data.tags?.filter(tag => finalTags.includes(tag)).length > 0))
-      .map((post: CollectionEntry<'blog'>) => ({
-          ...post,
-          sameTagCount: post.data.tags.filter(tag => finalTags.includes(tag)).length
-      }))
-      .sort((a, b) => {
-          if (a.sameTagCount > b.sameTagCount) return -1
-          if (b.sameTagCount > a.sameTagCount) return 1
-
-          if (a.data.date > b.data.date) return -1
-          if (a.data.date < b.data.date) return 1
-
-          return 0
-      })
-      .slice(0, 5);
-
+  .filter((post) => post.id != id && post.data.tags?.filter((tag: string) => finalTags.includes(tag)).length > 0)
+  .map((post) => ({
+    ...post,
+    sameTagCount: post.data.tags.filter((tag: string) => overlappingTags.includes(tag)).length,
+  }))
+  .sort((a, b) => {
+    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  })
+  .slice(0, 5);
 ---
 
-{posts.length ?
-    <div class="prose dark:prose-invert mt-5 p-5 rounded-lg max-w-none bg-gray-200 dark:bg-gray-900">
-        <h2 class="text-center">You might also enjoy?</h2>
-        {posts.map((post) => <BlogPostPreviewLite {post} />)}
-    </div> : <></>
+{
+  posts.length > 0 ? (
+    <div class="prose prose-zinc dark:prose-invert mt-5 p-5 rounded-lg max-w-none">
+      <h2 class="text-center">Related Posts</h2>
+      {posts.map((post) => (
+        <Fragment key={post.id}>
+          <BlogPostPreviewLite id={post.id} />
+        </Fragment>
+      ))}
+    </div>
+  ) : undefined
 }

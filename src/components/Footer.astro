@@ -1,15 +1,52 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from 'astro-icon/components'
+import CloudinaryImage from './CloudinaryImage.astro';
 
-import license from "@assets/icons/by-nc-sa.png"
 const year = new Date().getFullYear();
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/talks/', label: 'Speaking' },
+  { href: '/uses/', label: 'Uses' },
+  { href: '/rss.xml', label: 'RSS' },
+];
 ---
 
-<footer class="flex items-center my-2 sm:my-10 sm:pt-10 border-t-2 relative">
-  <span class="prose dark:prose-invert">&copy; 2010 - {year}.</span>
-  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <Image alt="creative commons license" class="ml-5" src={license} width="88" height="31" />
-  </a>
-  <a rel="rss" href="/rss.xml" class="absolute right-0 dark:text-white"><Icon name="rss" size={"2em"} style="display:inline-block"/></a>
+<footer class="mt-32 flex-none">
+  <div class="sm:px-8">
+    <div class="mx-auto w-full max-w-7xl lg:px-8">
+      <div class="border-t border-zinc-100 pb-16 pt-10 dark:border-zinc-700/40">
+        <div class="relative px-4 sm:px-8 lg:px-12">
+          <div class="mx-auto max-w-2xl lg:max-w-5xl">
+            <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+              <div
+                class="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200"
+              >
+                {
+                  navLinks.map((link) => (
+                    <Fragment key={link.label}>
+                      <a class="transition hover:text-teal-500 dark:hover:text-teal-400" href={link.href}>
+                        {link.label}
+                      </a>
+                    </Fragment>
+                  ))
+                }
+              </div>
+              <p class="text-sm text-zinc-400 dark:text-zinc-500">
+                &copy; 2010 - <!-- -->{year}<!-- --> Josh Finnie.
+                <CloudinaryImage
+                  publicId="icons/by-nc-sa"
+                  alt="creative commons license"
+                  class="inline ml-5"
+                  width={88}
+                  height={31}
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>

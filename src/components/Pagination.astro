@@ -2,15 +2,19 @@
 const { page } = Astro.props;
 ---
 
-<div class="flex justify-end dark:text-white">
-  {page.url.prev && (
-    <a class="px-2" href={page.url.prev} title="Go to Previous">
-      &larr; Prev
-    </a>
-  )}
-  {page.url.next && (
-    <a class="px-2" href={page.url.next} title="Go to Next">
-      Next &rarr;
-    </a>
-  )}
+<div class="flex justify-end prose prose-zinc dark:prose-invert">
+  {
+    page.url.prev && (
+      <a class="px-2" href={page.url.prev} title="Go to Previous">
+        &larr; Prev
+      </a>
+    )
+  }
+  {
+    page.url.next && (
+      <a class="px-2" href={page.url.next} title="Go to Next">
+        Next &rarr;
+      </a>
+    )
+  }
 </div>

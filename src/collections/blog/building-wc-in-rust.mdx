@@ -1,0 +1,383 @@
+---
+title: "Building a Word Count Tool in Rust: Step-By-Step"
+date: "2025-06-27"
+tags:
+  - "rust"
+  - "command line"
+  - "tutorial"
+slug: "building-wc-in-rust"
+heroImage: "blog/words"
+unsplash: "Patrick Tomasso"
+unsplashURL: "impatrickt"
+description: "Learn how to build a word count command line utility in Rust from scratch. This step-by-step guide shows you how to create a functional wc tool that counts lines, words, and bytes in files. Perfect for Rust beginners and those interested in command line tools, this tutorial covers argument parsing with clap, file handling, and test-driven development to create reliable utilities for text processing."
+---
+
+The **word count** command (`wc`) is a classic utility that you might use to determine the number of lines, words, and bytes in files or standard input.
+It's a staple tool for anyone working with text files on Unix-like systems. But have you ever wondered how such a tool is designed and implemented?
+
+In this practice exercise, we'll build a simple implementation of the `wc` tool using Rust. By the end, we'll have a functional utility that can count lines, words, and bytes in files.
+
+## Setting Up Our Project
+
+First, let's set up a new Rust project and add [clap](https://crates.io/crates/clap) as a dependency:
+
+```bash
+cargo new rust-wc
+cd rust-wc
+cargo add clap --features derive
+```
+
+## Defining the Command-Line Interface
+
+Below is our initial structure for the application:
+
+```rust
+use std::fs::File;
+use std::io::{self, BufRead, BufReader};
+use clap::Parser;
+
+#[derive(Parser)]
+#[command(name = "wc")]
+#[command(about = "Count lines, words, and bytes in a file")]
+struct Cli {
+    #[arg(short = 'l', long = "lines")]
+    lines: bool,
+
+    #[arg(short = 'w', long = "words")]
+    words: bool,
+
+    #[arg(short = 'c', long = "bytes")]
+    bytes: bool,
+
+    #[arg(name = "FILE")]
+    file: Option<String>,
+}
+
+#[derive(Default)]
+struct Counts {
+    lines: usize,
+    words: usize,
+    bytes: usize,
+}
+
+fn main() -> io::Result<()> {
+    let args = Cli::parse();
+
+    // Show everything if no specific counts are requested
+    let show_all = !(args.lines || args.words || args.bytes);
+
+    let counts = match args.file {
+        Some(ref path) => count_file(path)?,
+        None => count_stdin()?,
+    };
+
+    print_counts(&counts, show_all, args.lines, args.words, args.bytes);
+    Ok(())
+}
+```
+
+This code sets up our tool's foundation. We use Rust's `clap` library to handle command-line options and create a structure to store our count results.
+
+### Counting Files and Input
+
+Now let's add the counting functions:
+
+```rust
+fn count_file(path: &str) -> io::Result<Counts> {
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+    count_reader(reader)
+}
+
+fn count_stdin() -> io::Result<Counts> {
+    let stdin = io::stdin();
+    let reader = stdin.lock();
+    count_reader(reader)
+}
+
+fn count_reader<R: BufRead>(reader: R) -> io::Result<Counts> {
+    let mut counts = Counts::default();
+
+    for line in reader.lines() {
+        let line = line?;
+        counts.lines += 1;
+        counts.words += line.split_whitespace().count();
+        counts.bytes += line.len() + 1;
+    }
+
+    Ok(counts)
+}
+```
+
+These functions work together to count lines, words, and bytes from any input source. We use Rust's traits to handle both files and standard input in the same way.
+
+### Display Format
+
+Let's create a clean output format:
+
+```rust
+impl std::fmt::Display for Counts {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        let mut output = String::new();
+
+        if self.show_all || self.show_lines {
+            output.push_str(&format!("{:>8} ", self.lines));
+        }
+        if self.show_all || self.show_words {
+            output.push_str(&format!("{:>8} ", self.words));
+        }
+        if self.show_all || self.show_bytes {
+            output.push_str(&format!("{:>8}", self.bytes));
+        }
+
+        write!(f, "{}", output.trim_end())
+    }
+}
+
+fn print_counts(counts: &Counts) {
+    println!("{}", counts);
+}
+```
+
+This code creates neat, aligned output that matches the style of traditional Unix tools.
+
+### Testing Our Tool
+
+Let's add some tests to make sure everything works:
+
+```rust
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::Cursor;
+
+    #[test]
+    fn test_empty_input() {
+        let input = Cursor::new("");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.lines, 0);
+        assert_eq!(counts.words, 0);
+        assert_eq!(counts.bytes, 0);
+    }
+
+    #[test]
+    fn test_single_word() {
+        let input = Cursor::new("hello");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.lines, 1);
+        assert_eq!(counts.words, 1);
+        assert_eq!(counts.bytes, 6);
+    }
+
+    #[test]
+    fn test_multiple_words() {
+        let input = Cursor::new("hello world\nrust is great");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.lines, 2);
+        assert_eq!(counts.words, 5);
+        assert_eq!(counts.bytes, 22);
+    }
+
+    #[test]
+    fn test_multiple_spaces() {
+        let input = Cursor::new("hello    world");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.words, 2);
+    }
+
+    #[test]
+    fn test_unicode_characters() {
+        let input = Cursor::new("Hello 世界");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.words, 2);
+        assert_eq!(counts.bytes, 11);
+    }
+}
+```
+
+### Using the Tool
+
+We can build and run our program with:
+
+```bash
+cargo build --release
+echo .e "Hello World" | ./target/release/rust-wc
+./target/release/rust-wc some_file.txt
+```
+
+To run the tests:
+
+```bash
+cargo test
+```
+
+### Future Improvements
+
+We can make our tool even better by:
+
+- Adding support for multiple files at once
+- Improving how we handle different text encodings
+- Adding better error messages for invalid text
+- Making it faster with parallel processing
+
+This project shows how we can use Rust's features to build reliable command-line tools that work as well as traditional Unix utilities.
+As always, if you disagree or want to chat about this post, find me on [Bluesky](https://bsky.app/profile/joshfinnie.devhttps://bsky.app/profile/joshfinnie.dev)!
+
+### Complete Code
+
+```rust
+use std::fs::File;
+use std::io::{self, BufRead, BufReader};
+use clap::Parser;
+
+#[derive(Parser)]
+#[command(name = "wc")]
+#[command(about = "Count lines, words, and bytes in a file")]
+struct Cli {
+    #[arg(short = 'l', long = "lines")]
+    lines: bool,
+
+    #[arg(short = 'w', long = "words")]
+    words: bool,
+
+    #[arg(short = 'c', long = "bytes")]
+    bytes: bool,
+
+    #[arg(name = "FILE")]
+    file: Option<String>,
+}
+
+#[derive(Default)]
+struct Counts {
+    lines: usize,
+    words: usize,
+    bytes: usize,
+    show_all: bool,
+    show_lines: bool,
+    show_words: bool,
+    show_bytes: bool,
+}
+
+impl std::fmt::Display for Counts {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        let mut output = String::new();
+
+        if self.show_all || self.show_lines {
+            output.push_str(&format!("{:>8} ", self.lines));
+        }
+        if self.show_all || self.show_words {
+            output.push_str(&format!("{:>8} ", self.words));
+        }
+        if self.show_all || self.show_bytes {
+            output.push_str(&format!("{:>8}", self.bytes));
+        }
+
+        write!(f, "{}", output.trim_end())
+    }
+}
+
+fn count_file(path: &str) -> io::Result<Counts> {
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+    count_reader(reader)
+}
+
+fn count_stdin() -> io::Result<Counts> {
+    let stdin = io::stdin();
+    let reader = stdin.lock();
+    count_reader(reader)
+}
+
+fn count_reader<R: BufRead>(reader: R) -> io::Result<Counts> {
+    let mut counts = Counts::default();
+
+    for line in reader.lines() {
+        let line = line?;
+        counts.lines += 1;
+        counts.words += line.split_whitespace().count();
+        counts.bytes += line.len() + 1;
+    }
+
+    Ok(counts)
+}
+
+fn print_counts(
+    counts: &mut Counts,
+    show_all: bool,
+    show_lines: bool,
+    show_words: bool,
+    show_bytes: bool,
+) {
+    counts.show_all = show_all;
+    counts.show_lines = show_lines;
+    counts.show_words = show_words;
+    counts.show_bytes = show_bytes;
+    println!("{}", counts);
+}
+
+fn main() -> io::Result<()> {
+    let args = Cli::parse();
+
+    // Show everything if no specific counts are requested
+    let show_all = !(args.lines || args.words || args.bytes);
+
+    let mut counts = match args.file {
+        Some(ref path) => count_file(path)?,
+        None => count_stdin()?,
+    };
+
+    print_counts(&mut counts, show_all, args.lines, args.words, args.bytes);
+    Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::Cursor;
+
+    #[test]
+    fn test_empty_input() {
+        let input = Cursor::new("");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.lines, 0);
+        assert_eq!(counts.words, 0);
+        assert_eq!(counts.bytes, 0);
+    }
+
+    #[test]
+    fn test_single_word() {
+        let input = Cursor::new("hello");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.lines, 1);
+        assert_eq!(counts.words, 1);
+        assert_eq!(counts.bytes, 6);
+    }
+
+    #[test]
+    fn test_multiple_words() {
+        let input = Cursor::new("hello world\nrust is great");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.lines, 2);
+        assert_eq!(counts.words, 5);
+        assert_eq!(counts.bytes, 22);
+    }
+
+    #[test]
+    fn test_multiple_spaces() {
+        let input = Cursor::new("hello    world");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.words, 2);
+    }
+
+    #[test]
+    fn test_unicode_characters() {
+        let input = Cursor::new("Hello 世界");
+        let counts = count_reader(input).unwrap();
+        assert_eq!(counts.words, 2);
+        assert_eq!(counts.bytes, 11);
+    }
+}
+```
+
+All these pieces work together to create a complete word counting tool.
+We've included command-line options, file handling, counting functions, and thorough testing.

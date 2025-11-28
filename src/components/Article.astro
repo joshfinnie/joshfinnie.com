@@ -1,5 +1,4 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import { getEntry } from 'astro:content';
 import { Card, CardContent, CardFooter, CardTitle } from './ui/card';
 
@@ -8,7 +7,10 @@ interface Props {
 }
 
 const { id } = Astro.props;
-const post: CollectionEntry<'blog'> = await getEntry('blog', id);
+const post = await getEntry('blog', id);
+if (!post) {
+  throw new Error(`Blog post with id "${id}" not found`);
+}
 ---
 
 <Card

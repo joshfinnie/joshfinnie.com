@@ -12,7 +12,7 @@ export async function GET() {
       .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
       .map((post) => ({
         link: `/blog/${post.id}/`,
-        pubDate: post.data.date,
+        pubDate: new Date(post.data.date),
         ...post.data,
       })),
   });

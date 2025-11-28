@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+import { Fragment } from 'astro/jsx-runtime';
 import CloudinaryImage from './CloudinaryImage.astro';
 
 interface Props {
@@ -10,28 +11,43 @@ const { id } = Astro.props;
 const project = await getEntry('project', id);
 ---
 
-<h1 class="font-bold text-3xl mb-0 mt-5 prose prose-zinc dark:prose-invert">{project.data.title}</h1>
-{
-  project.data.heroImage && (
-    <CloudinaryImage publicId={project.data.heroImage} alt={project.data.title} width={1024} class="-mb-1 mt-0" />
-  )
-}
-<p class="prose prose-zinc dark:prose-invert max-w-none">{project.data.summary}</p>
-<div class="mb-5 flex flex-col lg:flex-row justify-center items-center bg-zinc-200 text-zinc-800 rounded-lg">
-  <div class="font-bold py-2">Technologies Used:</div>
-  <div class="max-w-[300px] lg:max-w-none">
-    {
-      project.data.technologies.map((tech: string) => (
-        <Fragment key={tech}>
-          <CloudinaryImage
-            publicId={`icons/${tech}`}
-            alt={tech}
-            width={48}
-            height={48}
-            class="hover:scale-110 transition duration-300 ease-in-out inline m-2 lg:m-5"
-          />
-        </Fragment>
-      ))
-    }
+{project ? (
+  <>
+    <h1 class="font-bold text-3xl mb-0 mt-5 prose prose-zinc dark:prose-invert">
+      {project.data.title}
+    </h1>
+
+    {project.data.heroImage && (
+      <CloudinaryImage
+        publicId={project.data.heroImage}
+        alt={project.data.title}
+        width={1024}
+        class="-mb-1 mt-0"
+      />
+    )}
+
+    <p class="prose prose-zinc dark:prose-invert max-w-none">
+      {project.data.summary}
+    </p>
+
+    <div class="mb-5 flex flex-col lg:flex-row justify-center items-center bg-zinc-200 text-zinc-800 rounded-lg">
+      <div class="font-bold py-2">Technologies Used:</div>
+      <div class="max-w-[300px] lg:max-w-none">
+        {project.data.technologies.map((tech: string) => (
+            <CloudinaryImage
+              publicId={`icons/${tech}`}
+              alt={tech}
+              width={48}
+              height={48}
+              class="hover:scale-110 transition duration-300 ease-in-out inline m-2 lg:m-5"
+            />
+        ))}
+      </div>
+    </div>
+  </>
+) : (
+  <div class="font-bold text-xl mt-5">
+    Project not found.
   </div>
-</div>
+)}
+

@@ -13,7 +13,10 @@ interface Props {
 const { publicId, alt, width, height, class: className, loading = 'lazy' } = Astro.props;
 
 // Generate optimized Cloudinary URL
-const imageUrl = getCloudinaryImageUrl(publicId, { width, height });
+const imageUrl = getCloudinaryImageUrl(publicId, {
+  ...(width !== undefined && { width }),
+  ...(height !== undefined && { height }),
+});
 
 // Generate responsive srcset
 const srcset = [

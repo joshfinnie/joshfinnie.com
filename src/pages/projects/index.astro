@@ -4,8 +4,12 @@ import Project from '@components/Project.astro';
 import BaseLayout from '@src/layouts/BaseLayout.astro';
 
 const allProjects = await getCollection('project');
-const projects = allProjects.sort((a, b) => Date.parse(b.data.lastUpdated) - Date.parse(a.data.lastUpdated));
+
+const projects = allProjects.sort(
+  (a, b) => Date.parse(b.data.lastUpdated ?? '') - Date.parse(a.data.lastUpdated ?? '')
+);
 ---
+
 
 <BaseLayout title="Projects | www.joshfinnie.com">
   {

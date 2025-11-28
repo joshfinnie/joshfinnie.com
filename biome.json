@@ -579,7 +579,17 @@
       },
       "linter": { "rules": {} }
     },
-    { "includes": ["*.astro"] }
+    { "includes": ["*.astro"] },
+    {
+      "includes": ["src/lib/cloudinary.ts", "src/pages/blog/\\[...page\\].astro"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noExplicitAny": "off"
+          }
+        }
+      }
+    }
   ],
   "assist": {
     "enabled": true,

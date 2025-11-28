@@ -12,6 +12,7 @@ const { id } = Astro.props;
 const project = await getEntry('project', id);
 ---
 
+{ project && 
 <article class="prose prose-zinc max-w-none pb-10 dark:prose-invert">
   <ProjectHero id={project.id} />
 
@@ -19,3 +20,4 @@ const project = await getEntry('project', id);
     <Button className="float-right">More Details</Button>
   </a>
 </article>
+}

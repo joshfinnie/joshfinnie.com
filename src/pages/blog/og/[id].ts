@@ -2,11 +2,12 @@ import { getCollection } from 'astro:content';
 import { OGImageRoute } from 'astro-og-canvas';
 
 const entries = await getCollection('blog');
+
 const pages = Object.fromEntries([
-  ...entries.map(({ data, id, assetImports = undefined }) => [
+  ...entries.map(({ data, id }) => [
     id,
     {
-      assetImports: assetImports ?? undefined,
+      assetImports: undefined,
       data,
     },
   ]),
@@ -24,7 +25,7 @@ const pages = Object.fromEntries([
 export const { getStaticPaths, GET } = OGImageRoute({
   pages,
   param: 'id',
-  getImageOptions: (path, page) => ({
+  getImageOptions: (_path, page) => ({
     title: page.assetImports ? '' : page.data.title,
     description: page.assetImports ? '' : page.data.description,
     font: {
@@ -39,11 +40,13 @@ export const { getStaticPaths, GET } = OGImageRoute({
       'https://api.fontsource.org/v1/fonts/inter/latin-400-normal.ttf',
       'https://api.fontsource.org/v1/fonts/inter/latin-600-normal.ttf',
     ],
-    bgImage: page.assetImports
+    ...(page.assetImports
       ? {
-          path: page.assetImports[0].replace('@assets', './src/assets'),
-          fit: 'cover',
+          bgImage: {
+            path: page.assetImports[0].replace('@assets', './src/assets'),
+            fit: 'cover' as const,
+          },
         }
-      : undefined,
+      : {}),
   }),
 });

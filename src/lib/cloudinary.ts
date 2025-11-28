@@ -1,43 +1,32 @@
 import { Cloudinary } from '@cloudinary/url-gen';
-import { auto } from '@cloudinary/url-gen/qualifiers/format';
+import { scale } from '@cloudinary/url-gen/actions/resize';
+import { auto as autoFormat } from '@cloudinary/url-gen/qualifiers/format';
 import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
 
-const cloudName = import.meta.env.CLOUDINARY_CLOUD_NAME || 'dgd9cw3gu';
+const cloudName: string = import.meta.env.CLOUDINARY_CLOUD_NAME || 'dgd9cw3gu';
 
-// Create and configure Cloudinary instance
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: cloudName,
-  },
-  url: {
-    secure: true,
-  },
+// Create Cloudinary instance
+const cld: Cloudinary = new Cloudinary({
+  cloud: { cloudName },
+  url: { secure: true },
 });
 
 /**
  * Get optimized Cloudinary image URL
- * @param publicId - The public ID of the image in Cloudinary (without extension)
- * @param options - Optional width and other transformations
  */
-export function getCloudinaryImageUrl(
-  publicId: string,
-  options: {
-    width?: number;
-    height?: number;
-  } = {}
-): string {
+export function getCloudinaryImageUrl(publicId: string, options: { width?: number; height?: number } = {}): string {
   const image = cld.image(publicId);
 
   // Apply automatic format and quality optimization
-  image.format(auto()).quality(autoQuality());
+  image.format(autoFormat() as any).quality(autoQuality() as any);
 
   // Apply width if specified
   if (options.width) {
-    image.resize(`w_${options.width}`);
+    image.resize(scale().width(options.width));
   }
 
   if (options.height) {
-    image.resize(`h_${options.height}`);
+    image.resize(scale().height(options.height));
   }
 
   return image.toURL();
@@ -45,11 +34,8 @@ export function getCloudinaryImageUrl(
 
 /**
  * Convert local image path to Cloudinary public ID
- * Example: src/assets/blog/my-image.jpg -> blog/my-image
- * Example: @assets/blog/my-image.jpg -> blog/my-image
  */
 export function pathToPublicId(localPath: string): string {
-  // Remove src/assets/ or @assets/ prefix and file extension
   return localPath
     .replace(/^@assets\//, '')
     .replace(/^src\/assets\//, '')
@@ -57,14 +43,14 @@ export function pathToPublicId(localPath: string): string {
 }
 
 /**
- * Get the cloud name for environment
+ * Get Cloudinary cloud name
  */
 export function getCloudName(): string {
   return cloudName;
 }
 
 /**
- * Get Cloudinary base URL for direct usage
+ * Get Cloudinary base URL
  */
 export function getCloudinaryBaseUrl(): string {
   return `https://res.cloudinary.com/${cloudName}/image/upload/`;

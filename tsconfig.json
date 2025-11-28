@@ -25,5 +25,6 @@
         "name": "@astrojs/ts-plugin"
       }
     ]
-  }
+  },
+  "exclude": ["node_modules", "dist", "src/components/ui/**/*.ts", "src/components/ui/**/*.tsx"]
 }

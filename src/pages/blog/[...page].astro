@@ -6,7 +6,7 @@ import BlogPostPreview from '@components/BlogPostPreview.astro';
 import Pagination from '@components/Pagination.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: any }) {
   const allPosts = await getCollection('blog');
   const sortedPosts = allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 

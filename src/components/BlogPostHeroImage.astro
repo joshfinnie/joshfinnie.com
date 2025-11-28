@@ -9,6 +9,10 @@ interface Props {
 }
 const { id } = Astro.props;
 const post = await getEntry('blog', id);
+
+if (!post) {
+  throw new Error(`Blog post with id "${id}" not found`);
+}
 ---
 
 <div class="relative">
@@ -18,7 +22,7 @@ const post = await getEntry('blog', id);
     )
   }
   {
-    post.data.unsplash && (
+    post.data.unsplash && post.data.unsplashURL && (
       <div class="absolute bottom-0 right-0 mb-2 mr-2 rounded-lg bg-zinc-200 px-2 py-2 dark:bg-zinc-800 md:px-6 prose prose-zinc dark:prose-invert">
         <Unsplash name={post.data.unsplash} url={post.data.unsplashURL} />
       </div>

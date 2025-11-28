@@ -2,7 +2,7 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { auto } from '@cloudinary/url-gen/qualifiers/format';
 import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
 
-const cloudName = import.meta.env.CLOUDINARY_CLOUD_NAME || 'your_cloud_name';
+const cloudName = import.meta.env.CLOUDINARY_CLOUD_NAME || 'dgd9cw3gu';
 
 // Create and configure Cloudinary instance
 const cld = new Cloudinary({

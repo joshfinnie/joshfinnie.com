@@ -1,6 +1,6 @@
 ---
-import { getEntry } from "astro:content";
-import Date from "./Date.astro";
+import { getEntry } from 'astro:content';
+import Date from './Date.astro';
 
 interface Props {
   id: string;
@@ -8,7 +8,7 @@ interface Props {
 
 const { id } = Astro.props;
 
-const post = await getEntry("blog", id);
+const post = await getEntry('blog', id);
 ---
 
 <header class="prose dark:prose-invert prose-zinc">

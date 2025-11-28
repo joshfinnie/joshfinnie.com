@@ -16,6 +16,10 @@
     },
     "jsxImportSource": "react",
     "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"

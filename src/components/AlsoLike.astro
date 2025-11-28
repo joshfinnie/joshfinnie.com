@@ -1,7 +1,7 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
 
-import BlogPostPreviewLite from "./BlogPostPreviewLite.astro";
+import BlogPostPreviewLite from './BlogPostPreviewLite.astro';
 
 interface Props {
   id: string;
@@ -9,9 +9,9 @@ interface Props {
 }
 
 const { id, tags } = Astro.props;
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection('blog');
 
-const excludedTags: string[] = ["blog", "news", "announcement"];
+const excludedTags: string[] = ['blog', 'news', 'announcement'];
 const finalTags = tags.filter((tag: string) => !excludedTags.includes(tag));
 const finalTagSet = new Set(finalTags);
 const overlappingTags = tags.filter((tag) => finalTagSet.has(tag));

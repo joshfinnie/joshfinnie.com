@@ -1,39 +1,39 @@
 ---
-import { getImage } from "astro:assets";
-import { getEntry } from "astro:content";
+import { getEntry } from 'astro:content';
+import { getCloudinaryImageUrl } from '../lib/cloudinary';
 
-import AlsoLike from "./AlsoLike.astro";
-import Date from "./Date.astro";
-import Tag from "./Tags.astro";
-import HeroImage from "./BlogPostHeroImage.astro";
+import AlsoLike from './AlsoLike.astro';
+import HeroImage from './BlogPostHeroImage.astro';
+import Date from './Date.astro';
+import Tag from './Tags.astro';
 
 interface Props {
   id: string;
 }
 
 const { id } = Astro.props;
-const post = await getEntry("blog", id);
+const post = await getEntry('blog', id);
 const tags = post.data.tags ?? [];
 const date = post.data.date ?? undefined;
 
 const imageURL = post.data.heroImage
-  ? `https://www.joshfinnie.com${(await getImage({ src: post.data.heroImage })).src}`
-  : "";
+  ? getCloudinaryImageUrl(post.data.heroImage, { width: 1024 })
+  : '';
 
 let schema = JSON.stringify({
-  "@context": "https://schema.org/",
-  "@type": "BlogPosting",
+  '@context': 'https://schema.org/',
+  '@type': 'BlogPosting',
   headline: post.data.title,
   author: {
-    "@type": "Person",
-    name: "Josh Finnie",
+    '@type': 'Person',
+    name: 'Josh Finnie',
   },
   datePublished: post.data.date,
   dateCreated: post.data.date,
   description: post.data.description,
   url: `https://www.joshfinnie.com/${post.id}`,
   image: imageURL,
-  inLanguage: "en-US",
+  inLanguage: 'en-US',
   keywords: post.data.tags,
 });
 ---

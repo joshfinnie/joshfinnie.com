@@ -5,7 +5,7 @@ tags:
   - "update"
   - "non-tech"
 slug: "one-year-later"
-heroImage: "@assets/blog/mask.jpg"
+heroImage: "blog/mask"
 expires: false
 unsplash: "Brian McGowan"
 unsplashURL: "sushioutlaw"

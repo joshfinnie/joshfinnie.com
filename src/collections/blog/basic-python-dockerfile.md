@@ -7,7 +7,7 @@ tags:
   - "open-source"
   - "tutorial"
 slug: "my-basic-python-dockerfile"
-heroImage: "@assets/blog/python.jpg"
+heroImage: "blog/python"
 expires: true
 unsplash: "Marius Masalar"
 unsplashURL: "marius"

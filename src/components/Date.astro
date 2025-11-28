@@ -1,10 +1,9 @@
 ---
-import { parseISO, format } from "date-fns";
-
-import MCCalendar from "@icons/mc_calendar_line.svg";
+import MCCalendar from '@icons/mc_calendar_line.svg';
+import { format, parseISO } from 'date-fns';
 
 const { date } = Astro.props;
-const formattedDate = format(parseISO(date), "LLLL d, yyyy");
+const formattedDate = format(parseISO(date), 'LLLL d, yyyy');
 ---
 
 <span class="flex items-center gap-1 prose prose-zinc dark:prose-invert">

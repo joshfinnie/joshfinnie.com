@@ -1,8 +1,6 @@
 ---
-import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
-
-import { Card, CardTitle, CardFooter } from "./ui/card";
+import CloudinaryImage from './CloudinaryImage.astro';
+import { Card, CardFooter, CardTitle } from './ui/card';
 
 interface Props {
   company: string;
@@ -14,9 +12,8 @@ interface Props {
 
 const { company, role, startDate, endDate = null, logo } = Astro.props;
 
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/companies/*.{jpeg,jpg,png,gif}");
-if (!images[`/src/assets/companies/${logo}`])
-  throw new Error(`"${logo}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+// Convert logo filename to Cloudinary public ID (e.g., "logo.png" -> "companies/logo")
+const publicId = `companies/${logo.replace(/\.(jpg|jpeg|png|gif)$/i, '')}`;
 ---
 
 <Card
@@ -26,7 +23,7 @@ if (!images[`/src/assets/companies/${logo}`])
     <div
       class="relative flex h-10 w-10 items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
     >
-      <Image alt={company} src={images[`/src/assets/companies/${logo}`]()} width={512} height={512} class="h-10 w-10" />
+      <CloudinaryImage publicId={publicId} alt={company} width={40} height={40} class="h-10 w-10" />
     </div>
     <div class="flex flex-col">
       <CardTitle className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{company}</CardTitle>

@@ -11,5 +11,5 @@ technologies:
   - "aws"
   - "github"
   - "sass"
-heroImage: "@assets/projects/pbsorg.png"
+heroImage: "projects/pbsorg"
 ---

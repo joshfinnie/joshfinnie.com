@@ -7,7 +7,7 @@ tags:
   - "open-source"
   - "programming"
 slug: "new-years-resolutions-for-2018-and-2017-review"
-heroImage: "@assets/blog/2018.jpg"
+heroImage: "blog/2018"
 expires: false
 unsplash: "NordWood Themes"
 ---

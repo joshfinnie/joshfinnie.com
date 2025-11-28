@@ -1,11 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import MCLightning from "@icons/mc_lightning_line.svg";
+import { getCollection } from 'astro:content';
+import Talk from '@components/Talk.astro';
+import MCLightning from '@icons/mc_lightning_line.svg';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
 
-import BaseLayout from "@src/layouts/BaseLayout.astro";
-import Talk from "@components/Talk.astro";
-
-const allTalks = await getCollection("talks");
+const allTalks = await getCollection('talks');
 const talks = allTalks[0].data.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 ---
 

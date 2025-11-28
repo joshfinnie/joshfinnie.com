@@ -7,7 +7,7 @@ tags:
   - "coding"
   - "code-review"
 slug: "my-basic-isort-configuration"
-heroImage: "@assets/blog/sorting.jpg"
+heroImage: "blog/sorting"
 expires: true
 unsplash: "Sophie Elvis"
 unsplashURL: "thetechomaid"

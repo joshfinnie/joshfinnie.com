@@ -1,15 +1,15 @@
 ---
-import { Image } from "astro:assets";
-import { getEntry } from "astro:content";
+import CloudinaryImage from './CloudinaryImage.astro';
+import { getEntry } from 'astro:content';
 
-import Date from "./Date.astro";
+import Date from './Date.astro';
 
 interface Props {
   id: string;
 }
 
 const { id } = Astro.props;
-const post = await getEntry("blog", id);
+const post = await getEntry('blog', id);
 ---
 
 <article class="my-5">
@@ -18,12 +18,11 @@ const post = await getEntry("blog", id);
       <a href={`/blog/${post.id}/`} title={post.data.title} class="prose prose-zinc dark:prose-invert">
         {post.data.heroImage && (
           <div class="relative">
-            <Image
-              class="rounded-md relative"
-              src={post.data.heroImage}
+            <CloudinaryImage
+              publicId={post.data.heroImage}
               alt={post.data.title}
-              width="1024"
-              layout="responsive"
+              width={1024}
+              class="rounded-md relative"
             />
             <div class="absolute rounded-lg bottom-0 left-0 p-3 m-3 prose prose-zinc dark:prose-invert bg-zinc-200 dark:bg-zinc-800">
               <Date date={post.data.date} />

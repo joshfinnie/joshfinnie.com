@@ -6,7 +6,7 @@ tags:
   - "non-tech"
   - "setup"
 slug: "my-coffee-setup"
-heroImage: "@assets/blog/coffee.jpg"
+heroImage: "blog/coffee"
 expires: false
 unsplash: "Mike Kenneally"
 ---

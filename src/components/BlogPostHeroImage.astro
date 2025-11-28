@@ -1,20 +1,20 @@
 ---
-import { Image } from "astro:assets";
-import { getEntry } from "astro:content";
+import { getEntry } from 'astro:content';
+import CloudinaryImage from './CloudinaryImage.astro';
 
-import Unsplash from "./Unsplash.astro";
+import Unsplash from './Unsplash.astro';
 
 interface Props {
   id: string;
 }
 const { id } = Astro.props;
-const post = await getEntry("blog", id);
+const post = await getEntry('blog', id);
 ---
 
 <div class="relative">
   {
     post.data.heroImage && (
-      <Image src={post.data.heroImage} alt={post.data.title} width={1024} layout="responsive" loading="eager" />
+      <CloudinaryImage publicId={post.data.heroImage} alt={post.data.title} width={1024} loading="eager" />
     )
   }
   {

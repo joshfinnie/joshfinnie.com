@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const CollapsibleQuote = ({
-  label = "Content",
+  label = 'Content',
   children,
 }: {
   label: string;

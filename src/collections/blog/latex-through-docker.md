@@ -9,7 +9,7 @@ tags:
   - "tutorial"
   - "projects"
 slug: "latex-through-docker"
-heroImage: "@assets/blog/math.jpg"
+heroImage: "blog/math"
 expires: true
 unsplash: "Roman Mager"
 unsplashURL: "roman_lazygeek"

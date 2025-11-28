@@ -14,9 +14,6 @@ description: "A step-by-step guide to building modern web applications with Fast
 
 import { Image } from "astro:assets";
 
-import ViteReact from "@assets/blog/vite-react.png";
-import ViteReactFastAPI from "@assets/blog/vite-react-fastapi.png";
-
 While `create-react-app` and [Flask](https://flask.palletsprojects.com/en/stable/) are popular choices for building web applications, we want to show you some alternatives that are out there.
 In this blog post we will use [Vite](https://vite.dev/) as a faster, lighter alternative for the React front end, and [FastAPI](https://fastapi.tiangolo.com/) as a more performant option for the Python backend.
 We will also explore [UV](https://docs.astral.sh/uv/), an emerging alternative to pip for Python package management.
@@ -62,7 +59,7 @@ npm run dev
 Vite will launch the React development server at `http://localhost:5173/`.
 Thanks to hot module reloading, our browser automatically refreshes whenever we make changes.
 
-<Image src={ViteReact} alt="the vite/react starting page" />
+<img src="https://res.cloudinary.com/dgd9cw3gu/image/upload/f_auto,q_auto/blog/vite-react" alt="the vite/react starting page" />
 
 ## Creating the FastAPI Back End
 
@@ -234,7 +231,7 @@ When we save this file, our React app will fetch the current time from FastAPI a
 The minimal styling we applied just centered the time in the center of the page.
 UV installs our dependencies quickly and reliably, and FastAPI provides a fast Python backend.
 
-<Image src={ViteReactFastAPI} alt="react showing the time from our API endpoint" />
+<img src="https://res.cloudinary.com/dgd9cw3gu/image/upload/f_auto,q_auto/blog/vite-react-fastapi" alt="react showing the time from our API endpoint" />
 
 ## Conclusion
 

@@ -40,7 +40,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "alpinejs": "^3.15.2",
-    "astro": "5.16.0",
+    "astro": "5.16.3",
     "astro-og-canvas": "^0.7.2",
     "canvaskit-wasm": "^0.40.0",
     "class-variance-authority": "^0.7.1",
@@ -58,7 +58,7 @@
     "tailwindcss": "^4.1.17",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.9.3",
-    "vite": "^7.2.4",
+    "vite": "^7.2.6",
     "vite-react-jsx": "^1.1.2"
   },
   "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677",

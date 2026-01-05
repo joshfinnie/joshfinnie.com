@@ -9,13 +9,6 @@ const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.join(__dirname, '..');
 
 /**
- * Convert @assets path to Cloudinary public ID
- */
-function _assetsPathToPublicId(assetPath) {
-  return assetPath.replace(/\.(jpg|jpeg|png|webp|gif)$/i, '');
-}
-
-/**
  * Update frontmatter in a markdown/mdx file
  */
 async function updateFrontmatter(filePath) {
@@ -24,14 +17,14 @@ async function updateFrontmatter(filePath) {
   let changed = false;
 
   // Pattern: heroImage: "@assets/blog/image.jpg"
-  updated = updated.replace(/^heroImage:\s*["']@assets\/(.+?\.(jpg|jpeg|png|webp|gif))["']/gim, (match, imagePath) => {
+  updated = updated.replace(/^heroImage:\s*["']@assets\/(.+?\.(jpg|jpeg|png|webp|gif))["']/gim, (_match, imagePath) => {
     const publicId = imagePath.replace(/\.(jpg|jpeg|png|webp|gif)$/i, '');
     changed = true;
     return `heroImage: "${publicId}"`;
   });
 
   // Pattern: heroImage: @assets/blog/image.jpg (without quotes)
-  updated = updated.replace(/^heroImage:\s*@assets\/(.+?\.(jpg|jpeg|png|webp|gif))/gim, (match, imagePath) => {
+  updated = updated.replace(/^heroImage:\s*@assets\/(.+?\.(jpg|jpeg|png|webp|gif))/gim, (_match, imagePath) => {
     const publicId = imagePath.replace(/\.(jpg|jpeg|png|webp|gif)$/i, '');
     changed = true;
     return `heroImage: "${publicId}"`;

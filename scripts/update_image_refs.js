@@ -82,7 +82,7 @@ async function updateFile(filePath) {
   // Pattern 4: Direct string references to assets - "src/assets/..."
   updated = updated.replace(
     /(['"])(src\/assets\/.+?\.(jpg|jpeg|png|webp|gif))(['"])/gi,
-    (match, quote1, localPath, ext, quote2) => {
+    (match, quote1, localPath, _ext, quote2) => {
       const cloudinaryUrl = toCloudinaryUrl(localPath);
       if (cloudinaryUrl) {
         changeCount++;

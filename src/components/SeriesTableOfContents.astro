@@ -39,14 +39,14 @@ const displayName = seriesName
         <ol class="list-decimal list-inside space-y-2 pl-0 my-4">
           {seriesPosts.map((post) =>
             post.id === currentPostId ? (
-              <li key={post.id} class="font-bold text-zinc-900 dark:text-zinc-100">
+              <li class="font-bold text-zinc-900 dark:text-zinc-100">
                 <span class="inline-flex items-center gap-1.5">
                   {post.data.title}
                   <span class="text-green-600 dark:text-green-400">✓</span>
                 </span>
               </li>
             ) : (
-              <li key={post.id} class="text-zinc-700 dark:text-zinc-300">
+              <li class="text-zinc-700 dark:text-zinc-300">
                 <a href={`/blog/${post.id}/`} class="hover:text-zinc-900 dark:hover:text-zinc-100 no-underline hover:underline">
                   {post.data.title}
                 </a>

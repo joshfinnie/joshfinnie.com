@@ -1,5 +1,5 @@
-import sharp from "sharp";
-import { globSync } from "glob";
+import { globSync } from 'glob';
+import sharp from 'sharp';
 
 let matches = globSync(`public/**/*.{png,jpg,jpeg}`);
 const MAX_WIDTH = 1080;

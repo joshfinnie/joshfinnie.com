@@ -1,13 +1,14 @@
 ---
 title: "My Basic Python Dockerfile"
 date: "2019-06-06"
+description: "A reusable Python Dockerfile template featuring dumb-init, non-root user setup, and best practices."
 tags:
   - "docker"
   - "python"
   - "open-source"
   - "tutorial"
 slug: "my-basic-python-dockerfile"
-heroImage: "@assets/blog/python.jpg"
+heroImage: "blog/python"
 expires: true
 unsplash: "Marius Masalar"
 unsplashURL: "marius"

@@ -1,12 +1,13 @@
 ---
 title: "I Am Still Here"
 date: "2016-03-31"
+description: "A quick update on upcoming React.js ES2015 tutorials and NPM package development content."
 tags:
   - "news"
   - "update"
 slug: "still-here"
 expires: true
-heroImage: "@assets/blog/fog.jpg"
+heroImage: "blog/fog"
 unsplash: "Nicholas Kampouris"
 ---
 

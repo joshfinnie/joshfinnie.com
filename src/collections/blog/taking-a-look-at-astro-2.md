@@ -7,7 +7,7 @@ tags:
   - "update"
   - "vite"
 slug: "taking-a-look-at-astro-2"
-heroImage: "@assets/blog/astro.jpg"
+heroImage: "blog/astro"
 unsplash: "Lucas Marconnet"
 unsplashURL: "lucasmrc"
 description: "<DESCRIPTION>"

@@ -1,6 +1,7 @@
 ---
 title: "A Coder's Lifestyle"
 date: "2011-10-04"
+description: "Tips for balancing programming as a passion while working a non-technical full-time job."
 tags:
   - "lifestyle"
   - "coding"

@@ -1,6 +1,7 @@
 ---
 title: "Life Changes and Another Start with Jekyll"
 date: "2011-09-29"
+description: "Moving to DC and relaunching my blog with Jekyll and Bootstrap to focus on content and side projects."
 tags:
   - "jekyll"
   - "news"

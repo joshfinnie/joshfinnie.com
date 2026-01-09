@@ -1,0 +1,11 @@
+{
+  "uploadedAt": "2025-12-04T15:06:36.087Z",
+  "cloudName": "dgd9cw3gu",
+  "images": [
+    {
+      "localPath": "src/assets/blog/2025-music.jpg",
+      "publicId": "blog/2025-music",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764860795/blog/2025-music.jpg"
+    }
+  ]
+}

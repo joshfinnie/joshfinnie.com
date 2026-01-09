@@ -1,11 +1,12 @@
 ---
 title: "One Year Later"
 date: "2021-03-11"
+description: "Reflecting on one year of pandemic isolation, remote work, and hoping for a future with more opportunities."
 tags:
   - "update"
   - "non-tech"
 slug: "one-year-later"
-heroImage: "@assets/blog/mask.jpg"
+heroImage: "blog/mask"
 expires: false
 unsplash: "Brian McGowan"
 unsplashURL: "sushioutlaw"

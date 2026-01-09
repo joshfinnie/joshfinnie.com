@@ -7,5 +7,5 @@ technologies:
   - "angularjs"
   - "bootstrap"
   - "aws"
-heroImage: "@assets/projects/hoitmc.png"
+heroImage: "projects/hoitmc"
 ---

@@ -8,7 +8,7 @@ tags:
   - "tutorial"
   - "javascript"
 slug: "using-webassembly-created-in-rust-for-fast-react-components"
-heroImage: "@assets/blog/cabin.jpg"
+heroImage: "blog/cabin"
 unsplash: "Lili Kovac"
 unsplashURL: "@lilschk"
 description: "In this blog post we will learn how to leverage the Rust programming language to compile WebAssembly which we will then use in our React application. This gives us access to low-level components to speed up our code!"

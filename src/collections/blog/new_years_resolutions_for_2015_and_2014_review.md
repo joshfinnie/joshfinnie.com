@@ -1,6 +1,7 @@
 ---
 title: "New Years Resolutions for 2015 and 2014 Review"
 date: "2015-01-04"
+description: "Reviewing 2014 goals (7 of 12 completed) and setting new 2015 resolutions for open source and blogging."
 tags:
   - "resolutions"
   - "betterment"

@@ -1,6 +1,7 @@
 ---
 title: "Using Latex Through Docker"
 date: "2019-09-17"
+description: "Skip complex LaTeX installations on macOS by creating a portable Docker container for generating PDFs."
 tags:
   - "docker"
   - "latex"
@@ -9,7 +10,7 @@ tags:
   - "tutorial"
   - "projects"
 slug: "latex-through-docker"
-heroImage: "@assets/blog/math.jpg"
+heroImage: "blog/math"
 expires: true
 unsplash: "Roman Mager"
 unsplashURL: "roman_lazygeek"

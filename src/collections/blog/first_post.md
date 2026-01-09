@@ -1,6 +1,7 @@
 ---
 title: "First Post"
 date: "2010-01-25"
+description: "The inaugural post launching Josh Finnie's personal blog powered by Jekyll on Webfaction."
 tags:
   - "announcement"
   - "news"

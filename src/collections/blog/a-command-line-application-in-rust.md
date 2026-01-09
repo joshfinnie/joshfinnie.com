@@ -6,7 +6,7 @@ tags:
   - "command-line"
   - "tutorial"
 slug: "a-command-line-application-in-rust"
-heroImage: "@assets/blog/command-center.jpg"
+heroImage: "blog/command-center"
 unsplash: "Ugi K."
 unsplashURL: "wizzyfx"
 description: "In this blog post we start from scratch and write a full command-line application written in Rust. We use Clap for argument parsing, and Reqwest for hitting the API."

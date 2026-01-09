@@ -1,6 +1,7 @@
 ---
 title: "New Years Resolutions for 2014"
 date: "2014-01-01"
+description: "Goals for 2014: blog weekly, contribute to open source, complete NaNoWriMo, and get married."
 tags:
   - "resolutions"
   - "betterment"

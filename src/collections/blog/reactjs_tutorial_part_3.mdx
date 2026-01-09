@@ -1,6 +1,7 @@
 ---
 title: "React.js Tutorial Part 3"
 date: "2015-04-05"
+description: "Create reusable Job components in React: build nested components that iterate over data with props and state."
 tags:
   - "tutorial"
   - "react.js"
@@ -10,9 +11,6 @@ tags:
 slug: "reactjs-tutorial-part-3"
 expires: true
 ---
-
-import filledOutComponent from "@assets/blog/filled-out-job-component.png";
-import cssComponent from "@assets/blog/cssed-jobs-component.png";
 
 Welcome to part 3 of my React.js/Express.js app tutorial. In this part we are going to actually take a deep dive into react and start hashing out the application's components. If you haven't already, please start the tutorial at [Part 1](/blog/reactjs-tutorial-part-1/)
 
@@ -85,7 +83,7 @@ module.exports = React.createClass({
 
 Note that with the `getInitialState` function, the `render` function now has access to a useful state. We can cycle through the state to render the data in our app. Our web application should now look like this:
 
-<img src={filledOutComponent.src} alt="filled out job component" />
+<img src="https://res.cloudinary.com/dgd9cw3gu/image/upload/f_auto,q_auto/blog/filled-out-job-component" alt="filled out job component" />
 
 ### Adding More Components (Components within Components)
 
@@ -205,7 +203,7 @@ a {
 
 And now looking at it all put together, we now have something that looks like this!
 
-<img src={cssComponent.src} alt="CSS-ed jobs component" />
+<img src="https://res.cloudinary.com/dgd9cw3gu/image/upload/f_auto,q_auto/blog/cssed-jobs-component" alt="CSS-ed jobs component" />
 
 ## Conclusion
 

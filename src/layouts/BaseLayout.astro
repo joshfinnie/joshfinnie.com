@@ -1,23 +1,23 @@
 ---
-import BaseHead from "@components/BaseHead.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
+import BaseHead from '@components/BaseHead.astro';
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
 
 const {
-  title = "www.joshfinnie.com",
-  description = "The personal/professional website of Josh Finnie.",
+  title = 'www.joshfinnie.com',
+  description = 'The personal/professional website of Josh Finnie.',
   collection,
   id,
 } = Astro.props;
 
 var imageUrl;
-if (collection == "blog") {
+if (collection == 'blog') {
   imageUrl = `https://www.joshfinnie.com/blog/og/${id}.png`;
 } else {
-  imageUrl = "https://www.joshfinnie.com/blog/og/default.png";
+  imageUrl = 'https://www.joshfinnie.com/blog/og/default.png';
 }
 
-import "@styles/global.css";
+import '@styles/global.css';
 ---
 
 <html

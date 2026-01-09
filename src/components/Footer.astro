@@ -1,16 +1,15 @@
 ---
-import { Image } from "astro:assets";
+import CloudinaryImage from './CloudinaryImage.astro';
 
-import license from "@assets/icons/by-nc-sa.png";
 const year = new Date().getFullYear();
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about/", label: "About" },
-  { href: "/blog/", label: "Blog" },
-  { href: "/projects/", label: "Projects" },
-  { href: "/talks/", label: "Speaking" },
-  { href: "/uses/", label: "Uses" },
-  { href: "/rss.xml", label: "RSS" },
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/talks/', label: 'Speaking' },
+  { href: '/uses/', label: 'Uses' },
+  { href: '/rss.xml', label: 'RSS' },
 ];
 ---
 
@@ -36,13 +35,12 @@ const navLinks = [
               </div>
               <p class="text-sm text-zinc-400 dark:text-zinc-500">
                 &copy; 2010 - <!-- -->{year}<!-- --> Josh Finnie.
-                <Image
+                <CloudinaryImage
+                  publicId="icons/by-nc-sa"
                   alt="creative commons license"
                   class="inline ml-5"
-                  src={license}
-                  width="88"
-                  height="31"
-                  layout="responsive"
+                  width={88}
+                  height={31}
                 />
               </p>
             </div>

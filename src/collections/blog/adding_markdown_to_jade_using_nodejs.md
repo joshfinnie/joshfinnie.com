@@ -1,6 +1,7 @@
 ---
 title: "Adding Markdown to Jade Using Node.js"
 date: "2014-09-22"
+description: "Use the marked library to write cleaner Jade templates by converting Markdown to HTML for inline code formatting."
 tags:
   - "how-to"
   - "jade"

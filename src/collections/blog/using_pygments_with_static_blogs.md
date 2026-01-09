@@ -1,6 +1,7 @@
 ---
 title: "Using Pygments with Static Blogs"
 date: "2014-05-20"
+description: "Add syntax highlighting to Markdown blogs with Pygments: generate CSS and specify language in code blocks."
 tags:
   - "how-to"
   - "python"

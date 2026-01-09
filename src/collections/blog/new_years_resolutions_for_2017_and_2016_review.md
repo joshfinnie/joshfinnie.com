@@ -1,13 +1,14 @@
 ---
 title: "New Years Resolutions for 2017 and 2016 Review"
 date: "2017-01-01"
+description: "Narrowing focus for 2017: restart blogging, learn Go, and speak at conferences after 4 of 15 goals in 2016."
 tags:
   - "resolutions"
   - "betterment"
   - "open-source"
   - "programming"
 slug: "new-years-resolutions-for-2017-and-2016-review"
-heroImage: "@assets/blog/2017.jpg"
+heroImage: "blog/2017"
 expires: false
 unsplash: "freestock.org"
 ---

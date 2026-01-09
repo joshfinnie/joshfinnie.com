@@ -1,6 +1,7 @@
 ---
 title: "WTF Recruiters?"
 date: "2014-09-30"
+description: "When recruiter outreach goes too far: an email about blood sacrifices and stuffed animals crosses the line."
 tags:
   - "wtf"
   - "emails"

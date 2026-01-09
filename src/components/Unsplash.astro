@@ -1,11 +1,11 @@
 ---
 interface Props {
   name: string;
-  url: string;
+  url?: string | undefined;
 }
 const { name, url } = Astro.props;
 
-const fullURL = `https://unsplash.com/@${url}`;
+const fullURL = url ? `https://unsplash.com/@${url}` : '';
 ---
 
 <p class="text-sm">

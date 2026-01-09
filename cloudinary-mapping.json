@@ -1,11 +1,16 @@
 {
-  "uploadedAt": "2026-01-09T16:20:49.101Z",
+  "uploadedAt": "2026-01-09T18:05:24.493Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
       "localPath": "src/assets/blog/2025-music.jpg",
       "publicId": "blog/2025-music",
       "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764860795/blog/2025-music.jpg"
+    },
+    {
+      "localPath": "src/assets/blog/babysnake.jpg",
+      "publicId": "blog/babysnake",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1767981922/blog/babysnake.jpg"
     },
     {
       "localPath": "src/assets/blog/capitalism.jpg",

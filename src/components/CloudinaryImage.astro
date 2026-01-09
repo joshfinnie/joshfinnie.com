@@ -1,0 +1,44 @@
+---
+import { getCloudinaryImageUrl } from '@lib/cloudinary';
+
+interface Props {
+  publicId: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const { publicId, alt, width, height, class: className, loading = 'lazy' } = Astro.props;
+
+// Generate optimized Cloudinary URL
+const imageUrl = getCloudinaryImageUrl(publicId, {
+  ...(width !== undefined && { width }),
+  ...(height !== undefined && { height }),
+});
+
+// Generate responsive srcset
+const srcset = [
+  `${getCloudinaryImageUrl(publicId, { width: width ? width / 2 : 400 })} ${width ? width / 2 : 400}w`,
+  `${getCloudinaryImageUrl(publicId, { width: width || 800 })} ${width || 800}w`,
+  `${getCloudinaryImageUrl(publicId, { width: width ? width * 1.5 : 1200 })} ${width ? Math.round(width * 1.5) : 1200}w`,
+  `${getCloudinaryImageUrl(publicId, { width: width ? width * 2 : 1600 })} ${width ? width * 2 : 1600}w`,
+].join(', ');
+
+const sizes = width
+  ? `(max-width: ${width}px) 100vw, ${width}px`
+  : '(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px';
+---
+
+<img
+  src={imageUrl}
+  srcset={srcset}
+  sizes={sizes}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  loading={loading}
+  decoding="async"
+/>

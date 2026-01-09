@@ -1,6 +1,7 @@
 ---
 title: "Updated to Twitter Bootstrap 2.0"
 date: "2012-02-10"
+description: "Upgrading to Bootstrap 2.0: the main change is navbar class names, but migration is straightforward."
 tags:
   - "twitter"
   - "bootstrap"

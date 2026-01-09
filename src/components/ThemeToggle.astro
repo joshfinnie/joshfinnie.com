@@ -1,9 +1,10 @@
 ---
-import { Moon, Sun } from "lucide-react";
+import MCMoon from '@icons/mc_moon_line.svg';
+import MCSun from '@icons/mc_sun_line.svg';
 ---
 
 <div
-  x-data="{ darkMode: localStorage.theme === 'dark' }"
+  x-data="{ darkMode: document.documentElement.classList.contains('dark') }"
   x-init="$watch('darkMode', value => {
     document.documentElement.classList.toggle('dark', value);
     localStorage.theme = value ? 'dark' : 'light';
@@ -13,11 +14,11 @@ import { Moon, Sun } from "lucide-react";
     <span class="sr-only">
       Enable <span x-show="!darkMode">light</span><span x-show="darkMode">dark</span> mode
     </span>
-    <span x-show="!darkMode">
-      <Moon />
+    <span x-show="!darkMode" x-cloak>
+      <MCMoon />
     </span>
-    <span x-show="darkMode">
-      <Sun />
+    <span x-show="darkMode" x-cloak>
+      <MCSun />
     </span>
   </button>
 </div>

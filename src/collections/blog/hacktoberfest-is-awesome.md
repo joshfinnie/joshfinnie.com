@@ -1,12 +1,13 @@
 ---
 title: "Hacktoberfest is AWESOME!"
 date: "2019-10-01"
+description: "Participating in Hacktoberfest 2019: complete four pull requests in October and earn a free t-shirt."
 tags:
   - "open-source"
   - "hacktoberfest"
   - "coding"
 slug: "hacktoberfest-is-awesome-2"
-heroImage: "@assets/blog/hacktoberfest-2019.jpg"
+heroImage: "blog/hacktoberfest-2019"
 expires: false
 ---
 

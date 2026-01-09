@@ -1,6 +1,7 @@
 ---
 title: "Setting Up HTTPS Security"
 date: "2014-09-20"
+description: "Secure your server with SSL certificates: obtain CSR, configure Apache/Nginx, and harden cipher settings."
 tags:
   - "security"
   - "how-to"

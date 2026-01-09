@@ -1,8 +1,8 @@
 ---
-import Bolt from "@icons/bolt.svg";
-import Building from "@icons/building.svg";
+import MCBuilding from '@icons/mc_building_line.svg';
+import MCLightning from '@icons/mc_lightning_line.svg';
 
-import Date from "./Date.astro";
+import Date from './Date.astro';
 
 const { talk } = Astro.props;
 ---
@@ -21,14 +21,14 @@ const { talk } = Astro.props;
     {
       talk.lightning && (
         <span style="padding-left: 5px;">
-          <Bolt size={25} style="display:inline-block" />
+          <MCLightning style="display:inline-block" />
         </span>
       )
     }
   </h2>
   <p class="flex flex-col sm:flex-row text-base">
     <span class="flex items-center gap-1 prose prose-zinc dark:prose-invert">
-      <Building size={20} />
+      <MCBuilding />
       {
         talk.locationLink ? (
           <a href={talk.locationLink} target="_blank" rel="noopener noreferrer">

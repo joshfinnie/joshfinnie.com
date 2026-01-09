@@ -1,6 +1,7 @@
 ---
 title: "React.js Tutorial Part 4"
 date: "2015-09-16"
+description: "Build Express API routes to serve JSON data and connect React components using the request library."
 tags:
   - "tutorial"
   - "react.js"

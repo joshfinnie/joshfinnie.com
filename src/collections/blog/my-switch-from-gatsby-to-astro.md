@@ -1,6 +1,7 @@
 ---
 title: "My Switch from Gatsby to Astro"
 date: "2021-10-28"
+description: "Why I migrated my blog from Gatsby to Astro for zero-JS static sites with faster load times."
 tags:
   - "update"
   - "news"
@@ -10,7 +11,7 @@ tags:
 slug: "my-switch-from-gatsby-to-astro"
 unsplashURL: denisdegioanni
 unsplash: Denis Degioanni
-heroImage: "@assets/blog/stars.jpg"
+heroImage: "blog/stars"
 ---
 
 A while ago I switched from using [Pelican](https://blog.getpelican.com/) (a static site generator written in Python) to [Gatsby](https://www.gatsbyjs.com/). I was drawn to the up-and-coming technology Gatsby promised. I also thought it was a good time to refresh my site with updated CSS and user experience. The conversion to Gatsby was a success. The documentation built by the Gatsby team was top-notch and I loved my experience with it. Yet, there was always an underlying feeling that the infrastructure was complex and overweight. Earlier this year, we had a team lunch-and-learn on [Astro](https://astro.build/), and the pitch spoke to me.

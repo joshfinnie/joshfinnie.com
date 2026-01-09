@@ -1,10 +1,7 @@
 ---
-import { Image } from "astro:assets";
-
-import ThemeToggle from "./ThemeToggle.astro";
-import Nav from "./Nav.astro";
-
-import headshot from "@assets/josh.jpg";
+import CloudinaryImage from './CloudinaryImage.astro';
+import Nav from './Nav.astro';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header
@@ -28,14 +25,12 @@ import headshot from "@assets/josh.jpg";
                 href="/"
                 style="transform: var(--avatar-image-transform);"
               >
-                <Image
-                  class="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800 h-16 w-16"
-                  src={headshot}
+                <CloudinaryImage
+                  publicId="josh"
                   alt="Josh Finnie Headshot"
-                  width={512}
-                  height={512}
-                  style="color: transparent;"
-                  layout="responsive"
+                  class="rounded-full bg-zinc-100 object-cover dark:bg-zinc-800 h-16 w-16"
+                  width={64}
+                  height={64}
                   loading="eager"
                 />
               </a>

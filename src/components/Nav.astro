@@ -1,5 +1,5 @@
 ---
-import { ChevronDown } from "lucide-react";
+import ChevronDown from '@icons/mc_down_line.svg';
 
 interface NavLink {
   href: string;
@@ -7,12 +7,12 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: "/", label: "Home" },
-  { href: "/about/", label: "About" },
-  { href: "/blog/", label: "Blog" },
-  { href: "/projects/", label: "Projects" },
-  { href: "/talks/", label: "Speaking" },
-  { href: "/uses/", label: "Uses" },
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/talks/', label: 'Speaking' },
+  { href: '/uses/', label: 'Uses' },
 ];
 ---
 
@@ -25,7 +25,7 @@ const navLinks: NavLink[] = [
       class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-zinc-800 bg-white rounded-lg dark:bg-zinc-800 dark:text-zinc-200"
     >
       Menu
-      <ChevronDown className="ml-3 h-auto w-4 text-zinc-500" :class="{ 'rotate-180': open }" />
+      <ChevronDown class="ml-3 h-auto w-4 text-zinc-500" :class="{ 'rotate-180': open }" />
     </button>
     <div
       x-show="open"
@@ -35,7 +35,7 @@ const navLinks: NavLink[] = [
       <ul class="py-1 text-zinc-700 dark:text-zinc-200">
         {
           navLinks.map((link) => (
-            <li key={link.href}>
+            <li>
               <a href={link.href} class="block px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-700">
                 {link.label}
               </a>
@@ -54,7 +54,7 @@ const navLinks: NavLink[] = [
   >
     {
       navLinks.map((link) => (
-        <li key={link.href}>
+        <li>
           <a
             class="relative block text-center px-3 py-2 transition hover:text-teal-500 dark:hover:text-teal-400"
             href={link.href}

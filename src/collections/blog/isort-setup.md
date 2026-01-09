@@ -1,13 +1,14 @@
 ---
 title: "My Basic isort Configuration"
 date: "2019-08-20"
+description: "Automate Python import sorting with isort to reduce code review bikeshedding and maintain consistent style."
 tags:
   - "python"
   - "tooling"
   - "coding"
   - "code-review"
 slug: "my-basic-isort-configuration"
-heroImage: "@assets/blog/sorting.jpg"
+heroImage: "blog/sorting"
 expires: true
 unsplash: "Sophie Elvis"
 unsplashURL: "thetechomaid"

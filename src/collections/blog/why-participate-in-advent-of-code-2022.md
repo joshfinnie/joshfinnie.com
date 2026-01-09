@@ -7,7 +7,7 @@ tags:
   - "learning"
   - "challenges"
 slug: "why-participate-in-advent-of-code-2022"
-heroImage: "@assets/blog/advent.jpg"
+heroImage: "blog/advent"
 unsplash: "Nick Fewings"
 unsplashURL: "jannerboy62"
 description: "Advent of Code is an annual challenge to push your coding skills. This blog post talks about some of the reasons to join! Let's do it!"

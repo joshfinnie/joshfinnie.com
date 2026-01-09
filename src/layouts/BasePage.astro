@@ -1,17 +1,17 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
 
 const { content } = Astro.props;
 const { title, description, permalink } = content;
 
 let schema = JSON.stringify({
-  "@context": "http://schema.org",
-  "@type": "WebPage",
+  '@context': 'http://schema.org',
+  '@type': 'WebPage',
   name: { title },
   description: { description },
   author: {
-    "@type": "Person",
-    name: "Josh Finnie",
+    '@type': 'Person',
+    name: 'Josh Finnie',
   },
 });
 ---

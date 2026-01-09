@@ -1,6 +1,7 @@
 ---
 title: "Transfering Domains"
 date: "2010-02-11"
+description: "Lessons learned from moving domains to GoDaddy: always keep domain registration separate from web hosting."
 tags:
   - "domains"
   - "hosting"

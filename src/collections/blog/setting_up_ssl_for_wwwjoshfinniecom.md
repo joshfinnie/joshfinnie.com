@@ -1,6 +1,7 @@
 ---
 title: "Setting up SSL for www.joshfinnie.com"
 date: "2018-05-21"
+description: "Generate free Let's Encrypt SSL certificates for S3/Cloudfront static sites using certbot and AWS CLI."
 tags:
   - "ssl"
   - "blog"
@@ -8,7 +9,7 @@ tags:
   - "cloudfront"
   - "lets encrypt"
 slug: "setting-up-ssl-for-wwwjoshfinniecom"
-heroImage: "@assets/blog/padlock.jpg"
+heroImage: "blog/padlock"
 expires: true
 unsplash: "Micah Williams"
 ---

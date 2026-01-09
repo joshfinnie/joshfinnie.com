@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import MCBriefcase from '@icons/mc_briefcase_line.svg';
+
+interface Props {
+  seriesName: string;
+  currentPostId: string;
+}
+
+const { seriesName, currentPostId } = Astro.props;
+
+// Query all posts in the series
+const allPosts = await getCollection('blog');
+const seriesPosts = allPosts
+  .filter((post) => post.data.series === seriesName && post.data.draft !== true)
+  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+const currentIndex = seriesPosts.findIndex((post) => post.id === currentPostId);
+const totalPosts = seriesPosts.length;
+
+// Format series name for display (kebab-case to Title Case)
+const displayName = seriesName
+  .split('-')
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(' ');
+---
+
+{
+  seriesPosts.length > 1 && (
+    <aside class="my-8 rounded-lg border border-zinc-200 dark:border-zinc-700/40 p-6 bg-zinc-50 dark:bg-zinc-800/50">
+      <div class="prose prose-zinc dark:prose-invert max-w-none">
+        <h3 class="text-lg font-semibold mb-2 mt-0 flex items-center gap-2">
+          <MCBriefcase class="h-5 w-5" style="display:inline-block" />
+          Series: {displayName}
+        </h3>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4 mt-2">
+          Part {currentIndex + 1} of {totalPosts}
+        </p>
+        <ol class="list-decimal list-inside space-y-2 pl-0 my-4">
+          {seriesPosts.map((post) =>
+            post.id === currentPostId ? (
+              <li key={post.id} class="font-bold text-zinc-900 dark:text-zinc-100">
+                <span class="inline-flex items-center gap-1.5">
+                  {post.data.title}
+                  <span class="text-green-600 dark:text-green-400">✓</span>
+                </span>
+              </li>
+            ) : (
+              <li key={post.id} class="text-zinc-700 dark:text-zinc-300">
+                <a href={`/blog/${post.id}/`} class="hover:text-zinc-900 dark:hover:text-zinc-100 no-underline hover:underline">
+                  {post.data.title}
+                </a>
+              </li>
+            )
+          )}
+        </ol>
+      </div>
+    </aside>
+  )
+}

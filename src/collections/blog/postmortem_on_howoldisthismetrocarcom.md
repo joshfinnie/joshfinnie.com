@@ -1,6 +1,7 @@
 ---
 title: "Postmortem on How Old Is This Metro Car"
 date: "2013-08-23"
+description: "Serving 12,000 visits with Angular.js and AWS S3 for just $0.03: why static hosting wins for simple apps."
 tags:
   - "AWS"
   - "angular.js"

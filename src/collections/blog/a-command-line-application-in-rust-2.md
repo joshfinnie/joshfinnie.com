@@ -7,7 +7,7 @@ tags:
   - "tutorial"
   - "follow-up"
 slug: "follow-up-a-command-line-application-in-rust"
-heroImage: "@assets/blog/command-center-2.jpg"
+heroImage: "blog/command-center-2"
 unsplash: "Jp Valery"
 unsplashURL: "jpvalery"
 description: ""

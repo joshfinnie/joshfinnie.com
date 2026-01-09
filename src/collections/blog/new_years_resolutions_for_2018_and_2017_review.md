@@ -1,13 +1,14 @@
 ---
 title: "New Years Resolutions for 2018 and 2017 Review"
 date: "2018-01-01"
+description: "Switching from annual to quarterly goals for 2018 after completing only 1 of 5 resolutions in 2017."
 tags:
   - "resolutions"
   - "betterment"
   - "open-source"
   - "programming"
 slug: "new-years-resolutions-for-2018-and-2017-review"
-heroImage: "@assets/blog/2018.jpg"
+heroImage: "blog/2018"
 expires: false
 unsplash: "NordWood Themes"
 ---

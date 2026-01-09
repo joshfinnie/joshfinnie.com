@@ -1,15 +1,17 @@
 ---
-import TagIcon from "./icons/Tags.astro";
+import BCTags from '@icons/mc_tag_line.svg';
 
 const { tags } = Astro.props;
-const tagLen = tags.length;
 ---
 
-<div class="flex gap-1 items-center dark:text-white">
-  <TagIcon size="25" />
-  {tags.map((tag: string, idx: number) => (
-    <span>
-      <a href={`/tags/${tag}/`}>{tag}</a>{tagLen !== idx + 1 ? ", " : ""}
-    </span>
-  ))}
+<div class="flex gap-1 items-center prose prose-zinc dark:prose-invert">
+  <BCTags style="display:inline-block" />
+  {
+    tags.map((tag: string, idx: number) => (
+      <Fragment key={tag}>
+        <a href={`/tags/${tag}/`}>{tag.trim()}</a>
+        {idx !== tags.length - 1 ? "," : ""}
+      </Fragment>
+    ))
+  }
 </div>

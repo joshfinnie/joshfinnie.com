@@ -127,3 +127,6 @@ Pipfile
 # Astro 2
 .astro
 .vscode
+
+# Images (now hosted on Cloudinary)
+src/assets/

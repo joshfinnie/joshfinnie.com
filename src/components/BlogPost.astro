@@ -1,24 +1,62 @@
 ---
-import AlsoLike from "./AlsoLike.astro";
-import Date from "./Date.astro";
-import Tag from "./Tags.astro";
-import Unsplash from "./Unsplash.astro";
+import { getEntry } from 'astro:content';
+import { getCloudinaryImageUrl } from '../lib/cloudinary';
 
-const { title, date, tags, slug, heroImage, unsplash, unsplashURL } = Astro.props;
+import AlsoLike from './AlsoLike.astro';
+import HeroImage from './BlogPostHeroImage.astro';
+import Date from './Date.astro';
+import SeriesTableOfContents from './SeriesTableOfContents.astro';
+import Tag from './Tags.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const post = await getEntry('blog', id);
+
+if (!post) {
+  throw new Error(`Blog post with id "${id}" not found`);
+}
+
+const tags = post.data.tags ?? [];
+const date = post.data.date ?? undefined;
+const series = post.data.series ?? undefined;
+
+const imageURL = post.data.heroImage ? getCloudinaryImageUrl(post.data.heroImage, { width: 1024 }) : '';
+
+let schema = JSON.stringify({
+  '@context': 'https://schema.org/',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  author: {
+    '@type': 'Person',
+    name: 'Josh Finnie',
+  },
+  datePublished: post.data.date,
+  dateCreated: post.data.date,
+  description: post.data.description,
+  url: `https://www.joshfinnie.com/${post.id}`,
+  image: imageURL,
+  inLanguage: 'en-US',
+  keywords: post.data.tags,
+});
 ---
 
 <article>
   <header>
-    {heroImage && <img class="rounded-md" src={heroImage.replace("jpg", "webp")} alt={title} />}
-    <div id="main-content" class="flex flex-col items-center mb-10 max-w-none prose dark:prose-invert">
-      <h1 class="font-bold text-4xl mb-5 mt-5" set:html={title}></h1>
-      <Date {date} />
-      <Tag {tags} />
+    <HeroImage id={id} />
+    <div id="main-content" class="flex flex-col items-center mb-10 max-w-none prose prose-zinc dark:prose-invert">
+      <h1 class="font-bold text-4xl mb-5 mt-5" set:html={post.data.title} />
+      <Date date={date} />
+      <Tag tags={tags} />
     </div>
   </header>
-  <main class="prose dark:prose-invert max-w-none">
+  {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
+  <main class="prose dark:prose-invert prose-zinc max-w-none" role="main">
     <slot />
   </main>
-  <AlsoLike {tags} {slug} />
-  {unsplash && <Unsplash name={unsplash} url={unsplashURL} />}
+  {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
+  <AlsoLike tags={post.data.tags} id={id} />
+  <script type="application/ld+json" set:html={schema} is:inline />
 </article>

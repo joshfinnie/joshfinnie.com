@@ -1,24 +1,10 @@
 ---
-import { getCollection} from 'astro:content';
-
-import BlogPostPreview from "@components/BlogPostPreview.astro";
-import Hero from "@components/Hero.astro";
-import BaseLayout from "@src/layouts/BaseLayout.astro";
-
-const allPosts = await getCollection('blog');
-const posts = allPosts
-  .filter((a) => a.data.draft != true)
-  .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
-  .slice(0, 5);
+import Content from '@components/Content.astro';
+import Hero from '@components/Hero.astro';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Home | www.joshfinnie.com">
   <Hero />
-  <section>
-    <h1 class="font-bold text-3xl text-center pb-3 dark:text-white">Recent Blog Posts</h1>
-    {posts.map((p) => <BlogPostPreview post={p} />)}
-    <div class="flex justify-end dark:text-white">
-      <a href="/blog/" title="All Posts">All Posts &rarr;</a>
-    </div>
-  </section>
+  <Content />
 </BaseLayout>

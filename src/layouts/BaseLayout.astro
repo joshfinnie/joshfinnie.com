@@ -1,40 +1,88 @@
 ---
-import BaseHead from "@components/BaseHead.astro";
-import BlogHeader from "@components/BlogHeader.astro";
-import Footer from "@components/Footer.astro";
-
-import "@styles/global.css";
+import BaseHead from '@components/BaseHead.astro';
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
 
 const {
-  title = "www.joshfinnie.com",
-  description = "The personal/professional website of Josh Finnie.",
-  image = "/assets/josh5.jpeg",
+  title = 'www.joshfinnie.com',
+  description = 'The personal/professional website of Josh Finnie.',
+  collection,
+  id,
 } = Astro.props;
+
+var imageUrl;
+if (collection == 'blog') {
+  imageUrl = `https://www.joshfinnie.com/blog/og/${id}.png`;
+} else {
+  imageUrl = 'https://www.joshfinnie.com/blog/og/default.png';
+}
+
+import '@styles/global.css';
 ---
 
-<html lang="en">
+<html
+  lang="en"
+  style="--header-position: sticky; --content-offset: 100px; --header-height: 180px; --header-mb: -116px; --avatar-image-transform: translate3d(0rem, 0, 0) scale(1); --avatar-border-transform: translate3d(-0.2222222222222222rem, 0, 0) scale(1.7777777777777777); --avatar-border-opacity: 0; --header-top: 0px; --avatar-top: 0px;"
+  class="dark"
+>
   <head>
-    <BaseHead {title} {description} image={`https://www.joshfinnie.com${image}`} />
+    <BaseHead {title} {description} image={imageUrl} />
+    <script is:inline>
+      // Necessary for view transitions
+      document.addEventListener("astro:after-swap", () => {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        }
+      });
+
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Josh Finnie's Blog",
+        "url": "https://www.joshfinnie.com/",
+        "author": {
+          "@type": "Person",
+          "name": "Josh Finnie"
+        }
+      }
+    </script>
   </head>
-  <body class="bg-white dark:bg-gray-800">
-    <a class="skip-nav-link" href="#main-content">skip navigation</a>
-    <div class="w-full mx-auto sm:max-w-screen-md px-4">
-      <BlogHeader />
-      <slot />
-      <Footer />
+  <body class="flex h-full bg-zinc-50 dark:bg-black">
+    <div class="flex w-full">
+      <div class="fixed inset-0 flex justify-center sm:px-8">
+        <div class="flex w-full max-w-7xl lg:px-8">
+          <div class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
+        </div>
+      </div>
+      <div class="relative flex w-full flex-col">
+        <Header />
+        <div class="flex-none" style="height:var(--content-offset)"></div>
+        <main class="flex-auto">
+          <div class="sm:px-8">
+            <div class="mx-auto w-full max-w-7xl lg:px-8">
+              <div class="relative px-4 sm:px-8 lg:px-12">
+                <div class="mx-auto max-w-2xl lg:max-w-5xl">
+                  <slot />
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
     </div>
   </body>
 </html>
-
-<style>
-  .skip-nav-link {
-    background: grey;
-    color: black;
-    position: absolute;
-    padding: 0.25rem 0.5rem;
-    transform: translateY(-120%);
-  }
-  .skip-nav-link:focus {
-    transform: translateY(0);
-  }
-</style>

@@ -1,0 +1,242 @@
+---
+title: "FastAPI and React in 2025"
+date: "2025-06-18"
+tags:
+  - "Python"
+  - "JavaScript"
+  - "FastAPI"
+  - "React"
+slug: "fastapi-and-react-in-2025"
+heroImage: "blog/fastapi-react"
+unsplash: "ChatGPT"
+description: "A step-by-step guide to building modern web applications with FastAPI and React in 2025, featuring Vite for faster development and UV for improved Python package management."
+---
+
+import { Image } from "astro:assets";
+
+While `create-react-app` and [Flask](https://flask.palletsprojects.com/en/stable/) are popular choices for building web applications, we want to show you some alternatives that are out there.
+In this blog post we will use [Vite](https://vite.dev/) as a faster, lighter alternative for the React front end, and [FastAPI](https://fastapi.tiangolo.com/) as a more performant option for the Python backend.
+We will also explore [UV](https://docs.astral.sh/uv/), an emerging alternative to pip for Python package management.
+
+## Requirements
+
+Our tutorial assumes you have Python and JavaScript installed on your computer.
+In this blog post we will use the minor versions below:
+
+- [Python](https://python.org/), version 3.13.x
+- [Node.js](https://nodejs.org/), version 24.2.x
+
+You do not have to use these exact versions.
+Any recent version of Python and Node.js should work, as long as they are still supported.
+To check your installed versions, type:
+
+```bash
+$ python --version
+Python 3.13.5
+$ node --version
+v24.2.0
+```
+
+## Creating a Starter React Project
+
+The React frontend is the main folder for your project. We will start by creating the React project:
+
+```bash
+npm create vite@latest react-with-fastapi -- --template react
+```
+
+Vite will ask to install some packages. You can approve these, and it will create a starter React project in the `react-with-fastapi` folder.
+We can choose another name if we want, but if you are following along, stay with `react-with-fastapi`.
+
+Now we can move into our new project folder and start the development server:
+
+```bash
+cd react-with-fastapi
+npm install
+npm run dev
+```
+
+Vite will launch the React development server at `http://localhost:5173/`.
+Thanks to hot module reloading, our browser automatically refreshes whenever we make changes.
+
+<img src="https://res.cloudinary.com/dgd9cw3gu/image/upload/f_auto,q_auto/blog/vite-react" alt="the vite/react starting page" />
+
+## Creating the FastAPI Back End
+
+Next, we will set up the Python backend using FastAPI.
+
+Inside our React project folder, we will make a directory for the API:
+
+```bash
+mkdir api
+cd api
+```
+
+We will create a virtual environment next:
+
+```bash
+python -m venv venv
+```
+
+We will activate the virtual environment:
+
+```bash
+source venv/bin/activate
+```
+
+Instead of pip, we will use [UV](https://github.com/astral-sh/uv) to install dependencies, as it offers significantly faster package installation speeds and more reliable dependency resolution than traditional pip.
+We will install UV globally first:
+
+```bash
+curl -Ls https://astral.sh/uv/install.sh | sh
+```
+
+We will install FastAPI , `uvicorn` (the ASGI server) and `python-dotenv` using UV:
+
+```bash
+uv pip install fastapi uvicorn python-dotenv
+```
+
+Let's understand why we need each of these packages:
+
+- **FastAPI:** This is our main web framework for building APIs. It's known for being fast (as the name suggests), modern, and easy to use with automatic API documentation generation and type checking.
+- **uvicorn:** This is an ASGI server implementation, which we need to actually run our FastAPI application.
+  It handles the low-level details of serving HTTP requests and is required to run FastAPI in production or development.
+- **python-dotenv:** This package allows us to load environment variables from a .env file.
+  It's useful for managing configuration settings like API keys, database URLs, and other sensitive or environment-specific information without hardcoding them in our code.
+
+We will create a file called `api.py` with this FastAPI code:
+
+```python
+import time
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+
+app = FastAPI()
+
+
+@app.get("/api/time")
+def get_current_time():
+    return JSONResponse(content={"time": time.time()})
+```
+
+We can add a `.env` file for environment variables:
+
+```javascript
+PYTHON_ENV = development;
+```
+
+We will go back to the main project folder:
+
+```bash
+cd ..
+```
+
+FastAPI (with uvicorn) runs on port 8000 by default.
+To make the frontend communicate with FastAPI, we will set up the Vite dev server to proxy API requests to FastAPI.
+In `vite.config.js`, we will add:
+
+```javascript
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      "/api": "http://localhost:8000",
+    },
+  },
+});
+```
+
+We will add a script to `package.json` to launch FastAPI with uvicorn:
+
+```json
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "api": "cd api && venv/bin/uvicorn api:app --reload --port 8000"
+}
+```
+
+Let's break down the `api` command we just added:
+
+- cd api - Changes directory into the 'api' folder where our FastAPI code lives
+- && - This is a command chainer that runs the next command only if the first one succeeds
+- venv/bin/uvicorn - Runs the uvicorn server from our virtual environment
+- api:app - Tells uvicorn to look for the variable named 'app' in the file 'api.py'
+- --reload - Enables auto-reload when code changes are detected (useful for development)
+- --port 8000 - Specifies that the server should run on port 8000
+
+This command is what enables our FastAPI backend to run and automatically update as we make changes to our code during development.
+
+Now we will open two terminal windows.
+In one terminal window, we will run `npm run dev` to start the React frontend.
+In the other, we will run `npm run api` to start the FastAPI backend.
+
+To check if FastAPI is working, we will test the endpoint:
+
+```bash
+$ curl http://localhost:8000/api/time
+{"time":1750281076.743526}
+```
+
+## Integrating the Front and Back Ends
+
+Now we will connect React to FastAPI.
+In `src/App.jsx`, we will use `fetch()` to call the API like this:
+
+```javascript
+import { useState, useEffect } from "react";
+
+function App() {
+  const [currentTime, setCurrentTime] = useState(0);
+
+  useEffect(() => {
+    fetch("/api/time")
+      .then((res) => res.json())
+      .then((data) => setCurrentTime(data.time));
+  }, []);
+
+  return (
+    <div
+      style={{
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: "1.5rem",
+          margin: 0,
+        }}
+      >
+        The current time is {new Date(currentTime * 1000).toLocaleString()}.
+      </p>
+    </div>
+  );
+}
+
+export default App;
+```
+
+When we save this file, our React app will fetch the current time from FastAPI and show it.
+The minimal styling we applied just centered the time in the center of the page.
+UV installs our dependencies quickly and reliably, and FastAPI provides a fast Python backend.
+
+<img src="https://res.cloudinary.com/dgd9cw3gu/image/upload/f_auto,q_auto/blog/vite-react-fastapi" alt="react showing the time from our API endpoint" />
+
+## Conclusion
+
+We now have a modern React and FastAPI application template using Vite and UV.
+This setup offers several advantages: faster development with Vite's hot module reloading, improved package management through UV, and high-performance API endpoints with FastAPI.
+The combination of these tools creates an efficient development environment that can scale well as your project grows.
+Whether you're building a small web application or a larger enterprise solution, this modern tech stack provides a solid foundation for future projects.
+If you disagree or want to chat about this post, find me on [Bluesky](https://bsky.app/profile/joshfinnie.dev)!

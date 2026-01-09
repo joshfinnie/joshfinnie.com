@@ -1,7 +1,8 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
-
-import BaseLayout from "@src/layouts/BaseLayout.astro";
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BlogPostPreview from '@components/BlogPostPreview.astro';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
 
 // collection
 export async function getStaticPaths() {
@@ -14,20 +15,22 @@ export async function getStaticPaths() {
 const { params } = Astro;
 const { allPosts } = Astro.props;
 
-const posts = allPosts.filter((post: CollectionEntry<'blog'>) => post.data.tags?.includes(params.tag)).sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => Date.parse(b.data.date) - Date.parse(a.data.date));
+const posts = allPosts
+  .filter((post: CollectionEntry<'blog'>) => post.data.tags?.includes(params.tag))
+  .sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => Date.parse(b.data.date) - Date.parse(a.data.date));
 ---
 
 <BaseLayout>
   <article id="main-content">
-    <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">Tag: {params.tag}</h1>
+    <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">Blog Posts taged with {params.tag}</h1>
     <main class="prose dark:prose-invert max-w-none">
-      <ul>
-        {posts.map((p: CollectionEntry<'blog'>) => (
-          <li>
-            <a href={`/blog/${p.slug}/`}>{p.data.title}</a>
-          </li>
-        ))}
-      </ul>
+      {
+        posts.map((p) => (
+          <Fragment key={p.id}>
+            <BlogPostPreview id={p.id} />
+          </Fragment>
+        ))
+      }
       <div class="flex justify-end">
         <a href="/tags/" title="All Tags">All Tags &rarr;</a>
       </div>

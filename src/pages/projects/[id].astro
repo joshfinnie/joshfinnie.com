@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import ProjectHero from '@components/ProjectHero.astro';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+
+type Props = CollectionEntry<'project'>;
+
+export async function getStaticPaths() {
+  const projects = await getCollection('project');
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: project,
+  }));
+}
+
+const project = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={`Project: ${project.data.title} | www.joshfinnie.com`}>
+  <article class="prose prose-zinc dark:prose-invert max-w-none">
+    <ProjectHero id={project.id} />
+    <Content />
+  </article>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import { getEntry } from 'astro:content';
+import CloudinaryImage from './CloudinaryImage.astro';
+
+import Unsplash from './Unsplash.astro';
+
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const post = await getEntry('blog', id);
+
+if (!post) {
+  throw new Error(`Blog post with id "${id}" not found`);
+}
+---
+
+<div class="relative">
+  {
+    post.data.heroImage && (
+      <CloudinaryImage publicId={post.data.heroImage} alt={post.data.title} width={1024} loading="eager" />
+    )
+  }
+  {
+    post.data.unsplash && (
+      <div class="absolute bottom-0 right-0 mb-2 mr-2 rounded-lg bg-zinc-200 px-2 py-2 dark:bg-zinc-800 md:px-6 prose prose-zinc dark:prose-invert">
+        <Unsplash name={post.data.unsplash} url={post.data.unsplashURL} />
+      </div>
+    )
+  }
+</div>

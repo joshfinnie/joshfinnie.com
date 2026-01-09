@@ -1,0 +1,205 @@
+{
+  "talks": [
+    {
+      "name": "An Introduction to Python Poetry",
+      "link": "https://slides.com/joshfinnie/poetry",
+      "location": "IndigoAg Internal Tech Talk",
+      "locationLink": "https://www.indigoag.com/",
+      "lightning": false,
+      "date": "2023-02-01",
+      "slug": ""
+    },
+    {
+      "name": "An Introduction to Asynchronous Python",
+      "link": "https://slides.com/joshfinnie/asynchronous-python",
+      "location": "IndigoAg Internal Tech Talk",
+      "locationLink": "https://www.indigoag.com/",
+      "lightning": false,
+      "date": "2022-12-08",
+      "slug": ""
+    },
+    {
+      "name": "GRPC Walkthrough and Programming Showcase",
+      "link": "https://slides.com/joshfinnie/grpc-walkthrough",
+      "location": "PBS Internal Tech Talk",
+      "locationLink": "https://www.pbs.org/",
+      "lightning": false,
+      "date": "2021-06-23",
+      "slug": ""
+    },
+    {
+      "name": "Building WASM-Frontmatter",
+      "link": "https://slides.com/joshfinnie/building-wasm-frontend",
+      "location": "Rust DC",
+      "locationLink": "https://www.meetup.com/RustDC/",
+      "lightning": true,
+      "date": "2021-03-16",
+      "slug": ""
+    },
+    {
+      "name": "Introduction to Rust & WASM for Javascript Developers",
+      "link": "https://slides.com/joshfinnie/rust-wasm-and",
+      "location": "DCJS",
+      "locationLink": "https://www.meetup.com/DC-JavaScript/",
+      "lightning": false,
+      "date": "2020-12-10",
+      "slug": ""
+    },
+    {
+      "name": "Docker Multi-stage Builds and other Best Practices.",
+      "link": "https://slides.com/joshfinnie/docker-multi-stage-builds-and-other-best-practices",
+      "location": "PBS Internal Tech Talk",
+      "locationLink": "https://www.pbs.org/",
+      "lightning": false,
+      "date": "2020-07-21",
+      "slug": ""
+    },
+    {
+      "name": "Docker Strangelove",
+      "link": "https://slides.com/joshfinnie/django-district-docker",
+      "location": "Django District, etc.",
+      "locationLink": "https://www.meetup.com/django-district/",
+      "lightning": false,
+      "date": "2019-10-02",
+      "slug": ""
+    },
+    {
+      "name": "Flask, Zappa, and AWS Lambda",
+      "link": "https://slides.com/joshfinnie/flask-aws-lambda-zappa#/",
+      "location": "Django District, etc.",
+      "locationLink": "https://www.meetup.com/django-district/",
+      "lightning": true,
+      "date": "2017-01-24",
+      "slug": ""
+    },
+    {
+      "name": "Decoupling our Angular.js App",
+      "link": "https://slides.com/joshfinnie/decoupling-our-angularjs-app",
+      "location": "AngularJS DC",
+      "locationLink": "https://www.meetup.com/angularDC",
+      "lightning": false,
+      "date": "2016-10-19",
+      "slug": ""
+    },
+    {
+      "name": "Quick and Dirty AWS Lambda in Node.js",
+      "link": "https://slides.com/joshfinnie/quick-and-dirty-lambda-node-js",
+      "location": "NodeDC",
+      "locationLink": "https://www.meetup.com/node-dc",
+      "lightning": true,
+      "date": "2016-07-21",
+      "slug": ""
+    },
+    {
+      "name": "CoffeeScript and the Road to ES2015",
+      "link": "https://slides.com/joshfinnie/coffeescript-and-the-road-to-es2015",
+      "location": "JavaScript DC",
+      "locationLink": "https://www.meetup.com/javascript-dc/",
+      "lightning": false,
+      "date": "2016-06-23",
+      "slug": ""
+    },
+    {
+      "name": "Sneaking React into Angular (Again)",
+      "link": "https://slides.com/joshfinnie/sneaking-react-into-angular-again/",
+      "location": "React DC",
+      "locationLink": "https://www.meetup.com/React-DC/",
+      "lightning": true,
+      "date": "2016-04-27",
+      "slug": ""
+    },
+    {
+      "name": "Dockerizing your Node App in 5 Minutes",
+      "link": "http://slides.com/joshfinnie/5-minutes-to-dockerizing-your-node-js-application",
+      "location": "NodeDC",
+      "locationLink": "https://www.meetup.com/node-dc",
+      "lightning": true,
+      "date": "2016-03-17",
+      "slug": ""
+    },
+    {
+      "name": "Command Line Applications in Node.js",
+      "link": "http://slides.com/joshfinnie/nationjs-2015#/",
+      "location": "NationJS 2015",
+      "locationLink": "http://nationjs.com/",
+      "lightning": false,
+      "date": "2015-11-13",
+      "slug": ""
+    },
+    {
+      "name": "A DSL in Python",
+      "link": "http://slides.com/joshfinnie/a-dsl-in-python#/",
+      "location": "Django District, etc.",
+      "locationLink": "https://www.meetup.com/django-district/",
+      "lightning": true,
+      "date": "2015-10-27",
+      "slug": ""
+    },
+    {
+      "name": "A Pythonista's Day-O-Haskell",
+      "link": "http://slides.com/joshfinnie/haskell/#/",
+      "location": "TM Monthly Challenge",
+      "locationLink": "https://www.meetup.com/TrackMaven-Monthly-Challenge/",
+      "lightning": false,
+      "date": "2015-07-30",
+      "slug": ""
+    },
+    {
+      "name": "Sneaking React into Angular",
+      "link": "http://slides.com/joshfinnie/sneaking-react-into-angular/#/",
+      "location": "TM Monthly Challenge",
+      "locationLink": "https://www.meetup.com/TrackMaven-Monthly-Challenge/",
+      "lightning": false,
+      "date": "2015-05-27",
+      "slug": ""
+    },
+    {
+      "name": "iSat: interactive Satelite Tracker",
+      "location": "TM Monthly Challenge",
+      "locationLink": "https://www.meetup.com/TrackMaven-Monthly-Challenge/",
+      "lightning": true,
+      "date": "2015-01-19",
+      "slug": ""
+    },
+    {
+      "name": "Beer Search & Recs in ES",
+      "location": "TM Monthly Challenge",
+      "locationLink": "https://www.meetup.com/TrackMaven-Monthly-Challenge/",
+      "lightning": true,
+      "date": "2014-11-12",
+      "slug": ""
+    },
+    {
+      "name": "Making BeerLedge Social",
+      "location": "Django District",
+      "locationLink": "https://www.meetup.com/django-district/",
+      "lightning": true,
+      "date": "2014-07-15",
+      "slug": ""
+    },
+    {
+      "name": "What is NodeSchool?",
+      "location": "DC JQuery User Group (now DCJS)",
+      "locationLink": "https://www.meetup.com/DC-JavaScript/",
+      "lightning": true,
+      "date": "2014-06-02",
+      "slug": ""
+    },
+    {
+      "name": "Building A Node.js Command Line App",
+      "location": "NodeDC",
+      "locationLink": "https://www.meetup.com/node-dc",
+      "lightning": false,
+      "date": "2014-05-22",
+      "slug": ""
+    },
+    {
+      "name": "Installing Drupal with Ansible.",
+      "location": "DrupalDC",
+      "locationLink": "https://www.meetup.com/drupal-dc/",
+      "lightning": false,
+      "date": "2014-02-10",
+      "slug": ""
+    }
+  ]
+}

@@ -1,11 +1,12 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-import BlogPostPreview from "@components/BlogPostPreview.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Pagination from "@components/Pagination.astro";
+import BlogPostPreview from '@components/BlogPostPreview.astro';
+import Pagination from '@components/Pagination.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: any }) {
   const allPosts = await getCollection('blog');
   const sortedPosts = allPosts.sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 
@@ -14,12 +15,24 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-const { page } = Astro.props;
+interface PageProps {
+  data: CollectionEntry<'blog'>[];
+  currentPage: number;
+  totalPages: number;
+}
+
+const { page }: { page: PageProps } = Astro.props;
 ---
 
-<BaseLayout title="Blog | www.joshfinnie.com">
+<BaseLayout title="Blog | www.joshfinnie.com" description="Blog Posts">
   <section id="main-content">
-    {page.data.map((p: CollectionEntry<'blog'>) => <BlogPostPreview post={p} />)}
+    {
+      page.data.map((p) => (
+        <Fragment key={p.id}>
+          <BlogPostPreview id={p.id} />
+        </Fragment>
+      ))
+    }
   </section>
-  <Pagination {page} />
+  <Pagination page={page} />
 </BaseLayout>

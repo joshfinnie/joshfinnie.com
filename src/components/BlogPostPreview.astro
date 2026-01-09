@@ -1,24 +1,48 @@
 ---
-import Date from "./Date.astro";
+import { getEntry } from 'astro:content';
+import CloudinaryImage from './CloudinaryImage.astro';
 
-const { post } = Astro.props;
+import Date from './Date.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const post = await getEntry('blog', id);
+if (!post) {
+  throw new Error(`Blog post with id "${id}" not found`);
+}
 ---
 
 <article class="my-5">
-    <header class="dark:text-white">
-        <a href={`/blog/${post.slug}/`} title={post.data.title}>
-            <Date date={post.data.date} />
-            <h1 class="font-bold text-3xl mb-5" set:html={post.data.title}></h1>
+  {
+    post && post.data.heroImage ? (
+      <a href={`/blog/${post.id}/`} title={post.data.title} class="prose prose-zinc dark:prose-invert">
+        {post.data.heroImage && (
+          <div class="relative">
+            <CloudinaryImage
+              publicId={post.data.heroImage}
+              alt={post.data.title}
+              width={1024}
+              class="rounded-md relative"
+            />
+            <div class="absolute rounded-lg bottom-0 left-0 p-3 m-3 prose prose-zinc dark:prose-invert bg-zinc-200 dark:bg-zinc-800">
+              <Date date={post.data.date} />
+              <h1 class="font-bold text-3xl -mb-1" set:html={post.data.title} />
+            </div>
+          </div>
+        )}
+      </a>
+    ) : (
+      <header class="prose prose-zinc dark:prose-invert">
+    {post && 
+        <a href={`/blog/${post.id}/`} title={post.data.title}>
+          <h1 class="font-bold text-3xl mb-5" set:html={post.data.title} />
+          <Date date={post.data.date} />
         </a>
-    </header>
-    <main>
-        {post.data.heroImage ?
-         <>
-             <a href={`/blog/${post.slug}/`} title={post.data.title}>
-                 <img src={post.data.heroImage.replace("jpg", "webp")} alt={post.data.title} class="rounded-md" />
-             </a>
-         </> :
-         <>
-         </>}
-    </main>
+    }
+      </header>
+    )
+  }
 </article>

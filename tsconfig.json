@@ -16,10 +16,15 @@
     },
     "jsxImportSource": "react",
     "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"
       }
     ]
-  }
+  },
+  "exclude": ["node_modules", "dist", "src/components/ui/**/*.ts", "src/components/ui/**/*.tsx"]
 }

@@ -6,7 +6,7 @@ tags:
   - "books"
   - "book-review"
 slug: "my-2021-books-in-review"
-heroImage: "@assets/blog/old-books.jpg"
+heroImage: "blog/old-books"
 unsplash: "Chris Lawton"
 unsplashURL: "chrislawton"
 description: "This is a review of the books I read in 2021 and which ones I'd recommend giving a try."

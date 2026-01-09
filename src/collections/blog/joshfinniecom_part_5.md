@@ -1,6 +1,7 @@
 ---
 title: "JoshFinnie.com Part 5?"
 date: "2013-05-07"
+description: "Rebuilding my personal site with Python's Mynt static generator and hosting on AWS S3 for speed."
 tags:
   - "announcement"
   - "news"

@@ -1,6 +1,7 @@
 ---
 title: "New Years Resolutions for 2016 and 2015 Review"
 date: "2016-01-01"
+description: "Setting 2016 goals for blogging, photography, and conferences while reviewing 2015 results (7 of 13 achieved)."
 tags:
   - "resolutions"
   - "betterment"

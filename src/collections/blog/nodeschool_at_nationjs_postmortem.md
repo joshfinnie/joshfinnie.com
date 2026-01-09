@@ -1,6 +1,7 @@
 ---
 title: "NodeSchool @ NationJS Postmortem"
 date: "2014-11-21"
+description: "Running a successful NodeSchool event for 120 students: prep tips, mentor meetings, and lessons learned."
 tags:
   - "nodeschool"
   - "javascript"

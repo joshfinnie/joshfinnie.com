@@ -1,12 +1,12 @@
 ---
-import { getCollection } from "astro:content";
-import MCBriefcase from "@icons/mc_briefcase_line.svg";
-import MCDownload from "@icons/mc_download_line.svg";
+import { getCollection } from 'astro:content';
+import MCBriefcase from '@icons/mc_briefcase_line.svg';
+import MCDownload from '@icons/mc_download_line.svg';
 
-import Article from "./Article.astro";
-import WorkExperience from "./WorkExperience.astro";
+import Article from './Article.astro';
+import WorkExperience from './WorkExperience.astro';
 
-const allPosts = await getCollection("blog");
+const allPosts = await getCollection('blog');
 const posts = allPosts
   .filter((a) => a.data.draft != true)
   .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
@@ -22,25 +22,25 @@ interface WorkExperienceType {
 }
 
 const workExperiences: WorkExperienceType[] = [
-  { id: 0, logo: "pdl.jpg", company: "People Data Labs", role: "Senior Software Engineer", start: "2023-05" },
+  { id: 0, logo: 'pdl.jpg', company: 'People Data Labs', role: 'Senior Software Engineer', start: '2023-05' },
   {
     id: 1,
-    logo: "indigoag.jpg",
-    company: "IndigoAg",
-    role: "Staff Software Engineer",
-    start: "2022-05",
-    end: "2023-03",
+    logo: 'indigoag.jpg',
+    company: 'IndigoAg',
+    role: 'Staff Software Engineer',
+    start: '2022-05',
+    end: '2023-03',
   },
-  { id: 2, logo: "pbs.jpg", company: "PBS", role: "Senior Software Engineer", start: "2019-09", end: "2022-05" },
+  { id: 2, logo: 'pbs.jpg', company: 'PBS', role: 'Senior Software Engineer', start: '2019-09', end: '2022-05' },
   {
     id: 3,
-    logo: "trackmaven.jpg",
-    company: "TrackMaven",
-    role: "Software Engineer -> Senior Software Engineer",
-    start: "2014-03",
-    end: "2019-08",
+    logo: 'trackmaven.jpg',
+    company: 'TrackMaven',
+    role: 'Software Engineer -> Senior Software Engineer',
+    start: '2014-03',
+    end: '2019-08',
   },
-  { id: 4, logo: "koansys.jpg", company: "Koansys", role: "Application Developer", start: "2012-02", end: "2014-03" },
+  { id: 4, logo: 'koansys.jpg', company: 'Koansys', role: 'Application Developer', start: '2012-02', end: '2014-03' },
 ];
 ---
 

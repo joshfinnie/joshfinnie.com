@@ -1,6 +1,7 @@
 ---
 title: "Updating Mavericks and Postgres.app"
 date: "2014-01-27"
+description: "Fix broken virtualenvs after upgrading to Mavericks and Postgres.app 9.3 by updating libssl symlinks."
 tags:
   - "OS X"
   - "postgresql"

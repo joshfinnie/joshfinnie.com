@@ -1,6 +1,7 @@
 ---
 title: "Converting GeoHackr from WordPress to Jekyll"
 date: "2010-02-02"
+description: "Weighing the pros and cons of migrating a WordPress blog to Jekyll's static site generation."
 tags:
   - "wordpress"
   - "jekyll"

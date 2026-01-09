@@ -1,6 +1,6 @@
 ---
-import { getEntry } from "astro:content";
-import Date from "./Date.astro";
+import { getEntry } from 'astro:content';
+import Date from './Date.astro';
 
 interface Props {
   id: string;
@@ -8,12 +8,16 @@ interface Props {
 
 const { id } = Astro.props;
 
-const post = await getEntry("blog", id);
+const post = await getEntry('blog', id);
+if (!post) {
+  throw new Error(`Blog post with id "${id}" not found`);
+}
 ---
-
+{post ? (
 <header class="prose dark:prose-invert prose-zinc">
   <a href={`/blog/${id}/`} title={post.data.title}>
     <h3 class="font-bold text-2xl" set:html={post.data.title} />
   </a>
   <Date date={post.data.date} />
 </header>
+): <></>}

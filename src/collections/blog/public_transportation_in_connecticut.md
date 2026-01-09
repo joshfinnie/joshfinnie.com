@@ -1,6 +1,7 @@
 ---
 title: "Public Transportation in Connecticut"
 date: "2010-02-24"
+description: "Frustrations with Connecticut's bus routes that fail to connect Hartford neighborhoods with suburban jobs."
 tags:
   - "public transportation"
   - "rant"

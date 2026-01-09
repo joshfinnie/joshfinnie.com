@@ -1,6 +1,7 @@
 ---
 title: "Auto-Starting Tmux in iTerm2"
 date: "2014-05-16"
+description: "Configure iTerm2 to automatically attach to or create a tmux session on startup with a simple command."
 tags:
   - "OS X"
   - "iTerm2"

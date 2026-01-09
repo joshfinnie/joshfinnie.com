@@ -1,16 +1,16 @@
-import { z, defineCollection } from "astro:content";
-import { glob, file } from "astro/loaders";
+import { defineCollection, z } from 'astro:content';
+import { file, glob } from 'astro/loaders';
 
 const blog = defineCollection({
-  loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/collections/blog/" }),
-  schema: ({ image }) =>
+  loader: glob({ pattern: '**/*.(md|mdx)', base: './src/collections/blog/' }),
+  schema: () =>
     z.object({
       title: z.string(),
       date: z.string(),
       tags: z.array(z.string()),
       draft: z.boolean().optional(),
       expires: z.boolean().optional(),
-      heroImage: image().optional(),
+      heroImage: z.string().optional(), // Now using Cloudinary public ID
       unsplash: z.string().optional(),
       unsplashURL: z.string().optional(),
       description: z.string().optional(),
@@ -18,19 +18,19 @@ const blog = defineCollection({
 });
 
 const project = defineCollection({
-  loader: glob({ pattern: "[^_]*.(md|mdx)", base: "./src/collections/projects" }),
-  schema: ({ image }) =>
+  loader: glob({ pattern: '[^_]*.(md|mdx)', base: './src/collections/projects' }),
+  schema: () =>
     z.object({
       title: z.string(),
       summary: z.string(),
       technologies: z.array(z.string()),
-      heroImage: image().optional(),
+      heroImage: z.string().optional(), // Now using Cloudinary public ID
       lastUpdated: z.string().optional(),
     }),
 });
 
 const talks = defineCollection({
-  loader: file("./src/collections/talks/talks.json"),
+  loader: file('./src/collections/talks/talks.json'),
   schema: z.array(
     z.object({
       name: z.string(),

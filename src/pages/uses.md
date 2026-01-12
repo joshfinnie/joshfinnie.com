@@ -18,23 +18,22 @@ layout: "../layouts/BasePage.astro"
 - Work Computer:
   - MacBook Pro 16-inch 2021
   - Opal C1 webcam
-- Gaming/Streaming Computer:
+- Gaming Computer:
+  - AMD Ryzen 5 7500X3D
+  - 32GB DDR5-6000 RAM
+  - AMD Radeon RX 9060 XT Graphics Card
+- Server:
   - [AMD Ryzen 5](https://amzn.to/3MiihUv)
   - [Crucial 16GB (2 x 8GB) DDR4-2400 PC4-19200](https://amzn.to/3TmWkYN)
   - [ASUS GeForce GTX 1060 6GB](https://amzn.to/3StWTQu)
 
 ## Software
 
-- [LazyVIM](https://www.lazyvim.org/) for coding
-- [Arc](https://arc.net/) for browsing
+- [neovim](https://neovim.io/) for coding
+- [Brave](https://brave.com/) for browsing
 - [iTerm with Fish and Starship.rs](/blog/moving-from-oh-my-zsh-to-starship-and-fish-shell) as my terminal
 - [Bruno](https://www.usebruno.com/) for testing RESTful endpoints
-- [Notion](https://www.notion.so/) for note-taking
+- [Obsidian](https://obsidian.md) for note-taking
 - [Spotify](https://www.spotify.com) for listening to music
 - [Plausible.io](https://plausible.io/) for site analytics
 - [OBS](https://obsproject.com/) for streaming
-
-## Other
-
-- [VAAST A/1 700C APEX 1](https://www.vaastbikes.com/bikemodels/a1/) gravel bike
-- [Fujifilm X-T30 II](https://amzn.to/3XuX68E) camera with the [Fujinon XF35mmF2 R WR](https://amzn.to/3CMZTAy) lens

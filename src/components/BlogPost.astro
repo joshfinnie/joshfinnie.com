@@ -5,6 +5,7 @@ import { getCloudinaryImageUrl } from '../lib/cloudinary';
 import AlsoLike from './AlsoLike.astro';
 import HeroImage from './BlogPostHeroImage.astro';
 import Date from './Date.astro';
+import SeriesTableOfContents from './SeriesTableOfContents.astro';
 import Tag from './Tags.astro';
 
 interface Props {
@@ -20,6 +21,7 @@ if (!post) {
 
 const tags = post.data.tags ?? [];
 const date = post.data.date ?? undefined;
+const series = post.data.series ?? undefined;
 
 const imageURL = post.data.heroImage ? getCloudinaryImageUrl(post.data.heroImage, { width: 1024 }) : '';
 
@@ -50,9 +52,11 @@ let schema = JSON.stringify({
       <Tag tags={tags} />
     </div>
   </header>
+  {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
   <main class="prose dark:prose-invert prose-zinc max-w-none" role="main">
     <slot />
   </main>
+  {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
   <AlsoLike tags={post.data.tags} id={id} />
   <script type="application/ld+json" set:html={schema} is:inline />
 </article>

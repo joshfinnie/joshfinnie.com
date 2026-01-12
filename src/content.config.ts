@@ -14,6 +14,7 @@ const blog = defineCollection({
       unsplash: z.string().optional(),
       unsplashURL: z.string().optional(),
       description: z.string().optional(),
+      series: z.string().optional(),
     }),
 });
 

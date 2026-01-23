@@ -1,0 +1,39 @@
+/* Starwind UI base styles */
+
+@layer base {
+  :root {
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
+    --outline: 240 5.9% 10%;
+  }
+
+  .dark {
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --error: 0 62% 30%;
+    --error-foreground: 0 0% 100%;
+    --outline: 240 5% 84%;
+  }
+}
+
+@theme {
+  --color-info: hsl(var(--info));
+  --color-info-foreground: hsl(var(--info-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-error: hsl(var(--error));
+  --color-error-foreground: hsl(var(--error-foreground));
+  --color-outline: hsl(var(--outline));
+}

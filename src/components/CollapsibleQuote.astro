@@ -1,0 +1,34 @@
+---
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/starwind/collapsible';
+
+interface Props {
+  label?: string;
+}
+
+const { label = 'Content' } = Astro.props;
+---
+
+<Collapsible class="border-l-4 border-gray-500 pl-4 my-4">
+  <CollapsibleTrigger class="mb-2 cursor-pointer hover:text-gray-600 dark:hover:text-gray-300">
+    <span data-show>Show {label} &#9660;</span>
+    <span data-hide class="hidden">Hide {label} &#9650;</span>
+  </CollapsibleTrigger>
+  <CollapsibleContent>
+    <slot />
+  </CollapsibleContent>
+</Collapsible>
+
+<style>
+  [data-state="open"] [data-show] {
+    display: none;
+  }
+  [data-state="open"] [data-hide] {
+    display: inline;
+  }
+  [data-state="closed"] [data-show] {
+    display: inline;
+  }
+  [data-state="closed"] [data-hide] {
+    display: none;
+  }
+</style>

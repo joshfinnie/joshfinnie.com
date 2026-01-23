@@ -1,6 +1,6 @@
 ---
+import { Card, CardFooter, CardTitle } from '@/components/starwind/card';
 import CloudinaryImage from './CloudinaryImage.astro';
-import { Card, CardFooter, CardTitle } from './ui/card';
 
 interface Props {
   company: string;
@@ -17,7 +17,7 @@ const publicId = `companies/${logo.replace(/\.(jpg|jpeg|png|gif)$/i, '')}`;
 ---
 
 <Card
-  className="flex flex-col items-start p-4 bg-white dark:bg-zinc-800 shadow-lg border border-zinc-200 dark:border-zinc-700 rounded-lg"
+  class="flex flex-col items-start p-4 bg-white dark:bg-zinc-800 shadow-lg border border-zinc-200 dark:border-zinc-700 rounded-lg"
 >
   <div class="flex items-center gap-4 mb-4">
     <div
@@ -26,11 +26,11 @@ const publicId = `companies/${logo.replace(/\.(jpg|jpeg|png|gif)$/i, '')}`;
       <CloudinaryImage publicId={publicId} alt={company} width={40} height={40} class="h-10 w-10" />
     </div>
     <div class="flex flex-col">
-      <CardTitle className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{company}</CardTitle>
+      <CardTitle class="text-sm font-medium text-zinc-900 dark:text-zinc-100">{company}</CardTitle>
       <p class="text-xs text-zinc-500 dark:text-zinc-400">{role}</p>
     </div>
   </div>
-  <CardFooter className="text-xs text-zinc-400 dark:text-zinc-500 p-0">
+  <CardFooter class="text-xs text-zinc-400 dark:text-zinc-500 p-0">
     <time datetime={startDate}>
       {new Date(`${startDate}-15`).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
     </time>{" "}

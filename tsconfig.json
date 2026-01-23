@@ -3,8 +3,8 @@
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react-jsx",
     "paths": {
+      "@/*": ["src/*"],
       "@src/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"],
@@ -14,7 +14,6 @@
       "@assets/*": ["src/assets/*"],
       "@lib/*": ["src/lib/*"]
     },
-    "jsxImportSource": "react",
     "verbatimModuleSyntax": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
@@ -26,5 +25,5 @@
       }
     ]
   },
-  "exclude": ["node_modules", "dist", "src/components/ui/**/*.ts", "src/components/ui/**/*.tsx"]
+  "exclude": ["node_modules", "dist"]
 }

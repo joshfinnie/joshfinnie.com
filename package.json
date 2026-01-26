@@ -37,10 +37,10 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
     "@types/alpinejs": "^3.13.11",
-    "@types/react": "^19.2.8",
+    "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "alpinejs": "^3.15.4",
-    "astro": "5.16.11",
+    "astro": "5.16.15",
     "astro-og-canvas": "^0.10.0",
     "canvaskit-wasm": "^0.40.0",
     "class-variance-authority": "^0.7.1",
@@ -63,7 +63,7 @@
   },
   "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677",
   "devDependencies": {
-    "@biomejs/biome": "^2.3.11",
+    "@biomejs/biome": "^2.3.13",
     "dotenv": "^17.2.3",
     "glob": "^13.0.0",
     "husky": "^9.1.7"

@@ -1,9 +1,8 @@
 {
   "moduleResolution": "node",
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react-jsx",
     "paths": {
       "@src/*": ["src/*"],
       "@components/*": ["src/components/*"],
@@ -12,9 +11,9 @@
       "@styles/*": ["src/styles/*"],
       "@layouts/*": ["src/layouts/*"],
       "@assets/*": ["src/assets/*"],
-      "@lib/*": ["src/lib/*"]
+      "@lib/*": ["src/lib/*"],
+      "@/*": ["src/*"]
     },
-    "jsxImportSource": "react",
     "verbatimModuleSyntax": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
@@ -26,5 +25,5 @@
       }
     ]
   },
-  "exclude": ["node_modules", "dist", "src/components/ui/**/*.ts", "src/components/ui/**/*.tsx"]
+  "exclude": ["node_modules", "dist"]
 }

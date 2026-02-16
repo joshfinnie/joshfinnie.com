@@ -1,20 +1,29 @@
 ---
+import { Button } from './starwind/button';
+
 const { page } = Astro.props;
 ---
 
-<div class="flex justify-end prose prose-zinc dark:prose-invert">
-  {
-    page.url.prev && (
-      <a class="px-2" href={page.url.prev} title="Go to Previous">
-        &larr; Prev
-      </a>
-    )
-  }
-  {
-    page.url.next && (
-      <a class="px-2" href={page.url.next} title="Go to Next">
-        Next &rarr;
-      </a>
-    )
-  }
-</div>
+<nav class="grid grid-cols-3 items-center pt-8" aria-label="Pagination">
+  <div class="justify-self-start">
+    {
+      page.url.prev && (
+        <Button href={page.url.prev} variant="outline" size="sm">
+          &larr; Prev
+        </Button>
+      )
+    }
+  </div>
+  <span class="justify-self-center text-sm text-zinc-500 dark:text-zinc-400">
+    Page {page.currentPage} of {page.lastPage}
+  </span>
+  <div class="justify-self-end">
+    {
+      page.url.next && (
+        <Button href={page.url.next} variant="outline" size="sm">
+          Next &rarr;
+        </Button>
+      )
+    }
+  </div>
+</nav>

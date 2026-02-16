@@ -1,6 +1,5 @@
 import alpinejs from '@astrojs/alpinejs';
 import mdx from '@astrojs/mdx';
-import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
@@ -40,7 +39,7 @@ export default defineConfig({
   server: {
     port: 3333,
   },
-  integrations: [mdx(), sitemap(), react(), alpinejs()],
+  integrations: [mdx(), sitemap(), alpinejs()],
   markdown: {
     shikiConfig: {
       theme: 'dracula',

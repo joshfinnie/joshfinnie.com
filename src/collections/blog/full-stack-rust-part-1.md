@@ -10,8 +10,7 @@ tags:
 slug: "full-stack-rust-part-1"
 series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
-unsplash: "Jan Mellström"
-unsplashURL: "mrjane"
+unsplash: "ChatGPT"
 description: "Part 1 of building a full-stack URL shortener in Rust. We set up an Axum backend with in-memory storage, CRUD routes, and a nanoid-based slug generator."
 ---
 

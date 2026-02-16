@@ -10,8 +10,7 @@ tags:
 slug: "full-stack-rust-part-4"
 series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
-unsplash: "Jan Mellström"
-unsplashURL: "mrjane"
+unsplash: "ChatGPT"
 description: "Part 4 of building a full-stack URL shortener in Rust. We add API key authentication using Axum middleware and Tower layers to protect our write endpoints."
 draft: true
 ---

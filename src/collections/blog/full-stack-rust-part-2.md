@@ -10,8 +10,7 @@ tags:
 slug: "full-stack-rust-part-2"
 series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
-unsplash: "Jan Mellström"
-unsplashURL: "mrjane"
+unsplash: "ChatGPT"
 description: "Part 2 of building a full-stack URL shortener in Rust. We swap our in-memory HashMap for SQLite with sqlx, write migrations, and persist URLs across restarts."
 draft: true
 ---

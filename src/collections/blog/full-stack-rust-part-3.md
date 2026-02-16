@@ -10,8 +10,7 @@ tags:
 slug: "full-stack-rust-part-3"
 series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
-unsplash: "Jan Mellström"
-unsplashURL: "mrjane"
+unsplash: "ChatGPT"
 description: "Part 3 of building a full-stack URL shortener in Rust. We add custom error types, URL validation, and structured JSON error responses to our Axum API."
 draft: true
 ---

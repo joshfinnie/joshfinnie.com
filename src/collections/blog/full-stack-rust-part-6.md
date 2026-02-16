@@ -12,8 +12,7 @@ tags:
 slug: "full-stack-rust-part-6"
 series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
-unsplash: "Jan Mellström"
-unsplashURL: "mrjane"
+unsplash: "ChatGPT"
 description: "Part 6 of building a full-stack URL shortener in Rust. We serve the Yew frontend from Axum, Dockerize the whole thing, and deploy to Shuttle."
 draft: true
 ---

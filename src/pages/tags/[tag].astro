@@ -1,7 +1,7 @@
 ---
 import BlogPostPreview from '@components/BlogPostPreview.astro';
-import BaseLayout from '@src/layouts/BaseLayout.astro';
 import { getPublishedPosts, getTags } from '@lib/utils';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const allPosts = await getPublishedPosts();

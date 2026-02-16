@@ -8,11 +8,10 @@ export async function GET() {
     site: import.meta.env.SITE,
     description: 'The personal/professional website of Josh Finnie.',
     customData: `<language>en-us</language>`,
-    items: blog
-      .map((post) => ({
-        link: `/blog/${post.id}/`,
-        pubDate: new Date(post.data.date),
-        ...post.data,
-      })),
+    items: blog.map((post) => ({
+      link: `/blog/${post.id}/`,
+      pubDate: new Date(post.data.date),
+      ...post.data,
+    })),
   });
 }

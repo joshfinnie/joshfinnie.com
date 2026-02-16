@@ -1,13 +1,15 @@
 ---
-import BaseLayout from '@src/layouts/BaseLayout.astro';
 import { getPublishedPosts } from '@lib/utils';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
 
 const allPosts = await getPublishedPosts();
 
 const tagCounts: Record<string, number> = {};
-allPosts.forEach((p) => p.data.tags.forEach((t: string) => {
-  tagCounts[t] = (tagCounts[t] ?? 0) + 1;
-}));
+allPosts.forEach((p) =>
+  p.data.tags.forEach((t: string) => {
+    tagCounts[t] = (tagCounts[t] ?? 0) + 1;
+  })
+);
 
 const tags: Array<[string, number]> = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
 ---

@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { CardFooter as StarwindCardFooter } from './starwind/card';
+
+type Props = HTMLAttributes<'div'>;
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<StarwindCardFooter
+  class:list={[
+    "bg-transparent border-t-0 rounded-b-none",
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</StarwindCardFooter>

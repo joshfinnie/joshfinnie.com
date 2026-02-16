@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { Card as StarwindCard } from './starwind/card';
+
+type Props = HTMLAttributes<'div'>;
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<StarwindCard
+  class:list={[
+    "p-4 bg-white dark:bg-zinc-800 shadow-lg border border-zinc-200 dark:border-zinc-700 rounded-lg ring-0 gap-0 has-data-[slot=card-footer]:pb-4",
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</StarwindCard>

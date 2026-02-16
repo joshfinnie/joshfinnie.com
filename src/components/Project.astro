@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import ProjectHero from './ProjectHero.astro';
-import { Button } from './ui/button';
+import { Button } from './starwind/button';
 
 interface Props {
   id: string;
@@ -17,7 +17,7 @@ const project = await getEntry('project', id);
   <ProjectHero id={project.id} />
 
   <a href={`/projects/${project.id}/`}>
-    <Button className="float-right">More Details</Button>
+    <Button class="float-right">More Details</Button>
   </a>
 </article>
 }

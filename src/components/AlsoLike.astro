@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getPublishedPosts } from '@lib/utils';
 
 import BlogPostPreviewLite from './BlogPostPreviewLite.astro';
 
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { id, tags } = Astro.props;
-const allPosts = await getCollection('blog');
+const allPosts = await getPublishedPosts();
 
 const excludedTags: string[] = ['blog', 'news', 'announcement'];
 const finalTags = tags.filter((tag: string) => !excludedTags.includes(tag));

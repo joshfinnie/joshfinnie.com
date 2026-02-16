@@ -1,13 +1,14 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import BlogPost from '@components/BlogPost.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
+import { getPublishedPosts } from '@lib/utils';
 
 type Props = CollectionEntry<'blog'>;
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getPublishedPosts();
   return posts.map((post) => ({
     params: { id: post.id },
     props: post,

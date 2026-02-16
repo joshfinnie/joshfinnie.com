@@ -1,0 +1,228 @@
+---
+title: "Models & the Django Admin"
+date: "2026-02-06"
+tags:
+  - "python"
+  - "tutorial"
+  - "django"
+slug: "models-and-the-django-admin"
+heroImage: "blog/django-bootcamp"
+description: "In this beginner-friendly guide, we define our bookmark model, run database migrations, and explore Django's built-in admin panel to manage our data."
+unsplash: "Gemini"
+series: "django-bootcamp"
+draft: true
+---
+
+Welcome back to the Django Bootcamp! So far, we've set up our project, created an app, and built a simple view with a template. Now it's time for one of the most powerful parts of Django — **models** and the **admin panel**.
+
+This is a 5 part series where we'll go from zero to a deployed Django web application.
+By the end, we'll have built a **bookmark manager** — a practical app for saving, organizing, and tagging your favorite links.
+Here's the full series outline:
+
+1. [**Getting Started with Python for Web Development**](/blog/getting-started-with-python-for-web-development/) — Python basics, pip, and virtual environments
+2. [**Creating Your First Django Project**](/blog/creating-your-first-django-project/) — project structure, the development server, and your first view
+3. **Models & the Django Admin** (this post) — defining your database models and using Django's built-in admin panel
+4. [**Views & Templates**](/blog/django-views-and-templates/) — URL routing, views, templates, and building out the bookmark CRUD
+5. [**Authentication & Deployment**](/blog/django-authentication-and-deployment/) — user login, protecting pages, and deploying to production
+
+Let's get started!
+
+## What Is a Model?
+
+In Django, a **model** is a Python class that defines the structure of your data. Each model maps to a single database table, and each attribute on the model maps to a column in that table.
+
+Django uses something called an **ORM (Object-Relational Mapper)**, which is a fancy way of saying you can interact with your database using Python code instead of writing raw SQL. You define your data as Python classes, and Django handles all the SQL behind the scenes.
+
+For example, instead of writing something like:
+
+```sql
+CREATE TABLE bookmarks (
+    id INTEGER PRIMARY KEY,
+    title VARCHAR(200),
+    url VARCHAR(500),
+    ...
+);
+```
+
+You just write a Python class, and Django creates the table for you. Pretty nice, right?
+
+## Defining the Bookmark Model
+
+Open `bookmarks/models.py` and replace its contents with:
+
+```python
+from django.db import models
+
+
+class Bookmark(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.URLField(max_length=500)
+    description = models.TextField(blank=True)
+    tags = models.CharField(max_length=200, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.title
+```
+
+Let's break this down field by field:
+
+- **`title`** — A `CharField` with a maximum length of 200 characters. This is the name we'll give to each bookmark.
+- **`url`** — A `URLField` that validates the input is a proper URL. We've set a max length of 500 to handle longer URLs.
+- **`description`** — A `TextField` for longer text. The `blank=True` argument means this field is optional — users don't have to fill it in.
+- **`tags`** — A `CharField` where we'll store comma-separated tags like `"python, django, tutorial"`. Also optional thanks to `blank=True`.
+- **`created_at`** — A `DateTimeField` with `auto_now_add=True`, which automatically sets the date and time when the bookmark is first created.
+- **`updated_at`** — A `DateTimeField` with `auto_now=True`, which automatically updates the timestamp every time the bookmark is saved.
+
+The **`Meta` class** lets us set metadata for the model. Here, `ordering = ["-created_at"]` tells Django to return bookmarks with the newest ones first by default (the `-` means descending order).
+
+The **`__str__` method** defines how the model is displayed as a string. When you see a bookmark in the admin panel or the Django shell, it will show the title instead of something unhelpful like `Bookmark object (1)`.
+
+## Running Migrations
+
+Now that we've defined our model, we need to tell Django to create the corresponding database table. This is a two-step process.
+
+### Step 1: Create the Migration
+
+```sh
+python manage.py makemigrations
+```
+
+You should see output like:
+
+```
+Migrations for 'bookmarks':
+  bookmarks/migrations/0001_initial.py
+    - Create model Bookmark
+```
+
+A **migration** is a file that describes changes to your database schema. Django generated this file for us based on our model definition.
+
+### Step 2: Apply the Migration
+
+```sh
+python manage.py migrate
+```
+
+This actually runs the SQL to create the table in the database. You'll see a bunch of output as Django applies not just our migration, but also the built-in migrations for things like the auth system and admin panel.
+
+That's it! Our `Bookmark` table now exists in the database.
+
+## Playing with the Django Shell
+
+Django comes with an interactive Python shell that has your project's settings and models pre-loaded. It's a great way to experiment with your data. Start it up:
+
+```sh
+python manage.py shell
+```
+
+Let's create a bookmark:
+
+```python
+>>> from bookmarks.models import Bookmark
+>>> b = Bookmark(title="Django Docs", url="https://docs.djangoproject.com", description="Official Django documentation", tags="python, django")
+>>> b.save()
+```
+
+The `save()` method writes the bookmark to the database. Now let's query it:
+
+```python
+>>> Bookmark.objects.all()
+<QuerySet [<Bookmark: Django Docs>]>
+```
+
+Notice how it shows `Django Docs` instead of `Bookmark object (1)` — that's our `__str__` method at work!
+
+Let's create a few more bookmarks and try some queries:
+
+```python
+>>> Bookmark.objects.create(title="Python.org", url="https://python.org", tags="python")
+>>> Bookmark.objects.create(title="Real Python", url="https://realpython.com", tags="python, tutorials")
+>>> Bookmark.objects.count()
+3
+>>> Bookmark.objects.filter(tags__contains="python")
+<QuerySet [<Bookmark: Real Python>, <Bookmark: Python.org>, <Bookmark: Django Docs>]>
+```
+
+The `objects.create()` method is a shortcut that creates and saves in one step. The `filter()` method lets you search for records — here we're finding all bookmarks whose tags contain the word "python". The double underscore (`__contains`) is Django's way of doing lookups.
+
+Type `exit()` to leave the shell.
+
+## Setting Up the Django Admin
+
+One of Django's best features is its **built-in admin panel** — a fully functional web interface for managing your data. Let's set it up.
+
+### Creating a Superuser
+
+First, we need an admin account. Run:
+
+```sh
+python manage.py createsuperuser
+```
+
+Django will ask you for a username, email, and password. Pick something you'll remember — we'll use this to log in to the admin panel.
+
+### Registering the Model in the Admin
+
+By default, the admin panel doesn't know about our `Bookmark` model. We need to register it. Open `bookmarks/admin.py` and replace its contents with:
+
+```python
+from django.contrib import admin
+
+from .models import Bookmark
+
+
+@admin.register(Bookmark)
+class BookmarkAdmin(admin.ModelAdmin):
+    list_display = ("title", "url", "tags", "created_at")
+    list_filter = ("created_at",)
+    search_fields = ("title", "url", "description", "tags")
+```
+
+Let's break this down:
+
+- **`@admin.register(Bookmark)`** — This decorator registers our `Bookmark` model with the admin panel using the `BookmarkAdmin` configuration class below it.
+- **`list_display`** — Controls which columns appear on the bookmark list page. Instead of just seeing the title, we'll see the title, URL, tags, and creation date.
+- **`list_filter`** — Adds a filter sidebar. We can filter bookmarks by their creation date.
+- **`search_fields`** — Adds a search bar at the top of the list. We can search by title, URL, description, or tags.
+
+### Exploring the Admin Panel
+
+Start the development server:
+
+```sh
+python manage.py runserver
+```
+
+Visit [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) and log in with the superuser credentials you just created.
+
+You should see a clean admin interface with a "Bookmarks" section. Click on it to see the bookmarks we created in the shell earlier. You can:
+
+- **Add** new bookmarks by clicking the "Add Bookmark" button
+- **Edit** existing bookmarks by clicking on their title
+- **Delete** bookmarks by selecting them and choosing "Delete selected bookmarks" from the action dropdown
+- **Search** for bookmarks using the search bar
+- **Filter** bookmarks by date using the sidebar
+
+Go ahead and add a few more bookmarks through the admin. It's a great way to get a feel for how Django's admin works.
+
+## What We've Done So Far
+
+Let's recap what we accomplished in this post:
+
+- Learned what models are and how Django's ORM works
+- Defined our `Bookmark` model with fields for title, URL, description, tags, and timestamps
+- Ran database migrations to create the table
+- Used the Django shell to create and query bookmarks
+- Set up a superuser account
+- Registered our model in the admin panel with custom display, filtering, and search options
+
+## Next Steps
+
+In the next post, we'll build out the **views and templates** for our bookmark manager. We'll create pages to list all bookmarks, view bookmark details, add new bookmarks, and delete them — a full CRUD (Create, Read, Update, Delete) interface that users can interact with directly in the browser.
+
+Stay tuned and happy coding! 🚀

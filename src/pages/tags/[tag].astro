@@ -1,23 +1,18 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
 import BlogPostPreview from '@components/BlogPostPreview.astro';
 import BaseLayout from '@src/layouts/BaseLayout.astro';
+import { getPublishedPosts, getTags } from '@lib/utils';
 
-// collection
 export async function getStaticPaths() {
-  const allPosts = await getCollection('blog');
-  let allTagUnique = [...new Set(allPosts.map((p) => p.data.tags))];
-  let allFlatTagUnique = [...new Set(allTagUnique.flat())];
-  return allFlatTagUnique.map((tag) => ({ params: { tag }, props: { allPosts } }));
+  const allPosts = await getPublishedPosts();
+  const allTags = await getTags();
+  return allTags.map((tag) => ({ params: { tag }, props: { allPosts } }));
 }
 
 const { params } = Astro;
 const { allPosts } = Astro.props;
 
-const posts = allPosts
-  .filter((post: CollectionEntry<'blog'>) => post.data.tags?.includes(params.tag))
-  .sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => Date.parse(b.data.date) - Date.parse(a.data.date));
+const posts = allPosts.filter((post) => post.data.tags?.includes(params.tag));
 ---
 
 <BaseLayout>

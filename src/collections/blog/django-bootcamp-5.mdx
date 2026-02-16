@@ -1,0 +1,378 @@
+---
+title: "Django Authentication & Deployment"
+date: "2026-03-06"
+tags:
+  - "python"
+  - "tutorial"
+  - "django"
+  - "deployment"
+slug: "django-authentication-and-deployment"
+heroImage: "blog/django-bootcamp"
+description: "In the final part of the Django Bootcamp, we add user authentication with Django's built-in auth system and deploy our bookmark manager to production with Railway."
+unsplash: "Gemini"
+series: "django-bootcamp"
+draft: true
+---
+
+Welcome to the final post in the Django Bootcamp series! We've built a fully functional bookmark manager with CRUD operations, and now it's time to add two finishing touches: **user authentication** and **deployment**.
+
+This is a 5 part series where we'll go from zero to a deployed Django web application.
+By the end, we'll have built a **bookmark manager** — a practical app for saving, organizing, and tagging your favorite links.
+Here's the full series outline:
+
+1. [**Getting Started with Python for Web Development**](/blog/getting-started-with-python-for-web-development/) — Python basics, pip, and virtual environments
+2. [**Creating Your First Django Project**](/blog/creating-your-first-django-project/) — project structure, the development server, and your first view
+3. [**Models & the Django Admin**](/blog/models-and-the-django-admin/) — defining your database models and using Django's built-in admin panel
+4. [**Views & Templates**](/blog/django-views-and-templates/) — URL routing, views, templates, and building out the bookmark CRUD
+5. **Authentication & Deployment** (this post) — user login, protecting pages, and deploying to production
+
+Let's finish this thing!
+
+## Django's Built-in Auth System
+
+One of Django's biggest strengths is that it comes with a complete authentication system out of the box. If you look at your `INSTALLED_APPS` in `settings.py`, you'll see `django.contrib.auth` is already there. That means we have user models, login/logout views, password hashing, and session management ready to go — no extra packages needed.
+
+## Adding Auth URLs
+
+Django provides pre-built views for login, logout, and password management. We just need to include them in our URL configuration. Open `bookmarks_project/urls.py` and update it:
+
+```python
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("", include("bookmarks.urls")),
+]
+```
+
+The `django.contrib.auth.urls` line gives us these URL patterns for free:
+
+- `/accounts/login/` — Log in
+- `/accounts/logout/` — Log out
+- `/accounts/password_change/` — Change password
+- `/accounts/password_reset/` — Reset password
+
+For our bookmark manager, we'll focus on login and logout.
+
+## Creating the Login Template
+
+Django's built-in auth views handle all the logic, but they expect us to provide the templates. By default, the login view looks for a template at `registration/login.html`.
+
+Create the directory and template:
+
+```sh
+mkdir -p bookmarks/templates/registration
+```
+
+Now create `bookmarks/templates/registration/login.html`:
+
+```html
+{% extends "bookmarks/base.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<h1>Log In</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div style="margin-bottom: 15px;">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <button type="submit" class="btn">Log In</button>
+</form>
+{% endblock %}
+```
+
+This looks very similar to our bookmark create form — that's the beauty of Django's consistent form handling. The `form.non_field_errors` section handles errors that aren't tied to a specific field, like "Invalid username or password."
+
+## Configuring Redirects
+
+After a user logs in or logs out, Django needs to know where to send them. Add these lines to the bottom of `bookmarks_project/settings.py`:
+
+```python
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
+```
+
+Now when a user logs in, they'll be redirected to the home page. Same thing when they log out.
+
+## Updating the Navigation
+
+Let's update our base template to show different links depending on whether the user is logged in or not. Open `bookmarks/templates/bookmarks/base.html` and replace the `<nav>` section:
+
+```html
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'bookmark_create' %}">Add Bookmark</a>
+        <a href="{% url 'logout' %}">Log Out ({{ user.username }})</a>
+    {% else %}
+        <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+</nav>
+```
+
+Now logged-in users will see the "Add Bookmark" and "Log Out" links, while anonymous users will only see "Log In." The `{{ user.username }}` part shows the logged-in user's name next to the logout link, so they know which account they're using.
+
+## Protecting Views with @login_required
+
+Right now, anyone can create or delete bookmarks — even if they're not logged in. Let's fix that. Django provides a `@login_required` decorator that redirects anonymous users to the login page.
+
+Update `bookmarks/views.py`:
+
+```python
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .forms import BookmarkForm
+from .models import Bookmark
+
+
+def home(request):
+    bookmarks = Bookmark.objects.all()
+    return render(request, "bookmarks/home.html", {"bookmarks": bookmarks})
+
+
+def bookmark_detail(request, pk):
+    bookmark = get_object_or_404(Bookmark, pk=pk)
+    return render(request, "bookmarks/detail.html", {"bookmark": bookmark})
+
+
+@login_required
+def bookmark_create(request):
+    if request.method == "POST":
+        form = BookmarkForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = BookmarkForm()
+    return render(request, "bookmarks/create.html", {"form": form})
+
+
+@login_required
+def bookmark_delete(request, pk):
+    bookmark = get_object_or_404(Bookmark, pk=pk)
+    if request.method == "POST":
+        bookmark.delete()
+        return redirect("home")
+    return render(request, "bookmarks/delete.html", {"bookmark": bookmark})
+```
+
+Notice that `home` and `bookmark_detail` stay public — anyone can browse bookmarks. But `bookmark_create` and `bookmark_delete` are protected with `@login_required`. If an anonymous user tries to visit `/bookmark/new/`, they'll be automatically redirected to the login page. After they log in, Django will send them right back to the page they were trying to reach. Pretty slick!
+
+## Testing the Auth Flow
+
+Let's make sure everything works. Start the server and walk through these steps:
+
+1. **Visit the home page** — You should see the "Log In" link in the navigation.
+2. **Try to add a bookmark** by navigating to `/bookmark/new/` directly — You should be redirected to the login page.
+3. **Log in** with the superuser account you created earlier.
+4. **Check the navigation** — You should now see "Add Bookmark" and "Log Out (yourusername)."
+5. **Create a bookmark** — It should work as before.
+6. **Log out** — You should be redirected to the home page, and the navigation should show "Log In" again.
+
+If all of that works, our authentication system is good to go!
+
+## Preparing for Deployment
+
+Our app works great locally, but we need to make some changes before deploying to production. Let's install a few packages and update our settings.
+
+### Installing Dependencies
+
+```sh
+pip install gunicorn whitenoise dj-database-url psycopg2-binary
+```
+
+Here's what each package does:
+
+- **`gunicorn`** — A production-grade WSGI server. The built-in `runserver` command is only for development.
+- **`whitenoise`** — Serves static files (CSS, JavaScript, images) efficiently in production.
+- **`dj-database-url`** — Lets you configure your database using a single URL string, which is how most hosting platforms provide database credentials.
+- **`psycopg2-binary`** — A PostgreSQL adapter for Python. We'll use PostgreSQL in production instead of SQLite.
+
+Now freeze your dependencies:
+
+```sh
+pip freeze > requirements.txt
+```
+
+This creates a `requirements.txt` file that lists every package (and its version) that your project needs. Hosting platforms use this file to install dependencies when deploying your app.
+
+### Updating settings.py
+
+We need to make several changes to `bookmarks_project/settings.py` to make it production-ready. Let's go through each one.
+
+First, add this import at the top of the file:
+
+```python
+import os
+
+import dj_database_url
+```
+
+**Secret Key** — Never expose your secret key in production. Replace the hardcoded key with:
+
+```python
+SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-dev-key-change-me")
+```
+
+**Debug Mode** — Debug mode should always be off in production:
+
+```python
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+```
+
+**Allowed Hosts** — This controls which domains can serve your app:
+
+```python
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+```
+
+**Database** — Replace the `DATABASES` setting with:
+
+```python
+DATABASES = {
+    "default": dj_database_url.config(
+        default="sqlite:///db.sqlite3",
+        conn_max_age=600,
+    )
+}
+```
+
+This uses the `DATABASE_URL` environment variable if it's set (which it will be on Railway), and falls back to SQLite for local development.
+
+**WhiteNoise Middleware** — Add WhiteNoise to the `MIDDLEWARE` list, right after `SecurityMiddleware`:
+
+```python
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # add this line
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    # ... rest of middleware
+]
+```
+
+**Static Files** — Add these settings at the bottom of the file:
+
+```python
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+```
+
+This tells Django where to collect static files and configures WhiteNoise to compress and cache them.
+
+### Creating the Procfile
+
+Railway (and many other platforms) uses a `Procfile` to know how to run your app. Create a file called `Procfile` in the root of your project (the same directory as `manage.py`):
+
+```
+web: gunicorn bookmarks_project.wsgi
+```
+
+This tells the platform to run Gunicorn, pointing it to our project's WSGI configuration.
+
+## Deploying to Railway
+
+[Railway](https://railway.app) is a modern hosting platform that makes deploying Django apps straightforward. Here's how to get your app live.
+
+### Step 1: Push to GitHub
+
+If you haven't already, initialize a Git repository and push your code to GitHub:
+
+```sh
+git init
+git add .
+git commit -m "Initial commit - bookmark manager"
+git branch -M main
+git remote add origin https://github.com/yourusername/bookmarks-project.git
+git push -u origin main
+```
+
+Make sure you have a `.gitignore` file that excludes things like `myenv/`, `db.sqlite3`, `__pycache__/`, and `.env`.
+
+### Step 2: Create a Railway Project
+
+1. Go to [railway.app](https://railway.app) and sign in with your GitHub account.
+2. Click **"New Project"** and select **"Deploy from GitHub repo."**
+3. Select your bookmarks project repository.
+
+### Step 3: Add a PostgreSQL Database
+
+1. In your Railway project dashboard, click **"New"** and select **"Database"** → **"PostgreSQL."**
+2. Railway will automatically create a PostgreSQL instance and set the `DATABASE_URL` environment variable for your app.
+
+### Step 4: Set Environment Variables
+
+In your Railway project settings, add the following environment variables:
+
+- **`SECRET_KEY`** — Generate a secure random string. You can use Python: `python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"`
+- **`DEBUG`** — Set to `False`
+- **`ALLOWED_HOSTS`** — Set to your Railway domain (something like `your-app.up.railway.app`)
+
+### Step 5: Run Migrations
+
+In the Railway dashboard, open the **"Settings"** tab for your service and add a deploy command, or use the Railway CLI:
+
+```sh
+railway run python manage.py migrate
+railway run python manage.py createsuperuser
+```
+
+This creates the database tables on your production PostgreSQL database and sets up an admin account.
+
+### Step 6: Go Live!
+
+Railway automatically deploys your app whenever you push to your main branch. Once the deployment finishes, click the provided URL to see your bookmark manager running in production. You now have a live Django web application!
+
+## What We Built
+
+Let's look back at everything we accomplished across all five posts:
+
+1. **Getting Started** — We installed Python, set up a virtual environment, and installed Django.
+2. **First Project** — We created a Django project and app, wrote our first view, and set up templates.
+3. **Models & Admin** — We defined our Bookmark model, ran migrations, and explored the admin panel.
+4. **Views & Templates** — We built a full CRUD interface with listing, detail, create, and delete pages.
+5. **Auth & Deployment** — We added user authentication and deployed to Railway.
+
+From zero to a deployed, authenticated web application — not bad for a bootcamp!
+
+## Where to Go from Here
+
+Our bookmark manager is a solid foundation, but there's so much more you could build on top of it. Here are some ideas to keep learning:
+
+- **Edit bookmarks** — Add an update view so users can modify existing bookmarks without deleting and recreating them.
+- **Tag filtering** — Let users click on a tag to see all bookmarks with that tag.
+- **User-specific bookmarks** — Add a `ForeignKey` to the `User` model so each user has their own private collection.
+- **CSV import** — Build a management command or upload form that lets users import bookmarks from a CSV file.
+- **REST API with Django REST Framework** — Turn your bookmark manager into an API that mobile apps or browser extensions can use. [Django REST Framework](https://www.django-rest-framework.org/) makes this surprisingly easy.
+
+The best way to learn is to keep building. Pick one of these ideas and run with it — you have all the foundational knowledge you need.
+
+If you have any questions or want to share what you've built, feel free to reach out to me on Mastodon at [@joshfinnie@fosstodon.org](https://fosstodon.org/@joshfinnie). I'd love to hear from you!
+
+Thanks for reading and happy coding! 🚀

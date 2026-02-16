@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { CardTitle as StarwindCardTitle } from './starwind/card';
+
+type Props = HTMLAttributes<'div'>;
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<StarwindCardTitle
+  class:list={[
+    "text-base leading-none font-semibold",
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</StarwindCardTitle>

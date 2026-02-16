@@ -1,0 +1,50 @@
+---
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './starwind/collapsible';
+
+interface Props {
+  label?: string;
+}
+
+const { label = 'Content' } = Astro.props;
+---
+
+<Collapsible>
+  <div class="border-l-4 border-gray-500 pl-4 my-4">
+    <CollapsibleTrigger class="mb-2">
+      <span data-label-show>Show {label} &#9660;</span>
+      <span data-label-hide class="hidden">Hide {label} &#9650;</span>
+    </CollapsibleTrigger>
+    <CollapsibleContent>
+      <slot />
+    </CollapsibleContent>
+  </div>
+</Collapsible>
+
+<script>
+  const setupCollapsibleQuotes = () => {
+    document.querySelectorAll<HTMLElement>('.starwind-collapsible').forEach((collapsible) => {
+      const trigger = collapsible.querySelector('.starwind-collapsible-trigger');
+      if (!trigger) return;
+
+      const showLabel = trigger.querySelector('[data-label-show]');
+      const hideLabel = trigger.querySelector('[data-label-hide]');
+      if (!showLabel || !hideLabel) return;
+
+      const updateLabels = () => {
+        const isOpen = collapsible.dataset.state === 'open';
+        showLabel.classList.toggle('hidden', isOpen);
+        hideLabel.classList.toggle('hidden', !isOpen);
+      };
+
+      // Update on initial state
+      updateLabels();
+
+      // Observe state changes
+      const observer = new MutationObserver(() => updateLabels());
+      observer.observe(collapsible, { attributes: true, attributeFilter: ['data-state'] });
+    });
+  };
+
+  setupCollapsibleQuotes();
+  document.addEventListener('astro:after-swap', setupCollapsibleQuotes);
+</script>

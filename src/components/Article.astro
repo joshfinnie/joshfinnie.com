@@ -1,6 +1,9 @@
 ---
 import { getEntry } from 'astro:content';
-import { Card, CardContent, CardFooter, CardTitle } from './ui/card';
+import Card from './Card.astro';
+import CardContent from './CardContent.astro';
+import CardFooter from './CardFooter.astro';
+import CardTitle from './CardTitle.astro';
 
 interface Props {
   id: string;
@@ -13,10 +16,8 @@ if (!post) {
 }
 ---
 
-<Card
-  className="relative flex flex-col items-start p-4 bg-white dark:bg-zinc-800 shadow-lg border border-zinc-200 dark:border-zinc-700 rounded-lg"
->
-  <CardTitle className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 p-6 pt-1">
+<Card class="relative flex flex-col items-start">
+  <CardTitle class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 p-6 pt-1">
     <h3>
       <a href={`/blog/${id}/`} aria-label={`Read ${post.data.title}`}>
         {post.data.title}
@@ -29,7 +30,7 @@ if (!post) {
   <CardContent>
     <p class="text-sm text-zinc-600 dark:text-zinc-400">{post.data.description}</p>
   </CardContent>
-  <CardFooter className="flex items-center text-sm font-medium text-teal-500 dark:text-teal-400">
+  <CardFooter class="flex items-center text-sm font-medium text-teal-500 dark:text-teal-400">
     <a href={`/blog/${id}/`} class="flex items-center gap-1">
       Read article
       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-current">

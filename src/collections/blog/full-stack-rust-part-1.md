@@ -1,6 +1,6 @@
 ---
 title: "Full-Stack Rust Part 1"
-date: "2026-02-16"
+date: "2026-02-19"
 tags:
   - "rust"
   - "web-development"
@@ -92,7 +92,7 @@ A quick rundown:
 - **axum** — our web framework
 - **serde / serde_json** — for serializing and deserializing JSON
 - **tokio** — the async runtime Axum runs on
-- **nanoid** — generates short, URL-safe unique IDs (this is our value-add over the typical random string approach; nanoid gives us collision-resistant slugs with a nice alphabet out of the box)
+- **nanoid** — generates short, URL-safe unique IDs
 
 ### Shared State
 
@@ -156,7 +156,7 @@ async fn create_url(
 }
 ```
 
-We use `nanoid!(6)` to generate a 6-character slug.
+We use `nanoid::nanoid!(6)` to generate a 6-character slug.
 That gives us roughly 2.2 billion possible slugs — plenty for our purposes.
 If you want even shorter URLs, you could drop to 4 characters at the cost of a smaller keyspace.
 

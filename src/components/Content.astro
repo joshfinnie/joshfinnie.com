@@ -1,16 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
 import MCBriefcase from '@icons/mc_briefcase_line.svg';
 import MCDownload from '@icons/mc_download_line.svg';
+import { getPublishedPosts } from '@lib/utils';
 
 import Article from './Article.astro';
 import WorkExperience from './WorkExperience.astro';
 
-const allPosts = await getCollection('blog');
-const posts = allPosts
-  .filter((a) => a.data.draft != true)
-  .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date))
-  .slice(0, 3);
+const posts = (await getPublishedPosts()).slice(0, 3);
 
 interface WorkExperienceType {
   id: number;

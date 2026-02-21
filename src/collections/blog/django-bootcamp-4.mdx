@@ -1,0 +1,366 @@
+---
+title: "Django Views & Templates"
+date: "2026-02-20"
+tags:
+  - "python"
+  - "tutorial"
+  - "django"
+slug: "django-views-and-templates"
+heroImage: "blog/django-bootcamp"
+description: "In this beginner-friendly guide, we build out the views and templates for our bookmark manager — listing bookmarks, viewing details, creating new ones, and deleting them."
+unsplash: "ChatGPT"
+series: "django-bootcamp"
+draft: true
+---
+
+Welcome back to the Django Bootcamp! We've got a working model and the admin panel is up and running. Now it's time to build the actual pages that our users will interact with — listing bookmarks, viewing details, creating new ones, and deleting them.
+
+This is a 5 part series where we'll go from zero to a deployed Django web application.
+By the end, we'll have built a **bookmark manager** — a practical app for saving, organizing, and tagging your favorite links.
+Here's the full series outline:
+
+1. [**Getting Started with Python for Web Development**](/blog/getting-started-with-python-for-web-development/) — Python basics, pip, and virtual environments
+2. [**Creating Your First Django Project**](/blog/creating-your-first-django-project/) — project structure, the development server, and your first view
+3. [**Models & the Django Admin**](/blog/models-and-the-django-admin/) — defining your database models and using Django's built-in admin panel
+4. **Views & Templates** (this post) — URL routing, views, templates, and building out the bookmark CRUD
+5. [**Authentication & Deployment**](/blog/django-authentication-and-deployment/) — user login, protecting pages, and deploying to production
+
+Let's build it out!
+
+## Creating a Base Template
+
+Before we create individual pages, let's set up a **base template** that all our pages will extend. This saves us from repeating the same HTML boilerplate (doctype, head, navigation) on every page.
+
+Create `bookmarks/templates/bookmarks/base.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bookmark Manager{% endblock %}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        nav { background: #2c3e50; padding: 15px 20px; margin: -20px -20px 30px -20px; }
+        nav a { color: #ecf0f1; text-decoration: none; margin-right: 20px; font-weight: bold; }
+        nav a:hover { color: #3498db; }
+        h1, h2 { margin-bottom: 15px; color: #2c3e50; }
+        a { color: #3498db; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .btn { display: inline-block; padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 14px; }
+        .btn:hover { background: #2980b9; text-decoration: none; }
+        .btn-danger { background: #e74c3c; }
+        .btn-danger:hover { background: #c0392b; }
+        .bookmark-card { border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .bookmark-card h2 { margin-bottom: 5px; font-size: 1.2em; }
+        .bookmark-card .meta { color: #777; font-size: 0.9em; margin-top: 8px; }
+        form label { display: block; margin-top: 10px; font-weight: bold; }
+        form input, form textarea { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        form textarea { height: 100px; }
+        .error { color: #e74c3c; font-size: 0.9em; }
+        .empty-state { text-align: center; padding: 40px; color: #777; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'bookmark_create' %}">Add Bookmark</a>
+    </nav>
+
+    {% block content %}{% endblock %}
+</body>
+</html>
+```
+
+There's a lot here, so let's focus on the key Django template features:
+
+- **`{% block title %}...{% endblock %}`** — This defines a "block" that child templates can override. If a child template doesn't override it, it defaults to "Bookmark Manager."
+- **`{% url 'home' %}`** — This generates a URL by its name (the `name` argument we passed to `path()` in our URL config). This is much better than hardcoding URLs because if you change a URL pattern, all the links update automatically.
+- **`{% block content %}{% endblock %}`** — This is where each page's unique content will go.
+
+The inline CSS gives us a clean, readable design without needing to set up static files. It's not fancy, but it gets the job done!
+
+## The Home View — Listing Bookmarks
+
+Let's update our home view to pull bookmarks from the database and display them. Open `bookmarks/views.py`:
+
+```python
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .models import Bookmark
+
+
+def home(request):
+    bookmarks = Bookmark.objects.all()
+    return render(request, "bookmarks/home.html", {"bookmarks": bookmarks})
+```
+
+We're fetching all bookmarks from the database and passing them to the template as a variable called `bookmarks`. Remember, our model's `Meta` class already specifies `ordering = ["-created_at"]`, so the newest bookmarks will appear first.
+
+Now update `bookmarks/templates/bookmarks/home.html`:
+
+```html
+{% extends "bookmarks/base.html" %}
+
+{% block title %}My Bookmarks{% endblock %}
+
+{% block content %}
+<h1>My Bookmarks</h1>
+
+{% if bookmarks %}
+    {% for bookmark in bookmarks %}
+    <div class="bookmark-card">
+        <h2><a href="{% url 'bookmark_detail' bookmark.pk %}">{{ bookmark.title }}</a></h2>
+        <p><a href="{{ bookmark.url }}">{{ bookmark.url }}</a></p>
+        {% if bookmark.description %}
+            <p>{{ bookmark.description }}</p>
+        {% endif %}
+        <p class="meta">
+            Added {{ bookmark.created_at|date:"F j, Y" }}
+            {% if bookmark.tags %} · Tags: {{ bookmark.tags }}{% endif %}
+        </p>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="empty-state">
+        <h2>No bookmarks yet!</h2>
+        <p>Get started by <a href="{% url 'bookmark_create' %}">adding your first bookmark</a>.</p>
+    </div>
+{% endif %}
+{% endblock %}
+```
+
+A few things to notice:
+
+- **`{% extends "bookmarks/base.html" %}`** — This tells Django to use our base template as the foundation for this page.
+- **`{% for bookmark in bookmarks %}`** — A loop that iterates over each bookmark.
+- **`{{ bookmark.created_at|date:"F j, Y" }}`** — The `|date` filter formats the datetime into something readable like "January 23, 2026."
+- **`{% if bookmarks %}...{% else %}...{% endif %}`** — We handle the empty state so new users see a helpful message instead of a blank page.
+
+## The Detail View
+
+Let's create a page that shows a single bookmark's full details. Add this view to `bookmarks/views.py`:
+
+```python
+def bookmark_detail(request, pk):
+    bookmark = get_object_or_404(Bookmark, pk=pk)
+    return render(request, "bookmarks/detail.html", {"bookmark": bookmark})
+```
+
+The `get_object_or_404()` function is a Django shortcut that tries to fetch the bookmark with the given primary key (`pk`). If it doesn't exist, it returns a 404 "Not Found" page automatically. This saves us from writing error-handling code ourselves.
+
+Create `bookmarks/templates/bookmarks/detail.html`:
+
+```html
+{% extends "bookmarks/base.html" %}
+
+{% block title %}{{ bookmark.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ bookmark.title }}</h1>
+<p><a href="{{ bookmark.url }}">{{ bookmark.url }}</a></p>
+
+{% if bookmark.description %}
+    <p>{{ bookmark.description }}</p>
+{% endif %}
+
+{% if bookmark.tags %}
+    <p><strong>Tags:</strong> {{ bookmark.tags }}</p>
+{% endif %}
+
+<p class="meta">
+    Added {{ bookmark.created_at|date:"F j, Y" }} ·
+    Last updated {{ bookmark.updated_at|date:"F j, Y" }}
+</p>
+
+<div style="margin-top: 20px;">
+    <a href="{% url 'home' %}" class="btn">← Back to Bookmarks</a>
+    <a href="{% url 'bookmark_delete' bookmark.pk %}" class="btn btn-danger">Delete</a>
+</div>
+{% endblock %}
+```
+
+## Creating Bookmarks with Django Forms
+
+Now for the fun part — letting users create new bookmarks. Django has a built-in **forms** system that handles form rendering, validation, and saving. The best part? We can generate a form directly from our model in just a few lines.
+
+Create a new file called `bookmarks/forms.py`:
+
+```python
+from django import forms
+
+from .models import Bookmark
+
+
+class BookmarkForm(forms.ModelForm):
+    class Meta:
+        model = Bookmark
+        fields = ["title", "url", "description", "tags"]
+```
+
+That's it — just four lines of real code! A `ModelForm` automatically generates form fields based on the model. We specify which fields to include (we leave out `created_at` and `updated_at` since those are set automatically).
+
+### The Create View
+
+Add this view to `bookmarks/views.py`:
+
+```python
+from .forms import BookmarkForm
+
+
+def bookmark_create(request):
+    if request.method == "POST":
+        form = BookmarkForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    else:
+        form = BookmarkForm()
+    return render(request, "bookmarks/create.html", {"form": form})
+```
+
+This view handles two scenarios:
+
+- **GET request** (user visits the page) — We create an empty form and render the template.
+- **POST request** (user submits the form) — We populate the form with the submitted data, check if it's valid, save it to the database, and redirect to the home page.
+
+If the form isn't valid (for example, the URL field has an invalid URL), Django automatically adds error messages, and we re-render the form so the user can fix their input.
+
+### The Create Template
+
+Create `bookmarks/templates/bookmarks/create.html`:
+
+```html
+{% extends "bookmarks/base.html" %}
+
+{% block title %}Add Bookmark{% endblock %}
+
+{% block content %}
+<h1>Add a New Bookmark</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div style="margin-bottom: 15px;">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <p class="error">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn">Save Bookmark</button>
+    <a href="{% url 'home' %}" style="margin-left: 10px;">Cancel</a>
+</form>
+{% endblock %}
+```
+
+A few important things here:
+
+- **`{% csrf_token %}`** — This is required on every Django form. It adds a hidden field that protects against Cross-Site Request Forgery attacks. If you forget it, Django will reject the form submission.
+- **`{% for field in form %}`** — We loop over each form field and render it individually. This gives us control over the layout while still letting Django handle the HTML input elements and validation.
+- **Error display** — If a field has validation errors, we show them right below the field in red.
+
+## The Delete View
+
+Let's add the ability to delete bookmarks. We'll show a confirmation page before actually deleting — this prevents accidental deletions.
+
+Add this view to `bookmarks/views.py`:
+
+```python
+def bookmark_delete(request, pk):
+    bookmark = get_object_or_404(Bookmark, pk=pk)
+    if request.method == "POST":
+        bookmark.delete()
+        return redirect("home")
+    return render(request, "bookmarks/delete.html", {"bookmark": bookmark})
+```
+
+And create `bookmarks/templates/bookmarks/delete.html`:
+
+```html
+{% extends "bookmarks/base.html" %}
+
+{% block title %}Delete Bookmark{% endblock %}
+
+{% block content %}
+<h1>Delete Bookmark</h1>
+<p>Are you sure you want to delete <strong>"{{ bookmark.title }}"</strong>?</p>
+<p>This action cannot be undone.</p>
+
+<form method="post" style="margin-top: 20px;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'bookmark_detail' bookmark.pk %}" class="btn" style="margin-left: 10px;">Cancel</a>
+</form>
+{% endblock %}
+```
+
+The confirmation page shows the bookmark title and asks the user to confirm. Only when they click the "Yes, Delete" button and submit the POST request does the bookmark actually get deleted.
+
+## Wiring Up All the URLs
+
+Now we need to connect all these views to URLs. Update `bookmarks/urls.py`:
+
+```python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path("", views.home, name="home"),
+    path("bookmark/<int:pk>/", views.bookmark_detail, name="bookmark_detail"),
+    path("bookmark/new/", views.bookmark_create, name="bookmark_create"),
+    path("bookmark/<int:pk>/delete/", views.bookmark_delete, name="bookmark_delete"),
+]
+```
+
+The `<int:pk>` part is a URL parameter — it captures an integer from the URL and passes it to the view as the `pk` argument. For example, `/bookmark/3/` would pass `pk=3` to the `bookmark_detail` view.
+
+Each path has a `name` argument, which is what we use in our templates with the `{% url %}` tag. This makes our code much more maintainable than hardcoding URLs.
+
+## Testing the Full CRUD
+
+Let's make sure everything works! Start the development server:
+
+```sh
+python manage.py runserver
+```
+
+Now walk through the full workflow:
+
+1. **Visit the home page** at [http://127.0.0.1:8000/](http://127.0.0.1:8000/). If you added bookmarks through the admin panel in the last post, you should see them listed here. If not, you'll see the empty state message.
+
+2. **Create a bookmark** by clicking "Add Bookmark" in the navigation. Fill in the form and click "Save Bookmark." You should be redirected back to the home page where your new bookmark appears.
+
+3. **View details** by clicking on a bookmark's title. You'll see the full details page with a link to the URL, description, tags, and timestamps.
+
+4. **Delete a bookmark** by clicking the "Delete" button on the detail page. You'll see a confirmation page — click "Yes, Delete" to remove it, or "Cancel" to go back.
+
+5. **Test validation** by trying to create a bookmark with an invalid URL. Django should show an error message on the form.
+
+If all of that works, congratulations — you've built a fully functional CRUD application with Django!
+
+## What We've Done So Far
+
+Let's recap what we accomplished in this post:
+
+- Created a base template with navigation and styling
+- Built a home view that lists all bookmarks from the database
+- Created a detail view for individual bookmarks using `get_object_or_404`
+- Set up a `ModelForm` to handle bookmark creation and validation
+- Built a create view that handles both GET and POST requests
+- Added a delete view with a confirmation page
+- Wired up all the URLs with named routes
+
+## Next Steps
+
+Our bookmark manager is looking great, but right now anyone can add or delete bookmarks. In the final post, we'll add **user authentication** so that only logged-in users can create and delete bookmarks. Then we'll **deploy the app to production** so you can share it with the world.
+
+Stay tuned and happy coding! 🚀

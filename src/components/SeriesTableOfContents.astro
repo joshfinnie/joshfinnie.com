@@ -1,6 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
 import MCBriefcase from '@icons/mc_briefcase_line.svg';
+import { getPublishedPosts } from '@lib/utils';
 
 interface Props {
   seriesName: string;
@@ -10,9 +10,9 @@ interface Props {
 const { seriesName, currentPostId } = Astro.props;
 
 // Query all posts in the series
-const allPosts = await getCollection('blog');
+const allPosts = await getPublishedPosts();
 const seriesPosts = allPosts
-  .filter((post) => post.data.series === seriesName && post.data.draft !== true)
+  .filter((post) => post.data.series === seriesName)
   .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
 
 const currentIndex = seriesPosts.findIndex((post) => post.id === currentPostId);

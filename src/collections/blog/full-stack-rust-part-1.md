@@ -1,5 +1,5 @@
 ---
-title: "Full-Stack Rust Part 1"
+title: "Building a Full-Stack Rust Application"
 date: "2026-02-19"
 tags:
   - "rust"

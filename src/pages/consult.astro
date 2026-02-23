@@ -1,0 +1,110 @@
+---
+import Button from '@components/starwind/button/Button.astro';
+import Card from '@components/starwind/card/Card.astro';
+import CardContent from '@components/starwind/card/CardContent.astro';
+import CardDescription from '@components/starwind/card/CardDescription.astro';
+import CardFooter from '@components/starwind/card/CardFooter.astro';
+import CardHeader from '@components/starwind/card/CardHeader.astro';
+import CardTitle from '@components/starwind/card/CardTitle.astro';
+import ConsultLayout from '@layouts/ConsultLayout.astro';
+---
+
+<ConsultLayout
+  title="Consulting | www.joshfinnie.com"
+  description="Software consulting services by Josh Finnie — Fractional VP of Engineering, Zero-to-One Product Engineering, and AI Pipeline Optimization."
+>
+  <!-- Hero -->
+  <section class="py-12 text-center">
+    <h1 class="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+      Let's Build Something Great Together
+    </h1>
+    <p class="mt-6 max-w-4xl mx-auto text-lg text-zinc-600 dark:text-zinc-400">
+      I'm Josh Finnie, a senior engineering leader with 15+ years shipping products, scaling teams, and taming complexity. Whether you need strategic leadership, a product built from scratch, or your AI pipeline de-slopped, I can help.
+    </p>
+  </section>
+
+  <!-- Service Cards -->
+  <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 py-12">
+    <Card>
+      <CardHeader>
+        <CardTitle>Zero-to-One Product Engineer</CardTitle>
+        <CardDescription>For pre-seed and seed-stage founders who need to go from idea to live product, fast.</CardDescription>
+      </CardHeader>
+      <CardContent class="flex-1">
+        <ul class="list-disc list-inside space-y-2 text-zinc-600 dark:text-zinc-400">
+          <li>Full-stack product development</li>
+          <li>MVP scoping and technical architecture</li>
+          <li>Deployment, CI/CD, and infrastructure setup</li>
+          <li>Handoff-ready codebase with documentation</li>
+        </ul>
+        <p class="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">Fixed-fee · 4-8 week engagements</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="primary" size="sm" href="https://cal.com/joshfinnie/zero-to-one" target="_blank" rel="noopener noreferrer">
+          Book a Scoping Call
+        </Button>
+      </CardFooter>
+    </Card>
+
+    <Card>
+      <CardHeader>
+        <CardTitle>AI Slop Fixer</CardTitle>
+        <CardDescription>Your LLM integration works... kind of. Let me make it actually good.</CardDescription>
+      </CardHeader>
+      <CardContent class="flex-1">
+        <ul class="list-disc list-inside space-y-2 text-zinc-600 dark:text-zinc-400">
+          <li>Prompt engineering and pipeline audit</li>
+          <li>Cost and latency optimization</li>
+          <li>Evaluation frameworks and quality metrics</li>
+          <li>RAG, fine-tuning, and model selection guidance</li>
+        </ul>
+        <p class="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">Value-based pricing</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="primary" size="sm" href="https://cal.com/joshfinnie/ai-audit" target="_blank" rel="noopener noreferrer">
+          Book an Audit Call
+        </Button>
+      </CardFooter>
+    </Card>
+
+    <Card>
+      <CardHeader>
+        <CardTitle>Fractional VP of Engineering</CardTitle>
+        <CardDescription>For Series A/B startups that need seasoned engineering leadership without the full-time price tag.</CardDescription>
+      </CardHeader>
+      <CardContent class="flex-1">
+        <ul class="list-disc list-inside space-y-2 text-zinc-600 dark:text-zinc-400">
+          <li>Engineering process & team health audits</li>
+          <li>Hiring strategy and technical interview design</li>
+          <li>Mentorship for first-time engineering managers</li>
+          <li>Architecture reviews and roadmap planning</li>
+        </ul>
+        <p class="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">10 hrs/week retainer</p>
+      </CardContent>
+      <CardFooter>
+        <Button variant="primary" size="sm" href="https://cal.com/joshfinnie/fractional" target="_blank" rel="noopener noreferrer">
+          Book an Intro Call
+        </Button>
+      </CardFooter>
+    </Card>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 text-center">
+    <h2 class="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Stop guessing. Start shipping.</h2>
+    <p class="mt-4 text-zinc-600 dark:text-zinc-400">
+      I only take on a few projects at a time to ensure high-touch delivery. Let's see if we're a fit.
+    </p>
+    <div class="mt-6">
+      <Button
+        variant="outline"
+        size="lg"
+        href="https://cal.com/joshfinnie/general-inquiry"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Book a 15-Minute Discovery Call
+      </Button>
+    </div>
+  </section>
+</ConsultLayout>

@@ -1,0 +1,73 @@
+---
+import BaseHead from '@components/BaseHead.astro';
+import Footer from '@components/Footer.astro';
+import Header from '@components/Header.astro';
+
+const { title = 'Consulting | www.joshfinnie.com', description = 'Software consulting services by Josh Finnie.' } =
+  Astro.props;
+
+const imageUrl = 'https://www.joshfinnie.com/blog/og/default.png';
+
+import '@styles/global.css';
+---
+
+<html
+  lang="en"
+  style="--header-position: sticky; --content-offset: 100px; --header-height: 180px; --header-mb: -116px; --avatar-image-transform: translate3d(0rem, 0, 0) scale(1); --avatar-border-transform: translate3d(-0.2222222222222222rem, 0, 0) scale(1.7777777777777777); --avatar-border-opacity: 0; --header-top: 0px; --avatar-top: 0px;"
+  class="dark"
+>
+  <head>
+    <BaseHead {title} {description} image={imageUrl} />
+    <script is:inline>
+      // Necessary for view transitions
+      document.addEventListener("astro:after-swap", () => {
+        if (
+          localStorage.theme === "dark" ||
+          (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        }
+      });
+
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Josh Finnie's Blog",
+        "url": "https://www.joshfinnie.com/",
+        "author": {
+          "@type": "Person",
+          "name": "Josh Finnie"
+        }
+      }
+    </script>
+  </head>
+  <body class="flex h-full bg-zinc-50 dark:bg-black">
+    <div class="flex w-full">
+      <div class="fixed inset-0 flex justify-center sm:px-8">
+        <div class="flex w-full max-w-7xl lg:px-8">
+          <div class="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
+        </div>
+      </div>
+      <div class="relative flex w-full flex-col">
+        <Header />
+        <div class="flex-none" style="height:var(--content-offset)"></div>
+        <main class="flex-auto">
+          <div class="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-16 py-8">
+            <slot />
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </div>
+  </body>
+</html>

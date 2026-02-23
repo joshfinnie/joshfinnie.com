@@ -1,0 +1,269 @@
+---
+title: "Creating Your First Django Project"
+date: "2026-01-23"
+tags:
+  - "python"
+  - "tutorial"
+  - "django"
+slug: "creating-your-first-django-project"
+heroImage: "blog/django-bootcamp"
+description: "In this beginner-friendly guide, we create our first Django project, explore its file structure, and build our first view to display a page in the browser."
+unsplash: "ChatGPT"
+series: "django-bootcamp"
+draft: true
+---
+
+Welcome back to the Django Bootcamp! In the previous post, we installed Python, set up a virtual environment, and installed Django. Now it's time to actually create our first Django project and get something showing up in the browser.
+
+This is a 5 part series where we'll go from zero to a deployed Django web application.
+By the end, we'll have built a **bookmark manager** — a practical app for saving, organizing, and tagging your favorite links.
+Here's the full series outline:
+
+1. [**Getting Started with Python for Web Development**](/blog/getting-started-with-python-for-web-development/) — Python basics, pip, and virtual environments
+2. **Creating Your First Django Project** (this post) — project structure, the development server, and your first view
+3. [**Models & the Django Admin**](/blog/models-and-the-django-admin/) — defining your database models and using Django's built-in admin panel
+4. [**Views & Templates**](/blog/django-views-and-templates/) — URL routing, views, templates, and building out the bookmark CRUD
+5. [**Authentication & Deployment**](/blog/django-authentication-and-deployment/) — user login, protecting pages, and deploying to production
+
+Let's dive in!
+
+## Creating the Django Project
+
+Make sure your virtual environment is activated (you should see `(myenv)` in your terminal prompt), then run:
+
+```sh
+django-admin startproject bookmarks_project .
+```
+
+Notice the **dot** (`.`) at the end of the command — this is important! Without the dot, Django would create an extra nested folder called `bookmarks_project` inside another `bookmarks_project` folder. The dot tells Django to create the project files right here in the current directory, which keeps things nice and clean.
+
+## Understanding the Project Structure
+
+After running that command, your project directory should look like this:
+
+```
+.
+├── bookmarks_project/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── manage.py
+```
+
+Let's break down what each file does:
+
+- **`manage.py`** — This is a command-line utility that lets you interact with your Django project. You'll use it to run the development server, create database migrations, and much more. Think of it as your project's Swiss Army knife.
+- **`bookmarks_project/__init__.py`** — An empty file that tells Python this directory should be treated as a Python package.
+- **`bookmarks_project/settings.py`** — The main configuration file for your project. This is where you'll configure databases, installed apps, middleware, and just about everything else.
+- **`bookmarks_project/urls.py`** — The URL configuration for your project. This is like a table of contents that maps URLs to views.
+- **`bookmarks_project/wsgi.py`** — An entry point for WSGI-compatible web servers to serve your project. You won't need to touch this much, but it's used when deploying your app.
+- **`bookmarks_project/asgi.py`** — Similar to `wsgi.py`, but for ASGI-compatible servers. ASGI supports asynchronous features like WebSockets. We won't use this in our project, but it's good to know it's there.
+
+## Running the Development Server
+
+Let's make sure everything is working. Run:
+
+```sh
+python manage.py runserver
+```
+
+You should see output like this:
+
+```
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+...
+Django version 5.1, using settings 'bookmarks_project.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+
+Open your browser and visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/). You should see Django's default welcome page with a little rocket ship. Congratulations — your Django project is up and running!
+
+Press `Ctrl+C` in your terminal to stop the server.
+
+## Creating the Bookmarks App
+
+In Django, a **project** is the overall web application, and an **app** is a self-contained module that handles a specific piece of functionality. Our project is `bookmarks_project`, and now we'll create an app called `bookmarks` to handle all the bookmark-related logic.
+
+Run the following command:
+
+```sh
+python manage.py startapp bookmarks
+```
+
+This creates a new `bookmarks/` directory with the following structure:
+
+```
+bookmarks/
+├── __init__.py
+├── admin.py
+├── apps.py
+├── migrations/
+│   └── __init__.py
+├── models.py
+├── tests.py
+└── views.py
+```
+
+Here's what each file is for:
+
+- **`admin.py`** — Where you register your models so they show up in Django's admin panel.
+- **`apps.py`** — Configuration for the app itself.
+- **`migrations/`** — A directory that stores database migration files. Django uses these to keep your database schema in sync with your models.
+- **`models.py`** — Where you define your data models (we'll do this in the next post).
+- **`tests.py`** — Where you write tests for your app.
+- **`views.py`** — Where you define the logic for handling requests and returning responses.
+
+## Adding the App to INSTALLED_APPS
+
+Django doesn't automatically know about our new app — we need to register it. Open `bookmarks_project/settings.py` and find the `INSTALLED_APPS` list. Add `"bookmarks"` to it:
+
+```python
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "bookmarks",  # our new app
+]
+```
+
+This tells Django to include our bookmarks app when it runs.
+
+## Writing Your First View
+
+A **view** in Django is a Python function (or class) that takes a web request and returns a web response. Let's write the simplest possible view to get something on the screen.
+
+Open `bookmarks/views.py` and replace its contents with:
+
+```python
+from django.http import HttpResponse
+
+
+def home(request):
+    return HttpResponse("<h1>Welcome to the Bookmark Manager!</h1>")
+```
+
+This is about as simple as it gets — when someone visits this view, they'll see a heading that says "Welcome to the Bookmark Manager!"
+
+## Setting Up URLs
+
+Now we need to tell Django which URL should point to our new view. We'll do this in two steps.
+
+### Step 1: Create the App's URL Configuration
+
+Create a new file called `urls.py` inside the `bookmarks/` directory:
+
+```python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path("", views.home, name="home"),
+]
+```
+
+This says: "When someone visits the root URL of this app, call the `home` view."
+
+### Step 2: Include the App URLs in the Project
+
+Now open `bookmarks_project/urls.py` and update it to include our app's URLs:
+
+```python
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("", include("bookmarks.urls")),
+]
+```
+
+The `include()` function lets us plug in the URL configuration from our bookmarks app. This keeps things organized — each app manages its own URLs, and the project just ties them all together.
+
+Start the server again with `python manage.py runserver` and visit [http://127.0.0.1:8000/](http://127.0.0.1:8000/). You should see "Welcome to the Bookmark Manager!" in big bold text. It works!
+
+## Using Templates Instead of Raw HTML
+
+Returning raw HTML strings from your views works, but it gets messy fast. Django has a powerful **template system** that lets us write HTML in separate files and pass data into them.
+
+### Creating the Template Directory
+
+Django looks for templates inside a `templates/` directory within each app. By convention, we also create a subdirectory that matches the app name. This might feel redundant, but it prevents naming collisions if multiple apps have templates with the same name.
+
+Create the following directory structure:
+
+```
+bookmarks/
+└── templates/
+    └── bookmarks/
+        └── home.html
+```
+
+You can create these directories from the command line:
+
+```sh
+mkdir -p bookmarks/templates/bookmarks
+```
+
+The double `bookmarks` might look odd at first — `bookmarks/templates/bookmarks/` — but this is a Django convention called **template namespacing**. It ensures that when you reference `bookmarks/home.html` in your view, Django loads the right template even if another app also has a `home.html`.
+
+### Creating the Template
+
+Create `bookmarks/templates/bookmarks/home.html` with the following content:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Manager</title>
+</head>
+<body>
+    <h1>Welcome to the Bookmark Manager!</h1>
+    <p>Your personal tool for saving and organizing bookmarks.</p>
+</body>
+</html>
+```
+
+### Updating the View
+
+Now let's update our view to use this template instead of returning raw HTML. Open `bookmarks/views.py`:
+
+```python
+from django.shortcuts import render
+
+
+def home(request):
+    return render(request, "bookmarks/home.html")
+```
+
+The `render()` function takes the request, the path to the template, and (optionally) a dictionary of data to pass to the template. We'll use that data-passing feature in a later post when we start displaying bookmarks from the database.
+
+Restart the server and refresh your browser. You should now see the updated page with both a heading and a paragraph. The page looks the same from the outside, but under the hood we've set up a much more maintainable structure.
+
+## What We've Done So Far
+
+Let's recap everything we accomplished in this post:
+
+- Created a Django project with `django-admin startproject`
+- Explored the project file structure
+- Ran the development server for the first time
+- Created a Django app called `bookmarks`
+- Wrote our first view and wired it up to a URL
+- Set up templates for cleaner HTML rendering
+
+## Next Steps
+
+In the next post, we'll define our **Bookmark model** — the database representation of a bookmark — and explore Django's incredibly useful **admin panel**. We'll be able to create, view, and manage bookmarks through a web interface without writing a single line of front-end code.
+
+Stay tuned and happy coding! 🚀

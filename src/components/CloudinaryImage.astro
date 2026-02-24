@@ -18,12 +18,18 @@ const imageUrl = getCloudinaryImageUrl(publicId, {
   ...(height !== undefined && { height }),
 });
 
-// Generate responsive srcset
+// Generate responsive srcset, preserving aspect ratio when height is specified
+const aspectRatio = width && height ? height / width : undefined;
+function srcsetEntry(w: number) {
+  const h = aspectRatio ? Math.round(w * aspectRatio) : undefined;
+  return `${getCloudinaryImageUrl(publicId, { width: w, ...(h !== undefined && { height: h }) })} ${w}w`;
+}
+const baseWidth = width || 800;
 const srcset = [
-  `${getCloudinaryImageUrl(publicId, { width: width ? width / 2 : 400 })} ${width ? width / 2 : 400}w`,
-  `${getCloudinaryImageUrl(publicId, { width: width || 800 })} ${width || 800}w`,
-  `${getCloudinaryImageUrl(publicId, { width: width ? width * 1.5 : 1200 })} ${width ? Math.round(width * 1.5) : 1200}w`,
-  `${getCloudinaryImageUrl(publicId, { width: width ? width * 2 : 1600 })} ${width ? width * 2 : 1600}w`,
+  srcsetEntry(Math.round(baseWidth / 2)),
+  srcsetEntry(baseWidth),
+  srcsetEntry(Math.round(baseWidth * 1.5)),
+  srcsetEntry(baseWidth * 2),
 ].join(', ');
 
 const sizes = width

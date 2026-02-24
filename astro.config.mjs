@@ -34,6 +34,9 @@ export default defineConfig({
     responsiveStyles: true,
     layout: 'constrained',
   },
+  build: {
+    inlineStylesheets: 'always',
+  },
   site: 'https://www.joshfinnie.com/',
   trailingSlash: 'always',
   server: {
@@ -42,7 +45,10 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), alpinejs()],
   markdown: {
     shikiConfig: {
-      theme: 'dracula',
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark-dimmed',
+      },
     },
   },
 });

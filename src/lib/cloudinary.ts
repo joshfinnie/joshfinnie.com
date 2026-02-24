@@ -1,5 +1,5 @@
 import { Cloudinary } from '@cloudinary/url-gen';
-import { scale } from '@cloudinary/url-gen/actions/resize';
+import { fill, scale } from '@cloudinary/url-gen/actions/resize';
 import { auto as autoFormat } from '@cloudinary/url-gen/qualifiers/format';
 import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
 
@@ -20,12 +20,11 @@ export function getCloudinaryImageUrl(publicId: string, options: { width?: numbe
   // Apply automatic format and quality optimization
   image.format(autoFormat() as any).quality(autoQuality() as any);
 
-  // Apply width if specified
-  if (options.width) {
+  if (options.width && options.height) {
+    image.resize(fill().width(options.width).height(options.height));
+  } else if (options.width) {
     image.resize(scale().width(options.width));
-  }
-
-  if (options.height) {
+  } else if (options.height) {
     image.resize(scale().height(options.height));
   }
 

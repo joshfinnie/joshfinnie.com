@@ -1,0 +1,207 @@
+---
+title: "Adding a Copy Code Button to My Astro Blog"
+date: "2026-02-23"
+tags:
+  - "astro"
+  - "javascript"
+  - "tutorial"
+  - "ux"
+description: "A step-by-step walkthrough of how I added a copy-to-clipboard button with a language label to every code block on my Astro blog using a single component and no external libraries."
+heroImage: "blog/copier"
+unsplash: "engin akyurt"
+unsplashURL: "enginakyurt"
+---
+
+One of those small quality-of-life features I always notice on developer blogs is a copy button on code blocks.
+It's the kind of thing you don't think about until you're on someone else's blog, manually selecting a snippet to paste into your terminal.
+After reading a post about Astro blog setups recently, I decided it was finally time to add one to my own site.
+
+The good news: it turns out to be a surprisingly small amount of code.
+No external libraries, no extra dependencies — just a single Astro component that runs after the page loads.
+
+## The Approach
+
+My blog uses [Shiki](https://shiki.style/) for syntax highlighting via Astro's built-in markdown config.
+Shiki renders code blocks as `<pre class="astro-code">` elements, and conveniently sets a `data-language` attribute on each one.
+That attribute is the key to showing a language label alongside the copy button.
+
+The plan:
+1. Find every `pre.astro-code` on the page
+2. Wrap each in a container `div` for positioning
+3. Prepend a header bar with the language label and a copy button
+4. Use the Clipboard API to copy on click, then show a brief "copied" confirmation
+
+Since [Alpine.js](https://alpinejs.dev/) is already on the site, I could have used it here, but vanilla JS is cleaner for something this self-contained.
+
+## Creating the Component
+
+I created `src/components/CopyCode.astro` with a module `<script>` (so Astro and Vite bundle it properly) and a `<style is:global>` block for the dynamically-created elements.
+
+```astro
+<script>
+  import COPY_ICON from '@icons/mc_copy_line.svg?raw';
+  import CHECK_ICON from '@icons/mc_check_line.svg?raw';
+
+  for (const pre of document.querySelectorAll('pre.astro-code')) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-block-wrapper';
+    pre.parentNode?.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
+
+    const bar = document.createElement('div');
+    bar.className = 'code-block-bar';
+
+    const lang = pre.getAttribute('data-language');
+    if (lang) {
+      const label = document.createElement('span');
+      label.className = 'code-block-lang';
+      label.textContent = lang;
+      bar.appendChild(label);
+    }
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Copy code');
+    button.className = 'code-block-copy';
+    button.innerHTML = COPY_ICON;
+
+    button.addEventListener('click', async () => {
+      const text = pre.querySelector('code')?.innerText ?? '';
+      await navigator.clipboard.writeText(text);
+      button.innerHTML = CHECK_ICON;
+      button.setAttribute('data-copied', '');
+      setTimeout(() => {
+        button.innerHTML = COPY_ICON;
+        button.removeAttribute('data-copied');
+      }, 2000);
+    });
+
+    bar.appendChild(button);
+    wrapper.insertBefore(bar, pre);
+  }
+</script>
+```
+
+A few things worth calling out:
+
+- **`wrapper.insertBefore(bar, pre)`** — the bar has to go *before* the `pre`, not after. I made this mistake initially and ended up with the bar at the bottom.
+- **`pre.querySelector('code')?.innerText`** — using `innerText` instead of `textContent` gives us the text as it appears visually (newlines and all), which is what you actually want on your clipboard.
+- The copy button swaps to a checkmark icon for two seconds to confirm the action, then resets.
+
+## Styling
+
+Because the button and wrapper are injected via JavaScript, Astro's scoped styles won't reach them.
+A `<style is:global>` block handles that.
+The styles account for both light and dark mode using the `.dark` class that the site's theme toggle manages.
+
+```astro
+<style is:global>
+  .code-block-wrapper {
+    position: relative;
+  }
+
+  .code-block-wrapper pre.astro-code {
+    border-radius: 0 0 0.375rem 0.375rem !important;
+    margin-top: 0 !important;
+  }
+
+  .code-block-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem 0.375rem 0 0;
+    background-color: #e4e8ec;
+    border-bottom: 1px solid #d0d7de;
+  }
+
+  .dark .code-block-bar {
+    background-color: #2d333b;
+    border-bottom-color: #444c56;
+  }
+
+  .code-block-lang {
+    font-size: 0.75rem;
+    font-family: ui-monospace, monospace;
+    color: #57606a;
+  }
+
+  .dark .code-block-lang {
+    color: #768390;
+  }
+
+  .code-block-copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    border-radius: 0.25rem;
+    border: none;
+    background: transparent;
+    color: #57606a;
+    cursor: pointer;
+    transition: color 0.15s, background-color 0.15s;
+  }
+
+  .dark .code-block-copy {
+    color: #768390;
+  }
+
+  .code-block-copy:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    color: #24292f;
+  }
+
+  .dark .code-block-copy:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #cdd9e5;
+  }
+
+  .code-block-copy[data-copied] {
+    color: #1a7f37;
+  }
+
+  .dark .code-block-copy[data-copied] {
+    color: #57ab5a;
+  }
+</style>
+```
+
+The `margin-top: 0 !important` on the `pre` is necessary because Tailwind Typography adds top margin to `pre` elements inside prose containers, which would create a visible gap between the bar and the code.
+The `!important` is needed to beat that specificity.
+
+The bar and `pre` together read as a single unit: rounded corners on top from the bar, rounded corners on the bottom from the `pre`.
+
+## Adding It to Blog Posts
+
+The component just needs to be included on any page with code blocks.
+I dropped it into `BlogPost.astro`:
+
+```astro
+---
+import CopyCode from './CopyCode.astro';
+// ... other imports
+---
+
+<article>
+  <!-- ... -->
+  <main class="prose dark:prose-invert prose-zinc max-w-none" role="main">
+    <slot />
+  </main>
+  <CopyCode />
+</article>
+```
+
+That's it.
+Every `pre.astro-code` on any blog post page now gets the header bar automatically.
+
+## The Result
+
+Each code block now shows the language name on the left and a clipboard icon on the right.
+Clicking it copies the code and briefly shows a green checkmark.
+The colors match my dual Shiki theme setup (`github-light` in light mode, `github-dark-dimmed` in dark mode), so the bar feels native to the code block rather than bolted on.
+
+The whole thing is about 60 lines of code with no runtime dependencies beyond what the browser already provides.
+If you're running an Astro blog and want to add this yourself, the full component is [on GitHub](https://github.com/joshfinnie/joshfinnie.com).
+
+As always, if you have questions or want to chat about it, find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).

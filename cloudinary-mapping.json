@@ -1,5 +1,5 @@
 {
-  "uploadedAt": "2026-01-09T18:05:24.493Z",
+  "uploadedAt": "2026-02-24T01:36:38.987Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
@@ -16,6 +16,11 @@
       "localPath": "src/assets/blog/capitalism.jpg",
       "publicId": "blog/capitalism",
       "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1767975645/blog/capitalism.jpg"
+    },
+    {
+      "localPath": "src/assets/blog/copier.jpg",
+      "publicId": "blog/copier",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1771896996/blog/copier.jpg"
     },
     {
       "localPath": "src/assets/blog/marx.jpg",

@@ -4,7 +4,9 @@ import { getCloudinaryImageUrl } from '../lib/cloudinary';
 
 import AlsoLike from './AlsoLike.astro';
 import HeroImage from './BlogPostHeroImage.astro';
+import CopyCode from './CopyCode.astro';
 import Date from './Date.astro';
+import MermaidInit from './MermaidInit.astro';
 import SeriesTableOfContents from './SeriesTableOfContents.astro';
 import Tag from './Tags.astro';
 
@@ -58,5 +60,7 @@ let schema = JSON.stringify({
   </main>
   {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
   <AlsoLike tags={post.data.tags} id={id} />
+  <CopyCode />
+  <MermaidInit />
   <script type="application/ld+json" set:html={schema} is:inline />
 </article>

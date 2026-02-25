@@ -130,3 +130,6 @@ Pipfile
 
 # Images (now hosted on Cloudinary)
 src/assets/
+# Local Netlify folder
+.netlify
+deno.lock

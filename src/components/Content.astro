@@ -4,6 +4,7 @@ import MCDownload from '@icons/mc_download_line.svg';
 import { getPublishedPosts } from '@lib/utils';
 
 import Article from './Article.astro';
+import CurrentlyReading from './CurrentlyReading.astro';
 import WorkExperience from './WorkExperience.astro';
 
 const posts = (await getPublishedPosts()).slice(0, 3);
@@ -52,6 +53,7 @@ const workExperiences: WorkExperienceType[] = [
     }
   </div>
   <div class="space-y-10 lg:pl-16">
+    <CurrentlyReading />
     <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 class="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-5">
         <MCBriefcase

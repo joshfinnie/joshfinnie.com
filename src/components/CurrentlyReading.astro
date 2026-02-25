@@ -1,0 +1,77 @@
+---
+import MCBookOpen from '@icons/mc_book_open_line.svg';
+import MCStar from '@icons/mc_star_line.svg';
+---
+
+<div
+  x-data="{
+    book: null,
+    loading: true,
+    get progressPct() {
+      const pages = this.book?.pages ?? 0;
+      const read = this.book?.progressPages ?? 0;
+      return pages > 0 ? Math.round((read / pages) * 100) : 0;
+    },
+    async init() {
+      try {
+        const res = await fetch('/.netlify/functions/currently-reading');
+        if (res.ok) this.book = await res.json();
+      } catch {}
+      this.loading = false;
+    }
+  }"
+  class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
+>
+  <h2 class="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-5">
+    <MCBookOpen class="block h-6 w-6 text-zinc-500 dark:text-zinc-400" />
+    <span class="ml-3">Currently Reading</span>
+  </h2>
+
+  <!-- Skeleton: visible in static HTML immediately, hidden once Alpine finishes loading -->
+  <div x-show="loading" class="flex gap-4 items-start animate-pulse">
+    <div class="w-14 h-20 bg-zinc-200 dark:bg-zinc-700 rounded flex-shrink-0"></div>
+    <div class="flex flex-col gap-2 flex-1 pt-1">
+      <div class="h-3 bg-zinc-200 dark:bg-zinc-700 rounded w-3/4"></div>
+      <div class="h-3 bg-zinc-200 dark:bg-zinc-700 rounded w-1/2"></div>
+      <div class="h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-full w-full mt-2"></div>
+    </div>
+  </div>
+
+  <!-- Book content: hidden via inline style before Alpine initializes, shown once data arrives -->
+  <a
+    x-show="!loading && book"
+    style="display:none"
+    :href="`https://hardcover.app/books/${book?.slug}`"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex gap-4 items-start group"
+  >
+    <img
+      :src="book?.imageUrl"
+      :alt="`Cover of ${book?.title}`"
+      class="w-14 rounded shadow-sm flex-shrink-0"
+      style="aspect-ratio: 2/3"
+      loading="lazy"
+    />
+    <div class="flex flex-col gap-2 min-w-0">
+      <p
+        x-text="book?.title"
+        class="text-sm text-zinc-600 dark:text-zinc-400 leading-snug group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition"
+      ></p>
+      <span x-show="book?.rating" class="flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
+        <MCStar class="h-3.5 w-3.5 text-amber-400 flex-shrink-0" />
+        <span x-text="book?.rating?.toFixed(2)"></span>
+        <span x-show="book?.ratingCount" x-text="`(${book?.ratingCount?.toLocaleString()} ratings)`"></span>
+      </span>
+      <div x-show="progressPct > 0" class="flex items-center gap-2">
+        <div class="flex-1 h-1.5 bg-zinc-100 dark:bg-zinc-700 rounded-full overflow-hidden">
+          <div
+            class="h-full bg-amber-400 rounded-full transition-all duration-500"
+            :style="`width: ${progressPct}%`"
+          ></div>
+        </div>
+        <span x-text="`${progressPct}%`" class="text-xs text-zinc-400 dark:text-zinc-500 tabular-nums"></span>
+      </div>
+    </div>
+  </a>
+</div>

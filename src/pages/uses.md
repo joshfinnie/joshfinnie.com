@@ -2,13 +2,13 @@
 title: "Uses"
 description: "JoshFinnie.com | Uses"
 permalink: "https://joshfinnie.com/uses"
-layout: "../layouts/BasePage.astro"
+layout: "../layouts/AboutLayout.astro"
 ---
 
 ## Hardware
 
-- [Keyboard.io Atreus](https://shop.keyboard.io/products/keyboardio-atreus) keyboard with [Kailh Box Clicky Jade Key Switches](https://amzn.to/3NOInj2)
 - [Corne Keyboard](https://amzn.to/3EsZeJi) with [Kailh Box Silent Tactile Brown Key Switches](https://amzn.to/44vraGL)
+- [Keyboard.io Atreus](https://shop.keyboard.io/products/keyboardio-atreus) keyboard with [Kailh Box Clicky Jade Key Switches](https://amzn.to/3NOInj2)
 - [Massdrop X Sennheiser HD 6XX headphones](https://drop.com/buy/massdrop-sennheiser-hd6xx?utm_source=linkshare&referer=BH8DEX) headphones
 - [TinHIFI T2 Plus IEM](https://amzn.to/3EYgRyt) IEM headphones
 - [Shure MV7](https://amzn.to/3Mh2Iwl) microphone
@@ -19,9 +19,9 @@ layout: "../layouts/BasePage.astro"
   - MacBook Pro 16-inch 2021
   - Opal C1 webcam
 - Gaming Computer:
-  - AMD Ryzen 5 7500X3D
-  - 32GB DDR5-6000 RAM
-  - AMD Radeon RX 9060 XT Graphics Card
+  - [AMD Ryzen 5 7500X3D](https://amzn.to/4ucrfdd)
+  - [32GB (2 x 16GB) DDR5-6000 RAM](https://amzn.to/4s73Sj7)
+  - [AMD Radeon RX 9060 XT Graphics Card](https://amzn.to/4cM5qL0)
 - Server:
   - [AMD Ryzen 5](https://amzn.to/3MiihUv)
   - [Crucial 16GB (2 x 8GB) DDR4-2400 PC4-19200](https://amzn.to/3TmWkYN)

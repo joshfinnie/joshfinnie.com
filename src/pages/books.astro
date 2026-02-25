@@ -1,0 +1,175 @@
+---
+import AboutSubNav from '@components/AboutSubNav.astro';
+import MCStar from '@icons/mc_star_line.svg';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+
+const HARDCOVER_API = 'https://api.hardcover.app/v1/graphql';
+
+const query = `
+  query Books {
+    me {
+      user_books(
+        where: {status_id: {_eq: 3}}
+        order_by: {reviewed_at: desc_nulls_last}
+        limit: 25
+      ) {
+        rating
+        edition {
+          image {
+            url
+          }
+          title
+        }
+        book {
+          title
+          slug
+          rating
+          ratings_count
+          contributions {
+            author {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+interface Edition {
+  image: { url: string } | null;
+  title: string | null;
+}
+
+interface Book {
+  title: string;
+  slug: string;
+  rating: number;
+  ratings_count: number;
+  author: string | null;
+  imageUrl: string | null;
+  myRating: number | null;
+}
+
+interface UserBook {
+  rating: number | null;
+  edition: Edition | null;
+  book: {
+    title: string;
+    slug: string;
+    rating: number;
+    ratings_count: number;
+    contributions: { author: { name: string } }[];
+  };
+}
+
+let books: Book[] = [];
+
+try {
+  const response = await fetch(HARDCOVER_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: import.meta.env.HARDCOVERAPP_API,
+    },
+    body: JSON.stringify({ query }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    books = (data?.data?.me?.[0]?.user_books ?? []).map((ub: UserBook) => ({
+      ...ub.book,
+      title: ub.edition?.title ?? ub.book.title,
+      author: ub.book.contributions?.[0]?.author?.name ?? null,
+      imageUrl: ub.edition?.image?.url ?? null,
+      myRating: ub.rating,
+    }));
+  }
+} catch (_) {
+  // fetch failed, books stays empty
+}
+
+const ratedBooks = books.filter((b) => b.myRating !== null);
+const avgRating = ratedBooks.length
+  ? (ratedBooks.reduce((sum, b) => sum + (b.myRating ?? 0), 0) / ratedBooks.length).toFixed(1)
+  : null;
+---
+
+<BaseLayout title="Books | www.joshfinnie.com" description="The last 25 books Josh Finnie has read.">
+  <article id="main-content">
+    <AboutSubNav />
+    <h1 class="font-bold text-3xl mb-3 mt-5 dark:text-white">Books</h1>
+    <p class="mb-6 text-base text-zinc-600 dark:text-zinc-400">
+      The last 25 books I've read, via <a href="https://hardcover.app" target="_blank" rel="noopener noreferrer" class="text-teal-500 hover:underline">Hardcover</a>.
+    </p>
+
+    {books.length > 0 && (
+      <div class="flex items-center gap-6 mb-10 px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 text-sm text-zinc-600 dark:text-zinc-400">
+        <span><span class="font-semibold text-zinc-900 dark:text-zinc-100">{books.length}</span> books</span>
+        {avgRating && (
+          <span class="flex items-center gap-1">
+            <MCStar class="h-3.5 w-3.5 text-amber-400 flex-shrink-0" />
+            <span class="font-semibold text-zinc-900 dark:text-zinc-100">{avgRating}</span> avg rating
+          </span>
+        )}
+      </div>
+    )}
+
+    {books.length > 0 ? (
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {books.map((book) => (
+          <a
+            href={`https://hardcover.app/books/${book.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col"
+          >
+            <div class="overflow-hidden rounded-lg shadow-sm ring-1 ring-zinc-100 dark:ring-zinc-700/40" style="aspect-ratio: 2/3">
+              {book.imageUrl ? (
+                <img
+                  src={book.imageUrl}
+                  alt={`Cover of ${book.title}`}
+                  class="w-full h-full object-cover transition group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 p-3">
+                  <p class="text-xs text-center text-zinc-500 dark:text-zinc-400 leading-snug">{book.title}</p>
+                </div>
+              )}
+            </div>
+            <div class="mt-2 flex flex-col gap-0.5">
+              <p class="text-sm font-medium text-zinc-900 dark:text-zinc-100 leading-snug line-clamp-2 group-hover:text-teal-500 transition">
+                {book.title}
+              </p>
+              {book.author && (
+                <p class="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-1">{book.author}</p>
+              )}
+              {(book.myRating || book.rating) && (
+                <div class="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                  {book.myRating && (
+                    <span class="flex items-center gap-1">
+                      <MCStar class="h-3.5 w-3.5 text-amber-400 flex-shrink-0" />
+                      {book.myRating}/5
+                    </span>
+                  )}
+                  {book.rating && (
+                    <span class="flex items-center gap-1">
+                      <MCStar class="h-3.5 w-3.5 text-amber-400 flex-shrink-0 opacity-40" />
+                      {book.rating.toFixed(2)} Avg
+                      <span class="text-zinc-400 dark:text-zinc-500">
+                        ({book.ratings_count?.toLocaleString()})
+                      </span>
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="text-zinc-500 dark:text-zinc-400">No books found.</p>
+    )}
+  </article>
+</BaseLayout>

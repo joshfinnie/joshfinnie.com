@@ -102,6 +102,9 @@ importers:
       '@biomejs/biome':
         specifier: ^2.4.4
         version: 2.4.4
+      '@netlify/functions':
+        specifier: ^5.1.2
+        version: 5.1.2
       dotenv:
         specifier: ^17.3.1
         version: 17.3.1
@@ -827,6 +830,14 @@ packages:
 
   '@mermaid-js/parser@1.0.0':
     resolution: {integrity: sha512-vvK0Hi/VWndxoh03Mmz6wa1KDriSPjS2XMZL/1l19HFwygiObEEoEwSDxOqyLzzAI6J2PU3261JjTMTO7x+BPw==}
+
+  '@netlify/functions@5.1.2':
+    resolution: {integrity: sha512-tpPiLSkQatuexH8AdAZ8RlALvT7ixOE9VhvpkzQGNvihcms8hzmvUDuSxQa7UneTj/sHsdirnXmnJ+nmf+Nx/w==}
+    engines: {node: '>=18.0.0'}
+
+  '@netlify/types@2.3.0':
+    resolution: {integrity: sha512-5gxMWh/S7wr0uHKSTbMv4bjWmWSpwpeLYvErWeVNAPll5/QNFo9aWimMAUuh8ReLY3/fg92XAroVVu7+z27Snw==}
+    engines: {node: ^18.14.0 || >=20}
 
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
@@ -3798,6 +3809,12 @@ snapshots:
   '@mermaid-js/parser@1.0.0':
     dependencies:
       langium: 4.2.1
+
+  '@netlify/functions@5.1.2':
+    dependencies:
+      '@netlify/types': 2.3.0
+
+  '@netlify/types@2.3.0': {}
 
   '@oslojs/encoding@1.1.0': {}
 

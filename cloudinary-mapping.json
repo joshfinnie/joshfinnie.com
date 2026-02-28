@@ -1,31 +1,171 @@
 {
-  "uploadedAt": "2026-02-24T01:36:38.987Z",
+  "uploadedAt": "2026-02-28T01:19:02.920Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/2025-music.jpg",
-      "publicId": "blog/2025-music",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764860795/blog/2025-music.jpg"
+      "localPath": "src/assets/companies/indigoag.jpg",
+      "publicId": "companies/indigoag",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347052/companies/indigoag.jpg"
     },
     {
-      "localPath": "src/assets/blog/babysnake.jpg",
-      "publicId": "blog/babysnake",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1767981922/blog/babysnake.jpg"
+      "localPath": "src/assets/companies/koansys.jpg",
+      "publicId": "companies/koansys",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347052/companies/koansys.jpg"
     },
     {
-      "localPath": "src/assets/blog/capitalism.jpg",
-      "publicId": "blog/capitalism",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1767975645/blog/capitalism.jpg"
+      "localPath": "src/assets/companies/pbs.jpg",
+      "publicId": "companies/pbs",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347053/companies/pbs.jpg"
     },
     {
-      "localPath": "src/assets/blog/copier.jpg",
-      "publicId": "blog/copier",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1771896996/blog/copier.jpg"
+      "localPath": "src/assets/companies/pdl.jpg",
+      "publicId": "companies/pdl",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347053/companies/pdl.jpg"
     },
     {
-      "localPath": "src/assets/blog/marx.jpg",
-      "publicId": "blog/marx",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1767975648/blog/marx.jpg"
+      "localPath": "src/assets/companies/trackmaven.jpg",
+      "publicId": "companies/trackmaven",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347054/companies/trackmaven.jpg"
+    },
+    {
+      "localPath": "src/assets/icons/angularjs.png",
+      "publicId": "icons/angularjs",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347054/icons/angularjs.png"
+    },
+    {
+      "localPath": "src/assets/icons/aws.png",
+      "publicId": "icons/aws",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347055/icons/aws.png"
+    },
+    {
+      "localPath": "src/assets/icons/bluesky.png",
+      "publicId": "icons/bluesky",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1772241533/icons/bluesky.png"
+    },
+    {
+      "localPath": "src/assets/icons/bootstrap.png",
+      "publicId": "icons/bootstrap",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347056/icons/bootstrap.png"
+    },
+    {
+      "localPath": "src/assets/icons/by-nc-sa.png",
+      "publicId": "icons/by-nc-sa",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347056/icons/by-nc-sa.png"
+    },
+    {
+      "localPath": "src/assets/icons/digital-ocean.png",
+      "publicId": "icons/digital-ocean",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347056/icons/digital-ocean.png"
+    },
+    {
+      "localPath": "src/assets/icons/django.png",
+      "publicId": "icons/django",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347057/icons/django.png"
+    },
+    {
+      "localPath": "src/assets/icons/foursquare.png",
+      "publicId": "icons/foursquare",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347058/icons/foursquare.png"
+    },
+    {
+      "localPath": "src/assets/icons/github.png",
+      "publicId": "icons/github",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347058/icons/github.png"
+    },
+    {
+      "localPath": "src/assets/icons/golang.png",
+      "publicId": "icons/golang",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347059/icons/golang.png"
+    },
+    {
+      "localPath": "src/assets/icons/google.png",
+      "publicId": "icons/google",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347059/icons/google.png"
+    },
+    {
+      "localPath": "src/assets/icons/nextjs.png",
+      "publicId": "icons/nextjs",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1772240861/icons/nextjs.png"
+    },
+    {
+      "localPath": "src/assets/icons/nodejs.png",
+      "publicId": "icons/nodejs",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347060/icons/nodejs.png"
+    },
+    {
+      "localPath": "src/assets/icons/postgresql.png",
+      "publicId": "icons/postgresql",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1772240862/icons/postgresql.png"
+    },
+    {
+      "localPath": "src/assets/icons/python.png",
+      "publicId": "icons/python",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347061/icons/python.png"
+    },
+    {
+      "localPath": "src/assets/icons/reactjs.png",
+      "publicId": "icons/reactjs",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347062/icons/reactjs.png"
+    },
+    {
+      "localPath": "src/assets/icons/sass.png",
+      "publicId": "icons/sass",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347062/icons/sass.png"
+    },
+    {
+      "localPath": "src/assets/icons/tailwindcss.png",
+      "publicId": "icons/tailwindcss",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1772241179/icons/tailwindcss.png"
+    },
+    {
+      "localPath": "src/assets/josh.jpg",
+      "publicId": "josh",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347063/josh.jpg"
+    },
+    {
+      "localPath": "src/assets/projects/beerledge-settings.png",
+      "publicId": "projects/beerledge-settings",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347064/projects/beerledge-settings.png"
+    },
+    {
+      "localPath": "src/assets/projects/beerledge.png",
+      "publicId": "projects/beerledge",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347065/projects/beerledge.png"
+    },
+    {
+      "localPath": "src/assets/projects/cubecobra-cube-list.png",
+      "publicId": "projects/cubecobra-cube-list",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347066/projects/cubecobra-cube-list.png"
+    },
+    {
+      "localPath": "src/assets/projects/cubecobra.png",
+      "publicId": "projects/cubecobra",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347069/projects/cubecobra.png"
+    },
+    {
+      "localPath": "src/assets/projects/hoitmc.png",
+      "publicId": "projects/hoitmc",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347070/projects/hoitmc.png"
+    },
+    {
+      "localPath": "src/assets/projects/pbsorg.png",
+      "publicId": "projects/pbsorg",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347074/projects/pbsorg.png"
+    },
+    {
+      "localPath": "src/assets/projects/picskyapp.png",
+      "publicId": "projects/picskyapp",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1772241463/projects/picskyapp.png"
+    },
+    {
+      "localPath": "src/assets/projects/pushfile.png",
+      "publicId": "projects/pushfile",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1764347075/projects/pushfile.png"
+    },
+    {
+      "localPath": "src/assets/projects/tikicompass.png",
+      "publicId": "projects/tikicompass",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1772240871/projects/tikicompass.png"
     }
   ]
 }

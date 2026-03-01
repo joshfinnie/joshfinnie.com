@@ -1,7 +1,12 @@
 {
-  "uploadedAt": "2026-02-28T01:19:02.920Z",
+  "uploadedAt": "2026-03-01T18:31:39.335Z",
   "cloudName": "dgd9cw3gu",
   "images": [
+    {
+      "localPath": "src/assets/blog/aws-ses.jpg",
+      "publicId": "blog/aws-ses",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1772389883/blog/aws-ses.jpg"
+    },
     {
       "localPath": "src/assets/companies/indigoag.jpg",
       "publicId": "companies/indigoag",

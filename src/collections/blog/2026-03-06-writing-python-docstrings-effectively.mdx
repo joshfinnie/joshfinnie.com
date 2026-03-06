@@ -1,0 +1,455 @@
+---
+title: "Writing Python Docstrings Effectively"
+date: "2026-03-06"
+tags:
+  - "python"
+  - "documentation"
+  - "best-practices"
+  - "tutorial"
+description: "A practical guide to writing Python docstrings effectively, covering the __doc__ attribute, help(), Google, NumPy, and Sphinx styles, choosing the right structure, avoiding common mistakes, and generating docs with Sphinx, pydoc, and MkDocs."
+heroImage: "blog/strings"
+unsplash: "Kier in Sight Archives"
+unsplashURL: "kierinsightarchives"
+---
+
+Documentation is one of those things every developer knows matters but often skips anyway.
+In Python, docstrings are the built-in way to embed docs directly into our code.
+When used well, they make a codebase much easier to understand and maintain.
+
+This post covers the full picture: what docstrings are, how Python exposes them, the major formatting styles, how to pick the right structure, and the mistakes worth avoiding. I will also share my own take on which style I reach for and why.
+
+## What Are Docstrings and Why Do They Matter?
+
+A docstring is a string literal that appears as the first statement in a module, class, function, or method body.
+Python treats it specially. The interpreter attaches it to the object as its `__doc__` attribute, making it readable at runtime.
+
+```python
+def greet(name: str) -> str:
+    """Return a greeting for the given name."""
+    return f"Hello, {name}!"
+```
+
+That is a docstring. Not a comment (`#`), not a regular string somewhere in the function body. It must be the *first statement*, as a string literal.
+
+The distinction between docstrings and comments matters. Comments are for developers reading the source. Docstrings are for anyone using the code, including tooling, IDEs, documentation generators, and the `help()` built-in. They survive into the compiled bytecode and are accessible at runtime. Comments are not.
+
+A well-written docstring serves many people at once: the developer who wrote the code, the developer calling the function weeks later, the IDE providing hover docs, and tools like Sphinx generating HTML documentation.
+
+### Where Docstrings Can Appear
+
+Python supports docstrings in four places. We can add them to modules at the top of a `.py` file before any imports, to classes immediately after the `class` line, to functions and methods immediately after the `def` line, and to packages inside `__init__.py`.
+
+```python
+"""Module-level docstring describing the module's purpose."""
+
+import os
+
+
+class DataProcessor:
+    """Process incoming data records and emit validated output."""
+
+    def validate(self, record: dict) -> bool:
+        """Return True if the record passes all validation rules."""
+        ...
+```
+
+Each of these is useful. Module docstrings are especially valuable because they answer "what does this file do?" before anyone reads a line of implementation.
+
+## Accessing Docstrings
+
+Python exposes docstrings in several ways. Knowing each one helps when consuming docs or building tooling.
+
+### The `__doc__` Attribute
+
+Every object with a docstring has a `__doc__` attribute:
+
+```python
+def add(a: int, b: int) -> int:
+    """Return the sum of a and b."""
+    return a + b
+
+print(add.__doc__)
+# Return the sum of a and b.
+```
+
+It works on modules, classes, functions, and methods. It returns the raw string, including any leading whitespace.
+
+### The `help()` Built-in
+
+`help()` is the more human-friendly option. It formats the docstring alongside the function signature and prints it to the terminal:
+
+```python
+help(add)
+# Help on function add in module __main__:
+#
+# add(a: int, b: int) -> int
+#     Return the sum of a and b.
+```
+
+`help()` is most useful in an interactive Python session when exploring an unfamiliar library.
+
+### The `inspect` Module
+
+For programmatic access, the `inspect` module provides `inspect.getdoc()`, which cleans up indentation automatically:
+
+```python
+import inspect
+
+class MyClass:
+    def my_method(self):
+        """
+        Do something useful.
+
+        This method handles the core logic.
+        """
+        pass
+
+print(inspect.getdoc(MyClass.my_method))
+# Do something useful.
+#
+# This method handles the core logic.
+```
+
+`inspect.getdoc()` strips consistent leading whitespace so the output is clean regardless of indentation in the source. Most documentation generators use this under the hood.
+
+### IDE Integration
+
+Modern editors like VS Code, PyCharm, and Neovim with LSP surface docstrings as hover tooltips. This is where docstrings provide the most everyday value. A developer using our function gets documentation inline without leaving their editor. That only works if we write the docstring, which is reason enough to build the habit.
+
+## The Major Docstring Style Formats
+
+Python's [PEP 257](https://peps.python.org/pep-0257/) defines the baseline rules for docstrings, but it leaves formatting of parameters, return values, and exceptions to style guides. Three formats dominate Python projects.
+
+### Google Style
+
+Google style uses indented sections with plain-text headers:
+
+```python
+def divide(dividend: float, divisor: float) -> float:
+    """Divide dividend by divisor and return the result.
+
+    Args:
+        dividend: The number to be divided.
+        divisor: The number to divide by. Must not be zero.
+
+    Returns:
+        The result of the division.
+
+    Raises:
+        ValueError: If divisor is zero.
+
+    Example:
+        >>> divide(10, 2)
+        5.0
+    """
+    if divisor == 0:
+        raise ValueError("divisor must not be zero")
+    return dividend / divisor
+```
+
+Google style reads well as plain text with no rendering needed. The sections (`Args:`, `Returns:`, `Raises:`) are easy to scan and the format stays compact. This is the style I use in all my own projects, and honestly it is the one I recommend to most people. It hits a sweet spot between simplicity and information density. We get enough structure to be useful without the format getting in the way of actually writing the docs.
+
+### NumPy/SciPy Style
+
+NumPy style uses underline-delimited section headers, which renders well in Sphinx with the `numpydoc` extension:
+
+```python
+def divide(dividend: float, divisor: float) -> float:
+    """
+    Divide dividend by divisor and return the result.
+
+    Parameters
+    ----------
+    dividend : float
+        The number to be divided.
+    divisor : float
+        The number to divide by. Must not be zero.
+
+    Returns
+    -------
+    float
+        The result of the division.
+
+    Raises
+    ------
+    ValueError
+        If divisor is zero.
+
+    Examples
+    --------
+    >>> divide(10, 2)
+    5.0
+    """
+    if divisor == 0:
+        raise ValueError("divisor must not be zero")
+    return dividend / divisor
+```
+
+NumPy style is more verbose but works well for scientific and math APIs where parameters need longer descriptions. It is the standard across NumPy, SciPy, pandas, and the wider scientific Python community.
+
+### Sphinx / reStructuredText Style
+
+Sphinx style uses inline `:param:`, `:type:`, `:returns:`, and `:raises:` directives:
+
+```python
+def divide(dividend: float, divisor: float) -> float:
+    """Divide dividend by divisor and return the result.
+
+    :param dividend: The number to be divided.
+    :type dividend: float
+    :param divisor: The number to divide by. Must not be zero.
+    :type divisor: float
+    :returns: The result of the division.
+    :rtype: float
+    :raises ValueError: If divisor is zero.
+    """
+    if divisor == 0:
+        raise ValueError("divisor must not be zero")
+    return dividend / divisor
+```
+
+This was the original Sphinx standard and is still common in older Python projects and some web frameworks. It is less readable as plain text but fits neatly into Sphinx's HTML output. If a project already uses Sphinx and reStructuredText throughout, this format keeps things consistent.
+
+### A Quick Comparison
+
+| Format | Readability (plain text) | Sphinx support | Best for |
+|---|---|---|---|
+| Google | Excellent | Good (with Napoleon) | General projects |
+| NumPy | Good | Excellent (numpydoc) | Scientific libraries |
+| Sphinx/reST | Fair | Native | Legacy Sphinx projects |
+
+All three get the job done. But if we are starting a new project and have no strong reason to pick otherwise, I would go with Google style every time. It is the easiest to write, the easiest to read without a doc generator, and the least likely to feel like overhead when we just want to document a function and move on.
+
+## Choosing the Right Docstring Structure
+
+Not every function needs the same depth of documentation. Matching structure to context keeps docstrings useful without turning them into boilerplate.
+
+### One-Liners
+
+A single summary line is enough when the function is simple and the signature speaks for itself:
+
+```python
+def is_even(n: int) -> bool:
+    """Return True if n is even."""
+    return n % 2 == 0
+```
+
+PEP 257 has specific guidance here. The closing `"""` goes on the same line as the opening `"""` for one-liners. We keep the summary under roughly 79 characters and write it as a command ("Return..." not "Returns...").
+
+### Multi-Line Docstrings
+
+Once a function has parameters worth explaining, side effects, non-obvious behavior, or exception cases, we move to a multi-line format:
+
+```python
+def fetch_user(user_id: int, *, include_deleted: bool = False) -> dict | None:
+    """Fetch a user record from the database by ID.
+
+    By default, soft-deleted users are excluded. Pass include_deleted=True
+    to retrieve them.
+
+    Args:
+        user_id: The primary key of the user.
+        include_deleted: If True, include users marked as deleted.
+
+    Returns:
+        A dictionary of user fields, or None if not found.
+
+    Raises:
+        DatabaseError: If the database connection fails.
+    """
+    ...
+```
+
+The structure follows a clear order: a one-sentence summary in imperative mood, an optional blank line with extended context, then the parameter, return, and exception sections.
+
+### Class Docstrings
+
+For classes, we document what the class represents and its key behaviors. We do not repeat `__init__` parameter details in two places. We only document `__init__` separately when its parameters need more explanation than the class description provides:
+
+```python
+class RateLimiter:
+    """Enforce a maximum call rate on a wrapped function.
+
+    Uses a token bucket algorithm. Thread-safe.
+    """
+
+    def __init__(self, calls: int, period: float) -> None:
+        """
+        Args:
+            calls: Maximum number of calls allowed per period.
+            period: Time window in seconds.
+        """
+        ...
+```
+
+### Module Docstrings
+
+Module docstrings should answer three questions: what does this module provide, who should use it, and are there any important usage constraints?
+
+```python
+"""
+Utilities for parsing and validating ISO 8601 date strings.
+
+Provides parse_date(), format_date(), and DateRange for working with
+date intervals. All functions assume UTC unless a timezone offset is
+explicitly provided in the input string.
+"""
+```
+
+## Common Docstring Mistakes to Avoid
+
+Even developers who write docstrings regularly fall into a few recurring traps.
+
+### Restating the Code
+
+The most common mistake is writing a docstring that says exactly what the code already shows.
+
+```python
+# Bad
+def add(a, b):
+    """Add a and b and return the result."""
+    return a + b
+
+# Better
+def add(a: int | float, b: int | float) -> int | float:
+    """Return the sum of a and b."""
+    return a + b
+```
+
+The bad example is not technically wrong. For a trivial function, it barely matters. The real problem shows up at scale. When docstrings only restate the code, readers start skimming them because there is never anything new to learn. We should write what the code *means*, not what it *does*.
+
+### Omitting Edge Cases and Constraints
+
+Docstrings are the right place to describe what happens at the boundaries:
+
+```python
+# Missing crucial context
+def split_chunks(items: list, size: int) -> list[list]:
+    """Split items into chunks of the given size."""
+    ...
+
+# Actually useful
+def split_chunks(items: list, size: int) -> list[list]:
+    """Split items into chunks of at most size elements.
+
+    The last chunk may be smaller than size if len(items) is not
+    evenly divisible. Returns an empty list if items is empty.
+
+    Args:
+        items: The list to split.
+        size: Maximum number of elements per chunk. Must be >= 1.
+
+    Raises:
+        ValueError: If size is less than 1.
+    """
+    ...
+```
+
+### Letting Docstrings Go Stale
+
+A wrong docstring is worse than no docstring. It misleads anyone who reads it.
+Docstrings need the same review attention as the implementation.
+When a function's behavior changes, the docstring must change too.
+
+Adding docstring review to our PR checklist helps. Tools like `interrogate` can enforce that public functions have docstrings, and `pydoclint` can flag gaps between docstrings and type annotations.
+
+### Mixing Styles Within a Project
+
+Using Google, NumPy, and Sphinx styles in the same codebase makes automated doc generation unreliable and makes reading harder. We pick one style and record the decision somewhere, whether in a `CONTRIBUTING.md`, a linter config, or both.
+
+If we use `flake8`, the `flake8-docstrings` plugin backed by `pydocstyle` can enforce PEP 257 compliance automatically.
+
+### Writing Docstrings Only for Public APIs
+
+Internal functions and private methods still benefit from documentation.
+A `_parse_response` helper that took two days to get right deserves a docstring explaining why it works the way it does.
+The `_` prefix signals "internal" to callers. It does not mean "no docs needed for future maintainers."
+
+## Building Documentation from Docstrings
+
+Good docstrings do not have to live only in the source. Several tools can read them and produce polished HTML, PDF, or plain-text docs with almost no extra work.
+
+### Sphinx
+
+[Sphinx](https://www.sphinx-doc.org/) is the most widely used Python documentation generator. It powers the official Python docs and most major open source libraries. Sphinx reads our docstrings and turns them into a full documentation site with cross-references, search, and customizable themes.
+
+To get started, we install Sphinx and run the quickstart tool:
+
+```bash
+pip install sphinx
+sphinx-quickstart docs
+```
+
+By default, Sphinx expects reStructuredText-style docstrings. If we use Google or NumPy style, we install the Napoleon extension, which ships with Sphinx:
+
+```python
+# docs/conf.py
+extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+]
+```
+
+With `autodoc` and `napoleon` enabled, we can pull in our module docs like this:
+
+```rst
+.. automodule:: mypackage.mymodule
+   :members:
+```
+
+Sphinx will find every public function, class, and method in that module and render their docstrings as formatted documentation. Since I use Google style, Napoleon handles the translation cleanly and I never have to write a separate `.rst` file for each function.
+
+### pydoc
+
+For a lighter-weight option, Python ships with `pydoc` in the standard library. No install needed. We can view docs for any module in the terminal:
+
+```bash
+python -m pydoc mymodule
+```
+
+Or generate a static HTML file:
+
+```bash
+python -m pydoc -w mymodule
+```
+
+`pydoc` is not as polished as Sphinx, but it is great for quick checks during development or for smaller projects that do not need a full documentation site.
+
+### MkDocs + mkdocstrings
+
+[MkDocs](https://www.mkdocs.org/) with the [mkdocstrings](https://mkdocstrings.github.io/) plugin is a more modern alternative to Sphinx. It uses Markdown instead of reStructuredText, which feels more natural if we are already writing READMEs and changelogs in Markdown. The [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme produces great-looking documentation sites with minimal setup.
+
+```bash
+pip install mkdocs mkdocstrings[python] mkdocs-material
+```
+
+Then in our `mkdocs.yml`:
+
+```yaml
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+```
+
+Setting `docstring_style: google` tells mkdocstrings to parse our Google-style sections correctly. We drop a reference anywhere in our Markdown docs and it pulls in the docstring automatically:
+
+```md
+::: mypackage.mymodule.my_function
+```
+
+I find the MkDocs setup faster to get running than Sphinx, and the output looks great out of the box.
+
+### The Payoff
+
+All of these tools depend on the same thing: docstrings that are present and describe what the code actually does. A project with thorough Google-style docstrings can go from zero to a full documentation site in under an hour. That is a strong return on a small investment, and it is another reason I think writing good docstrings is always worth it.
+
+## Putting It Together
+
+Good docstrings share a few traits regardless of style. We use imperative mood in the summary ("Return the user" not "Returns the user"). We write the first sentence so it stands alone and is useful by itself. We are honest about edge cases: what happens with `None`, empty inputs, or out-of-range values. We pick one format and stick to it across the project. And we keep docstrings up to date as the code changes.
+
+The tooling around Python docstrings works best when docs are present and well-formed. `help()`, `inspect`, Sphinx, `pydoc`, and IDE hover tooltips all rely on it. A small investment in writing good docstrings pays off every time someone needs to understand what a function does without reading the full implementation.
+
+If you have thoughts or questions, find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).

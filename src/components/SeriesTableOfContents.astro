@@ -37,7 +37,7 @@ const displayName = seriesName
           Part {currentIndex + 1} of {totalPosts}
         </p>
         <ol class="list-decimal list-inside space-y-2 pl-0 my-4">
-          {seriesPosts.map((post) =>
+          {[...seriesPosts].reverse().map((post) =>
             post.id === currentPostId ? (
               <li class="font-bold text-zinc-900 dark:text-zinc-100">
                 <span class="inline-flex items-center gap-1.5">

@@ -23,7 +23,7 @@
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/check": "^0.9.6",
-    "@astrojs/mdx": "4.3.13",
+    "@astrojs/mdx": "5.0.0",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/ts-plugin": "^1.10.6",
@@ -34,7 +34,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.15.8",
-    "astro": "5.18.0",
+    "astro": "6.0.0",
     "astro-og-canvas": "^0.10.1",
     "canvaskit-wasm": "^0.40.0",
     "cloudinary": "^2.9.0",

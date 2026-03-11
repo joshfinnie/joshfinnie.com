@@ -26,7 +26,7 @@
     "@astrojs/mdx": "4.3.13",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
-    "@astrojs/ts-plugin": "^1.10.6",
+    "@astrojs/ts-plugin": "^1.10.7",
     "@babel/core": "^7.29.0",
     "@cloudinary/url-gen": "^1.22.0",
     "@fontsource/inter": "^5.2.8",

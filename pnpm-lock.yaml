@@ -106,8 +106,8 @@ importers:
         specifier: ^2.4.6
         version: 2.4.6
       '@netlify/functions':
-        specifier: ^5.1.2
-        version: 5.1.2
+        specifier: ^5.1.3
+        version: 5.1.3
       dotenv:
         specifier: ^17.3.1
         version: 17.3.1
@@ -834,12 +834,12 @@ packages:
   '@mermaid-js/parser@1.0.1':
     resolution: {integrity: sha512-opmV19kN1JsK0T6HhhokHpcVkqKpF+x2pPDKKM2ThHtZAB5F4PROopk0amuVYK5qMrIA4erzpNm8gmPNJgMDxQ==}
 
-  '@netlify/functions@5.1.2':
-    resolution: {integrity: sha512-tpPiLSkQatuexH8AdAZ8RlALvT7ixOE9VhvpkzQGNvihcms8hzmvUDuSxQa7UneTj/sHsdirnXmnJ+nmf+Nx/w==}
+  '@netlify/functions@5.1.3':
+    resolution: {integrity: sha512-kRvesKsdSbP4XCBHg5WtGGoeoigxuDVpzHM6EI1dVxBiXLRGlazFP12gm/CBJyVhvlXpGHgetamdKCCLvVUB/Q==}
     engines: {node: '>=18.0.0'}
 
-  '@netlify/types@2.3.0':
-    resolution: {integrity: sha512-5gxMWh/S7wr0uHKSTbMv4bjWmWSpwpeLYvErWeVNAPll5/QNFo9aWimMAUuh8ReLY3/fg92XAroVVu7+z27Snw==}
+  '@netlify/types@2.4.0':
+    resolution: {integrity: sha512-FMHxZCa2XWIQgjt1WP1dTZ909XIbD1tWQYfXpIBZMq2H3hzFZV2HIDNWGfoL8INQ/CjGBP6dGbsfC6AbvHmH+Q==}
     engines: {node: ^18.14.0 || >=20}
 
   '@oslojs/encoding@1.1.0':
@@ -3817,11 +3817,11 @@ snapshots:
     dependencies:
       langium: 4.2.1
 
-  '@netlify/functions@5.1.2':
+  '@netlify/functions@5.1.3':
     dependencies:
-      '@netlify/types': 2.3.0
+      '@netlify/types': 2.4.0
 
-  '@netlify/types@2.3.0': {}
+  '@netlify/types@2.4.0': {}
 
   '@oslojs/encoding@1.1.0': {}
 

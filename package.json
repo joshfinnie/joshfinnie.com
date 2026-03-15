@@ -22,7 +22,7 @@
   "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License",
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.9",
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/check": "^0.9.7",
     "@astrojs/mdx": "4.3.13",
     "@astrojs/rss": "^4.0.17",
     "@astrojs/sitemap": "^3.7.1",

@@ -1,16 +1,8 @@
 ---
+import { footerNavLinks } from '../config/nav';
 import CloudinaryImage from './CloudinaryImage.astro';
 
 const year = new Date().getFullYear();
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/projects/', label: 'Projects' },
-  { href: '/talks/', label: 'Speaking' },
-  { href: '/uses/', label: 'Uses' },
-  { href: '/rss.xml', label: 'RSS' },
-];
 ---
 
 <footer class="mt-32 flex-none">
@@ -24,7 +16,7 @@ const navLinks = [
                 class="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200"
               >
                 {
-                  navLinks.map((link) => (
+                  footerNavLinks.map((link) => (
                     <Fragment key={link.label}>
                       <a class="transition hover:text-teal-500 dark:hover:text-teal-400" href={link.href}>
                         {link.label}
@@ -44,6 +36,9 @@ const navLinks = [
                 />
               </p>
             </div>
+            <p class="mt-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
+              Built with <a href="https://astro.build" class="text-teal-500 dark:text-teal-400 transition hover:text-teal-600 dark:hover:text-teal-300">Astro</a>. Source code on <a href="https://github.com/joshfinnie/joshfinnie.com" class="text-teal-500 dark:text-teal-400 transition hover:text-teal-600 dark:hover:text-teal-300">GitHub</a>.
+            </p>
           </div>
         </div>
       </div>

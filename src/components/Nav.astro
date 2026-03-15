@@ -1,17 +1,6 @@
 ---
 import ChevronDown from '@icons/mc_down_line.svg';
-
-interface NavLink {
-  href: string;
-  label: string;
-}
-
-const navLinks: NavLink[] = [
-  { href: '/', label: 'Home' },
-  { href: '/about/', label: 'About' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/projects/', label: 'Projects' },
-];
+import { navLinks } from '../config/nav';
 ---
 
 <div class="pointer-events-auto md:hidden">

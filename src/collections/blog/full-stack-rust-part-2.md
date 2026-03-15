@@ -1,6 +1,6 @@
 ---
 title: "Full-Stack Rust Part 2"
-date: "2026-03-02"
+date: "2026-03-14"
 tags:
   - "rust"
   - "web-development"
@@ -12,19 +12,12 @@ series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
 unsplash: "ChatGPT"
 description: "Part 2 of building a full-stack URL shortener in Rust. We swap our in-memory HashMap for SQLite with sqlx, write migrations, and persist URLs across restarts."
-draft: true
+draft: false
 ---
 
 This is a 6 part blog post series about writing a full-stack application in Rust.
 In this second part we will be adding database persistence with [sqlx](https://docs.rs/sqlx/latest/sqlx/).
-Here is the full series outline:
-
-1. **Axum Backend Basics** — routes, shared state, and an in-memory URL shortener
-2. **Database Persistence** (this post) — swapping the HashMap for a real database with sqlx
-3. **Error Handling & Validation** — custom error types, URL validation, and graceful responses
-4. **Authentication** — API keys and auth middleware
-5. **Yew.rs Frontend** — building an SPA that talks to our API
-6. **Deployment** — Dockerizing the app and serving Yew from Axum
+The series runs six parts. Part 1 covers Axum backend basics: routes, shared state, and an in-memory URL shortener. This second part swaps the HashMap for a real database with sqlx. Part 3 tackles error handling and validation with custom error types and graceful responses. Part 4 adds authentication with API keys and auth middleware. Part 5 builds a Yew.rs frontend SPA that talks to our API. Part 6 wraps up with deployment, Dockerizing the app and serving Yew from Axum.
 
 ## The Problem with In-Memory Storage
 
@@ -155,7 +148,7 @@ No more `Arc`, no more `RwLock`.
 Here is where things get interesting.
 Let's rewrite all three handlers to use the database.
 
-**Create a short URL:**
+### Create a Short URL
 
 ```rust
 use axum::{extract::State, http::StatusCode, Json};
@@ -182,7 +175,7 @@ async fn create_url(
 The `RETURNING` clause is a nice trick.
 Instead of inserting and then doing a separate SELECT, we get the full row back in one query — including the `created_at` that the database set for us.
 
-**Redirect from a slug:**
+### Redirect from a Slug
 
 ```rust
 use axum::extract::Path;
@@ -208,7 +201,7 @@ async fn redirect_url(
 We use `fetch_optional` here instead of `fetch_one`.
 This returns an `Option<UrlResponse>` — `None` if the slug does not exist, which we convert into a 404.
 
-**List all URLs:**
+### List All URLs
 
 ```rust
 async fn list_urls(
@@ -421,10 +414,6 @@ Persistence!
 We went from an in-memory `HashMap` to a proper SQLite database in about the same number of lines of code.
 sqlx made this remarkably painless — plain SQL queries, compile-time checking, and automatic struct mapping with `FromRow`.
 
-A few things we are still missing:
+We are still returning bare `StatusCode` errors with no message body, which is not great for API consumers. We are also not checking if the submitted URL is actually valid, so someone could store `not-a-url` and we would happily accept it.
 
-- **Error handling** — we are returning bare `StatusCode` errors with no message body. Our API consumers deserve better.
-- **Validation** — we are not checking if the submitted URL is actually a valid URL. Someone could store `not-a-url` and we would happily accept it.
-
-In the next part of this series, we will tackle both of those problems with custom error types and URL validation.
-Stay tuned!
+In the next part of this series, we will tackle both of those problems with custom error types and URL validation. Find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev) if you have questions or want to follow along.

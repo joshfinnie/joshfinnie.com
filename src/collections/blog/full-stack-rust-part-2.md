@@ -1,5 +1,5 @@
 ---
-title: "Full-Stack Rust Part 2"
+title: "Persisting Data with sqlx and SQLite"
 date: "2026-03-14"
 tags:
   - "rust"

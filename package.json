@@ -31,7 +31,7 @@
     "@cloudinary/url-gen": "^1.22.0",
     "@fontsource/inter": "^5.2.8",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.2.1",
+    "@tailwindcss/vite": "^4.2.2",
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.15.8",
     "astro": "6.0.4",

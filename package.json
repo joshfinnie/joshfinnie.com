@@ -36,7 +36,7 @@
     "alpinejs": "^3.15.8",
     "astro": "6.0.4",
     "astro-og-canvas": "^0.10.1",
-    "canvaskit-wasm": "^0.40.0",
+    "canvaskit-wasm": "^0.41.0",
     "cloudinary": "^2.9.0",
     "date-fns": "^4.1.0",
     "fs-extra": "^11.3.4",

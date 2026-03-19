@@ -1,5 +1,5 @@
 {
-  "uploadedAt": "2026-03-06T15:49:34.670Z",
+  "uploadedAt": "2026-03-19T12:48:56.297Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
@@ -26,6 +26,11 @@
       "localPath": "src/assets/blog/marx.jpg",
       "publicId": "blog/marx",
       "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1767975648/blog/marx.jpg"
+    },
+    {
+      "localPath": "src/assets/blog/stressed.jpg",
+      "publicId": "blog/stressed",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1773924534/blog/stressed.jpg"
     },
     {
       "localPath": "src/assets/blog/strings.jpg",

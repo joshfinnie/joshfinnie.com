@@ -1,0 +1,103 @@
+---
+title: "Stop Hedging: Build the API"
+date: "2026-03-17"
+tags:
+  - "ai"
+  - "api"
+  - "opinion"
+  - "engineering"
+description: "The cost of standing up a well-structured API has collapsed. In 2026, senior engineers don't need permission to ship one."
+draft: true
+---
+
+There's a good post making the rounds from Nate Meyvis about building APIs in an AI-first world.
+It's sensible.
+It's careful.
+It's the kind of advice you'd give a junior engineer you weren't sure you trusted yet.
+We're past that.
+So let's say the quiet parts loud.
+
+## Building the API is not "plenty of work" anymore
+
+Meyvis frames building an API as a reasonable tradeoff.
+Yes, it's work, but AI helps.
+That undersells it dramatically.
+
+If we're senior engineers in 2026 and we're not shipping APIs for our internal tools, our data layers, our side projects, we're leaving the single highest-leverage thing on the table.
+The cost of standing up a well-structured REST or GraphQL API has collapsed.
+What used to be a multi-day project is now a morning.
+The scaffolding, the routing, the serialization boilerplate, the OpenAPI spec: AI handles all of it competently if we know how to direct it.
+
+The question is no longer "is this worth the effort?"
+It's "why haven't we done it yet?"
+
+"We'll do it when we need it" is the wrong frame.
+We need it now.
+The moment we have an API, every AI tool in our stack can talk to our system directly.
+That unlocks a class of automation that's otherwise impossible.
+
+## Our docs are a first-class interface
+
+Meyvis says to expose documentation programmatically so AI can find it.
+True.
+But the deeper point is that our API documentation is no longer just for humans, and it hasn't been for a while.
+
+A `/schema` or `/openapi.json` endpoint is not a nice-to-have.
+It's our contract with every AI agent that will ever touch our system.
+We should make it machine-readable, make it discoverable, and make it accurate.
+Stale docs are worse than no docs when an AI is acting on them.
+
+The corollary: we should stop writing documentation for humans and then bolting on machine-readable versions as an afterthought.
+Write the OpenAPI spec first.
+Generate the human docs from it.
+Our AI consumers will thank us, and so will future-us six months from now.
+
+## Less is genuinely more in AI-consumed documentation
+
+This is the point Meyvis makes most gently, and it deserves to be stated plainly: verbose API documentation is a bug when our consumer is an AI.
+
+Human developers skim.
+They need repetition and examples and three different ways of saying the same thing because they're reading docs at 11pm while context-switching between five other things.
+AI doesn't skim.
+It reads everything we give it, and every redundant sentence is a token we're paying for and a distraction we're introducing.
+
+Concise, precise descriptions of what each endpoint does: that's the goal.
+If our endpoint descriptions contain phrases like "this endpoint allows the user to," delete the first six words.
+If we've copy-pasted the same rate-limit caveat into forty endpoint descriptions, pull it into a top-level section and reference it once.
+
+This isn't dumbing down our docs.
+It's respecting that our audience has changed.
+
+## The fallback problem is worse than we think
+
+Here's where we should be most direct, because this is the thing that will actually bite us.
+
+AI coding tools are enthusiastic about defensive code.
+Ask one to build an API endpoint and it will, unprompted, add fallbacks for everything: catch-all exception handlers that swallow errors silently, default return values that paper over missing data, null coalescing that hides the fact that something genuinely went wrong.
+In a human-maintained codebase we'd catch this in review.
+In an AI-generated one, it hides in plain sight.
+
+The failure mode is insidious.
+Our API appears to work.
+It returns 200s.
+Everything looks fine.
+Meanwhile it's silently dropping data, masking authentication failures, or returning stale defaults in situations where it should be loudly failing.
+
+Our strong recommendation: after any significant AI-generated API work, do a dedicated review pass with the sole purpose of hunting for bad fallbacks.
+Better yet, prompt a separate AI instance to do it. Give it the code and ask specifically for places where errors are being caught and discarded, where defaults are being returned without logging, where a failure case is being treated as a success.
+We will find things.
+
+Fail loudly.
+Especially in internal APIs where we control both sides.
+A 500 we can see is infinitely better than a 200 that's lying to us.
+
+## The bottom line
+
+We're past the point where "consider building an API" is the right framing.
+For senior engineers, the right framing is: our system should have an API, our API should have a machine-readable spec, that spec should be tight and accurate, and the AI-generated code behind it should fail loudly when things go wrong.
+
+The tools are good enough.
+The cost is low enough.
+The only thing left is deciding to do it.
+
+As always, if you have questions or want to chat about it, find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).

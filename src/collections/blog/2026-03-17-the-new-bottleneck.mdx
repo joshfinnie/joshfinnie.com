@@ -1,0 +1,120 @@
+---
+title: "The New Bottleneck: Why Operations Is the Wall AI Builders Keep Hitting"
+date: "2026-03-17"
+tags:
+  - "ai"
+  - "devops"
+  - "opinion"
+  - "engineering"
+description: "Building software used to be the hard part. Now the constraint is operations — and it has surprisingly good tooling behind it."
+draft: true
+---
+
+Building software used to be the hard part.
+Not anymore.
+If we can describe an application clearly enough, we can build it today, with the tools available right now.
+The craft of construction has been largely democratized.
+What's scarce now isn't the ability to build.
+It's the judgment about what to build, and whether we can actually ship it.
+
+That distinction matters more than most people are talking about.
+
+## The Bottleneck Has Moved
+
+For decades, the constraint in software was technical.
+Did we have the skills to write the code?
+Did we have the team?
+The time to learn the framework?
+AI coding tools have compressed that dramatically.
+
+The new bottleneck is twofold: time and tokens.
+
+There are still only 24 hours in a day.
+The cost of building a thing has dropped toward zero, but the cost of deciding what to build, maintaining what we've built, and running it at scale hasn't moved much.
+Our attention is still finite.
+
+Every AI-assisted development workflow also costs money to run.
+Context windows fill up.
+Long agentic tasks burn through budgets quickly.
+We have to think about ROI: not just "can we build this?" but "is this the best use of our compute budget?"
+
+These are fundamentally resource allocation problems.
+They're not new because engineers have always had to prioritize.
+But the shape of the problem has changed.
+We're no longer asking "is this buildable?"
+We're asking "is this worth building now, with these resources?"
+
+## The Stopper in the Bottleneck: Operations
+
+Here's the part nobody wants to talk about.
+Even when we've solved the prioritization problem, there's a wall waiting for us.
+
+`localhost:8000`
+
+We built it.
+It runs on our machine.
+Now what?
+
+Getting something from a local dev environment to a production URL that real users can hit is still a genuinely hard operational problem, and AI tools have barely touched it.
+For roughly 90% of what engineers want to build and ship, the gap between "working locally" and "running in production" is where projects go to die.
+
+That gap includes hosting and compute, domains and TLS, environment configuration, databases, auth, CI/CD, and observability.
+None of these is unsolvable on its own.
+But together they form a gauntlet that kills momentum, especially when we're trying to move fast with AI-assisted development.
+
+## What the Tooling Landscape Looks Like Now
+
+The good news is that there's a class of tools purpose-built to collapse this operations gap.
+
+For hosting and deployment, Railway is probably the fastest path from a working app to a deployed URL.
+Point it at a GitHub repo, it detects the runtime, and deploys.
+Managed Postgres, Redis, and other services are first-class.
+It's a good default choice for most projects.
+Render is a similar option with strong support for background workers, cron jobs, and static sites and predictable pricing.
+Fly.io runs actual containers close to users globally.
+It gives us more control than Railway but has a steeper learning curve, making it a good fit when we need specific runtime behavior or geographic distribution.
+Vercel and Netlify are best for frontend-heavy apps, especially those built on Next.js, though they're not ideal for long-running processes or heavy backends.
+
+For databases, Supabase stands out.
+It's managed Postgres with a built-in API, auth, and storage layer, and it gets us from "I need a database" to "I have a backend" faster than almost anything else.
+PlanetScale is MySQL-compatible, serverless-friendly, and branches like Git.
+Neon is serverless Postgres with branching that pairs well with Vercel deployments.
+
+For auth, Clerk handles the entire surface: sign-in, sign-up, session management, and user management UI.
+It integrates quickly and is worth the cost to avoid building this ourselves.
+Auth.js is an open-source, self-hosted option that requires more configuration but has no per-user pricing.
+
+For secrets, Doppler centralizes configuration across environments and syncs to our hosting provider, eliminating the `.env` file sprawl that spreads across machines and teammates.
+
+For observability, Sentry catches exceptions in production before users report them, and its free tier is generous.
+Axiom handles structured log ingestion and querying, working especially well with serverless and edge runtimes where traditional logging breaks down.
+
+## A Practical Starting Stack
+
+If we want a setup that collapses the ops gap without overengineering, this is a reasonable default:
+
+| Layer | Tool |
+|---|---|
+| Hosting | Railway or Render |
+| Database | Supabase |
+| Auth | Clerk |
+| Secrets | Doppler or platform-native env vars |
+| Errors | Sentry |
+| CI/CD | GitHub Actions (push to main, deploy) |
+
+This stack gets a production-grade app in front of users without requiring a dedicated DevOps engineer.
+Most of these have free tiers sufficient for early-stage projects.
+
+## The Real Shift
+
+The question has genuinely changed.
+It's no longer "can we build it?" — assume yes, for most things.
+The questions that actually matter now are whether we should build it, whether we can ship it, and whether we can run it when something breaks at 2am.
+
+The builders who move fastest right now are the ones who've internalized that operations is no longer something we figure out later.
+It's part of the build, and increasingly, it has good tooling behind it.
+
+`localhost:8000` is where projects start.
+It's not where they finish.
+
+As always, if you have questions or want to chat about it, find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).

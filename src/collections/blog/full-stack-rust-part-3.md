@@ -1,6 +1,6 @@
 ---
-title: "Full-Stack Rust Part 3"
-date: "2026-03-16"
+title: "Full-Stack Rust Part 3: Error Handling & Validation"
+date: "2026-03-30"
 tags:
   - "rust"
   - "web-development"
@@ -12,7 +12,7 @@ series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
 unsplash: "ChatGPT"
 description: "Part 3 of building a full-stack URL shortener in Rust. We add custom error types, URL validation, and structured JSON error responses to our Axum API."
-draft: true
+draft: false
 ---
 
 This is a 6 part blog post series about writing a full-stack application in Rust.

@@ -17,6 +17,7 @@ const seriesPosts = allPosts
 
 const currentIndex = seriesPosts.findIndex((post) => post.id === currentPostId);
 const totalPosts = seriesPosts.length;
+const currentPartNumber = totalPosts - currentIndex;
 
 // Format series name for display (kebab-case to Title Case)
 const displayName = seriesName
@@ -34,9 +35,9 @@ const displayName = seriesName
           Series: {displayName}
         </h3>
         <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4 mt-2">
-          Part {currentIndex + 1} of {totalPosts}
+          Part {currentPartNumber} of {totalPosts}
         </p>
-        <ol class="list-decimal list-inside space-y-2 pl-0 my-4">
+        <ol reversed class="list-decimal list-inside space-y-2 pl-0 my-4">
           {[...seriesPosts].reverse().map((post) =>
             post.id === currentPostId ? (
               <li class="font-bold text-zinc-900 dark:text-zinc-100">

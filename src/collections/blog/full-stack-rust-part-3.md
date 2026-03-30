@@ -1,5 +1,5 @@
 ---
-title: "Full-Stack Rust Part 3: Error Handling & Validation"
+title: "Error Handling & Validation in Rust"
 date: "2026-03-30"
 tags:
   - "rust"

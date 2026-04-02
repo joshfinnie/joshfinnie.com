@@ -43,7 +43,7 @@
     "fs-extra": "^11.3.4",
     "github-slugger": "^2.0.0",
     "lodash.kebabcase": "^4.1.1",
-    "mermaid": "^11.13.0",
+    "mermaid": "^11.14.0",
     "sharp": "^0.34.5",
     "shorthash": "^0.0.2",
     "tailwind-merge": "^3.5.0",

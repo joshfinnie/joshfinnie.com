@@ -13,7 +13,7 @@ importers:
     dependencies:
       '@astrojs/alpinejs':
         specifier: ^0.5.0
-        version: 0.5.0(@types/alpinejs@3.13.11)(alpinejs@3.15.9)
+        version: 0.5.0(@types/alpinejs@3.13.11)(alpinejs@3.15.10)
       '@astrojs/check':
         specifier: ^0.9.8
         version: 0.9.8(prettier-plugin-astro@0.14.1)(prettier@3.8.1)(typescript@6.0.2)
@@ -48,8 +48,8 @@ importers:
         specifier: ^3.13.11
         version: 3.13.11
       alpinejs:
-        specifier: ^3.15.9
-        version: 3.15.9
+        specifier: ^3.15.10
+        version: 3.15.10
       astro:
         specifier: 6.1.1
         version: 6.1.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(typescript@6.0.2)(yaml@2.8.3)
@@ -1271,8 +1271,8 @@ packages:
   ajv@8.18.0:
     resolution: {integrity: sha512-PlXPeEWMXMZ7sPYOHqmDyCJzcfNrUr3fGNKtezX14ykXOEIvyK81d+qydx89KY5O71FKMPaQ2vBfBFI5NHR63A==}
 
-  alpinejs@3.15.9:
-    resolution: {integrity: sha512-O30m8Tw/aARbLXmeTnISAFgrNm0K71PT7bZy/1NgRqFD36QGb34VJ4a6WBL1iIO/bofN+LkIkKLikUTkfPL2wQ==}
+  alpinejs@3.15.10:
+    resolution: {integrity: sha512-WIWpBws5uNQlrqDf791PPbArItCsY4itOMnI3xk9vCwpNgcsa10ek2sBQsLNTdvWq2LOv12A6GZXMUqu5JDJXw==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -3084,10 +3084,10 @@ snapshots:
       package-manager-detector: 1.6.0
       tinyexec: 1.0.4
 
-  '@astrojs/alpinejs@0.5.0(@types/alpinejs@3.13.11)(alpinejs@3.15.9)':
+  '@astrojs/alpinejs@0.5.0(@types/alpinejs@3.13.11)(alpinejs@3.15.10)':
     dependencies:
       '@types/alpinejs': 3.13.11
-      alpinejs: 3.15.9
+      alpinejs: 3.15.10
 
   '@astrojs/check@0.9.8(prettier-plugin-astro@0.14.1)(prettier@3.8.1)(typescript@6.0.2)':
     dependencies:
@@ -4191,7 +4191,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  alpinejs@3.15.9:
+  alpinejs@3.15.10:
     dependencies:
       '@vue/reactivity': 3.1.5
 

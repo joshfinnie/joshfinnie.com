@@ -1,0 +1,43 @@
+---
+import SeriesPostRow from '@components/SeriesPostRow.astro';
+import { getPublishedPosts, getSeries } from '@lib/utils';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getPublishedPosts();
+  const allSeries = await getSeries();
+  return allSeries.map((series) => ({ params: { series }, props: { allPosts } }));
+}
+
+const { params } = Astro;
+const { allPosts } = Astro.props;
+
+const posts = allPosts
+  .filter((post) => post.data.series === params.series)
+  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+const displayName = params.series
+  .split('-')
+  .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1))
+  .join(' ');
+---
+
+<BaseLayout title={`${displayName} Series | www.joshfinnie.com`}>
+  <article id="main-content">
+    <h1 class="font-bold text-3xl mb-6 mt-5 dark:text-white">
+      Series: {displayName} <small class="text-lg font-normal text-zinc-500 dark:text-zinc-400">({posts.length} {posts.length === 1 ? 'post' : 'posts'})</small>
+    </h1>
+    <ol class="divide-y divide-zinc-200 dark:divide-zinc-700">
+      {
+        posts.map((post, index) => (
+          <SeriesPostRow post={post} partNumber={index + 1} />
+        ))
+      }
+    </ol>
+    <div class="flex justify-end mt-6">
+      <a href="/series/" title="All Series" class="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
+        All Series &rarr;
+      </a>
+    </div>
+  </article>
+</BaseLayout>

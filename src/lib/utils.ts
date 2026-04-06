@@ -12,3 +12,9 @@ export async function getTags() {
   const allTags = posts.flatMap((post) => post.data.tags);
   return [...new Set(allTags)];
 }
+
+export async function getSeries() {
+  const posts = await getPublishedPosts();
+  const allSeries = posts.flatMap((post) => (post.data.series ? [post.data.series] : []));
+  return [...new Set(allSeries)];
+}

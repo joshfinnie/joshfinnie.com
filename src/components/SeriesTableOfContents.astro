@@ -37,7 +37,7 @@ const displayName = seriesName
         <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4 mt-2">
           Part {currentPartNumber} of {totalPosts}
         </p>
-        <ol reversed class="list-decimal list-inside space-y-2 pl-0 my-4">
+        <ol reversed class="list-decimal list-inside space-y-2 pl-0 mt-4 mb-2">
           {[...seriesPosts].reverse().map((post) =>
             post.id === currentPostId ? (
               <li class="font-bold text-zinc-900 dark:text-zinc-100">
@@ -55,6 +55,11 @@ const displayName = seriesName
             )
           )}
         </ol>
+        <div class="flex justify-end mt-2">
+          <a href={`/series/${seriesName}/`} class="text-sm no-underline hover:underline">
+            View full series &rarr;
+          </a>
+        </div>
       </div>
     </aside>
   )

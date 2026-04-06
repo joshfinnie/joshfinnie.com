@@ -1,0 +1,75 @@
+---
+import Card from '@components/starwind/card/Card.astro';
+import CardContent from '@components/starwind/card/CardContent.astro';
+import CardHeader from '@components/starwind/card/CardHeader.astro';
+import { getPublishedPosts, getSeries } from '@lib/utils';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+
+const allSeries = await getSeries();
+const allPosts = await getPublishedPosts();
+
+const seriesList = allSeries
+  .map((slug) => {
+    const posts = allPosts
+      .filter((p) => p.data.series === slug)
+      .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+    const display = slug
+      .split('-')
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ');
+
+    const firstYear = new Date(posts[0]!.data.date).getFullYear();
+    const lastYear = new Date(posts[posts.length - 1]!.data.date).getFullYear();
+    const year = firstYear === lastYear ? `${firstYear}` : `${firstYear}–${lastYear}`;
+
+    return { slug, display, posts, year };
+  })
+  .sort(
+    (a, b) =>
+      new Date(b.posts[b.posts.length - 1]!.data.date).getTime() -
+      new Date(a.posts[a.posts.length - 1]!.data.date).getTime()
+  );
+---
+
+<BaseLayout title="Series | www.joshfinnie.com">
+  <article id="main-content">
+    <h1 class="font-bold text-3xl mb-2 mt-5 dark:text-white">Series</h1>
+    <p class="text-zinc-600 dark:text-zinc-400 mb-10">{seriesList.length} series</p>
+    <main class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {
+        seriesList.map((s) => (
+          <a href={`/series/${s.slug}/`} title={`View the ${s.display} series`} class="no-underline group">
+            <Card class="h-full transition-shadow group-hover:shadow-md">
+              <CardHeader>
+                <div class="flex items-start justify-between gap-3">
+                  <h2 class="font-semibold text-lg text-zinc-900 dark:text-zinc-100 leading-snug group-hover:underline">
+                    {s.display} ({s.year})
+                  </h2>
+                  <span class="shrink-0 text-xs font-semibold uppercase tracking-wide rounded-full px-2 py-1 bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300">
+                    {s.posts.length} {s.posts.length === 1 ? 'part' : 'parts'}
+                  </span>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ol class="space-y-1">
+                  {s.posts.slice(0, 3).map((post, i) => (
+                    <li class="text-sm text-zinc-600 dark:text-zinc-400 truncate">
+                      <span class="text-zinc-400 dark:text-zinc-500 mr-1.5">{i + 1}.</span>
+                      {post.data.title}
+                    </li>
+                  ))}
+                  {s.posts.length > 3 && (
+                    <li class="text-sm text-zinc-400 dark:text-zinc-500 italic">
+                      +{s.posts.length - 3} more
+                    </li>
+                  )}
+                </ol>
+              </CardContent>
+            </Card>
+          </a>
+        ))
+      }
+    </main>
+  </article>
+</BaseLayout>

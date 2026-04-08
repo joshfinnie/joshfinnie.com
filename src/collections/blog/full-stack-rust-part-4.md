@@ -1,6 +1,6 @@
 ---
-title: "Full-Stack Rust Part 4"
-date: "2026-03-30"
+title: "Authentication in a Full-Stack Rust"
+date: "2026-04-08"
 tags:
   - "rust"
   - "web-development"
@@ -12,7 +12,6 @@ series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
 unsplash: "ChatGPT"
 description: "Part 4 of building a full-stack URL shortener in Rust. We add API key authentication using Axum middleware and Tower layers to protect our write endpoints."
-draft: true
 ---
 
 This is a 6 part blog post series about writing a full-stack application in Rust.
@@ -245,7 +244,7 @@ $ curl -X POST http://localhost:3000/urls \
 ```
 
 ```json
-{"slug": "V1StGX", "url": "https://joshfinnie.com"}
+{ "slug": "V1StGX", "url": "https://joshfinnie.com" }
 ```
 
 There we go. And our public endpoints should still work without any key:
@@ -255,7 +254,7 @@ $ curl http://localhost:3000/urls
 ```
 
 ```json
-[{"slug": "V1StGX", "url": "https://joshfinnie.com"}]
+[{ "slug": "V1StGX", "url": "https://joshfinnie.com" }]
 ```
 
 Redirects work too:

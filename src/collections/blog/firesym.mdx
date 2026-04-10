@@ -1,0 +1,70 @@
+---
+title: "Building a Cozy Terminal Fire in Rust"
+date: "2026-04-10"
+description: "How I built firesym, a terminal fire simulation based on the DOOM PSX fire algorithm, using Rust and ratatui."
+tags:
+  - "rust"
+  - "ratatui"
+  - "terminal"
+  - "tui"
+  - "doom"
+heroImage: "blog/firesym"
+unsplash: "Ricardo Gomez Angel"
+unsplashURL: "rgaleriacom"
+slug: "building-a-cozy-terminal-fire-in-rust"
+---
+import { CldImage } from 'astro-cloudinary';
+
+Some projects exist purely for fun, and firesym is one of them. I wanted a cozy, animated fire running in my terminal, built from scratch in Rust. The result is a full-width animated flame that respects your terminal size, sways in a simulated wind, and installs with a single `cargo install firesym`.
+
+<CldImage src="blog/firesym-demo" />
+
+## The Algorithm Behind the Flame
+
+The fire effect comes from a well-known algorithm that [Fabien Sanglard](https://fabiensanglard.net/doom_fire_psx/) reverse-engineered from the PlayStation port of DOOM. The original developers at id Software used it as a loading screen effect, and it has since become a beloved technique for anyone who wants to render fire cheaply.
+
+The idea is simple. You keep a grid of pixels, each holding an intensity value from 0 to 255. The bottom row is the ignition source and stays pinned at full intensity. Each frame, every pixel samples the pixel directly below it, subtracts a small random decay amount, and writes the result slightly to the left or right. Heat rises, cools as it climbs, and the random spread gives the flame its organic shape.
+
+In firesym, that decay is a random value between 4 and 11 intensity units per frame. The horizontal spread is `[-1, +1]` plus an integer wind bias. Together, these two numbers control how quickly flames shrink and which way they lean.
+
+## Double Resolution with Half-Block Characters
+
+Terminal cells are taller than they are wide, so a naive grid of colored cells looks squat. I used the `▀` (upper half block) Unicode character to pack two pixel rows into a single terminal cell. The character's foreground color is the top pixel, and the background color is the bottom pixel. This doubles the effective vertical resolution without any special terminal features.
+
+Each intensity value maps to an RGB color across four bands: black at zero, then a ramp through deep red, orange, yellow, and near-white at full intensity. The color function is a straightforward set of linear interpolations across those four ranges. Nothing exotic, but the result looks convincingly like fire.
+
+## Wind That Feels Natural
+
+A fire with no lateral motion looks stiff. I added wind as a sine wave with a random walk offset, recomputed each frame. The sine wave gives a smooth, periodic base sway. The random walk adds noise on top, so the direction drifts unpredictably rather than cycling at a fixed frequency. Both components are clamped to keep the flames from blowing entirely sideways.
+
+The wind value is a `f32` that I round to an integer when computing the horizontal spread. That rounding keeps most frames perfectly vertical while occasionally nudging the flame one column left or right, which reads as a natural gust rather than a constant lean.
+
+## Building It with ratatui
+
+I reached for [ratatui](https://github.com/ratatui/ratatui) as the terminal UI layer. It handles the draw loop, widget layout, and crossterm backend so I could focus on the simulation itself. The render function splits the terminal into four vertical sections: an empty fill zone at the top, a three-row title block, the fire area, and a one-row log strip at the bottom made of `▓` characters in alternating brown shades.
+
+The fire area defaults to 20 terminal rows, which becomes 40 pixel rows after the half-block trick. You can override both width and height with command-line flags if you want something different.
+
+The main loop runs at 30 frames per second. Each tick calls `fire.update()` to advance the simulation, then hands the pixel buffer to ratatui for rendering. Pressing any key exits cleanly.
+
+## Installing and Running It
+
+If you have Rust installed, getting firesym is one command:
+
+```sh
+cargo install firesym
+```
+
+Then just run it:
+
+```sh
+firesym
+```
+
+By default it fills the full terminal width and renders 20 rows of fire. You can pass `--width` and `--height` to constrain it, which is useful if you want to embed it next to something else in a tmux pane.
+
+## Putting It Together
+
+firesym is a small project, but it taught me a lot about ratatui's rendering model and how far you can push Unicode block characters for graphics. The DOOM PSX algorithm is a genuine gem: it is only a handful of lines, yet the output is immediately recognizable as fire. If you have been looking for a low-stakes Rust project to build intuition for terminal UIs, cloning something like this is a great place to start.
+
+The source is on GitHub at [joshfinnie/firesym](https://github.com/joshfinnie/firesym) and the crate is on [crates.io](https://crates.io/crates/firesym). Find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev) if you build something with it or have ideas for what to add next.

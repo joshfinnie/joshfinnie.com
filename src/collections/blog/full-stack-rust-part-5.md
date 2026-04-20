@@ -1,6 +1,6 @@
 ---
-title: "Full-Stack Rust Part 5"
-date: "2026-04-13"
+title: "Front End Development with Yew.rs"
+date: "2026-04-20"
 tags:
   - "rust"
   - "web-development"
@@ -14,7 +14,6 @@ series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
 unsplash: "ChatGPT"
 description: "Part 5 of building a full-stack URL shortener in Rust. We build a Yew.rs frontend that compiles to WebAssembly and talks to our Axum API."
-draft: true
 ---
 
 This is a 6 part blog post series about writing a full-stack application in Rust.
@@ -113,11 +112,11 @@ Now create a minimal `frontend/index.html`:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>URL Shortener</title>
-</head>
-<body></body>
+  </head>
+  <body></body>
 </html>
 ```
 

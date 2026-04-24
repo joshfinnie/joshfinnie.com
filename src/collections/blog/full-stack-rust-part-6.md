@@ -1,6 +1,6 @@
 ---
-title: "Full-Stack Rust Part 6"
-date: "2026-04-27"
+title: "Product Ready Full Stack Rust"
+date: "2026-04-24"
 tags:
   - "rust"
   - "web-development"
@@ -14,7 +14,6 @@ series: "full-stack-rust"
 heroImage: "blog/fullstack-rust"
 unsplash: "ChatGPT"
 description: "Part 6 of building a full-stack URL shortener in Rust. We serve the Yew frontend from Axum, Dockerize the whole thing, and deploy to Shuttle."
-draft: true
 ---
 
 This is a 6 part blog post series about writing a full-stack application in Rust.

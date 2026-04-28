@@ -1,11 +1,16 @@
 {
-  "uploadedAt": "2026-04-10T18:17:34.616Z",
+  "uploadedAt": "2026-04-28T02:46:11.887Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
       "localPath": "src/assets/blog/firesym-demo.png",
       "publicId": "blog/firesym-demo",
       "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1775845054/blog/firesym-demo.png"
+    },
+    {
+      "localPath": "src/assets/blog/gopher-tutorial.jpg",
+      "publicId": "blog/gopher-tutorial",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1777344370/blog/gopher-tutorial.jpg"
     }
   ]
 }

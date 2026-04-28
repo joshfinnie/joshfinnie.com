@@ -1,0 +1,89 @@
+---
+title: "What I Put in Every Go SaaS Before Writing a Single Feature"
+date: "2026-04-27"
+tags:
+  - "go"
+  - "saas"
+  - "ai"
+  - "architecture"
+  - "backend"
+description: "A walkthrough of kairgos, a Go SaaS skeleton with multi-tenancy, async AI inference, JWT rotation, and a background worker — built before a single business feature ships."
+heroImage: "blog/gopher-tutorial"
+unsplash: "Ansie Potgieter"
+unsplashURL: "ansiep"
+draft: false
+---
+
+Every SaaS starts the same way. I pick a framework, wire up a database, add auth, and then realize I need multi-tenancy. Then async jobs. Then an AI layer. Then I spend two weeks on plumbing instead of product.
+
+I built [kairgos](https://github.com/joshfinnie/kairgos) to solve that. It's a Go skeleton with the infrastructure decisions already made, so the next project starts on the product, not the scaffolding. Here's what I put in it and why.
+
+## The Router and Middleware Stack
+
+I chose [Chi](https://github.com/go-chi/chi) for routing. It's idiomatic Go, composes cleanly with standard `http.Handler`, and has no opinions about your project structure. Frameworks that come with their own conventions are fine until they're not. Chi stays out of the way.
+
+The global middleware chain runs in this order: request ID injection, real IP extraction, structured request logging, panic recovery, Prometheus metrics, and CORS. Every request gets an ID. Every response gets logged with that ID attached. When something breaks in production, there's a trail.
+
+CORS is configured at the router level with an explicit allowlist. I pass `AllowCredentials: true` because the auth layer uses `Authorization` headers, not cookies, but frontend clients still need preflight to succeed.
+
+Rate limiting sits on the auth routes only, at 10 requests per second sustained with a burst of 20. The standard library's `golang.org/x/time/rate` token bucket handles this without any external dependency. Brute-forcing a login endpoint is the most common low-effort attack against a new SaaS. This stops it cold for essentially zero cost.
+
+## Auth: JWT with Refresh Token Rotation
+
+A lot of tutorials stop at "generate a JWT and return it." That leaves a pile of problems: tokens that live forever, no way to log out a specific session, no audit trail of where logins came from.
+
+kairgos uses two-token auth. The access token is short-lived (configurable, default 15 minutes). The refresh token is long-lived and stored in the `sessions` table alongside the user's IP address and user agent. When a client refreshes, the server validates the refresh token against the database, issues a new access token and a new refresh token, and invalidates the old one. This is called rotation, and it means a leaked refresh token can only be used once before it's dead.
+
+Logout actually works. When a user logs out, the session row is deleted. The access token will expire naturally. The refresh token is gone. No amount of replaying it from another device succeeds.
+
+The `Session` model tracks `ip_address` and `user_agent`. That's not just useful for the user-facing "active sessions" UI that every SaaS eventually needs. It's how you spot account compromise: two sessions, two countries, one hour apart.
+
+## Multi-Tenancy with Org Context Middleware
+
+The `Organization` and `OrganizationMember` models are the top-level multi-tenancy primitives. An org has a name and a slug. A member has one of three roles: `owner`, `admin`, or `member`. Every resource in the system can be scoped to an org or left as a personal resource by keeping `organization_id` nullable.
+
+The org context middleware reads an `X-Organization-ID` request header on every protected route. If the header is present, it validates that the requesting user actually belongs to that org and injects the org ID into the request context. Handlers downstream can pull it out and use it to filter queries. If the header is absent, the request is treated as personal.
+
+This approach lets me ship a single API that serves both personal accounts and team accounts without branching the route tree. The cost is that clients have to send the header when operating in org context, which is fine. It's explicit and easy to debug.
+
+## Async AI Inference: Two Binaries, One Queue
+
+AI inference does not belong in an HTTP handler. The latency is unpredictable, the model APIs rate-limit aggressively, and a 30-second request holding a goroutine open is a bad tradeoff at any scale.
+
+kairgos decouples submission from execution. The API handler receives a job request, creates an `InferenceJob` row with status `pending`, enqueues a task into Redis via [Asynq](https://github.com/hibiken/asynq), and returns the job ID immediately. The client polls `GET /api/inference/{jobID}` for status. The worker binary runs separately, picks up the task, updates the row to `processing`, calls the inference service, and writes the result back as JSONB.
+
+The `InferenceJob` model carries the full lifecycle: `payload` (input, stored as JSONB), `result` (output, stored as JSONB), `status` (pending, processing, done, failed), and an `error` field for failure messages. I store both sides because I want a complete audit record of what went in and what came out for every job, not just the final result.
+
+Asynq runs three priority queues: `critical` (weight 6), `default` (weight 3), and `low` (weight 1). These weights are proportional, not absolute. With 10 concurrent workers, critical tasks get roughly 60% of throughput under contention. I route inference jobs to `default` and things like webhook deliveries to `low`. That keeps a flood of outbound webhooks from starving the work that users are actually waiting on.
+
+## The AI Service Layer
+
+The `AIService` struct in `internal/services/ai.go` is a thin HTTP client for OpenAI and Anthropic. I chose not to use the vendor SDKs. They add dependencies, they change their interfaces, and both APIs are simple enough that a typed HTTP client is 150 lines and completely under my control.
+
+The retry logic (`doWithRetry`) handles two cases. On a 429 (rate limited), it checks the `Retry-After` header and sleeps for exactly as long as the provider asks. On a 5xx, it uses exponential backoff starting at 500ms. Three attempts total before giving up and returning an error to the job processor, which marks the job as failed.
+
+Both `ChatCompletion` (OpenAI) and `AnthropicComplete` share the same retry wrapper. The request construction differs: OpenAI uses `Authorization: Bearer`, Anthropic uses `x-api-key` and requires the `anthropic-version` header. Easy to get wrong once, easy to get right permanently once it's in the service struct.
+
+## Structured Logging and Observability
+
+I use [Uber Zap](https://github.com/uber-go/zap) for logging. In dev mode it outputs human-readable JSON. In production it outputs structured JSON. The request logging middleware attaches the request ID, method, path, status code, and latency to every log line. Any of these can be filtered in a log aggregator without parsing strings.
+
+Prometheus metrics are exposed at `/metrics`. The middleware tracks request latency as a histogram, labeled by route and method. In production I'd restrict that endpoint to the internal network or a sidecar. Right now it's open, which is fine for a skeleton on localhost.
+
+Health checks live at two endpoints. `GET /api/health` probes the database and Redis connections and returns a 503 if either is down. `GET /api/health/live` always returns 200. The split matters for container orchestration: liveness checks tell the scheduler whether to restart the container, readiness checks tell the load balancer whether to send traffic. Using the same endpoint for both is a common mistake that causes cascading restarts during database slowdowns.
+
+## What I Left Out (On Purpose)
+
+Payments are not in the skeleton. Not because they're optional, but because payment providers change, pricing models vary, and baking Stripe into a skeleton means everyone who clones it inherits my billing assumptions. Add it when you know what you're billing for.
+
+API token auth is also absent. The current auth layer is JWT-only, which works for browser clients but not for machine-to-machine integrations. Adding a static token model with hashed secrets is a half-day of work once you have the user and session infrastructure in place.
+
+Webhook signing is not implemented. The webhook handler delivers payloads but doesn't sign them with an HMAC header. Most providers that receive your webhooks won't care. Any provider that sends webhooks to you will. Add it per integration.
+
+## Putting It Together
+
+The point of kairgos is not to be a complete product. It's to be the last time I spend a week wiring up JWT rotation, org middleware, and async job queues before I can start building the thing that actually matters.
+
+The decisions here are intentional: Chi over a heavier framework, manual HTTP clients over vendor SDKs, two binaries over one, nullable `organization_id` over a separate personal-vs-team schema. Each one is a tradeoff I've made before and lost time on. The skeleton makes them once.
+
+If you're starting an AI SaaS in Go, this is the floor I'd build from. Find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev) if you have questions or strong opinions about what else belongs in here.

@@ -46,3 +46,5 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}

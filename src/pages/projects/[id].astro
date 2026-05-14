@@ -18,7 +18,7 @@ const project = Astro.props;
 const { Content } = await render(project);
 ---
 
-<BaseLayout title={`Project: ${project.data.title} | www.joshfinnie.com`}>
+<BaseLayout title={`${project.data.title} | Josh Finnie`} description={project.data.summary}>
   <article class="prose prose-zinc dark:prose-invert max-w-none">
     <ProjectHero id={project.id} />
     <Content />

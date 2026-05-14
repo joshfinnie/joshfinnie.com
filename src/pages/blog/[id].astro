@@ -20,10 +20,13 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout
-  title={`${post.data.title} | www.joshfinnie.com`}
+  title={`${post.data.title} | Josh Finnie`}
   description={post.data.description}
   collection="blog"
   id={post.id}
+  ogType="article"
+  publishedTime={post.data.date}
+  articleTags={post.data.tags}
 >
   <BlogPost {...post.data} id={post.id}>
     <Content />

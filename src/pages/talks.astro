@@ -9,7 +9,7 @@ const allTalkFiles = await getCollection('talks');
 const talks = allTalkFiles.flatMap((entry) => entry.data).sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 ---
 
-<BaseLayout title="Talks | www.joshfinnie.com">
+<BaseLayout title="Talks | Josh Finnie" description="Conference talks and presentations by Josh Finnie on software engineering, Python, JavaScript, and data.">
   <article id="main-content">
     <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">Talks</h1>
     <p class="mb-5 text-base dark:text-white flex items-center">

@@ -5,9 +5,12 @@ import Header from '@components/Header.astro';
 
 const {
   title = 'www.joshfinnie.com',
-  description = 'The personal/professional website of Josh Finnie.',
+  description = 'Senior software engineer and data nerd at People Data Labs. A decade of full-stack experience building reliable backend systems, with a focus on Rust, Go, Python, and JavaScript.',
   collection,
   id,
+  ogType,
+  publishedTime,
+  articleTags,
 } = Astro.props;
 
 var imageUrl;
@@ -26,7 +29,7 @@ import '@styles/global.css';
   class="dark"
 >
   <head>
-    <BaseHead {title} {description} image={imageUrl} />
+    <BaseHead {title} {description} image={imageUrl} {ogType} {publishedTime} {articleTags} />
     <script is:inline>
       // Necessary for view transitions
       document.addEventListener("astro:after-swap", () => {
@@ -48,16 +51,26 @@ import '@styles/global.css';
       }
     </script>
     <script type="application/ld+json" is:inline>
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Josh Finnie's Blog",
-        "url": "https://www.joshfinnie.com/",
-        "author": {
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Josh Finnie's Blog",
+          "url": "https://www.joshfinnie.com/"
+        },
+        {
+          "@context": "https://schema.org",
           "@type": "Person",
-          "name": "Josh Finnie"
+          "name": "Josh Finnie",
+          "url": "https://www.joshfinnie.com/",
+          "jobTitle": "Senior Software Engineer",
+          "sameAs": [
+            "https://github.com/joshfinnie",
+            "https://linkedin.com/in/joshfinnie/",
+            "https://bsky.app/profile/joshfinnie.bsky.social"
+          ]
         }
-      }
+      ]
     </script>
   </head>
   <body class="flex h-full bg-zinc-50 dark:bg-black">

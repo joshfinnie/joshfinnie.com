@@ -1,0 +1,149 @@
+---
+import MCStar from '@icons/mc_star_line.svg';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+
+const HARDCOVER_API = 'https://api.hardcover.app/v1/graphql';
+
+const query = `
+  query WeirdLit {
+    lists(where: {id: {_eq: 370442}}) {
+      id
+      name
+      list_books(order_by: {book: {rating: desc}}) {
+        edition {
+          id
+          title
+          image {
+            url
+          }
+        }
+        book {
+          slug
+          rating
+          ratings_count
+          contributions {
+            author {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+interface Book {
+  title: string;
+  slug: string;
+  author: string | null;
+  imageUrl: string | null;
+  rating: number | null;
+  ratings_count: number | null;
+}
+
+interface ListBook {
+  edition: { id: number; title: string; image: { url: string } | null } | null;
+  book: {
+    slug: string;
+    rating: number;
+    ratings_count: number;
+    contributions: { author: { name: string } }[];
+  };
+}
+
+let books: Book[] = [];
+let listName = 'Weird Lit Recommendations';
+
+try {
+  const response = await fetch(HARDCOVER_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: import.meta.env.HARDCOVERAPP_API,
+    },
+    body: JSON.stringify({ query }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    const list = data?.data?.lists?.[0];
+    if (list) {
+      listName = list.name ?? listName;
+      books = (list.list_books ?? []).map((lb: ListBook) => ({
+        title: lb.edition?.title ?? '',
+        slug: lb.book.slug,
+        author: lb.book.contributions?.[0]?.author?.name ?? null,
+        imageUrl: lb.edition?.image?.url ?? null,
+        rating: lb.book.rating ?? null,
+        ratings_count: lb.book.ratings_count ?? null,
+      }));
+    }
+  }
+} catch (_) {
+  // fetch failed, books stays empty
+}
+---
+
+<BaseLayout title="Weird Lit | Josh Finnie" description="Josh Finnie's weird fiction recommendations.">
+  <article id="main-content">
+    <h1 class="font-bold text-3xl mb-3 mt-5 dark:text-white">Weird Lit</h1>
+    <p class="mb-6 text-base text-zinc-600 dark:text-zinc-400">
+      My weird fiction recommendations, via <a href="https://hardcover.app" target="_blank" rel="noopener noreferrer" class="text-teal-500 hover:underline">Hardcover</a>.
+    </p>
+
+    {books.length > 0 && (
+      <div class="flex items-center gap-6 mb-10 px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 text-sm text-zinc-600 dark:text-zinc-400">
+        <span><span class="font-semibold text-zinc-900 dark:text-zinc-100">{books.length}</span> books</span>
+      </div>
+    )}
+
+    {books.length > 0 ? (
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {books.map((book) => (
+          <a
+            href={`https://hardcover.app/books/${book.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col"
+          >
+            <div class="overflow-hidden rounded-lg shadow-sm ring-1 ring-zinc-100 dark:ring-zinc-700/40" style="aspect-ratio: 2/3">
+              {book.imageUrl ? (
+                <img
+                  src={book.imageUrl}
+                  alt={`Cover of ${book.title}`}
+                  class="w-full h-full object-cover transition group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 p-3">
+                  <p class="text-xs text-center text-zinc-500 dark:text-zinc-400 leading-snug">{book.title}</p>
+                </div>
+              )}
+            </div>
+            <div class="mt-2 flex flex-col gap-0.5">
+              <p class="text-sm font-medium text-zinc-900 dark:text-zinc-100 leading-snug line-clamp-2 group-hover:text-teal-500 transition">
+                {book.title}
+              </p>
+              {book.author && (
+                <p class="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-1">{book.author}</p>
+              )}
+              {book.rating && (
+                <div class="flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                  <MCStar class="h-3.5 w-3.5 text-amber-400 flex-shrink-0 opacity-40" />
+                  {book.rating.toFixed(2)} Avg
+                  {book.ratings_count && (
+                    <span class="text-zinc-400 dark:text-zinc-500">
+                      ({book.ratings_count.toLocaleString()})
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="text-zinc-500 dark:text-zinc-400">No books found.</p>
+    )}
+  </article>
+</BaseLayout>

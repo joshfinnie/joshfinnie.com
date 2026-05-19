@@ -2,14 +2,13 @@
 import AboutSubNav from '@components/AboutSubNav.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-const { content } = Astro.props;
-const { title, description, permalink } = content;
+const { title, description, permalink } = Astro.props;
 
 const schema = JSON.stringify({
-  '@context': 'http://schema.org',
+  '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: { title },
-  description: { description },
+  name: title,
+  description: description,
   author: {
     '@type': 'Person',
     name: 'Josh Finnie',

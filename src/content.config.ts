@@ -14,7 +14,7 @@ const blog = defineCollection({
       heroImage: z.string().optional(), // Now using Cloudinary public ID
       unsplash: z.string().optional(),
       unsplashURL: z.string().optional(),
-      description: z.string().optional(),
+      description: z.string(),
       series: z.string().optional(),
     }),
 });

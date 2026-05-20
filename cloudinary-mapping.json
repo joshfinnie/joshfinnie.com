@@ -1,16 +1,21 @@
 {
-  "uploadedAt": "2026-04-28T02:46:11.887Z",
+  "uploadedAt": "2026-05-20T16:03:46.519Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/firesym-demo.png",
-      "publicId": "blog/firesym-demo",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1775845054/blog/firesym-demo.png"
+      "localPath": "src/assets/schools/ccsu.jpeg",
+      "publicId": "schools/ccsu",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1779293024/schools/ccsu.jpg"
     },
     {
-      "localPath": "src/assets/blog/gopher-tutorial.jpg",
-      "publicId": "blog/gopher-tutorial",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1777344370/blog/gopher-tutorial.jpg"
+      "localPath": "src/assets/schools/uconn.jpeg",
+      "publicId": "schools/uconn",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1779293025/schools/uconn.jpg"
+    },
+    {
+      "localPath": "src/assets/schools/umgc.jpeg",
+      "publicId": "schools/umgc",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1779293026/schools/umgc.jpg"
     }
   ]
 }

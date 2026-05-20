@@ -1,23 +1,49 @@
 ---
 import { getEntry } from 'astro:content';
-import ProjectHero from './ProjectHero.astro';
-import { Button } from './starwind/button';
+import CloudinaryImage from './CloudinaryImage.astro';
 
 interface Props {
   id: string;
 }
 
 const { id } = Astro.props;
-
 const project = await getEntry('project', id);
 ---
 
-{ project && 
-<article class="prose prose-zinc max-w-none pb-10 dark:prose-invert">
-  <ProjectHero id={project.id} />
-
-  <a href={`/projects/${project.id}/`}>
-    <Button class="float-right">More Details</Button>
+{project && (
+  <a href={`/projects/${project.id}/`} class="group flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-shadow duration-200">
+    {project.data.heroImage && (
+      <div class="h-52 overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+        <CloudinaryImage
+          publicId={project.data.heroImage}
+          alt={project.data.title}
+          width={600}
+          height={208}
+          gravity="north"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+    )}
+    <div class="p-5 flex flex-col flex-1">
+      <h2 class="font-bold text-xl text-zinc-800 dark:text-zinc-100 mb-2 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors">
+        {project.data.title}
+      </h2>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4 flex-1">
+        {project.data.summary}
+      </p>
+      <div class="flex flex-wrap gap-2 items-center pt-4 border-t border-zinc-100 dark:border-zinc-700">
+        {project.data.technologies.map((tech: string) => (
+          <div class="bg-white rounded-full p-1">
+            <CloudinaryImage
+              publicId={`icons/${tech}`}
+              alt={tech}
+              width={28}
+              height={28}
+              class="hover:scale-110 transition-transform duration-200 block"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   </a>
-</article>
-}
+)}

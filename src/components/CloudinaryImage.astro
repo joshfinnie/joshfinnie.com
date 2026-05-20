@@ -8,21 +8,23 @@ interface Props {
   height?: number;
   class?: string;
   loading?: 'eager' | 'lazy';
+  gravity?: 'center' | 'north' | 'south' | 'east' | 'west';
 }
 
-const { publicId, alt, width, height, class: className, loading = 'lazy' } = Astro.props;
+const { publicId, alt, width, height, class: className, loading = 'lazy', gravity } = Astro.props;
 
 // Generate optimized Cloudinary URL
 const imageUrl = getCloudinaryImageUrl(publicId, {
   ...(width !== undefined && { width }),
   ...(height !== undefined && { height }),
+  ...(gravity !== undefined && { gravity }),
 });
 
 // Generate responsive srcset, preserving aspect ratio when height is specified
 const aspectRatio = width && height ? height / width : undefined;
 function srcsetEntry(w: number) {
   const h = aspectRatio ? Math.round(w * aspectRatio) : undefined;
-  return `${getCloudinaryImageUrl(publicId, { width: w, ...(h !== undefined && { height: h }) })} ${w}w`;
+  return `${getCloudinaryImageUrl(publicId, { width: w, ...(h !== undefined && { height: h }), ...(gravity !== undefined && { gravity }) })} ${w}w`;
 }
 const baseWidth = width || 800;
 const srcset = [

@@ -2,7 +2,8 @@
 import AboutSubNav from '@components/AboutSubNav.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-const { title, description, permalink } = Astro.props;
+const props = Astro.props.frontmatter ?? Astro.props;
+const { title, description, permalink } = props;
 
 const schema = JSON.stringify({
   '@context': 'https://schema.org',

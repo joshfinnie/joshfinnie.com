@@ -1,0 +1,34 @@
+---
+import BlogPostPreview from '@components/BlogPostPreview.astro';
+import { getLeftistPosts } from '@lib/utils';
+import BaseLayout from '@src/layouts/BaseLayout.astro';
+
+const posts = await getLeftistPosts();
+---
+
+<BaseLayout
+  title="Leftist Corner | Josh Finnie"
+  description="Political and economic commentary from a Marxist perspective by Josh Finnie. Thoughts on class, labor, automation, and the contradictions of capitalism."
+>
+  <article id="main-content">
+    <h1 class="font-bold text-3xl mb-4 mt-5 dark:text-white">Leftist Corner</h1>
+    <p class="text-zinc-600 dark:text-zinc-400 mb-10 max-w-2xl">
+      This is where I write about politics and economics from a leftist perspective. Class,
+      labor, automation, housing, and the contradictions of capitalism. Not every post ends up
+      here on the main blog.
+    </p>
+    <main class="prose dark:prose-invert max-w-none">
+      {
+        posts.length === 0 ? (
+          <p class="text-zinc-500 dark:text-zinc-400">No posts yet.</p>
+        ) : (
+          posts.map((p) => (
+            <Fragment key={p.id}>
+              <BlogPostPreview id={p.id} />
+            </Fragment>
+          ))
+        )
+      }
+    </main>
+  </article>
+</BaseLayout>

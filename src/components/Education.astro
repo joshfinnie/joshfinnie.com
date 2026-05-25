@@ -1,0 +1,34 @@
+---
+import Card from './Card.astro';
+import CardFooter from './CardFooter.astro';
+import CardTitle from './CardTitle.astro';
+import CloudinaryImage from './CloudinaryImage.astro';
+
+interface Props {
+  school: string;
+  degree: string;
+  endDate?: string;
+  logo: string;
+}
+
+const { school, degree, endDate, logo } = Astro.props;
+
+const publicId = `schools/${logo.replace(/\.(jpg|jpeg|png|gif)$/i, '')}`;
+---
+
+<Card class="flex flex-col items-start">
+  <div class="flex items-center gap-4 mb-4">
+    <div class="relative flex h-10 w-10 items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+      <CloudinaryImage publicId={publicId} alt={school} width={40} height={40} class="h-10 w-10 rounded-full" />
+    </div>
+    <div class="flex flex-col">
+      <CardTitle class="text-sm font-medium text-zinc-900 dark:text-zinc-100">{school}</CardTitle>
+      <p class="text-xs text-zinc-500 dark:text-zinc-400">{degree}</p>
+    </div>
+  </div>
+  {endDate && (
+    <CardFooter class="text-xs text-zinc-400 dark:text-zinc-500 p-0">
+      {endDate}
+    </CardFooter>
+  )}
+</Card>

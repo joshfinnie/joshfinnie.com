@@ -10,13 +10,10 @@ const projects = allProjects.sort(
 );
 ---
 
-
 <BaseLayout title="Projects | Josh Finnie" description="Open source and side projects built by Josh Finnie, including tools, apps, and experiments.">
-  {
-    projects.map((p) => (
-      <Fragment key={p.id}>
-        <Project id={p.id} />
-      </Fragment>
-    ))
-  }
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 py-6">
+    {projects.map((p) => (
+      <Project id={p.id} />
+    ))}
+  </div>
 </BaseLayout>

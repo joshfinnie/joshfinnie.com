@@ -1,0 +1,51 @@
+---
+title: "diffai"
+summary: "A terminal diff viewer with inline commenting, built for reviewing code changes alongside Claude Code."
+lastUpdated: "2026-05-20"
+technologies:
+  - "rust"
+  - "ratatui"
+  - "git"
+heroImage: "projects/diffai-screenshot"
+---
+
+diffai is a TUI diff viewer purpose-built for the two-pane Claude Code workflow. Open it alongside Claude Code, annotate the lines that need attention, and pass the saved notes directly to Claude with a single `@` reference.
+
+No API keys. No network calls. Purely local.
+
+## Install
+
+```bash
+curl -fsSL https://joshfinnie.com/diffai/install.sh | sh
+```
+
+## How It Works
+
+Run `diffai review` in any git repo and it opens a split view: a file tree on the left, the diff on the right. Navigate with arrow keys, press `c` to drop a comment on any line, and quit with `q`. On exit diffai saves your annotations to `/tmp/diffai-<timestamp>.md`.
+
+In Claude Code, reference that file:
+
+```
+@/tmp/diffai-1234.md
+```
+
+Claude gets your comments alongside the real source line numbers — no pasting, no reformatting.
+
+## Keybindings
+
+| Key | Action |
+| --- | --- |
+| `Tab` | Switch focus between Files and Diff panels |
+| `↑` / `↓` | Navigate files or diff lines |
+| `PgUp` / `PgDn` | Fast scroll the diff |
+| `Enter` / `→` | Open selected file in diff panel |
+| `[` / `]` | Shrink / grow the file tree panel |
+| `s` | Toggle split / unified diff view |
+| `c` | Add or edit a comment on the cursor line |
+| `d` | Delete the comment on the cursor line |
+| `Shift+Enter` | New line in comment input |
+| `Esc` | Cancel comment input |
+| `q` / `Ctrl+C` | Quit |
+
+Vim keybindings (`j`/`k`/`h`/`l`, `g`/`G`, `Ctrl+d`/`u`, `i` for comment) can be enabled with `[keys] vim = true` in `~/.config/diffai/settings.toml`.
+

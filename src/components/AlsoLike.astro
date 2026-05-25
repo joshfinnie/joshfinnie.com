@@ -30,13 +30,13 @@ const posts = allPosts
 
 {
   posts.length > 0 ? (
-    <div class="prose prose-zinc dark:prose-invert mt-5 p-5 rounded-lg max-w-none">
-      <h2 class="text-center">Related Posts</h2>
-      {posts.map((post) => (
-        <Fragment key={post.id}>
+    <div class="mt-10 not-prose">
+      <h2 class="text-center text-xl font-bold text-zinc-800 dark:text-zinc-100 mb-6">Related Posts</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {posts.map((post) => (
           <BlogPostPreviewLite id={post.id} />
-        </Fragment>
-      ))}
+        ))}
+      </div>
     </div>
   ) : undefined
 }

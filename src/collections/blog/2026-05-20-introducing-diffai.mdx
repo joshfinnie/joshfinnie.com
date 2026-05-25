@@ -1,0 +1,103 @@
+---
+title: "I Built a Terminal Diff Viewer for Working with Claude Code"
+date: "2026-05-20"
+tags:
+  - "rust"
+  - "tools"
+  - "ai"
+  - "cli"
+  - "claude"
+description: "diffai is a terminal diff viewer with inline commenting, built specifically for the two-pane workflow of reviewing code changes alongside Claude Code."
+heroImage: "blog/diffai-hero"
+draft: false
+---
+
+Every time I finished a batch of changes and wanted Claude Code to help review or improve them, I ran into the same friction. The diff was right there in my terminal, but there was no clean way to annotate specific lines and hand that context to Claude. I could paste the whole diff and add notes inline, but that was messy. I wanted something purpose-built for this loop.
+
+So I built [diffai](/projects/diffai). It's a TUI diff viewer with inline commenting, designed to sit in one pane while Claude Code sits in the other.
+
+## The Workflow
+
+The core idea is simple. You make changes, open diffai, annotate the lines that need attention, and pass the saved notes to Claude with a single `@` reference.
+
+Here's how that plays out in practice:
+
+```bash
+# Open the diff viewer for the current repo
+diffai review
+```
+
+diffai opens a split view: a file tree on the left and the diff on the right. You navigate with arrow keys (or vim keys if you prefer), press `c` to drop a comment on any line, and quit with `q`. When you exit, diffai saves your annotations to a timestamped file in `/tmp`.
+
+In Claude Code, you just reference that file:
+
+```
+@/tmp/diffai-1234.md
+```
+
+Claude gets your comments alongside the relevant line numbers and file paths. No pasting, no reformatting.
+
+The saved file is intentionally minimal. It contains only your comments, grouped by file, with the actual source line number attached to each one. Here's what it looks like:
+
+```markdown
+<!-- diffai | @/tmp/diffai-1234.md in Claude Code -->
+
+## Comments
+
+### crates/cli/src/main.rs
+
+**Line 47** (`self.comments.insert(...);`)
+should this also clear comment_input?
+```
+
+That format gives Claude exactly what it needs without flooding the context with the full diff.
+
+## Installing diffai
+
+The fastest way to install is the one-liner:
+
+```bash
+curl -fsSL https://joshfinnie.com/diffai/install.sh | sh
+```
+
+That script pulls the right binary for your platform, drops it in `~/.local/bin`, and you're done. No API keys. No network calls at runtime. The tool is purely local.
+
+## The TUI
+
+The viewer has two panels. The left panel shows all changed files; a small indicator marks files where you've already left comments. The right panel shows the diff for the selected file, with syntax highlighting and line numbers.
+
+You can toggle between unified and split diff modes with `s`. Split mode puts the old and new versions side by side, which I find much easier to read for complex hunks. Unified is the default because it uses less width, but I keep split as my personal setting.
+
+The full keybindings are on the [diffai project page](/projects/diffai), but the ones you'll reach for every session are `Tab` to switch panels, `c` to comment, `d` to delete a comment, `[` and `]` to resize the file tree, and `q` to quit.
+
+## Vim Mode and Configuration
+
+diffai reads from `~/.config/diffai/settings.toml` on startup. The file is entirely optional, but this is the configuration I run with:
+
+```toml
+[view]
+default_mode = "split"
+
+[keys]
+vim = true
+```
+
+With vim mode enabled, `j`/`k` move up and down, `h` returns to the file tree, `l` opens the selected file, `g`/`G` jump to the top and bottom, and `Ctrl+d`/`Ctrl+u` scroll by half a page. If you spend most of your day in Neovim, enabling this makes diffai feel completely natural.
+
+## The Pre-commit Hook
+
+One more thing worth knowing: you can wire diffai into your git workflow directly.
+
+```bash
+diffai install-hook
+```
+
+That installs a `pre-commit` hook that runs `diffai review` automatically before every commit. You get a chance to annotate your changes and pass notes to Claude before the commit lands, which is a nice forcing function for actually reviewing what you're about to ship.
+
+If a hook already exists in that repo, diffai prints the line to add manually so you don't lose anything.
+
+## Putting It Together
+
+diffai fills a specific gap: it gives you a clean, local way to annotate a diff and hand structured context to Claude Code. The TUI is fast, the output format is predictable, and the whole thing stays off the network. I use it daily when working on larger refactors or anything where I want Claude to understand which parts of a diff matter most.
+
+Give it a try and let me know what you think. Find me on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).

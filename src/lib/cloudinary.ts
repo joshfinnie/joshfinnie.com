@@ -1,6 +1,7 @@
 import { Cloudinary } from '@cloudinary/url-gen';
 import { fill, scale } from '@cloudinary/url-gen/actions/resize';
 import { auto as autoFormat } from '@cloudinary/url-gen/qualifiers/format';
+import { compass } from '@cloudinary/url-gen/qualifiers/gravity';
 import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
 
 const cloudName: string = import.meta.env.CLOUDINARY_CLOUD_NAME || 'dgd9cw3gu';
@@ -14,14 +15,19 @@ const cld: Cloudinary = new Cloudinary({
 /**
  * Get optimized Cloudinary image URL
  */
-export function getCloudinaryImageUrl(publicId: string, options: { width?: number; height?: number } = {}): string {
+export function getCloudinaryImageUrl(
+  publicId: string,
+  options: { width?: number; height?: number; gravity?: 'center' | 'north' | 'south' | 'east' | 'west' } = {}
+): string {
   const image = cld.image(publicId);
 
   // Apply automatic format and quality optimization
   image.format(autoFormat() as any).quality(autoQuality() as any);
 
   if (options.width && options.height) {
-    image.resize(fill().width(options.width).height(options.height));
+    const resize = fill().width(options.width).height(options.height);
+    if (options.gravity) resize.gravity(compass(options.gravity));
+    image.resize(resize);
   } else if (options.width) {
     image.resize(scale().width(options.width));
   } else if (options.height) {

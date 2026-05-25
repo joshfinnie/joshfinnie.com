@@ -6,46 +6,55 @@ layout: "../layouts/AboutLayout.astro"
 ---
 
 import MCPdf from '@icons/mc_pdf_line.svg';
+import WorkExperience from '@components/WorkExperience.astro';
+import Education from '@components/Education.astro';
 
-I currently work on the API &amp; Delivery team at [People Data Labs](https://www.peopledatalabs.com/).
-I am an experienced polyglot software engineer who's specialties lie in building large-scale, complex APIs, interactive websites and internal tooling.
-I have over 10 years of software development experience ranging from the fast-paced world of startups to working on different contracts with a small, independent team of developers.
-I have the expertise and ability to make your team better through my knowledge and experience and am excited to share.
+I work on the API & Delivery team at [People Data Labs](https://www.peopledatalabs.com/), building large-scale APIs and data products. I have over a decade of full-stack experience with a strong focus on backend engineering. Based in Charlotte, NC.
 
 ## Resume <a href="/assets/docs/resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center ml-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition"><MCPdf class="h-5 w-5" /></a>
 
-**Experience:**<br />
+### Experience
 
-- Senior Software Engineer &#8211; People Data Labs
-- Staff Software Engineer &#8211; IndigoAg
-- Senior Software Engineer &#8211; PBS
-- Software Developer &#8594; Senior Software Developer &#8211; TrackMaven by Skyword
-- Application Developer &#8211; Koansys, LLC.
+<div class="not-prose grid gap-4 mt-4 mb-8">
+  <WorkExperience company="People Data Labs" role="Senior Software Engineer" startDate="2023-05" logo="pdl.jpg" />
+  <WorkExperience company="IndigoAg" role="Staff Software Engineer" startDate="2022-05" endDate="2023-03" logo="indigoag.jpg" />
+  <WorkExperience company="PBS" role="Senior Software Engineer" startDate="2019-09" endDate="2022-05" logo="pbs.jpg" />
+  <WorkExperience company="TrackMaven" role="Software Engineer → Senior Software Engineer" startDate="2014-03" endDate="2019-08" logo="trackmaven.jpg" />
+  <WorkExperience company="Koansys" role="Application Developer" startDate="2012-02" endDate="2014-03" logo="koansys.jpg" />
+</div>
 
-**Languages (Frameworks):**<br />
+### Languages & Frameworks
 
-- Python (Django, Flask, Graphene)
-- Typescript/Javascript (Astro, Next.js, React, Express, Apollo)
-- Rust (Axum, Yew)
-- Go
+<div class="not-prose flex flex-wrap gap-2 mt-4 mb-8">
+  {["Python", "Django", "Flask", "TypeScript", "JavaScript", "Astro", "React", "Next.js", "Rust", "Axum", "Yew", "Go"].map((tag) => (
+    <span class="px-3 py-1 rounded-full text-sm font-medium bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+      {tag}
+    </span>
+  ))}
+</div>
 
-**Education:**<br />
+### Education
 
-- MS in Data Analytics (Expected 2026) &#8211; University of Maryland Global Campus
-- Classes towards a MS in Geography &#8211; Central Connecticut State University
-- BA in Economics &amp; Minor in Mathematics &#8211; University of Connecticut<br />
+<div class="not-prose grid gap-4 mt-4 mb-8">
+  <Education school="University of Maryland Global Campus" degree="MS in Data Analytics" endDate="Expected 2026" logo="umgc.jpg" />
+  <Education school="Central Connecticut State University" degree="Graduate coursework, Geography" logo="ccsu.jpg" />
+  <Education school="University of Connecticut" degree="BA in Economics, Minor in Mathematics" logo="uconn.jpg" />
+</div>
 
-**Projects**:<br />
+### Other Interests
 
-- Check out my <a href="/projects/">projects</a> page for detailed information.
+<div class="not-prose flex flex-wrap gap-2 mt-4 mb-8">
+  {["Coffee", "Cycling", "Photography", "Amateur Radio (W1OFZ)"].map((interest) => (
+    <span class="px-3 py-1 rounded-full text-sm font-medium bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+      {interest}
+    </span>
+  ))}
+</div>
 
-**Other Interests:**<br />
+### Projects
 
-- Coffee, Cycling, Photography,
-  Amateur Radio (<a href="http://www.qrz.com/db/W1OFZ" target="_blank" rel="noopener noreferrer">W1OFZ</a>)
+Check out my [projects](/projects/) page for detailed information.
 
 ## PGP Public Key
 
-<a href="//keybase.io/joshfinnie/key.asc" target="_blank" rel="noopener noreferrer">
-  Raw public key via Keybase
-</a>
+<a href="//keybase.io/joshfinnie/key.asc" target="_blank" rel="noopener noreferrer">Raw public key via Keybase</a>

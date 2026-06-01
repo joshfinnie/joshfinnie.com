@@ -3,8 +3,11 @@ import BaseHead from '@components/BaseHead.astro';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 
-const { title = 'Consulting | Josh Finnie', description = 'Software consulting services by Josh Finnie.' } =
-  Astro.props;
+const {
+  title = 'Consulting | Josh Finnie',
+  description = 'Software consulting services by Josh Finnie.',
+  atUri,
+} = Astro.props;
 
 const imageUrl = 'https://www.joshfinnie.com/blog/og/default.png';
 
@@ -17,7 +20,7 @@ import '@styles/global.css';
   class="dark"
 >
   <head>
-    <BaseHead {title} {description} image={imageUrl} />
+    <BaseHead {title} {description} image={imageUrl} {atUri} />
     <script is:inline>
       // Necessary for view transitions
       document.addEventListener("astro:after-swap", () => {

@@ -8,8 +8,9 @@ interface Props {
   ogType?: string;
   publishedTime?: string;
   articleTags?: string[];
+  atUri?: string;
 }
-const { title, description, image, ogType = 'website', publishedTime, articleTags } = Astro.props;
+const { title, description, image, ogType = 'website', publishedTime, articleTags, atUri } = Astro.props;
 
 function appendForwardSlash(path: string) {
   return path.endsWith('/') ? path : path + '/';
@@ -25,6 +26,7 @@ const canonicalURL = appendForwardSlash(href);
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="canonical" href={canonicalURL} />
+{atUri && <link rel="site.standard.document" href={atUri} />}
 
 <!-- Primary Meta Tags -->
 <meta charset="utf-8" />

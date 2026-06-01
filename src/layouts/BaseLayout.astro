@@ -11,6 +11,7 @@ const {
   ogType,
   publishedTime,
   articleTags,
+  atUri,
 } = Astro.props;
 
 var imageUrl;
@@ -29,7 +30,7 @@ import '@styles/global.css';
   class="dark"
 >
   <head>
-    <BaseHead {title} {description} image={imageUrl} {ogType} {publishedTime} {articleTags} />
+    <BaseHead {title} {description} image={imageUrl} {ogType} {publishedTime} {articleTags} {atUri} />
     <script is:inline>
       // Necessary for view transitions
       document.addEventListener("astro:after-swap", () => {

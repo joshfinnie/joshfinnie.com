@@ -17,6 +17,7 @@
     "format": "biome check --write .",
     "format:check": "biome check .",
     "lint": "biome lint .",
+    "publish:standard": "node scripts/publish_standard.js",
     "prepare": "husky"
   },
   "author": "Josh Finnie <josh@jfin.us>",
@@ -54,21 +55,20 @@
     "typescript": "^6.0.3",
     "vite": "^8.0.16"
   },
-  "pnpm": {
-    "overrides": {
-      "vite": "^7",
-      "lodash": "~4.17.23",
-      "yaml@>=2.0.0 <2.8.3": ">=2.8.3",
-      "lodash@>=4.0.0 <=4.17.23": ">=4.18.0",
-      "lodash@<=4.17.23": ">=4.18.0"
-    }
+  "overrides": {
+    "lodash": "~4.17.23",
+    "yaml@>=2.0.0 <2.8.3": ">=2.8.3",
+    "lodash@>=4.0.0 <=4.17.23": ">=4.18.0",
+    "lodash@<=4.17.23": ">=4.18.0"
   },
   "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677",
   "devDependencies": {
+    "@atproto/api": "^0.20.7",
     "@biomejs/biome": "^2.4.16",
     "@netlify/functions": "^5.3.0",
     "dotenv": "^17.4.2",
     "glob": "^13.0.6",
+    "gray-matter": "^4.0.3",
     "husky": "^9.1.7"
   }
 }

@@ -2,12 +2,13 @@
 import BaseHead from '@components/BaseHead.astro';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
+import mapping from '../../standard-mapping.json';
 
-const {
-  title = 'Consulting | Josh Finnie',
-  description = 'Software consulting services by Josh Finnie.',
-  atUri,
-} = Astro.props;
+const { title = 'Consulting | Josh Finnie', description = 'Software consulting services by Josh Finnie.' } =
+  Astro.props;
+
+const normalizedPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const atUri = (mapping.documents as Record<string, string>)[normalizedPath];
 
 const imageUrl = 'https://www.joshfinnie.com/blog/og/default.png';
 

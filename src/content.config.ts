@@ -17,7 +17,6 @@ const blog = defineCollection({
       description: z.string(),
       series: z.string().optional(),
       leftistOnly: z.boolean().optional(),
-      atUri: z.string().optional(),
     }),
 });
 
@@ -30,7 +29,6 @@ const project = defineCollection({
       technologies: z.array(z.string()),
       heroImage: z.string().optional(), // Now using Cloudinary public ID
       lastUpdated: z.string().optional(),
-      atUri: z.string().optional(),
     }),
 });
 

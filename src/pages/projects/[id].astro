@@ -21,7 +21,6 @@ const { Content } = await render(project);
 <BaseLayout
   title={`${project.data.title} | Josh Finnie`}
   description={project.data.summary}
-  atUri={project.data.atUri}
 >
   <article class="prose prose-zinc dark:prose-invert max-w-none">
     <ProjectHero id={project.id} />

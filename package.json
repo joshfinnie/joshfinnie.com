@@ -17,7 +17,7 @@
     "format": "biome check --write .",
     "format:check": "biome check .",
     "lint": "biome lint .",
-    "publish:standard": "node scripts/publish_standard.js",
+    "sync:standard": "node scripts/sync-standard.js",
     "prepare": "husky"
   },
   "author": "Josh Finnie <josh@jfin.us>",

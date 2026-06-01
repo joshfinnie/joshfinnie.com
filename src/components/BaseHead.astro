@@ -8,7 +8,7 @@ interface Props {
   ogType?: string;
   publishedTime?: string;
   articleTags?: string[];
-  atUri?: string;
+  atUri?: string | undefined;
 }
 const { title, description, image, ogType = 'website', publishedTime, articleTags, atUri } = Astro.props;
 

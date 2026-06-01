@@ -27,7 +27,6 @@ const { Content } = await render(post);
   ogType="article"
   publishedTime={post.data.date}
   articleTags={post.data.tags}
-  atUri={post.data.atUri}
 >
   <BlogPost {...post.data} id={post.id}>
     <Content />

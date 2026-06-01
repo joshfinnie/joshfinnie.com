@@ -1,2 +1,3 @@
 pnpm format:check
 pnpm run check
+pnpm sync:standard && git add standard-mapping.json public/.well-known/site.standard.publication

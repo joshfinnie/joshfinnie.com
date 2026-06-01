@@ -2,9 +2,15 @@
 import Content from '@components/Content.astro';
 import Hero from '@components/Hero.astro';
 import BaseLayout from '@src/layouts/BaseLayout.astro';
+
+const atUri = 'at://did:plc:4po2afnpxgpdwpsr5fwgw3we/site.standard.document/3mnafniyvio2c';
 ---
 
-<BaseLayout title="Josh Finnie | Senior Software Engineer & Data Nerd" description="Senior software engineer and data nerd at People Data Labs. A decade of full-stack experience building reliable backend systems, with a focus on Rust, Go, Python, and JavaScript.">
+<BaseLayout
+  title="Josh Finnie | Senior Software Engineer & Data Nerd"
+  description="Senior software engineer and data nerd at People Data Labs. A decade of full-stack experience building reliable backend systems, with a focus on Rust, Go, Python, and JavaScript."
+  atUri={atUri}
+>
   <Hero />
   <Content />
 </BaseLayout>

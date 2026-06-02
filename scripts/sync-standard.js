@@ -126,7 +126,7 @@ async function sync() {
         console.log(`  Created: ${res.data.uri}`);
 
         // Save mapping incrementally to be safe
-        fs.writeFileSync(MAPPING_FILE, JSON.stringify(mapping, null, 2));
+        fs.writeFileSync(MAPPING_FILE, `${JSON.stringify(mapping, null, 2)}\n`);
 
         // Throttling
         await new Promise((r) => setTimeout(r, 200));
@@ -157,8 +157,10 @@ async function sync() {
       });
       mapping.documents['/'] = res.data.uri;
     }
-    fs.writeFileSync(MAPPING_FILE, JSON.stringify(mapping, null, 2));
   }
+
+  // Always save final mapping with trailing newline
+  fs.writeFileSync(MAPPING_FILE, `${JSON.stringify(mapping, null, 2)}\n`);
 
   console.log('\nSync complete! mapping saved to standard-mapping.json');
 }

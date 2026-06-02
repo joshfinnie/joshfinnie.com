@@ -4,6 +4,7 @@ import { AtpAgent } from '@atproto/api';
 import { config } from 'dotenv';
 import { glob } from 'glob';
 import matter from 'gray-matter';
+import kebabCase from 'lodash.kebabcase';
 
 config();
 
@@ -35,15 +36,15 @@ async function sync() {
   console.log(`Logged in as ${BSKY_HANDLE} (${did})`);
 
   // 1. Sync Publication Record
+  const pubRecord = {
+    $type: 'site.standard.publication',
+    name: "Josh Finnie's Blog",
+    description: 'Senior Software Engineer at People Data Labs. Writing about Rust, Go, data, and developer lifestyle.',
+    url: SITE_URL,
+  };
+
   if (!mapping.publicationUri) {
     console.log('Creating publication record...');
-    const pubRecord = {
-      $type: 'site.standard.publication',
-      name: "Josh Finnie's Website",
-      description: 'Senior software engineer and data nerd.',
-      url: SITE_URL,
-    };
-
     const res = await agent.com.atproto.repo.createRecord({
       repo: did,
       collection: 'site.standard.publication',
@@ -51,6 +52,16 @@ async function sync() {
     });
     mapping.publicationUri = res.data.uri;
     console.log(`Created Publication: ${mapping.publicationUri}`);
+  } else {
+    console.log('Updating existing publication record...');
+    const rkey = mapping.publicationUri.split('/').pop();
+    await agent.com.atproto.repo.putRecord({
+      repo: did,
+      collection: 'site.standard.publication',
+      rkey: rkey,
+      record: pubRecord,
+    });
+    console.log(`Updated Publication: ${mapping.publicationUri}`);
   }
 
   // Update .well-known file
@@ -58,6 +69,9 @@ async function sync() {
   fs.writeFileSync(WELL_KNOWN_FILE, mapping.publicationUri);
 
   // 2. Sync Document Records
+  const oldDocuments = mapping.documents;
+  mapping.documents = {};
+
   const contentFiles = [
     { pattern: 'src/collections/blog/**/*.{md,mdx}', basePath: '/blog' },
     { pattern: 'src/collections/projects/**/*.{md,mdx}', basePath: '/projects' },
@@ -70,11 +84,20 @@ async function sync() {
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data } = matter(fileContent);
 
-      const slug = path.basename(filePath, path.extname(filePath));
-      const isIndex = slug === 'index';
+      const rawSlug = path.basename(filePath, path.extname(filePath));
+      const slug = data.slug || kebabCase(rawSlug);
+      const isIndex = rawSlug === 'index';
       const webPath = isIndex ? '/' : `${group.basePath}/${slug}/`;
 
-      // Check if already mapped
+      // Check if already mapped (reuse old URI if slug changed but path matches)
+      // We check for the new webPath (dashes) or the old raw path (underscores)
+      const existingUri = oldDocuments[webPath] || oldDocuments[`${group.basePath}/${rawSlug}/`];
+
+      if (existingUri) {
+        mapping.documents[webPath] = existingUri;
+        continue;
+      }
+
       if (mapping.documents[webPath]) continue;
 
       // Handle pages without frontmatter titles (like index)
@@ -116,19 +139,24 @@ async function sync() {
   // Handle special case: index.astro (manually since it's not MDX)
   if (!mapping.documents['/']) {
     console.log('Syncing document: /');
-    const docRecord = {
-      $type: 'site.standard.document',
-      site: mapping.publicationUri,
-      title: 'Josh Finnie | Senior Software Engineer & Data Nerd',
-      publishedAt: new Date().toISOString(),
-      path: '/',
-    };
-    const res = await agent.com.atproto.repo.createRecord({
-      repo: did,
-      collection: 'site.standard.document',
-      record: docRecord,
-    });
-    mapping.documents['/'] = res.data.uri;
+    const existingUri = oldDocuments['/'];
+    if (existingUri) {
+      mapping.documents['/'] = existingUri;
+    } else {
+      const docRecord = {
+        $type: 'site.standard.document',
+        site: mapping.publicationUri,
+        title: 'Josh Finnie | Senior Software Engineer & Data Nerd',
+        publishedAt: new Date().toISOString(),
+        path: '/',
+      };
+      const res = await agent.com.atproto.repo.createRecord({
+        repo: did,
+        collection: 'site.standard.document',
+        record: docRecord,
+      });
+      mapping.documents['/'] = res.data.uri;
+    }
     fs.writeFileSync(MAPPING_FILE, JSON.stringify(mapping, null, 2));
   }
 

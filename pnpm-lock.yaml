@@ -103,8 +103,8 @@ importers:
         version: 8.0.16(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(yaml@2.9.0)
     devDependencies:
       '@atproto/api':
-        specifier: ^0.20.7
-        version: 0.20.7
+        specifier: ^0.20.9
+        version: 0.20.9
       '@biomejs/biome':
         specifier: ^2.4.16
         version: 2.4.16
@@ -195,8 +195,8 @@ packages:
   '@astrojs/yaml2ts@0.2.4':
     resolution: {integrity: sha512-8oddpOae35pJsXPQXhTkM0ypfKPskVsh2bCxRtbf7e+/Epw2nReakFYpLKjZMEr75CsoF203PMnCocpfz0s69A==}
 
-  '@atproto/api@0.20.7':
-    resolution: {integrity: sha512-7IrOFPwkgLZJrc2PDUsdJLZtbwuQ+sLm+HbyrtTNo5yT3hjbyOOMxZUiCXTurVl5zZFvZ0RIbmS7F0JdPQWl0A==}
+  '@atproto/api@0.20.9':
+    resolution: {integrity: sha512-Yuw7Ewn+yMJZ8GskbuvI3lKPW65rsXic1xjFA2Dpq6H8WjVYs6xNZ31bkwtTYDDwjKIZcJmAVbAVgdfjo4T9iw==}
     engines: {node: '>=22'}
 
   '@atproto/common-web@0.5.0':
@@ -3486,7 +3486,7 @@ snapshots:
     dependencies:
       yaml: 2.9.0
 
-  '@atproto/api@0.20.7':
+  '@atproto/api@0.20.9':
     dependencies:
       '@atproto/common-web': 0.5.0
       '@atproto/lexicon': 0.7.1

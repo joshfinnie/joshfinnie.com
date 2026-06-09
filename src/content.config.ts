@@ -17,6 +17,7 @@ const blog = defineCollection({
       description: z.string(),
       series: z.string().optional(),
       leftistOnly: z.boolean().optional(),
+      slug: z.string(),
     }),
 });
 

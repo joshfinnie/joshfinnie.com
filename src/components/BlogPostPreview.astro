@@ -13,12 +13,15 @@ const post = await getEntry('blog', id);
 if (!post) {
   throw new Error(`Blog post with id "${id}" not found`);
 }
+
+const postSlug = post.data.slug ?? post.id;
+const postPath = post.data.leftistOnly ? `/leftist/${postSlug}/` : `/blog/${postSlug}/`;
 ---
 
 <article class="my-5">
   {
     post && post.data.heroImage ? (
-      <a href={`/blog/${post.id}/`} title={post.data.title} class="prose prose-zinc dark:prose-invert">
+      <a href={postPath} title={post.data.title} class="prose prose-zinc dark:prose-invert">
         {post.data.heroImage && (
           <div class="relative">
             <CloudinaryImage
@@ -38,7 +41,7 @@ if (!post) {
     ) : (
       <header class="prose prose-zinc dark:prose-invert">
     {post && 
-        <a href={`/blog/${post.id}/`} title={post.data.title}>
+        <a href={postPath} title={post.data.title}>
           <h1 class="font-bold text-3xl mb-5" set:html={post.data.title} />
           <Date date={post.data.date} />
         </a>

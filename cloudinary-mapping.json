@@ -1,21 +1,11 @@
 {
-  "uploadedAt": "2026-05-20T16:03:46.519Z",
+  "uploadedAt": "2026-06-09T15:03:02.236Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/schools/ccsu.jpeg",
-      "publicId": "schools/ccsu",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1779293024/schools/ccsu.jpg"
-    },
-    {
-      "localPath": "src/assets/schools/uconn.jpeg",
-      "publicId": "schools/uconn",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1779293025/schools/uconn.jpg"
-    },
-    {
-      "localPath": "src/assets/schools/umgc.jpeg",
-      "publicId": "schools/umgc",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1779293026/schools/umgc.jpg"
+      "localPath": "src/assets/blog/people.jpg",
+      "publicId": "blog/people",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1781017380/blog/people.jpg"
     }
   ]
 }

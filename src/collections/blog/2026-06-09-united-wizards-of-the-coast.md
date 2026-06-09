@@ -32,24 +32,24 @@ They want guardrails on generative AI. This demand is particularly significant. 
 
 They also want remote work protections, pay transparency, and a consistent path for career advancement. Leadership has acknowledged a backlog of deserved promotions while only advancing a handful of people each year. Workers want a process they can trust, not one that depends on who you know.
 
-{/* vale write-good.Passive = NO */}
 ## How Management Responded
 
 Wizards of the Coast refused voluntary recognition. The union had requested recognition by May 1. Management let the deadline pass and forced an NLRB election instead.
 
+<!-- vale write-good.Passive = NO -->
 Before the vote on June 2, WotC president John Hight sent a letter to all staff. It is worth reading carefully, because it is a near-perfect example of how corporations talk to workers when they want to prevent organizing. The letter told employees that "your voice is strongest when it is heard directly. Not through a third party." It warned that collective bargaining "can be lengthy (465 days on average)" and that "all the benefits and perks you currently enjoy would be on the bargaining table." You could end up with more, the same, or less, the letter said. No union can guarantee anything.
 
-Every sentence in that letter was calibrated to make workers afraid. The "third party" framing treats the union as an outside intruder rather than what it actually is: the workers themselves, organized. The warnings about losing benefits are technically true in the narrowest sense and misleading in every practical one. No union negotiates contracts specifically to make workers worse off. The point of collective bargaining is power, and workers at the table with a contract have far more of it than workers who rely on management's goodwill.
+Hight calibrated every sentence in that letter to make workers afraid. The "third party" framing treats the union as an outside intruder rather than what it actually is: the workers themselves, organized. The warnings about losing benefits are technically true in the narrowest sense and misleading in every practical one. No union negotiates contracts specifically to make workers worse off. The point of collective bargaining is power, and workers at the table with a contract have far more of it than workers who rely on management's goodwill.
 
-The company's treatment of trans employees during the election process made its priorities even clearer. Wizards submitted a voter eligibility list to the NLRB using employees' legal names. That list was made visible on an internal company website, accessible to all employees. Trans workers discovered their deadnames had been exposed to their coworkers.
+The company's treatment of trans employees during the election process made its priorities even clearer. Wizards submitted a voter eligibility list to the NLRB using employees' legal names. Wizards posted that list on an internal company website, accessible to all employees. Trans workers discovered that Wizards had exposed their deadnames to their coworkers.
 
-The company apologized and removed the public list. Then, during in-person voting, they used the same legal-names list again. Trans employees were required to verbally confirm their legal names in front of NLRB representatives and other workers waiting in line.
+The company apologized and removed the public list. Then, during in-person voting, they used the same legal-names list again. The company required trans employees to verbally confirm their legal names in front of NLRB representatives and other workers waiting in line.
 
 Xib Vaine, a producer and one of the union's public voices, described the experience this way: "It's like if the company had sent my nude pictures to the entire company." The NLRB reportedly told the company it accepts preferred names. Wizards claimed a legal obligation that did not exist.
 
-Whether or not this was deliberate, the effect was clear. In the middle of a union election, trans workers were made to feel unsafe. That is the context in which the vote took place.
+Whether or not this was deliberate, the effect was clear. In the middle of a union election, Wizards made trans workers feel unsafe. That is the context in which the vote took place.
 
-{/* vale write-good.Passive = YES */}
+<!-- vale write-good.Passive = YES -->
 ## A Larger Moment
 
 UWOTC is part of something bigger. The CWA's CODE-CWA campaign has now organized more than 4,000 gaming industry workers. Paizo workers ratified their first contract in 2023. Raven Software became the first major video game union in the United States. Since 2022, studios under the Microsoft umbrella have organized steadily: Bethesda Game Studios, Blizzard Albany, the World of Warcraft team, the Overwatch team, Diablo developers, and more. In the same week UWOTC filed its petition, Psychonauts developer Double Fine Productions filed to unionize with CWA support as well.

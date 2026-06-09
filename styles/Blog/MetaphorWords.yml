@@ -1,0 +1,8 @@
+extends: existence
+message: "Avoid '%s' used metaphorically — it's a cliché."
+level: warning
+tokens:
+  - navigate
+  - landscape
+  - ecosystem
+  - leverage

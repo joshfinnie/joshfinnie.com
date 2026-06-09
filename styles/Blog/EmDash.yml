@@ -1,0 +1,6 @@
+extends: existence
+message: "No em dashes — rewrite the sentence."
+level: error
+raw:
+  - '\—'
+  - ' — '

@@ -1,3 +1,5 @@
 pnpm sync:standard && git add standard-mapping.json
 pnpm format && git add -u
 pnpm run check
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|mdx)$' || true)
+if [ -n "$STAGED" ]; then vale $STAGED; fi

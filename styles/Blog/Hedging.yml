@@ -1,0 +1,10 @@
+extends: existence
+message: "Avoid '%s' — be direct."
+level: warning
+tokens:
+  - it's worth noting
+  - it is worth noting
+  - it's important to understand
+  - it is important to understand
+  - it should be noted
+  - it can be said

@@ -1,0 +1,23 @@
+extends: existence
+message: "Avoid '%s' — it's lazy writing."
+link: https://github.com/joshfinnie/joshfinnie.com
+level: error
+tokens:
+  - dive into
+  - delve into
+  - in today's world
+  - in the modern era
+  - it's worth noting
+  - it is worth noting
+  - it's important to understand
+  - it is important to understand
+  - seamlessly
+  - robust
+  - cutting-edge
+  - game-changer
+  - game changer
+  - furthermore
+  - additionally
+  - moreover
+  - in conclusion
+  - in summary

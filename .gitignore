@@ -133,3 +133,4 @@ src/assets/
 # Local Netlify folder
 .netlify
 deno.lock
+styles/write-good/

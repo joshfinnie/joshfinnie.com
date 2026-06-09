@@ -1,0 +1,14 @@
+extends: substitution
+message: "'%s' is wordy — use '%s' instead."
+level: warning
+swap:
+  in order to: to
+  due to the fact that: because
+  at this point in time: now
+  in the event that: if
+  in spite of the fact that: although
+  a large number of: many
+  on a regular basis: regularly
+  for the purpose of: for
+  in the near future: soon
+  with the exception of: except

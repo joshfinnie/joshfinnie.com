@@ -17,6 +17,8 @@
     "format": "biome check --write .",
     "format:check": "biome check .",
     "lint": "biome lint .",
+    "lint:prose": "vale $(find src/collections/blog -name '*.md' -o -name '*.mdx' | grep -v -f .vale_ignore)",
+    "lint:all_prose": "vale src/collections/blog",
     "sync:standard": "node scripts/sync-standard.js",
     "prepare": "husky"
   },

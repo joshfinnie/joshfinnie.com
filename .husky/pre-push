@@ -1,3 +1,2 @@
-pnpm sync:standard
 git diff --exit-code standard-mapping.json || (echo '
 ⚠️ Standard mapping updated. Please commit the changes before pushing.' && exit 1)

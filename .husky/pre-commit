@@ -1,2 +1,3 @@
+pnpm sync:standard && git add standard-mapping.json
 pnpm format && git add -u
 pnpm run check

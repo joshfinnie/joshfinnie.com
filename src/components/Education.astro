@@ -8,10 +8,11 @@ interface Props {
   school: string;
   degree: string;
   endDate?: string;
+  gpa?: string;
   logo: string;
 }
 
-const { school, degree, endDate, logo } = Astro.props;
+const { school, degree, endDate, gpa, logo } = Astro.props;
 
 const publicId = `schools/${logo.replace(/\.(jpg|jpeg|png|gif)$/i, '')}`;
 ---
@@ -26,9 +27,10 @@ const publicId = `schools/${logo.replace(/\.(jpg|jpeg|png|gif)$/i, '')}`;
       <p class="text-xs text-zinc-500 dark:text-zinc-400">{degree}</p>
     </div>
   </div>
-  {endDate && (
-    <CardFooter class="text-xs text-zinc-400 dark:text-zinc-500 p-0">
-      {endDate}
+  {(endDate || gpa) && (
+    <CardFooter class="text-xs text-zinc-400 dark:text-zinc-500 p-0 flex gap-3">
+      {endDate && <span>{endDate}</span>}
+      {gpa && <span>GPA: {gpa}</span>}
     </CardFooter>
   )}
 </Card>

@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-06-09T15:03:02.236Z",
+  "uploadedAt": "2026-06-11T19:44:34.896Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/people.jpg",
-      "publicId": "blog/people",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1781017380/blog/people.jpg"
+      "localPath": "src/assets/blog/xteink-x4.jpg",
+      "publicId": "blog/xteink-x4",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1781207074/blog/xteink-x4.jpg"
     }
   ]
 }

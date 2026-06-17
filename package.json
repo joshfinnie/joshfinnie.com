@@ -31,7 +31,7 @@
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/ts-plugin": "^1.10.9",
-    "@babel/core": "^7.29.7",
+    "@babel/core": "^8.0.1",
     "@cloudinary/url-gen": "^1.22.0",
     "@fontsource/inter": "^5.2.8",
     "@tailwindcss/typography": "^0.5.20",

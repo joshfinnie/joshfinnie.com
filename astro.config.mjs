@@ -3,6 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
+import expressiveCode from 'astro-expressive-code';
 
 // Load environment variables
 import { config } from 'dotenv';
@@ -40,13 +41,22 @@ export default defineConfig({
   server: {
     port: 3333,
   },
-  integrations: [mdx(), sitemap(), alpinejs()],
-  markdown: {
-    shikiConfig: {
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark-dimmed',
+  integrations: [
+    // Expressive Code must run before mdx() so it can process code blocks.
+    expressiveCode({
+      themes: ['rose-pine-dawn', 'rose-pine-moon'],
+      // Dark mode is driven by the `.dark` class on <html> (Alpine toggle),
+      // not the OS preference, so disable the media query and scope the dark
+      // theme to `.dark`. The light theme stays the default (base) theme.
+      useDarkModeMediaQuery: false,
+      themeCssSelector: (theme) => (theme.type === 'dark' ? '.dark' : false),
+      styleOverrides: {
+        borderRadius: '0.375rem',
+        codePaddingBlock: '1.25rem',
       },
-    },
-  },
+    }),
+    mdx(),
+    sitemap(),
+    alpinejs(),
+  ],
 });

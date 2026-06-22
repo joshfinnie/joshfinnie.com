@@ -1,19 +1,25 @@
 <script>
-  const codeBlocks = document.querySelectorAll('pre code.language-mermaid');
-  if (codeBlocks.length > 0) {
+  // Match both the legacy Shiki output (`pre code.language-mermaid`) and the
+  // Expressive Code output (a `<pre data-language="mermaid">` inside a figure).
+  const blocks = document.querySelectorAll(
+    'pre code.language-mermaid, [data-language="mermaid"]',
+  );
+  if (blocks.length > 0) {
     const { default: mermaid } = await import('mermaid');
     const isDark = document.documentElement.classList.contains('dark');
     mermaid.initialize({
       startOnLoad: false,
       theme: isDark ? 'dark' : 'default',
     });
-    for (const block of codeBlocks) {
-      const pre = block.parentElement;
-      if (!pre) continue;
+    for (const block of blocks) {
+      const code = block.matches('code') ? block : block.querySelector('code');
+      const target =
+        block.closest('figure.expressive-code') ?? block.closest('pre') ?? block;
+      if (!code || !target) continue;
       const div = document.createElement('div');
       div.className = 'mermaid';
-      div.textContent = block.textContent ?? '';
-      pre.replaceWith(div);
+      div.textContent = code.textContent ?? '';
+      target.replaceWith(div);
     }
     await mermaid.run();
   }

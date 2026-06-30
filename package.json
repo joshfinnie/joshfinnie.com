@@ -45,7 +45,7 @@
     "canvaskit-wasm": "^0.41.1",
     "cloudinary": "^2.10.0",
     "date-fns": "^4.4.0",
-    "fs-extra": "^11.3.5",
+    "fs-extra": "^11.3.6",
     "github-slugger": "^2.0.0",
     "lodash.kebabcase": "^4.1.1",
     "mermaid": "^11.16.0",

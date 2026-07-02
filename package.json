@@ -27,7 +27,7 @@
   "dependencies": {
     "@astrojs/alpinejs": "^1.0.0",
     "@astrojs/check": "^0.9.9",
-    "@astrojs/mdx": "7.0.0",
+    "@astrojs/mdx": "7.0.1",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/ts-plugin": "^1.10.9",

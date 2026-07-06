@@ -9,14 +9,14 @@ const fullURL = url ? `https://unsplash.com/@${url}` : '';
 ---
 
 <p class="text-sm">
-  Photo by
+  Photo by{' '}
   {
     url ? (
       <>
         <a href={fullURL} rel="noopener nofollow noreferrer" target="_blank" class="underline">
           {name}
         </a>
-        on
+        {' '}on{' '}
         <a href="https://unsplash.com" rel="noopener nofollow noreferrer" target="_blank" class="underline">
           Unsplash
         </a>

@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-07-06T21:40:07.666Z",
+  "uploadedAt": "2026-07-06T21:50:58.751Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/biome.jpg",
-      "publicId": "blog/biome",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1783374006/blog/biome.jpg"
+      "localPath": "src/assets/blog/expressive.jpg",
+      "publicId": "blog/expressive",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1783374658/blog/expressive.jpg"
     }
   ]
 }

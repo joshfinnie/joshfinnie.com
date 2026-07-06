@@ -1,7 +1,11 @@
 import { getCollection } from 'astro:content';
 import { OGImageRoute } from 'astro-og-canvas';
 
-const entries = await getCollection('blog');
+// Match the publish gate in getPublishedPosts so future-dated posts don't leak
+// an OG image at a guessable URL before they go live.
+const entries = (await getCollection('blog')).filter(
+  (post) => post.data.draft !== true && Date.parse(post.data.date) <= Date.now()
+);
 
 const pages = Object.fromEntries([
   ...entries.map(({ data, id }) => [

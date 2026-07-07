@@ -11,7 +11,7 @@ import ConsultLayout from '@layouts/ConsultLayout.astro';
 
 <ConsultLayout
   title="Consulting | Josh Finnie"
-  description="Software consulting services by Josh Finnie — Fractional VP of Engineering, Zero-to-One Product Engineering, and AI Pipeline Optimization."
+  description="Software consulting services by Josh Finnie — Zero-to-One Product Engineering, AI Pipeline Optimization, and custom Astro + CMS websites you can edit yourself."
 >
   <!-- Hero -->
   <section class="py-12 text-center">
@@ -19,29 +19,61 @@ import ConsultLayout from '@layouts/ConsultLayout.astro';
       Let's Build Something Great Together
     </h1>
     <p class="mt-6 max-w-4xl mx-auto text-lg text-zinc-600 dark:text-zinc-400">
-      I'm Josh Finnie, a senior engineering leader with 15+ years shipping products, scaling teams, and taming complexity. Whether you need strategic leadership, a product built from scratch, or your AI pipeline de-slopped, I can help.
+      I'm Josh Finnie, a senior engineering leader with 15+ years shipping products, scaling teams, and taming complexity. Whether you need a product built from scratch, your AI pipeline de-slopped, or a fast, modern website you can actually maintain yourself, I can help.
     </p>
+  </section>
+
+  <!-- Featured Service: Website in a Box -->
+  <section class="py-6">
+    <div class="rounded-2xl ring-1 ring-border bg-gradient-to-br from-primary/5 to-transparent p-8 sm:p-10 lg:grid lg:grid-cols-5 lg:gap-10 lg:items-center">
+      <div class="lg:col-span-3">
+        <span class="inline-block rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary-foreground">
+          Most popular
+        </span>
+        <h2 class="mt-4 text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
+          Website in a Box
+        </h2>
+        <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+          A fast, modern site built on Astro and a CMS — the polish of Wix, with content you own and control. You get the speed and SEO of a hand-built site, plus an editor simple enough to update yourself.
+        </p>
+        <ul class="mt-6 grid gap-2 sm:grid-cols-2 list-disc list-outside pl-5 text-zinc-600 dark:text-zinc-400">
+          <li>Custom design on a blazing-fast Astro front end</li>
+          <li>Friendly CMS so you edit content without touching code</li>
+          <li>SEO, analytics, and contact forms wired up</li>
+          <li>Hosting and deployment handled for you</li>
+        </ul>
+      </div>
+      <div class="mt-8 lg:mt-0 lg:col-span-2 lg:text-right">
+        <p class="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Fixed build fee</p>
+        <p class="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-500">plus optional monthly care plan</p>
+        <div class="mt-6">
+          <Button variant="primary" size="lg" href="https://cal.com/joshfinnie/website" target="_blank" rel="noopener noreferrer">
+            Book a Build Call
+          </Button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Service Cards -->
   <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 py-12">
     <Card>
       <CardHeader>
-        <CardTitle>Zero-to-One Product Engineer</CardTitle>
-        <CardDescription>For pre-seed and seed-stage founders who need to go from idea to live product, fast.</CardDescription>
+        <CardTitle>WordPress → Jamstack Migration</CardTitle>
+        <CardDescription>Escape slow, fragile WordPress. Move to a fast, secure Astro + CMS stack with lower hosting costs.</CardDescription>
       </CardHeader>
-      <CardContent class="flex-1">
-        <ul class="list-disc list-inside space-y-2 text-zinc-600 dark:text-zinc-400">
-          <li>Full-stack product development</li>
-          <li>MVP scoping and technical architecture</li>
-          <li>Deployment, CI/CD, and infrastructure setup</li>
-          <li>Handoff-ready codebase with documentation</li>
+      <CardContent class="flex-1 flex flex-col">
+        <ul class="list-disc list-outside pl-5 space-y-2 text-zinc-600 dark:text-zinc-400">
+          <li>Content and media migrated, nothing left behind</li>
+          <li>Redirects mapped so your SEO carries over</li>
+          <li>Big gains in speed, security, and Core Web Vitals</li>
+          <li>No more plugin sprawl or surprise hosting bills</li>
         </ul>
-        <p class="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">Fixed-fee · 4-8 week engagements</p>
+        <p class="mt-auto pt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">Fixed-fee · scoped per site</p>
       </CardContent>
       <CardFooter>
-        <Button variant="primary" size="sm" href="https://cal.com/joshfinnie/zero-to-one" target="_blank" rel="noopener noreferrer">
-          Book a Scoping Call
+        <Button variant="primary" size="sm" href="https://cal.com/joshfinnie/migration" target="_blank" rel="noopener noreferrer">
+          Book a Migration Call
         </Button>
       </CardFooter>
     </Card>
@@ -51,14 +83,14 @@ import ConsultLayout from '@layouts/ConsultLayout.astro';
         <CardTitle>AI Slop Fixer</CardTitle>
         <CardDescription>Your LLM integration works... kind of. Let me make it actually good.</CardDescription>
       </CardHeader>
-      <CardContent class="flex-1">
-        <ul class="list-disc list-inside space-y-2 text-zinc-600 dark:text-zinc-400">
+      <CardContent class="flex-1 flex flex-col">
+        <ul class="list-disc list-outside pl-5 space-y-2 text-zinc-600 dark:text-zinc-400">
           <li>Prompt engineering and pipeline audit</li>
           <li>Cost and latency optimization</li>
           <li>Evaluation frameworks and quality metrics</li>
           <li>RAG, fine-tuning, and model selection guidance</li>
         </ul>
-        <p class="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">Value-based pricing</p>
+        <p class="mt-auto pt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">Value-based pricing</p>
       </CardContent>
       <CardFooter>
         <Button variant="primary" size="sm" href="https://cal.com/joshfinnie/ai-audit" target="_blank" rel="noopener noreferrer">
@@ -69,21 +101,21 @@ import ConsultLayout from '@layouts/ConsultLayout.astro';
 
     <Card>
       <CardHeader>
-        <CardTitle>Fractional VP of Engineering</CardTitle>
-        <CardDescription>For Series A/B startups that need seasoned engineering leadership without the full-time price tag.</CardDescription>
+        <CardTitle>Zero-to-One Product Engineer</CardTitle>
+        <CardDescription>For pre-seed and seed-stage founders who need to go from idea to live product, fast.</CardDescription>
       </CardHeader>
-      <CardContent class="flex-1">
-        <ul class="list-disc list-inside space-y-2 text-zinc-600 dark:text-zinc-400">
-          <li>Engineering process & team health audits</li>
-          <li>Hiring strategy and technical interview design</li>
-          <li>Mentorship for first-time engineering managers</li>
-          <li>Architecture reviews and roadmap planning</li>
+      <CardContent class="flex-1 flex flex-col">
+        <ul class="list-disc list-outside pl-5 space-y-2 text-zinc-600 dark:text-zinc-400">
+          <li>Full-stack product development</li>
+          <li>MVP scoping and technical architecture</li>
+          <li>Deployment, CI/CD, and infrastructure setup</li>
+          <li>Handoff-ready codebase with documentation</li>
         </ul>
-        <p class="mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">10 hrs/week retainer</p>
+        <p class="mt-auto pt-4 text-sm font-medium text-zinc-500 dark:text-zinc-500">Fixed-fee · 4-8 week engagements</p>
       </CardContent>
       <CardFooter>
-        <Button variant="primary" size="sm" href="https://cal.com/joshfinnie/fractional" target="_blank" rel="noopener noreferrer">
-          Book an Intro Call
+        <Button variant="primary" size="sm" href="https://cal.com/joshfinnie/zero-to-one" target="_blank" rel="noopener noreferrer">
+          Book a Scoping Call
         </Button>
       </CardFooter>
     </Card>

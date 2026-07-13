@@ -134,3 +134,4 @@ src/assets/
 .netlify
 deno.lock
 styles/write-good/
+.claude

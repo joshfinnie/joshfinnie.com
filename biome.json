@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.5.5/schema.json",
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-  "files": { "includes": ["**", "!**/*.css", "!!**/dist"], "ignoreUnknown": true },
+  "files": { "includes": ["**", "!**/*.css", "!!**/dist", "!.github/skills/**"], "ignoreUnknown": true },
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
@@ -14,7 +14,15 @@
     "bracketSpacing": true,
     "expand": "auto",
     "useEditorconfig": true,
-    "includes": ["**", "!**/dist/", "!src/components/ui/", "!src/content/**/*.md", "!src/content/**/*.mdx", "!**/*.css"]
+    "includes": [
+      "**",
+      "!**/dist/",
+      "!src/components/ui/",
+      "!src/content/**/*.md",
+      "!src/content/**/*.mdx",
+      "!**/*.css",
+      "!.github/skills/**"
+    ]
   },
   "linter": {
     "enabled": true,
@@ -95,7 +103,7 @@
         "useNamespaceKeyword": "error"
       }
     },
-    "includes": ["**", "!node_modules/*", "!dist/*", "!.astro/*"]
+    "includes": ["**", "!node_modules/*", "!dist/*", "!.astro/*", "!.github/skills/**"]
   },
   "javascript": {
     "formatter": {

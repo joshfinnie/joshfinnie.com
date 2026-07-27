@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "title": "Design System: joshfinnie.com",
+  "extensions": {
+    "colorMeta": {
+      "teal-accent": {
+        "role": "primary",
+        "displayName": "Teal Accent",
+        "canonical": "#14b8a6",
+        "tonalRamp": ["#042f2e", "#134e4a", "#115e59", "#0f766e", "#0d9488", "#14b8a6", "#2dd4bf", "#5eead4"]
+      },
+      "paper-white": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#09090b", "#18181b", "#27272a", "#3f3f46", "#52525b", "#a1a1aa", "#e4e4e7", "#ffffff"]
+      },
+      "ink-zinc-800": {
+        "role": "neutral",
+        "displayName": "Ink Zinc",
+        "canonical": "#27272a",
+        "tonalRamp": ["#09090b", "#18181b", "#27272a", "#3f3f46", "#52525b", "#71717a", "#a1a1aa", "#d4d4d8"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline and page h1s only." },
+      "body": { "displayName": "Body", "purpose": "Article prose via Tailwind Typography prose-zinc." }
+    },
+    "shadows": [
+      {
+        "name": "floating-chrome",
+        "value": "0 10px 15px -3px rgba(24,24,27,0.05), 0 1px 0 1px rgba(24,24,27,0.05)",
+        "purpose": "Avatar badge and pill nav only, the two elements that overlay scrolling content."
+      },
+      {
+        "name": "card-lift",
+        "value": "0 10px 15px -3px rgba(0,0,0,0.1)",
+        "purpose": "Contained content blocks such as post preview cards, always paired with a visible border."
+      }
+    ],
+    "breakpoints": [{ "name": "sm", "value": "640px" }, { "name": "lg", "value": "1024px" }]
+  },
+  "components": [
+    {
+      "name": "Pill Nav",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Floating desktop navigation pill with translucent, blurred background.",
+      "html": "<nav class=\"ds-pill-nav\"><ul><li><a href=\"#\">Blog</a></li><li><a href=\"#\">Projects</a></li><li><a href=\"#\">About</a></li></ul></nav>",
+      "css": ".ds-pill-nav ul { display: flex; border-radius: 9999px; background: rgba(255,255,255,0.9); padding-inline: 0.75rem; font-size: 0.875rem; font-weight: 500; color: #27272a; box-shadow: 0 10px 15px -3px rgba(24,24,27,0.05); border: 1px solid rgba(24,24,27,0.05); backdrop-filter: blur(4px); } .ds-pill-nav a { display: block; padding: 0.5rem 0.75rem; transition: color 0.15s; } .ds-pill-nav a:hover { color: #14b8a6; }"
+    },
+    {
+      "name": "Post Preview Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Post preview / content card with hairline border and card-lift shadow.",
+      "html": "<div class=\"ds-card\"><h2>Post title</h2><p>Excerpt text goes here.</p></div>",
+      "css": ".ds-card { padding: 16px; background: #ffffff; border: 1px solid #e4e4e7; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); } .ds-card h2 { font-weight: 700; font-size: 1.5rem; margin-bottom: 0.5rem; color: #27272a; } .ds-card p { color: #52525b; }"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Restrained primary action button, teal accent.",
+      "html": "<button class=\"ds-btn-primary\">Book a call</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem; border-radius: 6px; font-weight: 500; height: 2.75rem; padding: 0 1.25rem; background: #14b8a6; color: #ffffff; border: none; transition: background 0.15s; } .ds-btn-primary:hover { background: #0d9488; } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(20,184,166,0.5); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Default quiet action, no border or fill until hover.",
+      "html": "<button class=\"ds-btn-ghost\">Cancel</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 500; height: 2.75rem; padding: 0 1.25rem; background: transparent; color: #27272a; border: none; transition: background 0.15s; } .ds-btn-ghost:hover { background: #f4f4f5; }"
+    },
+    {
+      "name": "Tag List",
+      "kind": "chip",
+      "refersTo": "tags",
+      "description": "Inline comma-separated tag links, not chip-styled.",
+      "html": "<div class=\"ds-tags\"><a href=\"#\">rust</a>,<a href=\"#\">go</a>,<a href=\"#\">python</a></div>",
+      "css": ".ds-tags { display: flex; gap: 0.25rem; align-items: center; font-size: 1rem; } .ds-tags a { color: #14b8a6; text-decoration: underline; } .ds-tags a:hover { color: #0d9488; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Studio Desk",
+    "overview": "The site is a fixed, dependable frame around content that changes: a small circular avatar that shrinks into a floating pill nav as you scroll, a stable two-column-width reading measure, and a footer that never competes for attention. Everything is neutral zinc gray at rest; a single teal accent marks the handful of things that are interactive (links, hover states, one primary action). The mood is quiet and restrained, closer to a working engineer's notebook than a \"designed portfolio.\" Nothing decorative is allowed to compete with the words on the page.\n\nThe shadcn/starwind component kit that powers /consult and its Button/Card primitives originally shipped its own scaffolding colors (--primary: blue-700, --secondary: fuchsia-700) and a separate neutral-* gray family alongside the blog's hand-authored zinc-* utilities. Both have been consolidated: --primary/--primary-accent now resolve to teal-700 (light) / teal-700-teal-600 (dark), --secondary resolves to a neutral zinc-700/zinc-300 fill rather than fuchsia, and every --color-neutral-* token reference in global.css was repointed to the matching --color-zinc-* step. Semantic status tokens (info/success/warning/error) are unchanged; they signal state, not brand.",
+    "keyCharacteristics": [
+      "One accent color (teal), used sparingly, everywhere else neutral zinc",
+      "Depth reserved for floating chrome (avatar + pill nav); everything else is flat with hairline borders",
+      "Generous, centered reading column; no dense grid layouts",
+      "Sans-only type (Inter), no serif or display face",
+      "Rounded, soft geometry throughout (pill nav, rounded cards/images); no sharp corners"
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Teal is the only color that signals \"interactive.\" It appears on ≤5% of any given screen: link hovers, icon-hover states, and the primary button. It never appears as a background fill or large surface.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Gray Family Rule",
+        "body": "zinc is the project's only neutral scale. global.css's shadcn/starwind token layer (--background, --card, --muted, --border, etc.) resolves entirely to --color-zinc-* steps, matching the hand-authored zinc-* utilities used across the blog. Don't introduce gray-* or neutral-* utilities anywhere in the codebase.",
+        "section": "colors"
+      },
+      {
+        "name": "The Prose-First Rule",
+        "body": "Any block of running text (bio, article body, tag lists) goes through Tailwind Typography's prose prose-zinc dark:prose-invert rather than hand-set type scale utilities, so long-form content always inherits the same measure, leading, and link styling.",
+        "section": "typography"
+      },
+      {
+        "name": "The Floating-Chrome-Only Rule",
+        "body": "Shadows exist to signal \"this sits above the page,\" not \"this is a card.\" If an element doesn't scroll independently of the content beneath it, prefer a hairline border/ring over a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep teal as the only accent color; every other surface stays zinc neutral.",
+      "Do reserve shadow-lg for elements that float above scrolling content (avatar, pill nav); use a hairline border/ring everywhere else, even on cards.",
+      "Do route all long-form text through prose prose-zinc dark:prose-invert rather than hand-building a type scale.",
+      "Do keep the centered max-w-2xl/lg:max-w-5xl reading column consistent across header, content, and footer."
+    ],
+    "donts": [
+      "Don't reintroduce blue-700/fuchsia-700 (the original starwind defaults) as a second accent; --primary/--secondary are consolidated to teal/zinc and should stay that way.",
+      "Don't use gray-* or neutral-* color utilities; zinc is the project's one neutral scale.",
+      "Don't add a serif or second display typeface; Inter carries every role.",
+      "Don't build a multi-column grid layout for content; the site's rhythm is a single stacked column at every breakpoint observed so far.",
+      "Don't add decorative shadows to flat surfaces (body text blocks, plain sections); depth is reserved for the floating header chrome.",
+      "Don't use a thick colored border-l-4-style accent bar for callouts/quotes; use a hairline border + soft neutral fill (rounded-lg, border-zinc-200/700, bg-zinc-50/zinc-800/50), matching the card language."
+    ]
+  }
+}

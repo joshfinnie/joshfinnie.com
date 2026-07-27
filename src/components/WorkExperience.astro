@@ -21,7 +21,7 @@ const publicId = `companies/${logo.replace(/\.(jpg|jpeg|png|gif)$/i, '')}`;
 <Card class="flex flex-col items-start">
   <div class="flex items-center gap-4 mb-4">
     <div
-      class="relative flex h-10 w-10 items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
+      class="relative flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0"
     >
       <CloudinaryImage publicId={publicId} alt={company} width={40} height={40} class="h-10 w-10" />
     </div>
@@ -30,7 +30,7 @@ const publicId = `companies/${logo.replace(/\.(jpg|jpeg|png|gif)$/i, '')}`;
       <p class="text-xs text-zinc-500 dark:text-zinc-400">{role}</p>
     </div>
   </div>
-  <CardFooter class="text-xs text-zinc-400 dark:text-zinc-500 p-0">
+  <CardFooter class="text-xs text-zinc-500 dark:text-zinc-400 p-0">
     <time datetime={startDate}>
       {new Date(`${startDate}-15`).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
     </time>{" "}

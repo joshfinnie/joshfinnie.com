@@ -31,12 +31,7 @@
       {
         "name": "floating-chrome",
         "value": "0 10px 15px -3px rgba(24,24,27,0.05), 0 1px 0 1px rgba(24,24,27,0.05)",
-        "purpose": "Avatar badge and pill nav only, the two elements that overlay scrolling content."
-      },
-      {
-        "name": "card-lift",
-        "value": "0 10px 15px -3px rgba(0,0,0,0.1)",
-        "purpose": "Contained content blocks such as post preview cards, always paired with a visible border."
+        "purpose": "Avatar badge, pill nav, mobile nav dropdown, and the fixed Currently Reading widget — the only elements that overlay scrolling content rather than sitting in the document flow."
       }
     ],
     "breakpoints": [{ "name": "sm", "value": "640px" }, { "name": "lg", "value": "1024px" }]
@@ -54,9 +49,17 @@
       "name": "Post Preview Card",
       "kind": "card",
       "refersTo": "card",
-      "description": "Post preview / content card with hairline border and card-lift shadow.",
+      "description": "Post preview / content card with hairline border, no shadow (flat surfaces never carry shadows).",
       "html": "<div class=\"ds-card\"><h2>Post title</h2><p>Excerpt text goes here.</p></div>",
-      "css": ".ds-card { padding: 16px; background: #ffffff; border: 1px solid #e4e4e7; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); } .ds-card h2 { font-weight: 700; font-size: 1.5rem; margin-bottom: 0.5rem; color: #27272a; } .ds-card p { color: #52525b; }"
+      "css": ".ds-card { padding: 16px; background: #ffffff; border: 1px solid #e4e4e7; border-radius: 8px; } .ds-card h2 { font-weight: 700; font-size: 1.5rem; margin-bottom: 0.5rem; color: #27272a; } .ds-card p { color: #52525b; }"
+    },
+    {
+      "name": "Currently Reading Widget",
+      "kind": "custom",
+      "refersTo": "currently-reading",
+      "description": "Dismissible fixed corner widget; the one card-shaped surface that legitimately earns a shadow because it floats above scrolling content.",
+      "html": "<div class=\"ds-reading-widget\"><div class=\"ds-reading-widget__header\"><span>Currently Reading</span><button aria-label=\"Dismiss\">&times;</button></div><a href=\"#\" class=\"ds-reading-widget__book\"><img src=\"\" alt=\"\" /><span>Book title</span></a></div>",
+      "css": ".ds-reading-widget { position: fixed; bottom: 1rem; right: 1rem; width: 18rem; border-radius: 8px; background: #ffffff; border: 1px solid #e4e4e7; box-shadow: 0 10px 15px -3px rgba(24,24,27,0.05); padding: 1rem; } .ds-reading-widget__header { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #71717a; margin-bottom: 0.75rem; } .ds-reading-widget__header button { color: #a1a1aa; background: none; border: none; cursor: pointer; } .ds-reading-widget__header button:hover { color: #52525b; } .ds-reading-widget__book { display: flex; gap: 1rem; align-items: flex-start; } .ds-reading-widget__book img { width: 3rem; border-radius: 4px; aspect-ratio: 2/3; }"
     },
     {
       "name": "Primary Button",
@@ -88,7 +91,7 @@
     "overview": "The site is a fixed, dependable frame around content that changes: a small circular avatar that shrinks into a floating pill nav as you scroll, a stable two-column-width reading measure, and a footer that never competes for attention. Everything is neutral zinc gray at rest; a single teal accent marks the handful of things that are interactive (links, hover states, one primary action). The mood is quiet and restrained, closer to a working engineer's notebook than a \"designed portfolio.\" Nothing decorative is allowed to compete with the words on the page.\n\nThe shadcn/starwind component kit that powers /consult and its Button/Card primitives originally shipped its own scaffolding colors (--primary: blue-700, --secondary: fuchsia-700) and a separate neutral-* gray family alongside the blog's hand-authored zinc-* utilities. Both have been consolidated: --primary/--primary-accent now resolve to teal-700 (light) / teal-700-teal-600 (dark), --secondary resolves to a neutral zinc-700/zinc-300 fill rather than fuchsia, and every --color-neutral-* token reference in global.css was repointed to the matching --color-zinc-* step. Semantic status tokens (info/success/warning/error) are unchanged; they signal state, not brand.",
     "keyCharacteristics": [
       "One accent color (teal), used sparingly, everywhere else neutral zinc",
-      "Depth reserved for floating chrome (avatar + pill nav); everything else is flat with hairline borders",
+      "Depth reserved for floating chrome (avatar, pill nav, mobile dropdown, Currently Reading widget); everything else is flat with hairline borders",
       "Generous, centered reading column; no dense grid layouts",
       "Sans-only type (Inter), no serif or display face",
       "Rounded, soft geometry throughout (pill nav, rounded cards/images); no sharp corners"
@@ -111,13 +114,13 @@
       },
       {
         "name": "The Floating-Chrome-Only Rule",
-        "body": "Shadows exist to signal \"this sits above the page,\" not \"this is a card.\" If an element doesn't scroll independently of the content beneath it, prefer a hairline border/ring over a shadow.",
+        "body": "Shadows exist to signal \"this sits above the page,\" not \"this is a card.\" If an element doesn't scroll independently of the content beneath it (i.e. it isn't fixed/sticky and overlaid), prefer a hairline border/ring over a shadow.",
         "section": "elevation"
       }
     ],
     "dos": [
       "Do keep teal as the only accent color; every other surface stays zinc neutral.",
-      "Do reserve shadow-lg for elements that float above scrolling content (avatar, pill nav); use a hairline border/ring everywhere else, even on cards.",
+      "Do reserve shadow-lg for elements that float above scrolling content (avatar, pill nav, mobile nav dropdown, Currently Reading widget); use a hairline border/ring everywhere else, even on cards.",
       "Do route all long-form text through prose prose-zinc dark:prose-invert rather than hand-building a type scale.",
       "Do keep the centered max-w-2xl/lg:max-w-5xl reading column consistent across header, content, and footer."
     ],

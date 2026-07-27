@@ -117,14 +117,13 @@ Vertical rhythm is generous: `mt-32` between the last content block and the foot
 
 ## Elevation & Depth
 
-Flat by default. The overwhelming majority of surfaces (cards, footer, prose blocks) use a 1px hairline border or `ring-1` instead of a shadow. Depth is reserved for the one piece of UI that physically floats over content: the avatar chip and the pill nav, both of which carry `shadow-lg shadow-zinc-800/5` plus a `ring-1 ring-zinc-900/5` and a `backdrop-blur-sm` frosted-glass treatment as they sit above scrolling content.
+Flat by default. Cards, footer, and prose blocks use a 1px hairline border or `ring-1` instead of a shadow — `Card.astro`, `WorkExperience.astro`, `Education.astro`, and the book cover in the CurrentlyReading widget all carry only a border/ring, no shadow. Depth is reserved for UI that physically floats over content: the avatar chip, the pill nav, the mobile nav dropdown, and the dismissible "Currently Reading" corner widget, all of which carry `shadow-lg shadow-zinc-800/5` plus a `ring-1 ring-zinc-900/5` and (for the avatar/pill nav) a `backdrop-blur-sm` frosted-glass treatment as they sit above scrolling content.
 
 ### Shadow Vocabulary
-- **Floating chrome** (`shadow-lg shadow-zinc-800/5` + `ring-1 ring-zinc-900/5` + `backdrop-blur-sm`): avatar badge and pill nav only, the two elements that overlay scrolling content.
-- **Card lift** (`shadow-lg` + `border`, e.g. the wrapped `Card.astro`): used sparingly for a small number of contained content blocks (post preview cards); still paired with a visible border rather than shadow alone.
+- **Floating chrome** (`shadow-lg shadow-zinc-800/5` + `ring-1 ring-zinc-900/5`, `backdrop-blur-sm` where the surface is translucent): avatar badge, pill nav, mobile nav dropdown, and the fixed-position "Currently Reading" widget — the only elements that overlay scrolling content rather than sitting in the document flow.
 
 ### Named Rules
-**The Floating-Chrome-Only Rule.** Shadows exist to signal "this sits above the page," not "this is a card." If an element doesn't scroll independently of the content beneath it, prefer a hairline border/ring over a shadow.
+**The Floating-Chrome-Only Rule.** Shadows exist to signal "this sits above the page," not "this is a card." If an element doesn't scroll independently of the content beneath it (i.e. it isn't `fixed`/`sticky` and overlaid), prefer a hairline border/ring over a shadow.
 
 ## Shapes
 
@@ -158,11 +157,14 @@ Soft and rounded throughout, with radius increasing with a component's visual we
 ### Footer
 - **Style:** single hairline top border (zinc-100 / zinc-700 at 40% opacity in dark), centered on small screens, split into link row + copyright row on `sm:` and up. Links use the same teal hover treatment as nav.
 
+### Currently Reading (signature component)
+A dismissible corner widget (`CurrentlyReading.astro`), `fixed bottom-4 right-4`, that surfaces the book Josh is currently reading without competing with the primary content column. It earns the Floating-Chrome-Only shadow treatment because it genuinely overlays scrolling content. Appears after a 600ms delay (avoids a jarring instant pop-in), dismissible via an `×` button, and remembers the dismissal per-book in `localStorage` so it reappears when the book changes rather than being gone forever.
+
 ## Do's and Don'ts
 
 ### Do:
 - **Do** keep teal as the only accent color; every other surface stays zinc neutral.
-- **Do** reserve `shadow-lg` for elements that float above scrolling content (avatar, pill nav); use a hairline border/ring everywhere else, even on cards.
+- **Do** reserve `shadow-lg` for elements that float above scrolling content (avatar, pill nav, mobile nav dropdown, the Currently Reading widget); use a hairline border/ring everywhere else, even on cards.
 - **Do** route all long-form text through `prose prose-zinc dark:prose-invert` rather than hand-building a type scale.
 - **Do** keep the centered `max-w-2xl`/`lg:max-w-5xl` reading column consistent across header, content, and footer.
 

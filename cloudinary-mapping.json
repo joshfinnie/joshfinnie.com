@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-07-15T13:39:14.544Z",
+  "uploadedAt": "2026-07-27T21:30:39.767Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/college.jpg",
-      "publicId": "blog/college",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1784122753/blog/college.jpg"
+      "localPath": "src/assets/blog/cleaning.jpg",
+      "publicId": "blog/cleaning",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1785187838/blog/cleaning.jpg"
     }
   ]
 }

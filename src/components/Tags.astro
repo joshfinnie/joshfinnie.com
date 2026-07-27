@@ -4,12 +4,14 @@ import BCTags from '@icons/mc_tag_line.svg';
 const { tags } = Astro.props;
 ---
 
-<div class="flex gap-1 items-center prose prose-zinc dark:prose-invert">
-  <BCTags style="display:inline-block" />
+<div class="flex gap-1 items-center text-sm text-zinc-500 dark:text-zinc-400">
+  <BCTags style="display:inline-block" class="h-4 w-4" aria-hidden="true" />
   {
     tags.map((tag: string, idx: number) => (
       <Fragment key={tag}>
-        <a href={`/tags/${tag}/`}>{tag.trim()}</a>
+        <a href={`/tags/${tag}/`} class="hover:text-teal-500 dark:hover:text-teal-400 transition">
+          {tag.trim()}
+        </a>
         {idx !== tags.length - 1 ? "," : ""}
       </Fragment>
     ))

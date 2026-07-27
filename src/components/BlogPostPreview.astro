@@ -1,8 +1,12 @@
 ---
 import { getEntry } from 'astro:content';
+import Card from './Card.astro';
+import CardContent from './CardContent.astro';
+import CardFooter from './CardFooter.astro';
+import CardTitle from './CardTitle.astro';
 import CloudinaryImage from './CloudinaryImage.astro';
-
 import Date from './Date.astro';
+import Tags from './Tags.astro';
 
 interface Props {
   id: string;
@@ -19,34 +23,42 @@ const postPath = post.data.leftistOnly ? `/leftist/${postSlug}/` : `/blog/${post
 ---
 
 <article class="my-5">
-  {
-    post && post.data.heroImage ? (
-      <a href={postPath} title={post.data.title} class="prose prose-zinc dark:prose-invert">
-        {post.data.heroImage && (
-          <div class="relative">
-            <CloudinaryImage
-              publicId={post.data.heroImage}
-              alt={post.data.title}
-              width={1024}
-              height={576}
-              class="rounded-md relative"
-            />
-            <div class="absolute rounded-lg bottom-0 left-0 p-3 m-3 prose prose-zinc dark:prose-invert bg-zinc-200 dark:bg-zinc-800">
-              <Date date={post.data.date} />
-              <h1 class="font-bold text-3xl -mb-1" set:html={post.data.title} />
-            </div>
-          </div>
-        )}
-      </a>
-    ) : (
-      <header class="prose prose-zinc dark:prose-invert">
-    {post && 
-        <a href={postPath} title={post.data.title}>
-          <h1 class="font-bold text-3xl mb-5" set:html={post.data.title} />
-          <Date date={post.data.date} />
+  <Card class="relative flex flex-col items-start">
+    {
+      post.data.heroImage && (
+        <a href={postPath} tabindex="-1" aria-hidden="true" class="block w-full">
+          <CloudinaryImage
+            publicId={post.data.heroImage}
+            alt=""
+            width={1024}
+            height={576}
+            class="rounded-t-lg w-full"
+          />
         </a>
+      )
     }
-      </header>
-    )
-  }
+    <CardTitle class="flex flex-col gap-1 text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 p-6 pb-0">
+      <h2 class="text-xl font-bold">
+        <a href={postPath} set:html={post.data.title} />
+      </h2>
+      <Date date={post.data.date} />
+    </CardTitle>
+    <CardContent>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">{post.data.description}</p>
+    </CardContent>
+    <CardFooter class="flex items-center justify-between gap-4 flex-wrap">
+      {post.data.tags.length > 0 && <Tags tags={post.data.tags.slice(0, 3)} />}
+      <a
+        href={postPath}
+        tabindex="-1"
+        aria-hidden="true"
+        class="flex items-center gap-1 text-sm font-medium text-teal-500 dark:text-teal-400 ml-auto"
+      >
+        Read article
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-current">
+          <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </CardFooter>
+  </Card>
 </article>

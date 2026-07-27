@@ -24,7 +24,26 @@ const { page }: { page: PageProps } = Astro.props;
 ---
 
 <BaseLayout title="Blog | Josh Finnie" description="Articles on software engineering, Rust, Go, Python, JavaScript, and data by Josh Finnie.">
-  <section id="main-content">
+  <div class="flex flex-col gap-2 mb-8">
+    <h1 class="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">Blog</h1>
+    <p class="text-base text-zinc-600 dark:text-zinc-400">
+      Writing on Rust, Go, Python, and JavaScript, plus the occasional detour. Browse by{" "}
+      <a
+        href="/tags/"
+        class="text-teal-500 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300 transition"
+      >
+        tag
+      </a>{" "}
+      or{" "}
+      <a
+        href="/series/"
+        class="text-teal-500 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300 transition"
+      >
+        series
+      </a>.
+    </p>
+  </div>
+  <section id="main-content" aria-label="Blog posts">
     {
       page.data.map((p) => (
         <Fragment key={p.id}>

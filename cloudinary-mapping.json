@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-07-27T21:30:39.767Z",
+  "uploadedAt": "2026-07-30T16:18:39.975Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/cleaning.jpg",
-      "publicId": "blog/cleaning",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1785187838/blog/cleaning.jpg"
+      "localPath": "src/assets/projects/bookledge.png",
+      "publicId": "projects/bookledge",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1785428319/projects/bookledge.png"
     }
   ]
 }

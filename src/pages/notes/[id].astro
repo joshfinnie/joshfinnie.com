@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import Note from '@components/Note.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getPublishedNotes } from '@lib/utils';
+
+type Props = CollectionEntry<'note'>;
+
+export async function getStaticPaths() {
+  const notes = await getPublishedNotes();
+  return notes.map((note) => ({
+    params: { id: note.id },
+    props: note,
+  }));
+}
+
+const note = Astro.props;
+const { Content } = await render(note);
+---
+
+<BaseLayout
+  title={`${note.data.title} | Josh Finnie`}
+  description={note.data.description}
+  collection="note"
+  id={note.id}
+  ogType="article"
+  publishedTime={note.data.date}
+  articleTags={note.data.tags}
+>
+  <Note id={note.id}>
+    <Content />
+  </Note>
+</BaseLayout>

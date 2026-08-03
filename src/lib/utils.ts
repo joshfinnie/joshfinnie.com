@@ -26,6 +26,20 @@ export async function getLeftistPosts() {
     .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 }
 
+// Notes follow the same publish gate as posts: future-dated notes stay hidden
+// until the first build on or after their date.
+export async function getPublishedNotes() {
+  const allNotes = await getCollection('note');
+  return allNotes
+    .filter((note) => note.data.draft !== true && Date.parse(note.data.date) <= Date.now())
+    .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
+}
+
+export async function getNoteTags() {
+  const notes = await getPublishedNotes();
+  return [...new Set(notes.flatMap((note) => note.data.tags))];
+}
+
 export async function getTags() {
   const posts = await getPublishedPosts();
   const allTags = posts.flatMap((post) => post.data.tags);

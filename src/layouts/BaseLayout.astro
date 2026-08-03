@@ -21,6 +21,8 @@ const atUri = (mapping.documents as Record<string, string>)[normalizedPath];
 var imageUrl;
 if (collection == 'blog') {
   imageUrl = `https://www.joshfinnie.com/blog/og/${id}.png`;
+} else if (collection == 'note') {
+  imageUrl = `https://www.joshfinnie.com/notes/og/${id}.png`;
 } else {
   imageUrl = 'https://www.joshfinnie.com/blog/og/default.png';
 }

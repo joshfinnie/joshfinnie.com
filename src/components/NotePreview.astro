@@ -1,0 +1,47 @@
+---
+import { getEntry } from 'astro:content';
+import Card from './Card.astro';
+import CardContent from './CardContent.astro';
+import CardFooter from './CardFooter.astro';
+import CardTitle from './CardTitle.astro';
+import NoteTags from './NoteTags.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const note = await getEntry('note', id);
+if (!note) {
+  throw new Error(`Note with id "${id}" not found`);
+}
+
+const notePath = `/notes/${note.id}/`;
+---
+
+<article class="my-5">
+  <Card class="relative flex flex-col items-start">
+    <CardTitle class="flex flex-col gap-1 text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100 p-6 pb-0">
+      <h2 class="text-xl font-bold">
+        <a href={notePath} set:html={note.data.title} />
+      </h2>
+    </CardTitle>
+    <CardContent>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400">{note.data.description}</p>
+    </CardContent>
+    <CardFooter class="flex items-center justify-between gap-4 flex-wrap">
+      <NoteTags tags={note.data.tags.slice(0, 3)} />
+      <a
+        href={notePath}
+        tabindex="-1"
+        aria-hidden="true"
+        class="flex items-center gap-1 text-sm font-medium text-teal-500 dark:text-teal-400 ml-auto"
+      >
+        Read note
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-current">
+          <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </CardFooter>
+  </Card>
+</article>

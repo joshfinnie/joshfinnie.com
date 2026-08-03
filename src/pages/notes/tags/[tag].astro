@@ -1,0 +1,42 @@
+---
+import NotePreview from '@components/NotePreview.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getNoteTags, getPublishedNotes } from '@lib/utils';
+
+export async function getStaticPaths() {
+  const notes = await getPublishedNotes();
+  const tags = await getNoteTags();
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { notes: notes.filter((note) => note.data.tags.includes(tag)) },
+  }));
+}
+
+const { tag } = Astro.params;
+const { notes } = Astro.props;
+---
+
+<BaseLayout title={`Notes tagged "${tag}" | Josh Finnie`} description={`Notes by Josh Finnie tagged "${tag}".`}>
+  <div class="flex flex-col gap-2 mb-8">
+    <h1 class="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
+      Notes tagged &ldquo;{tag}&rdquo;
+    </h1>
+    <p class="text-base text-zinc-600 dark:text-zinc-400">
+      {notes.length}{" "}
+      {notes.length === 1 ? "note" : "notes"}.{" "}
+      <a href="/notes/" class="text-teal-500 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300 transition">
+        All notes
+      </a>
+    </p>
+  </div>
+  <section id="main-content" aria-label={`Notes tagged ${tag}`}>
+    {
+      notes.map((note) => (
+        <Fragment key={note.id}>
+          <NotePreview id={note.id} />
+        </Fragment>
+      ))
+    }
+  </section>
+</BaseLayout>

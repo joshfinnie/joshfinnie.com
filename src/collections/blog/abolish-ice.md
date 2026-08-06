@@ -5,12 +5,14 @@ tags:
   - "politics"
   - "immigration"
   - "civics"
+  - "leftist"
 slug: "abolish-ice"
 heroImage: "blog/abolish-ice"
 unsplash: "Wesley Mc Lachlan"
 unsplashURL: "wesmac5"
 description: "Immigration and Customs Enforcement is not an old, neutral institution. Congress created it in 2003, gave it almost no independent oversight, and has watched it spend two decades expanding its own reach. Here is the history, and the case for abolishing it."
 draft: false
+leftistOnly: true
 ---
 
 I want to write about something outside my usual lane. I spend most of my time on this blog writing about code, but I live in this country too, and I have opinions about how it treats people. This is one of them. The country should abolish Immigration and Customs Enforcement, ICE. Not reform it, not defund it a little, abolish it. To explain why, I want to walk through where the agency actually came from, because I think most people, myself included until I looked into it, assume ICE is older and more essential than it is.

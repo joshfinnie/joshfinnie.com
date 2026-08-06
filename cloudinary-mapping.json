@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-08-06T16:22:28.450Z",
+  "uploadedAt": "2026-08-06T22:40:53.266Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/abolish-ice.jpg",
-      "publicId": "blog/abolish-ice",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1786033347/blog/abolish-ice.jpg"
+      "localPath": "src/assets/blog/switching-to-herdr.jpg",
+      "publicId": "blog/switching-to-herdr",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1786056052/blog/switching-to-herdr.jpg"
     }
   ]
 }

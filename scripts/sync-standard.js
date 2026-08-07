@@ -87,7 +87,8 @@ async function sync() {
       const rawSlug = path.basename(filePath, path.extname(filePath));
       const slug = data.slug || kebabCase(rawSlug);
       const isIndex = rawSlug === 'index';
-      const webPath = isIndex ? '/' : `${group.basePath}/${slug}/`;
+      const basePath = data.leftistOnly === true ? '/leftist' : group.basePath;
+      const webPath = isIndex ? '/' : `${basePath}/${slug}/`;
 
       // Check if already mapped (reuse old URI if slug changed but path matches)
       // We check for the new webPath (dashes) or the old raw path (underscores)

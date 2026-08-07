@@ -5,6 +5,7 @@ import { getCloudinaryImageUrl } from '../lib/cloudinary';
 import AlsoLike from './AlsoLike.astro';
 import HeroImage from './BlogPostHeroImage.astro';
 import Date from './Date.astro';
+import LeftistCornerBadge from './LeftistCornerBadge.astro';
 import MermaidInit from './MermaidInit.astro';
 import SeriesTableOfContents from './SeriesTableOfContents.astro';
 import Tag from './Tags.astro';
@@ -23,6 +24,7 @@ if (!post) {
 const tags = post.data.tags ?? [];
 const date = post.data.date ?? undefined;
 const series = post.data.series ?? undefined;
+const isLeftist = post.data.leftistOnly === true;
 
 const imageURL = post.data.heroImage ? getCloudinaryImageUrl(post.data.heroImage, { width: 1024 }) : '';
 
@@ -54,12 +56,13 @@ let schema = JSON.stringify({
       <Tag tags={tags} />
     </div>
   </header>
+  {isLeftist && <LeftistCornerBadge />}
   {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
   <main class="prose dark:prose-invert prose-zinc max-w-none" role="main">
     <slot />
   </main>
   {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
-  <AlsoLike tags={post.data.tags} id={id} />
+  <AlsoLike tags={post.data.tags} id={id} isLeftist={isLeftist} />
   <MermaidInit />
   <script type="application/ld+json" set:html={schema} is:inline />
 </article>

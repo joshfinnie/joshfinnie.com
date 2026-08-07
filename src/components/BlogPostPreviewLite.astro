@@ -13,10 +13,12 @@ const post = await getEntry('blog', id);
 if (!post) {
   throw new Error(`Blog post with id "${id}" not found`);
 }
+
+const href = post.data.leftistOnly === true ? `/leftist/${post.data.slug ?? id}/` : `/blog/${id}/`;
 ---
 
 {post && (
-  <a href={`/blog/${id}/`} class="group flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-shadow duration-200 no-underline">
+  <a href={href} class="group flex flex-col rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 shadow-sm hover:shadow-md transition-shadow duration-200 no-underline">
     {post.data.heroImage ? (
       <div class="h-32 overflow-hidden bg-zinc-100 dark:bg-zinc-900">
         <CloudinaryImage

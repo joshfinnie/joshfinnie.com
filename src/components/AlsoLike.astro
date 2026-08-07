@@ -1,31 +1,43 @@
 ---
-import { getPublishedPosts } from '@lib/utils';
+import { getLeftistPosts, getPublishedPosts } from '@lib/utils';
 
 import BlogPostPreviewLite from './BlogPostPreviewLite.astro';
 
 interface Props {
   id: string;
   tags: string[];
+  isLeftist?: boolean;
 }
 
-const { id, tags } = Astro.props;
-const allPosts = await getPublishedPosts();
+const { id, tags, isLeftist = false } = Astro.props;
 
-const excludedTags: string[] = ['blog', 'news', 'announcement'];
-const finalTags = tags.filter((tag: string) => !excludedTags.includes(tag));
-const finalTagSet = new Set(finalTags);
-const overlappingTags = tags.filter((tag) => finalTagSet.has(tag));
+let posts: Awaited<ReturnType<typeof getPublishedPosts>> = [];
 
-const posts = allPosts
-  .filter((post) => post.id != id && post.data.tags?.filter((tag: string) => finalTags.includes(tag)).length > 0)
-  .map((post) => ({
-    ...post,
-    sameTagCount: post.data.tags.filter((tag: string) => overlappingTags.includes(tag)).length,
-  }))
-  .sort((a, b) => {
-    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
-  })
-  .slice(0, 5);
+if (isLeftist) {
+  // Leftist posts only recirculate to other leftist posts, walled off from the main blog.
+  posts = (await getLeftistPosts())
+    .filter((post) => post.id != id)
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+    .slice(0, 5);
+} else {
+  const allPosts = await getPublishedPosts();
+
+  const excludedTags: string[] = ['blog', 'news', 'announcement'];
+  const finalTags = tags.filter((tag: string) => !excludedTags.includes(tag));
+  const finalTagSet = new Set(finalTags);
+  const overlappingTags = tags.filter((tag) => finalTagSet.has(tag));
+
+  posts = allPosts
+    .filter((post) => post.id != id && post.data.tags?.filter((tag: string) => finalTags.includes(tag)).length > 0)
+    .map((post) => ({
+      ...post,
+      sameTagCount: post.data.tags.filter((tag: string) => overlappingTags.includes(tag)).length,
+    }))
+    .sort((a, b) => {
+      return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+    })
+    .slice(0, 5);
+}
 ---
 
 {

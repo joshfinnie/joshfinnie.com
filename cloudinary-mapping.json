@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-08-06T22:40:53.266Z",
+  "uploadedAt": "2026-08-07T15:17:55.853Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/switching-to-herdr.jpg",
-      "publicId": "blog/switching-to-herdr",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1786056052/blog/switching-to-herdr.jpg"
+      "localPath": "src/assets/blog/starlink-rural-broadband-grift.jpg",
+      "publicId": "blog/starlink-rural-broadband-grift",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1786115875/blog/starlink-rural-broadband-grift.jpg"
     }
   ]
 }

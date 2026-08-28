@@ -1,12 +1,13 @@
 import alpinejs from '@astrojs/alpinejs';
+import { unified } from '@astrojs/markdown-remark';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
 import expressiveCode from 'astro-expressive-code';
-
 // Load environment variables
 import { config } from 'dotenv';
+import { remarkAlert } from 'remark-github-blockquote-alert';
 
 config();
 
@@ -35,6 +36,11 @@ export default defineConfig({
   },
   build: {
     inlineStylesheets: 'always',
+  },
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkAlert],
+    }),
   },
   site: 'https://www.joshfinnie.com/',
   trailingSlash: 'always',

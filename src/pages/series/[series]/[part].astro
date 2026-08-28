@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import SeriesPartPost from '@components/SeriesPartPost.astro';
+import ArticleStructuredData from '@components/structured-data/ArticleStructuredData.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getPublishedSeriesParts } from '@lib/utils';
 
@@ -28,6 +29,16 @@ const seriesDisplayName = part.data.series
   publishedTime={part.data.date}
   articleTags={part.data.tags}
 >
+  <ArticleStructuredData
+    slot="structured-data"
+    headline={part.data.title}
+    description={part.data.description}
+    date={part.data.date}
+    url={`https://www.joshfinnie.com/series/${part.data.series}/${part.data.slug ?? part.id}/`}
+    tags={part.data.tags}
+    articleType="TechArticle"
+    isPartOf={`https://www.joshfinnie.com/blog/${part.data.series}/`}
+  />
   <SeriesPartPost id={part.id} title={part.data.title} series={part.data.series}>
     <Content />
   </SeriesPartPost>

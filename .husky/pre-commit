@@ -1,6 +1,8 @@
 STAGED_CONTENT=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^src/collections/(blog|projects)/.*\.(md|mdx)$|^src/pages/[^/]+\.(md|mdx)$' || true)
 if [ -n "$STAGED_CONTENT" ]; then pnpm sync:standard && git add standard-mapping.json; fi
-pnpm format && git add -u
+pnpm format
+CACHED=$(git diff --cached --name-only --diff-filter=ACMR)
+if [ -n "$CACHED" ]; then echo "$CACHED" | xargs git add --; fi
 pnpm run check
 STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|mdx)$' || true)
 if [ -n "$STAGED" ]; then vale $STAGED; fi

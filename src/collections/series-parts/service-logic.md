@@ -1,7 +1,7 @@
 ---
 title: "Service and Domain Logic"
-draft: true
-date: "2026-08-28"
+draft: false
+date: "2026-08-31"
 tags:
   - "rust"
   - "axum"

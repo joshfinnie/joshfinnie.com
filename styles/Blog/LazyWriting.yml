@@ -2,6 +2,7 @@ extends: existence
 message: "Avoid '%s' — it's lazy writing."
 link: https://github.com/joshfinnie/joshfinnie.com
 level: error
+ignorecase: true
 tokens:
   - dive into
   - delve into

@@ -1,6 +1,7 @@
 extends: existence
 message: "Avoid '%s' — be direct."
 level: warning
+ignorecase: true
 tokens:
   - it's worth noting
   - it is worth noting

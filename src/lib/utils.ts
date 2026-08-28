@@ -1,8 +1,9 @@
 import { getCollection } from 'astro:content';
 
 // `draft: true` is only enforced in production builds, so drafts render on
-// the local dev server for preview but never ship.
-const isDev = import.meta.env.DEV;
+// the local dev server and on Netlify's PR deploy previews / branch deploys,
+// but never on the production build Netlify runs for `main`.
+const isDev = import.meta.env.DEV || ['deploy-preview', 'branch-deploy'].includes(process.env.CONTEXT ?? '');
 
 // A post is only live once its `date` has arrived. Future-dated posts are held
 // back until the first build on or after that date, so scheduling a post is just

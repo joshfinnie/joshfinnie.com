@@ -1,0 +1,33 @@
+---
+import MermaidInit from './MermaidInit.astro';
+import SeriesHubSidebar from './SeriesHubSidebar.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  series: string;
+}
+
+const { id, title, series } = Astro.props;
+---
+
+<article>
+  <header>
+    <div id="main-content" class="flex flex-col items-center mb-10 max-w-none prose prose-zinc dark:prose-invert">
+      <a
+        href={`/blog/${series}/`}
+        class="self-start text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 no-underline hover:underline"
+      >
+        &larr; Back to Overview
+      </a>
+      <h1 class="font-bold text-4xl mb-5 mt-5" set:html={title} />
+    </div>
+  </header>
+  <div class="flex flex-col gap-8 lg:grid lg:grid-cols-[240px_1fr] lg:gap-10 lg:items-start">
+    <SeriesHubSidebar seriesSlug={series} currentId={id} class="order-2 lg:order-none" />
+    <main class="order-1 lg:order-none min-w-0 prose dark:prose-invert prose-zinc max-w-none" role="main">
+      <slot />
+    </main>
+  </div>
+  <MermaidInit />
+</article>

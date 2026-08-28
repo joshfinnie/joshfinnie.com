@@ -1,8 +1,8 @@
 import rss from '@astrojs/rss';
-import { getPublishedPosts } from '@lib/utils';
+import { getListedPosts } from '@lib/utils';
 
 export async function GET() {
-  const blog = await getPublishedPosts();
+  const blog = await getListedPosts();
   return rss({
     title: `Blog | www.joshfinnie.com`,
     site: import.meta.env.SITE,

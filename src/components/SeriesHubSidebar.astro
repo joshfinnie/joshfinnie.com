@@ -1,0 +1,76 @@
+---
+import { getSeriesEntries } from '@lib/utils';
+
+interface Props {
+  seriesSlug: string;
+  // The id of the part currently being viewed. Omit when rendering this on
+  // the hub page itself, so "Overview" shows as the active item instead of a
+  // link back to it.
+  currentId?: string;
+  class?: string;
+}
+
+const { seriesSlug, currentId, class: className } = Astro.props;
+const entries = await getSeriesEntries(seriesSlug);
+
+const displayName = seriesSlug
+  .split('-')
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(' ');
+
+const hubHref = `/blog/${seriesSlug}/`;
+const currentIndex = entries.findIndex((entry) => entry.id === currentId);
+---
+
+<aside class:list={['lg:sticky lg:top-24 mb-8 lg:mb-0 not-prose', className]}>
+  <div class="rounded-lg border border-zinc-200 dark:border-zinc-700/40 bg-zinc-50 dark:bg-zinc-800/50 p-4">
+    <p class="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-1 px-2">
+      {displayName}
+    </p>
+    {
+      currentIndex >= 0 && (
+        <p class="text-xs text-zinc-500 dark:text-zinc-400 mb-2 px-2">
+          Part {currentIndex + 1} of {entries.length}
+        </p>
+      )
+    }
+    <nav>
+      <ul class="space-y-1 text-sm">
+        <li>
+          {currentId === undefined ? (
+            <span class="block rounded px-2 py-1.5 font-semibold bg-teal-500/10 text-teal-700 dark:text-teal-300">
+              Overview
+            </span>
+          ) : (
+            <a
+              href={hubHref}
+              class="block rounded px-2 py-1.5 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/60 dark:hover:bg-zinc-700/60 no-underline"
+            >
+              Overview
+            </a>
+          )}
+        </li>
+        {
+          entries.map((entry, i) =>
+            entry.id === currentId ? (
+              <li>
+                <span class="block rounded px-2 py-1.5 font-semibold bg-teal-500/10 text-teal-700 dark:text-teal-300">
+                  {i + 1}. {entry.title}
+                </span>
+              </li>
+            ) : (
+              <li>
+                <a
+                  href={entry.href}
+                  class="block rounded px-2 py-1.5 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/60 dark:hover:bg-zinc-700/60 no-underline"
+                >
+                  {i + 1}. {entry.title}
+                </a>
+              </li>
+            )
+          )
+        }
+      </ul>
+    </nav>
+  </div>
+</aside>

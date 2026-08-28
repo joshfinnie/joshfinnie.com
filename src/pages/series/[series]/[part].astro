@@ -1,0 +1,45 @@
+---
+import { render } from 'astro:content';
+import SeriesPartPost from '@components/SeriesPartPost.astro';
+import ArticleStructuredData from '@components/structured-data/ArticleStructuredData.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getPublishedSeriesParts } from '@lib/utils';
+
+export async function getStaticPaths() {
+  const parts = await getPublishedSeriesParts();
+  return parts.map((part) => ({
+    params: { series: part.data.series, part: part.data.slug ?? part.id },
+    props: part,
+  }));
+}
+
+const part = Astro.props;
+const { Content } = await render(part);
+
+const seriesDisplayName = part.data.series
+  .split('-')
+  .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(' ');
+---
+
+<BaseLayout
+  title={`${part.data.title} | ${seriesDisplayName} | Josh Finnie`}
+  description={part.data.description}
+  ogType="article"
+  publishedTime={part.data.date}
+  articleTags={part.data.tags}
+>
+  <ArticleStructuredData
+    slot="structured-data"
+    headline={part.data.title}
+    description={part.data.description}
+    date={part.data.date}
+    url={`https://www.joshfinnie.com/series/${part.data.series}/${part.data.slug ?? part.id}/`}
+    tags={part.data.tags}
+    articleType="TechArticle"
+    isPartOf={`https://www.joshfinnie.com/blog/${part.data.series}/`}
+  />
+  <SeriesPartPost id={part.id} title={part.data.title} series={part.data.series}>
+    <Content />
+  </SeriesPartPost>
+</BaseLayout>

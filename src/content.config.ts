@@ -16,8 +16,37 @@ const blog = defineCollection({
       unsplashURL: z.string().optional(),
       description: z.string(),
       series: z.string().optional(),
+      // Marks this post as the landing page for a series (the series slug it
+      // fronts). Renders the post in a two-column layout: a sidebar listing
+      // every part on the left, the post's own content (an Overview) on the
+      // right, instead of the usual inline SeriesTableOfContents.
+      seriesHub: z.string().optional(),
+      hidden: z.boolean().optional(),
       leftistOnly: z.boolean().optional(),
       slug: z.string(),
+    }),
+});
+
+// Parts of a "publish all at once" series. Kept in a collection separate from
+// `blog` on purpose: nothing that builds the main index, tags, or RSS ever
+// queries this collection, so a part can't accidentally show up there no
+// matter what its frontmatter says. Parts are only reachable by a link from
+// their series hub post (a normal `blog` entry) or from each other via
+// SeriesTableOfContents.
+const seriesPart = defineCollection({
+  loader: glob({ pattern: '**/*.(md|mdx)', base: './src/collections/series-parts/' }),
+  schema: () =>
+    z.object({
+      title: z.string(),
+      date: z.string(),
+      tags: z.array(z.string()).default([]),
+      draft: z.boolean().optional(),
+      description: z.string(),
+      series: z.string(),
+      // Parts published "all at once" usually share one date, so ordering
+      // needs to be explicit rather than derived from date.
+      order: z.number(),
+      slug: z.string().optional(),
     }),
 });
 
@@ -60,4 +89,4 @@ const talks = defineCollection({
   ),
 });
 
-export const collections = { blog, note, project, talks };
+export const collections = { blog, note, project, talks, seriesPart };

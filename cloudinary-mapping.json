@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-08-07T15:17:55.853Z",
+  "uploadedAt": "2026-08-28T15:40:24.450Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/starlink-rural-broadband-grift.jpg",
-      "publicId": "blog/starlink-rural-broadband-grift",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1786115875/blog/starlink-rural-broadband-grift.jpg"
+      "localPath": "src/assets/blog/pokemon-api.jpg",
+      "publicId": "blog/pokemon-api",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1787931623/blog/pokemon-api.jpg"
     }
   ]
 }

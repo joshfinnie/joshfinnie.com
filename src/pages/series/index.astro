@@ -2,34 +2,32 @@
 import Card from '@components/starwind/card/Card.astro';
 import CardContent from '@components/starwind/card/CardContent.astro';
 import CardHeader from '@components/starwind/card/CardHeader.astro';
-import { getPublishedPosts, getSeries } from '@lib/utils';
+import { getSeries, getSeriesEntries } from '@lib/utils';
 import BaseLayout from '@src/layouts/BaseLayout.astro';
 
 const allSeries = await getSeries();
-const allPosts = await getPublishedPosts();
 
-const seriesList = allSeries
-  .map((slug) => {
-    const posts = allPosts
-      .filter((p) => p.data.series === slug)
-      .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+const seriesList = await Promise.all(
+  allSeries.map(async (slug) => {
+    const posts = await getSeriesEntries(slug);
 
     const display = slug
       .split('-')
       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
       .join(' ');
 
-    const firstYear = new Date(posts[0]!.data.date).getFullYear();
-    const lastYear = new Date(posts[posts.length - 1]!.data.date).getFullYear();
-    const year = firstYear === lastYear ? `${firstYear}` : `${firstYear}–${lastYear}`;
+    const firstYear = new Date(posts[0]!.date).getFullYear();
+    const lastYear = new Date(posts[posts.length - 1]!.date).getFullYear();
+    const year = firstYear === lastYear ? `${firstYear}` : `${firstYear}-${lastYear}`;
 
     return { slug, display, posts, year };
   })
-  .sort(
-    (a, b) =>
-      new Date(b.posts[b.posts.length - 1]!.data.date).getTime() -
-      new Date(a.posts[a.posts.length - 1]!.data.date).getTime()
-  );
+);
+
+seriesList.sort(
+  (a, b) =>
+    new Date(b.posts[b.posts.length - 1]!.date).getTime() - new Date(a.posts[a.posts.length - 1]!.date).getTime()
+);
 ---
 
 <BaseLayout title="Series | Josh Finnie" description="Multi-part tutorial series by Josh Finnie on Rust, web development, and software engineering.">
@@ -53,10 +51,10 @@ const seriesList = allSeries
               </CardHeader>
               <CardContent>
                 <ol class="space-y-1">
-                  {s.posts.slice(0, 3).map((post, i) => (
+                  {s.posts.slice(0, 3).map((entry, i) => (
                     <li class="text-sm text-zinc-600 dark:text-zinc-400 truncate">
                       <span class="text-zinc-400 dark:text-zinc-500 mr-1.5">{i + 1}.</span>
-                      {post.data.title}
+                      {entry.title}
                     </li>
                   ))}
                   {s.posts.length > 3 && (

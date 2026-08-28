@@ -4,10 +4,10 @@ import type { CollectionEntry } from 'astro:content';
 import BlogPostPreview from '@components/BlogPostPreview.astro';
 import Pagination from '@components/Pagination.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { getPublishedPosts } from '@lib/utils';
+import { getListedPosts } from '@lib/utils';
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
-  const sortedPosts = await getPublishedPosts();
+  const sortedPosts = await getListedPosts();
 
   return paginate(sortedPosts, {
     pageSize: 10,

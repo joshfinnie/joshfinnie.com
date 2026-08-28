@@ -1,6 +1,6 @@
 ---
 import MCBriefcase from '@icons/mc_briefcase_line.svg';
-import { getPublishedPosts } from '@lib/utils';
+import { getSeriesEntries } from '@lib/utils';
 
 interface Props {
   seriesName: string;
@@ -9,15 +9,12 @@ interface Props {
 
 const { seriesName, currentPostId } = Astro.props;
 
-// Query all posts in the series
-const allPosts = await getPublishedPosts();
-const seriesPosts = allPosts
-  .filter((post) => post.data.series === seriesName)
-  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+// Query all entries in the series (blog posts and/or seriesPart entries)
+const seriesPosts = await getSeriesEntries(seriesName);
 
-const currentIndex = seriesPosts.findIndex((post) => post.id === currentPostId);
+const currentIndex = seriesPosts.findIndex((entry) => entry.id === currentPostId);
 const totalPosts = seriesPosts.length;
-const currentPartNumber = totalPosts - currentIndex;
+const currentPartNumber = currentIndex + 1;
 
 // Format series name for display (kebab-case to Title Case)
 const displayName = seriesName
@@ -38,18 +35,18 @@ const displayName = seriesName
           Part {currentPartNumber} of {totalPosts}
         </p>
         <ol reversed class="list-decimal list-inside space-y-2 pl-0 mt-4 mb-2">
-          {[...seriesPosts].reverse().map((post) =>
-            post.id === currentPostId ? (
+          {[...seriesPosts].reverse().map((entry) =>
+            entry.id === currentPostId ? (
               <li class="font-bold text-zinc-900 dark:text-zinc-100">
                 <span class="inline-flex items-center gap-1.5">
-                  {post.data.title}
+                  {entry.title}
                   <span class="text-green-600 dark:text-green-400">✓</span>
                 </span>
               </li>
             ) : (
               <li class="text-zinc-700 dark:text-zinc-300">
-                <a href={`/blog/${post.id}/`} class="hover:text-zinc-900 dark:hover:text-zinc-100 no-underline hover:underline">
-                  {post.data.title}
+                <a href={entry.href} class="hover:text-zinc-900 dark:hover:text-zinc-100 no-underline hover:underline">
+                  {entry.title}
                 </a>
               </li>
             )

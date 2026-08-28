@@ -6,6 +6,7 @@ import HeroImage from './BlogPostHeroImage.astro';
 import Date from './Date.astro';
 import LeftistCornerBadge from './LeftistCornerBadge.astro';
 import MermaidInit from './MermaidInit.astro';
+import SeriesHubSidebar from './SeriesHubSidebar.astro';
 import SeriesTableOfContents from './SeriesTableOfContents.astro';
 import Tag from './Tags.astro';
 
@@ -23,6 +24,7 @@ if (!post) {
 const tags = post.data.tags ?? [];
 const date = post.data.date ?? undefined;
 const series = post.data.series ?? undefined;
+const seriesHub = post.data.seriesHub ?? undefined;
 const isLeftist = post.data.leftistOnly === true;
 ---
 
@@ -36,11 +38,24 @@ const isLeftist = post.data.leftistOnly === true;
     </div>
   </header>
   {isLeftist && <LeftistCornerBadge />}
-  {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
-  <main class="prose dark:prose-invert prose-zinc max-w-none" role="main">
-    <slot />
-  </main>
-  {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
+  {
+    seriesHub ? (
+      <div class="flex flex-col gap-8 lg:grid lg:grid-cols-[240px_1fr] lg:gap-10 lg:items-start">
+        <SeriesHubSidebar seriesSlug={seriesHub} class="order-2 lg:order-none" />
+        <main class="order-1 lg:order-none prose dark:prose-invert prose-zinc max-w-none" role="main">
+          <slot />
+        </main>
+      </div>
+    ) : (
+      <Fragment>
+        {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
+        <main class="prose dark:prose-invert prose-zinc max-w-none" role="main">
+          <slot />
+        </main>
+        {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
+      </Fragment>
+    )
+  }
   <AlsoLike tags={post.data.tags} id={id} isLeftist={isLeftist} />
   <MermaidInit />
 </article>

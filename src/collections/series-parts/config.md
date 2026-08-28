@@ -89,7 +89,7 @@ The allowed origins, methods, and headers don't do anything yet. They're read in
 
 ```bash
 $ make check
-...
+# output omitted
 ```
 
 At this point, `AppConf::init()` can turn the environment into typed values, but the server doesn't consume any of it yet. That's the next part: building the Axum application and binding it to the address `config.server.addr()` produces.

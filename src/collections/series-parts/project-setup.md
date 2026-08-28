@@ -144,13 +144,13 @@ Before moving on, it's worth confirming all of this actually works:
 
 ```bash
 $ make lint
-...
+# output omitted
 $ make test
-...
+# output omitted
 $ make check
-...
+# output omitted
 $ make run
-...
+# output omitted
 ```
 
 `make run` won't do anything interesting yet, `main.rs` is still whatever `cargo new` generated, but it should compile and start. At this point we have a valid Rust workspace with two independently compilable crates, shared formatting rules, and project-level development commands. Nothing useful happens yet, and that's intentional. The next part starts on configuration.

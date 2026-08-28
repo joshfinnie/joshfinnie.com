@@ -25,7 +25,7 @@ const { id, title, series } = Astro.props;
   </header>
   <div class="flex flex-col gap-8 lg:grid lg:grid-cols-[240px_1fr] lg:gap-10 lg:items-start">
     <SeriesHubSidebar seriesSlug={series} currentId={id} class="order-2 lg:order-none" />
-    <main class="order-1 lg:order-none prose dark:prose-invert prose-zinc max-w-none" role="main">
+    <main class="order-1 lg:order-none min-w-0 prose dark:prose-invert prose-zinc max-w-none" role="main">
       <slot />
     </main>
   </div>

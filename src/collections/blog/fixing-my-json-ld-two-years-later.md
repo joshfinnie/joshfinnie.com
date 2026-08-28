@@ -33,7 +33,53 @@ I'd read [Stephen Lunt's post on structured data in Astro](https://stephen-lunt.
 </head>
 ```
 
-Blog posts, notes, and anything else that's an article now share one `ArticleStructuredData` component instead of each maintaining its own copy of the same shape:
+Blog posts, notes, and anything else that's an article now share one `ArticleStructuredData` component instead of each maintaining its own copy of the same shape. This is the component itself, not just where it gets called:
+
+```astro
+---
+import { getCloudinaryImageUrl } from '@lib/cloudinary';
+
+interface Props {
+  headline: string;
+  description: string;
+  date: string;
+  url: string;
+  tags?: string[];
+  heroImage?: string | undefined;
+  articleType?: 'BlogPosting' | 'TechArticle';
+  isPartOf?: string;
+}
+
+const { headline, description, date, url, tags = [], heroImage, articleType = 'BlogPosting', isPartOf } = Astro.props;
+
+const image = heroImage ? getCloudinaryImageUrl(heroImage, { width: 1024 }) : undefined;
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org/',
+  '@type': articleType,
+  headline,
+  author: {
+    '@type': 'Person',
+    name: 'Josh Finnie',
+  },
+  datePublished: date,
+  dateCreated: date,
+  dateModified: date,
+  description,
+  url,
+  ...(image ? { image } : {}),
+  ...(isPartOf ? { isPartOf: { '@type': 'BlogPosting', url: isPartOf } } : {}),
+  inLanguage: 'en-US',
+  keywords: tags,
+});
+---
+
+<script type="application/ld+json" set:html={schema} is:inline />
+```
+
+`articleType` defaults to `BlogPosting`, which covers regular posts and notes, but I also render tutorial series parts through this same component with `articleType="TechArticle"` and `isPartOf` pointing back at the series' landing page. `heroImage` and `isPartOf` are both optional, and the spread-with-a-conditional (`...(image ? { image } : {})`) is how they skip showing up in the JSON at all when a page doesn't have one, rather than serializing as `"image": undefined` or `null`.
+
+A page that has all of that just calls it once:
 
 ```astro
 <BaseLayout ...>
@@ -52,7 +98,33 @@ Blog posts, notes, and anything else that's an article now share one `ArticleStr
 </BaseLayout>
 ```
 
-Generic pages, my about page, my uses page, got the same treatment with a `WebPageStructuredData` component, which is also where that object-wrapping bug finally got caught and fixed.
+Generic pages, my about page, my uses page, got the same treatment with a `WebPageStructuredData` component. This is also where that object-wrapping bug actually got caught and fixed, so here's the whole thing, bug fix included:
+
+```astro
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  author: {
+    '@type': 'Person',
+    name: 'Josh Finnie',
+  },
+});
+---
+
+<script type="application/ld+json" set:html={schema} is:inline />
+```
+
+`name: title` instead of `name: { title }`. That's the entire fix, a pair of braces removed, and a different JSON shape in the output.
 
 The real win isn't the slot itself. It's that there's now exactly one place that knows what a `BlogPosting` schema looks like, and one place that knows what a `WebPage` schema looks like, so a fix or an improvement happens once instead of getting silently missed in whichever of six components I didn't think to update. That's the difference between "I added JSON-LD" and "I have JSON-LD I can actually maintain."
 

@@ -1,25 +1,15 @@
 ---
+import WebPageStructuredData from '@components/structured-data/WebPageStructuredData.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
 const { content } = Astro.props;
 const { title, description, permalink } = content;
-
-let schema = JSON.stringify({
-  '@context': 'http://schema.org',
-  '@type': 'WebPage',
-  name: { title },
-  description: { description },
-  author: {
-    '@type': 'Person',
-    name: 'Josh Finnie',
-  },
-});
 ---
 
 <BaseLayout title={`${title} | www.joshfinnie.com`} description={description} permalink={permalink} collection="page">
+  <WebPageStructuredData slot="structured-data" title={title} description={description} />
   <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white prose prose-zinc">{title}</h1>
   <main class="prose dark:prose-invert prose-zinc max-w-none">
     <slot />
   </main>
-  <script type="application/ld+json" set:html={schema} is:inline />
 </BaseLayout>

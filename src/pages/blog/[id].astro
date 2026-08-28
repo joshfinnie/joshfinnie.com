@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
 import BlogPost from '@components/BlogPost.astro';
+import ArticleStructuredData from '@components/structured-data/ArticleStructuredData.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getPublishedPosts } from '@lib/utils';
 
@@ -28,6 +29,15 @@ const { Content } = await render(post);
   publishedTime={post.data.date}
   articleTags={post.data.tags}
 >
+  <ArticleStructuredData
+    slot="structured-data"
+    headline={post.data.title}
+    description={post.data.description}
+    date={post.data.date}
+    url={`https://www.joshfinnie.com/blog/${post.id}/`}
+    tags={post.data.tags}
+    heroImage={post.data.heroImage}
+  />
   <BlogPost {...post.data} id={post.id}>
     <Content />
   </BlogPost>

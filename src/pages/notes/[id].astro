@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
 import Note from '@components/Note.astro';
+import ArticleStructuredData from '@components/structured-data/ArticleStructuredData.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { getPublishedNotes } from '@lib/utils';
 
@@ -28,6 +29,14 @@ const { Content } = await render(note);
   publishedTime={note.data.date}
   articleTags={note.data.tags}
 >
+  <ArticleStructuredData
+    slot="structured-data"
+    headline={note.data.title}
+    description={note.data.description}
+    date={note.data.date}
+    url={`https://www.joshfinnie.com/notes/${note.id}/`}
+    tags={note.data.tags}
+  />
   <Note id={note.id}>
     <Content />
   </Note>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: title,
+  description,
+  author: {
+    '@type': 'Person',
+    name: 'Josh Finnie',
+  },
+});
+---
+
+<script type="application/ld+json" set:html={schema} is:inline />

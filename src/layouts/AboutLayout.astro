@@ -1,27 +1,17 @@
 ---
 import AboutSubNav from '@components/AboutSubNav.astro';
+import WebPageStructuredData from '@components/structured-data/WebPageStructuredData.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
 const props = Astro.props.frontmatter ?? Astro.props;
 const { title, description, permalink } = props;
-
-const schema = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: title,
-  description: description,
-  author: {
-    '@type': 'Person',
-    name: 'Josh Finnie',
-  },
-});
 ---
 
 <BaseLayout title={`${title} | www.joshfinnie.com`} {description} {permalink} collection="page">
+  <WebPageStructuredData slot="structured-data" title={title} description={description} />
   <AboutSubNav />
   <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white prose prose-zinc">{title}</h1>
   <main class="prose dark:prose-invert prose-zinc max-w-none">
     <slot />
   </main>
-  <script type="application/ld+json" set:html={schema} is:inline />
 </BaseLayout>

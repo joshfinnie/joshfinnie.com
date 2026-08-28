@@ -1,0 +1,39 @@
+---
+import { getCloudinaryImageUrl } from '@lib/cloudinary';
+
+interface Props {
+  headline: string;
+  description: string;
+  date: string;
+  url: string;
+  tags?: string[];
+  heroImage?: string | undefined;
+  articleType?: 'BlogPosting' | 'TechArticle';
+  isPartOf?: string;
+}
+
+const { headline, description, date, url, tags = [], heroImage, articleType = 'BlogPosting', isPartOf } = Astro.props;
+
+const image = heroImage ? getCloudinaryImageUrl(heroImage, { width: 1024 }) : undefined;
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org/',
+  '@type': articleType,
+  headline,
+  author: {
+    '@type': 'Person',
+    name: 'Josh Finnie',
+  },
+  datePublished: date,
+  dateCreated: date,
+  dateModified: date,
+  description,
+  url,
+  ...(image ? { image } : {}),
+  ...(isPartOf ? { isPartOf: { '@type': 'BlogPosting', url: isPartOf } } : {}),
+  inLanguage: 'en-US',
+  keywords: tags,
+});
+---
+
+<script type="application/ld+json" set:html={schema} is:inline />

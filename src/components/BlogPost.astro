@@ -1,6 +1,5 @@
 ---
 import { getEntry } from 'astro:content';
-import { getCloudinaryImageUrl } from '../lib/cloudinary';
 
 import AlsoLike from './AlsoLike.astro';
 import HeroImage from './BlogPostHeroImage.astro';
@@ -25,26 +24,6 @@ const tags = post.data.tags ?? [];
 const date = post.data.date ?? undefined;
 const series = post.data.series ?? undefined;
 const isLeftist = post.data.leftistOnly === true;
-
-const imageURL = post.data.heroImage ? getCloudinaryImageUrl(post.data.heroImage, { width: 1024 }) : '';
-
-let schema = JSON.stringify({
-  '@context': 'https://schema.org/',
-  '@type': 'BlogPosting',
-  headline: post.data.title,
-  author: {
-    '@type': 'Person',
-    name: 'Josh Finnie',
-  },
-  datePublished: post.data.date,
-  dateCreated: post.data.date,
-  dateModified: post.data.date,
-  description: post.data.description,
-  url: `https://www.joshfinnie.com/${post.id}`,
-  image: imageURL,
-  inLanguage: 'en-US',
-  keywords: post.data.tags,
-});
 ---
 
 <article>
@@ -64,5 +43,4 @@ let schema = JSON.stringify({
   {series && <SeriesTableOfContents seriesName={series} currentPostId={id} />}
   <AlsoLike tags={post.data.tags} id={id} isLeftist={isLeftist} />
   <MermaidInit />
-  <script type="application/ld+json" set:html={schema} is:inline />
 </article>

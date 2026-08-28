@@ -1,0 +1,28 @@
+---
+// Sitewide identity: who runs this site and what it is. Rendered once,
+// unconditionally, in BaseLayout's <head>. Page-specific structured data
+// (an article, a page) is injected separately via the "structured-data"
+// named slot.
+const schema = JSON.stringify([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: "Josh Finnie's Blog",
+    url: 'https://www.joshfinnie.com/',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Josh Finnie',
+    url: 'https://www.joshfinnie.com/',
+    jobTitle: 'Senior Software Engineer',
+    sameAs: [
+      'https://github.com/joshfinnie',
+      'https://linkedin.com/in/joshfinnie/',
+      'https://bsky.app/profile/joshfinnie.bsky.social',
+    ],
+  },
+]);
+---
+
+<script type="application/ld+json" set:html={schema} is:inline />

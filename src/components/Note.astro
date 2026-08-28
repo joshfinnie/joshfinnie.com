@@ -14,23 +14,6 @@ const note = await getEntry('note', id);
 if (!note) {
   throw new Error(`Note with id "${id}" not found`);
 }
-
-let schema = JSON.stringify({
-  '@context': 'https://schema.org/',
-  '@type': 'BlogPosting',
-  headline: note.data.title,
-  author: {
-    '@type': 'Person',
-    name: 'Josh Finnie',
-  },
-  datePublished: note.data.date,
-  dateCreated: note.data.date,
-  dateModified: note.data.date,
-  description: note.data.description,
-  url: `https://www.joshfinnie.com/notes/${note.id}/`,
-  inLanguage: 'en-US',
-  keywords: note.data.tags,
-});
 ---
 
 <article>
@@ -57,5 +40,4 @@ let schema = JSON.stringify({
     }
   </main>
   <MermaidInit />
-  <script type="application/ld+json" set:html={schema} is:inline />
 </article>

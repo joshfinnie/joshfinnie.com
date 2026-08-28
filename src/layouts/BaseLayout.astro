@@ -2,6 +2,7 @@
 import BaseHead from '@components/BaseHead.astro';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
+import WebsiteStructuredData from '@components/structured-data/WebsiteStructuredData.astro';
 import mapping from '../../standard-mapping.json';
 
 const {
@@ -57,28 +58,8 @@ import '@styles/global.css';
         document.documentElement.classList.remove("dark");
       }
     </script>
-    <script type="application/ld+json" is:inline>
-      [
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Josh Finnie's Blog",
-          "url": "https://www.joshfinnie.com/"
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Josh Finnie",
-          "url": "https://www.joshfinnie.com/",
-          "jobTitle": "Senior Software Engineer",
-          "sameAs": [
-            "https://github.com/joshfinnie",
-            "https://linkedin.com/in/joshfinnie/",
-            "https://bsky.app/profile/joshfinnie.bsky.social"
-          ]
-        }
-      ]
-    </script>
+    <WebsiteStructuredData />
+    <slot name="structured-data" />
   </head>
   <body class="flex h-full bg-zinc-50 dark:bg-black">
     <div class="flex w-full">

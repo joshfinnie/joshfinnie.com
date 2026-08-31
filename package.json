@@ -44,7 +44,7 @@
     "astro-expressive-code": "^0.44.1",
     "astro-og-canvas": "^0.13.0",
     "canvaskit-wasm": "^0.41.1",
-    "cloudinary": "^2.10.0",
+    "cloudinary": "^2.11.0",
     "date-fns": "^4.4.0",
     "fs-extra": "^11.4.0",
     "github-slugger": "^2.0.0",

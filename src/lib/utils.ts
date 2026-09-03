@@ -1,22 +1,22 @@
 import { getCollection } from 'astro:content';
 
-// `draft: true` is only enforced in production builds, so drafts render on
-// the local dev server and on Netlify's PR deploy previews / branch deploys,
-// but never on the production build Netlify runs for `main`.
-const isDev = import.meta.env.DEV || ['deploy-preview', 'branch-deploy'].includes(process.env.CONTEXT ?? '');
+// Unpublished content renders on the local dev server and on Netlify's PR
+// deploy previews / branch deploys, but never on the production build Netlify
+// runs for `main`. That covers both ways an entry can be unpublished: an
+// explicit `draft: true`, and a `date` that has not arrived yet.
+const isPreview = import.meta.env.DEV || ['deploy-preview', 'branch-deploy'].includes(process.env.CONTEXT ?? '');
 
-// A post is only live once its `date` has arrived. Future-dated posts are held
-// back until the first build on or after that date, so scheduling a post is just
-// a matter of dating it in the future. `draft: true` still hides a post outright.
+// An entry goes live once its `date` arrives, so scheduling is a matter of
+// dating it in the future and letting the first build on or after that day pick
+// it up. `draft: true` holds an entry back no matter what its date says.
+function isPublished(data: { date: string; draft?: boolean | undefined }) {
+  return isPreview || (data.draft !== true && Date.parse(data.date) <= Date.now());
+}
+
 export async function getPublishedPosts() {
   const allPosts = await getCollection('blog');
   return allPosts
-    .filter(
-      (post) =>
-        (isDev || post.data.draft !== true) &&
-        post.data.leftistOnly !== true &&
-        Date.parse(post.data.date) <= Date.now()
-    )
+    .filter((post) => isPublished(post.data) && post.data.leftistOnly !== true)
     .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 }
 
@@ -35,21 +35,15 @@ const LEFTIST_TAGS = ['marxism', 'socialism', 'communism', 'leftist'];
 export async function getLeftistPosts() {
   const allPosts = await getCollection('blog');
   return allPosts
-    .filter(
-      (post) =>
-        (isDev || post.data.draft !== true) &&
-        Date.parse(post.data.date) <= Date.now() &&
-        post.data.tags?.some((tag) => LEFTIST_TAGS.includes(tag))
-    )
+    .filter((post) => isPublished(post.data) && post.data.tags?.some((tag) => LEFTIST_TAGS.includes(tag)))
     .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 }
 
-// Notes follow the same publish gate as posts: future-dated notes stay hidden
-// until the first build on or after their date.
+// Notes follow the same publish gate as posts.
 export async function getPublishedNotes() {
   const allNotes = await getCollection('note');
   return allNotes
-    .filter((note) => (isDev || note.data.draft !== true) && Date.parse(note.data.date) <= Date.now())
+    .filter((note) => isPublished(note.data))
     .sort((a, b) => Date.parse(b.data.date) - Date.parse(a.data.date));
 }
 
@@ -66,13 +60,10 @@ export async function getTags() {
 
 // Series parts live in their own `seriesPart` collection so they can never be
 // picked up by getPublishedPosts/getListedPosts, RSS, or tags no matter what
-// their frontmatter says. Same publish gate as blog posts: draft or
-// future-dated parts stay hidden.
+// their frontmatter says. Same publish gate as blog posts.
 export async function getPublishedSeriesParts() {
   const allParts = await getCollection('seriesPart');
-  return allParts
-    .filter((part) => (isDev || part.data.draft !== true) && Date.parse(part.data.date) <= Date.now())
-    .sort((a, b) => a.data.order - b.data.order);
+  return allParts.filter((part) => isPublished(part.data)).sort((a, b) => a.data.order - b.data.order);
 }
 
 export interface SeriesEntry {

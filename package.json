@@ -41,7 +41,7 @@
     "alpinejs": "^3.16.3",
     "astro": "7.2.9",
     "astro-cloudinary": "^1.4.0",
-    "astro-expressive-code": "^0.44.1",
+    "astro-expressive-code": "^0.44.2",
     "astro-og-canvas": "^0.13.0",
     "canvaskit-wasm": "^0.41.1",
     "cloudinary": "^2.11.0",

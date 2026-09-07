@@ -42,7 +42,7 @@
     "astro": "7.2.9",
     "astro-cloudinary": "^1.4.0",
     "astro-expressive-code": "^0.44.1",
-    "astro-og-canvas": "^0.13.0",
+    "astro-og-canvas": "^0.13.1",
     "canvaskit-wasm": "^0.41.1",
     "cloudinary": "^2.11.0",
     "date-fns": "^4.4.0",

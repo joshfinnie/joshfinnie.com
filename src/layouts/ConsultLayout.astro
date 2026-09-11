@@ -4,6 +4,7 @@ import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import WebPageStructuredData from '@components/structured-data/WebPageStructuredData.astro';
 import WebsiteStructuredData from '@components/structured-data/WebsiteStructuredData.astro';
+import { renderOgImage } from '@lib/og';
 import mapping from '../../standard-mapping.json';
 
 const { title = 'Consulting | Josh Finnie', description = 'Software consulting services by Josh Finnie.' } =
@@ -12,7 +13,7 @@ const { title = 'Consulting | Josh Finnie', description = 'Software consulting s
 const normalizedPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const atUri = (mapping.documents as Record<string, string>)[normalizedPath];
 
-const imageUrl = 'https://www.joshfinnie.com/blog/og/default.png';
+const ogImage = await renderOgImage({ title }, Astro.site);
 
 import '@styles/global.css';
 ---
@@ -23,7 +24,15 @@ import '@styles/global.css';
   class="dark"
 >
   <head>
-    <BaseHead {title} {description} image={imageUrl} {atUri} />
+    <BaseHead
+      {title}
+      {description}
+      image={ogImage.url}
+      imageWidth={ogImage.width}
+      imageHeight={ogImage.height}
+      imageType={ogImage.type}
+      {atUri}
+    />
     <script is:inline>
       // Necessary for view transitions
       document.addEventListener("astro:after-swap", () => {

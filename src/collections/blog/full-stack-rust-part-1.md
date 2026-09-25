@@ -18,12 +18,12 @@ This is a 6 part blog post series about writing a full-stack application in Rust
 In this first part we will be diving into [Axum](https://docs.rs/axum/latest/axum/) for the backend.
 Here is the full series outline:
 
-1. **Axum Backend Basics** (this post) — routes, shared state, and an in-memory URL shortener
-2. **Database Persistence** — swapping the HashMap for a real database with sqlx
-3. **Error Handling & Validation** — custom error types, URL validation, and graceful responses
-4. **Authentication** — API keys and auth middleware
-5. **Yew.rs Frontend** — building an SPA that talks to our API
-6. **Deployment** — Dockerizing the app and serving Yew from Axum
+1. **Axum Backend Basics** (this post): routes, shared state, and an in-memory URL shortener
+2. **Database Persistence**: swapping the HashMap for a real database with sqlx
+3. **Error Handling & Validation**: custom error types, URL validation, and graceful responses
+4. **Authentication**: API keys and auth middleware
+5. **Yew.rs Frontend**: building an SPA that talks to our API
+6. **Deployment**: Dockerizing the app and serving Yew from Axum
 
 ## Introduction to Axum
 
@@ -89,10 +89,10 @@ nanoid = "0.4"
 
 A quick rundown:
 
-- **axum** — our web framework
-- **serde / serde_json** — for serializing and deserializing JSON
-- **tokio** — the async runtime Axum runs on
-- **nanoid** — generates short, URL-safe unique IDs
+- **axum**: our web framework
+- **serde / serde_json**: for serializing and deserializing JSON
+- **tokio**: the async runtime Axum runs on
+- **nanoid**: generates short, URL-safe unique IDs
 
 ### Shared State
 
@@ -128,7 +128,7 @@ struct UrlResponse {
 }
 ```
 
-Nothing fancy here — just enough for Axum's JSON extractor to do its thing.
+Nothing fancy here, just enough for Axum's JSON extractor to do its thing.
 
 ### Handlers
 
@@ -157,7 +157,7 @@ async fn create_url(
 ```
 
 We use `nanoid::nanoid!(6)` to generate a 6-character slug.
-That gives us roughly 2.2 billion possible slugs — plenty for our purposes.
+That gives us roughly 2.2 billion possible slugs, plenty for our purposes.
 If you want even shorter URLs, you could drop to 4 characters at the cost of a smaller keyspace.
 
 **Redirect from a slug:**
@@ -180,7 +180,7 @@ async fn redirect_url(
 ```
 
 This is my favorite handler of the bunch.
-Axum's `Redirect` response type makes this incredibly clean — no manually setting headers or status codes.
+Axum's `Redirect` response type makes this incredibly clean. You never manually set headers or status codes.
 
 **List all URLs:**
 
@@ -226,7 +226,7 @@ async fn main() {
 ```
 
 Notice how `.with_state(store)` injects our `UrlStore` into every handler that asks for it via the `State` extractor.
-This is one of Axum's best features — dependency injection without macros or global state.
+This is one of Axum's best features: dependency injection without macros or global state.
 
 ### Taking It for a Spin
 
@@ -355,9 +355,9 @@ Axum made routing, JSON handling, and shared state remarkably painless.
 
 A few things worth noting if you want to extend this on your own:
 
-- **Validation** — we are not checking if the incoming URL is actually a valid URL. The [url](https://docs.rs/url/latest/url/) crate is great for that.
-- **Persistence** — our `HashMap` disappears when the server stops. Swapping in SQLite via [sqlx](https://docs.rs/sqlx/latest/sqlx/) would be a natural next step.
-- **Error handling** — the `.unwrap()` calls on our `RwLock` are fine for a tutorial, but in production you would want to handle poisoned locks gracefully.
+- **Validation**: we are not checking if the incoming URL is actually a valid URL. The [url](https://docs.rs/url/latest/url/) crate is great for that.
+- **Persistence**: our `HashMap` disappears when the server stops. Swapping in SQLite via [sqlx](https://docs.rs/sqlx/latest/sqlx/) would be a natural next step.
+- **Error handling**: the `.unwrap()` calls on our `RwLock` are fine for a tutorial, but in production you would want to handle poisoned locks gracefully.
 
 In the next part of this series, we will add database persistence with [sqlx](https://docs.rs/sqlx/latest/sqlx/) so our URLs survive a server restart.
 Stay tuned!

@@ -1,0 +1,22 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": ["src/cards/post.astro"],
+        "createdAt": "2026-09-09T20:45:54.578Z",
+        "reason": "OG card is rasterised at a fixed 1200x630; its type sizes are set for that canvas, not the site's responsive ramp"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": ["src/cards/post.astro"],
+        "createdAt": "2026-09-09T20:45:54.637Z",
+        "reason": "Scrim overlays and text-shadow for compositing legible text over arbitrary hero photos; not site palette"
+      }
+    ]
+  }
+}

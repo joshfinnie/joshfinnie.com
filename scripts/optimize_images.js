@@ -15,6 +15,6 @@ Promise.all(
   matches.map(async (match) => {
     const stream = sharp(match);
     const optimizedName = match.replace(/(\..+)$/, () => `.webp`);
-    await stream.resize(MAX_WIDTH).webp().toFile(optimizedName);
+    await stream.resize(MAX_WIDTH, null, { withoutEnlargement: true }).webp().toFile(optimizedName);
   })
 );

@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-09-01T02:46:01.587Z",
+  "uploadedAt": "2026-09-25T16:17:29.066Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/data-centers-are-not-a-common-good.jpg",
-      "publicId": "blog/data-centers-are-not-a-common-good",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1788230760/blog/data-centers-are-not-a-common-good.jpg"
+      "localPath": "src/assets/blog/ai-made-me-a-polyglot-again.jpg",
+      "publicId": "blog/ai-made-me-a-polyglot-again",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1790353048/blog/ai-made-me-a-polyglot-again.jpg"
     }
   ]
 }

@@ -1,7 +1,7 @@
 ---
 title: "Week One: A Prose Linter With a Price On It"
 draft: true
-date: "2026-10-02"
+date: "2026-10-10"
 tags:
   - "micro-saas"
   - "side-projects"

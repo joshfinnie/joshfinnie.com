@@ -1,11 +1,11 @@
 {
-  "uploadedAt": "2026-09-01T02:46:01.587Z",
+  "uploadedAt": "2026-09-30T17:50:32.178Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/data-centers-are-not-a-common-good.jpg",
-      "publicId": "blog/data-centers-are-not-a-common-good",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1788230760/blog/data-centers-are-not-a-common-good.jpg"
+      "localPath": "src/assets/blog/micro-saas-october.webp",
+      "publicId": "blog/micro-saas-october",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1790790631/blog/micro-saas-october.webp"
     }
   ]
 }

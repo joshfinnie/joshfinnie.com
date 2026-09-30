@@ -81,15 +81,15 @@ There's a second reason, less flattering. I'm good at the engineering and bad at
 
 These are my starting constraints, and I reserve the right to discover that some of them were stupid.
 
-One product per week, four total, starting October 1. Each one ships to a public URL with a working Stripe checkout before Friday ends. Not a waitlist, not a "contact me for pricing" form, a live checkout that would take a real card.
+One product per week, four total, with deadlines on October 10, 17, 24 and 31. Each one ships to a public URL with a working Stripe checkout before that Saturday ends. Not a waitlist, not a "contact me for pricing" form, a live checkout that would take a real card.
 
 The stack is frozen. Astro, Postgres on Neon, Stripe, deployed to Netlify, all things I already know. Learning a new framework mid-challenge is the most appealing way to waste a week, so it's off the table.
 
-Scope gets cut, never extended. If Thursday arrives and the product isn't done, I ship a smaller product rather than a later one. A Friday deadline that slides is just a Tuesday with extra steps.
+Scope gets cut, never extended. If Friday arrives and the product isn't done, I ship a smaller product rather than a later one. A deadline that slides is just a Tuesday with extra steps.
 
 Every build gets a post the same week, published here, covering what it does and what went wrong. Those posts will run as a series alongside this one.
 
-And I keep whatever I build. No deleting the repo on Saturday because it embarrassed me.
+And I keep whatever I build. No deleting the repo on Sunday because it embarrassed me.
 
 ## What Failure Looks Like
 
@@ -99,6 +99,6 @@ The real risk isn't that nothing sells. It's that I end October with four live S
 
 ## Putting It Together
 
-Micro SaaS is small paid software that does one job for one audience, and the reason it's viable is that the infrastructure got boring and cheap while the hard part stayed human. I'm giving myself four weeks, one product a week, each with a live checkout before Friday, on a stack I already know, with a post per build. The goal isn't income. It's to stop being a person who builds things nobody ever pays for.
+Micro SaaS is small paid software that does one job for one audience, and the reason it's viable is that the infrastructure got boring and cheap while the hard part stayed human. I'm giving myself four weeks, one product a week, each with a live checkout before the weekend is out, on a stack I already know, with a post per build. The goal isn't income. It's to stop being a person who builds things nobody ever pays for.
 
 First build goes up next week. If you've done something like this and know which of my rules is about to break first, I'd genuinely like to hear it on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).

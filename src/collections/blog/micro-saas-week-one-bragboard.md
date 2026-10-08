@@ -109,6 +109,8 @@ I froze the stack: Astro, Neon, Stripe, Netlify. Bragboard is Next.js. The app i
 
 I also broke "scope gets cut, never extended," and not a little. The plan was notes, a narrative, and questions. By Wednesday it had two importers, star ratings for importance, duplicate detection and merging, skill suggestions, a drag-and-drop resume editor, an ATS-friendly PDF, and job tailoring. That's 43 commits and about 19,000 lines of TypeScript. Claude Code made each feature cheap enough that saying no felt silly. Saying no was the point, though, and next week I'm going to try harder.
 
+I also had more time than the rules suggest. October 1 was a Thursday, and once I moved the deadlines to Saturdays, week one picked up that Thursday and Friday on top of a full week. Bragboard got two extra days that the next three builds won't. Keep that in mind when you look at how much shipped.
+
 ## Putting It Together
 
 Bragboard turns rough notes about your work into a sourced, first-person record, asks for the details you forgot, and writes resumes from it without making anything up. The parts I'm proudest of are the boring ones: sentence-level sources, questions stored as rows, and usage counted from data that already exists. The week also taught me that I can keep adding features forever while the one task that makes it a business sits there undone. If you've ever kept a brag doc, I'd love to hear whether this would replace it on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).

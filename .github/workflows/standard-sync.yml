@@ -1,0 +1,74 @@
+name: Standard sync
+
+# Keeps site.standard records in step with what production serves. Runs after
+# content lands on main, and daily just after 00:00 UTC (when a post dated today
+# passes the publish gate) so scheduled posts get their record and go live.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/collections/blog/**'
+      - 'src/collections/projects/**'
+      - 'src/pages/*.md'
+      - 'src/pages/*.mdx'
+      - 'src/lib/published.ts'
+      - 'scripts/sync-standard.js'
+  schedule:
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: standard-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Sync Standard records
+        run: pnpm sync:standard
+        env:
+          BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
+          BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
+
+      # Pushing the mapping triggers a production deploy, which is what puts a
+      # newly live post and its <link rel="site.standard.document"> on the site.
+      - name: Commit mapping
+        id: commit
+        if: ${{ !cancelled() }}
+        run: |
+          if git diff --quiet -- standard-mapping.json public/.well-known; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add standard-mapping.json public/.well-known
+          git commit -m 'chore: sync Standard records'
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      # Fallback so a post dated today still goes live if the sync failed or had
+      # nothing to commit.
+      - name: Trigger Netlify build
+        if: ${{ !cancelled() && github.event_name == 'schedule' && steps.commit.outputs.pushed != 'true' && env.NETLIFY_BUILD_HOOK != '' }}
+        run: curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK"

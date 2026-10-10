@@ -1,7 +1,12 @@
 {
-  "uploadedAt": "2026-09-30T17:50:32.178Z",
+  "uploadedAt": "2026-10-08T14:30:50.068Z",
   "cloudName": "dgd9cw3gu",
   "images": [
+    {
+      "localPath": "src/assets/blog/micro-saas-bragboard.webp",
+      "publicId": "blog/micro-saas-bragboard",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1791469848/blog/micro-saas-bragboard.webp"
+    },
     {
       "localPath": "src/assets/blog/micro-saas-october.webp",
       "publicId": "blog/micro-saas-october",

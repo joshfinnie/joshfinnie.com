@@ -1,0 +1,103 @@
+---
+import { Font } from 'astro:assets';
+import type { CardOptions } from 'astro-cards';
+
+export const card = { width: 1200, height: 630 } satisfies CardOptions;
+
+interface Props {
+  title: string;
+  heroUrl?: string | null;
+  avatarUrl: string;
+  siteUrl?: string;
+}
+
+const { title, heroUrl = null, avatarUrl, siteUrl = 'www.joshfinnie.com' } = Astro.props;
+---
+
+<div class="card">
+  {heroUrl && <img class="hero" src={heroUrl} alt="" />}
+  <div class="scrim"></div>
+  <div class="content">
+    <div class="byline">
+      <img class="avatar" src={avatarUrl} alt="" />
+      <span class="url">{siteUrl}</span>
+    </div>
+    <h1 class="title">{title}</h1>
+  </div>
+</div>
+
+<Font cssVariable="--font-inter" />
+
+<style is:inline>
+  .card {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: #18181b;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .hero {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(9, 9, 11, 0.25) 0%,
+      rgba(9, 9, 11, 0.55) 32%,
+      rgba(9, 9, 11, 0.86) 58%,
+      rgba(9, 9, 11, 0.97) 100%
+    );
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    padding: 64px;
+  }
+
+  .title {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    color: #fafafa;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.12;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .byline {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border: 3px solid rgba(250, 250, 250, 0.9);
+    border-radius: 9999px;
+  }
+
+  .url {
+    margin-left: 20px;
+    color: #e4e4e7;
+    font-size: 30px;
+    font-weight: 500;
+  }
+</style>

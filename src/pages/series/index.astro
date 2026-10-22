@@ -4,6 +4,7 @@ import CardContent from '@components/starwind/card/CardContent.astro';
 import CardHeader from '@components/starwind/card/CardHeader.astro';
 import { getSeries, getSeriesEntries } from '@lib/utils';
 import BaseLayout from '@src/layouts/BaseLayout.astro';
+import { parseISO } from 'date-fns';
 
 const allSeries = await getSeries();
 
@@ -16,8 +17,8 @@ const seriesList = await Promise.all(
       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
       .join(' ');
 
-    const firstYear = new Date(posts[0]!.date).getFullYear();
-    const lastYear = new Date(posts[posts.length - 1]!.date).getFullYear();
+    const firstYear = parseISO(posts[0]!.date).getFullYear();
+    const lastYear = parseISO(posts[posts.length - 1]!.date).getFullYear();
     const year = firstYear === lastYear ? `${firstYear}` : `${firstYear}-${lastYear}`;
 
     return { slug, display, posts, year };

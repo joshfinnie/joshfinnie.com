@@ -25,13 +25,13 @@ Here's what the month produced, side by side.
 | [Bragboard](https://bragboard.dev) | Turns notes about your work into a sourced record and resumes | Free, or $12/mo Pro | No, keys not set | ~19,000 lines |
 | [TeamDues](https://teamdues.com) | Collects youth sports fees for volunteer coaches | $15 per team per month | Yes | ~9,750 lines |
 | [NoShowFixer](https://noshowfixer.com) | Confirm or cancel reminders built on an existing calendar | $19 to $30/mo, free in early access | No, left off on purpose | ~5,200 lines |
-| [SignedOnSite](https://signedonsite.com) | Plumbing proposals signed and deposit paid in the driveway | $59 Solo, $99 Crew | TODO | TODO |
+| [SignedOnSite](https://signedonsite.com) | Home service proposals signed and deposit paid in the driveway | $59 Solo, $99 Crew | Yes | ~7,700 lines |
 
 <!-- TODO: add a "Results" column or a short paragraph here with real signups, paying customers, and revenue for each product. Zeros are fine. -->
 
-Four products, four audiences, four pricing models. Bragboard is freemium. TeamDues charges per team for the length of a season. NoShowFixer has feature tiers. SignedOnSite is a flat monthly fee with no per-proposal cut. I didn't plan that spread, but it means I now have four different answers to "how should this charge," and only one of them has taken a real card so far.
+Four products, four audiences, four pricing models. Bragboard is freemium. TeamDues charges per team for the length of a season. NoShowFixer has feature tiers. SignedOnSite is a flat monthly fee with no per-proposal cut. I didn't plan that spread, but it means I now have four different answers to "how should this charge," and two of them can take a real card today.
 
-<!-- TODO: one or two sentences on SignedOnSite and how week four went, once it ships. -->
+SignedOnSite started as a tool for plumbers, opened up to six trades on the first night, and went live with a day to spare.
 
 ## Astro Out, Next.js In
 
@@ -103,9 +103,7 @@ The part AI didn't touch is the part the challenge was about. I finished and tes
 
 I covered the frozen stack above. It was the first rule to go, and it went for good.
 
-The checkout rule went one for three before week four. Bragboard missed it. TeamDues made it, with a checkout that takes a real card. NoShowFixer skipped it on purpose, because a reminder tool has to prove itself on real calendars before anyone pays for it. I still think that call was right, and it still broke the rule.
-
-<!-- TODO: did SignedOnSite have a live checkout by October 31? -->
+The checkout rule went two for four. Bragboard missed it. TeamDues made it, with a checkout that takes a real card. NoShowFixer skipped it on purpose, because a reminder tool has to prove itself on real calendars before anyone pays for it. I still think that call was right, and it still broke the rule. SignedOnSite made it, with live subscriptions and live deposits through Connect.
 
 Scope went from the worst rule to the best one. Week one blew past it. TeamDues did fees and nothing else, with no scheduling and no team chat. NoShowFixer cut its waitlist filler and its bundle even after I'd designed and modeled both.
 
@@ -135,7 +133,7 @@ Back in September I said the real risk wasn't that nothing sold. It was ending O
 
 I got the domains. bragboard.dev, teamdues.com, noshowfixer.com, and signedonsite.com all renew next fall whether anyone pays or not.
 
-I didn't get the support load, and the reason is the real failure of the month. I never announced any of them. Each one went live at a public URL, got a blog post, and then sat there. I didn't post a launch, email a single coach or plumber, or show any of them to the people I built them for. You can't get support requests from customers who don't know you exist.
+I didn't get the support load, and the reason is the real failure of the month. I never announced any of them. Each one went live at a public URL, got a blog post, and then sat there. I didn't post a launch, email a single coach or contractor, or show any of them to the people I built them for. You can't get support requests from customers who don't know you exist.
 
 None of my rules asked for that. I wrote rules for shipping: a public URL, a checkout, a frozen stack, a post. Not one of them said a real person in the target audience had to hear about the product. So I followed the rules and skipped the part that makes it a business.
 
@@ -161,7 +159,7 @@ I'd set up tests and CI on day one. TeamDues had unit, database, and Playwright 
 
 ## Putting It Together
 
-October gave me four live products and taught me that with Claude Code doing most of the typing, my limit is no longer how fast I can build. It's how willing I am to say no to a feature and how soon I'll show the thing to a stranger. Scope got better every week. The checkout didn't keep up, and outreach never started. I built four products for coaches, practitioners, plumbers, and job seekers, and none of them heard about it from me. The parts that held were the boring services underneath, and the rule I broke first was the one that mattered least. The rule I needed most was the one I never wrote.
+October gave me four live products and taught me that with Claude Code doing most of the typing, my limit is no longer how fast I can build. It's how willing I am to say no to a feature and how soon I'll show the thing to a stranger. Scope got better every week. The checkout didn't keep up, and outreach never started. I built four products for coaches, practitioners, contractors, and job seekers, and none of them heard about it from me. The parts that held were the boring services underneath, and the rule I broke first was the one that mattered least. The rule I needed most was the one I never wrote.
 
 <!-- TODO: final verdict. Are you going to announce any of them now? Which one first? -->
 

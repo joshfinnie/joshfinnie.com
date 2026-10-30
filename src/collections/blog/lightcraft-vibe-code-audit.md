@@ -8,7 +8,7 @@ tags:
   - "refactor"
   - "code-review"
 slug: "lightcraft-vibe-code-audit"
-description: "I spent a week having Claude Code audit my private fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines."
+description: "I spent a week having Claude Code audit my fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines."
 heroImage: "blog/lightcraft-tetons"
 unsplash: ""
 unsplashURL: ""

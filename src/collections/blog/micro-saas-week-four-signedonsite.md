@@ -98,8 +98,6 @@ There are no per-proposal fees. A pro who sends forty proposals a month pays the
 
 The deadline held, with a day to spare. I built SignedOnSite on Wednesday and Thursday, and it was live on its own domain Thursday night.
 
-<!-- TODO: checkout status. Live keys, products, prices, portal and webhooks are all set up. Is the SignedOnSite Stripe account activated with Connect turned on, so a real card goes through today? If not, say so here. -->
-
 Scope did not hold. The trade picker turned a plumbing product into one for six trades on the first night. I also added a "Remove all" button for the price book, with a confirmation and an undo, and emails that send the signed PDF to both sides. Each one was small and each one was useful. Together they are the same pattern as week one.
 
 The stack held, if Next.js counts as the stack now. Neon did more work this time, with the database, a test branch, a production branch, and file storage all on one project. Auth is better-auth. The app is about 7,700 lines of TypeScript, plus 3,300 lines of tests: 41 unit tests and a Playwright journey from sign-up to "job complete" on a phone and a desktop.

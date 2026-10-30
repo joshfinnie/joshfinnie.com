@@ -96,7 +96,7 @@ There are no per-proposal fees. A pro who sends forty proposals a month pays the
 
 ## Where I Broke The Rules
 
-The deadline held, with a day to spare. I built SignedOnSite on Wednesday and Thursday, and it was live on its own domain Thursday night.
+The deadline held, with a day to spare. I built SignedOnSite on Wednesday and Thursday, and it was live on its own domain Thursday night, taking real subscriptions and real deposits.
 
 Scope did not hold. The trade picker turned a plumbing product into one for six trades on the first night. I also added a "Remove all" button for the price book, with a confirmation and an undo, and emails that send the signed PDF to both sides. Each one was small and each one was useful. Together they are the same pattern as week one.
 

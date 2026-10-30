@@ -1,6 +1,6 @@
 ---
 title: "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
-date: "2026-11-07" # TODO: confirm the repo is public by then
+date: "2026-11-07"
 tags:
   - "rust"
   - "ai"
@@ -8,7 +8,6 @@ tags:
   - "refactor"
   - "code-review"
 slug: "lightcraft-vibe-code-audit"
-draft: true
 description: "I spent a week having Claude Code audit my private fork of LightCraft, the AI-built Rust Lightroom clone: fuzzing, crash safety, a locked control port, faster frames, and 50,000 deleted lines."
 heroImage: "blog/lightcraft-tetons"
 unsplash: ""
@@ -92,7 +91,7 @@ Then Claude added fuzz targets for the raw, codec, and metadata parsers. They fo
 
 LightCraft has a local control port for automation, and it accepted commands from anything on the machine without a token. An upstream pull request already fixed that, so I merged it early. Claude then tightened the edges around it. The token file belongs to the app that serves the port, and it gets cleaned up properly. Idle connections drop after five minutes, and click and drag counts on the channel have limits.
 
-The supply chain got a look too. The build pulled in `ring`, and the `rsa` crate carried a published RustSec advisory. The last change I'm making, still uncommitted as I write this, is a `cargo xtask deps` gate built on cargo-deny. It refuses crates that compile C or assembly, copyleft licenses, sources other than crates.io, and any crate with an open advisory.
+The supply chain got a look too. The last change of the week was a `cargo xtask deps` step in the CI gate, built on cargo-deny. It refuses crates that compile C or assembly, copyleft licenses, and sources other than crates.io. Every RustSec advisory needs a fix or a written reason to ignore it. Getting it to pass meant upgrading rustls, zip, and quick-xml, which parses the XMP inside your photos. The review had also flagged `ring`, and that one was wrong. It sits in `Cargo.lock` as an optional dependency and never gets built.
 
 ## Data That Could Disappear
 
@@ -145,5 +144,3 @@ Coverage across the workspace ended at 91% of lines. About 4.5 million fuzz inpu
 "Vibe coded" turned out to mean something specific. It meant unchecked indexing in parsers, errors flattened into strings, state structs that grow a field a day, and data writes with no atomic step. The core was better than the reputation. The seams were worse. None of it needed a rewrite. It needed an audit, a failing test per bug, and a lint that stops each class of mistake from coming back. The same tool that wrote the mess was a good tool for cleaning it up, as long as someone kept asking for the boring version of every fix.
 
 My fork is at [github.com/joshfinnie/lightcraft](https://github.com/joshfinnie/lightcraft). It's a personal fork, not an official build, and nothing in it has gone back upstream. The hero image is LightCraft developing Ansel Adams' "The Tetons and the Snake River" (1942), public domain from the U.S. National Archives. If you've tried cleaning up an AI-built codebase, tell me what you found on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).
-
-<!-- TODO: repo link goes live only once github.com/joshfinnie/lightcraft is public. Keep draft: true until then. -->

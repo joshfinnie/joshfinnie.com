@@ -1,5 +1,5 @@
 {
-  "uploadedAt": "2026-10-23T17:12:27.158Z",
+  "uploadedAt": "2026-10-30T14:26:07.756Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
@@ -16,6 +16,11 @@
       "localPath": "src/assets/blog/micro-saas-october.webp",
       "publicId": "blog/micro-saas-october",
       "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1790790631/blog/micro-saas-october.webp"
+    },
+    {
+      "localPath": "src/assets/blog/micro-saas-signedonsite.webp",
+      "publicId": "blog/micro-saas-signedonsite",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1793370164/blog/micro-saas-signedonsite.webp"
     },
     {
       "localPath": "src/assets/blog/micro-saas-teamdues.webp",

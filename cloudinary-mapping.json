@@ -3,6 +3,11 @@
   "cloudName": "dgd9cw3gu",
   "images": [
     {
+      "localPath": "src/assets/blog/lightcraft-tetons.webp",
+      "publicId": "blog/lightcraft-tetons",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1793370162/blog/lightcraft-tetons.webp"
+    },
+    {
       "localPath": "src/assets/blog/micro-saas-bragboard.webp",
       "publicId": "blog/micro-saas-bragboard",
       "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1791469848/blog/micro-saas-bragboard.webp"

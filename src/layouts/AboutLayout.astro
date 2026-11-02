@@ -7,7 +7,7 @@ const props = Astro.props.frontmatter ?? Astro.props;
 const { title, description, permalink } = props;
 ---
 
-<BaseLayout title={`${title} | www.joshfinnie.com`} {description} {permalink} collection="page">
+<BaseLayout title={`${title} | Josh Finnie`} {description} {permalink} collection="page">
   <WebPageStructuredData slot="structured-data" title={title} description={description} />
   <AboutSubNav />
   <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white prose prose-zinc">{title}</h1>

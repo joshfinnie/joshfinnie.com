@@ -39,10 +39,7 @@ export const { getStaticPaths, GET } = await OGImageRoute({
         color: [250, 250, 250],
       },
     },
-    fonts: [
-      'https://api.fontsource.org/v1/fonts/inter/latin-400-normal.ttf',
-      'https://api.fontsource.org/v1/fonts/inter/latin-600-normal.ttf',
-    ],
+    fonts: ['./src/fonts/inter-latin-400-normal.ttf', './src/fonts/inter-latin-600-normal.ttf'],
     ...(page.assetImports
       ? {
           bgImage: {

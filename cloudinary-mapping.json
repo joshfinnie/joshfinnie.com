@@ -18,6 +18,11 @@
       "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1790790631/blog/micro-saas-october.webp"
     },
     {
+      "localPath": "src/assets/blog/micro-saas-retro.webp",
+      "publicId": "blog/micro-saas-retro",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1793370366/blog/micro-saas-retro.webp"
+    },
+    {
       "localPath": "src/assets/blog/micro-saas-signedonsite.webp",
       "publicId": "blog/micro-saas-signedonsite",
       "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1793370164/blog/micro-saas-signedonsite.webp"

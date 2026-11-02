@@ -17,7 +17,7 @@ I just wrapped up [the October micro SaaS challenge](/blog/the-october-micro-saa
 
 ## BlueFin.games
 
-I run [BlueFin.games](https://bluefin.games), a small Magic: The Gathering store that sells singles and sealed product on Mana Pool and TCGplayer. Lately I've been building the tools behind it: listing my Mana Pool stock on TCGplayer, buying bulk cards by the count, and keeping track of which orders I've already pulled.
+I run [BlueFin.games](https://bluefin.games), a small Magic: The Gathering store that sells singles and sealed product on Mana Pool and TCGplayer. Lately I've been building the tools behind it: listing my TCG cards on both Mana Pool and TCGplayer, buying bulk cards by the count, and keeping track of which orders I've already pulled.
 
 ---
 

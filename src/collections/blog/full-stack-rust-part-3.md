@@ -19,17 +19,17 @@ This is a 6 part blog post series about writing a full-stack application in Rust
 In this third part we will be adding proper error handling and URL validation.
 Here is the full series outline:
 
-1. **Axum Backend Basics** — routes, shared state, and an in-memory URL shortener
-2. **Database Persistence** — swapping the HashMap for a real database with sqlx
-3. **Error Handling & Validation** (this post) — custom error types, URL validation, and graceful responses
-4. **Authentication** — API keys and auth middleware
-5. **Yew.rs Frontend** — building an SPA that talks to our API
-6. **Deployment** — Dockerizing the app and serving Yew from Axum
+1. **Axum Backend Basics**: routes, shared state, and an in-memory URL shortener
+2. **Database Persistence**: swapping the HashMap for a real database with sqlx
+3. **Error Handling & Validation** (this post): custom error types, URL validation, and graceful responses
+4. **Authentication**: API keys and auth middleware
+5. **Yew.rs Frontend**: building an SPA that talks to our API
+6. **Deployment**: Dockerizing the app and serving Yew from Axum
 
 ## The Problem
 
 Take a look at the error handling from Part 2.
-When something goes wrong, we return a bare `StatusCode` — no message, no context, nothing.
+When something goes wrong, we return a bare `StatusCode` with no message, no context, nothing.
 If a user hits a slug that does not exist, they get a `404` with an empty body.
 If the database blows up, they get a `500` with an empty body.
 
@@ -75,7 +75,7 @@ struct AppError {
 ```
 
 The `#[serde(skip)]` on `status` is important.
-We do not want to serialize the status code into our JSON response body — it will already be the HTTP status code on the response itself.
+We do not want to serialize the status code into our JSON response body, since it will already be the HTTP status code on the response itself.
 The JSON body just needs the `message`.
 
 ## Helper Constructors
@@ -108,7 +108,7 @@ impl AppError {
 }
 ```
 
-Using `impl Into<String>` means we can pass in either a `String` or a `&str` — whichever is convenient at the call site.
+Using `impl Into<String>` means we can pass in either a `String` or a `&str`, whichever is convenient at the call site.
 
 ## Implementing IntoResponse
 
@@ -170,7 +170,7 @@ fn validate_url(input: &str) -> Result<(), AppError> {
 
 This catches two categories of bad input.
 First, anything that is not a valid URL at all (like `"not a url"`).
-Second, URLs with schemes we do not want to support — imagine someone storing a `file:///etc/passwd` URL in your shortener.
+Second, URLs with schemes we do not want to support. Imagine someone storing a `file:///etc/passwd` URL in your shortener.
 We only allow `http` and `https`.
 
 ## Updating the Handlers
@@ -458,7 +458,7 @@ Your API consumers will thank you.
 We went from bare status codes to structured, informative error responses.
 Our API now validates URLs before storing them and gives clear feedback when something goes wrong.
 
-The pattern we used — a custom error struct with `IntoResponse` and `From` implementations — is a common one in Axum applications.
+The pattern we used, a custom error struct with `IntoResponse` and `From` implementations, is a common one in Axum applications.
 It scales well as your app grows because adding new error types is just a matter of adding another constructor method.
 
 In the next part of this series, we will add authentication with API keys and middleware so that not just anyone can create short URLs.

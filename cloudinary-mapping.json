@@ -1,11 +1,36 @@
 {
-  "uploadedAt": "2026-09-01T02:46:01.587Z",
+  "uploadedAt": "2026-10-30T14:26:07.756Z",
   "cloudName": "dgd9cw3gu",
   "images": [
     {
-      "localPath": "src/assets/blog/data-centers-are-not-a-common-good.jpg",
-      "publicId": "blog/data-centers-are-not-a-common-good",
-      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1788230760/blog/data-centers-are-not-a-common-good.jpg"
+      "localPath": "src/assets/blog/micro-saas-bragboard.webp",
+      "publicId": "blog/micro-saas-bragboard",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1791469848/blog/micro-saas-bragboard.webp"
+    },
+    {
+      "localPath": "src/assets/blog/micro-saas-noshowfixer.webp",
+      "publicId": "blog/micro-saas-noshowfixer",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1792775543/blog/micro-saas-noshowfixer.webp"
+    },
+    {
+      "localPath": "src/assets/blog/micro-saas-october.webp",
+      "publicId": "blog/micro-saas-october",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1790790631/blog/micro-saas-october.webp"
+    },
+    {
+      "localPath": "src/assets/blog/micro-saas-retro.webp",
+      "publicId": "blog/micro-saas-retro",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1793370366/blog/micro-saas-retro.webp"
+    },
+    {
+      "localPath": "src/assets/blog/micro-saas-signedonsite.webp",
+      "publicId": "blog/micro-saas-signedonsite",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1793370164/blog/micro-saas-signedonsite.webp"
+    },
+    {
+      "localPath": "src/assets/blog/micro-saas-teamdues.webp",
+      "publicId": "blog/micro-saas-teamdues",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1792294346/blog/micro-saas-teamdues.webp"
     }
   ]
 }

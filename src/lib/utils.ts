@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content';
+import { isLive } from './published';
 
 // Unpublished content renders on the local dev server and on Netlify's PR
 // deploy previews / branch deploys, but never on the production build Netlify
@@ -6,11 +7,8 @@ import { getCollection } from 'astro:content';
 // explicit `draft: true`, and a `date` that has not arrived yet.
 const isPreview = import.meta.env.DEV || ['deploy-preview', 'branch-deploy'].includes(process.env.CONTEXT ?? '');
 
-// An entry goes live once its `date` arrives, so scheduling is a matter of
-// dating it in the future and letting the first build on or after that day pick
-// it up. `draft: true` holds an entry back no matter what its date says.
 function isPublished(data: { date: string; draft?: boolean | undefined }) {
-  return isPreview || (data.draft !== true && Date.parse(data.date) <= Date.now());
+  return isPreview || isLive(data);
 }
 
 export async function getPublishedPosts() {

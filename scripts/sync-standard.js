@@ -1,30 +1,116 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { AtpAgent } from '@atproto/api';
 import { config } from 'dotenv';
 import { glob } from 'glob';
 import matter from 'gray-matter';
 import kebabCase from 'lodash.kebabcase';
+import { isLive } from '../src/lib/published.ts';
 
-config();
+config({ quiet: true });
 
-const BSKY_HANDLE = process.env.BSKY_HANDLE;
-const BSKY_PASSWORD = process.env.BSKY_PASSWORD;
+const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+const MAPPING_FILE = path.join(ROOT, 'standard-mapping.json');
+const WELL_KNOWN_FILE = path.join(ROOT, 'public/.well-known/site.standard.publication');
 const SITE_URL = 'https://www.joshfinnie.com';
-const MAPPING_FILE = path.join(process.cwd(), 'standard-mapping.json');
-const WELL_KNOWN_FILE = path.join(process.cwd(), 'public/.well-known/site.standard.publication');
+const INDEX_TITLE = 'Josh Finnie | Senior Software Engineer & Data Nerd';
+const DOCUMENT = 'site.standard.document';
+const PUBLICATION = 'site.standard.publication';
+const DRY_RUN = process.argv.includes('--dry-run');
 
-// Load existing mapping
-let mapping = {
-  publicationUri: '',
-  documents: {},
+const PUBLICATION_RECORD = {
+  $type: PUBLICATION,
+  name: "Josh Finnie's Blog",
+  description: 'Senior Software Engineer at People Data Labs. Writing about Rust, Go, data, and developer lifestyle.',
+  url: SITE_URL,
 };
 
-if (fs.existsSync(MAPPING_FILE)) {
-  mapping = JSON.parse(fs.readFileSync(MAPPING_FILE, 'utf-8'));
+// Each group mirrors the route that serves it, so a record exists exactly when
+// production serves its page. `dated` groups follow the site's publish gate.
+const CONTENT_GROUPS = [
+  { pattern: 'src/collections/blog/**/*.{md,mdx}', basePath: '/blog', dated: true },
+  { pattern: 'src/collections/projects/[^_]*.{md,mdx}', basePath: '/projects', dated: false },
+  { pattern: 'src/pages/*.{md,mdx}', basePath: '', dated: false },
+];
+
+function readMapping() {
+  if (!fs.existsSync(MAPPING_FILE)) return { publicationUri: '', documents: {} };
+  return JSON.parse(fs.readFileSync(MAPPING_FILE, 'utf-8'));
+}
+
+function writeMapping(mapping) {
+  const documents = Object.fromEntries(Object.entries(mapping.documents).sort(([a], [b]) => a.localeCompare(b)));
+  fs.writeFileSync(MAPPING_FILE, `${JSON.stringify({ ...mapping, documents }, null, 2)}\n`);
+}
+
+function toDateString(value) {
+  return value instanceof Date ? value.toISOString() : value;
+}
+
+async function collectDocuments() {
+  const documents = new Map();
+  documents.set('/', { title: INDEX_TITLE });
+
+  for (const group of CONTENT_GROUPS) {
+    for (const file of await glob(group.pattern, { cwd: ROOT })) {
+      const { data } = matter(fs.readFileSync(path.join(ROOT, file), 'utf-8'));
+      if (!data.title) continue;
+
+      const date = toDateString(data.date);
+      if (group.dated && !isLive({ date, draft: data.draft })) continue;
+
+      const slug = data.slug || kebabCase(path.basename(file, path.extname(file)));
+      const basePath = data.leftistOnly === true ? '/leftist' : group.basePath;
+      documents.set(`${basePath}/${slug}/`, {
+        title: data.title,
+        description: data.description || undefined,
+        publishedAt: date ? new Date(date).toISOString() : undefined,
+      });
+    }
+  }
+
+  return documents;
+}
+
+async function listRecords(agent, did, collection) {
+  const records = new Map();
+  let cursor;
+  do {
+    const res = await agent.com.atproto.repo.listRecords({ repo: did, collection, limit: 100, cursor });
+    for (const record of res.data.records) records.set(record.uri, record.value);
+    cursor = res.data.cursor;
+  } while (cursor);
+  return records;
+}
+
+function rkeyOf(uri) {
+  return uri.split('/').pop();
+}
+
+// Fields this script owns. Anything else on a record (written by another tool)
+// is carried over untouched on update.
+function buildRecord(existing, site, webPath, doc) {
+  const record = {
+    ...existing,
+    $type: DOCUMENT,
+    site,
+    path: webPath,
+    title: doc.title,
+    publishedAt: doc.publishedAt ?? existing?.publishedAt ?? new Date().toISOString(),
+  };
+  if (doc.description) record.description = doc.description;
+  else delete record.description;
+  return record;
+}
+
+function changedFields(a, b) {
+  const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+  return [...keys].filter((key) => JSON.stringify(a[key]) !== JSON.stringify(b[key]));
 }
 
 async function sync() {
+  const { BSKY_HANDLE, BSKY_PASSWORD } = process.env;
   if (!BSKY_HANDLE || !BSKY_PASSWORD) {
     console.error('Error: BSKY_HANDLE and BSKY_PASSWORD environment variables are required.');
     process.exit(1);
@@ -33,137 +119,103 @@ async function sync() {
   const agent = new AtpAgent({ service: 'https://bsky.social' });
   await agent.login({ identifier: BSKY_HANDLE, password: BSKY_PASSWORD });
   const did = agent.session.did;
-  console.log(`Logged in as ${BSKY_HANDLE} (${did})`);
+  console.log(`Logged in as ${BSKY_HANDLE} (${did})${DRY_RUN ? ' [dry run]' : ''}`);
 
-  // 1. Sync Publication Record
-  const pubRecord = {
-    $type: 'site.standard.publication',
-    name: "Josh Finnie's Blog",
-    description: 'Senior Software Engineer at People Data Labs. Writing about Rust, Go, data, and developer lifestyle.',
-    url: SITE_URL,
+  const oldMapping = readMapping();
+  const mapping = { publicationUri: oldMapping.publicationUri, documents: {} };
+  const write = async (label, fn) => {
+    console.log(label);
+    if (!DRY_RUN) await fn();
   };
 
-  if (!mapping.publicationUri) {
-    console.log('Creating publication record...');
-    const res = await agent.com.atproto.repo.createRecord({
-      repo: did,
-      collection: 'site.standard.publication',
-      record: pubRecord,
-    });
-    mapping.publicationUri = res.data.uri;
-    console.log(`Created Publication: ${mapping.publicationUri}`);
-  } else {
-    console.log('Updating existing publication record...');
-    const rkey = mapping.publicationUri.split('/').pop();
-    await agent.com.atproto.repo.putRecord({
-      repo: did,
-      collection: 'site.standard.publication',
-      rkey: rkey,
-      record: pubRecord,
-    });
-    console.log(`Updated Publication: ${mapping.publicationUri}`);
-  }
-
-  // Update .well-known file
-  fs.mkdirSync(path.dirname(WELL_KNOWN_FILE), { recursive: true });
-  fs.writeFileSync(WELL_KNOWN_FILE, mapping.publicationUri);
-
-  // 2. Sync Document Records
-  const oldDocuments = mapping.documents;
-  mapping.documents = {};
-
-  const contentFiles = [
-    { pattern: 'src/collections/blog/**/*.{md,mdx}', basePath: '/blog' },
-    { pattern: 'src/collections/projects/**/*.{md,mdx}', basePath: '/projects' },
-    { pattern: 'src/pages/*.{md,mdx}', basePath: '' },
-  ];
-
-  for (const group of contentFiles) {
-    const files = await glob(group.pattern);
-    for (const filePath of files) {
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const { data } = matter(fileContent);
-
-      const rawSlug = path.basename(filePath, path.extname(filePath));
-      const slug = data.slug || kebabCase(rawSlug);
-      const isIndex = rawSlug === 'index';
-      const basePath = data.leftistOnly === true ? '/leftist' : group.basePath;
-      const webPath = isIndex ? '/' : `${basePath}/${slug}/`;
-
-      // Check if already mapped (reuse old URI if slug changed but path matches)
-      // We check for the new webPath (dashes) or the old raw path (underscores)
-      const existingUri = oldDocuments[webPath] || oldDocuments[`${group.basePath}/${rawSlug}/`];
-
-      if (existingUri) {
-        mapping.documents[webPath] = existingUri;
-        continue;
-      }
-
-      if (mapping.documents[webPath]) continue;
-
-      // Handle pages without frontmatter titles (like index)
-      let title = data.title;
-      if (isIndex && !title) title = 'Josh Finnie | Senior Software Engineer & Data Nerd';
-      if (!title) continue;
-
-      console.log(`Syncing document: ${webPath}`);
-
-      const docRecord = {
-        $type: 'site.standard.document',
-        site: mapping.publicationUri,
-        title: title,
-        publishedAt: new Date(data.date || fs.statSync(filePath).mtime).toISOString(),
-        path: webPath,
-        description: data.description || '',
-      };
-
-      try {
-        const res = await agent.com.atproto.repo.createRecord({
-          repo: did,
-          collection: 'site.standard.document',
-          record: docRecord,
-        });
-        mapping.documents[webPath] = res.data.uri;
-        console.log(`  Created: ${res.data.uri}`);
-
-        // Save mapping incrementally to be safe
-        fs.writeFileSync(MAPPING_FILE, `${JSON.stringify(mapping, null, 2)}\n`);
-
-        // Throttling
-        await new Promise((r) => setTimeout(r, 200));
-      } catch (e) {
-        console.error(`  Error syncing ${webPath}: ${e.message}`);
-      }
-    }
-  }
-
-  // Handle special case: index.astro (manually since it's not MDX)
-  if (!mapping.documents['/']) {
-    console.log('Syncing document: /');
-    const existingUri = oldDocuments['/'];
-    if (existingUri) {
-      mapping.documents['/'] = existingUri;
-    } else {
-      const docRecord = {
-        $type: 'site.standard.document',
-        site: mapping.publicationUri,
-        title: 'Josh Finnie | Senior Software Engineer & Data Nerd',
-        publishedAt: new Date().toISOString(),
-        path: '/',
-      };
+  const publications = await listRecords(agent, did, PUBLICATION);
+  const currentPublication = publications.get(mapping.publicationUri);
+  if (!currentPublication) {
+    await write('Creating publication record', async () => {
       const res = await agent.com.atproto.repo.createRecord({
         repo: did,
-        collection: 'site.standard.document',
-        record: docRecord,
+        collection: PUBLICATION,
+        record: PUBLICATION_RECORD,
       });
-      mapping.documents['/'] = res.data.uri;
+      mapping.publicationUri = res.data.uri;
+      publications.set(res.data.uri, PUBLICATION_RECORD);
+    });
+  } else if (changedFields(currentPublication, PUBLICATION_RECORD).length) {
+    await write('Updating publication record', () =>
+      agent.com.atproto.repo.putRecord({
+        repo: did,
+        collection: PUBLICATION,
+        rkey: rkeyOf(mapping.publicationUri),
+        record: PUBLICATION_RECORD,
+      })
+    );
+  }
+  const site = mapping.publicationUri;
+
+  const documents = await collectDocuments();
+  const oldCount = Object.keys(oldMapping.documents).length;
+  if (documents.size < oldCount / 2) {
+    throw new Error(`Found ${documents.size} live documents but the mapping has ${oldCount}; refusing to prune.`);
+  }
+
+  const remote = await listRecords(agent, did, DOCUMENT);
+  let failures = 0;
+
+  for (const [webPath, doc] of documents) {
+    const uri = oldMapping.documents[webPath];
+    const existing = uri ? remote.get(uri) : undefined;
+    const record = buildRecord(existing, site, webPath, doc);
+
+    try {
+      if (!existing) {
+        await write(`Creating ${webPath}`, async () => {
+          const res = await agent.com.atproto.repo.createRecord({ repo: did, collection: DOCUMENT, record });
+          mapping.documents[webPath] = res.data.uri;
+        });
+      } else {
+        mapping.documents[webPath] = uri;
+        const changed = changedFields(existing, record);
+        if (changed.length) {
+          await write(`Updating ${webPath}: ${changed.join(', ')}`, () =>
+            agent.com.atproto.repo.putRecord({ repo: did, collection: DOCUMENT, rkey: rkeyOf(uri), record })
+          );
+        }
+      }
+    } catch (error) {
+      failures++;
+      if (uri) mapping.documents[webPath] = uri;
+      console.error(`  Error syncing ${webPath}: ${error.message}`);
     }
   }
 
-  // Always save final mapping with trailing newline
-  fs.writeFileSync(MAPPING_FILE, `${JSON.stringify(mapping, null, 2)}\n`);
+  // A record goes once nothing maps to it: its post was unpublished, renamed, or
+  // deleted, or it is a duplicate from an earlier run. Records belonging to
+  // another live publication in this repo are left alone.
+  const kept = new Set(Object.values(mapping.documents));
+  for (const [uri, value] of remote) {
+    if (kept.has(uri)) continue;
+    if (value.site !== site && publications.has(value.site)) continue;
+    try {
+      await write(`Deleting ${value.path} (${rkeyOf(uri)})`, () =>
+        agent.com.atproto.repo.deleteRecord({ repo: did, collection: DOCUMENT, rkey: rkeyOf(uri) })
+      );
+    } catch (error) {
+      failures++;
+      console.error(`  Error deleting ${uri}: ${error.message}`);
+    }
+  }
 
-  console.log('\nSync complete! mapping saved to standard-mapping.json');
+  if (!DRY_RUN) {
+    writeMapping(mapping);
+    fs.mkdirSync(path.dirname(WELL_KNOWN_FILE), { recursive: true });
+    fs.writeFileSync(WELL_KNOWN_FILE, mapping.publicationUri);
+  }
+
+  console.log(`\nSync complete: ${documents.size} live documents.${failures ? ` ${failures} failed.` : ''}`);
+  if (failures) process.exitCode = 1;
 }
 
-sync();
+sync().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

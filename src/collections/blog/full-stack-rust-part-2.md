@@ -41,7 +41,7 @@ It is the closest thing to "just use SQL" that the Rust ecosystem has.
 ## Why SQLite?
 
 For a tutorial like this, SQLite is perfect.
-There is zero setup — no server to install, no ports to configure, no Docker containers to spin up.
+There is zero setup. No server to install, no ports to configure, no Docker containers to spin up.
 It is just a file on disk.
 
 The best part is that sqlx's API is nearly identical across database backends.
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS urls (
 );
 ```
 
-Nothing fancy — a `slug` as the primary key, the destination `url`, and a `created_at` timestamp that defaults to now.
+Nothing fancy, just a `slug` as the primary key, the destination `url`, and a `created_at` timestamp that defaults to now.
 
 Run the migration:
 
@@ -103,7 +103,7 @@ $ sqlx migrate run
 ```
 
 You should see a confirmation that the migration was applied.
-If you peek at the project root, you will see a `urls.db` file — that is your database.
+If you peek at the project root, you will see a `urls.db` file. That is your database.
 
 ## Updating Our Models
 
@@ -173,7 +173,7 @@ async fn create_url(
 ```
 
 The `RETURNING` clause is a nice trick.
-Instead of inserting and then doing a separate SELECT, we get the full row back in one query — including the `created_at` that the database set for us.
+Instead of inserting and then doing a separate SELECT, we get the full row back in one query, including the `created_at` that the database set for us.
 
 ### Redirect from a Slug
 
@@ -199,7 +199,7 @@ async fn redirect_url(
 ```
 
 We use `fetch_optional` here instead of `fetch_one`.
-This returns an `Option<UrlResponse>` — `None` if the slug does not exist, which we convert into a 404.
+This returns an `Option<UrlResponse>`, so `None` if the slug does not exist, which we convert into a 404.
 
 ### List All URLs
 
@@ -397,7 +397,7 @@ You should get back something like:
 }
 ```
 
-Notice the `created_at` field — that is our database doing its thing.
+Notice the `created_at` field. That is our database doing its thing.
 
 Now stop the server, start it again, and list the URLs:
 
@@ -412,7 +412,7 @@ Persistence!
 ## Wrapping Up
 
 We went from an in-memory `HashMap` to a proper SQLite database in about the same number of lines of code.
-sqlx made this remarkably painless — plain SQL queries, compile-time checking, and automatic struct mapping with `FromRow`.
+sqlx made this remarkably painless: plain SQL queries, compile-time checking, and automatic struct mapping with `FromRow`.
 
 We are still returning bare `StatusCode` errors with no message body, which is not great for API consumers. We are also not checking if the submitted URL is actually valid, so someone could store `not-a-url` and we would happily accept it.
 

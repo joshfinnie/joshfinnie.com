@@ -20,12 +20,12 @@ This is a 6 part blog post series about writing a full-stack application in Rust
 In this fifth part we will be building a frontend with [Yew.rs](https://yew.rs/) that compiles to WebAssembly.
 Here is the full series outline:
 
-1. **Axum Backend Basics** — routes, shared state, and an in-memory URL shortener
-2. **Database Persistence** — swapping the HashMap for a real database with sqlx
-3. **Error Handling & Validation** — custom error types, URL validation, and graceful responses
-4. **Authentication** — API keys and auth middleware
-5. **Yew.rs Frontend** (this post) — building an SPA that talks to our API
-6. **Deployment** — Dockerizing the app and serving Yew from Axum
+1. **Axum Backend Basics**: routes, shared state, and an in-memory URL shortener
+2. **Database Persistence**: swapping the HashMap for a real database with sqlx
+3. **Error Handling & Validation**: custom error types, URL validation, and graceful responses
+4. **Authentication**: API keys and auth middleware
+5. **Yew.rs Frontend** (this post): building an SPA that talks to our API
+6. **Deployment**: Dockerizing the app and serving Yew from Axum
 
 ## What is Yew?
 
@@ -89,12 +89,12 @@ gloo = "0.11"
 
 A quick rundown:
 
-- **yew** with `csr` — client-side rendered Yew components
-- **reqwasm** — a simple HTTP client that works in WASM
-- **serde / serde_json** — JSON serialization, same as the backend
-- **wasm-bindgen-futures** — lets us `.await` futures in WASM land
-- **web-sys** — raw DOM bindings; we need `HtmlInputElement` for reading form inputs
-- **gloo** — utility crate for common browser APIs (timers, console, etc.)
+- **yew** with `csr`: client-side rendered Yew components
+- **reqwasm**: a simple HTTP client that works in WASM
+- **serde / serde_json**: JSON serialization, same as the backend
+- **wasm-bindgen-futures**: lets us `.await` futures in WASM land
+- **web-sys**: raw DOM bindings; we need `HtmlInputElement` for reading form inputs
+- **gloo**: utility crate for common browser APIs (timers, console, etc.)
 
 ## Installing Trunk
 
@@ -432,9 +432,9 @@ Yew's component model is surprisingly productive once you get the hang of it. Th
 
 A few things you could improve:
 
-- **Styling** — we kept styles minimal. Adding a CSS framework like [Tailwind](https://tailwindcss.com/) via Trunk's asset pipeline would make things look much nicer.
-- **Environment variables** — hardcoding the API key in the frontend is not ideal. Trunk supports [environment variable injection](https://trunkrs.dev/configuration/) at build time.
-- **Optimistic updates** — instead of waiting for the list to re-fetch, you could immediately add the new URL to the local state.
+- **Styling**: we kept styles minimal. Adding a CSS framework like [Tailwind](https://tailwindcss.com/) via Trunk's asset pipeline would make things look much nicer.
+- **Environment variables**: hardcoding the API key in the frontend is not ideal. Trunk supports [environment variable injection](https://trunkrs.dev/configuration/) at build time.
+- **Optimistic updates**: instead of waiting for the list to re-fetch, you could immediately add the new URL to the local state.
 
 In the final part of this series, we will serve the Yew frontend directly from Axum, Dockerize the whole thing, and deploy it to [Shuttle](https://www.shuttle.rs/).
 Stay tuned!

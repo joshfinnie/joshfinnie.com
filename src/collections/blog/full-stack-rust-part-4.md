@@ -18,12 +18,12 @@ This is a 6 part blog post series about writing a full-stack application in Rust
 In this fourth part we will be adding API key authentication to protect our write endpoints.
 Here is the full series outline:
 
-1. **Axum Backend Basics** — routes, shared state, and an in-memory URL shortener
-2. **Database Persistence** — swapping the HashMap for a real database with sqlx
-3. **Error Handling & Validation** — custom error types, URL validation, and graceful responses
-4. **Authentication** (this post) — API keys and auth middleware
-5. **Yew.rs Frontend** — building an SPA that talks to our API
-6. **Deployment** — Dockerizing the app and serving Yew from Axum
+1. **Axum Backend Basics**: routes, shared state, and an in-memory URL shortener
+2. **Database Persistence**: swapping the HashMap for a real database with sqlx
+3. **Error Handling & Validation**: custom error types, URL validation, and graceful responses
+4. **Authentication** (this post): API keys and auth middleware
+5. **Yew.rs Frontend**: building an SPA that talks to our API
+6. **Deployment**: Dockerizing the app and serving Yew from Axum
 
 ## Why Authentication?
 
@@ -203,7 +203,7 @@ async fn create_url(
 }
 ```
 
-The change is minimal — just swap `pool` for `state.pool`. Do the same for `list_urls`, `redirect_url`, and `delete_url`.
+The change is minimal. Just swap `pool` for `state.pool`. Do the same for `list_urls`, `redirect_url`, and `delete_url`.
 
 ## Testing It Out
 
@@ -263,7 +263,7 @@ Redirects work too:
 $ curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/V1StGX
 ```
 
-You should see `307` — a temporary redirect.
+You should see `307`, a temporary redirect.
 
 ## Wrapping Up
 
@@ -271,9 +271,9 @@ We now have a proper authentication layer on our URL shortener. Our write endpoi
 
 A few things to keep in mind if you want to take this further:
 
-- **Hashing** — we are comparing the API key as a plain string. In production, you might want to hash stored keys and compare hashes.
-- **Multiple keys** — right now we support a single key. You could store multiple keys in the database and look them up per request.
-- **Rate limiting** — Tower has a [RateLimit](https://docs.rs/tower/latest/tower/limit/rate/struct.RateLimit.html) layer that would be easy to add alongside our auth middleware.
+- **Hashing**: we are comparing the API key as a plain string. In production, you might want to hash stored keys and compare hashes.
+- **Multiple keys**: right now we support a single key. You could store multiple keys in the database and look them up per request.
+- **Rate limiting**: Tower has a [RateLimit](https://docs.rs/tower/latest/tower/limit/rate/struct.RateLimit.html) layer that would be easy to add alongside our auth middleware.
 
 In the next part we will build a frontend for our URL shortener using [Yew.rs](https://yew.rs/), Rust's component-based framework that compiles to WebAssembly.
 Stay tuned!

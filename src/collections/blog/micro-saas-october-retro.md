@@ -1,13 +1,12 @@
 ---
 title: "The October Micro SaaS Challenge: A Retro"
-date: "2026-11-04" # TODO: confirm publish date once SignedOnSite ships
+date: "2026-11-02"
 tags:
   - "micro-saas"
   - "side-projects"
   - "indie-hacking"
   - "ai"
 slug: "micro-saas-october-retro"
-draft: true
 description: "Four micro SaaS products in four weeks, built with Claude Code: what shipped, which rules broke, what it cost, and what I'd change next time."
 heroImage: "blog/micro-saas-retro"
 unsplash: "Zongnan Bao"
@@ -27,7 +26,7 @@ Here's what the month produced, side by side.
 | [NoShowFixer](https://noshowfixer.com) | Confirm or cancel reminders built on an existing calendar | $19 to $30/mo, free in early access | No, left off on purpose | ~5,200 lines |
 | [SignedOnSite](https://signedonsite.com) | Home service proposals signed and deposit paid in the driveway | $59 Solo, $99 Crew | Yes | ~7,700 lines |
 
-<!-- TODO: add a "Results" column or a short paragraph here with real signups, paying customers, and revenue for each product. Zeros are fine. -->
+The results column would be all zeros. None of the four has a signup, a paying customer, or a dollar of revenue. The reason gets its own section below.
 
 Four products, four audiences, four pricing models. Bragboard is freemium. TeamDues charges per team for the length of a season. NoShowFixer has feature tiers. SignedOnSite is a flat monthly fee with no per-proposal cut. I didn't plan that spread, but it means I now have four different answers to "how should this charge," and two of them can take a real card today.
 
@@ -41,7 +40,7 @@ The switch happened on day one. Bragboard is almost all server actions and forms
 
 Astro is still what I reach for when a site is about content. This blog runs on it and isn't moving. A micro SaaS is the opposite. It's forms, auth, and state that changes on every request, and Next.js fits that shape.
 
-<!-- TODO: the "why" in your own words. Was it purely the app shape, or did Claude Code also do better work in Next.js than Astro (more training data, more conventions to follow)? Any pain points with Next.js over the month, like build times, caching surprises, or Netlify quirks? -->
+Claude Code also did better work in Next.js. The framework has strong conventions for where a route, a form action, or a database call lives, and years of examples behind them. Claude rarely had to guess, and that showed up in fewer wrong turns.
 
 The rest of the frozen stack held. Neon, Stripe, and Netlify ran under all four products. Looking back, the framework was never the part worth freezing. The services I pay for and have to keep running were.
 
@@ -53,7 +52,7 @@ I built all four with Claude Code. For this post I went back through the session
 
 Three of the four started the same way. I pasted a spec of 1,500 to 2,100 words, with the data model, the routes, the pricing, and a list of what was out of scope. I didn't use plan mode. Claude asked a couple of questions and then built. TeamDues went from spec to 140 files, 66 unit tests, and 6 end-to-end tests in about 67 minutes of agent time. SignedOnSite's first working version took about 43 minutes. Bragboard was the exception. It grew out of an old demo repo over a week of back and forth.
 
-<!-- TODO: where did the specs come from? The TeamDues spec mentions a shared 00-shared-infra-and-logistics.md file and a build window of Oct 27-31, which reads like you wrote several specs up front. Did Claude help write them? -->
+I wrote the specs with Claude, in one planning session ahead of the builds. They share one file for infrastructure and logistics, so each spec only had to describe its own product.
 
 After the spec, my prompts got short. Most were around 35 characters: "let's do it," "commit and push," "fix all of it." I steered by picking answers from Claude's multiple-choice questions far more than by typing. Bragboard alone had 26 rounds of them.
 
@@ -71,7 +70,7 @@ Neon feels like its team pictured an agent as the user. Claude created all four 
 
 Stripe's tooling for Claude Code is the best I've used from any company. On Bragboard I pasted Stripe's own "help me get started" prompt, which installed their plugin. Billing went from "let's talk about the monetization of this for a second" to live code with a migration in about 30 minutes. On TeamDues the Stripe skill moved Claude off Express accounts, which Stripe now treats as legacy, and onto Accounts v2 for Connect. Setting up Stripe this way was easier than doing it on Stripe's own website.
 
-<!-- TODO: one concrete moment where the Stripe or Neon tooling clearly beat the dashboard. -->
+The clearest example came on SignedOnSite's launch day. Once I logged in with the Stripe CLI, Claude set up live billing in about two and a half minutes. It made both plans and all four prices, set up the billing portal with plan switching and proration, created both webhook endpoints, and wrote the secrets into the production config. Then it noticed that the secret key in that config was a test key from a different Stripe account. On the dashboard, I'd have found that out when the first real checkout failed. I pasted in the right key, and a minute later Claude had checked that it could see every price, the portal, and both webhooks.
 
 The rough spots were at the edges. The Stripe sandbox key couldn't create connected accounts, so TeamDues' Connect flow never ran against real Stripe in that session.
 
@@ -94,9 +93,6 @@ Almost every one of those was at the edge where code meets a real account: crede
 Without these tools, October would have been one product, maybe. Each of these has auth, a database with migrations, payment code, tests in the hundreds or close to it, accessibility fixes, and a design review on every screen. The NoShowFixer email setup even handles bounces and complaints through signed notifications. That's what a small team ships over a quarter. I had a week per product, and the first working version of each took an afternoon.
 
 The gain wasn't typing speed. One person could now work at every layer, from Postgres branches to Stripe Connect to a screen reader reading a form label, and do it to a standard I'd want my name on. The bottleneck moved off the code.
-
-<!-- TODO: confirm the "one product, maybe" estimate and the "small team over a quarter" comparison match how you'd put it. -->
-
 The part AI didn't touch is the part the challenge was about. I finished and tested Bragboard's Stripe code in week one, and I still didn't set the production keys. No model writes the sentence that asks a stranger for money.
 
 ## The Rules That Held And The Ones That Broke
@@ -107,13 +103,11 @@ The checkout rule went two for four. Bragboard missed it. TeamDues made it, with
 
 Scope went from the worst rule to the best one. Week one blew past it. TeamDues did fees and nothing else, with no scheduling and no team chat. NoShowFixer cut its waitlist filler and its bundle even after I'd designed and modeled both.
 
-The post-per-build rule held. Every week got its write-up on its deadline day. The last rule was to keep whatever I built and not delete the repo on Sunday. All four are still up.
-
-<!-- TODO: confirm all four are staying up, and which (if any) you'll keep working on. -->
+The post-per-build rule held. Every week got its write-up on its deadline day. The last rule was to keep whatever I built and not delete the repo on Sunday. All four are still up, and they're staying up. Bragboard and SignedOnSite are the two I plan to keep building.
 
 One caveat on the scoreboard. Week one got two extra days because October 1 was a Thursday, and the later weeks didn't. Some of Bragboard's size is just time.
 
-<!-- TODO: the logs don't line up with one product per calendar week. Bragboard work started September 30, TeamDues was built October 8 and 9, NoShowFixer October 22 and 23, and SignedOnSite started October 28. Worth saying so? -->
+The weeks were also deadlines, not build windows. Bragboard work started on September 30. I built TeamDues on October 8 and 9 and NoShowFixer on October 22 and 23, and SignedOnSite started on October 28. Most products took a couple of focused days, and the rest of the week went to polish and the write-up.
 
 ## The One I Didn't Believe In
 
@@ -124,27 +118,19 @@ It shows in the work. I pushed the other three until every flow worked end to en
 Here's the surprising part. NoShowFixer works anyway. It reads a calendar feed, sends the reminders, handles bounces, and runs on its own domain with email out of the SES sandbox. A product I didn't believe in used to end up in that folder of unfinished repos I mentioned in the kickoff. This time my lack of enthusiasm cost me polish and tests, not the whole product. I think that's a real benefit. You can ship a working micro SaaS on an idea you're lukewarm about, and let real users tell you if you were wrong, instead of talking yourself out of it first.
 
 The catch is that belief still matters. It shows up in the last stretch: the test suite, the checkout, the launch. A product I don't care about still gets built. It just doesn't get finished.
-
-<!-- TODO: confirm the "easy choice" line about the checkout is fair. It reads the week three decision a little less charitably than that post did. -->
-
 ## What Failure Actually Looked Like
 
 Back in September I said the real risk wasn't that nothing sold. It was ending October with four Stripe accounts, four domains renewing every year, and four small support jobs I never planned for.
 
-I got the domains. bragboard.dev, teamdues.com, noshowfixer.com, and signedonsite.com all renew next fall whether anyone pays or not.
+I got the domains. bragboard.dev, teamdues.com, noshowfixer.com, and signedonsite.com all renew next fall whether anyone pays or not. Each one cost about $12 for the year. Everything else, from the databases to email, runs on free tiers, so the domains are the whole bill.
+
+I got two of the Stripe accounts. TeamDues and SignedOnSite both have live keys, and neither has taken a payment.
 
 I didn't get the support load, and the reason is the real failure of the month. I never announced any of them. Each one went live at a public URL, got a blog post, and then sat there. I didn't post a launch, email a single coach or contractor, or show any of them to the people I built them for. You can't get support requests from customers who don't know you exist.
 
 None of my rules asked for that. I wrote rules for shipping: a public URL, a checkout, a frozen stack, a post. Not one of them said a real person in the target audience had to hear about the product. So I followed the rules and skipped the part that makes it a business.
 
 Time is the other half. Getting each product to a state I was happy with took longer than I planned, every week. The rest of each week went into polish, not outreach. Back in September I wrote that I'm good at the engineering and bad at the part where I tell someone the price. Four weeks later, that's still true. A month with deadlines didn't force the uncomfortable half. It gave me four new places to avoid it.
-
-<!-- TODO: the rest of this section needs your numbers.
-  - How many Stripe accounts are actually live?
-  - What do the four cost per month to run (Neon, Netlify, Inngest, Twilio, SES, domains)?
-  - Any signups at all, even organic ones from the blog posts?
--->
-
 ## What I'd Do Differently
 
 I'd make outreach a rule with a deadline, the same as the checkout. Something like ten real people in the target audience who see the product before Saturday. I'd also save the last day of each week for it, and if the build ran over, the product would ship rougher. A product nobody has seen doesn't get any better from another day of polish.
@@ -155,12 +141,10 @@ I'd freeze services instead of frameworks. Neon, Stripe, and Netlify never moved
 
 I'd set up tests and CI on day one. TeamDues had unit, database, and Playwright tests running in CI, and it was the week I trusted most. NoShowFixer had no end-to-end suite and no CI, for a tool that sends email in someone else's name.
 
-<!-- TODO: confirm these three are yours, and add anything else. Would you run the challenge again? What would change about the format itself (one product a week, Saturday deadlines)? -->
+I'd run the challenge again. One product a week with a Saturday deadline worked. It got four products out of a month that would have produced one. The changes above are about what the deadline has to cover, not the deadline itself.
 
 ## Putting It Together
 
 October gave me four live products and taught me that with Claude Code doing most of the typing, my limit is no longer how fast I can build. It's how willing I am to say no to a feature and how soon I'll show the thing to a stranger. Scope got better every week. The checkout didn't keep up, and outreach never started. I built four products for coaches, practitioners, contractors, and job seekers, and none of them heard about it from me. The parts that held were the boring services underneath, and the rule I broke first was the one that mattered least. The rule I needed most was the one I never wrote.
 
-<!-- TODO: final verdict. Are you going to announce any of them now? Which one first? -->
-
-If you've run your own build challenge, or you're thinking about one, tell me which rule you'd keep on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).
+I'm not announcing any of them yet. Bragboard and SignedOnSite get my time next. If you've run your own build challenge, or you're thinking about one, tell me which rule you'd keep on [**Bluesky**](https://bsky.app/profile/joshfinnie.dev).

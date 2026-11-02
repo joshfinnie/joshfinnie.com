@@ -13,7 +13,11 @@ I'm a senior software engineer on the API & Delivery team at [People Data Labs](
 
 ## Building
 
-I just wrapped up [the October micro SaaS challenge](/blog/the-october-micro-saas-challenge/): four weeks, four small paid products. They are [Bragboard](/blog/micro-saas-week-one-bragboard/), [TeamDues](/blog/micro-saas-week-two-teamdues/), [NoShowFixer](/blog/micro-saas-week-three-noshowfixer/), and [SignedOnSite](/blog/micro-saas-week-four-signedonsite/). All four are live. Now comes the part I skipped all month, which is putting them in front of the people I built them for.
+I just wrapped up [the October micro SaaS challenge](/blog/the-october-micro-saas-challenge/): four weeks, four small paid products. They are [Bragboard](/blog/micro-saas-week-one-bragboard/), [TeamDues](/blog/micro-saas-week-two-teamdues/), [NoShowFixer](/blog/micro-saas-week-three-noshowfixer/), and [SignedOnSite](/blog/micro-saas-week-four-signedonsite/). All four are live, and I wrote up [how the month went](/blog/micro-saas-october-retro/). Bragboard and SignedOnSite are the two I'm still building.
+
+## BlueFin.games
+
+I run [BlueFin.games](https://bluefin.games), a small Magic: The Gathering store that sells singles and sealed product on Mana Pool and TCGplayer. Lately I've been building the tools behind it: listing my Mana Pool stock on TCGplayer, buying bulk cards by the count, and keeping track of which orders I've already pulled.
 
 ---
 

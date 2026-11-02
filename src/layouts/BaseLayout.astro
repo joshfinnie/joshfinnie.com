@@ -3,6 +3,7 @@ import BaseHead from '@components/BaseHead.astro';
 import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
 import WebsiteStructuredData from '@components/structured-data/WebsiteStructuredData.astro';
+import { renderOgImage } from '@lib/og';
 import mapping from '../../standard-mapping.json';
 
 const {
@@ -19,14 +20,7 @@ const {
 const normalizedPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const atUri = (mapping.documents as Record<string, string>)[normalizedPath];
 
-var imageUrl;
-if (collection == 'blog') {
-  imageUrl = `https://www.joshfinnie.com/blog/og/${id}.png`;
-} else if (collection == 'note') {
-  imageUrl = `https://www.joshfinnie.com/notes/og/${id}.png`;
-} else {
-  imageUrl = 'https://www.joshfinnie.com/blog/og/default.png';
-}
+const ogImage = await renderOgImage({ collection, id, title }, Astro.site);
 
 import '@styles/global.css';
 ---
@@ -37,7 +31,18 @@ import '@styles/global.css';
   class="dark"
 >
   <head>
-    <BaseHead {title} {description} image={imageUrl} {ogType} {publishedTime} {articleTags} {atUri} />
+    <BaseHead
+      {title}
+      {description}
+      image={ogImage.url}
+      imageWidth={ogImage.width}
+      imageHeight={ogImage.height}
+      imageType={ogImage.type}
+      {ogType}
+      {publishedTime}
+      {articleTags}
+      {atUri}
+    />
     <script is:inline>
       // Necessary for view transitions
       document.addEventListener("astro:after-swap", () => {

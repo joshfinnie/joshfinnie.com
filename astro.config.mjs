@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, fontProviders } from 'astro/config';
+import cards from 'astro-cards';
 import expressiveCode from 'astro-expressive-code';
 // Load environment variables
 import { config } from 'dotenv';
@@ -33,6 +34,9 @@ export default defineConfig({
   image: {
     responsiveStyles: true,
     layout: 'constrained',
+    // astro-cards runs remote images (the Cloudinary hero and headshot it
+    // composites into OG cards) through Astro's image allowlist.
+    remotePatterns: [{ protocol: 'https', hostname: 'res.cloudinary.com' }],
   },
   build: {
     inlineStylesheets: 'always',
@@ -48,6 +52,7 @@ export default defineConfig({
     port: 3333,
   },
   integrations: [
+    cards({ width: 1200, height: 630, format: 'jpeg', quality: 88 }),
     // Expressive Code must run before mdx() so it can process code blocks.
     expressiveCode({
       themes: ['rose-pine-dawn', 'rose-pine-moon'],

@@ -1,6 +1,6 @@
 ---
 title: "Your Vote Is Not a Prop Bet"
-date: "2026-11-14"
+date: "2026-11-03"
 tags:
   - "leftist"
   - "politics"

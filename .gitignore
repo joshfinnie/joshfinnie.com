@@ -135,3 +135,6 @@ src/assets/
 deno.lock
 styles/write-good/
 .claude
+
+# Local record of Cloudinary uploads; Cloudinary is the source of truth
+cloudinary-mapping.json

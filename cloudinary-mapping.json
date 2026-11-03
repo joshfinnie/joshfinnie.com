@@ -1,7 +1,17 @@
 {
-  "uploadedAt": "2026-10-30T14:26:07.756Z",
+  "uploadedAt": "2026-11-03T17:05:18.656Z",
   "cloudName": "dgd9cw3gu",
   "images": [
+    {
+      "localPath": "src/assets/blog/dead-internet.webp",
+      "publicId": "blog/dead-internet",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1793725514/blog/dead-internet.webp"
+    },
+    {
+      "localPath": "src/assets/blog/docs-snowball.webp",
+      "publicId": "blog/docs-snowball",
+      "cloudinaryUrl": "https://res.cloudinary.com/dgd9cw3gu/image/upload/v1793725514/blog/docs-snowball.webp"
+    },
     {
       "localPath": "src/assets/blog/lightcraft-tetons.webp",
       "publicId": "blog/lightcraft-tetons",

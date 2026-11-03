@@ -1,6 +1,6 @@
 ---
 title: "Taking a Fine-Toothed Comb to a Vibe-Coded Lightroom Clone"
-date: "2026-11-07"
+date: "2026-11-04"
 tags:
   - "rust"
   - "ai"

@@ -6,9 +6,9 @@ tags:
   - "politics"
   - "elections"
 slug: "your-vote-is-not-a-prop-bet"
-heroImage: ""
-unsplash: ""
-unsplashURL: ""
+heroImage: "blog/your-vote-is-not-a-prop-bet"
+unsplash: "Taylor Sondgeroth"
+unsplashURL: "ridingseaside"
 description: "Kalshi and Polymarket turned American elections into a betting product, with the President's son advising both and a polling site's averages deciding who gets paid. Why election markets taint the thing they claim to predict."
 draft: false
 leftistOnly: true

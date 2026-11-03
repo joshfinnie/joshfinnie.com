@@ -1,6 +1,6 @@
 ---
 title: "Tailwind, Stack Overflow, and the Docs Snowball"
-date: "2026-11-03"
+date: "2026-11-07"
 tags:
   - "ai"
   - "documentation"
@@ -10,7 +10,7 @@ unsplash: "Camilo Rueda López"
 unsplashURL: "kozumel"
 slug: "tailwind-stack-overflow-docs-snowball"
 description: "Tailwind's docs traffic fell 40% and Stack Overflow's questions collapsed as developers asked LLMs instead. Why that loop leaves us with worse docs, shallower skills, and models that stop learning."
-draft: true
+draft: false
 ---
 
 Tailwind is more popular than it has ever been, and its company just laid off most of its engineers. Stack Overflow still holds the answer to almost every question I have ever googled, and almost nobody asks it new ones. Both stories have the same cause, and I think the long-term cost lands on all of us, not just them.
@@ -89,7 +89,7 @@ Tailwind v4 is a small preview. It moved configuration out of `tailwind.config.j
 
 For a long time after the release, models kept suggesting the old JavaScript config file. They had seen thousands of examples of v3 and almost none of v4. Tools that pull current docs into the model's context, like Context7 or a docs MCP server, closed most of that gap. But look at what those tools fetch. They fetch docs a human wrote. Retrieval doesn't replace the writing. It depends on it, and the writing is exactly what the snowball wears down.
 
-Scale that up. A new technique shows up, a clever pattern or a better way to structure something. If it only lives in someone's private chat with a model, the next model never sees it. The models stay frozen near the last moment people bothered to write things down in public. We trade a living body of knowledge for a snapshot that slowly goes stale. There's a darker version of this, where models train on half-finished code that other models wrote, but that's [a post of its own](/blog/dead-internet-coming-for-your-code).
+Scale that up. A new technique shows up, a clever pattern or a better way to structure something. If it only lives in someone's private chat with a model, the next model never sees it. The models stay frozen near the last moment people bothered to write things down in public. We trade a living body of knowledge for a snapshot that slowly goes stale. There's a darker version of this, where models train on half-finished code that other models wrote, but that's a post of its own.
 
 ## How They Turn Around
 

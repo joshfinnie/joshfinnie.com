@@ -1,6 +1,6 @@
 ---
 title: "The Dead Internet Is Coming for Your Code"
-date: "2026-11-03"
+date: "2026-11-10"
 tags:
   - "ai"
   - "open-source"
@@ -10,7 +10,7 @@ unsplash: "Mathew MacQuarrie"
 unsplashURL: "matmacq"
 slug: "dead-internet-coming-for-your-code"
 description: "Coding models learn from public GitHub, and public GitHub is filling with untested, error-swallowing hello world apps, many written by other models. Why code quality is heading for model collapse."
-draft: true
+draft: false
 ---
 
 In my [last post](/blog/tailwind-stack-overflow-docs-snowball) I argued that LLMs are drying up the human docs they learned from. That was the polite version of the problem. The worse version is what the models will learn from instead, and it's already sitting on GitHub.

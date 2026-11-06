@@ -117,8 +117,8 @@ importers:
         version: 8.3.4(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
     devDependencies:
       '@atproto/api':
-        specifier: ^0.28.1
-        version: 0.28.1
+        specifier: ^0.30.0
+        version: 0.30.0
       '@biomejs/biome':
         specifier: ^2.5.15
         version: 2.5.15
@@ -281,8 +281,8 @@ packages:
   '@astrojs/yaml2ts@0.2.4':
     resolution: {integrity: sha512-8oddpOae35pJsXPQXhTkM0ypfKPskVsh2bCxRtbf7e+/Epw2nReakFYpLKjZMEr75CsoF203PMnCocpfz0s69A==}
 
-  '@atproto/api@0.28.1':
-    resolution: {integrity: sha512-mPMXuM5F+Vh+dOlu7Ys6/ZVrTpG+PIUg/LartoVijok+Ki6OmJrtBGgRRCppx6Okjs8aW1yH3JZG73gqGfU1zA==}
+  '@atproto/api@0.30.0':
+    resolution: {integrity: sha512-OMDouol2f0vGur07LywJ3MhLhsZ2YZu1Kn76zBnPLqzh/PWlVqZyrRQl++BkA1PXwXhTsbLQLKPHT52wlaMicA==}
     engines: {node: '>=22'}
 
   '@atproto/common-web@0.5.15':
@@ -3312,8 +3312,8 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  tslib@2.8.1:
-    resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+  tslib@2.9.1:
+    resolution: {integrity: sha512-a4Ux9VKuIMHsOS7ENbEq6hK2ZGYIT27Rtl0E4eD9KqwxhKiQeMZE/9xb3IdYwWaSOyIBQLExhQgXDTYoiCxnWA==}
 
   tsup@8.5.1:
     resolution: {integrity: sha512-xtgkqwdhpKWr3tKPmCkvYmS9xnQK3m3XgxZHwSUjvfTjp7YfXe5tT3GgWi0F2N+ZSMsOeWeZFh7ZZFg5iPhing==}
@@ -3902,7 +3902,7 @@ snapshots:
     dependencies:
       yaml: 2.9.1
 
-  '@atproto/api@0.28.1':
+  '@atproto/api@0.30.0':
     dependencies:
       '@atproto/common-web': 0.5.15
       '@atproto/lexicon': 0.7.17
@@ -3923,13 +3923,13 @@ snapshots:
   '@atproto/lex-data@0.1.8':
     dependencies:
       multiformats: 13.4.2
-      tslib: 2.8.1
+      tslib: 2.9.1
       unicode-segmenter: 0.14.5
 
   '@atproto/lex-json@0.1.7':
     dependencies:
       '@atproto/lex-data': 0.1.8
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@atproto/lexicon@0.7.17':
     dependencies:
@@ -3941,7 +3941,7 @@ snapshots:
   '@atproto/syntax@0.7.7':
     dependencies:
       iso-datestring-validator: 2.2.2
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@atproto/xrpc@0.8.16':
     dependencies:
@@ -4193,31 +4193,31 @@ snapshots:
   '@emnapi/core@1.11.1':
     dependencies:
       '@emnapi/wasi-threads': 1.2.2
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@emnapi/core@1.11.3':
     dependencies:
       '@emnapi/wasi-threads': 1.2.3
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/runtime@1.11.1':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@emnapi/runtime@1.11.3':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@emnapi/wasi-threads@1.2.2':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
     optional: true
 
   '@emnapi/wasi-threads@1.2.3':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@esbuild/aix-ppc64@0.28.2':
     optional: true
@@ -4819,7 +4819,7 @@ snapshots:
 
   '@tybys/wasm-util@0.10.4':
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.9.1
 
   '@types/alpinejs@3.17.0': {}
 
@@ -7337,7 +7337,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  tslib@2.8.1: {}
+  tslib@2.9.1: {}
 
   tsup@8.5.1(jiti@2.7.0)(postcss@8.5.31)(typescript@6.0.3)(yaml@2.9.1):
     dependencies:

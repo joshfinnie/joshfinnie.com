@@ -38,7 +38,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
     "@types/alpinejs": "^3.17.0",
-    "alpinejs": "^3.17.4",
+    "alpinejs": "^3.17.5",
     "astro": "7.4.1",
     "astro-cards": "^1.0.0",
     "astro-cloudinary": "^1.4.0",

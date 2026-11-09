@@ -39,7 +39,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@types/alpinejs": "^3.17.0",
     "alpinejs": "^3.17.4",
-    "astro": "7.4.1",
+    "astro": "7.4.4",
     "astro-cards": "^1.0.0",
     "astro-cloudinary": "^1.4.0",
     "astro-expressive-code": "^0.44.2",

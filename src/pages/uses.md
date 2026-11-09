@@ -8,7 +8,6 @@ layout: "../layouts/AboutLayout.astro"
 ## Hardware
 
 - [Corne Keyboard](https://amzn.to/3EsZeJi) with [Kailh Box Silent Tactile Brown Key Switches](https://amzn.to/44vraGL)
-- [Keyboard.io Atreus](https://shop.keyboard.io/products/keyboardio-atreus) keyboard with [Kailh Box Clicky Jade Key Switches](https://amzn.to/3NOInj2)
 - [Massdrop X Sennheiser HD 6XX headphones](https://drop.com/buy/massdrop-sennheiser-hd6xx?utm_source=linkshare&referer=BH8DEX) headphones
 - [TinHIFI T2 Plus IEM](https://amzn.to/3EYgRyt) IEM headphones
 - [Shure MV7](https://amzn.to/3Mh2Iwl) microphone
@@ -16,6 +15,7 @@ layout: "../layouts/AboutLayout.astro"
 - [Emeet S600](https://amzn.to/49bpJyW) webcam
 - [Samsung 49” Odyssey G9](https://amzn.to/3GE1mvh) monitor
 - [HÅG Capisco](https://amzn.to/3IAmR0H) chair
+- [XTEINK X4 Classic](https://link.amazon/B0cHtvNtW) e-reader
 - Work Computer:
   - MacBook Pro 16-inch 2021
 - Gaming Computer:
@@ -29,11 +29,14 @@ layout: "../layouts/AboutLayout.astro"
 
 ## Software
 
+- [herdr](https://herdr.dev/) for terminal multiplexing
+- [WezTerm](https://wezterm.org/index.html)
 - [neovim](https://neovim.io/) for coding
+- [Claude](https://claude.com/) for agentic everything
 - [Brave](https://brave.com/) for browsing
 - [iTerm with Fish and Starship.rs](/blog/moving-from-oh-my-zsh-to-starship-and-fish-shell) as my terminal
 - [Bruno](https://www.usebruno.com/) for testing RESTful endpoints
 - [Obsidian](https://obsidian.md) for note-taking
-- [Youtube Music](https://music.youtube.com/) for listening to music
+- [Spotify](https://www.spotify.com/) for listening to music
 - [Plausible.io](https://plausible.io/) for site analytics
 - [OBS](https://obsproject.com/) for streaming

@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import WebPageStructuredData from '@components/structured-data/WebPageStructuredData.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Code } from 'astro-expressive-code/components';
+
+const REPO = 'joshfinnie/skills';
+const PLUGIN = 'joshfinnie-skills';
+
+const title = 'Skills';
+const description = 'Agent skills by Josh Finnie for Claude Code, Cursor, Codex, and other coding agents.';
+
+const skills = (await getCollection('skills'))
+  .flatMap((entry) => entry.data)
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout title={`${title} | Josh Finnie`} {description} permalink="https://joshfinnie.com/skills/" collection="page">
+  <WebPageStructuredData slot="structured-data" {title} {description} />
+  <h1 class="font-bold text-3xl mb-10 mt-5 dark:text-white">{title}</h1>
+  <main class="prose dark:prose-invert prose-zinc max-w-none">
+    <p>
+      These are the agent skills I use day to day, packaged so you can use them too. Each one is a <code>SKILL.md</code>{' '}
+      file that works in Claude Code, Cursor, Codex, or any agent that reads skills. The source lives at <a href={`https://github.com/${REPO}`}>github.com/{REPO}</a>, and every skill follows the
+      <a href="https://agentskills.io/specification">Agent Skills specification</a>.
+    </p>
+
+    <h2>Install</h2>
+    <p>Add every skill as a Claude Code plugin:</p>
+    <Code
+      lang="text"
+      frame="terminal"
+      title="Claude Code"
+      code={`/plugin marketplace add ${REPO}\n/plugin install ${PLUGIN}@${PLUGIN}\n/reload-plugins`}
+    />
+    <p>
+      Claude Code prefixes plugin skills with the plugin name, so you'd run <code>/{PLUGIN}:humanize</code>.
+    </p>
+    <p>Or install a single skill into any agent with the skills CLI:</p>
+    <Code lang="sh" code={`npx skills add ${REPO} --skill <name>`} />
+    <p>
+      You can also copy any skill folder from the repo into <code>~/.claude/skills/</code> by hand.
+    </p>
+
+    <h2>The skills</h2>
+    {
+      skills.length === 0 ? (
+        <p>Nothing here yet. The first skills are on their way.</p>
+      ) : (
+        skills.map((skill) => (
+          <section class="not-prose rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40 my-5">
+            <h3 class="font-bold text-xl text-zinc-800 dark:text-zinc-100">
+              <a
+                href={`https://github.com/${REPO}/tree/main/plugins/${PLUGIN}/skills/${skill.name}`}
+                class="hover:text-teal-500 dark:hover:text-teal-400"
+              >
+                {skill.name}
+              </a>
+            </h3>
+            <p class="mt-2 text-base text-zinc-600 dark:text-zinc-400">{skill.description}</p>
+            <div class="mt-4">
+              <Code lang="sh" code={`npx skills add ${REPO} --skill ${skill.name}`} />
+            </div>
+          </section>
+        ))
+      )
+    }
+  </main>
+</BaseLayout>

@@ -54,18 +54,7 @@ export default defineConfig({
   integrations: [
     cards({ width: 1200, height: 630, format: 'jpeg', quality: 88 }),
     // Expressive Code must run before mdx() so it can process code blocks.
-    expressiveCode({
-      themes: ['rose-pine-dawn', 'rose-pine-moon'],
-      // Dark mode is driven by the `.dark` class on <html> (Alpine toggle),
-      // not the OS preference, so disable the media query and scope the dark
-      // theme to `.dark`. The light theme stays the default (base) theme.
-      useDarkModeMediaQuery: false,
-      themeCssSelector: (theme) => (theme.type === 'dark' ? '.dark' : false),
-      styleOverrides: {
-        borderRadius: '0.375rem',
-        codePaddingBlock: '1.25rem',
-      },
-    }),
+    expressiveCode(),
     mdx(),
     sitemap(),
     alpinejs(),

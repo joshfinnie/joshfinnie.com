@@ -89,4 +89,14 @@ const talks = defineCollection({
   ),
 });
 
-export const collections = { blog, note, project, talks, seriesPart };
+const skills = defineCollection({
+  loader: file('./src/collections/skills/skills.json'),
+  schema: z.array(
+    z.object({
+      name: z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/),
+      description: z.string(),
+    })
+  ),
+});
+
+export const collections = { blog, note, project, talks, skills, seriesPart };

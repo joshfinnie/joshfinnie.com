@@ -1,0 +1,24 @@
+{
+  "skills": [
+    {
+      "name": "humanize",
+      "description": "Strips AI writing patterns from prose: mechanical transitions, buzzwords, hedging, hype words, forced structure, and flat sentence rhythm, which it measures with a bundled script. Use it while drafting, or point it at text you already have for an audit or a rewrite."
+    },
+    {
+      "name": "skill-writing",
+      "description": "Writes, reviews, and tests agent skills that follow the Agent Skills specification: descriptions that actually trigger, the right split between SKILL.md and supporting files, a dependency-free validator, and a with-and-without comparison before you publish."
+    },
+    {
+      "name": "mermaid-gen",
+      "description": "Turns an existing codebase into Mermaid diagrams: an architecture overview built from the real import graph, entry points, and deploy config, plus an ER diagram when the project has a schema or migrations. Writes a Markdown file that renders on GitHub and lints it before finishing."
+    },
+    {
+      "name": "handoff",
+      "description": "For when you're running two agent sessions, like one in the API and one in the frontend. Writes a self-contained brief of what changed, the exact contract, and what the other side needs to do, saves it to /tmp, and copies it to your clipboard so you can paste it into the other session."
+    },
+    {
+      "name": "staff-review",
+      "description": "A thorough review of a branch the way a principal engineer would do it: line by line through the diff, then out into everything the diff touches, like callers, frontends reading a renamed field, queries using a dropped column, and migrations that re-run on deploy. On the default branch it reviews the whole codebase instead."
+    }
+  ]
+}

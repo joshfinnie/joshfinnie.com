@@ -2,6 +2,11 @@
   publish = "dist/"
   command = "pnpm build || ( npm install pnpm && pnpm build )"
 
+[build.environment]
+  # pnpm 12 can't run through corepack yet, so Netlify installs this version directly.
+  # Keep it in sync with devEngines.packageManager in package.json.
+  PNPM_VERSION = "12.18.0"
+
 [[headers]]
   for = "/*"
   [headers.values]

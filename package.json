@@ -67,7 +67,7 @@
     }
   },
   "devDependencies": {
-    "@atproto/api": "^0.28.1",
+    "@atproto/api": "^0.30.3",
     "@biomejs/biome": "^2.5.15",
     "@netlify/functions": "^6.0.3",
     "dotenv": "^18.0.8",

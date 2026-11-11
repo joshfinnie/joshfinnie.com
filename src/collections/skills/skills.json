@@ -19,6 +19,14 @@
     {
       "name": "staff-review",
       "description": "A thorough review of a branch the way a principal engineer would do it: line by line through the diff, then out into everything the diff touches, like callers, frontends reading a renamed field, queries using a dropped column, and migrations that re-run on deploy. On the default branch it reviews the whole codebase instead."
+    },
+    {
+      "name": "og-image",
+      "description": "Builds the card that shows up when someone pastes your link into Slack or Bluesky, generated from code with your site's real colors and fonts and a mock of what the product actually does. Wires up the meta tags for Next.js, Astro, or any static site, then renders the image and checks it with a bundled script."
+    },
+    {
+      "name": "new-repo",
+      "description": "Puts a local project on GitHub right the first time. It settles which email the commits should carry before the first one lands, cleans up .gitignore, scans for secrets, writes a real first commit, and creates a private repo with the gh CLI. It also covers forks and the checks to run before going public."
     }
   ]
 }

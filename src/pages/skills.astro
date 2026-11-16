@@ -6,6 +6,7 @@ import { Code } from 'astro-expressive-code/components';
 
 const REPO = 'joshfinnie/skills';
 const PLUGIN = 'joshfinnie-skills';
+const INSTALL_STEPS = [`/plugin marketplace add ${REPO}`, `/plugin install ${PLUGIN}@${PLUGIN}`, '/reload-plugins'];
 
 const title = 'Skills';
 const description = 'Agent skills by Josh Finnie for Claude Code, Cursor, Codex, and other coding agents.';
@@ -26,13 +27,13 @@ const skills = (await getCollection('skills'))
     </p>
 
     <h2>Install</h2>
-    <p>Add every skill as a Claude Code plugin:</p>
-    <Code
-      lang="text"
-      frame="terminal"
-      title="Claude Code"
-      code={`/plugin marketplace add ${REPO}\n/plugin install ${PLUGIN}@${PLUGIN}\n/reload-plugins`}
-    />
+    <p>
+      Add every skill as a Claude Code plugin. Run these one at a time: Claude Code reads a pasted block as a single
+      command, so pasting all three together fails.
+    </p>
+    <div class="flex flex-col gap-4">
+      {INSTALL_STEPS.map((step, i) => <Code lang="text" frame="terminal" title={`Step ${i + 1}`} code={step} />)}
+    </div>
     <p>
       Claude Code prefixes plugin skills with the plugin name, so you'd run <code>/{PLUGIN}:humanize</code>.
     </p>

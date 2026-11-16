@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.6.8/schema.json",
   "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
   "files": { "includes": ["**", "!**/*.css", "!!**/dist", "!.github/skills/**"], "ignoreUnknown": true },
   "formatter": {
@@ -14,15 +14,7 @@
     "bracketSpacing": true,
     "expand": "auto",
     "useEditorconfig": true,
-    "includes": [
-      "**",
-      "!**/dist/",
-      "!src/components/ui/",
-      "!src/content/**/*.md",
-      "!src/content/**/*.mdx",
-      "!**/*.css",
-      "!.github/skills/**"
-    ]
+    "includes": ["**", "!**/dist/", "!src/components/ui/", "!**/*.md", "!**/*.mdx", "!**/*.css", "!.github/skills/**"]
   },
   "linter": {
     "enabled": true,

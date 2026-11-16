@@ -13,11 +13,11 @@ unsplash: "Ricardo Gomez Angel"
 unsplashURL: "rgaleriacom"
 slug: "building-a-cozy-terminal-fire-in-rust"
 ---
-import { CldImage } from 'astro-cloudinary';
+import CloudinaryImage from '@components/CloudinaryImage.astro';
 
 Some projects exist purely for fun, and firesym is one of them. I wanted a cozy, animated fire running in my terminal, built from scratch in Rust. The result is a full-width animated flame that respects your terminal size, sways in a simulated wind, and installs with a single `cargo install firesym`.
 
-<CldImage src="blog/firesym-demo" />
+<CloudinaryImage publicId="blog/firesym-demo" alt="firesym running in a terminal: a wall of pixelated flame fading from white and yellow at the base to orange and dark red at the top, under a 'Cozy Fire' title" width={1048} height={387} />
 
 ## The Algorithm Behind the Flame
 

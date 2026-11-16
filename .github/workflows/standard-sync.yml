@@ -5,16 +5,16 @@ name: Standard sync
 # passes the publish gate) so scheduled posts get their record and go live.
 on:
   push:
-    branches: [main]
+    branches: [ main ]
     paths:
-      - 'src/collections/blog/**'
-      - 'src/collections/projects/**'
-      - 'src/pages/*.md'
-      - 'src/pages/*.mdx'
-      - 'src/lib/published.ts'
-      - 'scripts/sync-standard.js'
+      - "src/collections/blog/**"
+      - "src/collections/projects/**"
+      - "src/pages/*.md"
+      - "src/pages/*.mdx"
+      - "src/lib/published.ts"
+      - "scripts/sync-standard.js"
   schedule:
-    - cron: '15 0 * * *'
+    - cron: "15 0 * * *"
   workflow_dispatch:
 
 concurrency:

@@ -3,4 +3,4 @@ message: "No em dashes — rewrite the sentence."
 level: error
 nonword: true
 tokens:
-  - '—'
+  - "—"

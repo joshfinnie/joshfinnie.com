@@ -1,5 +1,5 @@
 import { Cloudinary } from '@cloudinary/url-gen';
-import { fill, scale } from '@cloudinary/url-gen/actions/resize';
+import { limitFill, limitFit } from '@cloudinary/url-gen/actions/resize';
 import { auto as autoFormat } from '@cloudinary/url-gen/qualifiers/format';
 import { compass } from '@cloudinary/url-gen/qualifiers/gravity';
 import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
@@ -25,13 +25,13 @@ export function getCloudinaryImageUrl(
   image.format(autoFormat() as any).quality(autoQuality() as any);
 
   if (options.width && options.height) {
-    const resize = fill().width(options.width).height(options.height);
+    const resize = limitFill().width(options.width).height(options.height);
     if (options.gravity) resize.gravity(compass(options.gravity));
     image.resize(resize);
   } else if (options.width) {
-    image.resize(scale().width(options.width));
+    image.resize(limitFit().width(options.width));
   } else if (options.height) {
-    image.resize(scale().height(options.height));
+    image.resize(limitFit().height(options.height));
   }
 
   return image.toURL();

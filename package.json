@@ -60,7 +60,7 @@
     }
   },
   "devDependencies": {
-    "@atproto/api": "^0.30.3",
+    "@atproto/api": "^0.32.0",
     "@biomejs/biome": "^2.6.8",
     "dotenv": "^18.0.8",
     "glob": "^14.0.3",

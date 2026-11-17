@@ -23,7 +23,13 @@ export default defineConfig({
       },
     },
   },
-  vite: { plugins: [tailwindcss()], resolve: { tsconfigPaths: true } },
+  vite: {
+    plugins: [tailwindcss()],
+    resolve: { tsconfigPaths: true },
+    // Mermaid's core (~630 kB) and its ELK layout engine (~1.5 MB) are the only chunks over
+    // Vite's 500 kB default. Both are dynamic imports that load only on pages with a diagram.
+    build: { chunkSizeWarningLimit: 1600 },
+  },
   fonts: [
     {
       provider: fontProviders.google(),

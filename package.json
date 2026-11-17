@@ -62,7 +62,7 @@
   "devDependencies": {
     "@atproto/api": "^0.32.0",
     "@biomejs/biome": "^2.6.8",
-    "dotenv": "^18.0.8",
+    "dotenv": "^18.0.10",
     "glob": "^14.0.6",
     "gray-matter": "^4.0.3",
     "husky": "^9.1.7"

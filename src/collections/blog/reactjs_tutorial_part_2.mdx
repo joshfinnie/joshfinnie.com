@@ -13,6 +13,8 @@ expires: true
 series: "react-tutorial"
 ---
 
+import CloudinaryImage from '@components/CloudinaryImage.astro';
+
 Welcome to part 2 of my tutorial on how to get a website up and running using [React.js](http://facebook.github.io/react/) and [Node.js](http://nodejs.org/). You can read Part 1 [here](/blog/reactjs-tutorial-part-1/) if you haven't already.
 
 In this part of the tutorial, we are going to make our React.js/Express.js app more like a full-fledged web application with the addition of a build system called [Gulp.js](http://gulpjs.com/). Gulp.js is a build system (or task runner) that I have been using for a while. There are [many](http://gruntjs.com/), [many](https://github.com/broccolijs/broccoli), [many](http://webpack.github.io/) out there, but I find Gulp.js to be very sufficient for my needs.
@@ -115,7 +117,7 @@ script(src='/javascripts/build/app.js')
 
 There you have it, a React application being built with Gulp using browersify!
 
-<img src="https://res.cloudinary.com/dgd9cw3gu/image/upload/f_auto,q_auto/blog/hello-react-component" alt="hello react.js component" />
+<CloudinaryImage publicId="blog/hello-react-component" alt="hello react.js component" width={839} height={480} />
 
 ### Gulp Watch
 

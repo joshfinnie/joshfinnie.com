@@ -256,8 +256,8 @@ importers:
         version: 8.3.8(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(yaml@2.9.1)
     devDependencies:
       '@atproto/api':
-        specifier: ^0.32.0
-        version: 0.32.0
+        specifier: ^0.32.1
+        version: 0.32.1
       '@biomejs/biome':
         specifier: ^2.6.8
         version: 2.6.8
@@ -427,8 +427,8 @@ packages:
   '@astrojs/yaml2ts@0.2.4':
     resolution: {integrity: sha512-8oddpOae35pJsXPQXhTkM0ypfKPskVsh2bCxRtbf7e+/Epw2nReakFYpLKjZMEr75CsoF203PMnCocpfz0s69A==}
 
-  '@atproto/api@0.32.0':
-    resolution: {integrity: sha512-2wsISZ1Gkh38aN9LLnlJXREbqkDyrMxKaaei2poTZRE75aZ068xRkSGRY7aczfKr7Gz6Vvz5ZPIAzHLrtNYeHA==}
+  '@atproto/api@0.32.1':
+    resolution: {integrity: sha512-T04XWeeO3hpCE2vhEZc6jwDcV47E4o1yGrq67rf5rGtObfmZYFwa53/y5On7NrLtpihIZs5FgvplIRb2Aye3Rw==}
     engines: {node: '>=22'}
 
   '@atproto/common-web@0.5.17':
@@ -3135,9 +3135,6 @@ packages:
     resolution: {integrity: sha512-sZvOFkfe5LlYG/crRX5IvP3oUHmJPu+7WmrLQFvF0kCRq51C+lurlzFMm/jURG/5keT7VOJ/it0N3jkzYux85w==}
     engines: {node: '>=16.9.x', pnpm: '>=7.x'}
 
-  tailwindcss@4.3.3:
-    resolution: {integrity: sha512-gOhV3P7ufE62QDGg1zVaTgCR+EtPv92k2nIhVcVKcLmxT1sUBsQGhnZj175j+MqRt4zLF7ic+sCYjfhxMxj7YQ==}
-
   tailwindcss@4.3.5:
     resolution: {integrity: sha512-FcQk9BuffmEHJP2G0XmB2SplU1aLTI7j07Kunk+U74Ny+XiWOtzXz9aujFZ/avntw1e2cOv/3PkgzflQ7gX2vQ==}
 
@@ -3772,7 +3769,7 @@ snapshots:
     dependencies:
       yaml: 2.9.1
 
-  '@atproto/api@0.32.0':
+  '@atproto/api@0.32.1':
     dependencies:
       '@atproto/common-web': 0.5.17
       '@atproto/lexicon': 0.7.19
@@ -6869,8 +6866,6 @@ snapshots:
       sax: 1.6.1
 
   tailwind-variants@4.0.2: {}
-
-  tailwindcss@4.3.3: {}
 
   tailwindcss@4.3.5: {}
 

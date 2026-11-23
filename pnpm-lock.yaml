@@ -198,8 +198,8 @@ importers:
         specifier: ^1.10.12
         version: 1.10.12(typescript@6.0.3)
       '@cloudinary/url-gen':
-        specifier: ^1.22.0
-        version: 1.22.0
+        specifier: ^1.22.1
+        version: 1.22.1
       '@tailwindcss/typography':
         specifier: ^0.5.20
         version: 0.5.20(tailwindcss@4.3.5)
@@ -633,8 +633,8 @@ packages:
   '@cloudinary/transformation-builder-sdk@1.21.2':
     resolution: {integrity: sha512-ehOgKUaP+Nvuf7B0TosmB8iilL0kdiVjzjl8tIK06cjvsNnwSJI3xP9nEJmKkvqNxwwFwvYXT+mxUTqnSv9JOA==}
 
-  '@cloudinary/url-gen@1.22.0':
-    resolution: {integrity: sha512-le8RMlgyC0JN3+FlC/YAlPYfvmJdtw8QGcSKDjCsfhS2CIem0mJl6ayti8bMoZ0P5wDvBewvRB0/dUQvhCzy3g==}
+  '@cloudinary/url-gen@1.22.1':
+    resolution: {integrity: sha512-+sUjlqIV65m4HenPXXVqVwDZfEqf+ZCPYPptpxp28UJLS1S7VrRwaahjEL5qnbv6mAuYtGeOPcyhKi02diiInA==}
 
   '@ctrl/tinycolor@4.2.1':
     resolution: {integrity: sha512-Vh5uy9Y1JBMId6J1f68TMXnZrTCvNdo9Fu2k0d1YnJngR+sM5kWTKl441c/3TFs+cG0NWOjRWgQ/iaWhbYx+7A==}
@@ -3135,9 +3135,6 @@ packages:
     resolution: {integrity: sha512-sZvOFkfe5LlYG/crRX5IvP3oUHmJPu+7WmrLQFvF0kCRq51C+lurlzFMm/jURG/5keT7VOJ/it0N3jkzYux85w==}
     engines: {node: '>=16.9.x', pnpm: '>=7.x'}
 
-  tailwindcss@4.3.3:
-    resolution: {integrity: sha512-gOhV3P7ufE62QDGg1zVaTgCR+EtPv92k2nIhVcVKcLmxT1sUBsQGhnZj175j+MqRt4zLF7ic+sCYjfhxMxj7YQ==}
-
   tailwindcss@4.3.5:
     resolution: {integrity: sha512-FcQk9BuffmEHJP2G0XmB2SplU1aLTI7j07Kunk+U74Ny+XiWOtzXz9aujFZ/avntw1e2cOv/3PkgzflQ7gX2vQ==}
 
@@ -3946,9 +3943,9 @@ snapshots:
 
   '@cloudinary/transformation-builder-sdk@1.21.2':
     dependencies:
-      '@cloudinary/url-gen': 1.22.0
+      '@cloudinary/url-gen': 1.22.1
 
-  '@cloudinary/url-gen@1.22.0':
+  '@cloudinary/url-gen@1.22.1':
     dependencies:
       '@cloudinary/transformation-builder-sdk': 1.21.2
 
@@ -6869,8 +6866,6 @@ snapshots:
       sax: 1.6.1
 
   tailwind-variants@4.0.2: {}
-
-  tailwindcss@4.3.3: {}
 
   tailwindcss@4.3.5: {}
 

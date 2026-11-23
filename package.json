@@ -32,7 +32,7 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@astrojs/ts-plugin": "^1.10.12",
-    "@cloudinary/url-gen": "^1.22.0",
+    "@cloudinary/url-gen": "^1.22.1",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.5",
     "alpinejs": "^3.17.5",
